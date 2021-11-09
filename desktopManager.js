@@ -85,8 +85,13 @@ var DesktopManager = class {
         this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
         this._settingsId = Prefs.desktopSettings.connect('changed', (obj, key) => {
             if (key == 'icon-size') {
-                this._removeAllFilesFromGrids();
-                this._createGrids();
+                this._fileList.forEach(x => x.removeFromGrid());
+                for (let desktop of this._desktops) {
+                    desktop.resizeGrid();
+                }
+                this._fileList.forEach(x => x.updateIcon());
+                this._placeAllFilesOnGrids();
+                return;
             }
             if (key == Enums.SortOrder.ORDER) {
                 this.doArrangeRadioButtons();
@@ -137,7 +142,8 @@ var DesktopManager = class {
 
         this._configureSelectionColor();
         this._createDesktopBackgroundMenu();
-        this._createGrids();
+        this._createGridWindows();
+        this._dbusAdvertiseUpdate();
 
         DBusUtils.NautilusFileOperations2Proxy.connect('g-properties-changed', this._undoStatusChanged.bind(this));
         DBusUtils.GtkVfsMetadataProxy.connectSignal('AttributeChanged', this._metadataChanged.bind(this));
@@ -190,7 +196,72 @@ var DesktopManager = class {
         }
     }
 
-    _createGrids() {
+    _dbusAdvertiseUpdate() {
+        let updateGridWindows = new Gio.SimpleAction({
+            name: 'updateGridWindows',
+            parameter_type: new GLib.VariantType('av')
+        });
+        updateGridWindows.connect('activate', (action, parameter) => {
+            this.updateGridWindows(parameter.recursiveUnpack());
+        });
+        let actionGroup = new Gio.SimpleActionGroup();
+        actionGroup.add_action(updateGridWindows);
+        let busname = this.mainApp.get_dbus_object_path();
+        this._connection = Gio.DBus.session;
+        this._dbusConnectionGroupId = this._connection.export_action_group(
+            `${busname}/updateGridWindows`,
+            actionGroup
+        );
+    }
+
+    updateGridWindows(newdesktoplist) {
+        if (newdesktoplist.length != this._desktopList.length) {
+            this._fileList.forEach(x => x.removeFromGrid());
+            this._desktopList = newdesktoplist;
+            this._createGridWindows();
+            this._placeAllFilesOnGrids();
+            return;
+        }
+        let monitorschanged= [];
+        let gridschanged = [];
+        for(let index = 0; index < newdesktoplist.length; index++) {
+            let area = newdesktoplist[index];
+            let area2 = this._desktopList[index];
+            if ((area.x != area2.x) ||
+                (area.y != area2.y) ||
+                (area.width != area2.width) ||
+                (area.height != area2.height) ||
+                (area.zoom != area2.zoom) ||
+                (area.monitorIndex != area2.monitorIndex)) {
+                monitorschanged.push(index);
+                gridschanged.push(index);
+                continue;
+            }
+            if ((area.marginTop != area2.marginTop) ||
+                (area.marginBottom != area2.marginBottom) ||
+                (area.marginLeft != area2.marginLeft) ||
+                (area.marginRight != area2.marginRight)) {
+                    if (! gridschanged.includes(index)) {
+                        gridschanged.push(index);
+                    }
+            }
+        }
+        if (gridschanged.length > 0) {
+            this._fileList.forEach(x => x.removeFromGrid());
+            for (let gridindex of gridschanged) {
+                let desktop = this._desktops[gridindex];
+                desktop.updateGridDescription(newdesktoplist[gridindex]);
+                if (monitorschanged.includes(gridindex)) {
+                    desktop.resizeWindow();
+                }
+                desktop.resizeGrid();
+            }
+            this._desktopList = newdesktoplist;
+            this._placeAllFilesOnGrids();
+        }
+    }
+
+    _createGridWindows() {
         for(let desktop of this._desktops) {
             desktop.destroy();
         }
@@ -1075,6 +1146,10 @@ var DesktopManager = class {
     _drawDesktop(fileList) {
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
+        this._placeAllFilesOnGrids();
+    }
+
+    _placeAllFilesOnGrids() {
         this.keepArranged = Prefs.desktopSettings.get_boolean('keep-arranged');
         this.sortSpecialFolders = Prefs.desktopSettings.get_boolean('sort-special-folders');
         if (this.keepArranged) {

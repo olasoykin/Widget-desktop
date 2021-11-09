@@ -547,6 +547,10 @@ var FileItem = class {
         this._refreshMetadataAsync(false);
     }
 
+    updateIcon() {
+        this._updateIcon();
+    }
+
     async _updateIcon() {
         if (this._destroyed) {
             return;
