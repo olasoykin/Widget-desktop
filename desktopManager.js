@@ -21,6 +21,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
+const ByteArray = imports.byteArray;
 
 const FileItem = imports.fileItem;
 const stackItem = imports.stackItem;
@@ -588,13 +589,35 @@ var DesktopManager = class {
             }
             this._syncUndoRedo();
             let atom = Gdk.Atom.intern('CLIPBOARD', false);
+            let atom2 = Gdk.Atom.intern('x-special/gnome-copied-files', false);
             let clipboard = Gtk.Clipboard.get(atom);
-            clipboard.request_text((clipboard, text) => {
-                let [valid, is_cut, files] = this._parseClipboardText(text);
-                this._pasteMenuItem.set_sensitive(valid);
-            });
+            this._isCut = false;
+            this._clipboardFiles = null;
+            if (clipboard.wait_is_target_available(atom2)) {
+                clipboard.request_contents(atom2, (clip2, data) => {
+                    let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
+                    print(text);
+                    this._setClipboardContent(text);
+                });
+            } else {
+                clipboard.request_text((clipboard, text) => {
+                    this._setClipboardContent(text);
+                });
+            }
             this._menu.popup_at_pointer(event);
         }
+    }
+
+    _setClipboardContent(text) {
+        let [valid, is_cut, files] = this._parseClipboardText(text);
+        print(valid)
+        print(is_cut)
+        print(files)
+        if (valid) {
+            this._isCut = is_cut;
+            this._clipboardFiles = files;
+        }
+        this._pasteMenuItem.set_sensitive(valid);
     }
 
     _syncUndoRedo() {
@@ -917,52 +940,52 @@ var DesktopManager = class {
     }
 
     _doPaste() {
-        let atom = Gdk.Atom.intern('CLIPBOARD', false);
-        let clipboard = Gtk.Clipboard.get(atom);
-        clipboard.request_text((clipboard, text) => {
-            let [valid, is_cut, files] = this._parseClipboardText(text);
-            if (!valid) {
-                return;
-            }
+        if (this._clipboardFiles == null) {
+            return;
+        }
 
-            let desktopDir = this._desktopDir.get_uri();
-            if (is_cut) {
-                DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(files, desktopDir,
-                    DBusUtils.NautilusFileOperations2Proxy.platformData(),
-                    (result, error) => {
-                        if (error)
-                            throw new Error('Error moving files: ' + error.message);
-                    }
-                );
-            } else {
-                DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(files, desktopDir,
-                    DBusUtils.NautilusFileOperations2Proxy.platformData(),
-                    (result, error) => {
-                        if (error)
-                            throw new Error('Error copying files: ' + error.message);
-                    }
-                );
-            }
-        });
+        let desktopDir = this._desktopDir.get_uri();
+        if (this._isCut) {
+            DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                (result, error) => {
+                    if (error)
+                        throw new Error('Error moving files: ' + error.message);
+                }
+            );
+        } else {
+            DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                (result, error) => {
+                    if (error)
+                        throw new Error('Error copying files: ' + error.message);
+                }
+            );
+        }
     }
 
     _parseClipboardText(text) {
+        print("punto0");
         if (text === null)
             return [false, false, null];
 
         let lines = text.split('\n');
         let [mime, action, ...files] = lines;
+        print("punto1");
+        print(mime)
 
         if (mime != 'x-special/nautilus-clipboard')
             return [false, false, null];
-
+        print("punto2");
         if (!(['copy', 'cut'].includes(action)))
             return [false, false, null];
+        print("punto3");
         let isCut = action == 'cut';
 
         /* Last line is empty due to the split */
         if (files.length <= 1)
             return [false, false, null];
+        print("punto4");
         /* Remove last line */
         files.pop();
 
