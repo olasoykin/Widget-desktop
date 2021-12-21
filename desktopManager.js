@@ -596,7 +596,6 @@ var DesktopManager = class {
             if (clipboard.wait_is_target_available(atom2)) {
                 clipboard.request_contents(atom2, (clip2, data) => {
                     let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
-                    print(text);
                     this._setClipboardContent(text);
                 });
             } else {
@@ -610,9 +609,6 @@ var DesktopManager = class {
 
     _setClipboardContent(text) {
         let [valid, is_cut, files] = this._parseClipboardText(text);
-        print(valid)
-        print(is_cut)
-        print(files)
         if (valid) {
             this._isCut = is_cut;
             this._clipboardFiles = files;
@@ -965,27 +961,21 @@ var DesktopManager = class {
     }
 
     _parseClipboardText(text) {
-        print("punto0");
         if (text === null)
             return [false, false, null];
 
         let lines = text.split('\n');
         let [mime, action, ...files] = lines;
-        print("punto1");
-        print(mime)
 
         if (mime != 'x-special/nautilus-clipboard')
             return [false, false, null];
-        print("punto2");
         if (!(['copy', 'cut'].includes(action)))
             return [false, false, null];
-        print("punto3");
         let isCut = action == 'cut';
 
         /* Last line is empty due to the split */
         if (files.length <= 1)
             return [false, false, null];
-        print("punto4");
         /* Remove last line */
         files.pop();
 
