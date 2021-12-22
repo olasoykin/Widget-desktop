@@ -30,67 +30,6 @@ let errorFound = false;
 let asDesktop = false;
 let primaryIndex = 0;
 
-parseCommandLine(ARGV);
-
-// this allows to import files from the current folder
-
-imports.searchPath.unshift(codePath);
-
-const DBusUtils = imports.dbusUtils;
-const Prefs = imports.preferences;
-const Gettext = imports.gettext;
-
-let localePath = GLib.build_filenamev([codePath, "locale"]);
-if (Gio.File.new_for_path(localePath).query_exists(null)) {
-    Gettext.bindtextdomain("ding", localePath);
-}
-
-const DesktopManager = imports.desktopManager;
-
-var desktopManager = null;
-
-// Use different AppIDs to allow to test it from a command line while the main desktop is also running from the extension
-const dingApp = new Gtk.Application({application_id: asDesktop ? 'com.rastersoft.ding' : 'com.rastersoft.dingtest',
-                                     flags: Gio.ApplicationFlags.HANDLES_COMMAND_LINE});
-
-dingApp.connect('startup', () => {
-    Prefs.init(codePath);
-    DBusUtils.init();
-});
-
-dingApp.connect('activate', () => {
-    if (!desktopManager) {
-        desktopManager = new DesktopManager.DesktopManager(dingApp,
-                                                           desktops,
-                                                           codePath,
-                                                           asDesktop,
-                                                           primaryIndex);
-    }
-});
-
-dingApp.connect('command-line', (app, commandLine) => {
-    let argv =[];
-    argv = commandLine.get_arguments();
-    parseCommandLine(argv);
-    if (! errorFound) {
-        if (commandLine.get_is_remote()) {
-        } else {
-            dingApp.activate();
-        }
-        commandLine.set_exit_status(0);
-    } else {
-        commandLine.set_exit_status(1);
-    }
-});
-
-dingApp.run(ARGV);
-
-if (!errorFound) {
-    0;
-} else {
-    1;
-}
-
 function parseCommandLine(argv) {
     desktops = [];
     for(let arg of argv) {
@@ -146,4 +85,64 @@ function parseCommandLine(argv) {
          */
         desktops.push({x:0, y:0, width: 1280, height: 720, zoom: 1, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0, monitorIndex: 0});
     }
+}
+
+parseCommandLine(ARGV);
+
+// this allows to import files from the current folder
+
+imports.searchPath.unshift(codePath);
+
+const DBusUtils = imports.dbusUtils;
+const Prefs = imports.preferences;
+const Gettext = imports.gettext;
+
+let localePath = GLib.build_filenamev([codePath, "locale"]);
+if (Gio.File.new_for_path(localePath).query_exists(null)) {
+    Gettext.bindtextdomain("ding", localePath);
+}
+
+const DesktopManager = imports.desktopManager;
+
+var desktopManager = null;
+
+// Use different AppIDs to allow to test it from a command line while the main desktop is also running from the extension
+const dingApp = new Gtk.Application({application_id: asDesktop ? 'com.rastersoft.ding' : 'com.rastersoft.dingtest',
+                                     flags: Gio.ApplicationFlags.HANDLES_COMMAND_LINE});
+
+dingApp.connect('startup', () => {
+    Prefs.init(codePath);
+    DBusUtils.init();
+});
+
+dingApp.connect('activate', () => {
+    if (!desktopManager) {
+        desktopManager = new DesktopManager.DesktopManager(dingApp,
+                                                           desktops,
+                                                           codePath,
+                                                           asDesktop,
+                                                           primaryIndex);
+    }
+});
+
+dingApp.connect('command-line', (app, commandLine) => {
+    let argv =[];
+    argv = commandLine.get_arguments();
+    parseCommandLine(argv);
+    if (! errorFound) {
+        if (!commandLine.get_is_remote()) {
+            dingApp.activate();
+        }
+        commandLine.set_exit_status(0);
+    } else {
+        commandLine.set_exit_status(1);
+    }
+});
+
+dingApp.run(ARGV);
+
+if (!errorFound) {
+    0;
+} else {
+    1;
 }
