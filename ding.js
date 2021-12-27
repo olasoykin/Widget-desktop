@@ -29,6 +29,8 @@ let codePath = '.';
 let errorFound = false;
 let asDesktop = false;
 let primaryIndex = 0;
+let desktopVariants = [];
+let remoteDingUpdate;
 
 function parseCommandLine(argv) {
     desktops = [];
@@ -72,6 +74,19 @@ function parseCommandLine(argv) {
                 marginRight:parseInt(data[8]),
                 monitorIndex:parseInt(data[9])
             });
+            let datavariant = new GLib.Variant ('a{sd}', {
+                x:parseInt(data[0]),
+                y:parseInt(data[1]),
+                width:parseInt(data[2]),
+                height:parseInt(data[3]),
+                zoom:parseFloat(data[4]),
+                marginTop:parseInt(data[5]),
+                marginBottom:parseInt(data[6]),
+                marginLeft:parseInt(data[7]),
+                marginRight:parseInt(data[8]),
+                monitorIndex:parseInt(data[9])
+            });
+            desktopVariants.push(datavariant);
             break;
         case '-M':
             primaryIndex = parseInt(arg);
@@ -84,6 +99,7 @@ function parseCommandLine(argv) {
          * configure a 1280x720 desktop
          */
         desktops.push({x:0, y:0, width: 1280, height: 720, zoom: 1, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0, monitorIndex: 0});
+        desktopVariants.push(new GLib.Variant ('a{sd}', {x:0, y:0, width: 1280, height: 720, zoom: 1, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0, monitorIndex: 0}));
     }
 }
 
@@ -105,6 +121,20 @@ if (Gio.File.new_for_path(localePath).query_exists(null)) {
 const DesktopManager = imports.desktopManager;
 
 var desktopManager = null;
+
+if (asDesktop) {
+    remoteDingUpdate = Gio.DBusActionGroup.get(
+        Gio.DBus.session,
+        'com.rastersoft.ding',
+        '/com/rastersoft/ding/updateGridWindows'
+    );
+} else {
+    remoteDingUpdate = Gio.DBusActionGroup.get(
+        Gio.DBus.session,
+        'com.rastersoft.dingtest',
+        '/com/rastersoft/dingtest/updateGridWindows'
+    );
+}
 
 // Use different AppIDs to allow to test it from a command line while the main desktop is also running from the extension
 const dingApp = new Gtk.Application({application_id: asDesktop ? 'com.rastersoft.ding' : 'com.rastersoft.dingtest',
@@ -130,7 +160,11 @@ dingApp.connect('command-line', (app, commandLine) => {
     argv = commandLine.get_arguments();
     parseCommandLine(argv);
     if (! errorFound) {
-        if (!commandLine.get_is_remote()) {
+        if (commandLine.get_is_remote()) {
+            desktopManager.updateGridWindows(desktops);
+            // If testing Dbus activations, comment the above and uncomment the following
+            //remoteDingUpdate.activate_action('updateGridWindows', new GLib.Variant('av', desktopVariants));
+        } else {
             dingApp.activate();
         }
         commandLine.set_exit_status(0);

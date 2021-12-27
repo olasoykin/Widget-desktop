@@ -139,6 +139,11 @@ function innerEnable(removeId) {
         GLib.source_remove(data.launchDesktopId);
     }
     launchDesktop();
+    data.remoteDingUpdate = Gio.DBusActionGroup.get(
+        Gio.DBus.session,
+        'com.rastersoft.ding',
+        '/com/rastersoft/ding/updateGridWindows'
+    );
 }
 
 /**
@@ -173,34 +178,32 @@ function disable() {
 }
 
 function reloadIfSizesChanged() {
-    if (data.desktopCoordinates.length != Main.layoutManager.monitors.length) {
-        killCurrentProcess();
-        return;
-    }
+    let desktopList = [];
+    data.desktopCoordinates = [];
     let ws = global.workspace_manager.get_workspace_by_index(0);
     for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
         let monitor = Main.layoutManager.monitors[monitorIndex];
         if (monitor.inFullscreen) {
             continue;
         }
-
-        let area = data.visibleArea.getWorkspaceGeometry(ws, monitorIndex);
-        let area2 = data.desktopCoordinates[monitorIndex];
-
-        //global.log(`Monitor ${monitorIndex}; ${area.x};${area.y};${area.width};${area.height};${area.scale} ${area2.x};${area2.y};${area2.width};${area2.height};${area2.scale}`)
-        if ((area.x != area2.x) ||
-            (area.y != area2.y) ||
-            (area.width != area2.width) ||
-            (area.height != area2.height) ||
-            (area.scale != area2.scale) ||
-            (area.marginTop != area2.marginTop) ||
-            (area.marginBottom != area2.marginBottom) ||
-            (area.marginLeft != area2.marginLeft) ||
-            (area.marginRight != area2.marginRight)) {
-            killCurrentProcess();
-            return;
-        }
+        let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
+        let desktopListElement = new GLib.Variant('a{sd}', {
+            'x' : area.x,
+            'y': area.y,
+            'width' : area.width,
+            'height' : area.height,
+            'zoom' : area.scale,
+            'marginTop' : area.marginTop,
+            'marginBottom' : area.marginBottom,
+            'marginLeft' : area.marginLeft,
+            'marginRight' : area.marginRight,
+            'monitorIndex' : monitorIndex
+        });
+        desktopList.push(desktopListElement);
+        data.desktopCoordinates.push(area);
     }
+    let desktopListVariant = new GLib.Variant('av', desktopList);
+    data.remoteDingUpdate.activate_action('updateGridWindows', desktopListVariant);
 }
 
 /**
@@ -297,10 +300,10 @@ function launchDesktop() {
 
     let ws = global.workspace_manager.get_workspace_by_index(0);
     for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
-        let area = data.visibleArea.getWorkspaceGeometry(ws, monitorIndex);
+        let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
         // send the working area of each monitor in the desktop
         argv.push('-D');
-        argv.push(`${area.x}:${area.y}:${area.width}:${area.height}:${area.scale}:${area.marginTop}:${area.marginBottom}:${area.marginLeft}:${area.marginRight}`);
+        argv.push(`${area.x}:${area.y}:${area.width}:${area.height}:${area.scale}:${area.marginTop}:${area.marginBottom}:${area.marginLeft}:${area.marginRight}:${monitorIndex}`);
         data.desktopCoordinates.push(area);
         if (first || (area.x < data.minx)) {
             data.minx = area.x;
