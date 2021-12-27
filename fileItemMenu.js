@@ -16,6 +16,7 @@
  */
 
 const DBusUtils = imports.dbusUtils;
+const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 
@@ -57,23 +58,23 @@ var FileItemMenu = class {
     }
 
     _onScriptClicked(menuItemPath) {
-        let pathList = [];
-        let uriList = [];
+        let pathList = "NAUTILUS_SCRIPT_SELECTED_FILE_PATHS=";
+        let uriList = "NAUTILUS_SCRIPT_SELECTED_URIS=";
+        let currentUri = `NAUTILUS_SCRIPT_CURRENT_URI=${DesktopIconsUtil.getDesktopDir().get_uri()}`;
+        let params = [menuItemPath];
         for (let item of this._desktopManager.getCurrentSelection(false) ) {
             if (!item.isSpecial) {
-                pathList.push("'" + item.file.get_path() + "\n'");
-                uriList.push("'" + item.file.get_uri() + "\n'");
+                pathList +=(`${item.file.get_path()}\n`);
+                uriList +=(`${item.file.get_uri()}\n`);
+                params.push(item.file.get_path());
             }
         }
-        pathList = pathList.join("");
-        uriList = uriList.join("");
-        let deskTop = "'" + DesktopIconsUtil.getDesktopDir().get_uri() + "'";
-        let execline = `/bin/bash -c "`;
-        execline += `NAUTILUS_SCRIPT_SELECTED_FILE_PATHS=${pathList} `;
-        execline += `NAUTILUS_SCRIPT_SELECTED_URIS=${uriList} `;
-        execline += `NAUTILUS_SCRIPT_CURRENT_URI=${deskTop} `;
-        execline += `'${menuItemPath}'"`;
-        DesktopIconsUtil.spawnCommandLine(execline);
+
+        let environ = DesktopIconsUtil.getFilteredEnviron();
+        environ.push(pathList);
+        environ.push(uriList);
+        environ.push(currentUri);
+        DesktopIconsUtil.trySpawn(null, params, environ);
     }
 
     showMenu(fileItem, event) {
