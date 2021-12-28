@@ -26,11 +26,15 @@ const Main = imports.ui.main;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Config = imports.misc.config;
 const Mainloop = imports.mainloop;
+const ByteArray = imports.byteArray;
 
 const Me = ExtensionUtils.getCurrentExtension();
 const EmulateX11 = Me.imports.emulateX11WindowType;
 const VisibleArea = Me.imports.visibleArea;
 const GnomeShellOverride = Me.imports.gnomeShellOverride;
+
+const Clipboard = St.Clipboard.get_default();
+const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
 // This object will contain all the global variables
 let data = {};
@@ -44,6 +48,7 @@ function init() {
     data.reloadTime = 100;
 
     data.GnomeShellOverride = null;
+    data.GnomeShellVersion = parseInt(Config.PACKAGE_VERSION.split(".")[0]);
 
     /* The constructor of the EmulateX11 class only initializes some
      * internal properties, but nothing else. In fact, it has its own
@@ -142,6 +147,51 @@ function innerEnable(removeId) {
         'com.rastersoft.ding',
         '/com/rastersoft/ding/updateGridWindows'
     );
+    data.dbusConnectionId = Gio.bus_own_name(Gio.BusType.SESSION, "com.rastersoft.dingextension", Gio.BusNameOwnerFlags.NONE, null, (connection, name) => {
+        data.dbusConnection = connection;
+
+        let doCopy = new Gio.SimpleAction({
+            name: 'doCopy',
+            parameter_type: new GLib.VariantType('as')
+        });
+        let doCut = new Gio.SimpleAction({
+            name: 'doCut',
+            parameter_type: new GLib.VariantType('as')
+        });
+        doCopy.connect('activate', manageCutCopy);
+        doCut.connect('activate', manageCutCopy);
+        let actionGroup = new Gio.SimpleActionGroup();
+        actionGroup.add_action(doCopy);
+        actionGroup.add_action(doCut);
+
+        this._dbusConnectionGroupId = data.dbusConnection.export_action_group(
+            '/com/rastersoft/dingextension/control',
+            actionGroup
+        );
+    }, null);
+}
+
+function manageCutCopy(action, parameters) {
+
+    data = "";
+    if (data.GnomeShellVersion < 40) {
+        data = 'x-special/nautilus-clipboard\n';
+    }
+    if (action.name == 'doCut') {
+        data += 'cut\n';
+    } else {
+        data += 'copy\n';
+    }
+
+    for (let file of parameters.recursiveUnpack()) {
+        data += file + '\n';
+    }
+
+    if (data.GnomeShellVersion < 40) {
+        Clipboard.set_text(CLIPBOARD_TYPE, data);
+    } else {
+        Clipboard.set_content(CLIPBOARD_TYPE, 'x-special/gnome-copied-files', ByteArray.toGBytes(ByteArray.fromString(data)));
+    }
 }
 
 /**
@@ -157,6 +207,14 @@ function disable() {
     data.visibleArea.disable();
 
     // disconnect signals only if connected
+    if (data.dbusConnection) {
+        data.dbusConnection.close();
+        data.dbusConnection = null;
+    }
+    if (data.dbusConnectionId) {
+        Gio.bus_unown_name(data.dbusConnectionId);
+        data.dbusConnectionId = 0;
+    }
     if (data.visibleAreaId) {
         data.visibleArea.disconnect(data.visibleAreaId);
         data.visibleAreaId = 0;

@@ -247,6 +247,11 @@ var DesktopManager = class {
             `${busname}/updateGridWindows`,
             actionGroup
         );
+        this._extensionControl = Gio.DBusActionGroup.get(
+            Gio.DBus.session,
+            'com.rastersoft.dingextension',
+            '/com/rastersoft/dingextension/control'
+        );
     }
 
     updateGridWindows(newdesktoplist) {
@@ -1350,25 +1355,21 @@ var DesktopManager = class {
         });
     }
 
-    _getClipboardText(isCopy) {
+    _getClipboardText() {
         let selection = this.getCurrentSelection(true);
         if (selection) {
-            let atom = Gdk.Atom.intern('CLIPBOARD', false);
-            let clipboard = Gtk.Clipboard.get(atom);
-            let text = 'x-special/nautilus-clipboard\n' + (isCopy ? 'copy' : 'cut') + '\n';
-            for (let item of selection) {
-                text += item + '\n';
-            }
-            clipboard.set_text(text, -1);
+            return new GLib.Variant('as', selection);
+        } else {
+            return new GLib.Variant('as', []);
         }
     }
 
     doCopy() {
-        this._getClipboardText(true);
+        this._extensionControl.activate_action('doCopy', this._getClipboardText());
     }
 
     doCut() {
-        this._getClipboardText(false);
+        this._extensionControl.activate_action('doCut', this._getClipboardText());
     }
 
     doTrash() {
