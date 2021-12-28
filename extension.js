@@ -256,14 +256,14 @@ function doKillAllOldDesktopProcesses() {
         if (!processUser.query_exists(null)) {
             continue;
         }
-        let [data, etag] = processUser.load_bytes(null);
+        let [binaryData, etag] = processUser.load_bytes(null);
         let contents = '';
-        data = data.get_data();
-        for (let i = 0; i < data.length; i++) {
-            if (data[i] < 32) {
+        let readData = binaryData.get_data();
+        for (let i = 0; i < readData.length; i++) {
+            if (readData[i] < 32) {
                 contents += ' ';
             } else {
-                contents += String.fromCharCode(data[i]);
+                contents += String.fromCharCode(readData[i]);
             }
         }
         let path = 'gjs ' + GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'ding.js']);
