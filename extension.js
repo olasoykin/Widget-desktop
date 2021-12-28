@@ -173,24 +173,29 @@ function innerEnable(removeId) {
 
 function manageCutCopy(action, parameters) {
 
-    data = "";
+    let content = "";
     if (data.GnomeShellVersion < 40) {
-        data = 'x-special/nautilus-clipboard\n';
+        content = 'x-special/nautilus-clipboard\n';
     }
     if (action.name == 'doCut') {
-        data += 'cut\n';
+        content += 'cut\n';
     } else {
-        data += 'copy\n';
+        content += 'copy\n';
     }
 
+    let first = true;
     for (let file of parameters.recursiveUnpack()) {
-        data += file + '\n';
+        if (!first) {
+            content += '\n';
+        }
+        first = false;
+        content += file;
     }
 
     if (data.GnomeShellVersion < 40) {
-        Clipboard.set_text(CLIPBOARD_TYPE, data);
+        Clipboard.set_text(CLIPBOARD_TYPE, content);
     } else {
-        Clipboard.set_content(CLIPBOARD_TYPE, 'x-special/gnome-copied-files', ByteArray.toGBytes(ByteArray.fromString(data)));
+        Clipboard.set_content(CLIPBOARD_TYPE, 'x-special/gnome-copied-files', ByteArray.toGBytes(ByteArray.fromString(content)));
     }
 }
 
