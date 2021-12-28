@@ -5,6 +5,7 @@
   * Fix icons appearing during desktop change animation (Sundeep Mediratta)
   * Avoid relaunching DING when updating the window size (Sundeep Mediratta)
   * Fix scripts by passing file list as parameters (Sergio Costas)
+  * Show extensions in Nautilus scripts (Sergio Costas)
 
 * Version 33
   * Synchronized version number with the one in Gnome Extensions
