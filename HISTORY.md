@@ -7,6 +7,7 @@
   * Fix scripts by passing file list as parameters (Sergio Costas)
   * Show extensions in Nautilus scripts (Sergio Costas)
   * Added support for "stacking" files, grouping files of the same type (Sundeep Mediratta)
+  * Fix clipboard support for last version of Nautilus (Sergio Costas)
 
 * Version 33
   * Synchronized version number with the one in Gnome Extensions
