@@ -165,15 +165,19 @@ function disable() {
     }
     if (data.startupPreparedId) {
         Main.layoutManager.disconnect(data.startupPreparedId);
+        data.startupPreparedId = 0;
     }
     if (data.monitorsChangedId) {
         Main.layoutManager.disconnect(data.monitorsChangedId);
+        data.monitorsChangedId = 0;
     }
     if (data.workareasChangedId) {
         global.display.disconnect(data.workareasChangedId);
+        data.workareasChangedId = 0;
     }
     if (data.sizeChangedId) {
         global.window_manager.disconnect(data.sizeChangedId);
+        data.sizeChangedId = 0;
     }
 }
 
