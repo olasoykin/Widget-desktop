@@ -1545,7 +1545,7 @@ var DesktopManager = class {
         Prefs.desktopSettings.bind('keep-arranged', this._keepArrangedMenuItem, 'active', 3);
         this._arrangeSubMenu.add(this._keepArrangedMenuItem);
 
-        this._keepStackedMenuItem = new Gtk.CheckMenuItem({label: _("Keep Stacked...")});
+        this._keepStackedMenuItem = new Gtk.CheckMenuItem({label: _("Keep Stacked by type...")});
         Prefs.desktopSettings.bind('keep-stacked', this._keepStackedMenuItem, 'active', 3);
         this._arrangeSubMenu.add(this._keepStackedMenuItem);
         this._keepArrangedMenuItem.bind_property('active', this._cleanUpMenuItem, 'sensitive', 6);

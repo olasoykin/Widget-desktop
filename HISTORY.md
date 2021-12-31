@@ -6,6 +6,7 @@
   * Avoid relaunching DING when updating the window size (Sundeep Mediratta)
   * Fix scripts by passing file list as parameters (Sergio Costas)
   * Show extensions in Nautilus scripts (Sergio Costas)
+  * Added support for "stacking" files, grouping files of the same type (Sundeep Mediratta)
 
 * Version 33
   * Synchronized version number with the one in Gnome Extensions
