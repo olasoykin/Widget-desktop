@@ -23,6 +23,7 @@ const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 
 const FileItem = imports.fileItem;
+const stackItem = imports.stackItem;
 const DesktopGrid = imports.desktopGrid;
 const DesktopIconsUtil = imports.desktopIconsUtil;
 const Prefs = imports.preferences;
@@ -95,8 +96,39 @@ var DesktopManager = class {
             }
             if (key == Enums.SortOrder.ORDER) {
                 this.doArrangeRadioButtons();
-                this.doSorts(true);
+                if (this.keepStacked) {
+                    this.doStacks(true);
+                    return;
+                } else {
+                    this.doSorts(true);
+                }
                 return;
+            }
+            if (key == 'unstackedtypes') {
+                if (this.keepStacked) {
+                    this.doStacks(true);
+                    return;
+                }
+                return;
+            }
+            if (key == 'keep-stacked') {
+                this.keepStacked = Prefs.desktopSettings.get_boolean('keep-stacked');
+                if ( ! this.keepStacked) {
+                    this._unstack();
+                    return;
+                } else {
+                    this.doStacks(true);
+                    return;
+                }
+            }
+            if (key == 'keep-arranged') {
+                this.keepArranged = Prefs.desktopSettings.get_boolean('keep-arranged');
+                if (this.keepArranged) {
+                    this.doSorts(true);
+                    return;
+                } else {
+                    return;
+                }
             }
             this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
             this._updateDesktop().catch((e) => {
@@ -147,6 +179,7 @@ var DesktopManager = class {
 
         DBusUtils.NautilusFileOperations2Proxy.connect('g-properties-changed', this._undoStatusChanged.bind(this));
         DBusUtils.GtkVfsMetadataProxy.connectSignal('AttributeChanged', this._metadataChanged.bind(this));
+        this._allFileList = null;
         this._fileList = [];
         this._forcedExit = false;
         this._updateDesktop().catch((e) => {
@@ -182,14 +215,15 @@ var DesktopManager = class {
                 return false;
             });
         }
+
     }
 
     _metadataChanged(proxy, nameOwner, args) {
         let filepath = GLib.build_filenamev([GLib.get_home_dir(), args[1]]);
         if (this._desktopDir.get_path() == GLib.path_get_dirname(filepath)) {
-            for(let file of this._fileList) {
-                if (file.file.get_path() == filepath) {
-                    file.updatedMetadata();
+            for(let fileItem of this._fileList) {
+                if (fileItem.path == filepath) {
+                    fileItem.updatedMetadata();
                     break;
                 }
             }
@@ -219,7 +253,7 @@ var DesktopManager = class {
             this._fileList.forEach(x => x.removeFromGrid());
             this._desktopList = newdesktoplist;
             this._createGridWindows();
-            this._placeAllFilesOnGrids();
+            this._placeAllFilesOnGrids(true);
             return;
         }
         let monitorschanged= [];
@@ -257,7 +291,7 @@ var DesktopManager = class {
                 desktop.resizeGrid();
             }
             this._desktopList = newdesktoplist;
-            this._placeAllFilesOnGrids();
+            this._placeAllFilesOnGrids(true);
         }
     }
 
@@ -322,7 +356,8 @@ var DesktopManager = class {
     }
 
     doMoveWithDragAndDrop(xOrigin, yOrigin, xDestination, yDestination) {
-        if ( this.sortSpecialFolders && this.keepArranged ) {
+        let keepArranged = this.keepArranged || this.keepStacked;
+        if ( this.sortSpecialFolders && keepArranged ) {
             return;
         }
         // Find the grid where the destination lies
@@ -339,7 +374,7 @@ var DesktopManager = class {
         let fileItems = [];
         for(let item of this._fileList) {
             if (item.isSelected) {
-                if (this.keepArranged) {
+                if (keepArranged) {
                     if (item.isSpecial) {
                         fileItems.push(item);
                         item.removeFromGrid(false);
@@ -1149,10 +1184,13 @@ var DesktopManager = class {
         this._placeAllFilesOnGrids();
     }
 
-    _placeAllFilesOnGrids() {
+    _placeAllFilesOnGrids(redisplay=false) {
+        this.keepStacked = Prefs.desktopSettings.get_boolean('keep-stacked');
         this.keepArranged = Prefs.desktopSettings.get_boolean('keep-arranged');
         this.sortSpecialFolders = Prefs.desktopSettings.get_boolean('sort-special-folders');
-        if (this.keepArranged) {
+        if (this.keepStacked) {
+            this.doStacks(redisplay);
+        } else if (this.keepArranged) {
             this.doSorts();
         } else {
             this._addFilesToDesktop(this._fileList, Enums.StoredCoordinates.PRESERVE);
@@ -1505,8 +1543,12 @@ var DesktopManager = class {
 
         this._keepArrangedMenuItem = new Gtk.CheckMenuItem({label: _("Keep Arranged...")});
         Prefs.desktopSettings.bind('keep-arranged', this._keepArrangedMenuItem, 'active', 3);
-        this._keepArrangedMenuItem.bind_property('active', this._cleanUpMenuItem, 'sensitive', 6);
         this._arrangeSubMenu.add(this._keepArrangedMenuItem);
+
+        this._keepStackedMenuItem = new Gtk.CheckMenuItem({label: _("Keep Stacked...")});
+        Prefs.desktopSettings.bind('keep-stacked', this._keepStackedMenuItem, 'active', 3);
+        this._arrangeSubMenu.add(this._keepStackedMenuItem);
+        this._keepArrangedMenuItem.bind_property('active', this._cleanUpMenuItem, 'sensitive', 6);
 
         this._sortSpecialFilesMenuItem = new Gtk.CheckMenuItem({label: _("Sort Home/Drives/Trash...")});
         Prefs.desktopSettings.bind('sort-special-folders', this._sortSpecialFilesMenuItem, 'active', 3);
@@ -1534,7 +1576,222 @@ var DesktopManager = class {
         this._radioTimeName.connect("activate", () => {this.setIfActive(this._radioTimeName, Enums.SortOrder.MODIFIEDTIME)});
         this._radioKindName.connect("activate", () => {this.setIfActive(this._radioKindName, Enums.SortOrder.KIND)});
         this._radioSizeName.connect("activate", () => {this.setIfActive(this._radioSizeName, Enums.SortOrder.SIZE)});
+
         this._arrangeSubMenu.show_all();
+    }
+
+    onToggleStackUnstackThisTypeClicked(type, typeInList, unstackList) {
+        if (!unstackList) {
+            unstackList = Prefs.getUnstackList();
+            typeInList = unstackList.includes(type);
+        }
+        if (typeInList) {
+            let index = unstackList.indexOf(type);
+            unstackList.splice(index, 1);
+        } else {
+            unstackList.push(type);
+        }
+        Prefs.setUnstackList(unstackList);
+    }
+
+    doStacks(restack) {
+        if (restack) {
+            for (let fileItem of this._fileList) {
+                fileItem.removeFromGrid();
+            }
+        }
+        if (! this.stackInitialCoordinates && ! this._allFileList) {
+            this._allFileList = [];
+            this._saveStackInitialCoordinates();
+            this._keepArrangedMenuItem.hide();
+            this._cleanUpMenuItem.hide();
+            restack = false;
+        }
+        this._sortAllFilesFromGridsByKindStacked(restack);
+        this._reassignFilesToDesktop();
+    }
+
+    _unstack() {
+        if (this.stackInitialCoordinates && this._allFileList) {
+            this._fileList.forEach(f => f.removeFromGrid());
+            this._restoreStackInitialCoordinates();
+            this._fileList = this._allFileList;
+            this._allFileList = null;
+            this._keepArrangedMenuItem.show();
+            this._cleanUpMenuItem.show();
+            if (this.keepArranged) {
+                this.doSorts();
+            } else {
+                this._addFilesToDesktop(this._fileList, Enums.StoredCoordinates.PRESERVE);
+            }
+        }
+    }
+
+    _saveStackInitialCoordinates() {
+        this.stackInitialCoordinates = [];
+        for(let fileItem of this._fileList) {
+            this.stackInitialCoordinates.push([fileItem.fileName, fileItem.savedCoordinates]);
+        }
+    }
+
+    _restoreStackInitialCoordinates() {
+        if (this.stackInitialCoordinates && this.stackInitialCoordinates.length != 0) {
+            this._allFileList.forEach(fileItem => {
+                this.stackInitialCoordinates.forEach(savedItem => {
+                    if (savedItem[0] == fileItem.fileName) {
+                        fileItem.savedCoordinates = savedItem[1];
+                    }
+                });
+            });
+        }
+        this.stackInitialCoordinates = null;
+    }
+
+    _makeStackTopMarkerFolder(type, list) {
+        let stackAttribute = type.split("/")[1];
+        let fileItem = new stackItem.stackItem(
+            this,
+            stackAttribute,
+            type,
+            Enums.FileType.STACK_TOP,
+        );
+        list.push(fileItem);
+    }
+
+    _sortAllFilesFromGridsByKindStacked(restack) {
+
+        function determineStackTopSizeOrTime() {
+            for (let item of otherFiles) {
+                if (item.isStackMarker) {
+                    for (let unstackitem of stackedFiles) {
+                        if(item.attributeContentType == unstackitem.attributeContentType) {
+                            item.size = unstackitem.fileSize;
+                            item.time = unstackitem.modifiedTime;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        let specialFiles = [];
+        let directoryFiles = [];
+        let validDesktopFiles = [];
+        let otherFiles = [];
+        let stackedFiles = [];
+        let newFileList = [];
+        let stackTopMarkerFolderList = [];
+        let unstackList = Prefs.getUnstackList();
+        if (this._allFileList && restack) {
+            this._fileList = this._allFileList;
+        }
+        this._sortByName(this._fileList);
+        for(let fileItem of this._fileList) {
+            if (fileItem.isSpecial) {
+                specialFiles.push(fileItem);
+                continue;
+            }
+            if (fileItem.isDirectory) {
+                directoryFiles.push(fileItem);
+                continue;
+            }
+            if (fileItem._isValidDesktopFile) {
+                validDesktopFiles.push(fileItem);
+                continue;
+            } else {
+                let type = fileItem.attributeContentType;
+                let stacked = false;
+                for (let item of otherFiles) {
+                    if (type == item.attributeContentType) {
+                        stackedFiles.push(fileItem);
+                        stacked = true;
+                    }
+                }
+                if ( ! stacked ) {
+                    fileItem.isStackTop = true;
+                    otherFiles.push(fileItem);
+                }
+                continue;
+            }
+        }
+        for (let a of otherFiles) {
+            let instack = false;
+            for (let c of stackedFiles) {
+                if( c.attributeContentType == a.attributeContentType) {
+                    instack = true;
+                    break;
+                }
+            }
+            if (! instack) {
+                a.stackUnique = true;
+            }
+            continue;
+        }
+        for (let item of otherFiles) {
+            if (! item.stackUnique) {
+                this._makeStackTopMarkerFolder(item.attributeContentType, stackTopMarkerFolderList);
+                item.isStackTop = false;
+                stackedFiles.push(item);
+            }
+            if (item.stackUnique) {
+                stackTopMarkerFolderList.push(item);
+            }
+            item._updateIcon;
+        }
+        otherFiles = [];
+        this._sortByName(specialFiles);
+        this._sortByName(directoryFiles);
+        this._sortByName(validDesktopFiles);
+        this._sortByKindByName(stackedFiles);
+        this._sortByKindByName(stackTopMarkerFolderList);
+        otherFiles.push(...specialFiles);
+        otherFiles.push(...validDesktopFiles);
+        otherFiles.push(...directoryFiles);
+        otherFiles.push(...stackTopMarkerFolderList);
+        switch (Prefs.getSortOrder()) {
+            case Enums.SortOrder.NAME:
+                this._sortByName(otherFiles);
+                break;
+            case Enums.SortOrder.DESCENDINGNAME:
+                this._sortByName(otherFiles);
+                otherFiles.reverse();
+                this._sortByName(stackedFiles);
+                stackedFiles.reverse();
+                break;
+            case Enums.SortOrder.MODIFIEDTIME:
+                function byTime(a, b) {
+                    return ( a._modifiedTime - b._modifiedTime )
+                }
+                stackedFiles.sort(byTime);
+                determineStackTopSizeOrTime();
+                otherFiles.sort(byTime);
+                break;
+            case Enums.SortOrder.KIND:
+                break;
+            case Enums.SortOrder.SIZE:
+                function bySize(a, b) {
+                    return ( a.fileSize - b.fileSize );
+                }
+                stackedFiles.sort(bySize);
+                determineStackTopSizeOrTime();
+                otherFiles.sort(bySize);
+                break;
+            default:
+                break;
+        }
+        for (let item of otherFiles) {
+            newFileList.push(item);
+            let itemtype = item.attributeContentType;
+            for (let unstackitem of stackedFiles) {
+                if ((unstackList.includes(unstackitem.attributeContentType)) && (unstackitem.attributeContentType == itemtype)) {
+                    newFileList.push(unstackitem);
+                }
+            }
+        }
+        if (this._allFileList) {
+            this._allFileList = this._fileList;
+        }
+        this._fileList = newFileList;
     }
 
     setIfActive(buttonname, choice) {
@@ -1555,7 +1812,7 @@ var DesktopManager = class {
 
     _sortByKindByName(fileList) {
         function byKindByName(a, b) {
-            return a._attributeContentType.localeCompare(b._attributeContentType) ||
+            return a.attributeContentType.localeCompare(b.attributeContentType) ||
              a._label.get_text().localeCompare(b._label.get_text(), { sensitivity: 'accent' , numeric: 'true', localeMatcher: 'lookup' } );
         }
         fileList.sort(byKindByName);
