@@ -206,3 +206,11 @@ function setSortOrder(order) {
     let x = Object.values(Enums.SortOrder).indexOf(order);
     desktopSettings.set_enum(Enums.SortOrder.ORDER, x);
 }
+
+function getUnstackList() {
+    return desktopSettings.get_strv('unstackedtypes');
+}
+
+function setUnstackList(array) {
+    desktopSettings.set_strv('unstackedtypes', array);
+}

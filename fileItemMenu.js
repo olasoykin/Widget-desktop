@@ -100,14 +100,28 @@ var FileItemMenu = class {
             this._menu = null;
         });
 
-        addElementToMenu(
-            selectedItemsNum > 1 ? _("Open All...") : _("Open"),
-            this._doMultiOpen.bind(this)
-        );
+        if (! fileItem.isStackMarker) {
+            addElementToMenu(
+                selectedItemsNum > 1 ? _("Open All...") : _("Open"),
+                this._doMultiOpen.bind(this)
+            );
+        }
+
+        let keepStacked = Prefs.desktopSettings.get_boolean('keep-stacked');
+        if (keepStacked && ! fileItem.stackUnique) {
+            if (! fileItem.isSpecial && ! fileItem.isDirectory && ! fileItem.isValidDesktopFile) {
+                let unstackList = Prefs.getUnstackList();
+                let typeInList = unstackList.includes(fileItem.attributeContentType);
+                addElementToMenu(
+                    (typeInList) ? _("Stack This Type") : _("Unstack This Type"),
+                    () => {this._desktopManager.onToggleStackUnstackThisTypeClicked(fileItem.attributeContentType, typeInList, unstackList);}
+                );
+            }
+        }
 
         // fileExtra == NONE
 
-        if (fileItem.isAllSelectable) {
+        if (fileItem.isAllSelectable &&  ! fileItem.isStackMarker) {
 
             let submenu = this._scriptsMonitor.createMenu();
             if (submenu !== null) {
@@ -148,6 +162,8 @@ var FileItemMenu = class {
                     () => {this._desktopManager.doRename(fileItem, false);}
                 );
             }
+
+            addSeparator();
 
             addElementToMenu(
                 _('Move to Trash'),
@@ -198,9 +214,8 @@ var FileItemMenu = class {
             }
         }
 
-        addSeparator();
-
         if (fileItem.isAllSelectable && (!this._desktopManager.checkIfSpecialFilesAreSelected()) && (selectedItemsNum >= 1 )) {
+            addSeparator();
             if (selectedItemsNum == 1 && this._getExtractable()) {
                 addElementToMenu(
                     _("Extract Here"),
@@ -233,18 +248,19 @@ var FileItemMenu = class {
             addSeparator();
         }
 
-        addElementToMenu(
-            selectedItemsNum > 1 ? _('Common Properties') : _('Properties'),
-            this._onPropertiesClicked.bind(this)
-        );
+        if (! fileItem.isStackMarker) {
+            addElementToMenu(
+                selectedItemsNum > 1 ? _('Common Properties') : _('Properties'),
+                this._onPropertiesClicked.bind(this)
+            );
 
-        addSeparator();
+            addSeparator();
 
-        addElementToMenu(
-            selectedItemsNum > 1 ? _('Show All in Files') : _('Show in Files'),
-            this._onShowInFilesClicked.bind(this)
-        );
-
+            addElementToMenu(
+                selectedItemsNum > 1 ? _('Show All in Files') : _('Show in Files'),
+                this._onShowInFilesClicked.bind(this)
+            );
+        }
 
         if (fileItem.isDirectory && (fileItem.path != null) && (selectedItemsNum == 1)) {
             addElementToMenu(
