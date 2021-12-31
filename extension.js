@@ -147,6 +147,19 @@ function innerEnable(removeId) {
         'com.rastersoft.ding',
         '/com/rastersoft/ding/updateGridWindows'
     );
+
+    /*
+     * Due to a problem in the Clipboard API in Gtk3, it is not possible to do the CUT/COPY operation from
+     * dynamic languages like Javascript, because one of the methods needed is marked as NOT INTROSPECTABLE
+     *
+     * https://discourse.gnome.org/t/missing-gtk-clipboard-set-with-data-in-gtk-3/6920
+     *
+     * The right solution is to migrate DING to Gtk4, where the whole API is available, but that is a very
+     * big task, so in the meantime, we take advantage of the fact that the St API, in Gnome Shell, can put
+     * binary contents in the clipboard, so we use DBus to notify that we want to do a CUT or a COPY operation,
+     * passing the URIs as parameters, and delegate that to the DING Gnome Shell extension. This is easily done
+     * with a GLib.SimpleAction.
+     */
     data.dbusConnectionId = Gio.bus_own_name(Gio.BusType.SESSION, "com.rastersoft.dingextension", Gio.BusNameOwnerFlags.NONE, null, (connection, name) => {
         data.dbusConnection = connection;
 
@@ -171,6 +184,24 @@ function innerEnable(removeId) {
     }, null);
 }
 
+/*
+ * Before Gnome Shell 40, St API couldn't access binary data in the clipboard, only text data. Also, the
+ * original Desktop Icons was a pure extension, so it was limited to what Clutter and St offered. That was
+ * the reason why Nautilus accepted a text format for CUT and COPY operations in the form
+ *
+ *     x-special/nautilus-clipboard
+ *     OPERATION
+ *     FILE_URI
+ *     [FILE_URI]
+ *     [...]
+ *
+ * In Gnome Shell 40, St was enhanced and now it supports binary data; that's why Nautilus migrated to a
+ * binary format identified by the atom 'x-special/gnome-copied-files', where the CUT or COPY operation is
+ * shared.
+ *
+ * To maintain compatibility, we check the current Gnome Shell version and, based on that, we use the
+ * binary or the text clipboards.
+ */
 function manageCutCopy(action, parameters) {
 
     let content = "";
