@@ -91,7 +91,7 @@ var DesktopManager = class {
                     desktop.resizeGrid();
                 }
                 this._fileList.forEach(x => x.updateIcon());
-                this._placeAllFilesOnGrids();
+                this._placeAllFilesOnGrids(true);
                 return;
             }
             if (key == Enums.SortOrder.ORDER) {
