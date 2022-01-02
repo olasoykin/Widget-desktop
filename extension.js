@@ -121,8 +121,6 @@ function innerEnable(removeId) {
         reloadIfSizesChanged();
     });
 
-    data.desktopCoordinates = [];
-
     /*
      * This callback allows to detect a change in the working area (like when changing the Scale value)
      */
@@ -183,13 +181,8 @@ function disable() {
 
 function reloadIfSizesChanged() {
     let desktopList = [];
-    data.desktopCoordinates = [];
     let ws = global.workspace_manager.get_workspace_by_index(0);
     for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
-        let monitor = Main.layoutManager.monitors[monitorIndex];
-        if (monitor.inFullscreen) {
-            continue;
-        }
         let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
         let desktopListElement = new GLib.Variant('a{sd}', {
             'x' : area.x,
@@ -204,7 +197,6 @@ function reloadIfSizesChanged() {
             'monitorIndex' : monitorIndex
         });
         desktopList.push(desktopListElement);
-        data.desktopCoordinates.push(area);
     }
     let desktopListVariant = new GLib.Variant('av', desktopList);
     data.remoteDingUpdate.activate_action('updateGridWindows', desktopListVariant);
@@ -298,7 +290,6 @@ function launchDesktop() {
 
     let first = true;
 
-    data.desktopCoordinates = [];
     argv.push('-M');
     argv.push(`${Main.layoutManager.primaryIndex}`);
 
@@ -308,7 +299,6 @@ function launchDesktop() {
         // send the working area of each monitor in the desktop
         argv.push('-D');
         argv.push(`${area.x}:${area.y}:${area.width}:${area.height}:${area.scale}:${area.marginTop}:${area.marginBottom}:${area.marginLeft}:${area.marginRight}:${monitorIndex}`);
-        data.desktopCoordinates.push(area);
         if (first || (area.x < data.minx)) {
             data.minx = area.x;
         }
