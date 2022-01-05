@@ -90,18 +90,12 @@ var DesktopGrid = class {
         this.setDropDestination(this._eventBox);
 
         // Transparent background, but only if this instance is working as desktop
-        this._window.set_app_paintable(true);
-        if (asDesktop) {
+
+        if (this._asDesktop) {
             let screen = this._window.get_screen();
             let visual = screen.get_rgba_visual();
-            if (visual && screen.is_composited() && this._asDesktop) {
-                this._window.set_visual(visual);
-                this._window.connect('draw', (widget, cr) => {
-                    Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0}));
-                    cr.paint();
-                    cr.$dispose();
-                    return false;
-                });
+            if (visual && screen.is_composited()) {
+                this._window.set_visual(visual)
             }
         }
 
