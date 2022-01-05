@@ -21,6 +21,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
+const ByteArray = imports.byteArray;
 
 const FileItem = imports.fileItem;
 const stackItem = imports.stackItem;
@@ -245,6 +246,11 @@ var DesktopManager = class {
         this._dbusConnectionGroupId = this._connection.export_action_group(
             `${busname}/updateGridWindows`,
             actionGroup
+        );
+        this._extensionControl = Gio.DBusActionGroup.get(
+            Gio.DBus.session,
+            'com.rastersoft.dingextension',
+            '/com/rastersoft/dingextension/control'
         );
     }
 
@@ -588,13 +594,49 @@ var DesktopManager = class {
             }
             this._syncUndoRedo();
             let atom = Gdk.Atom.intern('CLIPBOARD', false);
+            let atom2 = Gdk.Atom.intern('x-special/gnome-copied-files', false);
             let clipboard = Gtk.Clipboard.get(atom);
-            clipboard.request_text((clipboard, text) => {
-                let [valid, is_cut, files] = this._parseClipboardText(text);
-                this._pasteMenuItem.set_sensitive(valid);
-            });
+            this._isCut = false;
+            this._clipboardFiles = null;
+            /*
+             * Before Gnome Shell 40, St API couldn't access binary data in the clipboard, only text data. Also, the
+             * original Desktop Icons was a pure extension, so it was limited to what Clutter and St offered. That was
+             * the reason why Nautilus accepted a text format for CUT and COPY operations in the form
+             *
+             *     x-special/nautilus-clipboard
+             *     OPERATION
+             *     FILE_URI
+             *     [FILE_URI]
+             *     [...]
+             *
+             * In Gnome Shell 40, St was enhanced and now it supports binary data; that's why Nautilus migrated to a
+             * binary format identified by the atom 'x-special/gnome-copied-files', where the CUT or COPY operation is
+             * shared.
+             *
+             * To maintain compatibility, we first check if there's binary data in that atom, and if not, we check if
+             * there is text data in the old format.
+             */
+            if (clipboard.wait_is_target_available(atom2)) {
+                clipboard.request_contents(atom2, (clip2, data) => {
+                    let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
+                    this._setClipboardContent(text);
+                });
+            } else {
+                clipboard.request_text((clipboard, text) => {
+                    this._setClipboardContent(text);
+                });
+            }
             this._menu.popup_at_pointer(event);
         }
+    }
+
+    _setClipboardContent(text) {
+        let [valid, is_cut, files] = this._parseClipboardText(text);
+        if (valid) {
+            this._isCut = is_cut;
+            this._clipboardFiles = files;
+        }
+        this._pasteMenuItem.set_sensitive(valid);
     }
 
     _syncUndoRedo() {
@@ -917,33 +959,28 @@ var DesktopManager = class {
     }
 
     _doPaste() {
-        let atom = Gdk.Atom.intern('CLIPBOARD', false);
-        let clipboard = Gtk.Clipboard.get(atom);
-        clipboard.request_text((clipboard, text) => {
-            let [valid, is_cut, files] = this._parseClipboardText(text);
-            if (!valid) {
-                return;
-            }
+        if (this._clipboardFiles == null) {
+            return;
+        }
 
-            let desktopDir = this._desktopDir.get_uri();
-            if (is_cut) {
-                DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(files, desktopDir,
-                    DBusUtils.NautilusFileOperations2Proxy.platformData(),
-                    (result, error) => {
-                        if (error)
-                            throw new Error('Error moving files: ' + error.message);
-                    }
-                );
-            } else {
-                DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(files, desktopDir,
-                    DBusUtils.NautilusFileOperations2Proxy.platformData(),
-                    (result, error) => {
-                        if (error)
-                            throw new Error('Error copying files: ' + error.message);
-                    }
-                );
-            }
-        });
+        let desktopDir = this._desktopDir.get_uri();
+        if (this._isCut) {
+            DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                (result, error) => {
+                    if (error)
+                        throw new Error('Error moving files: ' + error.message);
+                }
+            );
+        } else {
+            DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                (result, error) => {
+                    if (error)
+                        throw new Error('Error copying files: ' + error.message);
+                }
+            );
+        }
     }
 
     _parseClipboardText(text) {
@@ -955,7 +992,6 @@ var DesktopManager = class {
 
         if (mime != 'x-special/nautilus-clipboard')
             return [false, false, null];
-
         if (!(['copy', 'cut'].includes(action)))
             return [false, false, null];
         let isCut = action == 'cut';
@@ -1337,25 +1373,33 @@ var DesktopManager = class {
         });
     }
 
-    _getClipboardText(isCopy) {
+    _getClipboardText() {
         let selection = this.getCurrentSelection(true);
         if (selection) {
-            let atom = Gdk.Atom.intern('CLIPBOARD', false);
-            let clipboard = Gtk.Clipboard.get(atom);
-            let text = 'x-special/nautilus-clipboard\n' + (isCopy ? 'copy' : 'cut') + '\n';
-            for (let item of selection) {
-                text += item + '\n';
-            }
-            clipboard.set_text(text, -1);
+            return new GLib.Variant('as', selection);
+        } else {
+            return new GLib.Variant('as', []);
         }
     }
 
+    /*
+     * Due to a problem in the Clipboard API in Gtk3, it is not possible to do the CUT/COPY operation from
+     * dynamic languages like Javascript, because one of the methods needed is marked as NOT INTROSPECTABLE
+     *
+     * https://discourse.gnome.org/t/missing-gtk-clipboard-set-with-data-in-gtk-3/6920
+     *
+     * The right solution is to migrate DING to Gtk4, where the whole API is available, but that is a very
+     * big task, so in the meantime, we take advantage of the fact that the St API, in Gnome Shell, can put
+     * binary contents in the clipboard, so we use DBus to notify that we want to do a CUT or a COPY operation,
+     * passing the URIs as parameters, and delegate that to the DING Gnome Shell extension. This is easily done
+     * with a GLib.SimpleAction.
+     */
     doCopy() {
-        this._getClipboardText(true);
+        this._extensionControl.activate_action('doCopy', this._getClipboardText());
     }
 
     doCut() {
-        this._getClipboardText(false);
+        this._extensionControl.activate_action('doCut', this._getClipboardText());
     }
 
     doTrash() {
