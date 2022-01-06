@@ -1,6 +1,6 @@
 # History of versions #
 
-* inprogress
+* Version 34
   * Fix error popup when pressing arrow keys (Sundeep Mediratta)
   * Fix icons appearing during desktop change animation (Sundeep Mediratta)
   * Avoid relaunching DING when updating the window size (Sundeep Mediratta)
