@@ -2,6 +2,7 @@
 
 * inprogress
   * Now Ctrl+Shift+N creates a folder, like in Nautilus (Sergio Costas)
+  * Fixed bug when the extension was disabled (Sergio Costas)
 
 * Version 34
   * Fix error popup when pressing arrow keys (Sundeep Mediratta)

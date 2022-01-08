@@ -243,10 +243,11 @@ function disable() {
     data.visibleArea.disable();
 
     // disconnect signals only if connected
-    if (data.dbusConnection) {
-        data.dbusConnection.close();
-        data.dbusConnection = null;
+    if (this._dbusConnectionGroupId) {
+        data.dbusConnection.unexport_action_group(this._dbusConnectionGroupId);
+        this._dbusConnectionGroupId = 0;
     }
+
     if (data.dbusConnectionId) {
         Gio.bus_unown_name(data.dbusConnectionId);
         data.dbusConnectionId = 0;
