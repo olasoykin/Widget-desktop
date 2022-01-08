@@ -1,6 +1,6 @@
 # History of versions #
 
-* inprogress
+* Version 35
   * Now Ctrl+Shift+N creates a folder, like in Nautilus (Sergio Costas)
   * Fixed bug when the extension was disabled (Sergio Costas)
 
