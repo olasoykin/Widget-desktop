@@ -753,6 +753,9 @@ var DesktopManager = class {
                 this.searchString = null;
             }
             return true;
+        } else if (isCtrl && isShift && ((symbol == Gdk.KEY_N) || (symbol == Gdk.KEY_n))) {
+            this.doNewFolder();
+            return true;
         } else {
             if (this.ignoreKeys.includes(symbol)) {
                 return;
