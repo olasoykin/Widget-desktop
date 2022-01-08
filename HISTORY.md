@@ -1,5 +1,8 @@
 # History of versions #
 
+* inprogress
+  * Now Ctrl+Shift+N creates a folder, like in Nautilus (Sergio Costas)
+
 * Version 34
   * Fix error popup when pressing arrow keys (Sundeep Mediratta)
   * Fix icons appearing during desktop change animation (Sundeep Mediratta)
