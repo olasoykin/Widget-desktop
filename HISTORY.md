@@ -1,5 +1,9 @@
 # History of versions #
 
+* Version 36
+  * Fixed 'icon resize' when using stacked icons (Sundeep Mediratta)
+  * Fixed typo (Davy Defaud)
+
 * Version 35
   * Now Ctrl+Shift+N creates a folder, like in Nautilus (Sergio Costas)
   * Fixed bug when the extension was disabled (Sergio Costas)
