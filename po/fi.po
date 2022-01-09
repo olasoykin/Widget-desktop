@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-31 15:09+0100\n"
+"POT-Creation-Date: 2022-01-09 21:00+0100\n"
 "PO-Revision-Date: 2021-04-08 06:15+0000\n"
 "Last-Translator: Timo Jyrinki <timo.jyrinki+l10n@gmail.com>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
@@ -28,7 +28,7 @@ msgstr "Kansion nimi"
 msgid "File name"
 msgstr "Tiedoston nimi"
 
-#: askRenamePopup.js:49 desktopManager.js:766
+#: askRenamePopup.js:49 desktopManager.js:811
 msgid "OK"
 msgstr "OK"
 
@@ -56,7 +56,7 @@ msgstr "Suorita päätteessä"
 msgid "Show"
 msgstr "Näytä"
 
-#: desktopIconsUtil.js:234 desktopManager.js:768 fileItemMenu.js:338
+#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
 msgid "Cancel"
 msgstr "Peru"
 
@@ -64,105 +64,105 @@ msgstr "Peru"
 msgid "Execute"
 msgstr "Suorita"
 
-#: desktopManager.js:198
+#: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus-tiedostonhallintaa ei löydy"
 
-#: desktopManager.js:199
+#: desktopManager.js:200
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Nautilus-tiedostonhallinta vaaditaan tämän laajennuksen käyttämiseen."
 
-#: desktopManager.js:729
+#: desktopManager.js:774
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:770
+#: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:830 desktopManager.js:1473
+#: desktopManager.js:875 desktopManager.js:1520
 msgid "New Folder"
 msgstr "Uusi kansio"
 
-#: desktopManager.js:834
+#: desktopManager.js:879
 msgid "New Document"
 msgstr "Uusi asiakirja"
 
-#: desktopManager.js:839
+#: desktopManager.js:884
 msgid "Paste"
 msgstr "Liitä"
 
-#: desktopManager.js:843
+#: desktopManager.js:888
 msgid "Undo"
 msgstr "Kumoa"
 
-#: desktopManager.js:847
+#: desktopManager.js:892
 msgid "Redo"
 msgstr "Tee uudelleen"
 
-#: desktopManager.js:853
+#: desktopManager.js:898
 #, fuzzy
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: desktopManager.js:861
+#: desktopManager.js:906
 msgid "Show Desktop in Files"
 msgstr "Näytä työpöytä tiedostonhallinnassa"
 
-#: desktopManager.js:865 fileItemMenu.js:267
+#: desktopManager.js:910 fileItemMenu.js:267
 msgid "Open in Terminal"
 msgstr "Avaa päätteessä"
 
-#: desktopManager.js:871
+#: desktopManager.js:916
 msgid "Change Background…"
 msgstr "Vaihda taustakuvaa…"
 
-#: desktopManager.js:880
+#: desktopManager.js:925
 msgid "Display Settings"
 msgstr "Näytön asetukset"
 
-#: desktopManager.js:887
+#: desktopManager.js:932
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Työpöytäkuvakkeiden asetukset"
 
-#: desktopManager.js:1531
+#: desktopManager.js:1578
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1535
+#: desktopManager.js:1582
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1544
+#: desktopManager.js:1591
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1548
+#: desktopManager.js:1595
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1553
+#: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1559
+#: desktopManager.js:1606
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1561
+#: desktopManager.js:1608
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1564
+#: desktopManager.js:1611
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1614
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1570
+#: desktopManager.js:1617
 msgid "Sort by Size"
 msgstr ""
 
@@ -535,7 +535,7 @@ msgid "Type of Files to not Stack"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
-msgid "An Array of strings types, Dont Stack these types of files"
+msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
 #~ msgid "New folder"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-31 15:09+0100\n"
+"POT-Creation-Date: 2022-01-09 21:00+0100\n"
 "PO-Revision-Date: 2021-11-06 13:11+0100\n"
 "Last-Translator: Stanisław Zadorozhnyi <zadorozhniy123@icloud.com>\n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgstr "Назва теки"
 msgid "File name"
 msgstr "Назва файлу"
 
-#: askRenamePopup.js:49 desktopManager.js:766
+#: askRenamePopup.js:49 desktopManager.js:811
 msgid "OK"
 msgstr "Ок"
 
@@ -55,7 +55,7 @@ msgstr "Виконати в терміналі"
 msgid "Show"
 msgstr "Показати"
 
-#: desktopIconsUtil.js:234 desktopManager.js:768 fileItemMenu.js:338
+#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -63,104 +63,104 @@ msgstr "Скасувати"
 msgid "Execute"
 msgstr "Виконати"
 
-#: desktopManager.js:198
+#: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Файловий Менеджер Nautilus не знайдено"
 
-#: desktopManager.js:199
+#: desktopManager.js:200
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Файловий Менеджер Nautilus є необхідним для роботи з Desktop Icons NG."
 
-#: desktopManager.js:729
+#: desktopManager.js:774
 msgid "Clear Current Selection before New Search"
 msgstr "Очистити поточний вибір перед Новим Пошуком"
 
-#: desktopManager.js:770
+#: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr "Пошук файлів на стільниці"
 
-#: desktopManager.js:830 desktopManager.js:1473
+#: desktopManager.js:875 desktopManager.js:1520
 msgid "New Folder"
 msgstr "Створити теку"
 
-#: desktopManager.js:834
+#: desktopManager.js:879
 msgid "New Document"
 msgstr "Створити документ"
 
-#: desktopManager.js:839
+#: desktopManager.js:884
 msgid "Paste"
 msgstr "Вставити"
 
-#: desktopManager.js:843
+#: desktopManager.js:888
 msgid "Undo"
 msgstr "Відмінити"
 
-#: desktopManager.js:847
+#: desktopManager.js:892
 msgid "Redo"
 msgstr "Повторити"
 
-#: desktopManager.js:853
+#: desktopManager.js:898
 #, fuzzy
 msgid "Select All"
 msgstr "Виділити все"
 
-#: desktopManager.js:861
+#: desktopManager.js:906
 msgid "Show Desktop in Files"
 msgstr "Показати стільницю в Файлах"
 
-#: desktopManager.js:865 fileItemMenu.js:267
+#: desktopManager.js:910 fileItemMenu.js:267
 msgid "Open in Terminal"
 msgstr "Відкрити в терміналі"
 
-#: desktopManager.js:871
+#: desktopManager.js:916
 msgid "Change Background…"
 msgstr "Змінити тло…"
 
-#: desktopManager.js:880
+#: desktopManager.js:925
 msgid "Display Settings"
 msgstr "Параметри екрану"
 
-#: desktopManager.js:887
+#: desktopManager.js:932
 msgid "Desktop Icons Settings"
 msgstr "Параметри Desktop Icons"
 
-#: desktopManager.js:1531
+#: desktopManager.js:1578
 msgid "Arrange Icons"
 msgstr "Впорядкувати"
 
-#: desktopManager.js:1535
+#: desktopManager.js:1582
 msgid "Arrange By..."
 msgstr "Впорядкувати за..."
 
-#: desktopManager.js:1544
+#: desktopManager.js:1591
 msgid "Keep Arranged..."
 msgstr "Зберегти порядок..."
 
-#: desktopManager.js:1548
+#: desktopManager.js:1595
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1553
+#: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
 msgstr "Сортувати Домівка/Диски/Смітник..."
 
-#: desktopManager.js:1559
+#: desktopManager.js:1606
 msgid "Sort by Name"
 msgstr "Сортувати за назвою"
 
-#: desktopManager.js:1561
+#: desktopManager.js:1608
 msgid "Sort by Name Descending"
 msgstr "Сортувати за назвою в порядку зменшення"
 
-#: desktopManager.js:1564
+#: desktopManager.js:1611
 msgid "Sort by Modified Time"
 msgstr "Сортувати за часом останньої зміни"
 
-#: desktopManager.js:1567
+#: desktopManager.js:1614
 msgid "Sort by Type"
 msgstr "Сортувати за типом"
 
-#: desktopManager.js:1570
+#: desktopManager.js:1617
 msgid "Sort by Size"
 msgstr "Сортувати за розміром"
 
@@ -539,7 +539,7 @@ msgid "Type of Files to not Stack"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
-msgid "An Array of strings types, Dont Stack these types of files"
+msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
 #~ msgid "New folder"

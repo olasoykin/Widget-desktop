@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-31 15:09+0100\n"
+"POT-Creation-Date: 2022-01-09 21:00+0100\n"
 "PO-Revision-Date: 2021-03-23 03:42+0900\n"
 "Last-Translator: jgjeong <jingimem@gmail.com>\n"
 "Language-Team: Korean <jingimem@gmail.com>\n"
@@ -25,7 +25,7 @@ msgstr "폴더 이름"
 msgid "File name"
 msgstr "파일 이름"
 
-#: askRenamePopup.js:49 desktopManager.js:766
+#: askRenamePopup.js:49 desktopManager.js:811
 msgid "OK"
 msgstr "확인"
 
@@ -53,7 +53,7 @@ msgstr "터미널로 실행"
 msgid "Show"
 msgstr "보기"
 
-#: desktopIconsUtil.js:234 desktopManager.js:768 fileItemMenu.js:338
+#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
 msgid "Cancel"
 msgstr "취소"
 
@@ -61,105 +61,105 @@ msgstr "취소"
 msgid "Execute"
 msgstr "실행"
 
-#: desktopManager.js:198
+#: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "노틸러스 파일 관리자를 찾을 수 없습니다."
 
-#: desktopManager.js:199
+#: desktopManager.js:200
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "노틸러스 파일 관리자는 Desktop Icons NG로 작업하는 데 필수입니다."
 
-#: desktopManager.js:729
+#: desktopManager.js:774
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:770
+#: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:830 desktopManager.js:1473
+#: desktopManager.js:875 desktopManager.js:1520
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: desktopManager.js:834
+#: desktopManager.js:879
 msgid "New Document"
 msgstr "새 문서"
 
-#: desktopManager.js:839
+#: desktopManager.js:884
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: desktopManager.js:843
+#: desktopManager.js:888
 msgid "Undo"
 msgstr "실행 취소"
 
-#: desktopManager.js:847
+#: desktopManager.js:892
 msgid "Redo"
 msgstr "다시 실행"
 
-#: desktopManager.js:853
+#: desktopManager.js:898
 #, fuzzy
 msgid "Select All"
 msgstr "전체 선택"
 
-#: desktopManager.js:861
+#: desktopManager.js:906
 msgid "Show Desktop in Files"
 msgstr "파일 관리자로 바탕화면 보기"
 
-#: desktopManager.js:865 fileItemMenu.js:267
+#: desktopManager.js:910 fileItemMenu.js:267
 msgid "Open in Terminal"
 msgstr "터미널로 열기"
 
-#: desktopManager.js:871
+#: desktopManager.js:916
 msgid "Change Background…"
 msgstr "배경화면 변경"
 
-#: desktopManager.js:880
+#: desktopManager.js:925
 msgid "Display Settings"
 msgstr "화면 설정"
 
-#: desktopManager.js:887
+#: desktopManager.js:932
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "바탕화면 아이콘 설정"
 
-#: desktopManager.js:1531
+#: desktopManager.js:1578
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1535
+#: desktopManager.js:1582
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1544
+#: desktopManager.js:1591
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1548
+#: desktopManager.js:1595
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1553
+#: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1559
+#: desktopManager.js:1606
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1561
+#: desktopManager.js:1608
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1564
+#: desktopManager.js:1611
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1614
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1570
+#: desktopManager.js:1617
 msgid "Sort by Size"
 msgstr ""
 
@@ -528,7 +528,7 @@ msgid "Type of Files to not Stack"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
-msgid "An Array of strings types, Dont Stack these types of files"
+msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
 #~ msgid "New folder"

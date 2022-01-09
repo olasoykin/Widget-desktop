@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-31 15:09+0100\n"
+"POT-Creation-Date: 2022-01-09 21:00+0100\n"
 "PO-Revision-Date: 2021-08-05 01:21+0800\n"
 "Last-Translator: Okeyja <phpluo@gmail.com>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "文件夹名称"
 msgid "File name"
 msgstr "文件名称"
 
-#: askRenamePopup.js:49 desktopManager.js:766
+#: askRenamePopup.js:49 desktopManager.js:811
 msgid "OK"
 msgstr "确定"
 
@@ -54,7 +54,7 @@ msgstr "打开终端"
 msgid "Show"
 msgstr "显示"
 
-#: desktopIconsUtil.js:234 desktopManager.js:768 fileItemMenu.js:338
+#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
 msgid "Cancel"
 msgstr "取消"
 
@@ -62,105 +62,105 @@ msgstr "取消"
 msgid "Execute"
 msgstr "运行"
 
-#: desktopManager.js:198
+#: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus 文件管理器找不到"
 
-#: desktopManager.js:199
+#: desktopManager.js:200
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Nautilus 文件管理器强制与 Desktop Icons NG 运行。"
 
-#: desktopManager.js:729
+#: desktopManager.js:774
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:770
+#: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:830 desktopManager.js:1473
+#: desktopManager.js:875 desktopManager.js:1520
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: desktopManager.js:834
+#: desktopManager.js:879
 msgid "New Document"
 msgstr "新建文档"
 
-#: desktopManager.js:839
+#: desktopManager.js:884
 msgid "Paste"
 msgstr "粘贴"
 
-#: desktopManager.js:843
+#: desktopManager.js:888
 msgid "Undo"
 msgstr "复原"
 
-#: desktopManager.js:847
+#: desktopManager.js:892
 msgid "Redo"
 msgstr "重做"
 
-#: desktopManager.js:853
+#: desktopManager.js:898
 #, fuzzy
 msgid "Select All"
 msgstr "全选"
 
-#: desktopManager.js:861
+#: desktopManager.js:906
 msgid "Show Desktop in Files"
 msgstr "在文件管理器中打开桌面"
 
-#: desktopManager.js:865 fileItemMenu.js:267
+#: desktopManager.js:910 fileItemMenu.js:267
 msgid "Open in Terminal"
 msgstr "在终端中打开"
 
-#: desktopManager.js:871
+#: desktopManager.js:916
 msgid "Change Background…"
 msgstr "更改背景..."
 
-#: desktopManager.js:880
+#: desktopManager.js:925
 msgid "Display Settings"
 msgstr "显示设置"
 
-#: desktopManager.js:887
+#: desktopManager.js:932
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "设置"
 
-#: desktopManager.js:1531
+#: desktopManager.js:1578
 msgid "Arrange Icons"
 msgstr "图标排序"
 
-#: desktopManager.js:1535
+#: desktopManager.js:1582
 msgid "Arrange By..."
 msgstr "排序方式..."
 
-#: desktopManager.js:1544
+#: desktopManager.js:1591
 msgid "Keep Arranged..."
 msgstr "保持安排..."
 
-#: desktopManager.js:1548
+#: desktopManager.js:1595
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1553
+#: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
 msgstr "排序主目录/驱动器/回收站..."
 
-#: desktopManager.js:1559
+#: desktopManager.js:1606
 msgid "Sort by Name"
 msgstr "按名称排序"
 
-#: desktopManager.js:1561
+#: desktopManager.js:1608
 msgid "Sort by Name Descending"
 msgstr "按描述排序"
 
-#: desktopManager.js:1564
+#: desktopManager.js:1611
 msgid "Sort by Modified Time"
 msgstr "按修改时间排序"
 
-#: desktopManager.js:1567
+#: desktopManager.js:1614
 msgid "Sort by Type"
 msgstr "按类型排序"
 
-#: desktopManager.js:1570
+#: desktopManager.js:1617
 msgid "Sort by Size"
 msgstr "按大小排序"
 
@@ -528,7 +528,7 @@ msgid "Type of Files to not Stack"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
-msgid "An Array of strings types, Dont Stack these types of files"
+msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
 #~ msgid "New folder"

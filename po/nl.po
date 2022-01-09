@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-31 15:09+0100\n"
+"POT-Creation-Date: 2022-01-09 21:00+0100\n"
 "PO-Revision-Date: 2019-03-04 19:46+0100\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
@@ -28,7 +28,7 @@ msgstr "Nieuwe mapnaam"
 msgid "File name"
 msgstr "Hernoemen…"
 
-#: askRenamePopup.js:49 desktopManager.js:766
+#: askRenamePopup.js:49 desktopManager.js:811
 msgid "OK"
 msgstr "Oké"
 
@@ -58,7 +58,7 @@ msgstr "Openen in terminalvenster"
 msgid "Show"
 msgstr ""
 
-#: desktopIconsUtil.js:234 desktopManager.js:768 fileItemMenu.js:338
+#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -66,105 +66,105 @@ msgstr "Annuleren"
 msgid "Execute"
 msgstr ""
 
-#: desktopManager.js:198
+#: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr ""
 
-#: desktopManager.js:199
+#: desktopManager.js:200
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 
-#: desktopManager.js:729
+#: desktopManager.js:774
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:770
+#: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:830 desktopManager.js:1473
+#: desktopManager.js:875 desktopManager.js:1520
 msgid "New Folder"
 msgstr "Nieuwe map"
 
-#: desktopManager.js:834
+#: desktopManager.js:879
 msgid "New Document"
 msgstr "Nieuw document"
 
-#: desktopManager.js:839
+#: desktopManager.js:884
 msgid "Paste"
 msgstr "Plakken"
 
-#: desktopManager.js:843
+#: desktopManager.js:888
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: desktopManager.js:847
+#: desktopManager.js:892
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: desktopManager.js:853
+#: desktopManager.js:898
 #, fuzzy
 msgid "Select All"
 msgstr "Alles selecteren"
 
-#: desktopManager.js:861
+#: desktopManager.js:906
 msgid "Show Desktop in Files"
 msgstr "Bureaublad tonen in Bestanden"
 
-#: desktopManager.js:865 fileItemMenu.js:267
+#: desktopManager.js:910 fileItemMenu.js:267
 msgid "Open in Terminal"
 msgstr "Openen in terminalvenster"
 
-#: desktopManager.js:871
+#: desktopManager.js:916
 msgid "Change Background…"
 msgstr "Achtergrond aanpassen…"
 
-#: desktopManager.js:880
+#: desktopManager.js:925
 msgid "Display Settings"
 msgstr "Scherminstellingen"
 
-#: desktopManager.js:887
+#: desktopManager.js:932
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Scherminstellingen"
 
-#: desktopManager.js:1531
+#: desktopManager.js:1578
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1535
+#: desktopManager.js:1582
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1544
+#: desktopManager.js:1591
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1548
+#: desktopManager.js:1595
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1553
+#: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1559
+#: desktopManager.js:1606
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1561
+#: desktopManager.js:1608
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1564
+#: desktopManager.js:1611
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1614
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1570
+#: desktopManager.js:1617
 msgid "Sort by Size"
 msgstr ""
 
@@ -540,7 +540,7 @@ msgid "Type of Files to not Stack"
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
-msgid "An Array of strings types, Dont Stack these types of files"
+msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
 #, fuzzy
