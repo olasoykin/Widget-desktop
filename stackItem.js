@@ -78,6 +78,10 @@ var stackItem = class extends desktopIconItem.desktopIconItem {
         return;
     }
 
+    updateIcon() {
+        this._createStackTopIcon();
+    }
+
     /***********************
      * Getters and setters *
      ***********************/
