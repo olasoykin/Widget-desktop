@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-31 15:09+0100\n"
-"PO-Revision-Date: 2021-12-02 16:26+0100\n"
+"PO-Revision-Date: 2022-01-09 19:22+0100\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -139,7 +139,7 @@ msgstr "Conserver l’ordre…"
 
 #: desktopManager.js:1548
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Conserver les icônes regoupées par type…"
 
 #: desktopManager.js:1553
 msgid "Sort Home/Drives/Trash..."
@@ -180,11 +180,11 @@ msgstr "Ouvrir"
 
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "Regrouper ce type"
 
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Dégrouper ce type"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
@@ -296,7 +296,8 @@ msgstr "Impossible d’envoyer un dossier par courriel"
 
 #: fileItemMenu.js:367
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "La sélection contient un dossier, créez d’abord une archive du dossier"
+msgstr ""
+"La sélection contient un dossier, créez d’abord une archive du dossier."
 
 #: preferences.js:91
 msgid "Settings"
@@ -500,7 +501,7 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "Trier les dossiers spéciaux — Dossier personnel, Corbeille et médias"
+msgstr "Trier les dossiers spéciaux — Dossier personnel, Corbeille et médias."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
@@ -527,22 +528,23 @@ msgid "Icons Arranged by this property"
 msgstr "Icônes triées avec cette propriété"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
 msgstr "Conserver les icônes ordonnées"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Conserver le dernier ordre de tri des icônes"
+msgstr ""
+"Toujours conserver les icônes ordonnées, les types identiques sont regroupés"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Types de fichiers à ne pas regrouper"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Dont Stack these types of files"
 msgstr ""
+"Un tableau de chaînes de caractères contenant les types de fichiers à ne pas "
+"regrouper"
 
 #~ msgid "New folder"
 #~ msgstr "Nouveau dossier"
