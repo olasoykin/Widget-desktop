@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the desktop-icons package.
 # Massimo Branchini <max.bra.gtalk@gmail.com>, 2019.
 # Milo Casagrande <milo@milo.name>, 2019.
+# Albano Battistella <albano_battistella@hotmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-09 21:00+0100\n"
-"PO-Revision-Date: 2019-03-12 09:51+0100\n"
+"PO-Revision-Date: 2022-01-10 18:51+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -33,7 +34,7 @@ msgstr "Ok"
 
 #: askRenamePopup.js:49
 msgid "Rename"
-msgstr "Rinomina..."
+msgstr "Rinomina"
 
 #: desktopIconsUtil.js:88
 msgid "Command not found"
@@ -138,7 +139,7 @@ msgstr "Disposizione automatica..."
 
 #: desktopManager.js:1595
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Mantieni inpilato per tipo..."
 
 #: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
@@ -179,11 +180,11 @@ msgstr "Apri"
 
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "Impila questo tipo"
 
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Disimpila questo tipo"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
@@ -529,17 +530,16 @@ msgid "Keep Icons Stacked"
 msgstr "Mantieni le icone disposte"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Mantieni sempre le icone disposte secondo l'ultimo ordine"
+msgstr "Mantieni sempre le icone impilate, i tipi simili sono raggruppati"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Tipo di file da non impilare"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Un array di tipi di stringhe, non impilare questi tipi di file"
 
 #~ msgid "New folder"
 #~ msgstr "Nuova cartella"
