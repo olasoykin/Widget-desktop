@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2018-2019.
-# Sergio Costas <rastersoft@gmail.com>, 2018-2021.
+# Sergio Costas <rastersoft@gmail.com>, 2018-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-09 21:00+0100\n"
-"PO-Revision-Date: 2021-12-31 15:10+0100\n"
+"PO-Revision-Date: 2022-01-10 01:04+0100\n"
 "Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
 "Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
 "Language: es\n"
@@ -140,7 +140,7 @@ msgstr "Mantener ordenados"
 
 #: desktopManager.js:1595
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Mantener agrupados por tipo..."
 
 #: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
@@ -181,11 +181,11 @@ msgstr "Abrir"
 
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "Agrupar este tipo"
 
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Desagrupar este tipo"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
