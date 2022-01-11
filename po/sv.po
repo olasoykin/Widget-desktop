@@ -1,5 +1,5 @@
 # Swedish translation for ding.
-# Copyright © 2018-2021 ding's COPYRIGHT HOLDER
+# Copyright © 2018-2022 ding's COPYRIGHT HOLDER
 # This file is distributed under the same license as the ding package.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2018-2021.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2019.
@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-09 21:00+0100\n"
-"PO-Revision-Date: 2021-11-09 22:49+0100\n"
-"Last-Translator: Luna Jernberg <Unknown>\n"
+"PO-Revision-Date: 2022-01-11 10:17+0100\n"
+"Last-Translator: Gunnar Hjalmarsson <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -138,7 +138,7 @@ msgstr "Behåll arrangerade..."
 
 #: desktopManager.js:1595
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Behåll arrangerade efter typ..."
 
 #: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
@@ -179,11 +179,11 @@ msgstr "Öppna"
 
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "Arrangera denna typ"
 
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Sluta arrangera denna typ"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
@@ -294,8 +294,10 @@ msgid "Can not email a Directory"
 msgstr "Kan inte maila en katalog"
 
 #: fileItemMenu.js:367
-msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Valet innehåller en katalog,  komprimera katalogen till en fil först."
+msgid ""
+"Selection includes a Directory, compress the directory to a file first."
+msgstr ""
+"Valet innehåller en katalog,  komprimera katalogen till en fil först."
 
 #: preferences.js:91
 msgid "Settings"
@@ -528,20 +530,17 @@ msgid "Icons Arranged by this property"
 msgstr "Ikonerna arrangerade efter denna egenskap"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
 msgstr "Behåll ikonerna arrangerade"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr ""
-"Behåll alltid ikonerna arrangerade efter den senaste sorteringsordningen"
+msgstr "Behåll alltid ikonerna arrangerade, grupperade efter typ"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Filtyper som inte arrangeras"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "En lista över typer, arrangera inte dessa filtyper"
