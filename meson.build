@@ -1,5 +1,5 @@
 project('ding',
-  version: '37.0',
+  version: '38.0',
   license: 'GPL3'
 )
 

@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 38
+  * Fixed Paste in Gnome Shell 3.38 (Sergio Costas)
+
 * Version 37
   * Fixed DnD into folders of the desktop (Sergio Costas)
 
