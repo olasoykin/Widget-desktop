@@ -1,5 +1,8 @@
 # History of versions #
 
+* inprogress
+  * Fixed DnD into folders of the desktop (Sergio Costas)
+
 * Version 36
   * Fixed 'icon resize' when using stacked icons (Sundeep Mediratta)
   * Fixed typo (Davy Defaud)
