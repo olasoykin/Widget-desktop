@@ -1,6 +1,6 @@
 # History of versions #
 
-* inprogress
+* Version 37
   * Fixed DnD into folders of the desktop (Sergio Costas)
 
 * Version 36
