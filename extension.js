@@ -224,7 +224,7 @@ function manageCutCopy(action, parameters) {
     }
 
     if (data.GnomeShellVersion < 40) {
-        Clipboard.set_text(CLIPBOARD_TYPE, content);
+        Clipboard.set_text(CLIPBOARD_TYPE, content + "\n");
     } else {
         Clipboard.set_content(CLIPBOARD_TYPE, 'x-special/gnome-copied-files', ByteArray.toGBytes(ByteArray.fromString(content)));
     }
