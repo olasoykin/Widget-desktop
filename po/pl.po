@@ -128,15 +128,15 @@ msgstr "Ustawienia ekranu"
 
 #: desktopManager.js:1578
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Rozmieść ikony"
 
 #: desktopManager.js:1582
 msgid "Arrange By..."
-msgstr ""
+msgstr "Sortuj według..."
 
 #: desktopManager.js:1591
 msgid "Keep Arranged..."
-msgstr ""
+msgstr "Autorozmieszczanie"
 
 #: desktopManager.js:1595
 msgid "Keep Stacked by type..."
@@ -144,27 +144,27 @@ msgstr ""
 
 #: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
-msgstr ""
+msgstr "Sortuj katalog domowy/Napędy/Kosz"
 
 #: desktopManager.js:1606
 msgid "Sort by Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: desktopManager.js:1608
 msgid "Sort by Name Descending"
-msgstr ""
+msgstr "Nazwa (malejąco)"
 
 #: desktopManager.js:1611
 msgid "Sort by Modified Time"
-msgstr ""
+msgstr "Data modyfikacji"
 
 #: desktopManager.js:1614
 msgid "Sort by Type"
-msgstr ""
+msgstr "Typ elementu"
 
 #: desktopManager.js:1617
 msgid "Sort by Size"
-msgstr ""
+msgstr "Rozmiar"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: fileItem.js:136
@@ -173,7 +173,7 @@ msgstr "Katalog domowy"
 
 #: fileItemMenu.js:105
 msgid "Open All..."
-msgstr ""
+msgstr "Otwórz wiele..."
 
 #: fileItemMenu.js:105
 msgid "Open"
@@ -202,7 +202,7 @@ msgstr "Otwórz za pomocą innego programu"
 
 #: fileItemMenu.js:140
 msgid "Launch using Dedicated Graphics Card"
-msgstr ""
+msgstr "Uruchom za pomocą dedykowanej karty graficznej"
 
 #: fileItemMenu.js:150
 msgid "Cut"
