@@ -171,7 +171,7 @@ var DesktopManager = class {
 
         let cssProvider = new Gtk.CssProvider();
         cssProvider.load_from_file(Gio.File.new_for_path(GLib.build_filenamev([codePath, "stylesheet.css"])));
-        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProvider, 600);
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         this._configureSelectionColor();
         this._createDesktopBackgroundMenu();
