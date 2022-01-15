@@ -1,5 +1,9 @@
 # History of versions #
 
+* inprogress
+  * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
+  * Ignore SPACE key to start a search
+
 * Version 38
   * Fixed Paste in Gnome Shell 3.38 (Sergio Costas)
 
