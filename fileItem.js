@@ -64,6 +64,8 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
         if (this._attributeCanExecute && !this._isValidDesktopFile) {
             this._execLine = this.file.get_path();
+        } else {
+            this._execLine = null;
         }
         if (fileExtra == Enums.FileType.USER_DIRECTORY_TRASH) {
             // if this icon is the trash, monitor the state of the directory to update the icon
@@ -258,20 +260,6 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (this.trustedDesktopFile) {
             this._desktopFile.launch_uris_as_manager(fileList, context, GLib.SpawnFlags.SEARCH_PATH, null, null);
             return;
-        }
-
-        if (this._attributeCanExecute && !this._isDirectory && !this._isValidDesktopFile && this._execLine) {
-            let action =  DesktopIconsUtil.isExecutable(this._attributeContentType, this.file.get_basename());
-            switch (action) {
-            case Gtk.ResponseType.CANCEL:
-                return;
-            case Enums.WhatToDoWithExecutable.EXECUTE:
-                DesktopIconsUtil.spawnCommandLine(`"${this._execLine}"`);
-                return;
-            case Enums.WhatToDoWithExecutable.EXECUTE_IN_TERMINAL:
-                DesktopIconsUtil.launchTerminal(this.file.get_parent().get_path(), this._execLine);
-                return;
-            }
         }
 
         Gio.AppInfo.launch_default_for_uri_async(this.file.get_uri(),
@@ -553,6 +541,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         return this._attributeContentType;
     }
 
+    get attributeCanExecute() {
+        return this._attributeCanExecute;
+    }
+
     get canEject() {
         if (this._custom) {
             return this._custom.can_eject();
@@ -598,6 +590,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         } catch(e) {
             print(`Failed to store the desktop coordinates for ${this.uri}: ${e}`);
         }
+    }
+
+    get execLine() {
+        return this._execLine;
     }
 
     get file() {

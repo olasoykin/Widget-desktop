@@ -145,6 +145,13 @@ var FileItemMenu = class {
 
             addSeparator();
 
+            if (fileItem.attributeCanExecute && !fileItem.isDirectory && !fileItem.isValidDesktopFile && fileItem.execLine && Gio.content_type_can_be_executable(fileItem.attributeContentType)) {
+                addElementToMenu(_("Run as a program"), () => {
+                    DesktopIconsUtil.spawnCommandLine(`"${fileItem.execLine}"`);
+                });
+                addSeparator();
+            }
+
             let allowCutCopyTrash = this._desktopManager.checkIfSpecialFilesAreSelected();
             addElementToMenu(
                 _('Cut'),

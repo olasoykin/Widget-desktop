@@ -205,54 +205,6 @@ function getFilesFromNautilusDnD(selection, type) {
     return retval;
 }
 
-
-function isExecutable(mimetype, file_name) {
-
-    if (Gio.content_type_can_be_executable(mimetype)) {
-        // Gnome Shell 40 removed this option
-        try {
-            var action = Prefs.nautilusSettings.get_string('executable-text-activation');
-        } catch(e) {
-            var action = 'ask';
-        }
-        switch (action) {
-            default: // display
-                return Enums.WhatToDoWithExecutable.DISPLAY;
-            case 'launch':
-                return Enums.WhatToDoWithExecutable.EXECUTE;
-            case 'ask':
-                let dialog = new Gtk.MessageDialog({
-                    text: _("Do you want to run “{0}”, or display its contents?").replace('{0}', file_name),
-                    secondary_text: _("“{0}” is an executable text file.").replace('{0}', file_name),
-                    message_type: Gtk.MessageType.QUESTION,
-                    buttons: Gtk.ButtonsType.NONE
-                });
-                dialog.add_button(_("Execute in a terminal"),
-                                  Enums.WhatToDoWithExecutable.EXECUTE_IN_TERMINAL);
-                dialog.add_button(_("Show"),
-                                  Enums.WhatToDoWithExecutable.DISPLAY);
-                dialog.add_button(_("Cancel"),
-                                  Gtk.ResponseType.CANCEL);
-                dialog.add_button(_("Execute"),
-                                  Enums.WhatToDoWithExecutable.EXECUTE);
-                dialog.set_default_response(Gtk.ResponseType.CANCEL);
-
-                dialog.show_all();
-                let result = dialog.run();
-                dialog.destroy();
-                if ((result != Enums.WhatToDoWithExecutable.EXECUTE) &&
-                    (result != Enums.WhatToDoWithExecutable.EXECUTE_IN_TERMINAL) &&
-                    (result != Enums.WhatToDoWithExecutable.DISPLAY)) {
-                        return Gtk.ResponseType.CANCEL;
-                } else {
-                        return result;
-                }
-        }
-    } else {
-        return Enums.WhatToDoWithExecutable.DISPLAY;
-    }
-}
-
 function writeTextFileToDesktop(text, filename, dropCoordinates) {
     let path = GLib.build_filenamev([GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP),  filename]);
     let file = Gio.File.new_for_path(path);
