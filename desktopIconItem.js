@@ -239,6 +239,9 @@ var desktopIconItem = class desktopIconItem {
     _setLabelName(text) {
         this._currentFileName = text;
         this._eventBox.set_tooltip_text(text);
+        // Add an invisible space after any of these characters
+        // to ensure that the label can be split correctly in
+        // several lines.
         for (let character of ".,-_@:") {
             text = text.split(character).join(character + '\u200B');
         }
