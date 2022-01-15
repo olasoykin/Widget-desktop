@@ -492,9 +492,17 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             let info = new Gio.FileInfo();
             let newUnixMode = this._unixmode | Enums.S_IXUSR;
             info.set_attribute_uint32(Gio.FILE_ATTRIBUTE_UNIX_MODE, newUnixMode);
-            this._file.set_attributes(info,
-                                      Gio.FileQueryInfoFlags.NONE,
-                                      null);
+            this._file.set_attributes_async(info,
+                Gio.FileQueryInfoFlags.NONE,
+                GLib.PRIORITY_LOW,
+                null,
+                (source, result) => {
+                    try {
+                        source.set_attributes_finish(result);
+                    } catch(error) {
+                        log(`Failed to set execution flag: ${error.message}`);
+                    }
+            });
         }
         this._updateName();
     }
