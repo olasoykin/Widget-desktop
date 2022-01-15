@@ -6,6 +6,7 @@
   * Use CSS to make the window transparent (Sundeep Mediratta)
   * Removed "ask to execute" dialog; now shows "Run as a program" (Sergio Costas)
   * Removed "run" mode for dialogs (Sundeep Mediratta)
+  * Fix volume names (Sergio Costas)
 
 * Version 38
   * Fixed Paste in Gnome Shell 3.38 (Sergio Costas)
