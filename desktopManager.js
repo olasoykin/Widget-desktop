@@ -846,12 +846,16 @@ var DesktopManager = class {
             this.scanForFiles(null);
         }
         this._findFileWindow.show_all();
-        let retval = this._findFileWindow.run();
-        if (retval == Gtk.ResponseType.CANCEL) {
-            this.unselectAll();
-        }
-        this._findFileWindow.destroy();
-        this._findFileWindow = null;
+        this._findFileWindow.connect('close', () => {
+            this._findFileWindow.response(Gtk.ResponseType.CANCEL);
+        })
+        this._findFileWindow.connect('response', (actor, retval) => {
+            if (retval == Gtk.ResponseType.CANCEL) {
+                this.unselectAll();
+            }
+            this._findFileWindow.destroy();
+            this._findFileWindow = null;
+        });
     }
 
     scanForFiles(text, setselected) {
