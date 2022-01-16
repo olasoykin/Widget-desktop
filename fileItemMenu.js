@@ -315,18 +315,22 @@ var FileItemMenu = class {
                                                                     Gtk.DialogFlags.MODAL + Gtk.DialogFlags.USE_HEADER_BAR,
                                                                     mimetype);
             chooser.show_all();
-            let retval = chooser.run();
-            chooser.hide();
-            if (retval == Gtk.ResponseType.OK) {
-                let appInfo = chooser.get_app_info();
-                if (appInfo) {
-                    let fileList = [];
-                    for (let item of fileItems) {
-                        fileList.push(item.file);
+            chooser.connect('close', () => {
+                chooser.response(Gtk.ResponseType.CANCEL);
+            });
+            chooser.connect('response', (actor, retval) => {
+                if (retval == Gtk.ResponseType.OK) {
+                    let appInfo = chooser.get_app_info();
+                    if (appInfo) {
+                        let fileList = [];
+                        for (let item of fileItems) {
+                            fileList.push(item.file);
+                        }
+                        appInfo.launch(fileList, null);
                     }
-                    appInfo.launch(fileList, null);
                 }
-            }
+                chooser.hide();
+            });
         }
     }
 
@@ -339,26 +343,36 @@ var FileItemMenu = class {
         }
         if (extractHere) {
             folder = DesktopIconsUtil.getDesktopDir().get_uri();
-        } else {
-            let dialog = new Gtk.FileChooserDialog({title: _('Select Extract Destination')});
-            dialog.set_action(Gtk.FileChooserAction.SELECT_FOLDER);
-            dialog.add_button(_('Cancel'), Gtk.ResponseType.CANCEL);
-            dialog.add_button(_('Select'), Gtk.ResponseType.ACCEPT);
-            DesktopIconsUtil.windowHidePagerTaskbarModal(dialog, true);
-            let response = dialog.run();
-            if (response === Gtk.ResponseType.ACCEPT) {
-                folder = dialog.get_uri();
-            }
-            dialog.destroy();
-        }
-        if (folder) {
             DBusUtils.GnomeArchiveManagerProxy.ExtractRemote(extractFileItem, folder, true,
                 (result, error) => {
                     if (error) {
                         throw new Error('Error extracting files: ' + error.message);
                     }
+            });
+        } else {
+            let dialog = new Gtk.FileChooserDialog({title: _('Select Extract Destination')});
+            dialog.set_action(Gtk.FileChooserAction.SELECT_FOLDER);
+            dialog.set_create_folders(true);
+            dialog.set_current_folder_uri(DesktopIconsUtil.getDesktopDir().get_uri());
+            dialog.add_button(_('Cancel'), Gtk.ResponseType.CANCEL);
+            dialog.add_button(_('Select'), Gtk.ResponseType.ACCEPT);
+            DesktopIconsUtil.windowHidePagerTaskbarModal(dialog, true);
+            dialog.show_all();
+            dialog.connect('close', () => {dialog.response(Gtk.ResponseType.CANCEL)});
+            dialog.connect('response', (actor, response) => {
+                if (response === Gtk.ResponseType.ACCEPT) {
+                    folder = dialog.get_uri();
+                    if (folder) {
+                        DBusUtils.GnomeArchiveManagerProxy.ExtractRemote(extractFileItem, folder, true,
+                            (result, error) => {
+                                if (error) {
+                                    throw new Error('Error extracting files: ' + error.message);
+                                }
+                        });
+                    }
                 }
-            );
+                dialog.destroy();
+            });
         }
     }
 
