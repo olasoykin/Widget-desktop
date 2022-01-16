@@ -358,7 +358,9 @@ var FileItemMenu = class {
             dialog.add_button(_('Select'), Gtk.ResponseType.ACCEPT);
             DesktopIconsUtil.windowHidePagerTaskbarModal(dialog, true);
             dialog.show_all();
-            dialog.connect('close', () => {dialog.response(Gtk.ResponseType.CANCEL)});
+            dialog.connect('close', () => {
+                dialog.response(Gtk.ResponseType.CANCEL);
+            });
             dialog.connect('response', (actor, response) => {
                 if (response === Gtk.ResponseType.ACCEPT) {
                     folder = dialog.get_uri();
