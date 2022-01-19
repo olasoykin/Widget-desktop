@@ -75,8 +75,8 @@ var DesktopGrid = class {
 
         this.scale = this._window.get_scale_factor();
         this.gridGlobalRectangle = new Gdk.Rectangle({
-            'x':this._x + this._marginTop,
-            'y':this._y + this._marginLeft,
+            'x':this._x + this._marginLeft,
+            'y':this._y + this._marginTop,
             'width':(this._width*this.scale) - this._marginLeft - this._marginRight,
             'height':(this._height*this.scale) - this._marginTop - this._marginBottom
         });
@@ -191,8 +191,8 @@ var DesktopGrid = class {
     }
 
     updateGridRectangle() {
-        this.gridGlobalRectangle.x = this._x + this._marginTop;
-        this.gridGlobalRectangle.y = this._y + this._marginLeft;
+        this.gridGlobalRectangle.x = this._x + this._marginLeft;
+        this.gridGlobalRectangle.y = this._y + this._marginTop;
         this.gridGlobalRectangle.width = (this._width*this.scale) - this._marginLeft - this._marginRight;
         this.gridGlobalRectangle.height = (this._height*this.scale) - this._marginTop - this._marginBottom;
     }
