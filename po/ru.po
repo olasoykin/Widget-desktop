@@ -1,15 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Eaglers <eaglersdeveloper@gmail.com>, 2018.
+# Eaglers <eaglersdeveloper@gmail.com>, 2018
+# Ser82-png <sw@atrus.ru>, 2021-2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-09 21:00+0100\n"
-"PO-Revision-Date: 2021-09-22 19:24+1000\n"
-"Last-Translator: Ser82-png; Stas Solovey\n"
+"PO-Revision-Date: 2022-01-20 00:19+1000\n"
+"Last-Translator: Ser82-png\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +140,7 @@ msgstr "Сохранить порядок..."
 
 #: desktopManager.js:1595
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Сохранить сгруппированными по типу..."
 
 #: desktopManager.js:1600
 msgid "Sort Home/Drives/Trash..."
@@ -180,11 +181,11 @@ msgstr "Открыть"
 
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "Сгруппировать этот тип"
 
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Разгруппировать этот тип"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
@@ -525,22 +526,20 @@ msgid "Icons Arranged by this property"
 msgstr "Упорядочивание значков по этому свойству"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "Сохранить порядок значков"
+msgstr "Сохранять сгруппированность значков"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Всегда сохранять порядок значков используя последнее упорядочивание"
+msgstr "Всегда сохранять сгруппированность значков. Группируются похожие типы"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Типы файлов, которые не группируются"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Целый набор из строковых типов. Эти типы файлов не группируются"
 
 #~ msgid "New folder"
 #~ msgstr "Создать папку"
