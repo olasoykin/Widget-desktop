@@ -59,6 +59,8 @@ var DesktopGrid = class {
                 this._window.move(this._x / this._size_divisor, this._y / this._size_divisor);
             }
         }
+        this._windowContext = this._window.get_style_context();
+        this._windowContext.add_class("desktopwindow");
         this._window.set_resizable(false);
         this._window.connect('delete-event', () => {
             if (this._destroying) {
