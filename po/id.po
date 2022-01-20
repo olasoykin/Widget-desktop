@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2019-07-11 13:57+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -40,31 +40,6 @@ msgstr "Ganti Nama…"
 msgid "Command not found"
 msgstr "Perintah tidak ditemukan"
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "Anda ingin menjalankan “{0}” atau hanya melihat isinya?"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "“{0}” adalah berkas teks yang dapat dieksekusi."
-
-#: desktopIconsUtil.js:230
-#, fuzzy
-msgid "Execute in a terminal"
-msgstr "Buka dalam Terminal"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr ""
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "Batal"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr ""
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr ""
@@ -77,98 +52,102 @@ msgstr ""
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "Batal"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "Folder Baru"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "Dokumen Baru"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "Tempel"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "Jadi Lagi"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 #, fuzzy
 msgid "Select All"
 msgstr "Pilih semua"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr "Tampilkan Destop pada Berkas"
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "Buka dalam Terminal"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "Ubah Latar Belakang…"
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "Pengaturan Tampilan"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Pengaturan Tampilan"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr ""
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "Rumah"
 
@@ -205,102 +184,106 @@ msgstr "Buka Dengan Aplikasi Lain"
 msgid "Launch using Dedicated Graphics Card"
 msgstr ""
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "Potong"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "Salin"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "Ganti Nama…"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "Pindahkan ke Tong Sampah"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "Hapus permanen"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 #, fuzzy
 msgid "Don't Allow Launching"
 msgstr "Jangan Izinkan Peluncuran"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "Izinkan Peluncuran"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "Kosongkan Tong Sampah"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "Keluarkan Media"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "Lepas Kaitan"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr "Ekstrak Di Sini"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr "Ekstrak ke…"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "Kirim ke…"
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 #, fuzzy
 msgid "Common Properties"
 msgstr "Properti"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "Properti"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 #, fuzzy
 msgid "Show All in Files"
 msgstr "Tampilkan pada Berkas"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr "Tampilkan pada Berkas"
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr ""
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 msgid "Select"
 msgstr "Pilih"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr ""
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 
@@ -541,6 +524,16 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "Anda ingin menjalankan “{0}” atau hanya melihat isinya?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}” adalah berkas teks yang dapat dieksekusi."
+
+#, fuzzy
+#~ msgid "Execute in a terminal"
+#~ msgstr "Buka dalam Terminal"
 
 #, fuzzy
 #~ msgid "New folder"

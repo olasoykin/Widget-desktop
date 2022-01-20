@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2021-08-23 19:44+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
@@ -38,30 +38,6 @@ msgstr "Renomenar"
 msgid "Command not found"
 msgstr "Comanda pas trobada"
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "Volètz executar « 0 » o afichar son contengut ?"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "« {0} » es un fichièr tèxte executable."
-
-#: desktopIconsUtil.js:230
-msgid "Execute in a terminal"
-msgstr "Executar dins un terminal"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr "Visualizar"
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "Anullada"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr "Executar"
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Gestionari de fichièrs Nautilus pas trobat"
@@ -76,98 +52,102 @@ msgstr ""
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "Anullada"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "Dorsièr novèl"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "Document novèl"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "Pegar"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "Anullar"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "Refar"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 #, fuzzy
 msgid "Select All"
 msgstr "_Seleccionar tot"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr "Mostrar lo burèu dins Fichièrs"
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "Dobrir dins un terminal"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "Modificar lo rèireplan…"
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "Paramètres d'afichatge"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Paramètres icònas de burèu"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr "Arrengar las icònas"
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr "Arrengar per..."
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr "Gardar arrengat..."
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr "Triar Repertòri personal/disques/escobilhièr..."
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr "Triar per nom"
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr "Triar per nom descendent"
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr "Triar per data de modificacion"
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr "Triar per tipe"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr "Triar per talha"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "Domicili"
 
@@ -203,99 +183,103 @@ msgstr "Dobrir amb una autra aplicacion"
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Aviar en utilizant la carta grafica dedicada"
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "Copar"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "Copiar"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "Renomenar…"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "Desplaçar dins l'escobilhièr"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "Suprimir definitivament"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Don't Allow Launching"
 msgstr "Permetre pas l’aviada"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "Permetre l'aviada"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "Voidar l'escobilièr"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "Ejectar"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "Desmontar"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr "Traire aicí"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr "Extraire dins..."
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "Mandar a..."
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Compressar {0} fichièr"
 msgstr[1] "Compressar {0} fichièrs"
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Dorsièr novèl amb {0} element"
 msgstr[1] "Dorsièr novèl amb {0} elements"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Common Properties"
 msgstr "Proprietats comunas"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "Proprietats"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show All in Files"
 msgstr "Tot mostrar dins Fichièrs"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr "Mostrar dins Fichièrs"
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr "Seleccionar una destinacion per l'extraccion"
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 msgid "Select"
 msgstr "Causir"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr "Impossible d’enviar un email a un Repertòri"
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La seleccion inclutz un repertòri, compressatz lo repertòri d'en primièr."
@@ -541,6 +525,21 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "Volètz executar « 0 » o afichar son contengut ?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "« {0} » es un fichièr tèxte executable."
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "Executar dins un terminal"
+
+#~ msgid "Show"
+#~ msgstr "Visualizar"
+
+#~ msgid "Execute"
+#~ msgstr "Executar"
 
 #~ msgid "New folder"
 #~ msgstr "Repertòri novèl"

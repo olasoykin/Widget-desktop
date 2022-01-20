@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2021-09-24 12:49+0200\n"
 "Last-Translator: panmourovaty <dominikhejl@yahoo.com>\n"
 "Language-Team: Czech <zeten30@gmail.com>\n"
@@ -40,30 +40,6 @@ msgstr "Přejmenovat"
 msgid "Command not found"
 msgstr "Příkaz nebyl nalezen"
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "Chcete spustit “{0}” nebo chcete zobrazit obsah?"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "“{0}” je spustitelný soubor."
-
-#: desktopIconsUtil.js:230
-msgid "Execute in a terminal"
-msgstr "Spustit v terminálu"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr "Zobrazit"
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr "Spustit"
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Správce souborů Nautilus nebyl nalezen"
@@ -76,96 +52,100 @@ msgstr "Správce Souborů Nautilus je nezbytný pro práci s Desktop Icons NG."
 msgid "Clear Current Selection before New Search"
 msgstr "Vymazat aktuální výběr před novým hledáním"
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "Zrušit"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr "Najít soubory na Ploše"
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "Nová složka"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "Nový Dokument"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "Vložit"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "Zpět"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "Znovu"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 msgid "Select All"
 msgstr "Vybrat vše"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr "Zobrazit plochu v Souborech"
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "Otevřít v terminálu"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "Změnit pozadí…"
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "Zobrazit nastavení"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 msgid "Desktop Icons Settings"
 msgstr "Nastavení ikon na ploše"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr "Uspořádat Ikony"
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr "Uspořádat podle..."
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr "Nechat uspořádané..."
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr "Seřadit Domovská složka/Jednotky/Koš..."
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr "Seřadit podle Jména"
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr "Seřadit podle Jména sestupně"
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr "Seřadit podle Času úpravy"
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr "Seřadit podle Typu"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr "Seřadit podle Velikosti"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "Domovská Složka"
 
@@ -201,101 +181,105 @@ msgstr "Otevřít pomocí jiné aplikace"
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Spustit pomocí dedikované grafické karty"
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "Přejmenovat…"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "Přesunout do koše"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "Odstranit nadobro"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Don't Allow Launching"
 msgstr "Nepovolit spouštění"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "Povolit spouštění"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "Vyprázdnit koš"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "Vysunout"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "Odpojit"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr "Rozbalit sem"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr "Rozbalit do…"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "Poslat..."
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Zkomprimovat {0} soubor"
 msgstr[1] "Zkomprimovat {0} soubory"
 msgstr[2] "Zkomprimovat {0} souborů"
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Nová složka s {0} položkou"
 msgstr[1] "Nová složka s {0} položkami"
 msgstr[2] "Nová složka s {0} položkami"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Common Properties"
 msgstr "Vlastnosti"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show All in Files"
 msgstr "Zobrazit vše v Souborech"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr "Zobrazit v Souborech"
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr "Vybrat místo k extrahování"
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 msgid "Select"
 msgstr "Vybrat vše"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr "Nemůžete poslat složku emailem"
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "Výběr obsahuje Složku, nejdříve musíte zkomprimovat složku do souboru."
 
@@ -540,6 +524,21 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "Chcete spustit “{0}” nebo chcete zobrazit obsah?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}” je spustitelný soubor."
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "Spustit v terminálu"
+
+#~ msgid "Show"
+#~ msgstr "Zobrazit"
+
+#~ msgid "Execute"
+#~ msgstr "Spustit"
 
 #~ msgid "New folder"
 #~ msgstr "Nová složka"

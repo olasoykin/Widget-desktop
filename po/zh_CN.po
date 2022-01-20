@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2021-08-05 01:21+0800\n"
 "Last-Translator: Okeyja <phpluo@gmail.com>\n"
 "Language-Team: \n"
@@ -38,30 +38,6 @@ msgstr "重命名"
 msgid "Command not found"
 msgstr "命令无法找到"
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "您是想运行\"{0}\"，还是显示其内容？"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "“{0}” 是一个可执行程序。"
-
-#: desktopIconsUtil.js:230
-msgid "Execute in a terminal"
-msgstr "打开终端"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr "显示"
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "取消"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr "运行"
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus 文件管理器找不到"
@@ -74,98 +50,102 @@ msgstr "Nautilus 文件管理器强制与 Desktop Icons NG 运行。"
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "取消"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "新建文档"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "粘贴"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "复原"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "重做"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 #, fuzzy
 msgid "Select All"
 msgstr "全选"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr "在文件管理器中打开桌面"
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "在终端中打开"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "更改背景..."
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "显示设置"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "设置"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr "图标排序"
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr "排序方式..."
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr "保持安排..."
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr "排序主目录/驱动器/回收站..."
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr "按名称排序"
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr "按描述排序"
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr "按修改时间排序"
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr "按类型排序"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr "按大小排序"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "主目录"
 
@@ -201,97 +181,101 @@ msgstr "用其他方式打开"
 msgid "Launch using Dedicated Graphics Card"
 msgstr "使用独立显卡启动"
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "剪切"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "复制"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "重命名……"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "放入回收站"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "永久删除"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Don't Allow Launching"
 msgstr "不允许运行"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "允许运行"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "清空回收站"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "驱逐"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "弹出"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr "提取到此处"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr "提取到…"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "发送到…"
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "压缩{0}文件"
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "带{0}项的新文件夹"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Common Properties"
 msgstr "通用属性"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "属性"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show All in Files"
 msgstr "全部在文件中展示"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr "在文件夹中显示"
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr "选择提取目录"
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 msgid "Select"
 msgstr "选择"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr "文件夹不能邮件"
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "选择包括目录，首先将目录压缩到文件中。"
 
@@ -530,6 +514,21 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "您是想运行\"{0}\"，还是显示其内容？"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}” 是一个可执行程序。"
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "打开终端"
+
+#~ msgid "Show"
+#~ msgstr "显示"
+
+#~ msgid "Execute"
+#~ msgstr "运行"
 
 #~ msgid "New folder"
 #~ msgstr "新建文件夹"

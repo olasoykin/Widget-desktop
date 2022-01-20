@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2021-03-23 03:42+0900\n"
 "Last-Translator: jgjeong <jingimem@gmail.com>\n"
 "Language-Team: Korean <jingimem@gmail.com>\n"
@@ -37,30 +37,6 @@ msgstr "이름 바꾸기"
 msgid "Command not found"
 msgstr "명령을 찾을 수 없습니다."
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "“{0}”을 실행하시겠습니까? 혹은 내용을 표시하겠습니까?"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "“{0}”는 실행가능한 텍스트 파일입니다."
-
-#: desktopIconsUtil.js:230
-msgid "Execute in a terminal"
-msgstr "터미널로 실행"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr "보기"
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "취소"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr "실행"
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "노틸러스 파일 관리자를 찾을 수 없습니다."
@@ -73,98 +49,102 @@ msgstr "노틸러스 파일 관리자는 Desktop Icons NG로 작업하는 데 �
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "취소"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "새 문서"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "실행 취소"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "다시 실행"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 #, fuzzy
 msgid "Select All"
 msgstr "전체 선택"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr "파일 관리자로 바탕화면 보기"
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "터미널로 열기"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "배경화면 변경"
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "화면 설정"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "바탕화면 아이콘 설정"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr ""
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "Home"
 
@@ -200,100 +180,104 @@ msgstr "다른 프로그램으로 열기"
 msgid "Launch using Dedicated Graphics Card"
 msgstr "전용 그래픽 카드로 실행하기"
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "잘라내기"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "복사하기"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "이름 바꾸기"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "휴지통으로 옮기기"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "영구 삭제"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Don't Allow Launching"
 msgstr "실행을 허용하지 않음"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "실행 허용"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "휴지통 비우기"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "꺼내기"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "마운트 해제"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr "여기 풀기"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr "다른 위치에 풀기…"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "...에게 보내기"
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "{0}개 파일 압축하기"
 msgstr[1] "{0}개 파일 압축하기"
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "{0}개 파일 새 폴더로 이동"
 msgstr[1] "{0}개 파일 새 폴더로 이동"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Common Properties"
 msgstr "공통 속성"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "속성"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show All in Files"
 msgstr "각각의 파일을 파일 관리자로 보기"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr "파일 관리자로 보기"
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr ""
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 #, fuzzy
 msgid "Select"
 msgstr "전체 선택"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr "디렉토리는 이메일로 보낼 수 없습니다."
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "선택 파일 중 디렉토리가 포함되어 있어, 먼저 파일로 압축이 필요합니다."
 
@@ -530,6 +514,21 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "“{0}”을 실행하시겠습니까? 혹은 내용을 표시하겠습니까?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "“{0}”는 실행가능한 텍스트 파일입니다."
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "터미널로 실행"
+
+#~ msgid "Show"
+#~ msgstr "보기"
+
+#~ msgid "Execute"
+#~ msgstr "실행"
 
 #~ msgid "New folder"
 #~ msgstr "새 폴더"

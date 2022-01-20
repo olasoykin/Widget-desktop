@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-09 21:00+0100\n"
+"POT-Creation-Date: 2022-01-20 20:02+0100\n"
 "PO-Revision-Date: 2021-02-17 17:57+0200\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: \n"
@@ -39,30 +39,6 @@ msgstr "שינוי שם"
 msgid "Command not found"
 msgstr "הפקודה לא נמצאה"
 
-#: desktopIconsUtil.js:225
-msgid "Do you want to run “{0}”, or display its contents?"
-msgstr "האם ברצונך להריץ את \"{0}\", או להציג את תוכנו?"
-
-#: desktopIconsUtil.js:226
-msgid "“{0}” is an executable text file."
-msgstr "„{0}” הוא קובץ טקסט הניתן להפעלה."
-
-#: desktopIconsUtil.js:230
-msgid "Execute in a terminal"
-msgstr "הרצה במסוף"
-
-#: desktopIconsUtil.js:232
-msgid "Show"
-msgstr "הצגה"
-
-#: desktopIconsUtil.js:234 desktopManager.js:813 fileItemMenu.js:338
-msgid "Cancel"
-msgstr "ביטול"
-
-#: desktopIconsUtil.js:236
-msgid "Execute"
-msgstr "הרצה"
-
 #: desktopManager.js:199
 msgid "Nautilus File Manager not found"
 msgstr "מנהל הקבצים Nautilus לא נמצא"
@@ -75,98 +51,102 @@ msgstr ""
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
+#: desktopManager.js:813 fileItemMenu.js:357
+msgid "Cancel"
+msgstr "ביטול"
+
 #: desktopManager.js:815
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:875 desktopManager.js:1520
+#: desktopManager.js:879 desktopManager.js:1524
 msgid "New Folder"
 msgstr "תיקיה חדשה"
 
-#: desktopManager.js:879
+#: desktopManager.js:883
 msgid "New Document"
 msgstr "מסמך חדש"
 
-#: desktopManager.js:884
+#: desktopManager.js:888
 msgid "Paste"
 msgstr "הדבקה"
 
-#: desktopManager.js:888
+#: desktopManager.js:892
 msgid "Undo"
 msgstr "ביטול פעולה"
 
-#: desktopManager.js:892
+#: desktopManager.js:896
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: desktopManager.js:898
+#: desktopManager.js:902
 #, fuzzy
 msgid "Select All"
 msgstr "לבחור הכול"
 
-#: desktopManager.js:906
+#: desktopManager.js:910
 msgid "Show Desktop in Files"
 msgstr ""
 
-#: desktopManager.js:910 fileItemMenu.js:267
+#: desktopManager.js:914 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "פתיחה במסוף"
 
-#: desktopManager.js:916
+#: desktopManager.js:920
 msgid "Change Background…"
 msgstr "שינוי הרקע…"
 
-#: desktopManager.js:925
+#: desktopManager.js:929
 msgid "Display Settings"
 msgstr "הגדרות תצוגה"
 
-#: desktopManager.js:932
+#: desktopManager.js:936
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "הגדרות תצוגה"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1582
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1582
+#: desktopManager.js:1586
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1591
+#: desktopManager.js:1595
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1595
+#: desktopManager.js:1599
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1600
+#: desktopManager.js:1604
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1606
+#: desktopManager.js:1610
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1608
+#: desktopManager.js:1612
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1611
+#: desktopManager.js:1615
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1614
+#: desktopManager.js:1618
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1617
+#: desktopManager.js:1621
 msgid "Sort by Size"
 msgstr ""
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:136
+#: fileItem.js:138
 msgid "Home"
 msgstr "בית"
 
@@ -202,59 +182,63 @@ msgstr "פתיחה באמצעות יישום אחר"
 msgid "Launch using Dedicated Graphics Card"
 msgstr ""
 
-#: fileItemMenu.js:150
+#: fileItemMenu.js:149
+msgid "Run as a program"
+msgstr ""
+
+#: fileItemMenu.js:157
 msgid "Cut"
 msgstr "גזירה"
 
-#: fileItemMenu.js:155
+#: fileItemMenu.js:162
 msgid "Copy"
 msgstr "העתקה"
 
-#: fileItemMenu.js:161
+#: fileItemMenu.js:168
 msgid "Rename…"
 msgstr "שינוי שם…"
 
-#: fileItemMenu.js:169
+#: fileItemMenu.js:176
 msgid "Move to Trash"
 msgstr "העברה לאשפה"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:182
 msgid "Delete permanently"
 msgstr "מחיקה לצמיתות"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Don't Allow Launching"
 msgstr "לא לאפשר הפעלה"
 
-#: fileItemMenu.js:183
+#: fileItemMenu.js:190
 msgid "Allow Launching"
 msgstr "לאפשר הפעלה"
 
-#: fileItemMenu.js:194
+#: fileItemMenu.js:201
 msgid "Empty Trash"
 msgstr "פינוי האשפה"
 
-#: fileItemMenu.js:205
+#: fileItemMenu.js:212
 msgid "Eject"
 msgstr "שליפה"
 
-#: fileItemMenu.js:211
+#: fileItemMenu.js:218
 msgid "Unmount"
 msgstr "ניתוק"
 
-#: fileItemMenu.js:221
+#: fileItemMenu.js:228
 msgid "Extract Here"
 msgstr ""
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:232
 msgid "Extract To..."
 msgstr ""
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:239
 msgid "Send to..."
 msgstr "שליחה אל..."
 
-#: fileItemMenu.js:238
+#: fileItemMenu.js:245
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "דחיסת קובץ {0}"
@@ -262,7 +246,7 @@ msgstr[1] "דחיסת {0} קבצים"
 msgstr[2] "דחיסת {0} קבצים"
 msgstr[3] "דחיסת {0} קבצים"
 
-#: fileItemMenu.js:244
+#: fileItemMenu.js:251
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "תיקיה חדשה עם פריט {0}"
@@ -270,36 +254,36 @@ msgstr[1] "תיקיה חדשה עם {0} פריטים"
 msgstr[2] "תיקיה חדשה עם {0} פריטים"
 msgstr[3] "תיקיה חדשה עם {0} פריטים"
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Common Properties"
 msgstr ""
 
-#: fileItemMenu.js:253
+#: fileItemMenu.js:260
 msgid "Properties"
 msgstr "מאפיינים"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show All in Files"
 msgstr ""
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:267
 msgid "Show in Files"
 msgstr ""
 
-#: fileItemMenu.js:336
+#: fileItemMenu.js:353
 msgid "Select Extract Destination"
 msgstr ""
 
-#: fileItemMenu.js:339
+#: fileItemMenu.js:358
 #, fuzzy
 msgid "Select"
 msgstr "לבחור הכול"
 
-#: fileItemMenu.js:366
+#: fileItemMenu.js:389
 msgid "Can not email a Directory"
 msgstr ""
 
-#: fileItemMenu.js:367
+#: fileItemMenu.js:390
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 
@@ -534,6 +518,21 @@ msgstr ""
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
+
+#~ msgid "Do you want to run “{0}”, or display its contents?"
+#~ msgstr "האם ברצונך להריץ את \"{0}\", או להציג את תוכנו?"
+
+#~ msgid "“{0}” is an executable text file."
+#~ msgstr "„{0}” הוא קובץ טקסט הניתן להפעלה."
+
+#~ msgid "Execute in a terminal"
+#~ msgstr "הרצה במסוף"
+
+#~ msgid "Show"
+#~ msgstr "הצגה"
+
+#~ msgid "Execute"
+#~ msgstr "הרצה"
 
 #~ msgid "Delete"
 #~ msgstr "מחיקה"
