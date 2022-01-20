@@ -292,6 +292,16 @@ var FileItemMenu = class {
 
     _onShowInFilesClicked() {
         let showInFilesList = this._desktopManager.getCurrentSelection(true);
+        if (this._desktopManager.useNemo) {
+            try {
+                for (let element of showInFilesList) {
+                    DesktopIconsUtil.trySpawn(GLib.get_home_dir(), ['nemo', element],DesktopIconsUtil.getFilteredEnviron());
+                }
+                return;
+            } catch(err) {
+                log(`Error trying to launch Nemo: ${err.message}\n${err}`);
+            }
+        }
         DBusUtils.FreeDesktopFileManagerProxy.ShowItemsRemote(showInFilesList, '',
             (result, error) => {
                 if (error)

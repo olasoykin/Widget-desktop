@@ -110,6 +110,7 @@ function showPreferences() {
                             }));
     frame.add(buildSwitcher(desktopSettings, 'add-volumes-opposite', _("Add new drives to the opposite side of the screen")));
     frame.add(buildSwitcher(desktopSettings, 'show-drop-place', _("Highlight the drop place during Drag'n'Drop")));
+    frame.add(buildSwitcher(desktopSettings, 'use-nemo', _("Use Nemo to open folders")));
 
     frame.add(new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL }));
 
