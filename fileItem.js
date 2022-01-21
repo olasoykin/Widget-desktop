@@ -43,6 +43,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
     constructor(desktopManager, file, fileInfo, fileExtra, custom) {
         super(desktopManager, fileExtra);
+        this._fileInfo = fileInfo;
         this._custom = custom;
         this._isSpecial = this._fileExtra != Enums.FileType.NONE;
         this._file = file;
@@ -53,7 +54,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         this._dropCoordinates = this._readCoordinatesFromAttribute(fileInfo, 'metadata::nautilus-drop-position');
 
         this._createIconActor();
-        this._setFileName(fileInfo.get_display_name());
+        this._setFileName(this._getVisibleName());
 
         /* Set the metadata and update relevant UI */
         this._updateMetadataFromFileInfo(fileInfo);
@@ -132,6 +133,14 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
      * Creators *
      ***********************/
 
+    _getVisibleName(useAttributes) {
+        if (this._fileExtra == Enums.FileType.EXTERNAL_DRIVE) {
+            return this._custom.get_name();
+        } else {
+            return this._fileInfo.get_display_name();
+        }
+    }
+
     _setFileName(text) {
         if (this._fileExtra == Enums.FileType.USER_DIRECTORY_HOME) {
             // TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
@@ -202,7 +211,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
         let oldLabelText = this._currentFileName;
 
-        this._displayName = fileInfo.get_attribute_as_string('standard::display-name');
+        this._displayName = this._getVisibleName();
         this._attributeCanExecute = fileInfo.get_attribute_boolean('access::can-execute');
         this._unixmode = fileInfo.get_attribute_uint32('unix::mode')
         this._writableByOthers = (this._unixmode & Enums.S_IWOTH) != 0;
@@ -278,7 +287,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (this._isValidDesktopFile && !this._desktopManager.writableByOthers && !this._writableByOthers && this.trustedDesktopFile) {
             this._setFileName(this._desktopFile.get_locale_string("Name"));
         } else {
-            this._setFileName(this._fileInfo.get_display_name());
+            this._setFileName(this._getVisibleName());
         }
     }
 
