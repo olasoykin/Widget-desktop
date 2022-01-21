@@ -85,7 +85,12 @@ var DesktopManager = class {
 
         this._showHidden = Prefs.gtkSettings.get_boolean('show-hidden');
         this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
+        this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
         this._settingsId = Prefs.desktopSettings.connect('changed', (obj, key) => {
+            if (key == 'use-nemo') {
+                this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
+                return;
+            }
             if (key == 'icon-size') {
                 this._fileList.forEach(x => x.removeFromGrid());
                 for (let desktop of this._desktops) {

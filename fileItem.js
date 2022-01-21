@@ -271,6 +271,15 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             return;
         }
 
+        if (this._isDirectory && this._desktopManager.useNemo) {
+            try {
+                DesktopIconsUtil.trySpawn(GLib.get_home_dir(), ['nemo', this.file.get_uri()],DesktopIconsUtil.getFilteredEnviron());
+                return;
+            } catch(err) {
+                log(`Error trying to launch Nemo: ${err.message}\n${err}`);
+            }
+        }
+
         Gio.AppInfo.launch_default_for_uri_async(this.file.get_uri(),
             null, null,
             (source, result) => {
