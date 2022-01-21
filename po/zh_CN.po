@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 20:02+0100\n"
+"POT-Creation-Date: 2022-01-21 15:41+0100\n"
 "PO-Revision-Date: 2021-08-05 01:21+0800\n"
 "Last-Translator: Okeyja <phpluo@gmail.com>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "文件夹名称"
 msgid "File name"
 msgstr "文件名称"
 
-#: askRenamePopup.js:49 desktopManager.js:811
+#: askRenamePopup.js:49 desktopManager.js:816
 msgid "OK"
 msgstr "确定"
 
@@ -38,114 +38,114 @@ msgstr "重命名"
 msgid "Command not found"
 msgstr "命令无法找到"
 
-#: desktopManager.js:199
+#: desktopManager.js:204
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus 文件管理器找不到"
 
-#: desktopManager.js:200
+#: desktopManager.js:205
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Nautilus 文件管理器强制与 Desktop Icons NG 运行。"
 
-#: desktopManager.js:774
+#: desktopManager.js:779
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:813 fileItemMenu.js:357
+#: desktopManager.js:818 fileItemMenu.js:367
 msgid "Cancel"
 msgstr "取消"
 
-#: desktopManager.js:815
+#: desktopManager.js:820
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:879 desktopManager.js:1524
+#: desktopManager.js:884 desktopManager.js:1529
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: desktopManager.js:883
+#: desktopManager.js:888
 msgid "New Document"
 msgstr "新建文档"
 
-#: desktopManager.js:888
+#: desktopManager.js:893
 msgid "Paste"
 msgstr "粘贴"
 
-#: desktopManager.js:892
+#: desktopManager.js:897
 msgid "Undo"
 msgstr "复原"
 
-#: desktopManager.js:896
+#: desktopManager.js:901
 msgid "Redo"
 msgstr "重做"
 
-#: desktopManager.js:902
+#: desktopManager.js:907
 #, fuzzy
 msgid "Select All"
 msgstr "全选"
 
-#: desktopManager.js:910
+#: desktopManager.js:915
 msgid "Show Desktop in Files"
 msgstr "在文件管理器中打开桌面"
 
-#: desktopManager.js:914 fileItemMenu.js:274
+#: desktopManager.js:919 fileItemMenu.js:274
 msgid "Open in Terminal"
 msgstr "在终端中打开"
 
-#: desktopManager.js:920
+#: desktopManager.js:925
 msgid "Change Background…"
 msgstr "更改背景..."
 
-#: desktopManager.js:929
+#: desktopManager.js:934
 msgid "Display Settings"
 msgstr "显示设置"
 
-#: desktopManager.js:936
+#: desktopManager.js:941
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "设置"
 
-#: desktopManager.js:1582
+#: desktopManager.js:1587
 msgid "Arrange Icons"
 msgstr "图标排序"
 
-#: desktopManager.js:1586
+#: desktopManager.js:1591
 msgid "Arrange By..."
 msgstr "排序方式..."
 
-#: desktopManager.js:1595
+#: desktopManager.js:1600
 msgid "Keep Arranged..."
 msgstr "保持安排..."
 
-#: desktopManager.js:1599
+#: desktopManager.js:1604
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1604
+#: desktopManager.js:1609
 msgid "Sort Home/Drives/Trash..."
 msgstr "排序主目录/驱动器/回收站..."
 
-#: desktopManager.js:1610
+#: desktopManager.js:1615
 msgid "Sort by Name"
 msgstr "按名称排序"
 
-#: desktopManager.js:1612
+#: desktopManager.js:1617
 msgid "Sort by Name Descending"
 msgstr "按描述排序"
 
-#: desktopManager.js:1615
+#: desktopManager.js:1620
 msgid "Sort by Modified Time"
 msgstr "按修改时间排序"
 
-#: desktopManager.js:1618
+#: desktopManager.js:1623
 msgid "Sort by Type"
 msgstr "按类型排序"
 
-#: desktopManager.js:1621
+#: desktopManager.js:1626
 msgid "Sort by Size"
 msgstr "按大小排序"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:138
+#: fileItem.js:147
 msgid "Home"
 msgstr "主目录"
 
@@ -263,19 +263,19 @@ msgstr "全部在文件中展示"
 msgid "Show in Files"
 msgstr "在文件夹中显示"
 
-#: fileItemMenu.js:353
+#: fileItemMenu.js:363
 msgid "Select Extract Destination"
 msgstr "选择提取目录"
 
-#: fileItemMenu.js:358
+#: fileItemMenu.js:368
 msgid "Select"
 msgstr "选择"
 
-#: fileItemMenu.js:389
+#: fileItemMenu.js:399
 msgid "Can not email a Directory"
 msgstr "文件夹不能邮件"
 
-#: fileItemMenu.js:390
+#: fileItemMenu.js:400
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "选择包括目录，首先将目录压缩到文件中。"
 
@@ -347,59 +347,63 @@ msgstr "在屏幕对面展示新驱动器"
 msgid "Highlight the drop place during Drag'n'Drop"
 msgstr "拖拽图标时高亮显示放置区域"
 
-#: preferences.js:116
+#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
+#: preferences.js:117
 msgid "Settings shared with Nautilus"
 msgstr "共享Nautilus的设置"
 
-#: preferences.js:122
+#: preferences.js:123
 msgid "Click type for open files"
 msgstr "打开文件的点击方式"
 
-#: preferences.js:122
+#: preferences.js:123
 msgid "Single click"
 msgstr "单击"
 
-#: preferences.js:122
+#: preferences.js:123
 msgid "Double click"
 msgstr "双击"
 
-#: preferences.js:123
+#: preferences.js:124
 msgid "Show hidden files"
 msgstr "显示隐藏文件"
 
-#: preferences.js:124
+#: preferences.js:125
 msgid "Show a context menu item to delete permanently"
 msgstr "永久删除时展示确认菜单项目"
 
-#: preferences.js:129
+#: preferences.js:130
 msgid "Action to do when launching a program from the desktop"
 msgstr "在桌面运行程序时执行的动作"
 
-#: preferences.js:130
+#: preferences.js:131
 msgid "Display the content of the file"
 msgstr "展示文件内容"
 
-#: preferences.js:131
+#: preferences.js:132
 msgid "Launch the file"
 msgstr "运行文件"
 
-#: preferences.js:132
+#: preferences.js:133
 msgid "Ask what to do"
 msgstr "询问如何做"
 
-#: preferences.js:138
+#: preferences.js:139
 msgid "Show image thumbnails"
 msgstr "显示图片缩略图"
 
-#: preferences.js:139
+#: preferences.js:140
 msgid "Never"
 msgstr "从不"
 
-#: preferences.js:140
+#: preferences.js:141
 msgid "Local files only"
 msgstr "仅本地文件"
 
-#: preferences.js:141
+#: preferences.js:142
 msgid "Always"
 msgstr "始终"
 
@@ -513,6 +517,10 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
