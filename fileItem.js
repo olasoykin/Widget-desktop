@@ -33,7 +33,6 @@ const Enums = imports.enums;
 const DBusUtils = imports.dbusUtils;
 
 const ByteArray = imports.byteArray;
-const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 const Gettext = imports.gettext.domain('ding');
 
@@ -88,7 +87,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                 this._queryTrashInfoCancellable.cancel();
                                 this._queryTrashInfoCancellable = null;
                             }
-                            this._scheduleTrashRefreshId = Mainloop.timeout_add(200, () => this._refreshTrashIcon());
+                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => this._refreshTrashIcon());
                         } else {
                             this._refreshTrashIcon();
                         }

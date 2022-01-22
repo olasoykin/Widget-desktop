@@ -25,7 +25,6 @@ const Main = imports.ui.main;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Config = imports.misc.config;
-const Mainloop = imports.mainloop;
 const ByteArray = imports.byteArray;
 
 const Me = ExtensionUtils.getCurrentExtension();
@@ -306,7 +305,7 @@ function killCurrentProcess() {
         GLib.source_remove(data.launchDesktopId);
         data.launchDesktopId = 0;
         if (data.isEnabled) {
-            data.launchDesktopId = Mainloop.timeout_add(data.reloadTime, () => {
+            data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
                 data.launchDesktopId = 0;
                 launchDesktop();
                 return false;
@@ -438,7 +437,7 @@ function launchDesktop() {
             if (data.launchDesktopId) {
                 GLib.source_remove(data.launchDesktopId);
             }
-            data.launchDesktopId = Mainloop.timeout_add(data.reloadTime, () => {
+            data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
                 data.launchDesktopId = 0;
                 launchDesktop();
                 return false;

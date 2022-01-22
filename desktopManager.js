@@ -785,7 +785,7 @@ var DesktopManager = class {
                     }
                     this.searchEventTime = GLib.get_monotonic_time();
                     if (! this.keypressTimeoutID) {
-                        this.keypressTimeoutID = GLib.timeout_add(1, 1000, () => {
+                        this.keypressTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
                             if (GLib.get_monotonic_time() - this.searchEventTime < 1500000) {
                                 return true;
                             }

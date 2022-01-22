@@ -16,7 +16,6 @@
  */
 
 const Main = imports.ui.main;
-const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 const GLib = imports.gi.GLib;
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -49,7 +48,7 @@ var VisibleArea = class {
         if (this._refreshTimerId) {
             GLib.source_remove(this._refreshTimerId);
         }
-        this._refreshTimerId = Mainloop.timeout_add(250, () => {
+        this._refreshTimerId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
             this._refreshMargins();
             this._refreshTimerId = null;
             return GLib.SOURCE_REMOVE;

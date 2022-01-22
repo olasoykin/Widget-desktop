@@ -35,7 +35,6 @@ const Enums = imports.enums;
 const DBusUtils = imports.dbusUtils;
 
 const ByteArray = imports.byteArray;
-const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 const Gettext = imports.gettext.domain('ding');
 
