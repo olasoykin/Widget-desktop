@@ -1,5 +1,8 @@
 # History of versions #
 
+* inprogress
+  * Copy instead of Move if Shift or Control is pressed (Sergio Costas)
+
 * Version 39
   * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
   * Ignore SPACE key to start a search (Laurentiu-Andrei Postole)

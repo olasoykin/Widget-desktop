@@ -341,11 +341,12 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
                 dropDestination.drag_dest_set_target_list(targets);
                 dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
+                    let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.SHIFT_MASK | Gdk.ModifierType.CONTROL_MASK);
                     if ((info == 1) || (info == 2)) {
                         let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
                         if (fileList.length != 0) {
                             if (this._hasToRouteDragToGrid()) {
-                                this._grid.receiveDrop(this._x1 + x, this._y1 + y, selection, info, true);
+                                this._grid.receiveDrop(this._x1 + x, this._y1 + y, selection, info, true, forceCopy);
                                 return;
                             }
                             if (this._desktopManager.dragItem && ((this._desktopManager.dragItem.uri == this._file.get_uri()) || !(this._isValidDesktopFile || this.isDirectory))) {
@@ -360,7 +361,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                             if (this._fileExtra != Enums.FileType.USER_DIRECTORY_TRASH) {
                                 let data = Gio.File.new_for_uri(fileList[0]).query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null);
                                 let id_fs = data.get_attribute_string('id::filesystem');
-                                if (this._desktopManager.desktopFsId == id_fs) {
+                                if ((this._desktopManager.desktopFsId == id_fs) && (!forceCopy)) {
                                     DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(
                                         fileList,
                                         this._file.get_uri(),

@@ -230,7 +230,7 @@ var DesktopGrid = class {
     }
 
     setDropDestination(dropDestination) {
-        dropDestination.drag_dest_set(Gtk.DestDefaults.MOTION | Gtk.DestDefaults.DROP, null, Gdk.DragAction.MOVE);
+        dropDestination.drag_dest_set(Gtk.DestDefaults.MOTION | Gtk.DestDefaults.DROP, null, Gdk.DragAction.MOVE|Gdk.DragAction.COPY|Gdk.DragAction.DEFAULT);
         let targets = new Gtk.TargetList(null);
         targets.add(Gdk.atom_intern('x-special/ding-icon-list', false), Gtk.TargetFlags.SAME_APP, 0);
         targets.add(Gdk.atom_intern('x-special/gnome-icon-list', false), 0, 1);
@@ -244,7 +244,8 @@ var DesktopGrid = class {
             this.receiveLeave();
         });
         dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
-            this.receiveDrop(x, y, selection, info, false);
+            let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.SHIFT_MASK | Gdk.ModifierType.CONTROL_MASK);
+            this.receiveDrop(x, y, selection, info, false, forceCopy);
         });
     }
 
@@ -261,13 +262,13 @@ var DesktopGrid = class {
         this._desktopManager.onDragMotion(x, y);
     }
 
-    receiveDrop(x, y, selection, info, forceLocal) {
+    receiveDrop(x, y, selection, info, forceLocal, forceCopy) {
         if (! forceLocal) {
             x = this._elementWidth * Math.floor(x / this._elementWidth);
             y = this._elementHeight * Math.floor(y / this._elementHeight);
             [x, y] = this._coordinatesLocalToGlobal(x, y);
         }
-        this._desktopManager.onDragDataReceived(x, y, selection, info, forceLocal);
+        this._desktopManager.onDragDataReceived(x, y, selection, info, forceLocal, forceCopy);
         this._window.queue_draw();
     }
 
