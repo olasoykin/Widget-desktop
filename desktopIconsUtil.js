@@ -26,6 +26,14 @@ const Gettext = imports.gettext.domain('ding');
 
 const _ = Gettext.gettext;
 
+function getModifiersInDnD(context, modifiersToCheck) {
+    let device = context.get_device();
+    let display = device.get_display();
+    let keymap = Gdk.Keymap.get_for_display(display);
+    let modifiers = keymap.get_modifier_state();
+    return ((modifiers & modifiersToCheck) != 0);
+}
+
 function getDesktopDir() {
     let desktopPath = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP);
     return Gio.File.new_for_commandline_arg(desktopPath);

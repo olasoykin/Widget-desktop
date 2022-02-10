@@ -452,7 +452,7 @@ var DesktopManager = class {
         this.dragItem = null;
     }
 
-    onDragDataReceived(xDestination, yDestination, selection, info, forceLocal) {
+    onDragDataReceived(xDestination, yDestination, selection, info, forceLocal, forceCopy) {
         this.onDragLeave();
         let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
         if (forceLocal) {
@@ -471,7 +471,7 @@ var DesktopManager = class {
                 this.clearFileCoordinates(fileList, [xDestination, yDestination]);
                 let data = Gio.File.new_for_uri(fileList[0]).query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null);
                 let id_fs = data.get_attribute_string('id::filesystem');
-                if (this.desktopFsId == id_fs) {
+                if ((this.desktopFsId == id_fs) && (!forceCopy)) {
                     DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(
                         fileList,
                         "file://" + GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP),
