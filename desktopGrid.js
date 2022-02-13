@@ -244,7 +244,7 @@ var DesktopGrid = class {
             this.receiveLeave();
         });
         dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
-            let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.SHIFT_MASK | Gdk.ModifierType.CONTROL_MASK);
+            let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK);
             this.receiveDrop(x, y, selection, info, false, forceCopy);
         });
     }

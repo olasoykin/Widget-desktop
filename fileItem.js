@@ -341,7 +341,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
                 dropDestination.drag_dest_set_target_list(targets);
                 dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
-                    let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.SHIFT_MASK | Gdk.ModifierType.CONTROL_MASK);
+                    let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK);
                     if ((info == 1) || (info == 2)) {
                         let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
                         if (fileList.length != 0) {
