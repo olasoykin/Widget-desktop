@@ -15,6 +15,7 @@ extensions_dir = join_paths(prefix, 'share', 'gnome-shell', 'extensions', 'ding@
 install_data([
     'askRenamePopup.js',
     'createThumbnail.js',
+    'dbusInterfaces.js',
     'dbusUtils.js',
     'desktopGrid.js',
     'desktopIconItem.js',

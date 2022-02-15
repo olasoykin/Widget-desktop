@@ -365,10 +365,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                 let data = Gio.File.new_for_uri(fileList[0]).query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null);
                                 let id_fs = data.get_attribute_string('id::filesystem');
                                 if ((this._desktopManager.desktopFsId == id_fs) && (!forceCopy)) {
-                                    DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(
+                                    DBusUtils.NautilusFileOperations2.proxy.MoveURIsRemote(
                                         fileList,
                                         this._file.get_uri(),
-                                        DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                                        DBusUtils.NautilusFileOperations2.proxy.platformData(),
                                         (result, error) => {
                                             if (error) {
                                                 throw new Error('Error moving files: ' + error.message);
@@ -376,10 +376,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                         }
                                     );
                                 } else {
-                                    DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(
+                                    DBusUtils.NautilusFileOperations2.proxy.CopyURIsRemote(
                                         fileList,
                                         this._file.get_uri(),
-                                        DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                                        DBusUtils.NautilusFileOperations2.proxy.platformData(),
                                         (result, error) => {
                                             if (error) {
                                                 throw new Error('Error moving files: ' + error.message);
@@ -388,9 +388,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                     );
                                 }
                             } else {
-                                DBusUtils.NautilusFileOperations2Proxy.TrashURIsRemote(
+                                DBusUtils.NautilusFileOperations2.proxy.TrashURIsRemote(
                                     fileList,
-                                    DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                                    DBusUtils.NautilusFileOperations2.proxy.platformData(),
                                     (result, error) => {
                                         if (error) {
                                             throw new Error('Error moving files: ' + error.message);
@@ -517,11 +517,11 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
     }
 
     doDiscreteGpu() {
-        if (!DBusUtils.SwitcherooControlProxy) {
+        if (!DBusUtils.discreteGpuAvailable) {
             log('Could not apply discrete GPU environment, switcheroo-control not available');
             return;
         }
-        let gpus = DBusUtils.SwitcherooControlProxy.GPUs;
+        let gpus = DBusUtils.SwitcherooControl.proxy.GPUs;
         if (!gpus) {
             log('Could not apply discrete GPU environment. No GPUs in list.');
             return;

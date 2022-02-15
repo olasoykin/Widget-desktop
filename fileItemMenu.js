@@ -32,6 +32,13 @@ const _ = Gettext.gettext;
 var FileItemMenu = class {
     constructor(desktopManager) {
         this._desktopManager = desktopManager;
+        DBusUtils.GnomeArchiveManager.connect('changed-status', () => {
+            // wait a second to ensure that everything has settled
+            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+                this._getExtractionSupportedTypes();
+                return false;
+            });
+        });
         this._getExtractionSupportedTypes();
         this._scriptsMonitor = new TemplatesScriptsManager.TemplatesScriptsManager(
             DesktopIconsUtil.getScriptsDir(),
@@ -42,19 +49,21 @@ var FileItemMenu = class {
 
     _getExtractionSupportedTypes() {
         this._decompressibleTypes = [];
-        DBusUtils.GnomeArchiveManagerProxy.GetSupportedTypesRemote('extract',
-            (result, error) => {
-                if (error) {
-                    print(`Can't get the extractable types: ${error.message}. Ensure that File-Roller is installed.`);
-                    return;
-                }
-                for (let key of result.values()) {
-                    for (let type of key.values()) {
-                        this._decompressibleTypes.push(Object.values(type)[0]);
+        if (DBusUtils.GnomeArchiveManager.isAvailable) {
+            DBusUtils.GnomeArchiveManager.proxy.GetSupportedTypesRemote('extract',
+                (result, error) => {
+                    if (error) {
+                        print(`Can't get the extractable types: ${error.message}. Ensure that File-Roller is installed.\n${error}.`);
+                        return;
+                    }
+                    for (let key of result.values()) {
+                        for (let type of key.values()) {
+                            this._decompressibleTypes.push(Object.values(type)[0]);
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
     }
 
     _onScriptClicked(menuItemPath) {
@@ -282,7 +291,7 @@ var FileItemMenu = class {
 
     _onPropertiesClicked() {
         let propertiesFileList = this._desktopManager.getCurrentSelection(true);
-        DBusUtils.FreeDesktopFileManagerProxy.ShowItemPropertiesRemote(propertiesFileList, '',
+        DBusUtils.FreeDesktopFileManager.proxy.ShowItemPropertiesRemote(propertiesFileList, '',
             (result, error) => {
                 if (error)
                     log('Error showing properties: ' + error.message);
@@ -302,7 +311,7 @@ var FileItemMenu = class {
                 log(`Error trying to launch Nemo: ${err.message}\n${err}`);
             }
         }
-        DBusUtils.FreeDesktopFileManagerProxy.ShowItemsRemote(showInFilesList, '',
+        DBusUtils.FreeDesktopFileManager.proxy.ShowItemsRemote(showInFilesList, '',
             (result, error) => {
                 if (error)
                     log('Error showing file on desktop: ' + error.message);
@@ -353,7 +362,7 @@ var FileItemMenu = class {
         }
         if (extractHere) {
             folder = DesktopIconsUtil.getDesktopDir().get_uri();
-            DBusUtils.GnomeArchiveManagerProxy.ExtractRemote(extractFileItem, folder, true,
+            DBusUtils.GnomeArchiveManager.proxy.ExtractRemote(extractFileItem, folder, true,
                 (result, error) => {
                     if (error) {
                         throw new Error('Error extracting files: ' + error.message);
@@ -375,7 +384,7 @@ var FileItemMenu = class {
                 if (response === Gtk.ResponseType.ACCEPT) {
                     folder = dialog.get_uri();
                     if (folder) {
-                        DBusUtils.GnomeArchiveManagerProxy.ExtractRemote(extractFileItem, folder, true,
+                        DBusUtils.GnomeArchiveManager.proxy.ExtractRemote(extractFileItem, folder, true,
                             (result, error) => {
                                 if (error) {
                                     throw new Error('Error extracting files: ' + error.message);
@@ -418,7 +427,7 @@ var FileItemMenu = class {
         this._desktopManager.unselectAll();
         let desktopFolder = DesktopIconsUtil.getDesktopDir().get_uri();
         if (desktopFolder) {
-            DBusUtils.GnomeArchiveManagerProxy.CompressRemote(compressFileItems, desktopFolder, true,
+            DBusUtils.GnomeArchiveManager.proxy.CompressRemote(compressFileItems, desktopFolder, true,
                 (result, error) => {
                     if (error) {
                         throw new Error('Error compressing files: ' + error.message);
@@ -434,9 +443,9 @@ var FileItemMenu = class {
         clickedItem.removeFromGrid(true);
         let newFolder = this._desktopManager.doNewFolder(position);
         if (newFolder) {
-            DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(
+            DBusUtils.NautilusFileOperations2.proxy.MoveURIsRemote(
                 newFolderFileItems, newFolder,
-                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                DBusUtils.NautilusFileOperations2.proxy.platformData(),
                 (result, error) => {
                     if (error) {
                         throw new Error('Error moving files: ' + error.message);

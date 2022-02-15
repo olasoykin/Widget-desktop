@@ -9,345 +9,383 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const ByteArray = imports.byteArray;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
-var NautilusFileOperations2Proxy;
-var FreeDesktopFileManagerProxy;
-var GnomeNautilusPreviewProxy;
-var SwitcherooControlProxyClass;
-var SwitcherooControlProxy;
-var discreteGpuAvailable;
-var GnomeArchiveManagerProxy;
-var GtkVfsMetadataProxy;
+const Signals = imports.signals;
+const DBusInterfaces = imports.dbusInterfaces;
 
-const NautilusFileOperations2Interface = `<node>
-<interface name='org.gnome.Nautilus.FileOperations2'>
-    <method name='CopyURIs'>
-        <arg type='as' name='sources' direction='in'/>
-        <arg type='s' name='destination' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='MoveURIs'>
-        <arg type='as' name='sources' direction='in'/>
-        <arg type='s' name='destination' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='EmptyTrash'>
-        <arg type="b" name="ask_confirmation" direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='TrashURIs'>
-        <arg type='as' name='uris' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='DeleteURIs'>
-        <arg type='as' name='uris' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='CreateFolder'>
-        <arg type='s' name='parent_uri' direction='in'/>
-        <arg type='s' name='new_folder_name' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='RenameURI'>
-        <arg type='s' name='uri' direction='in'/>
-        <arg type='s' name='new_name' direction='in'/>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='Undo'>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <method name='Redo'>
-        <arg type='a{sv}' name='platform_data' direction='in'/>
-    </method>
-    <property name="UndoStatus" type="i" access="read"/>
-</interface>
-</node>`;
+var NautilusFileOperations2 = null;
+var FreeDesktopFileManager = null;
+var GnomeNautilusPreview = null;
+var SwitcherooControl = null;
+var GnomeArchiveManager = null;
+var GtkVfsMetadata = null;
 
-const NautilusFileOperations2ProxyInterface = Gio.DBusProxy.makeProxyWrapper(NautilusFileOperations2Interface);
+var discreteGpuAvailable = false;
+var dbusManagerObject;
 
-const FreeDesktopFileManagerInterface = `<node>
-<interface name='org.freedesktop.FileManager1'>
-    <method name='ShowItems'>
-        <arg name='URIs' type='as' direction='in'/>
-        <arg name='StartupId' type='s' direction='in'/>
-    </method>
-    <method name='ShowItemProperties'>
-        <arg name='URIs' type='as' direction='in'/>
-        <arg name='StartupId' type='s' direction='in'/>
-    </method>
-</interface>
-</node>`;
+const Gettext = imports.gettext.domain('ding');
 
-const FreeDesktopFileManagerProxyInterface = Gio.DBusProxy.makeProxyWrapper(FreeDesktopFileManagerInterface);
+const _ = Gettext.gettext;
 
-const GnomeNautilusPreviewInterface = `<node>
-<interface name='org.gnome.NautilusPreviewer'>
-    <method name='ShowFile'>
-        <arg name='FileUri' type='s' direction='in'/>
-        <arg name='ParentXid' type='i' direction='in'/>
-        <arg name='CloseIfShown' type='b' direction='in'/>
-    </method>
-</interface>
-</node>`;
-
-const GnomeNautilusPreviewProxyInterface = Gio.DBusProxy.makeProxyWrapper(GnomeNautilusPreviewInterface);
-
-const SwitcherooControlInterface = `<node>
-<interface name="net.hadess.SwitcherooControl">
-    <property name="HasDualGpu" type="b" access="read"/>
-    <property name="NumGPUs" type="u" access="read"/>
-    <property name="GPUs" type="aa{sv}" access="read"/>
-</interface>
-</node>`;
-
-const SWITCHEROO_CONTROL_BUS_NAME = 'net.hadess.SwitcherooControl';
-
-function _switcherooProxyAppeared() {
-    SwitcherooControlProxyClass = Gio.DBusProxy.makeProxyWrapper(SwitcherooControlInterface);
-    SwitcherooControlProxy = new SwitcherooControlProxyClass(Gio.DBus.system,
-        SWITCHEROO_CONTROL_BUS_NAME,
-        '/net/hadess/SwitcherooControl',
-        (proxy, error) => {
-            if (error) {
-                discreteGpuAvailable = false;
-                log(error.message);
-                return;
-            }
-            discreteGpuAvailable = SwitcherooControlProxy.HasDualGpu;
-        });
-}
-
-
-const GnomeArchiveManagerInterface = `<node>
-  <!-- org.gnome.ArchiveManager1:
-       @short_description: Create and extract compressed archives
-       This D-Bus interface is used to create and extract compressed archives.
-    -->
-    <interface name="org.gnome.ArchiveManager1">
-    <!--
-        GetSupportedTypes:
-        @action: Can be one of the following values:
-          *) create: create an archive that can contain many files.
-          *) create_single_file: create an archive that can contain a single file.
-          *) extract: extract the content of an archive.
-        @types: The supported archive types described as an array of hash tables,
-          where each hash table has the following keys:
-          *) mime-type: the mime type relative to the archive type.
-          *) default-extension: the extension to use for newly created archives.
-          *) description: a human readable description of the archive type.
-        Returns the supported archive types for a specific action.
-      -->
-    <method name="GetSupportedTypes">
-      <arg name="action" type="s" direction="in"/>
-      <arg name="types" type="aa{ss}" direction="out"/>
-    </method>
-
-    <!--
-        AddToArchive:
-        @archive: The archive URI.
-        @files: The files to add to the archive, as an array of URIs.
-        @use_progress_dialog: Whether to show the progress dialog.
-        Adds the specified files to an archive.  If the archive already
-        exists the archive is updated.
-      -->
-    <method name="AddToArchive">
-      <arg name="archive" type="s" direction="in"/>
-      <arg name="files" type="as" direction="in"/>
-      <arg name="use_progress_dialog" type="b" direction="in"/>
-    </method>
-
-    <!--
-        Compress:
-        @files: The files to add to the archive, as an array of URIs.
-        @destination: An optional destination, if not specified the folder of
-          the first file in @files is used.
-        @use_progress_dialog: Whether to show the progress dialog.
-        Compresses a series of files in an archive. The user is asked to
-        enter an archive name, archive type and other options.  In this case
-        it's used the same dialog used by the "Compress..." command from the
-        Nautilus context menu.
-        If the user chooses an existing archive, the archive is updated.
-      -->
-    <method name='Compress'>
-      <arg name="files" type="as" direction="in"/>
-      <arg name="destination" type="s" direction="in"/>
-      <arg name="use_progress_dialog" type="b" direction="in"/>
-    </method>
-
-    <!--
-        Extract:
-        @archive: The archive to extract.
-        @destination: The location where to extract the archive.
-        @use_progress_dialog: Whether to show the progress dialog.
-        Extract an archive in a specified location.
-      -->
-    <method name="Extract">
-      <arg name="archive" type="s" direction="in"/>
-      <arg name="destination" type="s" direction="in"/>
-      <arg name="use_progress_dialog" type="b" direction="in"/>
-    </method>
-
-    <!--
-        ExtractHere:
-        @archive: The archive to extract.
-        @use_progress_dialog: Whether to show the progress dialog.
-        Extract an archive in the archive's folder.
-      -->
-    <method name="ExtractHere">
-      <arg name="archive" type="s" direction="in"/>
-      <arg name="use_progress_dialog" type="b" direction="in"/>
-    </method>
-
-    <!--
-        Progress:
-        @fraction: number from 0.0 to 100.0 that indicates the percentage of
-          completion of the operation.
-        @details: text message that describes the current operation.
-      -->
-    <signal name="Progress">
-      <arg name="fraction" type="d"/>
-      <arg name="details" type="s"/>
-    </signal>
-
-  </interface>
-</node>`
-
-const GnomeArchiveManagerProxyInterface = Gio.DBusProxy.makeProxyWrapper(GnomeArchiveManagerInterface);
-
-const GtkVfsMetadataInterface = `<node>
-  <interface name='org.gtk.vfs.Metadata'>
-
-    <method name="Set">
-      <arg type='ay' name='treefile' direction='in'/>
-      <arg type='ay' name='path' direction='in'/>
-      <arg type='a{sv}' name='data' direction='in'/>
-    </method>
-    <method name="Remove">
-      <arg type='ay' name='treefile' direction='in'/>
-      <arg type='ay' name='path' direction='in'/>
-    </method>
-    <method name="Move">
-      <arg type='ay' name='treefile' direction='in'/>
-      <arg type='ay' name='path' direction='in'/>
-      <arg type='ay' name='dest_path' direction='in'/>
-    </method>
-    <method name="GetTreeFromDevice">
-      <arg type='u' name='major' direction='in'/>
-      <arg type='u' name='minor' direction='in'/>
-      <arg type='s' name='tree' direction='out'/>
-    </method>
-    <signal name="AttributeChanged">
-      <arg type='s' name='tree_path'/>
-      <arg type='s' name='file_path'/>
-    </signal>
-
-  </interface>
-</node>`
-
-const GtkVfsMetadataProxyInterface = Gio.DBusProxy.makeProxyWrapper(GtkVfsMetadataInterface);
-
-function init() {
-    NautilusFileOperations2Proxy = new NautilusFileOperations2ProxyInterface(
-        Gio.DBus.session,
-        'org.gnome.Nautilus',
-        '/org/gnome/Nautilus/FileOperations2',
-        (proxy, error) => {
-            if (error) {
-                log('Error connecting to Nautilus');
-            }
+class ProxyManager {
+   /*
+    * This class manages a DBus object through a DBusProxy. Any access to the proxy when the
+    * object isn't available results in a notification specifying that an specific program
+    * is needed to run that option.
+    *
+    * The proxy itself is accessed through the 'proxy' property (read-only). Any access to
+    * it will check the availability and show the notification if it isn't available. To get
+    * access to it without triggering this, it is possible to use the 'proxyNoCheck' property.
+    *
+    * Whether the object is or not available can be checked with the 'isAvailable' property.
+    * Also, every time the availability changes, the signal 'changed-status' is emitted.
+    */
+    constructor(dbusManager, serviceName, objectName, interfaceName, inSystemBus, programNeeded) {
+        this._dbusManager = dbusManager;
+        this._serviceName = serviceName;
+        this._objectName = objectName;
+        this._interfaceName = interfaceName;
+        this._inSystemBus = inSystemBus;
+        if (typeof(programNeeded) == 'string') {
+            // if 'programNeeded' is a string, create a generic message for the notification.
+            this._programNeeded = [
+                _('"${programName}" is needed for Desktop Icons').replace('${programName}', programNeeded),
+                _('For this functionality to work in Desktop Icons, you must install "${programName}" in your system.').replace('${programName}', programNeeded)
+            ];
+        } else {
+            // instead, if it's not, it is presumed to be an array with two sentences, one for the notification title and another for the main text.
+            this._programNeeded = programNeeded;
         }
-    );
+        this._timeout = 0;
+        this._available = this._dbusManager.checkIsAvailable(this._serviceName, this._inSystemBus);
 
-  NautilusFileOperations2Proxy.platformData = () => {
-    let parentWindow = Gtk.get_current_event().get_window();
+        this._interfaceXML = dbusManager.getInterface(serviceName, objectName, interfaceName, inSystemBus, false);
+        this._proxy = new Gio.DBusProxy.makeProxyWrapper(this._interfaceXML)(
+            inSystemBus ? Gio.DBus.system : Gio.DBus.session,
+            serviceName,
+            objectName,
+            null
+        );
 
-    let parentHandle = '';
-    if (parentWindow) {
-      try {
-        imports.gi.versions.GdkX11 = '3.0';
-        const { GdkX11 } = imports.gi;
-        const topLevel = parentWindow.get_effective_toplevel();
-
-        if (topLevel.constructor.$gtype === GdkX11.X11Window.$gtype) {
-          const xid = GdkX11.X11Window.prototype.get_xid.call(topLevel);
-          parentHandle = `x11:${xid}`;
-        } /* else if (topLevel instanceof GdkWayland.Toplevel) {
-          FIXME: Need Gtk4 to use GdkWayland
-          const handle = GdkWayland.Toplevel.prototype.export_handle.call(topLevel);
-          parentHandle = `wayland:${handle}`;
-        } */
-      } catch (e) {
-        logError(e, 'Impossible to determine the parent window');
-      }
+        dbusManager.connect(inSystemBus ? 'changed-availability-system' : 'changed-availability-local', () => {
+            let newAvailability = this._dbusManager.checkIsAvailable(this._serviceName, this._inSystemBus);
+            if (newAvailability != this._available) {
+                this._available = newAvailability;
+                this.emit('changed-status', newAvailability);
+            }
+        });
     }
 
-    return {
-      'parent-handle': new GLib.Variant('s', parentHandle),
-      'timestamp': new GLib.Variant('u', Gtk.get_current_event_time()),
-      'window-position': new GLib.Variant('s', 'center'),
-    };
-  }
+    get isAvailable() {
+        return this._available;
+    }
 
-    FreeDesktopFileManagerProxy = new FreeDesktopFileManagerProxyInterface(
-        Gio.DBus.session,
-        'org.freedesktop.FileManager1',
-        '/org/freedesktop/FileManager1',
-        (proxy, error) => {
-            if (error) {
-                log('Error connecting to Nautilus');
+    get proxyNoCheck() {
+        return this._proxy;
+    }
+
+    get proxy() {
+        if (!this._available) {
+            if (this._programNeeded && (this._timeout == 0)) {
+                print(this._programNeeded[0]);
+                print(this._programNeeded[1]);
+                this._dbusManager.doNotify(this._programNeeded[0], this._programNeeded[1]);
+                this._timeout = GLib.timeout_add(
+                    GLib.PRIORITY_DEFAULT,
+                    1000,
+                    ()=> {
+                        this._timeout = 0;
+                        return false;
+                    }
+                );
             }
         }
-    );
+        return this._proxy;
+    }
+}
+Signals.addSignalMethods(ProxyManager.prototype);
 
-    GnomeNautilusPreviewProxy = new GnomeNautilusPreviewProxyInterface(
-        Gio.DBus.session,
-        'org.gnome.NautilusPreviewer',
-        '/org/gnome/NautilusPreviewer',
-        (proxy, error) => {
-            if (error) {
-                log('Error connecting to Nautilus Previewer');
-            }
-        }
-    );
 
-    SwitcherooControlProxy = null;
-    discreteGpuAvailable = false;
-    Gio.DBus.system.watch_name(SWITCHEROO_CONTROL_BUS_NAME,
-        Gio.BusNameWatcherFlags.NONE,
-        _switcherooProxyAppeared,
-        () => {
-            SwitcherooControlProxy = null;
-            discreteGpuAvailable = false;
+class DBusManager {
+   /*
+    * This class manages all the DBus operations. A ProxyManager() class can subscribe to this to be notified
+    * whenever a change in the bus has occurred (like a server has been added or removed). It also can ask
+    * for a DBus interface, either getting it from the dbusInterfaces.js file or using DBus Introspection (which
+    * allows to get the currently available interface and, that way, know if an object implements an specific
+    * method, property or signal).
+    *
+    * ProxyManager() classes subscribe to the 'changed-availability-system' or 'changed-availability-local' signals,
+    * which are emitted every time a change in the bus or in the configuration files happen. Then, it can use
+    * checkIsAvailable() to determine if the desired service is available in the system or not.
+    */
+    constructor() {
+        this._availableInSystemBus = [];
+        this._availableInLocalBus = [];
+
+        let interfaceXML = this.getInterface(
+            'org.freedesktop.DBus',
+            '/org/freedesktop/DBus',
+            'org.freedesktop.DBus',
+            true, // system bus
+            true); // use DBus Introspection
+        this._dbusSystemProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
+            Gio.DBus.system,
+            'org.freedesktop.DBus',
+            '/org/freedesktop/DBus',
+            null
+        );
+
+        // Don't presume that both system and local have the same interface (just in case)
+        interfaceXML = this.getInterface(
+            'org.freedesktop.DBus',
+            '/org/freedesktop/DBus',
+            'org.freedesktop.DBus',
+            false, // local bus
+            true); // use DBus Introspection
+        this._dbusLocalProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
+            Gio.DBus.session,
+            'org.freedesktop.DBus',
+            '/org/freedesktop/DBus',
+            null
+        );
+        this._updateAllAvailabilities();
+        this._dbusLocalProxy.connectSignal('NameOwnerChanged', () => {
+            this._updateAllAvailabilities();
+            this.emit('changed-availability-local');
+        });
+        this._dbusSystemProxy.connectSignal('NameOwnerChanged', () => {
+            this._updateAllAvailabilities();
+            this.emit('changed-availability-system');
         });
 
-    GnomeArchiveManagerProxy = new GnomeArchiveManagerProxyInterface(
-        Gio.DBus.session,
-        'org.gnome.ArchiveManager1',
-        '/org/gnome/ArchiveManager1',
-        (proxy, error) => {
-            if (error) {
-                log('Error connecting to ArchiveManager');
+        interfaceXML = this.getInterface(
+            'org.freedesktop.Notifications',
+            '/org/freedesktop/Notifications',
+            'org.freedesktop.Notifications',
+            false, // local bus
+            false); // get interface from local code
+        this._notifyProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
+            Gio.DBus.session,
+            'org.freedesktop.Notifications',
+            '/org/freedesktop/Notifications',
+            null
+        );
+    }
+
+    checkIsAvailable(serviceName, inSystemBus) {
+        if (inSystemBus) {
+            return this._availableInSystemBus.includes(serviceName);
+        } else {
+            return this._availableInLocalBus.includes(serviceName);
+        }
+    }
+
+    _updateAllAvailabilities() {
+        this._availableInLocalBus = this._updateAvailability(this._dbusLocalProxy);
+        this._availableInSystemBus = this._updateAvailability(this._dbusSystemProxy);
+    }
+
+    _updateAvailability(proxy) {
+        // We read both the well-known names actually running and those available as activatables,
+        // and generate a single list with both. Thus a service will be "enabled" if it is running
+        // or if it is activatable.
+
+        let availableNames = [];
+        let names = proxy.ListNamesSync();
+        for(let n of names[0]) {
+            if (n.startsWith(":")) {
+                continue
+            }
+            if (!(n in availableNames)) {
+                availableNames.push(n);
             }
         }
+        let names2 = proxy.ListActivatableNamesSync();
+        for(let n of names2[0]) {
+            if (n.startsWith(":")) {
+                continue
+            }
+            if (!(n in availableNames)) {
+                availableNames.push(n);
+            }
+        }
+        return availableNames;
+    }
+
+    _getNextTag() {
+        this._xmlIndex++;
+        let pos = this._xmlData.indexOf('<', this._xmlIndex);
+        if (pos == -1) {
+            return null;
+        }
+        let pos2 = this._xmlData.indexOf('>', pos);
+        if (pos2 == -1) {
+            return null;
+        }
+        this._xmlIndex = pos;
+        return this._xmlData.substring(pos+1, pos2).trim();
+    }
+
+    /*
+     * Extracts the XML definition for an interface from the raw data returned by DBus Introspection.
+     * This is needed because DBus Introspection returns a single XML file with all the interfaces
+     * supported by an object, while DBusProxyWrapper requires an XML with only the desired interface.
+     */
+    _parseXML(data, interfaceName) {
+        this._xmlIndex = -1;
+        this._xmlData = data;
+        let tag;
+        while(true) {
+            tag = this._getNextTag();
+            if (tag === null) {
+                return null;
+            }
+            if (!tag.startsWith('interface ')) {
+                continue;
+            }
+            if (-1 != tag.indexOf(interfaceName)) {
+                break;
+            }
+        }
+        let start = this._xmlIndex;
+        while(true) {
+            tag = this._getNextTag();
+            if (tag === null) {
+                return null;
+            }
+            if (!tag.startsWith('/interface')) {
+                continue;
+            }
+            break;
+        }
+        return '<node>\n  ' + data.substring(start, 1 + data.indexOf('>', this._xmlIndex)) + '\n</node>';
+    }
+
+    getInterface(serviceName, objectName, interfaceName, inSystemBus, forceIntrospection) {
+        if ((interfaceName in DBusInterfaces.DBusInterfaces) && (!forceIntrospection)) {
+            return DBusInterfaces.DBusInterfaces[interfaceName];
+        } else {
+            let wraper = new Gio.DBusProxy.makeProxyWrapper(DBusInterfaces.DBusInterfaces['org.freedesktop.DBus.Introspectable'])(
+                inSystemBus ? Gio.DBus.system : Gio.DBus.session,
+                serviceName,
+                objectName,
+                null
+            );
+            let data = wraper.IntrospectSync()[0];
+            return this._parseXML(data, interfaceName);
+        }
+    }
+
+    doNotify(header, text) {
+        /*
+         * The notification interface in GLib.Application requires a .desktop file, which
+         * we can't have, so we must use directly the Notification DBus interface
+         */
+        this._notifyProxy.NotifyRemote('', 0, '', header, text, [], {}, -1, () => {});
+    }
+}
+Signals.addSignalMethods(DBusManager.prototype);
+
+function init() {
+
+    dbusManagerObject = new DBusManager();
+
+    // NautilusFileOperations2
+    NautilusFileOperations2 = new ProxyManager(
+        dbusManagerObject,
+        'org.gnome.Nautilus',
+        '/org/gnome/Nautilus/FileOperations2',
+        'org.gnome.Nautilus.FileOperations2',
+        false,
+        'Nautilus'
     );
 
-    GtkVfsMetadataProxy = new GtkVfsMetadataProxyInterface(
-        Gio.DBus.session,
-        'org.gtk.vfs.Metadata',
-        '/org/gtk/vfs/metadata',
-        (proxy, error) => {
-            if (error) {
-                log('Error connecting to Gio VFS metadata');
+    NautilusFileOperations2.proxyNoCheck.platformData = () => {
+        let parentWindow = Gtk.get_current_event().get_window();
+
+        let parentHandle = '';
+        if (parentWindow) {
+            try {
+                imports.gi.versions.GdkX11 = '3.0';
+                const { GdkX11 } = imports.gi;
+                const topLevel = parentWindow.get_effective_toplevel();
+
+                if (topLevel.constructor.$gtype === GdkX11.X11Window.$gtype) {
+                    const xid = GdkX11.X11Window.prototype.get_xid.call(topLevel);
+                    parentHandle = `x11:${xid}`;
+                } /* else if (topLevel instanceof GdkWayland.Toplevel) {
+                    FIXME: Need Gtk4 to use GdkWayland
+                    const handle = GdkWayland.Toplevel.prototype.export_handle.call(topLevel);
+                    parentHandle = `wayland:${handle}`;
+                } */
+                } catch (e) {
+                logError(e, 'Impossible to determine the parent window');
             }
         }
+
+        return {
+            'parent-handle': new GLib.Variant('s', parentHandle),
+            'timestamp': new GLib.Variant('u', Gtk.get_current_event_time()),
+            'window-position': new GLib.Variant('s', 'center'),
+        };
+    }
+
+    FreeDesktopFileManager = new ProxyManager(
+        dbusManagerObject,
+        'org.freedesktop.FileManager1',
+        '/org/freedesktop/FileManager1',
+        'org.freedesktop.FileManager1',
+        false,
+        'Nautilus'
     );
+
+    GnomeNautilusPreview = new ProxyManager(
+        dbusManagerObject,
+        'org.gnome.NautilusPreviewer',
+        '/org/gnome/NautilusPreviewer',
+        'org.gnome.NautilusPreviewer',
+        false,
+        'Nautilus-Sushi'
+    );
+
+    GnomeArchiveManager = new ProxyManager(
+        dbusManagerObject,
+        'org.gnome.ArchiveManager1',
+        '/org/gnome/ArchiveManager1',
+        'org.gnome.ArchiveManager1',
+        false,
+        'File-roller'
+    );
+
+    GtkVfsMetadata = new ProxyManager(
+        dbusManagerObject,
+        'org.gtk.vfs.Metadata',
+        '/org/gtk/vfs/metadata',
+        'org.gtk.vfs.Metadata',
+        false,
+        'Gvfs daemon'
+    );
+
+    SwitcherooControl = new ProxyManager(
+        dbusManagerObject,
+        'net.hadess.SwitcherooControl',
+        '/net/hadess/SwitcherooControl',
+        'net.hadess.SwitcherooControl',
+        true,
+        'Switcheroo control'
+    );
+    discreteGpuAvailable = SwitcherooControl.isAvailable;
+    SwitcherooControl.connect('changed-status', (obj, newStatus) => {
+        discreteGpuAvailable = newStatus;
+    });
 }

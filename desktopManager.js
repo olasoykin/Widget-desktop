@@ -188,13 +188,13 @@ var DesktopManager = class {
         this._createGridWindows();
         this._dbusAdvertiseUpdate();
 
-        DBusUtils.NautilusFileOperations2Proxy.connect('g-properties-changed', this._undoStatusChanged.bind(this));
-        DBusUtils.GtkVfsMetadataProxy.connectSignal('AttributeChanged', this._metadataChanged.bind(this));
+        DBusUtils.NautilusFileOperations2.proxy.connect('g-properties-changed', this._undoStatusChanged.bind(this));
+        DBusUtils.GtkVfsMetadata.proxy.connectSignal('AttributeChanged', this._metadataChanged.bind(this));
         this._allFileList = null;
         this._fileList = [];
         this._forcedExit = false;
         this._updateDesktop().catch((e) => {
-                    print(`Exception while Initiating Desktop: ${e.message}\n${e.stack}`);
+            print(`Exception while Initiating Desktop: ${e.message}\n${e.stack}`);
         });
 
         this._scriptsList = [];
@@ -477,20 +477,20 @@ var DesktopManager = class {
                 let data = Gio.File.new_for_uri(fileList[0]).query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null);
                 let id_fs = data.get_attribute_string('id::filesystem');
                 if ((this.desktopFsId == id_fs) && (!forceCopy)) {
-                    DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(
+                    DBusUtils.NautilusFileOperations2.proxy.MoveURIsRemote(
                         fileList,
                         "file://" + GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP),
-                        DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                        DBusUtils.NautilusFileOperations2.proxy.platformData(),
                         (result, error) => {
                             if (error)
                                 throw new Error('Error moving files: ' + error.message);
                             }
                     );
                 } else {
-                    DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(
+                    DBusUtils.NautilusFileOperations2.proxy.CopyURIsRemote(
                         fileList,
                         "file://" + GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP),
-                        DBusUtils.NautilusFileOperations2Proxy.platformData(),
+                        DBusUtils.NautilusFileOperations2.proxy.platformData(),
                         (result, error) => {
                             if (error)
                                 throw new Error('Error moving files: ' + error.message);
@@ -650,7 +650,7 @@ var DesktopManager = class {
     }
 
     _syncUndoRedo() {
-        switch (DBusUtils.NautilusFileOperations2Proxy.UndoStatus) {
+        switch (DBusUtils.NautilusFileOperations2.proxy.UndoStatus) {
             case Enums.UndoStatus.UNDO:
                 this._undoMenuItem.show();
                 this._redoMenuItem.hide();
@@ -672,8 +672,8 @@ var DesktopManager = class {
     }
 
     _doUndo() {
-        DBusUtils.NautilusFileOperations2Proxy.UndoRemote(
-            DBusUtils.NautilusFileOperations2Proxy.platformData(),
+        DBusUtils.NautilusFileOperations2.proxy.UndoRemote(
+            DBusUtils.NautilusFileOperations2.proxy.platformData(),
             (result, error) => {
                 if (error)
                     throw new Error('Error performing undo: ' + error.message);
@@ -682,8 +682,8 @@ var DesktopManager = class {
     }
 
     _doRedo() {
-        DBusUtils.NautilusFileOperations2Proxy.RedoRemote(
-            DBusUtils.NautilusFileOperations2Proxy.platformData(),
+        DBusUtils.NautilusFileOperations2.proxy.RedoRemote(
+            DBusUtils.NautilusFileOperations2.proxy.platformData(),
             (result, error) => {
                 if (error)
                     throw new Error('Error performing redo: ' + error.message);
@@ -714,7 +714,7 @@ var DesktopManager = class {
             return true;
         } else if (isAlt && (symbol == Gdk.KEY_Return)) {
             let selection = this.getCurrentSelection(true);
-            DBusUtils.FreeDesktopFileManagerProxy.ShowItemPropertiesRemote(selection, '',
+            DBusUtils.FreeDesktopFileManager.proxy.ShowItemPropertiesRemote(selection, '',
                 (result, error) => {
                     if (error)
                         log('Error showing properties: ' + error.message);
@@ -741,7 +741,7 @@ var DesktopManager = class {
             }
         } else if ((selection) && symbol == Gdk.KEY_space) {
                 // Support previewing other grids file items.
-                DBusUtils.GnomeNautilusPreviewProxy.ShowFileRemote(selection[0].uri, 0, true);
+                DBusUtils.GnomeNautilusPreview.proxy.ShowFileRemote(selection[0].uri, 0, true);
                 return true;
         } else if (isCtrl && ((symbol == Gdk.KEY_A) || (symbol == Gdk.KEY_a))) {
             this._selectAll();
@@ -982,16 +982,16 @@ var DesktopManager = class {
 
         let desktopDir = this._desktopDir.get_uri();
         if (this._isCut) {
-            DBusUtils.NautilusFileOperations2Proxy.MoveURIsRemote(this._clipboardFiles, desktopDir,
-                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+            DBusUtils.NautilusFileOperations2.proxy.MoveURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2.proxy.platformData(),
                 (result, error) => {
                     if (error)
                         throw new Error('Error moving files: ' + error.message);
                 }
             );
         } else {
-            DBusUtils.NautilusFileOperations2Proxy.CopyURIsRemote(this._clipboardFiles, desktopDir,
-                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+            DBusUtils.NautilusFileOperations2.proxy.CopyURIsRemote(this._clipboardFiles, desktopDir,
+                DBusUtils.NautilusFileOperations2.proxy.platformData(),
                 (result, error) => {
                     if (error)
                         throw new Error('Error copying files: ' + error.message);
@@ -1424,8 +1424,8 @@ var DesktopManager = class {
             i.file.get_uri());
 
         if (selection.length) {
-            DBusUtils.NautilusFileOperations2Proxy.TrashURIsRemote(selection,
-                DBusUtils.NautilusFileOperations2Proxy.platformData(),
+            DBusUtils.NautilusFileOperations2.proxy.TrashURIsRemote(selection,
+                DBusUtils.NautilusFileOperations2.proxy.platformData(),
                 (source, error) => {
                     if (error)
                         throw new Error('Error trashing files on the desktop: ' + error.message);
@@ -1444,8 +1444,8 @@ var DesktopManager = class {
             return;
         }
 
-        DBusUtils.NautilusFileOperations2Proxy.DeleteURIsRemote(toDelete,
-            DBusUtils.NautilusFileOperations2Proxy.platformData(),
+        DBusUtils.NautilusFileOperations2.proxy.DeleteURIsRemote(toDelete,
+            DBusUtils.NautilusFileOperations2.proxy.platformData(),
             (_source, error) => {
                 if (error)
                     throw new Error('Error deleting files on the desktop: ' + error.message);
@@ -1453,9 +1453,9 @@ var DesktopManager = class {
     }
 
     doEmptyTrash(askConfirmation = true) {
-        DBusUtils.NautilusFileOperations2Proxy.EmptyTrashRemote(
+        DBusUtils.NautilusFileOperations2.proxy.EmptyTrashRemote(
             askConfirmation,
-            DBusUtils.NautilusFileOperations2Proxy.platformData(),
+            DBusUtils.NautilusFileOperations2.proxy.platformData(),
             (source, error) => {
                 if (error)
                     throw new Error('Error trashing files on the desktop: ' + error.message);
