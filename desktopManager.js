@@ -371,12 +371,12 @@ var DesktopManager = class {
         if ( this.sortSpecialFolders && keepArranged ) {
             return;
         }
-        // Find the grid where the destination lies
+        // Find the grid where the destination lies and aim towards the positive side, middle of grid to ensure drop in the grid
         for(let desktop of this._desktops) {
             let grid = desktop.getGridAt(xDestination, yDestination, true);
             if (grid !== null) {
-                xDestination = grid[0];
-                yDestination = grid[1];
+                xDestination = grid[0] + desktop._elementWidth/2;
+                yDestination = grid[1] + desktop._elementHeight/2;
                 break;
             }
         }

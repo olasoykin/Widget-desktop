@@ -316,10 +316,12 @@ var DesktopGrid = class {
         }
         let newSelectedList = [];
         for (let [x, y] of selectedList) {
+            x = x + this._elementWidth/2;
+            y = y + this._elementHeight/2;
             x += ox;
             y += oy;
             let r = this.getGridAt(x, y);
-            if ((r !== null) && ((!this.gridInUse(r[0], r[1])) || this._fileAt(r[0], r[1]).isSelected)) {
+            if ((r !== null) && ((!this.gridInUse(r[0],r[1])) || this._fileAt(r[0],r[1]).isSelected)) {
                 newSelectedList.push(r);
             }
         }
@@ -478,7 +480,7 @@ var DesktopGrid = class {
         this._gridStatus[y * this._maxColumns + x] = inUse;
     }
 
-    getGridAt(x, y, globalCoordinates) {
+    getGridAt(x, y, globalCoordinates=false) {
         if (this._coordinatesBelongToThisGrid(x, y)) {
             [x, y] = this._coordinatesGlobalToLocal(x, y);
             if (globalCoordinates) {
