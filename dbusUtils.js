@@ -18,6 +18,7 @@
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const Gtk = imports.gi.Gtk;
 var NautilusFileOperations2Proxy;
 var FreeDesktopFileManagerProxy;
 var GnomeNautilusPreviewProxy;
@@ -266,22 +267,11 @@ function init() {
         }
     );
 
-  NautilusFileOperations2Proxy.platformData = params => {
-    const inShell = typeof global !== 'undefined';
-    const defaultParams = {
-      timestamp: inShell ? global.get_current_time() :
-        imports.gi.Gtk.get_current_event_time(),
-      parentWindow: inShell ? null :
-        imports.gi.Gtk.get_current_event().get_window(),
-      windowPosition: 'center',
-    };
-    const { parentWindow, timestamp, windowPosition } = {
-      ...defaultParams,
-      ...params,
-    };
+  NautilusFileOperations2Proxy.platformData = () => {
+    let parentWindow = Gtk.get_current_event().get_window();
 
-    let { parentHandle } = params ?? { parentHandle: ''};
-    if (!parentHandle && parentWindow) {
+    let parentHandle = '';
+    if (parentWindow) {
       try {
         imports.gi.versions.GdkX11 = '3.0';
         const { GdkX11 } = imports.gi;
@@ -302,8 +292,8 @@ function init() {
 
     return {
       'parent-handle': new GLib.Variant('s', parentHandle),
-      'timestamp': new GLib.Variant('u', timestamp),
-      'window-position': new GLib.Variant('s', windowPosition),
+      'timestamp': new GLib.Variant('u', Gtk.get_current_event_time()),
+      'window-position': new GLib.Variant('s', 'center'),
     };
   }
 
