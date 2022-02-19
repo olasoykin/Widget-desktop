@@ -90,5 +90,15 @@
         <summary>Use Nemo to open folders</summary>
         <description>Use Nemo instead of Nautilus to open folders.</description>
     </key>
+    <key type="b" name="show-link-emblem">
+        <default>true</default>
+        <summary>Add an emblem to links</summary>
+        <description>Add an emblem to allow to identify soft links.</description>
+    </key>
+    <key type="b" name="show-executable-emblem">
+        <default>true</default>
+        <summary>Add an emblem to executable .desktop files</summary>
+        <description>Add an emblem to .desktop files that have permission to be launched.</description>
+    </key>
     </schema>
 </schemalist>
