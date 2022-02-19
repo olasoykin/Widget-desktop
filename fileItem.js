@@ -87,7 +87,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                 this._queryTrashInfoCancellable.cancel();
                                 this._queryTrashInfoCancellable = null;
                             }
-                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => this._refreshTrashIcon());
+                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                                this._refreshTrashIcon();
+                                return false;
+                            });
                         } else {
                             this._refreshTrashIcon();
                         }

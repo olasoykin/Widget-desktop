@@ -261,6 +261,7 @@ function waitDelayMs(ms) {
     return new Promise( (resolve, reject) => {
         GLib.timeout_add(GLib.PRIORITY_DEFAULT, ms, () => {
             resolve();
+            return false;
         });
     });
 }
