@@ -86,7 +86,17 @@ var DesktopManager = class {
         this._showHidden = Prefs.gtkSettings.get_boolean('show-hidden');
         this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
         this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
+        this.showLinkEmblem = Prefs.desktopSettings.get_boolean('show-link-emblem');
+        this.showExecutableEmblem = Prefs.desktopSettings.get_boolean('show-executable-emblem');
         this._settingsId = Prefs.desktopSettings.connect('changed', (obj, key) => {
+            if ((key == 'show-link-emblem') || (key == 'show-executable-emblem')) {
+                this.showLinkEmblem = Prefs.desktopSettings.get_boolean('show-link-emblem');
+                this.showExecutableEmblem = Prefs.desktopSettings.get_boolean('show-executable-emblem');
+                this._updateDesktop().catch((e) => {
+                    print(`Exception while updating Desktop after Show Emblems changed: ${e.message}\n${e.stack}`);
+                });
+                return;
+            }
             if (key == 'use-nemo') {
                 this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
                 return;
@@ -104,7 +114,6 @@ var DesktopManager = class {
                 this.doArrangeRadioButtons();
                 if (this.keepStacked) {
                     this.doStacks(true);
-                    return;
                 } else {
                     this.doSorts(true);
                 }
@@ -113,7 +122,6 @@ var DesktopManager = class {
             if (key == 'unstackedtypes') {
                 if (this.keepStacked) {
                     this.doStacks(true);
-                    return;
                 }
                 return;
             }
@@ -121,20 +129,17 @@ var DesktopManager = class {
                 this.keepStacked = Prefs.desktopSettings.get_boolean('keep-stacked');
                 if ( ! this.keepStacked) {
                     this._unstack();
-                    return;
                 } else {
                     this.doStacks(true);
-                    return;
                 }
+                return;
             }
             if (key == 'keep-arranged') {
                 this.keepArranged = Prefs.desktopSettings.get_boolean('keep-arranged');
                 if (this.keepArranged) {
                     this.doSorts(true);
-                    return;
-                } else {
-                    return;
                 }
+                return;
             }
             this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
             this._updateDesktop().catch((e) => {

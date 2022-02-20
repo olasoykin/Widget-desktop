@@ -612,7 +612,7 @@ var desktopIconItem = class desktopIconItem {
         this._copiedPixbuf = false;
         let emblem = null;
         let finalSize = Math.floor(Prefs.get_icon_size() / 3) * scale;
-        if (this._isSymlink) {
+        if (this._isSymlink && this._desktopManager.showLinkEmblem) {
             if (this._isBrokenSymlink)
                 emblem = Gio.ThemedIcon.new('emblem-unreadable');
             else
@@ -623,7 +623,7 @@ var desktopIconItem = class desktopIconItem {
             emblemIcon.composite(pixbuf, pixbuf.width - finalSize, pixbuf.height - finalSize, finalSize, finalSize, pixbuf.width - finalSize, pixbuf.height - finalSize, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255);
         }
 
-        if (this.trustedDesktopFile) {
+        if (this.trustedDesktopFile && this._desktopManager.showExecutableEmblem) {
             pixbuf = this._copyAndResizeIfNeeded(pixbuf);
             let theme = Gtk.IconTheme.get_default();
             emblem = Gio.ThemedIcon.new('emblem-default');

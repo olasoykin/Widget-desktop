@@ -112,6 +112,8 @@ function showPreferences() {
     frame.add(buildSwitcher(desktopSettings, 'show-drop-place', _("Highlight the drop place during Drag'n'Drop")));
     frame.add(buildSwitcher(desktopSettings, 'use-nemo', _("Use Nemo to open folders")));
 
+    frame.add(buildSwitcher(desktopSettings, 'show-link-emblem', _("Add an emblem to soft links")));
+    frame.add(buildSwitcher(desktopSettings, 'show-executable-emblem', _("Add an emblem to .desktop files")));
     frame.add(new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL }));
 
     let nautilusFrame = new Gtk.Frame({ label: _("Settings shared with Nautilus"),
