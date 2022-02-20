@@ -60,6 +60,10 @@ class ManageWindow {
                 this._window.unmake_above();
             }
         }));
+        this._signalIDs.push(window.connect("notify::minimized", () => {
+            this._window.unminimize();
+            global.log("Unminimizing");
+        }));
         this._parseTitle();
     }
 
