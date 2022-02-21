@@ -1,16 +1,16 @@
-# Japanese translation for desktop-icons-ng
-# Copyright (C) 2021 Desktop Icons NG's COPYRIGHT HOLDER
+# Japanese translation for desktop-icons-ng.
+# Copyright (C) 2021-2022 Desktop Icons NG's COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons-ng package.
 # Hayao Yamada <hayao@fascode.net>, 2021.
 # Mitsuya Shibata <mty.shibata@gmail.com>, 2021.
-# sicklylife <translation@sicklylife.jp>, 2021.
+# sicklylife <translation@sicklylife.jp>, 2021-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-21 15:41+0100\n"
-"PO-Revision-Date: 2021-10-15 21:50+0900\n"
+"PO-Revision-Date: 2022-02-21 20:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -105,7 +105,7 @@ msgstr "Desktop Icons の設定"
 
 #: desktopManager.js:1587
 msgid "Arrange Icons"
-msgstr "アイコンの整列"
+msgstr "アイコンを整列"
 
 #: desktopManager.js:1591
 msgid "Arrange By..."
@@ -115,9 +115,10 @@ msgstr "指定して整列..."
 msgid "Keep Arranged..."
 msgstr "整列を維持..."
 
+# デスクトップにあるファイルを疑似フォルダーにまとめる (グループ化する)
 #: desktopManager.js:1604
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "種類ごとに束ねる..."
 
 #: desktopManager.js:1609
 msgid "Sort Home/Drives/Trash..."
@@ -156,13 +157,15 @@ msgstr "すべて開く..."
 msgid "Open"
 msgstr "開く"
 
+# 疑似フォルダーの右クリックメニュー
 #: fileItemMenu.js:116
 msgid "Stack This Type"
-msgstr ""
+msgstr "この種類を束ねる"
 
+# 疑似フォルダーの右クリックメニュー
 #: fileItemMenu.js:116
 msgid "Unstack This Type"
-msgstr ""
+msgstr "この種類を並べる"
 
 #: fileItemMenu.js:128
 msgid "Scripts"
@@ -182,7 +185,7 @@ msgstr "特定のグラフィックカードを使用して起動"
 
 #: fileItemMenu.js:149
 msgid "Run as a program"
-msgstr ""
+msgstr "プログラムとして実行"
 
 #: fileItemMenu.js:157
 msgid "Cut"
@@ -349,7 +352,7 @@ msgstr "ドラッグアンドドロップ中にドロップ先を強調表示す
 
 #: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Nemo を使用してフォルダーを開く"
 
 #: preferences.js:117
 msgid "Settings shared with Nautilus"
@@ -508,29 +511,44 @@ msgid "Icons Arranged by this property"
 msgstr "このプロパティでアイコンを整列させます"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "アイコンの整列を維持する"
+msgstr "アイコンを束ねる"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "常に最後に選択した並び順でアイコンが整列されるようにします"
+msgstr "同じ種類のアイコンを 1 つにまとめてグループ化します"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "束ねないファイルの種類"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "グループ化しない種類の文字列配列です"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Nautilus の代わりに Nemo でフォルダーを開きます。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr "リンクにエンブレムを追加する"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr "ソフトリンクにエンブレムを追加して判別しやすくします。"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Add an emblem to executable .desktop files"
+msgstr "実行可能な .desktop ファイルにエンブレムを追加する"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
+msgid ""
+"Add an emblem to .desktop files that have permission to be launched."
+msgstr "起動する権限のある .desktop ファイルにエンブレムを追加します。"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "“{0}”を実行しますか? それともファイルの内容を表示しますか?"
+#~ msgstr "“{0}”を実行するか内容を表示するか選択してください"
 
 #~ msgid "“{0}” is an executable text file."
 #~ msgstr "“{0}”は実行可能なテキストファイルです。"
@@ -554,22 +572,10 @@ msgstr ""
 #~ msgstr "ファイルの削除中にエラーが発生しました"
 
 #~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "これらのアイテムを完全に削除してもよろしいですか？"
+#~ msgstr "これらのアイテムを完全に削除しますか?"
 
 #~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "アイテムを削除すると、永久に失われます。"
-
-#, fuzzy
-#~ msgid "Show external disk drives in the desktop"
-#~ msgstr "デスクトップにホームフォルダーを表示する"
-
-#, fuzzy
-#~ msgid "Show the external drives"
-#~ msgstr "デスクトップにホームフォルダーを表示する"
-
-#, fuzzy
-#~ msgid "Show network volumes"
-#~ msgstr "“ファイル”で表示する"
+#~ msgstr "ここでアイテムを削除すると元に戻すことはできません。"
 
 #~ msgid "Enter file name…"
 #~ msgstr "ファイル名を入力してください…"
