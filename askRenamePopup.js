@@ -92,9 +92,9 @@ var AskRenamePopup = class {
         if (this._fileItem.fileName == this._textArea.text) {
             return;
         }
-        DBusUtils.NautilusFileOperations2Proxy.RenameURIRemote(
+        DBusUtils.NautilusFileOperations2.proxy.RenameURIRemote(
             this._fileItem.file.get_uri(), this._textArea.text,
-            DBusUtils.NautilusFileOperations2Proxy.platformData(),
+            DBusUtils.NautilusFileOperations2.proxy.platformData(),
             (result, error) => {
                 if (error)
                     throw new Error('Error renaming file: ' + error.message);
