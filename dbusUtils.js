@@ -1,6 +1,6 @@
 /* DING: Desktop Icons New Generation for GNOME Shell
  *
- * Copyright (C) 2019 Sergio Costas (rastersoft@gmail.com)
+ * Copyright (C) 2019-2022 Sergio Costas (rastersoft@gmail.com)
  * Based on code original (C) Carlos Soriano
  *
  * This program is free software: you can redistribute it and/or modify
@@ -275,15 +275,23 @@ class DBusManager {
         if ((interfaceName in DBusInterfaces.DBusInterfaces) && (!forceIntrospection)) {
             return DBusInterfaces.DBusInterfaces[interfaceName];
         } else {
-            let wraper = new Gio.DBusProxy.makeProxyWrapper(DBusInterfaces.DBusInterfaces['org.freedesktop.DBus.Introspectable'])(
-                inSystemBus ? Gio.DBus.system : Gio.DBus.session,
-                serviceName,
-                objectName,
-                null
-            );
-            let data = wraper.IntrospectSync()[0];
+            let data = this.getIntrospectionData(serviceName, objectName, inSystemBus);
             return this._parseXML(data, interfaceName);
         }
+    }
+
+    getIntrospectionData(serviceName, objectName, inSystemBus) {
+        let wraper = new Gio.DBusProxy.makeProxyWrapper(DBusInterfaces.DBusInterfaces['org.freedesktop.DBus.Introspectable'])(
+            inSystemBus ? Gio.DBus.system : Gio.DBus.session,
+            serviceName,
+            objectName,
+            null
+        );
+        let data = wraper.IntrospectSync()[0];
+        if (data.indexOf("interface") == -1) {
+            return null; // if it doesn't exist, return null
+        }
+        return data;
     }
 
     doNotify(header, text) {
@@ -300,15 +308,49 @@ function init() {
 
     dbusManagerObject = new DBusManager();
 
-    // NautilusFileOperations2
-    NautilusFileOperations2 = new ProxyManager(
-        dbusManagerObject,
+    let data = dbusManagerObject.getIntrospectionData(
         'org.gnome.Nautilus',
         '/org/gnome/Nautilus/FileOperations2',
-        'org.gnome.Nautilus.FileOperations2',
-        false,
-        'Nautilus'
-    );
+        false);
+    if (data) {
+        // NautilusFileOperations2
+        NautilusFileOperations2 = new ProxyManager(
+            dbusManagerObject,
+            'org.gnome.Nautilus',
+            '/org/gnome/Nautilus/FileOperations2',
+            'org.gnome.Nautilus.FileOperations2',
+            false,
+            'Nautilus'
+        );
+    } else {
+        print("Emulating NautilusFileOperations2 with the old NautilusFileOperations interface");
+        // Emulate NautilusFileOperations2 with the old interface
+        NautilusFileOperations2 = new ProxyManager(
+            dbusManagerObject,
+            'org.gnome.Nautilus',
+            '/org/gnome/Nautilus',
+            'org.gnome.Nautilus.FileOperations',
+            false,
+            'Nautilus'
+        );
+        NautilusFileOperations2.proxyNoCheck.TrashURIsRemote = (selection, data, cb) => { NautilusFileOperations2.proxyNoCheck.TrashFilesRemote(selection, cb); };
+        NautilusFileOperations2.proxyNoCheck.DeleteURIsRemote = (selection, data, cb) => { NautilusFileOperations2.proxyNoCheck.TrashFilesRemote(selection, cb); };
+        NautilusFileOperations2.proxyNoCheck.RenameURIRemote = (originalName, newName, data, cb) => { NautilusFileOperations2.proxyNoCheck.RenameFileRemote(originalName, newName, cb); };
+        NautilusFileOperations2.proxyNoCheck.oldEmptyTrash = NautilusFileOperations2.proxyNoCheck.EmptyTrashRemote;
+        NautilusFileOperations2.proxyNoCheck.EmptyTrashRemote = (confirmation, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldEmptyTrash(cb); };
+        NautilusFileOperations2.proxyNoCheck.oldCopyURIs = NautilusFileOperations2.proxyNoCheck.CopyURIsRemote;
+        NautilusFileOperations2.proxyNoCheck.CopyURIsRemote = (source, destination, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldCopyURIs(source, destination, cb); };
+        NautilusFileOperations2.proxyNoCheck.oldMoveURIs = NautilusFileOperations2.proxyNoCheck.MoveURIsRemote;
+        NautilusFileOperations2.proxyNoCheck.MoveURIsRemote = (source, destination, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldMoveURIs(source, destination, cb); };
+        NautilusFileOperations2.proxyNoCheck.oldCreateFolder = NautilusFileOperations2.proxyNoCheck.CreateFolderRemote;
+        NautilusFileOperations2.proxyNoCheck.CreateFolderRemote = (parent, folderName, data, cb) => {
+            NautilusFileOperations2.proxyNoCheck.oldCreateFolder(GLib.build_filenamev([parent, folderName]), cb);
+        }
+        NautilusFileOperations2.proxyNoCheck.oldUndo = NautilusFileOperations2.proxyNoCheck.UndoRemote;
+        NautilusFileOperations2.proxyNoCheck.UndoRemote = (data, cb) => { NautilusFileOperations2.proxyNoCheck.oldUndo(cb); };
+        NautilusFileOperations2.proxyNoCheck.oldRedo = NautilusFileOperations2.proxyNoCheck.RedoRemote;
+        NautilusFileOperations2.proxyNoCheck.RedoRemote = (data, cb) => { NautilusFileOperations2.proxyNoCheck.oldRedo(cb); };
+    }
 
     NautilusFileOperations2.proxyNoCheck.platformData = () => {
         let parentWindow = Gtk.get_current_event().get_window();
