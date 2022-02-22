@@ -633,6 +633,9 @@ var DesktopManager = class {
                 });
             } else {
                 clipboard.request_text((clipboard, text) => {
+                    if (text && !text.endsWith('\n')) {
+                        text += '\n';
+                    }
                     this._setClipboardContent(text);
                 });
             }
