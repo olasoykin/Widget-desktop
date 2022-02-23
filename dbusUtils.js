@@ -16,13 +16,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const { Gio, GLib, Gtk } = imports.gi;
 const ByteArray = imports.byteArray;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const DBusInterfaces = imports.dbusInterfaces;
-
 var NautilusFileOperations2 = null;
 var FreeDesktopFileManager = null;
 var GnomeNautilusPreview = null;
@@ -32,6 +29,7 @@ var GtkVfsMetadata = null;
 
 var discreteGpuAvailable = false;
 var dbusManagerObject;
+var RemoteFileOperations;
 
 const Gettext = imports.gettext.domain('ding');
 
@@ -304,6 +302,332 @@ class DBusManager {
 }
 Signals.addSignalMethods(DBusManager.prototype);
 
+
+class DbusOperationsManager {
+    constructor(FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager) {
+        this.freeDesktopFileManager = FreeDesktopFileManager.proxy;
+        this.gnomeNautilusPreviewManager = GnomeNautilusPreview.proxy;
+        this.gnomeArchiveManager = GnomeArchiveManager.proxy;
+    }
+
+    ShowItemPropertiesRemote(selection, callback=null) {
+        this.freeDesktopFileManager.ShowItemPropertiesRemote(selection, '',
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    log('Error showing properties: ' + error.message);
+                }
+            }
+        );
+    }
+
+    ShowItemsRemote(showInFilesList, callback=null) {
+        this.freeDesktopFileManager.ShowItemsRemote(showInFilesList, '',
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    log('Error showing file on desktop: ' + error.message);
+                }
+            }
+        );
+    }
+
+    ShowFileRemote(uri, integer, boolean, callback=null) {
+        this.gnomeNautilusPreviewManager.ShowFileRemote(uri, integer, boolean);
+        if (callback) {
+            callback();
+        }
+    }
+
+    ExtractRemote(extractFileItem, folder, boolean, callback=null) {
+        this.gnomeArchiveManager.ExtractRemote(extractFileItem, folder, true,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error extracting files: ' + error.message);
+                }
+        });
+    }
+
+    CompressRemote(compressFileItems, folder, boolean, callback=null) {
+        this.gnomeArchiveManager.CompressRemote(compressFileItems, folder, boolean,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error compressing files: ' + error.message);
+                }
+            }
+        );
+    }
+}
+
+
+class RemoteFileOperationsManager extends DbusOperationsManager {
+    constructor(fileOperationsManager, FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager) {
+        super(FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager);
+        this.fileOperationsManager = fileOperationsManager.proxy;
+        this._createPlatformData();
+    }
+
+    _createPlatformData() {
+        this.platformData = this.fileOperationsManager.platformData = () => {
+            let parentWindow = Gtk.get_current_event().get_window();
+
+            let parentHandle = '';
+            if (parentWindow) {
+                try {
+                    imports.gi.versions.GdkX11 = '3.0';
+                    const { GdkX11 } = imports.gi;
+                    const topLevel = parentWindow.get_effective_toplevel();
+
+                    if (topLevel.constructor.$gtype === GdkX11.X11Window.$gtype) {
+                        const xid = GdkX11.X11Window.prototype.get_xid.call(topLevel);
+                        parentHandle = `x11:${xid}`;
+                    } /* else if (topLevel instanceof GdkWayland.Toplevel) {
+                        FIXME: Need Gtk4 to use GdkWayland
+                        const handle = GdkWayland.Toplevel.prototype.export_handle.call(topLevel);
+                        parentHandle = `wayland:${handle}`;
+                    } */
+                    } catch (e) {
+                        logError(e, 'Impossible to determine the parent window');
+                }
+            }
+
+            return {
+                'parent-handle': new GLib.Variant('s', parentHandle),
+                'timestamp': new GLib.Variant('u', Gtk.get_current_event_time()),
+                'window-position': new GLib.Variant('s', 'center'),
+            };
+        }
+    }
+
+    MoveURIsRemote(fileList, uri, callback) {
+        this.fileOperationsManager.MoveURIsRemote(
+            fileList,
+            uri,
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error moving files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    CopyURIsRemote(fileList, uri, callback=null) {
+        this.fileOperationsManager.CopyURIsRemote(
+            fileList,
+            uri,
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error copying files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    TrashURIsRemote(fileList, callback=null) {
+        this.fileOperationsManager.TrashURIsRemote(
+            fileList,
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error moving files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    DeleteURIsRemote(fileList, callback=null) {
+        this.fileOperationsManager.DeleteURIsRemote(
+            fileList,
+            this.platformData(),
+            (source, error) => {
+                if (callback) {
+                    callback(source, error);
+                }
+                if (error) {
+                    throw new Error('Error deleting files on the desktop: ' + error.message);
+                }
+            }
+        );
+    }
+
+    EmptyTrashRemote(askConfirmation, callback=null) {
+        this.fileOperationsManager.EmptyTrashRemote(
+            askConfirmation,
+            this.platformData(),
+            (source, error) => {
+                if (callback) {
+                    callback(source, error);
+                }
+                if (error) {
+                    throw new Error('Error trashing files on the desktop: ' + error.message);
+                }
+            }
+        );
+    }
+
+    UndoRemote(callback=null) {
+       this.fileOperationsManager.UndoRemote(
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error performing undo: ' + error.message);
+                }
+            }
+        );
+    }
+
+    RedoRemote(callback=null) {
+       this.fileOperationsManager.RedoRemote(
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error performing redo: ' + error.message);
+                }
+            }
+        );
+    }
+
+    UndoStatus() {
+        return this.fileOperationsManager.UndoStatus;
+    }
+}
+
+
+class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
+    constructor(fileOperationsManager, FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager) {
+        super(FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager);
+        this.fileOperationsManager = fileOperationsManager.proxy;
+    }
+
+    MoveURIsRemote(fileList, uri, callback) {
+        this.fileOperationsManager.MoveURIsRemote(
+            fileList,
+            uri,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error moving files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    CopyURIsRemote(fileList, uri, callback=null) {
+        this.fileOperationsManager.CopyURIsRemote(
+            fileList,
+            uri,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error copying files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    TrashURIsRemote(fileList, callback=null) {
+        this.fileOperationsManager.TrashFilesRemote(
+            fileList,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error moving files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    DeleteURIsRemote(fileList, callback=null) {
+        this.fileOperationsManager.TrashFilesRemote(
+            fileList,
+            (source, error) => {
+                this.EmptyTrashRemote(true);
+                if (callback) {
+                    callback(source, error);
+                }
+                if (error) {
+                    throw new Error('Error deleting files on the desktop: ' + error.message);
+                }
+            }
+        );
+    }
+
+    EmptyTrashRemote(callback=null) {
+        this.fileOperationsManager.EmptyTrashRemote(
+            (source, error) => {
+                if (error) {
+                    if (callback) {
+                        callback(source, error);
+                    }
+                    throw new Error('Error trashing files on the desktop: ' + error.message);
+                }
+            }
+        );
+    }
+
+    UndoRemote(callback=null) {
+       this.fileOperationsManager.UndoRemote(
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (result, error) {
+                    throw new Error('Error performing undo: ' + error.message);
+                }
+            }
+        );
+    }
+
+    RedoRemote(callback=null) {
+       this.fileOperationsManager.RedoRemote(
+            (result, error) => {
+                if (callback) { callback(result, error); }
+                if (result, error) {
+                    throw new Error('Error performing redo: ' + error.message);
+                }
+            }
+        );
+    }
+
+    UndoStatus() {
+        return this.fileOperationsManager.UndoStatus;
+    }
+}
+
+
 function init() {
 
     dbusManagerObject = new DBusManager();
@@ -312,6 +636,7 @@ function init() {
         'org.gnome.Nautilus',
         '/org/gnome/Nautilus/FileOperations2',
         false);
+
     if (data) {
         // NautilusFileOperations2
         NautilusFileOperations2 = new ProxyManager(
@@ -333,53 +658,6 @@ function init() {
             false,
             'Nautilus'
         );
-        NautilusFileOperations2.proxyNoCheck.TrashURIsRemote = (selection, data, cb) => { NautilusFileOperations2.proxyNoCheck.TrashFilesRemote(selection, cb); };
-        NautilusFileOperations2.proxyNoCheck.DeleteURIsRemote = (selection, data, cb) => { NautilusFileOperations2.proxyNoCheck.TrashFilesRemote(selection, cb); };
-        NautilusFileOperations2.proxyNoCheck.RenameURIRemote = (originalName, newName, data, cb) => { NautilusFileOperations2.proxyNoCheck.RenameFileRemote(originalName, newName, cb); };
-        NautilusFileOperations2.proxyNoCheck.oldEmptyTrash = NautilusFileOperations2.proxyNoCheck.EmptyTrashRemote;
-        NautilusFileOperations2.proxyNoCheck.EmptyTrashRemote = (confirmation, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldEmptyTrash(cb); };
-        NautilusFileOperations2.proxyNoCheck.oldCopyURIs = NautilusFileOperations2.proxyNoCheck.CopyURIsRemote;
-        NautilusFileOperations2.proxyNoCheck.CopyURIsRemote = (source, destination, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldCopyURIs(source, destination, cb); };
-        NautilusFileOperations2.proxyNoCheck.oldMoveURIs = NautilusFileOperations2.proxyNoCheck.MoveURIsRemote;
-        NautilusFileOperations2.proxyNoCheck.MoveURIsRemote = (source, destination, data, cb) => { NautilusFileOperations2.proxyNoCheck.oldMoveURIs(source, destination, cb); };
-        NautilusFileOperations2.proxyNoCheck.oldCreateFolder = NautilusFileOperations2.proxyNoCheck.CreateFolderRemote;
-        NautilusFileOperations2.proxyNoCheck.CreateFolderRemote = (parent, folderName, data, cb) => {
-            NautilusFileOperations2.proxyNoCheck.oldCreateFolder(GLib.build_filenamev([parent, folderName]), cb);
-        }
-        NautilusFileOperations2.proxyNoCheck.oldUndo = NautilusFileOperations2.proxyNoCheck.UndoRemote;
-        NautilusFileOperations2.proxyNoCheck.UndoRemote = (data, cb) => { NautilusFileOperations2.proxyNoCheck.oldUndo(cb); };
-        NautilusFileOperations2.proxyNoCheck.oldRedo = NautilusFileOperations2.proxyNoCheck.RedoRemote;
-        NautilusFileOperations2.proxyNoCheck.RedoRemote = (data, cb) => { NautilusFileOperations2.proxyNoCheck.oldRedo(cb); };
-    }
-
-    NautilusFileOperations2.proxyNoCheck.platformData = () => {
-        let parentWindow = Gtk.get_current_event().get_window();
-
-        let parentHandle = '';
-        if (parentWindow) {
-            try {
-                imports.gi.versions.GdkX11 = '3.0';
-                const { GdkX11 } = imports.gi;
-                const topLevel = parentWindow.get_effective_toplevel();
-
-                if (topLevel.constructor.$gtype === GdkX11.X11Window.$gtype) {
-                    const xid = GdkX11.X11Window.prototype.get_xid.call(topLevel);
-                    parentHandle = `x11:${xid}`;
-                } /* else if (topLevel instanceof GdkWayland.Toplevel) {
-                    FIXME: Need Gtk4 to use GdkWayland
-                    const handle = GdkWayland.Toplevel.prototype.export_handle.call(topLevel);
-                    parentHandle = `wayland:${handle}`;
-                } */
-                } catch (e) {
-                logError(e, 'Impossible to determine the parent window');
-            }
-        }
-
-        return {
-            'parent-handle': new GLib.Variant('s', parentHandle),
-            'timestamp': new GLib.Variant('u', Gtk.get_current_event_time()),
-            'window-position': new GLib.Variant('s', 'center'),
-        };
     }
 
     FreeDesktopFileManager = new ProxyManager(
@@ -430,4 +708,10 @@ function init() {
     SwitcherooControl.connect('changed-status', (obj, newStatus) => {
         discreteGpuAvailable = newStatus;
     });
+
+    if (data) {
+        RemoteFileOperations = new RemoteFileOperationsManager(NautilusFileOperations2, FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager);
+    } else {
+         RemoteFileOperations = new LegacyRemoteFileOperationsManager(NautilusFileOperations2, FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager);
+    }
 }

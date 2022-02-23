@@ -291,12 +291,7 @@ var FileItemMenu = class {
 
     _onPropertiesClicked() {
         let propertiesFileList = this._desktopManager.getCurrentSelection(true);
-        DBusUtils.FreeDesktopFileManager.proxy.ShowItemPropertiesRemote(propertiesFileList, '',
-            (result, error) => {
-                if (error)
-                    log('Error showing properties: ' + error.message);
-            }
-        );
+        DBusUtils.RemoteFileOperations.ShowItemPropertiesRemote(propertiesFileList);
     }
 
     _onShowInFilesClicked() {
@@ -311,12 +306,7 @@ var FileItemMenu = class {
                 log(`Error trying to launch Nemo: ${err.message}\n${err}`);
             }
         }
-        DBusUtils.FreeDesktopFileManager.proxy.ShowItemsRemote(showInFilesList, '',
-            (result, error) => {
-                if (error)
-                    log('Error showing file on desktop: ' + error.message);
-            }
-        );
+        DBusUtils.RemoteFileOperations.ShowItemsRemote(showInFilesList);
     }
 
     _doMultiOpen() {
@@ -362,12 +352,7 @@ var FileItemMenu = class {
         }
         if (extractHere) {
             folder = DesktopIconsUtil.getDesktopDir().get_uri();
-            DBusUtils.GnomeArchiveManager.proxy.ExtractRemote(extractFileItem, folder, true,
-                (result, error) => {
-                    if (error) {
-                        throw new Error('Error extracting files: ' + error.message);
-                    }
-            });
+            DBusUtils.RemoteFileOperations.ExtractRemote(extractFileItem, folder, true);
         } else {
             let dialog = new Gtk.FileChooserDialog({title: _('Select Extract Destination')});
             dialog.set_action(Gtk.FileChooserAction.SELECT_FOLDER);
@@ -384,12 +369,7 @@ var FileItemMenu = class {
                 if (response === Gtk.ResponseType.ACCEPT) {
                     folder = dialog.get_uri();
                     if (folder) {
-                        DBusUtils.GnomeArchiveManager.proxy.ExtractRemote(extractFileItem, folder, true,
-                            (result, error) => {
-                                if (error) {
-                                    throw new Error('Error extracting files: ' + error.message);
-                                }
-                        });
+                        DBusUtils.RemoteFileOperations.ExtractRemote(extractFileItem, folder, true);
                     }
                 }
                 dialog.destroy();
@@ -427,13 +407,7 @@ var FileItemMenu = class {
         this._desktopManager.unselectAll();
         let desktopFolder = DesktopIconsUtil.getDesktopDir().get_uri();
         if (desktopFolder) {
-            DBusUtils.GnomeArchiveManager.proxy.CompressRemote(compressFileItems, desktopFolder, true,
-                (result, error) => {
-                    if (error) {
-                        throw new Error('Error compressing files: ' + error.message);
-                    }
-                }
-            );
+            DBusUtils.RemoteFileOperations.CompressRemote(compressFileItems, desktopFolder, true);
         }
     }
 
@@ -443,15 +417,7 @@ var FileItemMenu = class {
         clickedItem.removeFromGrid(true);
         let newFolder = this._desktopManager.doNewFolder(position);
         if (newFolder) {
-            DBusUtils.NautilusFileOperations2.proxy.MoveURIsRemote(
-                newFolderFileItems, newFolder,
-                DBusUtils.NautilusFileOperations2.proxy.platformData(),
-                (result, error) => {
-                    if (error) {
-                        throw new Error('Error moving files: ' + error.message);
-                    }
-                }
-            );
+            DBusUtils.RemoteFileOperations.MoveURIsRemote(newFolderFileItems, newFolder);
         }
     }
 }
