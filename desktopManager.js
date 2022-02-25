@@ -690,7 +690,7 @@ var DesktopManager = class {
             return true;
         } else if (isAlt && (symbol == Gdk.KEY_Return)) {
             let selection = this.getCurrentSelection(true);
-            DBusUtils.RemoteFileOperations.ShowItemPropertiesRemote(selection);
+            DBusUtils.RemoteFileOperations.ShowItemPropertiesRemote(selection, event.get_time());
             return true;
         } else if (symbol == Gdk.KEY_Return) {
             if (selection && (selection.length == 1)) {
