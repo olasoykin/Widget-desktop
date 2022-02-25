@@ -305,13 +305,13 @@ Signals.addSignalMethods(DBusManager.prototype);
 
 class DbusOperationsManager {
     constructor(FreeDesktopFileManager, GnomeNautilusPreview, GnomeArchiveManager) {
-        this.freeDesktopFileManager = FreeDesktopFileManager.proxy;
-        this.gnomeNautilusPreviewManager = GnomeNautilusPreview.proxy;
-        this.gnomeArchiveManager = GnomeArchiveManager.proxy;
+        this.freeDesktopFileManager = FreeDesktopFileManager;
+        this.gnomeNautilusPreviewManager = GnomeNautilusPreview;
+        this.gnomeArchiveManager = GnomeArchiveManager;
     }
 
     ShowItemPropertiesRemote(selection, callback=null) {
-        this.freeDesktopFileManager.ShowItemPropertiesRemote(selection, '',
+        this.freeDesktopFileManager.proxy.ShowItemPropertiesRemote(selection, '',
             (result, error) => {
                 if (callback) {
                     callback(result, error);
@@ -324,7 +324,7 @@ class DbusOperationsManager {
     }
 
     ShowItemsRemote(showInFilesList, callback=null) {
-        this.freeDesktopFileManager.ShowItemsRemote(showInFilesList, '',
+        this.freeDesktopFileManager.proxy.ShowItemsRemote(showInFilesList, '',
             (result, error) => {
                 if (callback) {
                     callback(result, error);
@@ -337,14 +337,14 @@ class DbusOperationsManager {
     }
 
     ShowFileRemote(uri, integer, boolean, callback=null) {
-        this.gnomeNautilusPreviewManager.ShowFileRemote(uri, integer, boolean);
+        this.gnomeNautilusPreviewManager.proxy.ShowFileRemote(uri, integer, boolean);
         if (callback) {
             callback();
         }
     }
 
     ExtractRemote(extractFileItem, folder, boolean, callback=null) {
-        this.gnomeArchiveManager.ExtractRemote(extractFileItem, folder, true,
+        this.gnomeArchiveManager.proxy.ExtractRemote(extractFileItem, folder, true,
             (result, error) => {
                 if (callback) {
                     callback(result, error);
@@ -356,7 +356,7 @@ class DbusOperationsManager {
     }
 
     CompressRemote(compressFileItems, folder, boolean, callback=null) {
-        this.gnomeArchiveManager.CompressRemote(compressFileItems, folder, boolean,
+        this.gnomeArchiveManager.proxy.CompressRemote(compressFileItems, folder, boolean,
             (result, error) => {
                 if (callback) {
                     callback(result, error);
