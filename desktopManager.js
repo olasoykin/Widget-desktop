@@ -907,6 +907,10 @@ var DesktopManager = class {
 
         this._menu.add(new Gtk.SeparatorMenuItem());
 
+        this._settingsMenuItem = new Gtk.MenuItem({ label: _("Desktop Icons Settings") });
+        this._settingsMenuItem.connect("activate", () => Prefs.showPreferences());
+        this._menu.add(this._settingsMenuItem);
+
         this._displaySettingsMenuItem = new Gtk.MenuItem({label: _("Display Settings")});
         this._displaySettingsMenuItem.connect("activate", () => {
             let desktopFile = Gio.DesktopAppInfo.new('gnome-display-panel.desktop');
@@ -914,9 +918,6 @@ var DesktopManager = class {
         });
         this._menu.add(this._displaySettingsMenuItem);
 
-        this._settingsMenuItem = new Gtk.MenuItem({label: _("Desktop Icons Settings")});
-        this._settingsMenuItem.connect("activate", () => Prefs.showPreferences());
-        this._menu.add(this._settingsMenuItem);
         this._menu.show_all();
     }
 
