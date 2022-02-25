@@ -291,7 +291,8 @@ var FileItemMenu = class {
 
     _onPropertiesClicked() {
         let propertiesFileList = this._desktopManager.getCurrentSelection(true);
-        DBusUtils.RemoteFileOperations.ShowItemPropertiesRemote(propertiesFileList);
+        const timestamp = Gtk.get_current_event_time();
+        DBusUtils.RemoteFileOperations.ShowItemPropertiesRemote(propertiesFileList, timestamp);
     }
 
     _onShowInFilesClicked() {
@@ -306,7 +307,8 @@ var FileItemMenu = class {
                 log(`Error trying to launch Nemo: ${err.message}\n${err}`);
             }
         }
-        DBusUtils.RemoteFileOperations.ShowItemsRemote(showInFilesList);
+        const timestamp = Gtk.get_current_event_time();
+        DBusUtils.RemoteFileOperations.ShowItemsRemote(showInFilesList, timestamp);
     }
 
     _doMultiOpen() {

@@ -16,7 +16,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { Gio, GLib, Gtk } = imports.gi;
+const { Gio, GLib, Gdk, Gtk } = imports.gi;
 const ByteArray = imports.byteArray;
 const Signals = imports.signals;
 const DBusInterfaces = imports.dbusInterfaces;
@@ -310,8 +310,9 @@ class DbusOperationsManager {
         this.gnomeArchiveManager = GnomeArchiveManager;
     }
 
-    ShowItemPropertiesRemote(selection, callback=null) {
-        this.freeDesktopFileManager.proxy.ShowItemPropertiesRemote(selection, '',
+    ShowItemPropertiesRemote(selection, timestamp, callback=null) {
+        this.freeDesktopFileManager.proxy.ShowItemPropertiesRemote(selection,
+            this._getStartupId(selection, timestamp),
             (result, error) => {
                 if (callback) {
                     callback(result, error);
@@ -323,8 +324,9 @@ class DbusOperationsManager {
         );
     }
 
-    ShowItemsRemote(showInFilesList, callback=null) {
-        this.freeDesktopFileManager.proxy.ShowItemsRemote(showInFilesList, '',
+    ShowItemsRemote(showInFilesList, timestamp, callback=null) {
+        this.freeDesktopFileManager.proxy.ShowItemsRemote(showInFilesList,
+            this._getStartupId(showInFilesList, timestamp),
             (result, error) => {
                 if (callback) {
                     callback(result, error);
@@ -366,6 +368,20 @@ class DbusOperationsManager {
                 }
             }
         );
+    }
+
+    _getStartupId(fileUris, timestamp) {
+        if (!timestamp)
+            return '';
+
+        const context = Gdk.Display.get_default().get_app_launch_context();
+        context.set_timestamp(timestamp);
+
+        if (!this._fileManager)
+            this._fileManager = Gio.File.new_for_path('/').query_default_handler(null);
+
+        return context.get_startup_notify_id(this._fileManager,
+            fileUris.map(uri => Gio.File.new_for_uri(uri)));
     }
 }
 
