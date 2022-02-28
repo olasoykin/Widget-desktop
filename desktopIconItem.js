@@ -238,13 +238,37 @@ var desktopIconItem = class desktopIconItem {
     _setLabelName(text) {
         this._currentFileName = text;
         this._eventBox.set_tooltip_text(text);
-        // Add an invisible space after any of these characters
-        // to ensure that the label can be split correctly in
-        // several lines.
-        for (let character of ".,-_@:") {
-            text = text.split(character).join(character + '\u200B');
+        let lastCutPos = -1;
+        let newText = '';
+        for (let pos=0; pos < text.length; pos++) {
+            let character = text[pos];
+            newText += character;
+            if (pos < (text.length - 1)) {
+                var nextChar = text[pos+1]
+            } else {
+                var nextChar = '';
+            }
+            if (character == ' ') {
+                lastCutPos = pos;
+            }
+            if (['.',',','-','_','@',':'].includes(character)) {
+                /* if the next character is already an space or this is the last
+                 * character, the string will be naturally cut here, so we do
+                 * nothing.
+                 */
+                if ((nextChar == ' ') || (nextChar == '')) {
+                    continue;
+                }
+                /* if there is a cut element in the last four previous characters,
+                 * do not add a new cut element.
+                 */
+                if ((lastCutPos > -1) && ((pos - lastCutPos) < 4)) {
+                    continue;
+                }
+                newText += '\u200B';
+            }
         }
-        this._label.label = text;
+        this._label.label = newText;
     }
 
     /***********************
