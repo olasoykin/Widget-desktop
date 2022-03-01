@@ -114,8 +114,13 @@ function showPreferences() {
 
     frame.add(buildSwitcher(desktopSettings, 'show-link-emblem', _("Add an emblem to soft links")));
     frame.add(buildSwitcher(desktopSettings, 'show-executable-emblem', _("Add an emblem to .desktop files")));
+
+    frame.add(buildSwitcher(desktopSettings, 'dark-text-in-labels', _("Use dark text in icon labels")));
+
     frame.add(new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL }));
 
+
+    // Nautilus options
     let nautilusFrame = new Gtk.Frame({ label: _("Settings shared with Nautilus"),
                                         shadow_type: Gtk.ShadowType.ETCHED_IN });
     let nautilusBox = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL, margin: 5, spacing: 10});

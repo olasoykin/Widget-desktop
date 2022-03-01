@@ -116,7 +116,11 @@ var desktopIconItem = class desktopIconItem {
         this._label = new Gtk.Label();
         this._labelContainer = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL, halign: Gtk.Align.CENTER});
         let labelStyleContext = this._label.get_style_context();
-        labelStyleContext.add_class('file-label');
+        if (this._desktopManager.darkText) {
+            labelStyleContext.add_class('file-label-dark');
+        } else {
+            labelStyleContext.add_class('file-label');
+        }
         this._label.set_ellipsize(Pango.EllipsizeMode.END);
         this._label.set_line_wrap(true);
         this._label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);
