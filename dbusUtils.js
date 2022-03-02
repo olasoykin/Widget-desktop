@@ -457,6 +457,22 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
         );
     }
 
+    RenameURIRemote(fileList, uri, callback=null) {
+        this.fileOperationsManager.RenameURIRemote(
+            fileList,
+            uri,
+            this.platformData(),
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error copying files: ' + error.message);
+                }
+            }
+        );
+    }
+
     TrashURIsRemote(fileList, callback=null) {
         this.fileOperationsManager.TrashURIsRemote(
             fileList,
@@ -567,6 +583,21 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                 }
                 if (error) {
                     throw new Error('Error copying files: ' + error.message);
+                }
+            }
+        );
+    }
+
+    RenameURIRemote(fileList, uri, callback=null) {
+        this.fileOperationsManager.RenameFileRemote(
+            fileList,
+            uri,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    throw new Error('Error renaming files: ' + error.message);
                 }
             }
         );
