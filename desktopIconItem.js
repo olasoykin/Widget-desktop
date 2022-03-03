@@ -439,7 +439,9 @@ var desktopIconItem = class desktopIconItem {
         }
         widget.drag_source_set_target_list(targets);
         widget.connect('drag-begin', (widget, context) => {
-            let surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, this.container.get_allocated_width(), this.container.get_allocated_height());
+            const scale = this._icon.get_scale_factor();
+            let surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, this.container.get_allocated_width() * scale, this.container.get_allocated_height() * scale);
+            surf.setDeviceScale(scale, scale);
             let cr = new Cairo.Context(surf);
             this.container.draw(cr);
             let itemnumber = this._desktopManager.getNumberOfSelectedItems();
