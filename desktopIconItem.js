@@ -128,7 +128,7 @@ var desktopIconItem = class desktopIconItem {
         this._sheildLabelEventBox.add(this._labelEventBox);
 
         this.container.pack_start(this._sheildEventBox, false, false, 0);
-        this.container.pack_start(this._sheildLabelEventBox, false, false, 2);
+        this.container.pack_start(this._sheildLabelEventBox, false, false, 0);
 
         this._styleContext = this._iconContainer.get_style_context();
         this._labelStyleContext = this._labelContainer.get_style_context();
