@@ -100,5 +100,10 @@
         <summary>Add an emblem to executable .desktop files</summary>
         <description>Add an emblem to .desktop files that have permission to be launched.</description>
     </key>
+    <key type="b" name="dark-text-in-labels">
+        <default>false</default>
+        <summary>Use black for label text</summary>
+        <description>Paint the label text in black instead of white. Useful when using light backgrounds.</description>
+    </key>
     </schema>
 </schemalist>
