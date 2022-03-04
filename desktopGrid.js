@@ -193,6 +193,7 @@ var DesktopGrid = class {
     }
 
     updateGridRectangle() {
+        this.scale = this._window.get_scale_factor();
         this.gridGlobalRectangle.x = this._x + this._marginLeft;
         this.gridGlobalRectangle.y = this._y + this._marginTop;
         this.gridGlobalRectangle.width = (this._width*this.scale) - this._marginLeft - this._marginRight;
