@@ -653,7 +653,7 @@ var desktopIconItem = class desktopIconItem {
             emblemIcon.composite(pixbuf, pixbuf.width - finalSize, pixbuf.height - finalSize, finalSize, finalSize, pixbuf.width - finalSize, pixbuf.height - finalSize, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255);
         }
 
-        if (this._isSymlink && this._desktopManager.showLinkEmblem) {
+        if (this._isSymlink && (this._desktopManager.showLinkEmblem || this._isBrokenSymlink)) {
             if (this._isBrokenSymlink)
                 emblem = Gio.ThemedIcon.new('emblem-unreadable');
             else
