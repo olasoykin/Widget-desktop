@@ -644,6 +644,15 @@ var desktopIconItem = class desktopIconItem {
         this._copiedPixbuf = false;
         let emblem = null;
         let finalSize = Math.floor(Prefs.get_icon_size() / 3) * scale;
+
+        if (this._isDesktopFile && ! this._isValidDesktopFile) {
+            emblem = Gio.ThemedIcon.new('emblem-unreadable');
+            pixbuf = this._copyAndResizeIfNeeded(pixbuf);
+            let theme = Gtk.IconTheme.get_default();
+            let emblemIcon = theme.lookup_by_gicon_for_scale(emblem, finalSize / scale, scale, Gtk.IconLookupFlags.FORCE_SIZE).load_icon();
+            emblemIcon.composite(pixbuf, pixbuf.width - finalSize, pixbuf.height - finalSize, finalSize, finalSize, pixbuf.width - finalSize, pixbuf.height - finalSize, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255);
+        }
+
         if (this._isSymlink && this._desktopManager.showLinkEmblem) {
             if (this._isBrokenSymlink)
                 emblem = Gio.ThemedIcon.new('emblem-unreadable');
