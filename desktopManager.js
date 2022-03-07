@@ -865,6 +865,7 @@ var DesktopManager = class {
 
     _createDesktopBackgroundMenu() {
         this._menu = new Gtk.Menu();
+        this._menu.get_style_context().add_class("desktopmenu");
         let newFolder = new Gtk.MenuItem({label: _("New Folder")});
         newFolder.connect("activate", () => this.doNewFolder());
         this._menu.add(newFolder);
