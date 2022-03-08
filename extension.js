@@ -512,6 +512,9 @@ var LaunchSubprocess = class {
     }
 
     read_output() {
+        if (!this._dataInputStream) {
+            return;
+        }
         this._dataInputStream.read_line_async(GLib.PRIORITY_DEFAULT, this.cancellable, (object, res) => {
             try {
                 const [output, length] = object.read_line_finish_utf8(res);
