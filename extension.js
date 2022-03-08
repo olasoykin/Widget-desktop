@@ -315,6 +315,7 @@ function killCurrentProcess() {
 
     // kill the desktop program. It will be reloaded automatically.
     if (data.currentProcess && data.currentProcess.subprocess) {
+        data.currentProcess.cancellable.cancel();
         data.currentProcess.subprocess.send_signal(15);
     }
 }
@@ -464,6 +465,7 @@ var LaunchSubprocess = class {
         this._cmd_parameter = cmd_parameter;
         this._UUID = null;
         this._flags = flags | Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_MERGE;
+        this.cancellable = new Gio.Cancellable();
         this._launcher = new Gio.SubprocessLauncher({flags: this._flags});
         if (Meta.is_wayland_compositor()) {
             this._waylandClient = Meta.WaylandClient.new(this._launcher);
@@ -493,18 +495,12 @@ var LaunchSubprocess = class {
                  * have any error from the desktop app in the same journal than other extensions. Every line from
                  * the desktop program is prepended with the "process_id" parameter sent in the constructor.
                  */
-            this.subprocess.communicate_utf8_async(null, null, (object, res) => {
-                try {
-                    let [d, stdout, stderr] = object.communicate_utf8_finish(res);
-                    if (stdout.length != 0) {
-                        global.log(`${this._process_id}: ${stdout}`);
-                    }
-                } catch(e) {
-                    global.log(`${this._process_id}_Error: ${e}`);
-                }
-            });
-            this.subprocess.wait_async(null, () => {
+            this._dataInputStream = Gio.DataInputStream.new(this.subprocess.get_stdout_pipe());
+            this.read_output();
+            this.subprocess.wait_async(this.cancellable, () => {
                 this.process_running = false;
+                this._dataInputStream = null;
+                this.cancellable = null;
             });
             this.process_running = true;
         }
@@ -513,6 +509,23 @@ var LaunchSubprocess = class {
 
     set_cwd(cwd) {
         this._launcher.set_cwd (cwd);
+    }
+
+    read_output() {
+        this._dataInputStream.read_line_async(GLib.PRIORITY_DEFAULT, this.cancellable, (object, res) => {
+            try {
+                const [output, length] = object.read_line_finish_utf8(res);
+                if (length)
+                    print(`${this._process_id}: ${output}`);
+            } catch (e) {
+                if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED))
+                    return;
+
+                logError(e, `${this._process_id}_Error`);
+            }
+
+            this.read_output();
+        });
     }
 
     /**
