@@ -17,6 +17,7 @@
 
 const DBusUtils = imports.dbusUtils;
 const GLib = imports.gi.GLib;
+const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 
@@ -321,6 +322,8 @@ var FileItemMenu = class {
     _doOpenWith() {
         let fileItems = this._desktopManager.getCurrentSelection(false);
         if (fileItems) {
+            const context = Gdk.Display.get_default().get_app_launch_context();
+            context.set_timestamp(Gtk.get_current_event_time());
             let mimetype = Gio.content_type_guess(fileItems[0].fileName, null)[0];
             let chooser = Gtk.AppChooserDialog.new_for_content_type(null,
                                                                     Gtk.DialogFlags.MODAL + Gtk.DialogFlags.USE_HEADER_BAR,
@@ -337,7 +340,7 @@ var FileItemMenu = class {
                         for (let item of fileItems) {
                             fileList.push(item.file);
                         }
-                        appInfo.launch(fileList, null);
+                        appInfo.launch(fileList, context);
                     }
                 }
                 chooser.hide();

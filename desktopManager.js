@@ -910,7 +910,9 @@ var DesktopManager = class {
         this._changeBackgroundMenuItem = new Gtk.MenuItem({label: _("Change Background…")});
         this._changeBackgroundMenuItem.connect("activate", () => {
             let desktopFile = Gio.DesktopAppInfo.new('gnome-background-panel.desktop');
-            desktopFile.launch([], null);
+            const context = Gdk.Display.get_default().get_app_launch_context();
+            context.set_timestamp(Gtk.get_current_event_time());
+            desktopFile.launch([], context);
         });
         this._menu.add(this._changeBackgroundMenuItem);
 
@@ -923,7 +925,9 @@ var DesktopManager = class {
         this._displaySettingsMenuItem = new Gtk.MenuItem({label: _("Display Settings")});
         this._displaySettingsMenuItem.connect("activate", () => {
             let desktopFile = Gio.DesktopAppInfo.new('gnome-display-panel.desktop');
-            desktopFile.launch([], null);
+            const context = Gdk.Display.get_default().get_app_launch_context();
+            context.set_timestamp(Gtk.get_current_event_time());
+            desktopFile.launch([], context);
         });
         this._menu.add(this._displaySettingsMenuItem);
 
@@ -939,8 +943,10 @@ var DesktopManager = class {
     }
 
     _onOpenDesktopInFilesClicked() {
+        const context = Gdk.Display.get_default().get_app_launch_context();
+        context.set_timestamp(Gtk.get_current_event_time());
         Gio.AppInfo.launch_default_for_uri_async(this._desktopDir.get_uri(),
-            null, null,
+            context, null,
             (source, result) => {
                 try {
                     Gio.AppInfo.launch_default_for_uri_finish(result);
