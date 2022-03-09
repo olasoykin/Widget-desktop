@@ -89,10 +89,16 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                             }
                             this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
                                 this._refreshTrashIcon();
-                                return false;
+                                this._scheduleTrashRefreshId = 0;
+                                return GLib.SOURCE_REMOVE;
                             });
                         } else {
                             this._refreshTrashIcon();
+                            // after a refresh, don't allow more refreshes until 200ms after, to coalesce extra events
+                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                                this._scheduleTrashRefreshId = 0;
+                                return GLib.SOURCE_REMOVE;
+                            });
                         }
                     break;
                 }
@@ -392,7 +398,6 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._queryTrashInfoCancellable = null;
         }
         if (! this._file.query_exists(null)) {
-            this._scheduleTrashRefreshId = 0
             return false;
         }
         this._queryTrashInfoCancellable = new Gio.Cancellable();
@@ -410,10 +415,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     });
                 } catch(error) {
                     if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED))
-                        print('Error getting the number of files in the trash: ' + error);
+                        print(`Error getting the number of files in the trash: ${error.message}\n${error.stack}`);
                 }
             });
-        this._scheduleTrashRefreshId = 0;
         return false;
     }
 
