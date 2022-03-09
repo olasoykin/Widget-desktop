@@ -2,6 +2,15 @@
 
 * inprogress
   * Copy instead of Move if Shift or Control is pressed (Sergio Costas)
+  * Redirect output to the logger in real time (Marco Trevisan)
+  * Pass timestamps to avoid focus stealing (Marco Trevisan)
+  * Fixed 100% CPU usage (Sergio Costas)
+  * Now shows an emblem when a .desktop file is invalid (Sundeep Mediratta)
+  * Use correct scaling factor during Drag'n'Drop (Daniel van Vugt)
+  * Fixed rubberband after hot-change of the zoom value (Sergio Costas)
+  * Added support for asynchronous thumbnail API (Sergio Costas)
+  * Allows to disable the emblems in icons (Sergio Costas)
+  * Now the icons won't disappear when minimizing all windows (Sergio Costas)
 
 * Version 39
   * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
