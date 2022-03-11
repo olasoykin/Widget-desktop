@@ -150,8 +150,8 @@ var desktopIconItem = class desktopIconItem {
         this._sheildEventBox.connect('button-press-event', (actor, event) => {return true;});
         this._sheildLabelEventBox.connect('button-press-event', (actor, event) => {return true;});
         this._eventBox.connect('button-press-event', (actor, event) => this._onPressButton(actor, event));
-        this._eventBox.connect('enter-notify-event', (actor, event) => this._onEnter(actor, event));
-        this._eventBox.connect('leave-notify-event', (actor, event) => this._onLeave(actor, event));
+        this._eventBox.connect('enter-notify-event', (actor, event) => this._onEnter(this._eventBox));
+        this._eventBox.connect('leave-notify-event', (actor, event) => this._onLeave(this._eventBox));
         this._eventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
         this._eventBox.connect('drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
@@ -161,8 +161,8 @@ var desktopIconItem = class desktopIconItem {
         });
         this._eventBox.connect('size-allocate', () => this._calculateIconRectangle());
         this._labelEventBox.connect('button-press-event', (actor, event) => this._onPressButton(actor, event));
-        this._labelEventBox.connect('enter-notify-event', (actor, event) => this._onEnter(actor, event));
-        this._labelEventBox.connect('leave-notify-event', (actor, event) => this._onLeave(actor, event));
+        this._labelEventBox.connect('enter-notify-event', (actor, event) => this._onEnter(this._labelEventBox));
+        this._labelEventBox.connect('leave-notify-event', (actor, event) => this._onLeave(this._labelEventBox));
         this._labelEventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
         this._labelEventBox.connect('drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
@@ -346,13 +346,13 @@ var desktopIconItem = class desktopIconItem {
      * Drag and Drop *
      ***********************/
 
-    _onEnter(actor, event) {
+    _onEnter(element) {
         if (!this._styleContext.has_class('file-item-hover')) {
             this._styleContext.add_class('file-item-hover');
             this._labelStyleContext.add_class('file-item-hover');
         }
         if (Prefs.CLICK_POLICY_SINGLE) {
-            let window = this._eventBox.get_window();
+            let window = element.get_window();
             if (window) {
                 window.set_cursor(Gdk.Cursor.new_from_name(Gdk.Display.get_default(), "hand"));
             }
@@ -360,14 +360,14 @@ var desktopIconItem = class desktopIconItem {
         return false;
     }
 
-    _onLeave(actor, event) {
+    _onLeave(element) {
         this._primaryButtonPressed = false;
         if (this._styleContext.has_class('file-item-hover')) {
             this._styleContext.remove_class('file-item-hover');
             this._labelStyleContext.remove_class('file-item-hover');
         }
         if (Prefs.CLICK_POLICY_SINGLE) {
-            let window = this._eventBox.get_window();
+            let window = element.get_window();
             if (window) {
                 window.set_cursor(Gdk.Cursor.new_from_name(Gdk.Display.get_default(), "default"));
             }
