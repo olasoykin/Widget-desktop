@@ -49,18 +49,29 @@ var DesktopGrid = class {
         this.createGrids();
 
         this._window = new Gtk.ApplicationWindow({application: desktopManager.mainApp, "title": desktopName});
-        if (asDesktop) {
+        this._windowContext = this._window.get_style_context();
+        if (this._asDesktop) {
             this._window.set_decorated(false);
             this._window.set_deletable(false);
-            // If we are under X11, manage everything from here
+            // For Wayland Transparent background, but only if this instance is working as desktop
+            this._windowContext.add_class("desktopwindow");
+            // If we are under X11, Transparent background and everything else from here as well
             if (this._using_X11) {
+                let screen = this._window.get_screen();
+                let visual = screen.get_rgba_visual();
+                if (visual && screen.is_composited()) {
+                    this._window.set_visual(visual);
+                } else {
+                    print('Unable to set Transperancy under X11!');
+                }
                 this._window.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
                 this._window.stick();
                 this._window.move(this._x / this._size_divisor, this._y / this._size_divisor);
             }
+        } else {
+            // Opaque black test window
+            this._windowContext.add_class("testwindow");
         }
-        this._windowContext = this._window.get_style_context();
-        this._windowContext.add_class("desktopwindow");
         this._window.set_resizable(false);
         this._window.connect('delete-event', () => {
             if (this._destroying) {
@@ -91,16 +102,6 @@ var DesktopGrid = class {
 
         this.setDropDestination(this._eventBox);
 
-        // Transparent background, but only if this instance is working as desktop
-
-        if (this._asDesktop) {
-            let screen = this._window.get_screen();
-            let visual = screen.get_rgba_visual();
-            if (visual && screen.is_composited()) {
-                this._window.set_visual(visual)
-            }
-        }
-
         this._selectedList = null;
         this._container.connect('draw', (widget, cr) => {
             this._doDrawRubberBand(cr);
@@ -112,6 +113,7 @@ var DesktopGrid = class {
         this._window.show_all();
         this._window.set_size_request(this._windowWidth, this._windowHeight);
         this._window.resize(this._windowWidth, this._windowHeight);
+
         this._eventBox.add_events(Gdk.EventMask.BUTTON_MOTION_MASK |
                                   Gdk.EventMask.BUTTON_PRESS_MASK |
                                   Gdk.EventMask.BUTTON_RELEASE_MASK |
@@ -130,9 +132,11 @@ var DesktopGrid = class {
         this._eventBox.connect('button-release-event', (actor, event) => {
             this._desktopManager.onReleaseButton(this);
         });
+
         this._window.connect('key-press-event', (actor, event) => {
             this._desktopManager.onKeyPress(event, this);
         });
+
     }
 
     updateGridDescription(desktopDescription) {
