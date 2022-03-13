@@ -24,3 +24,7 @@
 window.desktopwindow {
     background-color: rgba(0, 0, 0, 0);
 }
+
+window.testwindow {
+    background-color: rgba(0, 0, 0, 100);
+}
