@@ -43,7 +43,8 @@ var GnomeShellOverride = class {
 
     enable() {
         if (this._isX11) {  // ** X11 Methods only
-            if (WorkspaceAnimation) {
+            if (WorkspaceAnimation &&
+                WorkspaceAnimation.WorkspaceGroup !== undefined) {
                 this.replaceMethod(WorkspaceAnimation.WorkspaceGroup, '_shouldShowWindow', new_shouldShowWindow);
             }
         } else {    // ** Wayland replace methods below this
