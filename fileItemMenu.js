@@ -105,6 +105,9 @@ var FileItemMenu = class {
         let selectedItemsNum = this._desktopManager.getNumberOfSelectedItems();
 
         this._menu = new Gtk.Menu();
+        const menuStyleContext = this._menu.get_style_context();
+        menuStyleContext.add_class("desktopmenu");
+        menuStyleContext.add_class("fileitemmenu");
         this._menu.connect_after('selection-done', () => {
             this._menu.destroy();
             this._menu = null;
