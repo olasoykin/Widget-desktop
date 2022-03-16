@@ -54,6 +54,10 @@ class ProxyManager {
         this._objectName = objectName;
         this._interfaceName = interfaceName;
         this._inSystemBus = inSystemBus;
+        this._signals = {};
+        this._signalsIDs = {};
+        this._connectSignals = {};
+        this._connectSignalsIDs = {};
         if (typeof(programNeeded) == 'string') {
             // if 'programNeeded' is a string, create a generic message for the notification.
             this._programNeeded = [
@@ -83,6 +87,38 @@ class ProxyManager {
         });
     }
 
+    connectSignalToProxy(signal, cb) {
+        this._connectSignals[signal] = cb;
+        if (this._proxy) {
+            this._connectSignalsIDs[signal] = this._proxy.connectSignal(signal, cb);
+        }
+    }
+
+    connectToProxy(signal, cb) {
+        this._signals[signal] = cb;
+        if (this._proxy) {
+            this._signalsIDs[signal] = this._proxy.connect(signal, cb);
+        }
+    }
+
+    disconnectFromProxy(signal) {
+        if (signal in this._signalsIDs) {
+            if (this._proxy) {
+                this._proxy.disconnect(this._signalsIDs[signal]);
+            }
+            delete this._signalsIDs[signal];
+        }
+    }
+
+    disconnectSignalFromProxy(signal) {
+        if (signal in this._connectSignalsIDs) {
+            if (this._proxy) {
+                this._proxy.disconnectSignal(this._connectSignalsIDs[signal]);
+            }
+            delete this._connectSignalsIDs[signal];
+        }
+    }
+
     makeNewProxy() {
         this._interfaceXML = this._dbusManager.getInterface(this._serviceName, this._objectName, this._interfaceName, this._inSystemBus, false);
         if (this._interfaceXML) {
@@ -93,6 +129,12 @@ class ProxyManager {
                     this._objectName,
                     null
                 );
+                for (let signal in this._signals) {
+                    this._signalsIDs[signal] = this._proxy.connect(signal, this._signals[signal]);
+                }
+                for (let signal in this._connectSignals) {
+                    this._connectSignalsIDs[signal] = this._proxy.connectSignal(signal, this._connectSignals[signal]);
+                }
             } catch(e) {
                 this._available = false;
                 this._proxy = null;
