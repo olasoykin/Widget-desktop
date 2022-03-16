@@ -30,7 +30,7 @@ let errorFound = false;
 let asDesktop = false;
 let primaryIndex = 0;
 let desktopVariants = [];
-let remoteDingUpdate;
+let remoteDingActions;
 
 function parseCommandLine(argv) {
     desktops = [];
@@ -123,16 +123,16 @@ const DesktopManager = imports.desktopManager;
 var desktopManager = null;
 
 if (asDesktop) {
-    remoteDingUpdate = Gio.DBusActionGroup.get(
+    remoteDingActions = Gio.DBusActionGroup.get(
         Gio.DBus.session,
         'com.rastersoft.ding',
-        '/com/rastersoft/ding/updateGridWindows'
+        '/com/rastersoft/ding/actions'
     );
 } else {
-    remoteDingUpdate = Gio.DBusActionGroup.get(
+    remoteDingActions = Gio.DBusActionGroup.get(
         Gio.DBus.session,
         'com.rastersoft.dingtest',
-        '/com/rastersoft/dingtest/updateGridWindows'
+        '/com/rastersoft/dingtest/actions'
     );
 }
 
@@ -163,7 +163,7 @@ dingApp.connect('command-line', (app, commandLine) => {
         if (commandLine.get_is_remote()) {
             desktopManager.updateGridWindows(desktops);
             // If testing Dbus activations, comment the above and uncomment the following
-            //remoteDingUpdate.activate_action('updateGridWindows', new GLib.Variant('av', desktopVariants));
+            //remoteDingActions.activate_action('updateGridWindows', new GLib.Variant('av', desktopVariants));
         } else {
             dingApp.activate();
         }

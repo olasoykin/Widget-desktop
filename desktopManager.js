@@ -260,7 +260,7 @@ var DesktopManager = class {
         let busname = this.mainApp.get_dbus_object_path();
         this._connection = Gio.DBus.session;
         this._dbusConnectionGroupId = this._connection.export_action_group(
-            `${busname}/updateGridWindows`,
+            `${busname}/actions`,
             actionGroup
         );
         this._extensionControl = Gio.DBusActionGroup.get(

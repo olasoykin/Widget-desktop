@@ -141,10 +141,10 @@ function innerEnable(removeId) {
         GLib.source_remove(data.launchDesktopId);
     }
     launchDesktop();
-    data.remoteDingUpdate = Gio.DBusActionGroup.get(
+    data.remoteDingActions = Gio.DBusActionGroup.get(
         Gio.DBus.session,
         'com.rastersoft.ding',
-        '/com/rastersoft/ding/updateGridWindows'
+        '/com/rastersoft/ding/actions'
     );
 
     /*
@@ -293,7 +293,7 @@ function reloadIfSizesChanged() {
         desktopList.push(desktopListElement);
     }
     let desktopListVariant = new GLib.Variant('av', desktopList);
-    data.remoteDingUpdate.activate_action('updateGridWindows', desktopListVariant);
+    data.remoteDingActions.activate_action('updateGridWindows', desktopListVariant);
 }
 
 /**
