@@ -552,7 +552,7 @@ var desktopIconItem = class desktopIconItem {
             if (this._isBrokenSymlink) {
                 pixbuf = this._createEmblemedIcon(null, 'text-x-generic');
             } else {
-                if (this.trustedDesktopFile && this._desktopFile.has_key('Icon')) {
+                if (this._desktopFile && this._desktopFile.has_key('Icon')) {
                     pixbuf = this._createEmblemedIcon(null, this._desktopFile.get_string('Icon'));
                 } else {
                     pixbuf = this._createEmblemedIcon(this._getDefaultIcon(), null);
@@ -645,7 +645,9 @@ var desktopIconItem = class desktopIconItem {
         let emblem = null;
         let finalSize = Math.floor(Prefs.get_icon_size() / 3) * scale;
 
-        if (this._isDesktopFile && ! this._isValidDesktopFile) {
+        if (this._isDesktopFile && ((! this._isValidDesktopFile) || (! this.trustedDesktopFile))) {
+            pixbuf = this._copyAndResizeIfNeeded(pixbuf);
+            pixbuf.saturate_and_pixelate(pixbuf, 0.5, true);
             emblem = Gio.ThemedIcon.new('emblem-unreadable');
             pixbuf = this._copyAndResizeIfNeeded(pixbuf);
             let theme = Gtk.IconTheme.get_default();
@@ -684,8 +686,12 @@ var desktopIconItem = class desktopIconItem {
     _createEmblemedIcon(icon, iconName) {
         if (icon == null) {
             if (GLib.path_is_absolute(iconName)) {
-                let iconFile = Gio.File.new_for_commandline_arg(iconName);
-                icon = new Gio.FileIcon({ file: iconFile });
+                try {
+                    let iconFile = Gio.File.new_for_commandline_arg(iconName);
+                    icon = new Gio.FileIcon({ file: iconFile });
+                } catch(e) {
+                    icon = Gio.ThemedIcon.new_with_default_fallbacks(iconName);
+                }
             } else {
                 icon = Gio.ThemedIcon.new_with_default_fallbacks(iconName);
             }
