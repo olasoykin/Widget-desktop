@@ -27,6 +27,7 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Cairo = imports.gi.cairo;
 const DesktopIconsUtil = imports.desktopIconsUtil;
 const desktopIconItem = imports.desktopIconItem;
+const ShowErrorPopup = imports.showErrorPopup;
 
 const Prefs = imports.preferences;
 const Enums = imports.enums;
@@ -271,11 +272,14 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         }
         if (this._isBrokenSymlink) {
             log(`Error: Can’t open ${this.file.get_uri()} because it is a broken symlink.`);
+            let title = _('Broken Link');
+            let error = _('Can not open this File because it is a Broken Symlink');
+            this._showerrorpopup(title, error);
             return;
         }
 
-        if (this.trustedDesktopFile) {
-            this._desktopFile.launch_uris_as_manager(fileList, context, GLib.SpawnFlags.SEARCH_PATH, null, null);
+        if (this._isDesktopFile) {
+            this._launchDesktopFile(context, fileList);
             return;
         }
 
@@ -298,6 +302,53 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 }
             }
         );
+    }
+
+    _showerrorpopup(title, error) {
+        new ShowErrorPopup.ShowErrorPopup(
+            title,
+            error,
+            this._grid._window,
+            true
+        );
+    }
+
+    _launchDesktopFile(context, fileList) {
+
+        if (this.trustedDesktopFile) {
+            this._desktopFile.launch_uris_as_manager(fileList, context, GLib.SpawnFlags.SEARCH_PATH, null, null);
+            return;
+        }
+
+        let error;
+
+        if (! this._isValidDesktopFile) {
+            let title = _("Broken Desktop File");
+            let error = _("This .desktop file has errors or points to a program without permissions. It can not be executed.\n\n\t<b>Edit the file to set the correct executable Program.</b>");
+            this._showerrorpopup(title, error);
+            return;
+        }
+
+        if (this._writableByOthers || ! this._attributeCanExecute) {
+            let title = _('Invalid Permissions on Desktop File');
+            let error = _('This .desktop File has incorrect Permissions. Right Click to edit Properties, then:\n');
+            if (this._writableByOthers) {
+                error = error + _('\n<b>Set Permissions, in "Others Access", "Read Only" or "None"</b>');
+            }
+            if (! this._attributeCanExecute) {
+                error = error + _('\n<b>Enable option, "Allow Executing File as a Program"</b>');
+            }
+            this._showerrorpopup(title, error);
+            return;
+        }
+
+        if (! this.trustedDesktopFile) {
+            let title = ("Untrusted Desktop File");
+            let error = _('This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n\n<b>Enable "Allow Launching"</b>');
+            this._showerrorpopup(title, error);
+            return;
+        }
+
     }
 
     _updateName() {
