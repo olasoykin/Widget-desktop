@@ -196,8 +196,8 @@ var DesktopManager = class {
         this._createGridWindows();
         this._dbusAdvertiseUpdate();
 
-        DBusUtils.NautilusFileOperations2.proxy.connect('g-properties-changed', this._undoStatusChanged.bind(this));
-        DBusUtils.GtkVfsMetadata.proxy.connectSignal('AttributeChanged', this._metadataChanged.bind(this));
+        DBusUtils.NautilusFileOperations2.connectToProxy('g-properties-changed', this._undoStatusChanged.bind(this));
+        DBusUtils.GtkVfsMetadata.connectSignalToProxy('AttributeChanged', this._metadataChanged.bind(this));
         this._allFileList = null;
         this._fileList = [];
         this._forcedExit = false;
