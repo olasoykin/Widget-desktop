@@ -392,10 +392,15 @@ class DbusOperationsManager {
             this._sendNoProxyError(callback);
             return;
         }
-        this.gnomeNautilusPreviewManager.proxy.ShowFileRemote(uri, integer, boolean);
-        if (callback) {
-            callback();
-        }
+        this.gnomeNautilusPreviewManager.proxy.ShowFileRemote(uri, integer, boolean,
+            (result, error) => {
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    log('Error previewing file: ' + error.message);
+                }
+            });
     }
 
     ExtractRemote(extractFileItem, folder, boolean, callback=null) {
@@ -409,7 +414,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error extracting files: ' + error.message);
+                    log('Error extracting files: ' + error.message);
                 }
         });
     }
@@ -425,7 +430,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error compressing files: ' + error.message);
+                    log('Error compressing files: ' + error.message);
                 }
             }
         );
@@ -500,7 +505,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error moving files: ' + error.message);
+                    log('Error moving files: ' + error.message);
                 }
             }
         );
@@ -520,7 +525,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error copying files: ' + error.message);
+                    log('Error copying files: ' + error.message);
                 }
             }
         );
@@ -540,7 +545,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error copying files: ' + error.message);
+                    log('Error copying files: ' + error.message);
                 }
             }
         );
@@ -559,7 +564,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error moving files: ' + error.message);
+                    log('Error moving files: ' + error.message);
                 }
             }
         );
@@ -578,7 +583,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    throw new Error('Error deleting files on the desktop: ' + error.message);
+                    log('Error deleting files on the desktop: ' + error.message);
                 }
             }
         );
@@ -597,7 +602,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    throw new Error('Error trashing files on the desktop: ' + error.message);
+                    log('Error trashing files on the desktop: ' + error.message);
                 }
             }
         );
@@ -615,7 +620,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error performing undo: ' + error.message);
+                    log('Error performing undo: ' + error.message);
                 }
             }
         );
@@ -633,7 +638,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error performing redo: ' + error.message);
+                    log('Error performing redo: ' + error.message);
                 }
             }
         );
@@ -664,7 +669,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error moving files: ' + error.message);
+                    log('Error moving files: ' + error.message);
                 }
             }
         );
@@ -683,7 +688,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error copying files: ' + error.message);
+                    log('Error copying files: ' + error.message);
                 }
             }
         );
@@ -702,7 +707,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error renaming files: ' + error.message);
+                    log('Error renaming files: ' + error.message);
                 }
             }
         );
@@ -720,7 +725,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    throw new Error('Error moving files: ' + error.message);
+                    log('Error moving files: ' + error.message);
                 }
             }
         );
@@ -739,7 +744,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    throw new Error('Error deleting files on the desktop: ' + error.message);
+                    log('Error deleting files on the desktop: ' + error.message);
                 }
             }
         );
@@ -752,11 +757,11 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
         }
         this.fileOperationsManager.proxy.EmptyTrashRemote(
             (source, error) => {
+                if (callback) {
+                    callback(source, error);
+                }
                 if (error) {
-                    if (callback) {
-                        callback(source, error);
-                    }
-                    throw new Error('Error trashing files on the desktop: ' + error.message);
+                    log('Error trashing files on the desktop: ' + error.message);
                 }
             }
         );
@@ -772,8 +777,8 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                 if (callback) {
                     callback(result, error);
                 }
-                if (result, error) {
-                    throw new Error('Error performing undo: ' + error.message);
+                if (error) {
+                    log('Error performing undo: ' + error.message);
                 }
             }
         );
@@ -786,9 +791,11 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
         }
        this.fileOperationsManager.proxy.RedoRemote(
             (result, error) => {
-                if (callback) { callback(result, error); }
-                if (result, error) {
-                    throw new Error('Error performing redo: ' + error.message);
+                if (callback) {
+                    callback(result, error);
+                }
+                if (error) {
+                    log('Error performing redo: ' + error.message);
                 }
             }
         );
