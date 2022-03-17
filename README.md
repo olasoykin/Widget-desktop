@@ -117,5 +117,5 @@ This will create the file `ding@rastersoft.com.zip` with the extension, followin
 ## Source code and contacting the author
 
 Sergio Costas  
-https://gitlab.com/rastersoft/desktop-icons-ng  
+<https://gitlab.com/rastersoft/desktop-icons-ng>  
 rastersoft@gmail.com  
