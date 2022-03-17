@@ -1138,8 +1138,8 @@ var DesktopManager = class {
                 GLib.PRIORITY_DEFAULT,
                 this._desktopEnumerateCancellable,
                 (source, result) => {
+                    this._desktopEnumerateCancellable = null;
                     try {
-                        this._desktopEnumerateCancellable = null;
                         let fileEnum = source.enumerate_children_finish(result);
                         if (this._desktopFilesChanged) {
                             resolve(null);
