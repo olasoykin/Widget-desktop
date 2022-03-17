@@ -11,6 +11,11 @@
   * Added support for asynchronous thumbnail API (Sergio Costas)
   * Allows to disable the emblems in icons (Sergio Costas)
   * Now the icons won't disappear when minimizing all windows (Sergio Costas)
+  * Better DBus management (Sundeep Mediratta)
+  * Now shows a message when trying to use a feature that requires an external program (Sergio Costas)
+  * Show a dialog when a .desktop file can't be launched (Sundeep Mediratta)
+  * Allows to theme the menus (Marco Trevisan)
+  * Fixed passing undefined classname (Daniel van Vugt)
 
 * Version 39
   * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
