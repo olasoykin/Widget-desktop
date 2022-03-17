@@ -4,7 +4,6 @@
   * Copy instead of Move if Shift or Control is pressed (Sergio Costas)
   * Redirect output to the logger in real time (Marco Trevisan)
   * Pass timestamps to avoid focus stealing (Marco Trevisan)
-  * Fixed 100% CPU usage (Sergio Costas)
   * Now shows an emblem when a .desktop file is invalid (Sundeep Mediratta)
   * Use correct scaling factor during Drag'n'Drop (Daniel van Vugt)
   * Fixed rubberband after hot-change of the zoom value (Sergio Costas)
