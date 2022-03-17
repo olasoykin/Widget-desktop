@@ -9,19 +9,13 @@ with these advantages:
 * Allows to use "Open with..." option with several files
 * When hovering or clicking on an icon with a name too large to fit, it shows the full name
 * Doesn't hang the compositor when there is too much activity in the desktop folder
-
-But it is still an alpha development, so it probably still have a lot of bugs. Use with care.
+* And much more...
 
 ## Requirements
 
 * GNOME Shell >= 3.38
 * Nautilus >= 3.38
 * File-roller >= 3.38
-
-## TO-DO
-
-* Use file events instead of refreshing the whole desktop
-* Add support for dropping text or browser URIs
 
 ## Internal architecture
 
