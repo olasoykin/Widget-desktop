@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 15:41+0100\n"
+"POT-Creation-Date: 2022-03-17 16:09+0100\n"
 "PO-Revision-Date: 2019-03-12 09:51+0100\n"
 "Last-Translator: Olteanu Laurențiu <laur.olteanu@outlook.com>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "Nume dosar"
 msgid "File name"
 msgstr "Nume fișier"
 
-#: askRenamePopup.js:49 desktopManager.js:816
+#: askRenamePopup.js:49 desktopManager.js:800
 msgid "OK"
 msgstr "Ok"
 
@@ -34,250 +34,311 @@ msgstr "Ok"
 msgid "Rename"
 msgstr "Redenumește"
 
-#: desktopIconsUtil.js:88
+#: dbusUtils.js:64
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr ""
+
+#: dbusUtils.js:65
+msgid ""
+"For this functionality to work in Desktop Icons, you must install "
+"\"${programName}\" in your system."
+msgstr ""
+
+#: desktopIconsUtil.js:96
 msgid "Command not found"
 msgstr "Comanda nu a fost găsită"
 
-#: desktopManager.js:204
+#: desktopManager.js:217
 msgid "Nautilus File Manager not found"
 msgstr "Managerul de fișiere Nautilus nu a fost"
 
-#: desktopManager.js:205
+#: desktopManager.js:218
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "Managerul de fișiere Nautilus este obligatoriu pentru a utiliza Desktop "
 "Icons NG."
 
-#: desktopManager.js:779
+#: desktopManager.js:763
 msgid "Clear Current Selection before New Search"
 msgstr "Șterge selecția curentă înainte de o Căutare Nouă"
 
-#: desktopManager.js:818 fileItemMenu.js:367
+#: desktopManager.js:802 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Anulează"
 
-#: desktopManager.js:820
+#: desktopManager.js:804
 msgid "Find Files on Desktop"
 msgstr "Caută fișiere pe Desktop"
 
-#: desktopManager.js:884 desktopManager.js:1529
+#: desktopManager.js:869 desktopManager.js:1492
 msgid "New Folder"
 msgstr "Director nou"
 
-#: desktopManager.js:888
+#: desktopManager.js:873
 msgid "New Document"
 msgstr "Document nou"
 
-#: desktopManager.js:893
+#: desktopManager.js:878
 msgid "Paste"
 msgstr "Lipește"
 
-#: desktopManager.js:897
+#: desktopManager.js:882
 msgid "Undo"
 msgstr "Anulează"
 
-#: desktopManager.js:901
+#: desktopManager.js:886
 msgid "Redo"
 msgstr "Refă"
 
-#: desktopManager.js:907
+#: desktopManager.js:892
 msgid "Select All"
 msgstr "Selectează tot"
 
-#: desktopManager.js:915
+#: desktopManager.js:900
 msgid "Show Desktop in Files"
 msgstr "Arată Desktop în Fișiere"
 
-#: desktopManager.js:919 fileItemMenu.js:274
+#: desktopManager.js:904 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Deschide în terminal"
 
-#: desktopManager.js:925
+#: desktopManager.js:910
 msgid "Change Background…"
 msgstr "Schimbă fundalul..."
 
-#: desktopManager.js:934
-msgid "Display Settings"
-msgstr "Setări afișaj"
-
-#: desktopManager.js:941
+#: desktopManager.js:921
 msgid "Desktop Icons Settings"
 msgstr "Setări Pictograme Desktop"
 
-#: desktopManager.js:1587
+#: desktopManager.js:925
+msgid "Display Settings"
+msgstr "Setări afișaj"
+
+#: desktopManager.js:1550
 msgid "Arrange Icons"
 msgstr "Aranjează pictogramele"
 
-#: desktopManager.js:1591
+#: desktopManager.js:1554
 msgid "Arrange By..."
 msgstr "Aranjează după..."
 
-#: desktopManager.js:1600
+#: desktopManager.js:1563
 msgid "Keep Arranged..."
 msgstr "Aranjează automat..."
 
-#: desktopManager.js:1604
+#: desktopManager.js:1567
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1609
+#: desktopManager.js:1572
 msgid "Sort Home/Drives/Trash..."
 msgstr "Sortează Acasă/Unități/Coș de gunoi..."
 
-#: desktopManager.js:1615
+#: desktopManager.js:1578
 msgid "Sort by Name"
 msgstr "Sortează după nume"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1580
 msgid "Sort by Name Descending"
 msgstr "Sortează după nume Descendent"
 
-#: desktopManager.js:1620
+#: desktopManager.js:1583
 msgid "Sort by Modified Time"
 msgstr "Sortează dupa data modificării"
 
-#: desktopManager.js:1623
+#: desktopManager.js:1586
 msgid "Sort by Type"
 msgstr "Sortează după tip"
 
-#: desktopManager.js:1626
+#: desktopManager.js:1589
 msgid "Sort by Size"
 msgstr "Sortează după dimensiune"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:147
+#: fileItem.js:156
 msgid "Home"
 msgstr "Acasă"
 
-#: fileItemMenu.js:105
+#: fileItem.js:275
+msgid "Broken Link"
+msgstr ""
+
+#: fileItem.js:276
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr ""
+
+#: fileItem.js:326
+#, fuzzy
+msgid "Broken Desktop File"
+msgstr "Arată Desktop în Fișiere"
+
+#: fileItem.js:327
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+
+#: fileItem.js:333
+msgid "Invalid Permissions on Desktop File"
+msgstr ""
+
+#: fileItem.js:334
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+
+#: fileItem.js:336
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+
+#: fileItem.js:339
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+
+#: fileItem.js:347
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+
+#: fileItemMenu.js:118
 msgid "Open All..."
 msgstr "Deschide tot..."
 
-#: fileItemMenu.js:105
+#: fileItemMenu.js:118
 msgid "Open"
 msgstr "Deschide"
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Stack This Type"
 msgstr ""
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Unstack This Type"
 msgstr ""
 
-#: fileItemMenu.js:128
+#: fileItemMenu.js:141
 msgid "Scripts"
 msgstr "Scripturi"
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open All With Other Application..."
 msgstr "Deschide tot cu altă aplicație..."
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open With Other Application"
 msgstr "Deschide cu altă aplicație"
 
-#: fileItemMenu.js:140
+#: fileItemMenu.js:153
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Lanseaza folosind Placă Video Dedicată"
 
-#: fileItemMenu.js:149
+#: fileItemMenu.js:162
 msgid "Run as a program"
 msgstr ""
 
-#: fileItemMenu.js:157
+#: fileItemMenu.js:170
 msgid "Cut"
 msgstr "Taie"
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:175
 msgid "Copy"
 msgstr "Copiază"
 
-#: fileItemMenu.js:168
+#: fileItemMenu.js:181
 msgid "Rename…"
 msgstr "Redenumește…"
 
-#: fileItemMenu.js:176
+#: fileItemMenu.js:189
 msgid "Move to Trash"
 msgstr "Mută la coșul de gunoi"
 
-#: fileItemMenu.js:182
+#: fileItemMenu.js:195
 msgid "Delete permanently"
 msgstr "Șterge definitiv"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Don't Allow Launching"
 msgstr "Nu permite lansarea"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Allow Launching"
 msgstr "Permite lansarea"
 
-#: fileItemMenu.js:201
+#: fileItemMenu.js:214
 msgid "Empty Trash"
 msgstr "Golește coșul de gunoi"
 
-#: fileItemMenu.js:212
+#: fileItemMenu.js:225
 msgid "Eject"
 msgstr "Scoate"
 
-#: fileItemMenu.js:218
+#: fileItemMenu.js:231
 msgid "Unmount"
 msgstr "Demontează"
 
-#: fileItemMenu.js:228
+#: fileItemMenu.js:241
 msgid "Extract Here"
 msgstr "Extrage aici"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:245
 msgid "Extract To..."
 msgstr "Extrage în..."
 
-#: fileItemMenu.js:239
+#: fileItemMenu.js:252
 msgid "Send to..."
 msgstr "Trimite la..."
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:258
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Comprimă {0} fișier"
 msgstr[1] "Comprimă {0} fișiere"
 
-#: fileItemMenu.js:251
+#: fileItemMenu.js:264
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Dosar nou cu {0} element"
 msgstr[1] "Dosar nou cu {0} elemente"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Common Properties"
 msgstr "Proprietăți generale"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Properties"
 msgstr "Proprietăți"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show All in Files"
 msgstr "Arată toate fișierele"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show in Files"
 msgstr "Arată în fișiere"
 
-#: fileItemMenu.js:363
+#: fileItemMenu.js:365
 msgid "Select Extract Destination"
 msgstr "Selectează destinația pentru extragere"
 
-#: fileItemMenu.js:368
+#: fileItemMenu.js:370
 msgid "Select"
 msgstr "Selectează"
 
-#: fileItemMenu.js:399
+#: fileItemMenu.js:396
 msgid "Can not email a Directory"
 msgstr "Nu se poate trimite un dosar prin email"
 
-#: fileItemMenu.js:400
+#: fileItemMenu.js:397
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "Selecția include un dosar, mai întâi arhiveză-l într-un fișier"
 
@@ -354,59 +415,72 @@ msgstr ""
 msgid "Use Nemo to open folders"
 msgstr ""
 
-#: preferences.js:117
+#: preferences.js:115
+msgid "Add an emblem to soft links"
+msgstr ""
+
+#: preferences.js:116
+msgid "Add an emblem to .desktop files"
+msgstr ""
+
+#: preferences.js:118
+msgid "Use dark text in icon labels"
+msgstr ""
+
+#. Nautilus options
+#: preferences.js:124
 msgid "Settings shared with Nautilus"
 msgstr "Setări comune cu Nautilus"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Click type for open files"
 msgstr "Tipul de click pentru deschidere fișiere"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Single click"
 msgstr "Click unic"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Double click"
 msgstr "Dublu click"
 
-#: preferences.js:124
+#: preferences.js:131
 msgid "Show hidden files"
 msgstr "Arată fișierele ascunse"
 
-#: preferences.js:125
+#: preferences.js:132
 msgid "Show a context menu item to delete permanently"
 msgstr "Arată un meniu de context pentru ștergere definitivă"
 
-#: preferences.js:130
+#: preferences.js:137
 msgid "Action to do when launching a program from the desktop"
 msgstr "Acțiuni de făcut la deschiderea unui program de pe desktop"
 
-#: preferences.js:131
+#: preferences.js:138
 msgid "Display the content of the file"
 msgstr "Afișează conținutul fișierului"
 
-#: preferences.js:132
+#: preferences.js:139
 msgid "Launch the file"
 msgstr "Lansează fișierul"
 
-#: preferences.js:133
+#: preferences.js:140
 msgid "Ask what to do"
 msgstr "Întreabă ce e de făcut"
 
-#: preferences.js:139
+#: preferences.js:146
 msgid "Show image thumbnails"
 msgstr "Arată miniaturi imagini"
 
-#: preferences.js:140
+#: preferences.js:147
 msgid "Never"
 msgstr "Niciodată"
 
-#: preferences.js:141
+#: preferences.js:148
 msgid "Local files only"
 msgstr "Doar fișierele locale"
 
-#: preferences.js:142
+#: preferences.js:149
 msgid "Always"
 msgstr "Întotdeauna"
 
@@ -418,7 +492,7 @@ msgstr ""
 "Pentru configurare Desktop Icons NG, fă click dreapta pe desktop și alege "
 "ultimul element din meniu: 'Setări Pictograme Desktop'"
 
-#: showErrorPopup.js:37
+#: showErrorPopup.js:40
 msgid "Close"
 msgstr "Închide"
 
@@ -530,6 +604,32 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Add an emblem to executable .desktop files"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid "Add an emblem to .desktop files that have permission to be launched."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Use black for label text"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
 msgstr ""
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"

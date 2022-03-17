@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 15:41+0100\n"
+"POT-Creation-Date: 2022-03-17 16:09+0100\n"
 "PO-Revision-Date: 2021-12-12 18:32+0100\n"
 "Last-Translator: Tim Hofstede <phokas@mail.de>\n"
 "Language-Team: German - Germany <->\n"
@@ -27,7 +27,7 @@ msgstr "Ordnername"
 msgid "File name"
 msgstr "Dateiname"
 
-#: askRenamePopup.js:49 desktopManager.js:816
+#: askRenamePopup.js:49 desktopManager.js:800
 msgid "OK"
 msgstr "OK"
 
@@ -35,248 +35,309 @@ msgstr "OK"
 msgid "Rename"
 msgstr "Umbenennen ..."
 
-#: desktopIconsUtil.js:88
+#: dbusUtils.js:64
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr ""
+
+#: dbusUtils.js:65
+msgid ""
+"For this functionality to work in Desktop Icons, you must install "
+"\"${programName}\" in your system."
+msgstr ""
+
+#: desktopIconsUtil.js:96
 msgid "Command not found"
 msgstr "Kommando nicht gefunden"
 
-#: desktopManager.js:204
+#: desktopManager.js:217
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus-Dateiverwaltung nicht gefunden"
 
-#: desktopManager.js:205
+#: desktopManager.js:218
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Die Nautilus-Dateiverwaltung wird für Desktop Icons NG benötigt."
 
-#: desktopManager.js:779
+#: desktopManager.js:763
 msgid "Clear Current Selection before New Search"
 msgstr "Aktuelle Auswahl vor neuer Suche löschen"
 
-#: desktopManager.js:818 fileItemMenu.js:367
+#: desktopManager.js:802 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: desktopManager.js:820
+#: desktopManager.js:804
 msgid "Find Files on Desktop"
 msgstr "Dateien auf dem Schreibtisch finden"
 
-#: desktopManager.js:884 desktopManager.js:1529
+#: desktopManager.js:869 desktopManager.js:1492
 msgid "New Folder"
 msgstr "Neuer Ordner"
 
-#: desktopManager.js:888
+#: desktopManager.js:873
 msgid "New Document"
 msgstr "Neues Dokument"
 
-#: desktopManager.js:893
+#: desktopManager.js:878
 msgid "Paste"
 msgstr "Einfügen"
 
-#: desktopManager.js:897
+#: desktopManager.js:882
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: desktopManager.js:901
+#: desktopManager.js:886
 msgid "Redo"
 msgstr "Wiederholen"
 
-#: desktopManager.js:907
+#: desktopManager.js:892
 msgid "Select All"
 msgstr "Alles auswählen"
 
-#: desktopManager.js:915
+#: desktopManager.js:900
 msgid "Show Desktop in Files"
 msgstr "Schreibtisch in Dateien anzeigen"
 
-#: desktopManager.js:919 fileItemMenu.js:274
+#: desktopManager.js:904 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Im Terminal öffnen"
 
-#: desktopManager.js:925
+#: desktopManager.js:910
 msgid "Change Background…"
 msgstr "Hintergrund ändern …"
 
-#: desktopManager.js:934
-msgid "Display Settings"
-msgstr "Anzeigeeinstellungen"
-
-#: desktopManager.js:941
+#: desktopManager.js:921
 msgid "Desktop Icons Settings"
 msgstr "Arbeitsfläche-Einstellungen"
 
-#: desktopManager.js:1587
+#: desktopManager.js:925
+msgid "Display Settings"
+msgstr "Anzeigeeinstellungen"
+
+#: desktopManager.js:1550
 msgid "Arrange Icons"
 msgstr "Symbole anordnen"
 
-#: desktopManager.js:1591
+#: desktopManager.js:1554
 msgid "Arrange By..."
 msgstr "Anordnen nach..."
 
-#: desktopManager.js:1600
+#: desktopManager.js:1563
 msgid "Keep Arranged..."
 msgstr "Angeordnet lassen..."
 
-#: desktopManager.js:1604
+#: desktopManager.js:1567
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1609
+#: desktopManager.js:1572
 msgid "Sort Home/Drives/Trash..."
 msgstr "Sortiere Home/Laufwerke/Papierkorb..."
 
-#: desktopManager.js:1615
+#: desktopManager.js:1578
 msgid "Sort by Name"
 msgstr "Sortiere nach Name"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1580
 msgid "Sort by Name Descending"
 msgstr "Sortiere nach Name (absteigend)"
 
-#: desktopManager.js:1620
+#: desktopManager.js:1583
 msgid "Sort by Modified Time"
 msgstr "Sortiere nach Änderungsdatum"
 
-#: desktopManager.js:1623
+#: desktopManager.js:1586
 msgid "Sort by Type"
 msgstr "Sortiere nach Dateityp"
 
-#: desktopManager.js:1626
+#: desktopManager.js:1589
 msgid "Sort by Size"
 msgstr "Sortiere nach Dateigröße"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:147
+#: fileItem.js:156
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
-#: fileItemMenu.js:105
+#: fileItem.js:275
+msgid "Broken Link"
+msgstr ""
+
+#: fileItem.js:276
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr ""
+
+#: fileItem.js:326
+#, fuzzy
+msgid "Broken Desktop File"
+msgstr "Schreibtisch in Dateien anzeigen"
+
+#: fileItem.js:327
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+
+#: fileItem.js:333
+msgid "Invalid Permissions on Desktop File"
+msgstr ""
+
+#: fileItem.js:334
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+
+#: fileItem.js:336
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+
+#: fileItem.js:339
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+
+#: fileItem.js:347
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+
+#: fileItemMenu.js:118
 msgid "Open All..."
 msgstr "Alle öffnen ..."
 
-#: fileItemMenu.js:105
+#: fileItemMenu.js:118
 msgid "Open"
 msgstr "Öffnen"
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Stack This Type"
 msgstr ""
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Unstack This Type"
 msgstr ""
 
-#: fileItemMenu.js:128
+#: fileItemMenu.js:141
 msgid "Scripts"
 msgstr "Skripte"
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open All With Other Application..."
 msgstr "Alle mit anderer Anwendung öffnen."
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open With Other Application"
 msgstr "Mit anderer Anwendung öffnen"
 
-#: fileItemMenu.js:140
+#: fileItemMenu.js:153
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Mit dedizierter Grafikkarte starten"
 
-#: fileItemMenu.js:149
+#: fileItemMenu.js:162
 msgid "Run as a program"
 msgstr ""
 
-#: fileItemMenu.js:157
+#: fileItemMenu.js:170
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:175
 msgid "Copy"
 msgstr "Kopieren"
 
-#: fileItemMenu.js:168
+#: fileItemMenu.js:181
 msgid "Rename…"
 msgstr "Umbenennen …"
 
-#: fileItemMenu.js:176
+#: fileItemMenu.js:189
 msgid "Move to Trash"
 msgstr "In den Papierkorb verschieben"
 
-#: fileItemMenu.js:182
+#: fileItemMenu.js:195
 msgid "Delete permanently"
 msgstr "Dauerhaft löschen"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Don't Allow Launching"
 msgstr "Start nicht erlauben"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Allow Launching"
 msgstr "Start erlauben"
 
-#: fileItemMenu.js:201
+#: fileItemMenu.js:214
 msgid "Empty Trash"
 msgstr "Papierkorb leeren"
 
-#: fileItemMenu.js:212
+#: fileItemMenu.js:225
 msgid "Eject"
 msgstr "Auswerfen"
 
-#: fileItemMenu.js:218
+#: fileItemMenu.js:231
 msgid "Unmount"
 msgstr "Aushängen"
 
-#: fileItemMenu.js:228
+#: fileItemMenu.js:241
 msgid "Extract Here"
 msgstr "Hier entpacken"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:245
 msgid "Extract To..."
 msgstr "Entpacken nach ..."
 
-#: fileItemMenu.js:239
+#: fileItemMenu.js:252
 msgid "Send to..."
 msgstr "Senden an ..."
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:258
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Komprimiere {0} Datei"
 msgstr[1] "Komprimiere {0} Dateien"
 
-#: fileItemMenu.js:251
+#: fileItemMenu.js:264
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Neuer Ordner mit {0} Datei"
 msgstr[1] "Neuer Ordner mit {0} Dateien"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Common Properties"
 msgstr "Eigenschaften"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show All in Files"
 msgstr "Alle in Dateiverwaltung anzeigen"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show in Files"
 msgstr "In Dateiverwaltung anzeigen"
 
-#: fileItemMenu.js:363
+#: fileItemMenu.js:365
 msgid "Select Extract Destination"
 msgstr "Ziel für die Entpackung auswählen"
 
-#: fileItemMenu.js:368
+#: fileItemMenu.js:370
 msgid "Select"
 msgstr "Auswählen"
 
-#: fileItemMenu.js:399
+#: fileItemMenu.js:396
 msgid "Can not email a Directory"
 msgstr "Kann Verzeichnis nicht per E-Mail verschicken"
 
-#: fileItemMenu.js:400
+#: fileItemMenu.js:397
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "Auswahl beinhaltet ein Verzeichnis, komprimiere zunächst Verzeichnis zu "
@@ -354,59 +415,72 @@ msgstr "Zielposition bei Drag'n'Drop hervorheben"
 msgid "Use Nemo to open folders"
 msgstr ""
 
-#: preferences.js:117
+#: preferences.js:115
+msgid "Add an emblem to soft links"
+msgstr ""
+
+#: preferences.js:116
+msgid "Add an emblem to .desktop files"
+msgstr ""
+
+#: preferences.js:118
+msgid "Use dark text in icon labels"
+msgstr ""
+
+#. Nautilus options
+#: preferences.js:124
 msgid "Settings shared with Nautilus"
 msgstr "Anpassung an Nautilus-Dateiverwaltung"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Click type for open files"
 msgstr "Öffnen-Aktion"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Single click"
 msgstr "Einfacher Klick"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Double click"
 msgstr "Doppelklick"
 
-#: preferences.js:124
+#: preferences.js:131
 msgid "Show hidden files"
 msgstr "Verborgene Dateien anzeigen"
 
-#: preferences.js:125
+#: preferences.js:132
 msgid "Show a context menu item to delete permanently"
 msgstr "Aktion zum dauerhaften Löschen anzeigen"
 
-#: preferences.js:130
+#: preferences.js:137
 msgid "Action to do when launching a program from the desktop"
 msgstr "Ausführbare Textdateien auf dem Schreibtisch"
 
-#: preferences.js:131
+#: preferences.js:138
 msgid "Display the content of the file"
 msgstr "Anzeigen"
 
-#: preferences.js:132
+#: preferences.js:139
 msgid "Launch the file"
 msgstr "Ausführen"
 
-#: preferences.js:133
+#: preferences.js:140
 msgid "Ask what to do"
 msgstr "Nachfragen, was geschehen soll"
 
-#: preferences.js:139
+#: preferences.js:146
 msgid "Show image thumbnails"
 msgstr "Miniatur-Vorschaubilder anzeigen"
 
-#: preferences.js:140
+#: preferences.js:147
 msgid "Never"
 msgstr "Nie"
 
-#: preferences.js:141
+#: preferences.js:148
 msgid "Local files only"
 msgstr "Nur Dateien auf diesem Rechner"
 
-#: preferences.js:142
+#: preferences.js:149
 msgid "Always"
 msgstr "Alle Dateien"
 
@@ -418,7 +492,7 @@ msgstr ""
 "Um Desktop Icons NG zu konfigurieren, Rechtsklick auf die Arbeitsfläche und "
 "'Einstellungen' wählen"
 
-#: showErrorPopup.js:37
+#: showErrorPopup.js:40
 msgid "Close"
 msgstr "Schließen"
 
@@ -531,6 +605,32 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Add an emblem to executable .desktop files"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid "Add an emblem to .desktop files that have permission to be launched."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Use black for label text"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
 msgstr ""
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"

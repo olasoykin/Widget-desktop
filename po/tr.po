@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 15:41+0100\n"
+"POT-Creation-Date: 2022-03-17 16:09+0100\n"
 "PO-Revision-Date: 2021-10-12 00:28+0300\n"
 "Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
 "Language-Team: Turkish <developer@pardus.org.tr>\n"
@@ -32,7 +32,7 @@ msgstr "Klasör adı"
 msgid "File name"
 msgstr "Dosya adı"
 
-#: askRenamePopup.js:49 desktopManager.js:816
+#: askRenamePopup.js:49 desktopManager.js:800
 msgid "OK"
 msgstr "Tamam"
 
@@ -40,246 +40,307 @@ msgstr "Tamam"
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: desktopIconsUtil.js:88
+#: dbusUtils.js:64
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr ""
+
+#: dbusUtils.js:65
+msgid ""
+"For this functionality to work in Desktop Icons, you must install "
+"\"${programName}\" in your system."
+msgstr ""
+
+#: desktopIconsUtil.js:96
 msgid "Command not found"
 msgstr "Komut Bulunamadı"
 
-#: desktopManager.js:204
+#: desktopManager.js:217
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus dosya yöneticisi bulunamadı"
 
-#: desktopManager.js:205
+#: desktopManager.js:218
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Nautilus dosya yöneticisi olmadan bu eklenti bir işe yaramaz"
 
-#: desktopManager.js:779
+#: desktopManager.js:763
 msgid "Clear Current Selection before New Search"
 msgstr "Yeni Aramadan Önce Mevcut Seçimi Temizle"
 
-#: desktopManager.js:818 fileItemMenu.js:367
+#: desktopManager.js:802 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "İptal"
 
-#: desktopManager.js:820
+#: desktopManager.js:804
 msgid "Find Files on Desktop"
 msgstr "Masaüstündeki Dosyaları Bul"
 
-#: desktopManager.js:884 desktopManager.js:1529
+#: desktopManager.js:869 desktopManager.js:1492
 msgid "New Folder"
 msgstr "Yeni Klasör"
 
-#: desktopManager.js:888
+#: desktopManager.js:873
 msgid "New Document"
 msgstr "Yeni Belge"
 
-#: desktopManager.js:893
+#: desktopManager.js:878
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: desktopManager.js:897
+#: desktopManager.js:882
 msgid "Undo"
 msgstr "Geri Al"
 
-#: desktopManager.js:901
+#: desktopManager.js:886
 msgid "Redo"
 msgstr "Yinele"
 
-#: desktopManager.js:907
+#: desktopManager.js:892
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: desktopManager.js:915
+#: desktopManager.js:900
 msgid "Show Desktop in Files"
 msgstr "Masaüstünü Dosyalarʼda Göster"
 
-#: desktopManager.js:919 fileItemMenu.js:274
+#: desktopManager.js:904 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Uçbirimde Aç"
 
-#: desktopManager.js:925
+#: desktopManager.js:910
 msgid "Change Background…"
 msgstr "Arka Planı Değiştir…"
 
-#: desktopManager.js:934
-msgid "Display Settings"
-msgstr "Görüntü Ayarları"
-
-#: desktopManager.js:941
+#: desktopManager.js:921
 msgid "Desktop Icons Settings"
 msgstr "Masaüstü Simgeleri Ayarları"
 
-#: desktopManager.js:1587
+#: desktopManager.js:925
+msgid "Display Settings"
+msgstr "Görüntü Ayarları"
+
+#: desktopManager.js:1550
 msgid "Arrange Icons"
 msgstr "Simgeleri Sırala"
 
-#: desktopManager.js:1591
+#: desktopManager.js:1554
 msgid "Arrange By..."
 msgstr "Sırala..."
 
-#: desktopManager.js:1600
+#: desktopManager.js:1563
 msgid "Keep Arranged..."
 msgstr "Düzenli Tut..."
 
-#: desktopManager.js:1604
+#: desktopManager.js:1567
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1609
+#: desktopManager.js:1572
 msgid "Sort Home/Drives/Trash..."
 msgstr "Evi/Sürücüleri/Çöp Kutusunu Sırala..."
 
-#: desktopManager.js:1615
+#: desktopManager.js:1578
 msgid "Sort by Name"
 msgstr "İsme Göre Sırala"
 
-#: desktopManager.js:1617
+#: desktopManager.js:1580
 msgid "Sort by Name Descending"
 msgstr "Azalan Şekilde İsme Göre Sırala"
 
-#: desktopManager.js:1620
+#: desktopManager.js:1583
 msgid "Sort by Modified Time"
 msgstr "Değiştirilme Zamanına Göre Sırala"
 
-#: desktopManager.js:1623
+#: desktopManager.js:1586
 msgid "Sort by Type"
 msgstr "Türe Göre Sırala"
 
-#: desktopManager.js:1626
+#: desktopManager.js:1589
 msgid "Sort by Size"
 msgstr "Boyuta Göre Sırala"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:147
+#: fileItem.js:156
 msgid "Home"
 msgstr "Ev"
 
-#: fileItemMenu.js:105
+#: fileItem.js:275
+msgid "Broken Link"
+msgstr ""
+
+#: fileItem.js:276
+msgid "Can not open this File because it is a Broken Symlink"
+msgstr ""
+
+#: fileItem.js:326
+#, fuzzy
+msgid "Broken Desktop File"
+msgstr "Masaüstünü Dosyalarʼda Göster"
+
+#: fileItem.js:327
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It "
+"can not be executed.\n"
+"\n"
+"\t<b>Edit the file to set the correct executable Program.</b>"
+msgstr ""
+
+#: fileItem.js:333
+msgid "Invalid Permissions on Desktop File"
+msgstr ""
+
+#: fileItem.js:334
+msgid ""
+"This .desktop File has incorrect Permissions. Right Click to edit "
+"Properties, then:\n"
+msgstr ""
+
+#: fileItem.js:336
+msgid ""
+"\n"
+"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
+msgstr ""
+
+#: fileItem.js:339
+msgid ""
+"\n"
+"<b>Enable option, \"Allow Executing File as a Program\"</b>"
+msgstr ""
+
+#: fileItem.js:347
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable "
+"launching, right-click, then:\n"
+"\n"
+"<b>Enable \"Allow Launching\"</b>"
+msgstr ""
+
+#: fileItemMenu.js:118
 msgid "Open All..."
 msgstr "Tümünü Aç..."
 
-#: fileItemMenu.js:105
+#: fileItemMenu.js:118
 msgid "Open"
 msgstr "Aç"
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Stack This Type"
 msgstr ""
 
-#: fileItemMenu.js:116
+#: fileItemMenu.js:129
 msgid "Unstack This Type"
 msgstr ""
 
-#: fileItemMenu.js:128
+#: fileItemMenu.js:141
 msgid "Scripts"
 msgstr "Komutlar"
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open All With Other Application..."
 msgstr "Tümünü Başka Uygulamayla Aç..."
 
-#: fileItemMenu.js:134
+#: fileItemMenu.js:147
 msgid "Open With Other Application"
 msgstr "Başka Uygulamayla Aç"
 
-#: fileItemMenu.js:140
+#: fileItemMenu.js:153
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Özel Grafik Kartı kullanarak başlatın"
 
-#: fileItemMenu.js:149
+#: fileItemMenu.js:162
 msgid "Run as a program"
 msgstr ""
 
-#: fileItemMenu.js:157
+#: fileItemMenu.js:170
 msgid "Cut"
 msgstr "Kes"
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:175
 msgid "Copy"
 msgstr "Kopyala"
 
-#: fileItemMenu.js:168
+#: fileItemMenu.js:181
 msgid "Rename…"
 msgstr "Yeniden Adlandır…"
 
-#: fileItemMenu.js:176
+#: fileItemMenu.js:189
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: fileItemMenu.js:182
+#: fileItemMenu.js:195
 msgid "Delete permanently"
 msgstr "Tamamen Sil"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Don't Allow Launching"
 msgstr "Başlatmaya İzin Verme"
 
-#: fileItemMenu.js:190
+#: fileItemMenu.js:203
 msgid "Allow Launching"
 msgstr "Başlatmaya İzin Ver"
 
-#: fileItemMenu.js:201
+#: fileItemMenu.js:214
 msgid "Empty Trash"
 msgstr "Çöpü Boşalt"
 
-#: fileItemMenu.js:212
+#: fileItemMenu.js:225
 msgid "Eject"
 msgstr "Çıkar"
 
-#: fileItemMenu.js:218
+#: fileItemMenu.js:231
 msgid "Unmount"
 msgstr "Bağlı Değil"
 
-#: fileItemMenu.js:228
+#: fileItemMenu.js:241
 msgid "Extract Here"
 msgstr "Buraya Çıkar"
 
-#: fileItemMenu.js:232
+#: fileItemMenu.js:245
 msgid "Extract To..."
 msgstr "Şuraya Çıkar…"
 
-#: fileItemMenu.js:239
+#: fileItemMenu.js:252
 msgid "Send to..."
 msgstr "Gönder..."
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:258
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "{0} dosyasını sıkıştır"
 
-#: fileItemMenu.js:251
+#: fileItemMenu.js:264
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "{0} öğesi ile yeni klasör"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Common Properties"
 msgstr "Ortak Özellikler"
 
-#: fileItemMenu.js:260
+#: fileItemMenu.js:273
 msgid "Properties"
 msgstr "Özellikler"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show All in Files"
 msgstr "Tümünü Dosyalarʼda Göster"
 
-#: fileItemMenu.js:267
+#: fileItemMenu.js:280
 msgid "Show in Files"
 msgstr "Dosyalarʼda Göster"
 
-#: fileItemMenu.js:363
+#: fileItemMenu.js:365
 msgid "Select Extract Destination"
 msgstr "Çıkarma Hedefini Seçin"
 
-#: fileItemMenu.js:368
+#: fileItemMenu.js:370
 msgid "Select"
 msgstr "Seç"
 
-#: fileItemMenu.js:399
+#: fileItemMenu.js:396
 msgid "Can not email a Directory"
 msgstr "Bir dizine e-posta gönderemiyorum"
 
-#: fileItemMenu.js:400
+#: fileItemMenu.js:397
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "Seçim bir dizin içerir, önce dizini bir dosyaya sıkıştırın."
 
@@ -355,59 +416,72 @@ msgstr "Sürükle ve Bırak sırasında bırakma yerini vurgulayın"
 msgid "Use Nemo to open folders"
 msgstr ""
 
-#: preferences.js:117
+#: preferences.js:115
+msgid "Add an emblem to soft links"
+msgstr ""
+
+#: preferences.js:116
+msgid "Add an emblem to .desktop files"
+msgstr ""
+
+#: preferences.js:118
+msgid "Use dark text in icon labels"
+msgstr ""
+
+#. Nautilus options
+#: preferences.js:124
 msgid "Settings shared with Nautilus"
 msgstr "Ayarlar Nautilus ile paylaşıldı"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Click type for open files"
 msgstr "Dosyaları açma türü"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Single click"
 msgstr "Tek tıklama"
 
-#: preferences.js:123
+#: preferences.js:130
 msgid "Double click"
 msgstr "Çift tıklama"
 
-#: preferences.js:124
+#: preferences.js:131
 msgid "Show hidden files"
 msgstr "Gizli dosyaları göster"
 
-#: preferences.js:125
+#: preferences.js:132
 msgid "Show a context menu item to delete permanently"
 msgstr "Tamamen silmek için sağ tıkta seçenek göster"
 
-#: preferences.js:130
+#: preferences.js:137
 msgid "Action to do when launching a program from the desktop"
 msgstr "Masaüstünden program çalıştırırken ne yapılsın"
 
-#: preferences.js:131
+#: preferences.js:138
 msgid "Display the content of the file"
 msgstr "İçeriği göster"
 
-#: preferences.js:132
+#: preferences.js:139
 msgid "Launch the file"
 msgstr "Çalıştır"
 
-#: preferences.js:133
+#: preferences.js:140
 msgid "Ask what to do"
 msgstr "Ne yapılacağını sor"
 
-#: preferences.js:139
+#: preferences.js:146
 msgid "Show image thumbnails"
 msgstr "Resim önizlemelerini göster"
 
-#: preferences.js:140
+#: preferences.js:147
 msgid "Never"
 msgstr "Asla"
 
-#: preferences.js:141
+#: preferences.js:148
 msgid "Local files only"
 msgstr "Yalnızca yerel dosyalar"
 
-#: preferences.js:142
+#: preferences.js:149
 msgid "Always"
 msgstr "Her zaman"
 
@@ -419,7 +493,7 @@ msgstr ""
 "Desktop Icons NG'yi yapılandırmak için masaüstünde sağ tıklayın ve son öğeyi "
 "seçin: 'Masaüstü Simgeleri Ayarları'"
 
-#: showErrorPopup.js:37
+#: showErrorPopup.js:40
 msgid "Close"
 msgstr "Kapat"
 
@@ -531,6 +605,32 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
+msgid "Add an emblem to links"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
+msgid "Add an emblem to allow to identify soft links."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
+msgid "Add an emblem to executable .desktop files"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
+msgid "Add an emblem to .desktop files that have permission to be launched."
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Use black for label text"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Paint the label text in black instead of white. Useful when using light "
+"backgrounds."
 msgstr ""
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
