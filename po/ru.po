@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-17 16:09+0100\n"
-"PO-Revision-Date: 2022-01-23 22:28+1000\n"
+"PO-Revision-Date: 2022-03-19 07:20+1000\n"
 "Last-Translator: Ser82-png <sw@atrus.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.3\n"
 
 #: askRenamePopup.js:42
@@ -38,13 +38,15 @@ msgstr "Переименовать"
 
 #: dbusUtils.js:64
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "Для Desktop Icons требуется \"${programName}\" "
 
 #: dbusUtils.js:65
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Чтобы эта функция работала в Desktop Icons, вы должный установить "
+"\"${programName}\"."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -163,16 +165,17 @@ msgstr "Домашняя папка"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "Нерабочая ссылка"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
+"Невозможно открыть этот файл, потому что это неработающая символическая "
+"ссылка"
 
 #: fileItem.js:326
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Показать рабочий стол в файловом менеджере"
+msgstr "Нерабочий .desktop файл"
 
 #: fileItem.js:327
 msgid ""
@@ -181,28 +184,40 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"Этот .desktop файл содержит ошибки или указывает на программу без "
+"необходимых разрешений. Его нельзя выполнить.\n"
+"\n"
+"\t<b>Отредактируйте файл так, чтобы он указывал на необходимый исполняемый "
+"файл.</b>"
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Неверные права доступа к .desktop файлу"
 
 #: fileItem.js:334
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"Этот .desktop файл имеет неправильные разрешения. Щёлкните правой кнопкой "
+"мыши, чтобы изменить свойства, а затем:\n"
 
 #: fileItem.js:336
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>Установите разрешения в разделе «Права доступа» на «Только чтение» или "
+"«Нет»</b>"
 
 #: fileItem.js:339
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>Включить параметр «Разрешить выполнение файла как программы»</b>"
 
 #: fileItem.js:347
 msgid ""
@@ -211,6 +226,10 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"Этот .desktop файл не является доверенным, его нельзя запустить. Чтобы "
+"разрешить запуск, щёлкните правой кнопкой мыши, а затем:\n"
+"\n"
+"<b>включите «Разрешить запуск»</b>"
 
 #: fileItemMenu.js:118
 msgid "Open All..."
@@ -274,7 +293,7 @@ msgstr "Не разрешать запуск"
 
 #: fileItemMenu.js:203
 msgid "Allow Launching"
-msgstr "Разрешать запуск"
+msgstr "Разрешить запуск"
 
 #: fileItemMenu.js:214
 msgid "Empty Trash"
@@ -420,15 +439,15 @@ msgstr "Использовать Nemo для открытия папок"
 
 #: preferences.js:115
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Добавить эмблему к символическим ссылкам"
 
 #: preferences.js:116
 msgid "Add an emblem to .desktop files"
-msgstr ""
+msgstr "Добавить эмблему к .desktop файлу"
 
 #: preferences.js:118
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Использовать тёмный текст в подписях к значкам"
 
 #. Nautilus options
 #: preferences.js:124
@@ -441,11 +460,11 @@ msgstr "Тип нажатия для открытия файлов"
 
 #: preferences.js:130
 msgid "Single click"
-msgstr "Одинарный клик"
+msgstr "Одинарный щелчок"
 
 #: preferences.js:130
 msgid "Double click"
-msgstr "Двойной клик"
+msgstr "Двойной щелчок"
 
 #: preferences.js:131
 msgid "Show hidden files"
@@ -492,7 +511,7 @@ msgid ""
 "To configure Desktop Icons NG, do right-click in the desktop and choose the "
 "last item: 'Desktop Icons settings'"
 msgstr ""
-"Чтобы настроить Desktop Icons NG, щелкните правой кнопкой мыши на рабочем "
+"Чтобы настроить Desktop Icons NG, щёлкните правой кнопкой мыши на рабочем "
 "столе и выберите последний пункт: «Параметры Desktop Icons»."
 
 #: showErrorPopup.js:40
@@ -609,29 +628,31 @@ msgstr "Использовать Nemo вместо Nautilus для открыт�
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Добавить эмблему к ссылкам"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Добавить эмблему для идентификации символических ссылок."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Add an emblem to executable .desktop files"
-msgstr ""
+msgstr "Добавить эмблему в исполняемые .desktop файлы"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
+msgstr "Добавить эмблему в .desktop файлы с разрешениями на выполнение."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
-msgstr ""
+msgstr "Использовать чёрный цвет для текста в подписях"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+"Окрашивать текст подписи чёрным цветом вместо белого. Полезно при "
+"использовании светлого фона."
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Вы хотите выполнить “{0}” или отобразить содержимое?"
