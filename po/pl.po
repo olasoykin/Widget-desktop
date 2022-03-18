@@ -1,6 +1,7 @@
 # Polish translation for desktop-icons.
 # Copyright © 2018-2019 the desktop-icons authors.
 # This file is distributed under the same license as the desktop-icons package.
+# Paweł Piasek <pp@euro-linux.com>, 2022
 # Piotr Drąg <piotrdrag@gmail.com>, 2018-2019.
 # Aviary.pl <community-poland@mozilla.org>, 2018-2019.
 #
@@ -10,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-17 16:09+0100\n"
 "PO-Revision-Date: 2020-07-14 13:32+0200\n"
-"Last-Translator: Piotr Kuśnierz <piotr.kusnierz@protonmail.com>\n"
+"Last-Translator: Paweł Piasek <pp@euro-linux.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -38,13 +39,15 @@ msgstr "Zmień nazwę"
 
 #: dbusUtils.js:64
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" jest potrzebny do działania Ikon Pulpitu"
 
 #: dbusUtils.js:65
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Dla tej funkcjonalności musisz zainstalować"
+"\"${programName}\" w swoim systemie"
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -60,7 +63,7 @@ msgstr "Menedżer plików Nautilus jest obowiązkowy do pracy z Desktop Icons NG
 
 #: desktopManager.js:763
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr "Obecne zaznaczenie uniemożliwia nowe wyszukiwanie, odznacz obecne zaznaczenie"
 
 #: desktopManager.js:802 fileItemMenu.js:369
 msgid "Cancel"
@@ -68,7 +71,7 @@ msgstr "Anuluj"
 
 #: desktopManager.js:804
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "Znajdź pliki na Pulpicie"
 
 #: desktopManager.js:869 desktopManager.js:1492
 msgid "New Folder"
@@ -91,7 +94,6 @@ msgid "Redo"
 msgstr "Ponów"
 
 #: desktopManager.js:892
-#, fuzzy
 msgid "Select All"
 msgstr "Zaznacz wszystko"
 
@@ -107,10 +109,10 @@ msgstr "Otwórz w terminalu"
 msgid "Change Background…"
 msgstr "Zmień tło…"
 
+
 #: desktopManager.js:921
-#, fuzzy
 msgid "Desktop Icons Settings"
-msgstr "Ustawienia ekranu"
+msgstr "Ustawienia ikon na pulpicie"
 
 #: desktopManager.js:925
 msgid "Display Settings"
@@ -130,7 +132,7 @@ msgstr "Autorozmieszczanie"
 
 #: desktopManager.js:1567
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Grupuj wg. typu"
 
 #: desktopManager.js:1572
 msgid "Sort Home/Drives/Trash..."
@@ -163,16 +165,16 @@ msgstr "Katalog domowy"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "Wadliwy link (strót)"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "Nie można otworzyć pliku ponieważ jest to uszkodzony link symboliczny"
 
 #: fileItem.js:326
 #, fuzzy
 msgid "Broken Desktop File"
-msgstr "Wyświetl pulpit w menedżerze plików"
+msgstr ""
 
 #: fileItem.js:327
 msgid ""
@@ -181,6 +183,8 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"Ten plik .desktop zawiera błędy lub wskazuje na program, który nie ma odpowiednich praw dostępu. Nie może zostać wykonany.\n""\n"
+"\t<b>Edytuj plik, by ustawić poprawny wykonywalny program"
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
@@ -222,20 +226,19 @@ msgstr "Otwórz"
 
 #: fileItemMenu.js:129
 msgid "Stack This Type"
-msgstr ""
+msgstr "Zwiń ten typ pliku"
 
 #: fileItemMenu.js:129
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Rozwiń ten typ pliku"
 
 #: fileItemMenu.js:141
 msgid "Scripts"
 msgstr "Skrypty"
 
 #: fileItemMenu.js:147
-#, fuzzy
 msgid "Open All With Other Application..."
-msgstr "Otwórz za pomocą innego programu"
+msgstr "Otwórz za pomocą innego programu..."
 
 #: fileItemMenu.js:147
 msgid "Open With Other Application"
@@ -247,7 +250,7 @@ msgstr "Uruchom za pomocą dedykowanej karty graficznej"
 
 #: fileItemMenu.js:162
 msgid "Run as a program"
-msgstr ""
+msgstr "Uruchom jako program"
 
 #: fileItemMenu.js:170
 msgid "Cut"
@@ -270,7 +273,6 @@ msgid "Delete permanently"
 msgstr "Usuń trwale"
 
 #: fileItemMenu.js:203
-#, fuzzy
 msgid "Don't Allow Launching"
 msgstr "Nie zezwalaj na uruchamianie"
 
@@ -305,19 +307,18 @@ msgstr "Wyślij do…"
 #: fileItemMenu.js:258
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Kompresuj {0} plik"
+msgstr[1] "Kompresuj {0} pliki"
+msgstr[2] "Kompresuj {0} plików"
 
 #: fileItemMenu.js:264
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nowy folder zawierający {0} element"
+msgstr[1] "Nowy folder zawierający {0} elementy"
+msgstr[2] "Nowy folder zawierający {0} elementów"
 
 #: fileItemMenu.js:273
-#, fuzzy
 msgid "Common Properties"
 msgstr "Właściwości"
 
@@ -326,7 +327,6 @@ msgid "Properties"
 msgstr "Właściwości"
 
 #: fileItemMenu.js:280
-#, fuzzy
 msgid "Show All in Files"
 msgstr "Wyświetl w menedżerze plików"
 
@@ -336,7 +336,7 @@ msgstr "Wyświetl w menedżerze plików"
 
 #: fileItemMenu.js:365
 msgid "Select Extract Destination"
-msgstr ""
+msgstr "Wybierz miejsce rozpakowania archiwum"
 
 #: fileItemMenu.js:370
 #, fuzzy
@@ -345,11 +345,11 @@ msgstr "Zaznacz wszystko"
 
 #: fileItemMenu.js:396
 msgid "Can not email a Directory"
-msgstr ""
+msgstr "Nie można wysłać Katalogu"
 
 #: fileItemMenu.js:397
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr ""
+msgstr "Zaznaczenie zawiera Katalog, najpierw skompresuj Katalog do pliku."
 
 #: preferences.js:91
 msgid "Settings"
@@ -417,11 +417,11 @@ msgstr "Dodaj nowe dyski po przeciwnej stronie ekranu"
 
 #: preferences.js:112
 msgid "Highlight the drop place during Drag'n'Drop"
-msgstr ""
+msgstr "Podświetl miejsce upuszczenia pliku podczas przeciągania"
 
 #: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Użyj Nemo do otwierania katalogów"
 
 #: preferences.js:115
 msgid "Add an emblem to soft links"
@@ -493,17 +493,16 @@ msgid "Always"
 msgstr "Zawsze"
 
 #: prefs.js:37
-#, fuzzy
 msgid ""
 "To configure Desktop Icons NG, do right-click in the desktop and choose the "
 "last item: 'Desktop Icons settings'"
 msgstr ""
-"Aby skonfigurować ikony puplitu, kliknij pulpit prawym przyciskiem myszy i "
-"wybierz ostatni element: 'Ustawienia'"
+"Aby skonfigurować ikony pulpitu, kliknij pulpit prawym przyciskiem myszy i "
+"wybierz ostatni element: 'Ustawienia ikon na pulpicie'"
 
 #: showErrorPopup.js:40
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -554,59 +553,63 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
-msgstr ""
+msgstr "Pokarz prostokąt w miejscu docelowym podczas Przeciągania i Upuszczania"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
 msgid ""
 "When doing a Drag'n'Drop operation, marks the place in the grid where the "
 "icon will be put with a semitransparent rectangle."
 msgstr ""
+"Kiedy Przeciągasz i Upuszczasz, oznacz miejsce w siatce ikon,"
+"gdzie ikona zostanie upuszczana za pomocą półprzeźroczystego prostokąta"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr ""
+msgstr "Sortuj Katalogi Specjalne - Katalog domowy/Kosz/Dyski"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
 "When arranging Icons on desktop, to sort and change the position of the "
 "Home, Trash and mounted Network or External Drives"
 msgstr ""
+"Kiedy porządkujesz Ikony na pulpicie, sortuj i zmień pozycję:"
+"Katalogu domowego, Kosza oraz Pamięci Sieciowych i Zewnętrznych"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
-msgstr ""
+msgstr "Zachowaj autorozmieszczanie ikon"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr ""
+msgstr "Zawsze zachowaj autorozmieszczanie ikon wg. ostatniego porządku"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
-msgstr ""
+msgstr "Porządek autorozmieszczania"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
-msgstr ""
+msgstr "Ikony autorozmieszczane są na podstawie tej właściwości"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
 msgid "Keep Icons Stacked"
-msgstr ""
+msgstr "Zachowaj Grupowanie Ikon"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr ""
+msgstr "Zawsze zachowuj grupowanie ikon, podobne typy są grupowane"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Typ plików, którego nie grupować"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Tablica napisów-typów, nie grupuj tych typów"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Użyj Nemo zamiast Nautilus'a do otwierania katalogów"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
