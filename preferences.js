@@ -113,7 +113,6 @@ function showPreferences() {
     frame.add(buildSwitcher(desktopSettings, 'use-nemo', _("Use Nemo to open folders")));
 
     frame.add(buildSwitcher(desktopSettings, 'show-link-emblem', _("Add an emblem to soft links")));
-    frame.add(buildSwitcher(desktopSettings, 'show-executable-emblem', _("Add an emblem to .desktop files")));
 
     frame.add(buildSwitcher(desktopSettings, 'dark-text-in-labels', _("Use dark text in icon labels")));
 

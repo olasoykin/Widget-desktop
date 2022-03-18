@@ -666,13 +666,6 @@ var desktopIconItem = class desktopIconItem {
             emblemIcon.composite(pixbuf, pixbuf.width - finalSize, pixbuf.height - finalSize, finalSize, finalSize, pixbuf.width - finalSize, pixbuf.height - finalSize, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255);
         }
 
-        if (this.trustedDesktopFile && this._desktopManager.showExecutableEmblem) {
-            pixbuf = this._copyAndResizeIfNeeded(pixbuf);
-            let theme = Gtk.IconTheme.get_default();
-            emblem = Gio.ThemedIcon.new('emblem-default');
-            let emblemIcon = theme.lookup_by_gicon_for_scale(emblem, finalSize / scale, scale, Gtk.IconLookupFlags.FORCE_SIZE).load_icon();
-            emblemIcon.composite(pixbuf, 0, 0, finalSize, finalSize, 0, 0, 1, 1, GdkPixbuf.InterpType.BILINEAR, 255);
-        }
         if (this.isStackTop && ! this.stackUnique) {
             pixbuf = this._copyAndResizeIfNeeded(pixbuf);
             let theme = Gtk.IconTheme.get_default();

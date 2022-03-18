@@ -87,7 +87,6 @@ var DesktopManager = class {
         this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
         this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
         this.showLinkEmblem = Prefs.desktopSettings.get_boolean('show-link-emblem');
-        this.showExecutableEmblem = Prefs.desktopSettings.get_boolean('show-executable-emblem');
         this.darkText = Prefs.desktopSettings.get_boolean('dark-text-in-labels');
         this._settingsId = Prefs.desktopSettings.connect('changed', (obj, key) => {
             if (key == 'dark-text-in-labels')  {
@@ -97,9 +96,8 @@ var DesktopManager = class {
                 });
                 return;
             }
-            if ((key == 'show-link-emblem') || (key == 'show-executable-emblem')) {
+            if (key == 'show-link-emblem') {
                 this.showLinkEmblem = Prefs.desktopSettings.get_boolean('show-link-emblem');
-                this.showExecutableEmblem = Prefs.desktopSettings.get_boolean('show-executable-emblem');
                 this._updateDesktop().catch((e) => {
                     print(`Exception while updating Desktop after Show Emblems changed: ${e.message}\n${e.stack}`);
                 });
