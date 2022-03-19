@@ -31,6 +31,7 @@ install_data([
     'metadata.json',
     'prefs.js',
     'preferences.js',
+    'prefswindow.js',
     'stackItem.js',
     'showErrorPopup.js',
     'stylesheet.css',
