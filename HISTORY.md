@@ -15,6 +15,7 @@
   * Show a dialog when a .desktop file can't be launched (Sundeep Mediratta)
   * Allows to theme the menus (Marco Trevisan)
   * Fixed passing undefined classname (Daniel van Vugt)
+  * Show preferences also in gnome-extensions-app (Sergio Costas)
 
 * Version 39
   * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
