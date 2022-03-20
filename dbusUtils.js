@@ -20,6 +20,7 @@ const { Gio, GLib, Gdk, Gtk } = imports.gi;
 const ByteArray = imports.byteArray;
 const Signals = imports.signals;
 const DBusInterfaces = imports.dbusInterfaces;
+
 var NautilusFileOperations2 = null;
 var FreeDesktopFileManager = null;
 var GnomeNautilusPreview = null;
@@ -138,7 +139,7 @@ class ProxyManager {
             } catch(e) {
                 this._available = false;
                 this._proxy = null;
-                print(`Error creating proxy, ${this._programNeeded[0]}? ${e.message}\n${e.stack}`);
+                print(`Error creating proxy, ${this._programNeeded[0]}: ${e.message}\n${e.stack}`);
             }
         } else {
             this._available = false;
@@ -191,6 +192,9 @@ class DBusManager {
     constructor() {
         this._availableInSystemBus = [];
         this._availableInLocalBus = [];
+        this._pendingLocalSignal = false;
+        this._pendingSystemSignal = false;
+        this._signalTimerID = 0;
 
         let interfaceXML = this.getInterface(
             'org.freedesktop.DBus',
@@ -204,6 +208,7 @@ class DBusManager {
             '/org/freedesktop/DBus',
             null
         );
+        let ASCinSystemBus = interfaceXML.includes('ActivatableServicesChanged');
 
         // Don't presume that both system and local have the same interface (just in case)
         interfaceXML = this.getInterface(
@@ -218,15 +223,25 @@ class DBusManager {
             '/org/freedesktop/DBus',
             null
         );
+        let ASCinLocalBus = interfaceXML.includes('ActivatableServicesChanged');
+
         this._updateAllAvailabilities();
         this._dbusLocalProxy.connectSignal('NameOwnerChanged', () => {
-            this._updateAllAvailabilities();
-            this.emit('changed-availability-local');
+            this._emitChangedSignal(true);
         });
+        if (ASCinLocalBus) {
+            this._dbusLocalProxy.connectSignal('ActivatableServicesChanged', () => {
+                this._emitChangedSignal(true);
+            });
+        }
         this._dbusSystemProxy.connectSignal('NameOwnerChanged', () => {
-            this._updateAllAvailabilities();
-            this.emit('changed-availability-system');
+            this._emitChangedSignal(false);
         });
+        if (ASCinSystemBus) {
+            this._dbusSystemProxy.connectSignal('ActivatableServicesChanged', () => {
+                this._emitChangedSignal(false);
+            });
+        }
 
         interfaceXML = this.getInterface(
             'org.freedesktop.Notifications',
@@ -240,6 +255,30 @@ class DBusManager {
             '/org/freedesktop/Notifications',
             null
         );
+    }
+
+    _emitChangedSignal(localDBus) {
+        if (localDBus) {
+            this._pendingLocalSignal = true;
+        } else {
+            this._pendingSystemSignal = true;
+        }
+        if (this._signalTimerID) {
+            GLib.source_remove(this._signalTimerID);
+        }
+        this._signalTimerID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+            this._signalTimerID = 0;
+            this._updateAllAvailabilities();
+            if (this._pendingLocalSignal) {
+                this.emit('changed-availability-local');
+            }
+            if (this._pendingSystemSignal) {
+                this.emit('changed-availability-system');
+            }
+            this._pendingLocalSignal = false;
+            this._pendingSystemSignal = false;
+            return false;
+        });
     }
 
     checkIsAvailable(serviceName, inSystemBus) {
@@ -313,7 +352,7 @@ class DBusManager {
             if (!tag.startsWith('interface ')) {
                 continue;
             }
-            if (-1 != tag.indexOf(interfaceName)) {
+            if (tag.includes(interfaceName)) {
                 break;
             }
         }
@@ -360,7 +399,7 @@ class DBusManager {
         if (data == null) {
             return null;
         }
-        if (data.indexOf("interface") == -1) {
+        if (!data.includes("interface")) {
             return null; // if it doesn't exist, return null
         }
         return data;
