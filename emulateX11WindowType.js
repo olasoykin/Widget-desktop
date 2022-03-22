@@ -33,8 +33,12 @@ class ManageWindow {
        * D : show this window in all desktops
        * H : hide this window from window list
 
-       Using the title is not a problem because this is only useful for windows
-       without decorations.
+       Using the title is generally not a problem because the desktop windows
+       doesn't have a tittle. But some other windows may have and still need to
+       take advantage of this, so adding a single blank space at the end of the
+       title is equivalent to @!H, and having two blank spaces at the end of the
+       title is equivalent to @!HTD. This allows to take advantage of these flags
+       even to decorated windows.
     */
 
     constructor(window, wayland_client, changedStatusCB) {
