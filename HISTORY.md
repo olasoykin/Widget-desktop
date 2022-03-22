@@ -1,6 +1,6 @@
 # History of versions #
 
-* inprogress
+* Version 40
   * Copy instead of Move if Shift or Control is pressed (Sergio Costas)
   * Redirect output to the logger in real time (Marco Trevisan)
   * Pass timestamps to avoid focus stealing (Marco Trevisan)
@@ -16,6 +16,8 @@
   * Allows to theme the menus (Marco Trevisan)
   * Fixed passing undefined classname (Daniel van Vugt)
   * Show preferences also in gnome-extensions-app (Sergio Costas)
+  * Fixed high-CPU usage when moving windows on Ubuntu (Sergio Costas)
+  * Added support for the new ActivatableServicesChanged signal in DBus (Sergio Costas)
 
 * Version 39
   * Fixed "Allow launching" when the file doesn't have executable flag (Sergio Costas)
