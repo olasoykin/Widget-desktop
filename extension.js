@@ -45,7 +45,7 @@ function init() {
     data.launchDesktopId = 0;
     data.currentProcess = null;
     data.reloadTime = 100;
-    data.dbusTimeoutID = 0;
+    data.dbusTimeoutId = 0;
 
     data.GnomeShellOverride = null;
     data.GnomeShellVersion = parseInt(Config.PACKAGE_VERSION.split(".")[0]);
@@ -273,17 +273,17 @@ function disable() {
         data.sizeChangedId = 0;
     }
     if (data.dbusTimeoutId) {
-        GLib.source_remove(data.dbusTimeoutID);
-        data.dbusTimeoutID = 0;
+        GLib.source_remove(data.dbusTimeoutId);
+        data.dbusTimeoutId = 0;
     }
 }
 
 function reloadIfSizesChanged() {
-    if (data.dbusTimeoutID !== 0) {
+    if (data.dbusTimeoutId !== 0) {
         return;
     }
     // limit the update signals to a maximum of one per second
-    data.dbusTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+    data.dbusTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
         let desktopList = [];
         let ws = global.workspace_manager.get_workspace_by_index(0);
         for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
@@ -304,7 +304,7 @@ function reloadIfSizesChanged() {
         }
         let desktopListVariant = new GLib.Variant('av', desktopList);
         data.remoteDingActions.activate_action('updateGridWindows', desktopListVariant);
-        data.dbusTimeoutID = 0;
+        data.dbusTimeoutId = 0;
         return false;
     });
 }
