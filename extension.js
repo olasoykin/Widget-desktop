@@ -272,7 +272,7 @@ function disable() {
         global.window_manager.disconnect(data.sizeChangedId);
         data.sizeChangedId = 0;
     }
-    if (data.dbusConnectionId) {
+    if (data.dbusTimeoutId) {
         GLib.source_remove(data.dbusTimeoutID);
         data.dbusTimeoutID = 0;
     }
