@@ -17,6 +17,23 @@ with these advantages:
 * Nautilus >= 3.38
 * File-roller >= 3.38
 
+## Manual installation
+
+The easiest way of installing DING is to run the `local_install.sh` script. It performs the build steps
+specified in the next section.
+
+In Ubuntu, unfortunately, it is not possible to use it directly because the internal desktop-icons-ng
+extension interferes. The only way to update to the newest one is to install the package "gnome-session"
+to be able to use the standard gnome shell session, and there install the following extensions from
+extensions.gnome.org:
+
+* Desktop icons ng
+* Dash to dock
+* Appindicator and KstatusNotifierItem support
+
+That will allow to have the same experience than the original Ubuntu desktop, but with the most recent
+versions of the extensions.
+
 ## Internal architecture
 
 The code is divided in two parts: a classic Gtk program that manages the whole desktop
@@ -79,11 +96,6 @@ files must be in the current path.
   will be created for each monitor. If no -D parameter is specified, it will create a single monitor
   with a size of 1280x720 pixels.
 * -M: specifies which monitor is the primary index, to add there any new file icon.
-
-## Manual installation
-
-The easiest way of installing DING is to run the `local_install.sh` script. It performs the build steps
-specified in the next section.
 
 ## Build with Meson
 
