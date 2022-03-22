@@ -820,7 +820,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
         this.fileOperationsManager.proxy.TrashFilesRemote(
             fileList,
             (source, error) => {
-                this.EmptyTrashRemote(true);
+                this.EmptyTrashRemote();
                 if (callback) {
                     callback(source, error);
                 }
