@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 41
+  * Remove signals timeout when the extension is disabled (Sergio Costas)
+
 * Version 40
   * Copy instead of Move if Shift or Control is pressed (Sergio Costas)
   * Redirect output to the logger in real time (Marco Trevisan)
