@@ -36,16 +36,16 @@ versions of the extensions.
 
 ## Internal architecture
 
-The code is divided in two parts: a classic Gtk program that manages the whole desktop
-(comprised by the files ding.js, askNamePopup.js, createThumbnail.js, dbusUtils.js, desktopGrid.js,
-desktopIconsUtil.js, desktopManager.js, enums.js, fileItem.js and preferences.js), and a little
-extension (extension.js) that have these roles:
+The code is divided in two parts: a classic Gtk3 program that manages the whole desktop, and a little
+extension (comprised only by the files 'extension.js', 'gnomeShellOverride.js', 'visibleArea.js' and
+'emulateX11WindowType.js') that have these roles:
 
-* Launch the desktop program at startup and relaunch it if it dies
+* Launch the desktop program at startup, relaunch it if it dies, and kill it if the extension is disabled
 * Identify the desktop windows and keep it at the bottom of the windows stack, in all desktops
+* Detect changes in the desktop/monitors geometry and notify the main desktop program of them
 
-This last part is paramount in Wayland systems, because there an application can't set its role
-as freely as in X11.
+These two last items are paramount in Wayland systems, because there an application can neither set its
+role as freely as in X11, nor get that information.
 
 Of course, to avoid breaking the security model of Wayland, it is paramount to ensure that no other
 program can pose as DING. In old versions, the process for identifying the window was quite convoluted,
