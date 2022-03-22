@@ -45,6 +45,7 @@ function init() {
     data.launchDesktopId = 0;
     data.currentProcess = null;
     data.reloadTime = 100;
+    data.dbusTimeoutID = 0;
 
     data.GnomeShellOverride = null;
     data.GnomeShellVersion = parseInt(Config.PACKAGE_VERSION.split(".")[0]);
@@ -274,26 +275,34 @@ function disable() {
 }
 
 function reloadIfSizesChanged() {
-    let desktopList = [];
-    let ws = global.workspace_manager.get_workspace_by_index(0);
-    for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
-        let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
-        let desktopListElement = new GLib.Variant('a{sd}', {
-            'x' : area.x,
-            'y': area.y,
-            'width' : area.width,
-            'height' : area.height,
-            'zoom' : area.scale,
-            'marginTop' : area.marginTop,
-            'marginBottom' : area.marginBottom,
-            'marginLeft' : area.marginLeft,
-            'marginRight' : area.marginRight,
-            'monitorIndex' : monitorIndex
-        });
-        desktopList.push(desktopListElement);
+    if (data.dbusTimeoutID !== 0) {
+        return;
     }
-    let desktopListVariant = new GLib.Variant('av', desktopList);
-    data.remoteDingActions.activate_action('updateGridWindows', desktopListVariant);
+    // limit the update signals to a maximum of one per second
+    data.dbusTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+        let desktopList = [];
+        let ws = global.workspace_manager.get_workspace_by_index(0);
+        for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
+            let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
+            let desktopListElement = new GLib.Variant('a{sd}', {
+                'x' : area.x,
+                'y': area.y,
+                'width' : area.width,
+                'height' : area.height,
+                'zoom' : area.scale,
+                'marginTop' : area.marginTop,
+                'marginBottom' : area.marginBottom,
+                'marginLeft' : area.marginLeft,
+                'marginRight' : area.marginRight,
+                'monitorIndex' : monitorIndex
+            });
+            desktopList.push(desktopListElement);
+        }
+        let desktopListVariant = new GLib.Variant('av', desktopList);
+        data.remoteDingActions.activate_action('updateGridWindows', desktopListVariant);
+        data.dbusTimeoutID = 0;
+        return false;
+    });
 }
 
 /**
