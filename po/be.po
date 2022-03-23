@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2021-06-20 22:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgstr "Імя папкі"
 msgid "File name"
 msgstr "Імя файла"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr ""
 
@@ -35,11 +35,11 @@ msgstr ""
 msgid "Rename"
 msgstr "Перайменаваць"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -49,110 +49,110 @@ msgstr ""
 msgid "Command not found"
 msgstr "Каманда не знойдзена"
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr "Файлавы менеджар Nautilus не знойдзены"
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "Файлавы менеджар Nautilus з'яўляецца неабходным для працы Desktop Icons NG."
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "Новая папка"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "Новы дакумент"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "Уставіць"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "Адрабіць"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "Паўтарыць"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 #, fuzzy
 msgid "Select All"
 msgstr "Вылучыць усё"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "Паказаць Стол у файлавым менеджары"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Адкрыць у Тэрмінале"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "Змяніць фон..."
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Настройкі значкоў Стала"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "Настройкі дісплэя"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr ""
 
@@ -347,154 +347,9 @@ msgstr "Немагчыма даслаць папку"
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "Сярод вылучанага ёсць папка, спачатку сцісніце папку ў файл."
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "Настройкі"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "Памер значкоў працоўнага стала"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr "Маленькі"
-
-#: preferences.js:98
-msgid "Small"
-msgstr "Малы"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "Стандартны"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "Вялікі"
-
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "Паказваць асабістую папку на працоўным стале"
-
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "Паказваць значок сметніцы на працоўным стале"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "Паказваць зменныя носьбіты на працоўным стале"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "Паказваць сеткавыя носьбіты на працоўным стале"
-
-#: preferences.js:105
-msgid "New icons alignment"
-msgstr "Новае выраўноўванне значкоў"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr "Верхні левы вугал"
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr "Верхні правы вугал"
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr "Ніжні левы вугал"
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr "Ніжні правы вугал"
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "Дадаць новыя носьбіты на супрацьлеглы бок экрану"
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Падсвечваць месца перамяшчэння файла падчас Drag'n'Drop"
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr "Настройкі звязаныя з Nautilus"
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr "Від кліку для адкрыцця файлаў"
-
-#: preferences.js:130
-msgid "Single click"
-msgstr "Адзіночны клік"
-
-#: preferences.js:130
-msgid "Double click"
-msgstr "Двайны клік"
-
-#: preferences.js:131
-msgid "Show hidden files"
-msgstr "Паказваць схаваныя файлы"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr "Паказваць пункт \"выдаліць назаўжды\" у кантэкстным меню"
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr "Дзеянне пры запуску праграмы з працоўнага стала"
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr "Паказаць змесціва файла"
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr "Запусціць файл"
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr "Спытаць што зрабіць"
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr "Паказваць мініяцюры"
-
-#: preferences.js:147
-msgid "Never"
-msgstr "Ніколі"
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr "Толькі для лакальных файлаў"
-
-#: preferences.js:149
-msgid "Always"
-msgstr "Заўжды"
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
-"Каб наладзіць Desktop Icons NG, клікніце правай кнопкай мышы па працоўным "
-"стале і абярыце апошні пункт: \"Настройкі значкоў стала\""
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -532,13 +387,25 @@ msgstr "Вугал экрана для новых значкоў"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "Наладзіць вугал з якога будзе пачынацца размяшчэнне значкоў."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Паказваць зменныя носьбіты на працоўным стале"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "Паказваць зменныя носьбіты, падлучаныя да камп'ютара."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Паказваць сеткавыя носьбіты на працоўным стале"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "Паказваць прымантаваныя сеткавыя тамы на працоўным стале."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Дадаць новыя носьбіты на супрацьлеглы бок экрану"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -602,6 +469,10 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -615,22 +486,102 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "Памер значкоў працоўнага стала"
+
+#~ msgid "Tiny"
+#~ msgstr "Маленькі"
+
+#~ msgid "Small"
+#~ msgstr "Малы"
+
+#~ msgid "Standard"
+#~ msgstr "Стандартны"
+
+#~ msgid "Large"
+#~ msgstr "Вялікі"
+
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "Паказваць асабістую папку на працоўным стале"
+
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "Паказваць значок сметніцы на працоўным стале"
+
+#~ msgid "New icons alignment"
+#~ msgstr "Новае выраўноўванне значкоў"
+
+#~ msgid "Top-left corner"
+#~ msgstr "Верхні левы вугал"
+
+#~ msgid "Top-right corner"
+#~ msgstr "Верхні правы вугал"
+
+#~ msgid "Bottom-left corner"
+#~ msgstr "Ніжні левы вугал"
+
+#~ msgid "Bottom-right corner"
+#~ msgstr "Ніжні правы вугал"
+
+#~ msgid "Highlight the drop place during Drag'n'Drop"
+#~ msgstr "Падсвечваць месца перамяшчэння файла падчас Drag'n'Drop"
+
+#~ msgid "Settings shared with Nautilus"
+#~ msgstr "Настройкі звязаныя з Nautilus"
+
+#~ msgid "Click type for open files"
+#~ msgstr "Від кліку для адкрыцця файлаў"
+
+#~ msgid "Single click"
+#~ msgstr "Адзіночны клік"
+
+#~ msgid "Double click"
+#~ msgstr "Двайны клік"
+
+#~ msgid "Show hidden files"
+#~ msgstr "Паказваць схаваныя файлы"
+
+#~ msgid "Show a context menu item to delete permanently"
+#~ msgstr "Паказваць пункт \"выдаліць назаўжды\" у кантэкстным меню"
+
+#~ msgid "Action to do when launching a program from the desktop"
+#~ msgstr "Дзеянне пры запуску праграмы з працоўнага стала"
+
+#~ msgid "Display the content of the file"
+#~ msgstr "Паказаць змесціва файла"
+
+#~ msgid "Launch the file"
+#~ msgstr "Запусціць файл"
+
+#~ msgid "Ask what to do"
+#~ msgstr "Спытаць што зрабіць"
+
+#~ msgid "Show image thumbnails"
+#~ msgstr "Паказваць мініяцюры"
+
+#~ msgid "Never"
+#~ msgstr "Ніколі"
+
+#~ msgid "Local files only"
+#~ msgstr "Толькі для лакальных файлаў"
+
+#~ msgid "Always"
+#~ msgstr "Заўжды"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "Каб наладзіць Desktop Icons NG, клікніце правай кнопкай мышы па працоўным "
+#~ "стале і абярыце апошні пункт: \"Настройкі значкоў стала\""
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Вы хаціце выканаць “{0}”, ці паказаць яго змесціва?"

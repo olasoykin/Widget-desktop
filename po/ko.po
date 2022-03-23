@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2021-03-23 03:42+0900\n"
 "Last-Translator: jgjeong <jingimem@gmail.com>\n"
 "Language-Team: Korean <jingimem@gmail.com>\n"
@@ -25,7 +25,7 @@ msgstr "폴더 이름"
 msgid "File name"
 msgstr "파일 이름"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr "확인"
 
@@ -33,11 +33,11 @@ msgstr "확인"
 msgid "Rename"
 msgstr "이름 바꾸기"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -47,109 +47,109 @@ msgstr ""
 msgid "Command not found"
 msgstr "명령을 찾을 수 없습니다."
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr "노틸러스 파일 관리자를 찾을 수 없습니다."
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "노틸러스 파일 관리자는 Desktop Icons NG로 작업하는 데 필수입니다."
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "취소"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "새 문서"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "실행 취소"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "다시 실행"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 #, fuzzy
 msgid "Select All"
 msgstr "전체 선택"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "파일 관리자로 바탕화면 보기"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "터미널로 열기"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "배경화면 변경"
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "바탕화면 아이콘 설정"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "화면 설정"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr ""
 
@@ -342,154 +342,9 @@ msgstr "디렉토리는 이메일로 보낼 수 없습니다."
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "선택 파일 중 디렉토리가 포함되어 있어, 먼저 파일로 압축이 필요합니다."
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "설정"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "바탕화면 아이콘 크기"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr "매우 작은 아이콘"
-
-#: preferences.js:98
-msgid "Small"
-msgstr "작은 아이콘"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "중간 아이콘"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "큰 아이콘"
-
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "바탕화면에 홈 폴더 표시"
-
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "바탕화면에 휴지통 표시"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "바탕화면에 외장 드라이브 표시"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "바탕화면에 네트워크 드라이브 표시"
-
-#: preferences.js:105
-msgid "New icons alignment"
-msgstr "새 아이콘 정렬 방식"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr "좌측 상단부터"
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr "우측 상단부터"
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr "좌측 하단부터"
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr "우측 하단부터"
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "새 드라이브를 스크린 반대편에 추가"
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "드래그 앤 드랍 시 드랍 위치 강조 효과"
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr "노틸러스와 설정 공유"
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr "파일 열기 시 클릭 횟수"
-
-#: preferences.js:130
-msgid "Single click"
-msgstr "싱글 클릭"
-
-#: preferences.js:130
-msgid "Double click"
-msgstr "더블 클릭"
-
-#: preferences.js:131
-msgid "Show hidden files"
-msgstr "숨김 파일 표시"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr "컨텍스트 메뉴에 영구적으로 삭제하기 표시"
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr "바탕화면에서 프로그램 실행 시 수행 할 작업"
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr "파일의 내용 표시"
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr "파일 실행"
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr "어떤 작업 수행할 지 선택"
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr "이미지 썸네일 보기"
-
-#: preferences.js:147
-msgid "Never"
-msgstr "보지 않음"
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr "로컬 파일만 보기"
-
-#: preferences.js:149
-msgid "Always"
-msgstr "항상 보기"
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
-"Desktop Icons NG 설정을 보려면 바탕화면에서 우클릭하여 마지막 아이템 '바탕화"
-"면 아이콘 설정'을 선택하세요."
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -527,13 +382,25 @@ msgstr "새 아이콘 배치할 코너"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "아이콘 배치를 시작할 코너 설정"
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "바탕화면에 외장 드라이브 표시"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "컴퓨터에 연결된 디스크 드라이브 표시"
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "바탕화면에 네트워크 드라이브 표시"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "마운트된 네트워크 볼륨을 바탕화면에 표시"
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "새 드라이브를 스크린 반대편에 추가"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -593,6 +460,10 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -606,22 +477,102 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "바탕화면 아이콘 크기"
+
+#~ msgid "Tiny"
+#~ msgstr "매우 작은 아이콘"
+
+#~ msgid "Small"
+#~ msgstr "작은 아이콘"
+
+#~ msgid "Standard"
+#~ msgstr "중간 아이콘"
+
+#~ msgid "Large"
+#~ msgstr "큰 아이콘"
+
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "바탕화면에 홈 폴더 표시"
+
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "바탕화면에 휴지통 표시"
+
+#~ msgid "New icons alignment"
+#~ msgstr "새 아이콘 정렬 방식"
+
+#~ msgid "Top-left corner"
+#~ msgstr "좌측 상단부터"
+
+#~ msgid "Top-right corner"
+#~ msgstr "우측 상단부터"
+
+#~ msgid "Bottom-left corner"
+#~ msgstr "좌측 하단부터"
+
+#~ msgid "Bottom-right corner"
+#~ msgstr "우측 하단부터"
+
+#~ msgid "Highlight the drop place during Drag'n'Drop"
+#~ msgstr "드래그 앤 드랍 시 드랍 위치 강조 효과"
+
+#~ msgid "Settings shared with Nautilus"
+#~ msgstr "노틸러스와 설정 공유"
+
+#~ msgid "Click type for open files"
+#~ msgstr "파일 열기 시 클릭 횟수"
+
+#~ msgid "Single click"
+#~ msgstr "싱글 클릭"
+
+#~ msgid "Double click"
+#~ msgstr "더블 클릭"
+
+#~ msgid "Show hidden files"
+#~ msgstr "숨김 파일 표시"
+
+#~ msgid "Show a context menu item to delete permanently"
+#~ msgstr "컨텍스트 메뉴에 영구적으로 삭제하기 표시"
+
+#~ msgid "Action to do when launching a program from the desktop"
+#~ msgstr "바탕화면에서 프로그램 실행 시 수행 할 작업"
+
+#~ msgid "Display the content of the file"
+#~ msgstr "파일의 내용 표시"
+
+#~ msgid "Launch the file"
+#~ msgstr "파일 실행"
+
+#~ msgid "Ask what to do"
+#~ msgstr "어떤 작업 수행할 지 선택"
+
+#~ msgid "Show image thumbnails"
+#~ msgstr "이미지 썸네일 보기"
+
+#~ msgid "Never"
+#~ msgstr "보지 않음"
+
+#~ msgid "Local files only"
+#~ msgstr "로컬 파일만 보기"
+
+#~ msgid "Always"
+#~ msgstr "항상 보기"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "Desktop Icons NG 설정을 보려면 바탕화면에서 우클릭하여 마지막 아이템 '바탕"
+#~ "화면 아이콘 설정'을 선택하세요."
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "“{0}”을 실행하시겠습니까? 혹은 내용을 표시하겠습니까?"

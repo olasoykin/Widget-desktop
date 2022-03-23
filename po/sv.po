@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2022-01-11 10:17+0100\n"
 "Last-Translator: Gunnar Hjalmarsson <Unknown>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -27,7 +27,7 @@ msgstr "Mappnamn"
 msgid "File name"
 msgstr "Filnamn"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr "OK"
 
@@ -35,11 +35,11 @@ msgstr "OK"
 msgid "Rename"
 msgstr "Byt namn"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -49,108 +49,108 @@ msgstr ""
 msgid "Command not found"
 msgstr "Kommandot hittades inte"
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus filhanterare hittades inte"
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "Filhanteraren Nautilus är obligatorisk för att arbeta med Desktop Icons NG."
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr "Rensa aktuellt val innan ny sökning"
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr "Hitta filer på skrivbordet"
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "Ny mapp"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "Nytt dokument"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "Klistra in"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "Ångra"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "Gör om"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 msgid "Select All"
 msgstr "Markera alla"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "Visa skrivbord i Filer"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Öppna i terminal"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "Ändra bakgrund…"
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 msgid "Desktop Icons Settings"
 msgstr "Inställningar för Desktop Icons"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "Visningsinställningar"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr "Arrangera ikonerna"
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr "Arrangera efter..."
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr "Behåll arrangerade..."
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr "Behåll arrangerade efter typ..."
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr "Sortera Hem/Diskar/Papperskorg..."
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr "Sortera efter namn"
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr "Sortera efter namn (nedåtgående)"
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr "Sortera efter senaste ändring"
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr "Sortera efter typ"
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr "Sortera efter storlek"
 
@@ -342,156 +342,9 @@ msgstr "Kan inte maila en katalog"
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "Valet innehåller en katalog,  komprimera katalogen till en fil först."
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "Inställningar"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "Storlek för skrivbordsikonerna"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr "Mycket liten"
-
-#: preferences.js:98
-msgid "Small"
-msgstr "Liten"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "Standard"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "Stor"
-
-# TODO: *ON* the desktop?
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "Visa den personliga mappen på skrivbordet"
-
-# TODO: *ON* the desktop?
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "Visa papperskorgsikonen på skrivbordet"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "Visa externa enheter på skrivbordet"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "Visa nätverksenheter på skrivbordet"
-
-#: preferences.js:105
-msgid "New icons alignment"
-msgstr "Justering för nya ikoner"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr "Övre vänstra hörnet"
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr "Övre högra hörnet"
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr "Nedre vänstra hörnet"
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr "Nedre högra hörnet"
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "Lägg till nya enheter på motsatt sida av skärmen"
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Markera släpplatsen under dra-och-släpp"
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr "Inställningar delade med Nautilus"
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr "Klicktyp för filöppning"
-
-#: preferences.js:130
-msgid "Single click"
-msgstr "Enkelklick"
-
-#: preferences.js:130
-msgid "Double click"
-msgstr "Dubbelklick"
-
-#: preferences.js:131
-msgid "Show hidden files"
-msgstr "Visa dolda filer"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr "Visa ett snabbvalsmenyobjekt för att ta bort permanent"
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr "Åtgärd att utföra när ett program startas från skrivbordet"
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr "Visa innehållet i filen"
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr "Kör filen"
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr "Fråga vad som ska göras"
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr "Visa miniatyrbilder"
-
-#: preferences.js:147
-msgid "Never"
-msgstr "Aldrig"
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr "Endast lokala filer"
-
-#: preferences.js:149
-msgid "Always"
-msgstr "Alltid"
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
-"För att konfigurera Desktop Icons NG, högerklicka på skrivbordet och välj "
-"det sista objektet: 'Inställningar för skrivbordsikoner'"
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -532,13 +385,25 @@ msgstr "Starthörn för nya ikoner"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "Ställ in hörnet där ikonerna ska börja placeras."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Visa externa enheter på skrivbordet"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "Visa de hårddiskar som är anslutna till datorn."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Visa nätverksenheter på skrivbordet"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "Visa monterade nätverksvolymer på skrivbordet."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Lägg till nya enheter på motsatt sida av skärmen"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -605,6 +470,10 @@ msgstr "Filtyper som inte arrangeras"
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr "En lista över typer, arrangera inte dessa filtyper"
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -618,22 +487,104 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "Storlek för skrivbordsikonerna"
+
+#~ msgid "Tiny"
+#~ msgstr "Mycket liten"
+
+#~ msgid "Small"
+#~ msgstr "Liten"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "Large"
+#~ msgstr "Stor"
+
+# TODO: *ON* the desktop?
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "Visa den personliga mappen på skrivbordet"
+
+# TODO: *ON* the desktop?
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "Visa papperskorgsikonen på skrivbordet"
+
+#~ msgid "New icons alignment"
+#~ msgstr "Justering för nya ikoner"
+
+#~ msgid "Top-left corner"
+#~ msgstr "Övre vänstra hörnet"
+
+#~ msgid "Top-right corner"
+#~ msgstr "Övre högra hörnet"
+
+#~ msgid "Bottom-left corner"
+#~ msgstr "Nedre vänstra hörnet"
+
+#~ msgid "Bottom-right corner"
+#~ msgstr "Nedre högra hörnet"
+
+#~ msgid "Highlight the drop place during Drag'n'Drop"
+#~ msgstr "Markera släpplatsen under dra-och-släpp"
+
+#~ msgid "Settings shared with Nautilus"
+#~ msgstr "Inställningar delade med Nautilus"
+
+#~ msgid "Click type for open files"
+#~ msgstr "Klicktyp för filöppning"
+
+#~ msgid "Single click"
+#~ msgstr "Enkelklick"
+
+#~ msgid "Double click"
+#~ msgstr "Dubbelklick"
+
+#~ msgid "Show hidden files"
+#~ msgstr "Visa dolda filer"
+
+#~ msgid "Show a context menu item to delete permanently"
+#~ msgstr "Visa ett snabbvalsmenyobjekt för att ta bort permanent"
+
+#~ msgid "Action to do when launching a program from the desktop"
+#~ msgstr "Åtgärd att utföra när ett program startas från skrivbordet"
+
+#~ msgid "Display the content of the file"
+#~ msgstr "Visa innehållet i filen"
+
+#~ msgid "Launch the file"
+#~ msgstr "Kör filen"
+
+#~ msgid "Ask what to do"
+#~ msgstr "Fråga vad som ska göras"
+
+#~ msgid "Show image thumbnails"
+#~ msgstr "Visa miniatyrbilder"
+
+#~ msgid "Never"
+#~ msgstr "Aldrig"
+
+#~ msgid "Local files only"
+#~ msgstr "Endast lokala filer"
+
+#~ msgid "Always"
+#~ msgstr "Alltid"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "För att konfigurera Desktop Icons NG, högerklicka på skrivbordet och välj "
+#~ "det sista objektet: 'Inställningar för skrivbordsikoner'"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Vill du köra ”{0}”, eller visa dess innehåll?"

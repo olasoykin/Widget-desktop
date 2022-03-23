@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2019-03-04 14:55+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -27,7 +27,7 @@ msgstr "Nyt mappenavn"
 msgid "File name"
 msgstr "Omdøb …"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr "OK"
 
@@ -36,11 +36,11 @@ msgstr "OK"
 msgid "Rename"
 msgstr "Omdøb …"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -50,109 +50,109 @@ msgstr ""
 msgid "Command not found"
 msgstr ""
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr ""
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Annullér"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "Ny mappe"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "Nyt dokument"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "Indsæt"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "Fortryd"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "Omgør"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 #, fuzzy
 msgid "Select All"
 msgstr "Vælg alt"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "Vis skrivebordet i Filer"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Åbn i terminal"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "Skift baggrund …"
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Skærmindstillinger"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "Skærmindstillinger"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr ""
 
@@ -348,156 +348,9 @@ msgstr ""
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "Indstillinger"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "Størrelsen på skrivebordsikoner"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr ""
-
-#: preferences.js:98
-msgid "Small"
-msgstr "Små"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "Standard"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "Store"
-
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "Vis den personlige mappe på skrivebordet"
-
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "Vis papirkurvsikonet på skrivebordet"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-#, fuzzy
-msgid "Show external drives in the desktop"
-msgstr "Vis den personlige mappe på skrivebordet"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-#, fuzzy
-msgid "Show network drives in the desktop"
-msgstr "Vis den personlige mappe på skrivebordet."
-
-#: preferences.js:105
-#, fuzzy
-msgid "New icons alignment"
-msgstr "Ikonstørrelse"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr ""
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr ""
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr ""
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr ""
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr ""
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr ""
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr ""
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr ""
-
-#: preferences.js:130
-msgid "Single click"
-msgstr ""
-
-#: preferences.js:130
-msgid "Double click"
-msgstr ""
-
-#: preferences.js:131
-#, fuzzy
-msgid "Show hidden files"
-msgstr "Vis i Filer"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr ""
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr ""
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr ""
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr ""
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr ""
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr ""
-
-#: preferences.js:147
-msgid "Never"
-msgstr ""
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr ""
-
-#: preferences.js:149
-msgid "Always"
-msgstr ""
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -536,14 +389,28 @@ msgstr "Ikonstørrelse"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+#, fuzzy
+msgid "Show external drives in the desktop"
+msgstr "Vis den personlige mappe på skrivebordet"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+#, fuzzy
+msgid "Show network drives in the desktop"
+msgstr "Vis den personlige mappe på skrivebordet."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 #, fuzzy
 msgid "Show mounted network volumes in the desktop."
 msgstr "Vis den personlige mappe på skrivebordet."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -603,6 +470,10 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -616,22 +487,40 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "Størrelsen på skrivebordsikoner"
+
+#~ msgid "Small"
+#~ msgstr "Små"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "Large"
+#~ msgstr "Store"
+
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "Vis den personlige mappe på skrivebordet"
+
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "Vis papirkurvsikonet på skrivebordet"
+
+#, fuzzy
+#~ msgid "New icons alignment"
+#~ msgstr "Ikonstørrelse"
+
+#, fuzzy
+#~ msgid "Show hidden files"
+#~ msgstr "Vis i Filer"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Vil du køre “{0}” eller vise dens indhold?"

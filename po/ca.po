@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2019-07-22 10:24+0200\n"
 "Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
@@ -24,7 +24,7 @@ msgstr "Nom de la carpeta"
 msgid "File name"
 msgstr "Nom del fitxer"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr "D'acord"
 
@@ -32,11 +32,11 @@ msgstr "D'acord"
 msgid "Rename"
 msgstr "Canvia el nom"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -46,111 +46,111 @@ msgstr ""
 msgid "Command not found"
 msgstr "No s'ha trobat l'ordre"
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr "No s'ha trobat el gestor de fitxers del Nautilus"
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "El gestor de fitxers Nautilus és obligatori per a treballar amb les icones "
 "de l'escriptori NG."
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "Carpeta nova"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "Document nou"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "Enganxa"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "Desfés"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "Refés"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 #, fuzzy
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "Mostra l'escriptori al Fitxers"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Obre al Terminal"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "Canvia el fons de l'escriptori…"
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Paràmetres de les icones de l'escriptori"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "Paràmetres de la pantalla"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr ""
 
@@ -344,154 +344,9 @@ msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La selecció inclou un directori, comprimeix-hi el directori en un fitxer."
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "Paràmetres"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "Mida de les icones d'escriptori"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr "Diminuta"
-
-#: preferences.js:98
-msgid "Small"
-msgstr "Petita"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "Estàndard"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "Gran"
-
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "Mostra la carpeta personal a l'escriptori"
-
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "Mostra la icona de la paperera a l'escriptori"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "Mostra les unitats externes a l'escriptori"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "Mostra les unitats de xarxa a l'escriptori"
-
-#: preferences.js:105
-msgid "New icons alignment"
-msgstr "Alineació de les icones noves"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr "Cantonada superior esquerra"
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr "Cantonada superior dreta"
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr "Cantonada inferior esquerra"
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr "Cantonada inferior dreta"
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "Afegeix noves unitats al costat oposat de la pantalla"
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Ressalta el lloc desplegable durant l'arrossegat"
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr "Paràmetres compartits amb el Nautilus"
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr "Feu clic al tipus per a obrir fitxers"
-
-#: preferences.js:130
-msgid "Single click"
-msgstr "Un sol clic"
-
-#: preferences.js:130
-msgid "Double click"
-msgstr "Doble clic"
-
-#: preferences.js:131
-msgid "Show hidden files"
-msgstr "Mostra els fitxers ocults"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr "Mostra un element de menú contextual per a suprimir-lo permanentment"
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr "Acció a fer quan s'iniciï un programa des de l'escriptori"
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr "Mostra el contingut del fitxer"
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr "Executa el fitxer"
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr "Preguntar què fer"
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr "Mostra les miniatures de les imatges"
-
-#: preferences.js:147
-msgid "Never"
-msgstr "Mai"
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr "Només fitxers locals"
-
-#: preferences.js:149
-msgid "Always"
-msgstr "Sempre"
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
-"Per a configurar les icones de l'escriptori NG, feu clic dret a l'escriptori "
-"i trieu l'últim element: «Paràmetres de les icones de l'escriptori»"
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -529,13 +384,25 @@ msgstr "Angle d'inici de les icones noves"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "Estableix la cantonada des d'on s'iniciaran les icones."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Mostra les unitats externes a l'escriptori"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "Mostra les unitats de disc connectades a l'ordinador."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Mostra les unitats de xarxa a l'escriptori"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "Mostra els volums de xarxa muntats a l'escriptori."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Afegeix noves unitats al costat oposat de la pantalla"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -599,6 +466,10 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -612,22 +483,104 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "Mida de les icones d'escriptori"
+
+#~ msgid "Tiny"
+#~ msgstr "Diminuta"
+
+#~ msgid "Small"
+#~ msgstr "Petita"
+
+#~ msgid "Standard"
+#~ msgstr "Estàndard"
+
+#~ msgid "Large"
+#~ msgstr "Gran"
+
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "Mostra la carpeta personal a l'escriptori"
+
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "Mostra la icona de la paperera a l'escriptori"
+
+#~ msgid "New icons alignment"
+#~ msgstr "Alineació de les icones noves"
+
+#~ msgid "Top-left corner"
+#~ msgstr "Cantonada superior esquerra"
+
+#~ msgid "Top-right corner"
+#~ msgstr "Cantonada superior dreta"
+
+#~ msgid "Bottom-left corner"
+#~ msgstr "Cantonada inferior esquerra"
+
+#~ msgid "Bottom-right corner"
+#~ msgstr "Cantonada inferior dreta"
+
+#~ msgid "Highlight the drop place during Drag'n'Drop"
+#~ msgstr "Ressalta el lloc desplegable durant l'arrossegat"
+
+#~ msgid "Settings shared with Nautilus"
+#~ msgstr "Paràmetres compartits amb el Nautilus"
+
+#~ msgid "Click type for open files"
+#~ msgstr "Feu clic al tipus per a obrir fitxers"
+
+#~ msgid "Single click"
+#~ msgstr "Un sol clic"
+
+#~ msgid "Double click"
+#~ msgstr "Doble clic"
+
+#~ msgid "Show hidden files"
+#~ msgstr "Mostra els fitxers ocults"
+
+#~ msgid "Show a context menu item to delete permanently"
+#~ msgstr ""
+#~ "Mostra un element de menú contextual per a suprimir-lo permanentment"
+
+#~ msgid "Action to do when launching a program from the desktop"
+#~ msgstr "Acció a fer quan s'iniciï un programa des de l'escriptori"
+
+#~ msgid "Display the content of the file"
+#~ msgstr "Mostra el contingut del fitxer"
+
+#~ msgid "Launch the file"
+#~ msgstr "Executa el fitxer"
+
+#~ msgid "Ask what to do"
+#~ msgstr "Preguntar què fer"
+
+#~ msgid "Show image thumbnails"
+#~ msgstr "Mostra les miniatures de les imatges"
+
+#~ msgid "Never"
+#~ msgstr "Mai"
+
+#~ msgid "Local files only"
+#~ msgstr "Només fitxers locals"
+
+#~ msgid "Always"
+#~ msgstr "Sempre"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "Per a configurar les icones de l'escriptori NG, feu clic dret a "
+#~ "l'escriptori i trieu l'últim element: «Paràmetres de les icones de "
+#~ "l'escriptori»"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Voleu executar «{0}» o mostrar el seu contingut?"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 16:09+0100\n"
+"POT-Creation-Date: 2022-03-23 11:12+0100\n"
 "PO-Revision-Date: 2021-08-23 19:44+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "Nom del dorsièr"
 msgid "File name"
 msgstr "Nom de fichièr"
 
-#: askRenamePopup.js:49 desktopManager.js:800
+#: askRenamePopup.js:49 desktopManager.js:798
 msgid "OK"
 msgstr "D’acordi"
 
@@ -34,11 +34,11 @@ msgstr "D’acordi"
 msgid "Rename"
 msgstr "Renomenar"
 
-#: dbusUtils.js:64
+#: dbusUtils.js:65
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -48,111 +48,111 @@ msgstr ""
 msgid "Command not found"
 msgstr "Comanda pas trobada"
 
-#: desktopManager.js:217
+#: desktopManager.js:215
 msgid "Nautilus File Manager not found"
 msgstr "Gestionari de fichièrs Nautilus pas trobat"
 
-#: desktopManager.js:218
+#: desktopManager.js:216
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "Gestionari de fichièrs Nautilus es obligatòri per foncionar amb Desktop "
 "Icons NG."
 
-#: desktopManager.js:763
+#: desktopManager.js:761
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:802 fileItemMenu.js:369
+#: desktopManager.js:800 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "Anullada"
 
-#: desktopManager.js:804
+#: desktopManager.js:802
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:869 desktopManager.js:1492
+#: desktopManager.js:867 desktopManager.js:1490
 msgid "New Folder"
 msgstr "Dorsièr novèl"
 
-#: desktopManager.js:873
+#: desktopManager.js:871
 msgid "New Document"
 msgstr "Document novèl"
 
-#: desktopManager.js:878
+#: desktopManager.js:876
 msgid "Paste"
 msgstr "Pegar"
 
-#: desktopManager.js:882
+#: desktopManager.js:880
 msgid "Undo"
 msgstr "Anullar"
 
-#: desktopManager.js:886
+#: desktopManager.js:884
 msgid "Redo"
 msgstr "Refar"
 
-#: desktopManager.js:892
+#: desktopManager.js:890
 #, fuzzy
 msgid "Select All"
 msgstr "_Seleccionar tot"
 
-#: desktopManager.js:900
+#: desktopManager.js:898
 msgid "Show Desktop in Files"
 msgstr "Mostrar lo burèu dins Fichièrs"
 
-#: desktopManager.js:904 fileItemMenu.js:287
+#: desktopManager.js:902 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "Dobrir dins un terminal"
 
-#: desktopManager.js:910
+#: desktopManager.js:908
 msgid "Change Background…"
 msgstr "Modificar lo rèireplan…"
 
-#: desktopManager.js:921
+#: desktopManager.js:919
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Paramètres icònas de burèu"
 
-#: desktopManager.js:925
+#: desktopManager.js:923
 msgid "Display Settings"
 msgstr "Paramètres d'afichatge"
 
-#: desktopManager.js:1550
+#: desktopManager.js:1548
 msgid "Arrange Icons"
 msgstr "Arrengar las icònas"
 
-#: desktopManager.js:1554
+#: desktopManager.js:1552
 msgid "Arrange By..."
 msgstr "Arrengar per..."
 
-#: desktopManager.js:1563
+#: desktopManager.js:1561
 msgid "Keep Arranged..."
 msgstr "Gardar arrengat..."
 
-#: desktopManager.js:1567
+#: desktopManager.js:1565
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1572
+#: desktopManager.js:1570
 msgid "Sort Home/Drives/Trash..."
 msgstr "Triar Repertòri personal/disques/escobilhièr..."
 
-#: desktopManager.js:1578
+#: desktopManager.js:1576
 msgid "Sort by Name"
 msgstr "Triar per nom"
 
-#: desktopManager.js:1580
+#: desktopManager.js:1578
 msgid "Sort by Name Descending"
 msgstr "Triar per nom descendent"
 
-#: desktopManager.js:1583
+#: desktopManager.js:1581
 msgid "Sort by Modified Time"
 msgstr "Triar per data de modificacion"
 
-#: desktopManager.js:1586
+#: desktopManager.js:1584
 msgid "Sort by Type"
 msgstr "Triar per tipe"
 
-#: desktopManager.js:1589
+#: desktopManager.js:1587
 msgid "Sort by Size"
 msgstr "Triar per talha"
 
@@ -345,154 +345,9 @@ msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La seleccion inclutz un repertòri, compressatz lo repertòri d'en primièr."
 
-#: preferences.js:91
+#: preferences.js:67
 msgid "Settings"
 msgstr "Paramètres"
-
-#: preferences.js:98
-msgid "Size for the desktop icons"
-msgstr "Talha de las icònas burèu"
-
-#: preferences.js:98
-msgid "Tiny"
-msgstr "Minuscula"
-
-#: preferences.js:98
-msgid "Small"
-msgstr "Pichona"
-
-#: preferences.js:98
-msgid "Standard"
-msgstr "Estandarda"
-
-#: preferences.js:98
-msgid "Large"
-msgstr "Granda"
-
-#: preferences.js:99
-msgid "Show the personal folder in the desktop"
-msgstr "Mostrar lo dorsièr personal pel burèu"
-
-#: preferences.js:100
-msgid "Show the trash icon in the desktop"
-msgstr "Mostrar l'icòna de l'escobilhièr pel burèu"
-
-#: preferences.js:101 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "Mostrar los lector extèrns montats pel burèu"
-
-#: preferences.js:102 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "Mostrar los lectors ret montats pel burèu"
-
-#: preferences.js:105
-msgid "New icons alignment"
-msgstr "Alinhament de las icònas novèlas"
-
-#: preferences.js:106
-msgid "Top-left corner"
-msgstr "Caire en naut a esquèrra"
-
-#: preferences.js:107
-msgid "Top-right corner"
-msgstr "Caire en naut a drecha"
-
-#: preferences.js:108
-msgid "Bottom-left corner"
-msgstr "Caire en bas a esquèrra"
-
-#: preferences.js:109
-msgid "Bottom-right corner"
-msgstr "Caire en bas a drecha"
-
-#: preferences.js:111 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "Apondre los lectors novèls al costat opausat de l’ecran"
-
-#: preferences.js:112
-msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Enlusir la zòna de depaus pendent un lisar-depausar"
-
-#: preferences.js:113 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
-#: preferences.js:115
-msgid "Add an emblem to soft links"
-msgstr ""
-
-#: preferences.js:116
-msgid "Add an emblem to .desktop files"
-msgstr ""
-
-#: preferences.js:118
-msgid "Use dark text in icon labels"
-msgstr ""
-
-#. Nautilus options
-#: preferences.js:124
-msgid "Settings shared with Nautilus"
-msgstr "Paramètres partejats amb Nautilus"
-
-#: preferences.js:130
-msgid "Click type for open files"
-msgstr "Tipe de clic utilizat per dobrir de fichièrs"
-
-#: preferences.js:130
-msgid "Single click"
-msgstr "Clic simple"
-
-#: preferences.js:130
-msgid "Double click"
-msgstr "Clic doble"
-
-#: preferences.js:131
-msgid "Show hidden files"
-msgstr "Visualizar los fichièrs amagats"
-
-#: preferences.js:132
-msgid "Show a context menu item to delete permanently"
-msgstr "Mostrar un element de menú contextual per suprimir definitivament"
-
-#: preferences.js:137
-msgid "Action to do when launching a program from the desktop"
-msgstr "Accion de realizar pendent l’aviada d’un programa a partir del burèu"
-
-#: preferences.js:138
-msgid "Display the content of the file"
-msgstr "Afichar lo contengut del fichièr"
-
-#: preferences.js:139
-msgid "Launch the file"
-msgstr "Executar lo fichièr"
-
-#: preferences.js:140
-msgid "Ask what to do"
-msgstr "Demandar de qué far"
-
-#: preferences.js:146
-msgid "Show image thumbnails"
-msgstr "Mostrar las miniaturas d'imatge"
-
-#: preferences.js:147
-msgid "Never"
-msgstr "Jamai"
-
-#: preferences.js:148
-msgid "Local files only"
-msgstr "Unicament los fichièrs locals"
-
-#: preferences.js:149
-msgid "Always"
-msgstr "Totjorn"
-
-#: prefs.js:37
-msgid ""
-"To configure Desktop Icons NG, do right-click in the desktop and choose the "
-"last item: 'Desktop Icons settings'"
-msgstr ""
-"Per configurar Desktop Icons NG, clicatz a drech pel burèu e causissètz  "
-"« Paramètres icònas de burèu »"
 
 #: showErrorPopup.js:40
 msgid "Close"
@@ -530,13 +385,25 @@ msgstr "Caire per las icònas novèlas"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "Definir lo caire ont seràn plaças las icònas en primièr."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "Mostrar los lector extèrns montats pel burèu"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "Mostrar los lectors connectats a l'ordenador."
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "Mostrar los lectors ret montats pel burèu"
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "Mostrar los volums montats ret pel burèu."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "Apondre los lectors novèls al costat opausat de l’ecran"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -604,6 +471,10 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -617,22 +488,103 @@ msgid "Add an emblem to allow to identify soft links."
 msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
-msgid "Add an emblem to executable .desktop files"
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid "Add an emblem to .desktop files that have permission to be launched."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Use black for label text"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+
+#~ msgid "Size for the desktop icons"
+#~ msgstr "Talha de las icònas burèu"
+
+#~ msgid "Tiny"
+#~ msgstr "Minuscula"
+
+#~ msgid "Small"
+#~ msgstr "Pichona"
+
+#~ msgid "Standard"
+#~ msgstr "Estandarda"
+
+#~ msgid "Large"
+#~ msgstr "Granda"
+
+#~ msgid "Show the personal folder in the desktop"
+#~ msgstr "Mostrar lo dorsièr personal pel burèu"
+
+#~ msgid "Show the trash icon in the desktop"
+#~ msgstr "Mostrar l'icòna de l'escobilhièr pel burèu"
+
+#~ msgid "New icons alignment"
+#~ msgstr "Alinhament de las icònas novèlas"
+
+#~ msgid "Top-left corner"
+#~ msgstr "Caire en naut a esquèrra"
+
+#~ msgid "Top-right corner"
+#~ msgstr "Caire en naut a drecha"
+
+#~ msgid "Bottom-left corner"
+#~ msgstr "Caire en bas a esquèrra"
+
+#~ msgid "Bottom-right corner"
+#~ msgstr "Caire en bas a drecha"
+
+#~ msgid "Highlight the drop place during Drag'n'Drop"
+#~ msgstr "Enlusir la zòna de depaus pendent un lisar-depausar"
+
+#~ msgid "Settings shared with Nautilus"
+#~ msgstr "Paramètres partejats amb Nautilus"
+
+#~ msgid "Click type for open files"
+#~ msgstr "Tipe de clic utilizat per dobrir de fichièrs"
+
+#~ msgid "Single click"
+#~ msgstr "Clic simple"
+
+#~ msgid "Double click"
+#~ msgstr "Clic doble"
+
+#~ msgid "Show hidden files"
+#~ msgstr "Visualizar los fichièrs amagats"
+
+#~ msgid "Show a context menu item to delete permanently"
+#~ msgstr "Mostrar un element de menú contextual per suprimir definitivament"
+
+#~ msgid "Action to do when launching a program from the desktop"
+#~ msgstr ""
+#~ "Accion de realizar pendent l’aviada d’un programa a partir del burèu"
+
+#~ msgid "Display the content of the file"
+#~ msgstr "Afichar lo contengut del fichièr"
+
+#~ msgid "Launch the file"
+#~ msgstr "Executar lo fichièr"
+
+#~ msgid "Ask what to do"
+#~ msgstr "Demandar de qué far"
+
+#~ msgid "Show image thumbnails"
+#~ msgstr "Mostrar las miniaturas d'imatge"
+
+#~ msgid "Never"
+#~ msgstr "Jamai"
+
+#~ msgid "Local files only"
+#~ msgstr "Unicament los fichièrs locals"
+
+#~ msgid "Always"
+#~ msgstr "Totjorn"
+
+#~ msgid ""
+#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
+#~ "the last item: 'Desktop Icons settings'"
+#~ msgstr ""
+#~ "Per configurar Desktop Icons NG, clicatz a drech pel burèu e causissètz  "
+#~ "« Paramètres icònas de burèu »"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Volètz executar « 0 » o afichar son contengut ?"
