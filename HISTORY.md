@@ -1,5 +1,12 @@
 # History of versions #
 
+* Version 43
+  * Fixed another syntax mistake (Sergio Costas)
+  * Unified syntax for DbusTimeoutId (Sergio Costas)
+
+* Version 42
+  * Fixed a bug due to the autocompletion (Sergio Costas)
+
 * Version 41
   * Remove signals timeout when the extension is disabled (Sergio Costas)
 
