@@ -33,7 +33,7 @@ msgstr "אישור"
 
 #: askRenamePopup.js:49
 msgid "Rename"
-msgstr "שינוי שם"
+msgstr "שנה שם"
 
 #: dbusUtils.js:64
 msgid "\"${programName}\" is needed for Desktop Icons"
@@ -55,11 +55,11 @@ msgstr "מנהל הקבצים Nautilus לא נמצא"
 
 #: desktopManager.js:218
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr ""
+msgstr "מנהל הקבצים נאוטילוס הוא חובה בשביל לעבוד עם Desktop Icons NG."
 
 #: desktopManager.js:763
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr ".נקה בחירה נוכחית לפני חיפוש חדש"
 
 #: desktopManager.js:802 fileItemMenu.js:369
 msgid "Cancel"
@@ -67,7 +67,7 @@ msgstr "ביטול"
 
 #: desktopManager.js:804
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "מצא קבצים על בשומר המסך"
 
 #: desktopManager.js:869 desktopManager.js:1492
 msgid "New Folder"
@@ -79,7 +79,7 @@ msgstr "מסמך חדש"
 
 #: desktopManager.js:878
 msgid "Paste"
-msgstr "הדבקה"
+msgstr "הדבק"
 
 #: desktopManager.js:882
 msgid "Undo"
@@ -87,16 +87,16 @@ msgstr "ביטול פעולה"
 
 #: desktopManager.js:886
 msgid "Redo"
-msgstr "ביצוע חוזר"
+msgstr "בצע שוב"
 
 #: desktopManager.js:892
 #, fuzzy
 msgid "Select All"
-msgstr "לבחור הכול"
+msgstr "בחר הכול"
 
 #: desktopManager.js:900
 msgid "Show Desktop in Files"
-msgstr ""
+msgstr "הצג שולחן עבודה בסייר הקבצים"
 
 #: desktopManager.js:904 fileItemMenu.js:287
 msgid "Open in Terminal"
@@ -104,7 +104,7 @@ msgstr "פתיחה במסוף"
 
 #: desktopManager.js:910
 msgid "Change Background…"
-msgstr "שינוי הרקע…"
+msgstr "שינוי רקע…"
 
 #: desktopManager.js:921
 #, fuzzy
@@ -117,43 +117,43 @@ msgstr "הגדרות תצוגה"
 
 #: desktopManager.js:1550
 msgid "Arrange Icons"
-msgstr ""
+msgstr "מיין סמלים"
 
 #: desktopManager.js:1554
 msgid "Arrange By..."
-msgstr ""
+msgstr "מיין לפי..."
 
 #: desktopManager.js:1563
 msgid "Keep Arranged..."
-msgstr ""
+msgstr "שמור על הסדר..."
 
 #: desktopManager.js:1567
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "עֲרוֹם לפי סוג"
 
 #: desktopManager.js:1572
 msgid "Sort Home/Drives/Trash..."
-msgstr ""
+msgstr "מיין בית, כוננים או אשפה..."
 
 #: desktopManager.js:1578
 msgid "Sort by Name"
-msgstr ""
+msgstr "מיין לפי שם"
 
 #: desktopManager.js:1580
 msgid "Sort by Name Descending"
-msgstr ""
+msgstr "מיין לפי שם מלמטה למעלה"
 
 #: desktopManager.js:1583
 msgid "Sort by Modified Time"
-msgstr ""
+msgstr "מיין לפי זמן שינוי"
 
 #: desktopManager.js:1586
 msgid "Sort by Type"
-msgstr ""
+msgstr "מיין לפי סוג"
 
 #: desktopManager.js:1589
 msgid "Sort by Size"
-msgstr ""
+msgstr "מיין לפי גודל"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: fileItem.js:156
@@ -162,15 +162,15 @@ msgstr "בית"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "קישור לא תקין"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "לא יכול לפתוח את הקובץ היות והוא קישור סימלי שבור"
 
 #: fileItem.js:326
 msgid "Broken Desktop File"
-msgstr ""
+msgstr "קובץ שולחן עבודה לא תקין"
 
 #: fileItem.js:327
 msgid ""
@@ -179,22 +179,29 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"קובץ שולחן עבודה זה מכיל שגיעות או מצביע לתוכנית ללא הרשאות\n"
+"הוא לא בר-הרצה.\n"
+"\t<b>ערוך קובץ זה בשביל לבחור קובץ הרצה תיקני.</b>"
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "הרשאות לא מתאימות על קובץ שולחן עבודה"
 
 #: fileItem.js:334
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"לקובץ שולחן העבודה הזה יש הרשאות לא מתאימות. לחצן ימני לעריכת מאפיניים"
+"ואז:\n
 
 #: fileItem.js:336
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>הגדר הרשאות"
 
 #: fileItem.js:339
 msgid ""
