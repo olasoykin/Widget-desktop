@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 11:12+0100\n"
+"POT-Creation-Date: 2022-04-04 20:42+0200\n"
 "PO-Revision-Date: 2021-08-05 01:21+0800\n"
 "Last-Translator: Okeyja <phpluo@gmail.com>\n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "文件夹名称"
 msgid "File name"
 msgstr "文件名称"
 
-#: askRenamePopup.js:49 desktopManager.js:798
+#: askRenamePopup.js:49 desktopManager.js:791
 msgid "OK"
 msgstr "确定"
 
@@ -34,11 +34,11 @@ msgstr "确定"
 msgid "Rename"
 msgstr "重命名"
 
-#: dbusUtils.js:65
+#: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:66
+#: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -48,109 +48,109 @@ msgstr ""
 msgid "Command not found"
 msgstr "命令无法找到"
 
-#: desktopManager.js:215
+#: desktopManager.js:214
 msgid "Nautilus File Manager not found"
 msgstr "Nautilus 文件管理器找不到"
 
-#: desktopManager.js:216
+#: desktopManager.js:215
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Nautilus 文件管理器强制与 Desktop Icons NG 运行。"
 
-#: desktopManager.js:761
+#: desktopManager.js:754
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:800 fileItemMenu.js:369
+#: desktopManager.js:793 fileItemMenu.js:369
 msgid "Cancel"
 msgstr "取消"
 
-#: desktopManager.js:802
+#: desktopManager.js:795
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:867 desktopManager.js:1490
+#: desktopManager.js:860 desktopManager.js:1483
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: desktopManager.js:871
+#: desktopManager.js:864
 msgid "New Document"
 msgstr "新建文档"
 
-#: desktopManager.js:876
+#: desktopManager.js:869
 msgid "Paste"
 msgstr "粘贴"
 
-#: desktopManager.js:880
+#: desktopManager.js:873
 msgid "Undo"
 msgstr "复原"
 
-#: desktopManager.js:884
+#: desktopManager.js:877
 msgid "Redo"
 msgstr "重做"
 
-#: desktopManager.js:890
+#: desktopManager.js:883
 #, fuzzy
 msgid "Select All"
 msgstr "全选"
 
-#: desktopManager.js:898
+#: desktopManager.js:891
 msgid "Show Desktop in Files"
 msgstr "在文件管理器中打开桌面"
 
-#: desktopManager.js:902 fileItemMenu.js:287
+#: desktopManager.js:895 fileItemMenu.js:287
 msgid "Open in Terminal"
 msgstr "在终端中打开"
 
-#: desktopManager.js:908
+#: desktopManager.js:901
 msgid "Change Background…"
 msgstr "更改背景..."
 
-#: desktopManager.js:919
+#: desktopManager.js:912
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "设置"
 
-#: desktopManager.js:923
+#: desktopManager.js:916
 msgid "Display Settings"
 msgstr "显示设置"
 
-#: desktopManager.js:1548
+#: desktopManager.js:1541
 msgid "Arrange Icons"
 msgstr "图标排序"
 
-#: desktopManager.js:1552
+#: desktopManager.js:1545
 msgid "Arrange By..."
 msgstr "排序方式..."
 
-#: desktopManager.js:1561
+#: desktopManager.js:1554
 msgid "Keep Arranged..."
 msgstr "保持安排..."
 
-#: desktopManager.js:1565
+#: desktopManager.js:1558
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1570
+#: desktopManager.js:1563
 msgid "Sort Home/Drives/Trash..."
 msgstr "排序主目录/驱动器/回收站..."
 
-#: desktopManager.js:1576
+#: desktopManager.js:1569
 msgid "Sort by Name"
 msgstr "按名称排序"
 
-#: desktopManager.js:1578
+#: desktopManager.js:1571
 msgid "Sort by Name Descending"
 msgstr "按描述排序"
 
-#: desktopManager.js:1581
+#: desktopManager.js:1574
 msgid "Sort by Modified Time"
 msgstr "按修改时间排序"
 
-#: desktopManager.js:1584
+#: desktopManager.js:1577
 msgid "Sort by Type"
 msgstr "按类型排序"
 
-#: desktopManager.js:1587
+#: desktopManager.js:1580
 msgid "Sort by Size"
 msgstr "按大小排序"
 
@@ -344,6 +344,139 @@ msgstr "选择包括目录，首先将目录压缩到文件中。"
 msgid "Settings"
 msgstr "设置"
 
+#: prefswindow.js:46
+msgid "Size for the desktop icons"
+msgstr "桌面图标大小"
+
+#: prefswindow.js:46
+msgid "Tiny"
+msgstr "微"
+
+#: prefswindow.js:46
+msgid "Small"
+msgstr "小"
+
+#: prefswindow.js:46
+msgid "Standard"
+msgstr "中"
+
+#: prefswindow.js:46
+msgid "Large"
+msgstr "大"
+
+#: prefswindow.js:47
+msgid "Show the personal folder in the desktop"
+msgstr "在桌面显示个人文件夹"
+
+#: prefswindow.js:48
+msgid "Show the trash icon in the desktop"
+msgstr "在桌面显示回收站图标"
+
+#: prefswindow.js:49 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+msgid "Show external drives in the desktop"
+msgstr "在桌面显示外置驱动器"
+
+#: prefswindow.js:50 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+msgid "Show network drives in the desktop"
+msgstr "在桌面显示个人文件夹"
+
+#: prefswindow.js:53
+msgid "New icons alignment"
+msgstr "新图标排列"
+
+#: prefswindow.js:54
+msgid "Top-left corner"
+msgstr "左上角"
+
+#: prefswindow.js:55
+msgid "Top-right corner"
+msgstr "右上角"
+
+#: prefswindow.js:56
+msgid "Bottom-left corner"
+msgstr "左下角"
+
+#: prefswindow.js:57
+msgid "Bottom-right corner"
+msgstr "右下角"
+
+#: prefswindow.js:59 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+msgid "Add new drives to the opposite side of the screen"
+msgstr "在屏幕对面展示新驱动器"
+
+#: prefswindow.js:60
+msgid "Highlight the drop place during Drag'n'Drop"
+msgstr "拖拽图标时高亮显示放置区域"
+
+#: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+msgid "Use Nemo to open folders"
+msgstr ""
+
+#: prefswindow.js:63
+msgid "Add an emblem to soft links"
+msgstr ""
+
+#: prefswindow.js:65
+msgid "Use dark text in icon labels"
+msgstr ""
+
+#. Nautilus options
+#: prefswindow.js:71
+msgid "Settings shared with Nautilus"
+msgstr "共享Nautilus的设置"
+
+#: prefswindow.js:90
+msgid "Click type for open files"
+msgstr "打开文件的点击方式"
+
+#: prefswindow.js:90
+msgid "Single click"
+msgstr "单击"
+
+#: prefswindow.js:90
+msgid "Double click"
+msgstr "双击"
+
+#: prefswindow.js:91
+msgid "Show hidden files"
+msgstr "显示隐藏文件"
+
+#: prefswindow.js:92
+msgid "Show a context menu item to delete permanently"
+msgstr "永久删除时展示确认菜单项目"
+
+#: prefswindow.js:97
+msgid "Action to do when launching a program from the desktop"
+msgstr "在桌面运行程序时执行的动作"
+
+#: prefswindow.js:98
+msgid "Display the content of the file"
+msgstr "展示文件内容"
+
+#: prefswindow.js:99
+msgid "Launch the file"
+msgstr "运行文件"
+
+#: prefswindow.js:100
+msgid "Ask what to do"
+msgstr "询问如何做"
+
+#: prefswindow.js:106
+msgid "Show image thumbnails"
+msgstr "显示图片缩略图"
+
+#: prefswindow.js:107
+msgid "Never"
+msgstr "从不"
+
+#: prefswindow.js:108
+msgid "Local files only"
+msgstr "仅本地文件"
+
+#: prefswindow.js:109
+msgid "Always"
+msgstr "始终"
+
 #: showErrorPopup.js:40
 msgid "Close"
 msgstr "关闭"
@@ -380,25 +513,13 @@ msgstr "新图标开始角"
 msgid "Set the corner from where the icons will start to be placed."
 msgstr "设置图标开始放置的角落。"
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:45
-msgid "Show external drives in the desktop"
-msgstr "在桌面显示外置驱动器"
-
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
 msgstr "显示连接到计算机的磁盘驱动器。"
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:50
-msgid "Show network drives in the desktop"
-msgstr "在桌面显示个人文件夹"
-
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
 msgstr "显示桌面中安装的网络卷。"
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:55
-msgid "Add new drives to the opposite side of the screen"
-msgstr "在屏幕对面展示新驱动器"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -462,10 +583,6 @@ msgstr ""
 msgid "An Array of strings types, Don't Stack these types of files"
 msgstr ""
 
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:90
-msgid "Use Nemo to open folders"
-msgstr ""
-
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
 msgstr ""
@@ -487,87 +604,6 @@ msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
-
-#~ msgid "Size for the desktop icons"
-#~ msgstr "桌面图标大小"
-
-#~ msgid "Tiny"
-#~ msgstr "微"
-
-#~ msgid "Small"
-#~ msgstr "小"
-
-#~ msgid "Standard"
-#~ msgstr "中"
-
-#~ msgid "Large"
-#~ msgstr "大"
-
-#~ msgid "Show the personal folder in the desktop"
-#~ msgstr "在桌面显示个人文件夹"
-
-#~ msgid "Show the trash icon in the desktop"
-#~ msgstr "在桌面显示回收站图标"
-
-#~ msgid "New icons alignment"
-#~ msgstr "新图标排列"
-
-#~ msgid "Top-left corner"
-#~ msgstr "左上角"
-
-#~ msgid "Top-right corner"
-#~ msgstr "右上角"
-
-#~ msgid "Bottom-left corner"
-#~ msgstr "左下角"
-
-#~ msgid "Bottom-right corner"
-#~ msgstr "右下角"
-
-#~ msgid "Highlight the drop place during Drag'n'Drop"
-#~ msgstr "拖拽图标时高亮显示放置区域"
-
-#~ msgid "Settings shared with Nautilus"
-#~ msgstr "共享Nautilus的设置"
-
-#~ msgid "Click type for open files"
-#~ msgstr "打开文件的点击方式"
-
-#~ msgid "Single click"
-#~ msgstr "单击"
-
-#~ msgid "Double click"
-#~ msgstr "双击"
-
-#~ msgid "Show hidden files"
-#~ msgstr "显示隐藏文件"
-
-#~ msgid "Show a context menu item to delete permanently"
-#~ msgstr "永久删除时展示确认菜单项目"
-
-#~ msgid "Action to do when launching a program from the desktop"
-#~ msgstr "在桌面运行程序时执行的动作"
-
-#~ msgid "Display the content of the file"
-#~ msgstr "展示文件内容"
-
-#~ msgid "Launch the file"
-#~ msgstr "运行文件"
-
-#~ msgid "Ask what to do"
-#~ msgstr "询问如何做"
-
-#~ msgid "Show image thumbnails"
-#~ msgstr "显示图片缩略图"
-
-#~ msgid "Never"
-#~ msgstr "从不"
-
-#~ msgid "Local files only"
-#~ msgstr "仅本地文件"
-
-#~ msgid "Always"
-#~ msgstr "始终"
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
