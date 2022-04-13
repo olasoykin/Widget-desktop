@@ -116,6 +116,23 @@ It is strongly recommended to delete the destination folder
 ($HOME/.local/share/gnome-shell/extensions/ding@rastersoft.com) before doing this, to ensure that no old
 data is kept.
 
+## Installing with Puppet
+
+If you want to install it in several machines using puppet, you must first create an installation folder
+in your local machine using:
+
+```bash
+mkdir install_folder
+meson --prefix=`pwd`/install_folder --localedir=share/locale .build
+ninja -C .build
+ninja -C .build install
+rm -f install_folder/share/glib-2.0/schemas/gschemas.compiled
+```
+
+The content of the `install_folder` folder is what you must copy in the destination computers at /usr. After
+doing that, you must run in each computer `sudo glib-compile-schemas /usr/share/glib-2.0/schemas` to update
+the schemas in the system.
+
 ## Export extension ZIP file for extensions.gnome.org
 
 To create a ZIP file with the extension, just run:
