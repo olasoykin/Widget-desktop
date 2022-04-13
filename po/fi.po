@@ -1,24 +1,25 @@
 # Finnish translation for desktop-icons.
-# Copyright (C) 2018-2021 desktop-icons's COPYRIGHT HOLDER
+# Copyright (C) 2018-2022 desktop-icons's COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons package.
+#
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2018.
 # Timo Jyrinki <timo.jyrinki+l10n@gmail.com>, 2021.
-#
+# Tuomas Nurmi <tuomas.nurmi@opinsys.fi>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-04 20:42+0200\n"
-"PO-Revision-Date: 2021-04-08 06:15+0000\n"
-"Last-Translator: Timo Jyrinki <timo.jyrinki+l10n@gmail.com>\n"
-"Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
+"PO-Revision-Date: 2022-04-13 16:28+0300\n"
+"Last-Translator: Tuomas Nurmi <tuomas.nurmi@opinsys.fi>\n"
+"Language-Team: Finnish <>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2021-04-08 06:16+0000\n"
-"X-Generator: Launchpad (build 57f1f603f707b9cfa764cae8dd0f3999026b4763)\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -38,13 +39,15 @@ msgstr "Nimeä uudelleen"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" tarvitaan työpöytäkuvakkeisiin"
 
 #: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Tämä työpöytäkuvakkeiden toiminnallisuus vaatii ohjelman"
+"\"${programName}\" asentamisen järjestelmään."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -60,7 +63,7 @@ msgstr "Nautilus-tiedostonhallinta vaaditaan tämän laajennuksen käyttämiseen
 
 #: desktopManager.js:754
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr "Tyhjennä nykyinen valinta ennen uutta hakua"
 
 #: desktopManager.js:793 fileItemMenu.js:369
 msgid "Cancel"
@@ -68,7 +71,7 @@ msgstr "Peru"
 
 #: desktopManager.js:795
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "Etsi tiedostoja työpöydällä"
 
 #: desktopManager.js:860 desktopManager.js:1483
 msgid "New Folder"
@@ -91,7 +94,6 @@ msgid "Redo"
 msgstr "Tee uudelleen"
 
 #: desktopManager.js:883
-#, fuzzy
 msgid "Select All"
 msgstr "Valitse kaikki"
 
@@ -108,7 +110,6 @@ msgid "Change Background…"
 msgstr "Vaihda taustakuvaa…"
 
 #: desktopManager.js:912
-#, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Työpöytäkuvakkeiden asetukset"
 
@@ -118,43 +119,43 @@ msgstr "Näytön asetukset"
 
 #: desktopManager.js:1541
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Järjestä kuvakkeet"
 
 #: desktopManager.js:1545
 msgid "Arrange By..."
-msgstr ""
+msgstr "Järjestä..."
 
 #: desktopManager.js:1554
 msgid "Keep Arranged..."
-msgstr ""
+msgstr "Pidä järjestettynä..."
 
 #: desktopManager.js:1558
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Pidä pinottuna tyypin mukaan..."
 
 #: desktopManager.js:1563
 msgid "Sort Home/Drives/Trash..."
-msgstr ""
+msgstr "Järjestä koti/asemat/roskakori..."
 
 #: desktopManager.js:1569
 msgid "Sort by Name"
-msgstr ""
+msgstr "Järjestä nimen mukaan"
 
 #: desktopManager.js:1571
 msgid "Sort by Name Descending"
-msgstr ""
+msgstr "Järjestä nimen mukaan laskevasti"
 
 #: desktopManager.js:1574
 msgid "Sort by Modified Time"
-msgstr ""
+msgstr "Järjestä muokkausajan mukaan"
 
 #: desktopManager.js:1577
 msgid "Sort by Type"
-msgstr ""
+msgstr "Järjestä tyypin mukaan"
 
 #: desktopManager.js:1580
 msgid "Sort by Size"
-msgstr ""
+msgstr "Järjestä koon mukaan"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: fileItem.js:156
@@ -163,16 +164,15 @@ msgstr "Koti"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "Rikkinäinen linkki"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "Tiedostoa ei voitu avata, sillä se on rikkinäinen linkki"
 
 #: fileItem.js:326
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Näytä työpöytä tiedostonhallinnassa"
+msgstr "Rikkinäinen työpöytätiedosto"
 
 #: fileItem.js:327
 msgid ""
@@ -181,28 +181,39 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"Tässä .desktop-tiedostossa on virheitä, tai se osoittaa ohjelmaan, jolla on"
+" puutteelliset oikeudet. Sitä ei voi suorittaa.\n"
+"\n"
+"\t<b>Muokkaa tiedostoa asettaaksesi oikea suoritettava ohjelma.<b>"
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Vialliset oikeudet työpöytätiedostossa"
 
 #: fileItem.js:334
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"Tällä .desktop-tiedostolla on väärät oikeudet. Naksauta oikealla hiiren"
+" napilla ja valitse Ominaisuudet, sitten:\n"
 
 #: fileItem.js:336
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>Aseta oikeudet kohdassa \"Muut oikeudet\", joko \"Vain luku\" tai \"Ei"
+" mikään\"</b>"
 
 #: fileItem.js:339
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>Kytke päälle valinta \"Salli tiedoston suoritus ohjelmana\"</b>"
 
 #: fileItem.js:347
 msgid ""
@@ -211,6 +222,10 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"Tämä .desktop-tiedosto ei ole luotettu, ja sitä ei voi käynnistää."
+" Salliakseksi käynnistämisen naksauta hiiren oikealla napilla, sitten:\n"
+"\n"
+"<b>Valitse \"Salli käynnistäminen\"</b>"
 
 #: fileItemMenu.js:118
 msgid "Open All..."
@@ -222,11 +237,11 @@ msgstr "Avaa"
 
 #: fileItemMenu.js:129
 msgid "Stack This Type"
-msgstr ""
+msgstr "Pinoa tämäntyyppiset"
 
 #: fileItemMenu.js:129
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Älä pinoa tämäntyyppisiä"
 
 #: fileItemMenu.js:141
 msgid "Scripts"
@@ -246,7 +261,7 @@ msgstr "Käynnistä erillisnäytönohjainta käyttäen"
 
 #: fileItemMenu.js:162
 msgid "Run as a program"
-msgstr ""
+msgstr "Suorita ohjelmana"
 
 #: fileItemMenu.js:170
 msgid "Cut"
@@ -330,12 +345,11 @@ msgstr "Näytä tiedostonhallinnassa"
 
 #: fileItemMenu.js:365
 msgid "Select Extract Destination"
-msgstr ""
+msgstr "Valitse purkamiskohde"
 
 #: fileItemMenu.js:370
-#, fuzzy
 msgid "Select"
-msgstr "Valitse kaikki"
+msgstr "Valitse"
 
 #: fileItemMenu.js:396
 msgid "Can not email a Directory"
@@ -387,7 +401,7 @@ msgstr "Näytä verkkoasemat työpöydällä"
 
 #: prefswindow.js:53
 msgid "New icons alignment"
-msgstr "Uusi kuvakkeiden tasaus"
+msgstr "Uusien kuvakkeiden asettelu"
 
 #: prefswindow.js:54
 msgid "Top-left corner"
@@ -415,15 +429,15 @@ msgstr "Korosta pudotuspaikka vedettäessä ja pudotettaessa"
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Käytä Nemoa kansioiden avaamiseen"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Merkitse linkit tiedostoihin symbolilla"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Käytä tummaa tekstiä kuvakkeiden selitteissä"
 
 #. Nautilus options
 #: prefswindow.js:71
@@ -484,7 +498,7 @@ msgstr "Aina"
 
 #: showErrorPopup.js:40
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -547,67 +561,71 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr ""
+msgstr "Järjestä erikoishakemistot - Koti/Roskakori/Asemat."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
 "When arranging Icons on desktop, to sort and change the position of the "
 "Home, Trash and mounted Network or External Drives"
 msgstr ""
+"Kodin, Roskakorin ja liitettyjen verkko- ja ulkoisten asemien sijainnin"
+" muuttamiseksi järjestäessä kuvakkeita työpöydällä"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
-msgstr ""
+msgstr "Pidä kuvakkeet järjestettynä"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr ""
+msgstr "Pidä kuvakkeet aina viimeksi valitun järjestyksen mukaisesti"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
-msgstr ""
+msgstr "Kuvakkeiden järjestys"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
-msgstr ""
+msgstr "Kuvakkeet järjestetään tämän ominaisuuden mukaan"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
 msgid "Keep Icons Stacked"
-msgstr ""
+msgstr "Pidä kuvakkeet pinottuina"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr ""
+msgstr "Pidä aina kuvakkeet pinottuina, samantyyppiset ryhmissään"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Tiedostotyypit, joita ei pinota"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Taulukko merkkijonoja tiedostotyypeistä, joita ei pinota"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Käytä Nemoa Nautiluksen sijaan kansioiden avaamiseen."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Merkitse tiedostolinkit symbolilla"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Lisää symboli tiedostolinkkien tunnistamisen helpottamiseksi."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Käytä mustaa seliteteksteissä"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+"Piirrä seliteteksti mustalla valkoisen sijaan. Hyödyllinen vaaleita"
+" taustakuvia käyttäessä."
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
