@@ -1,5 +1,9 @@
 # History of versions #
 
+* Version 44
+  * Fixed some sentences not being translated
+  * Fully removed the 'size-changed' signal to avoid 100% CPU usage in some situations
+
 * Version 43
   * Fixed another syntax mistake (Sergio Costas)
   * Unified syntax for DbusTimeoutId (Sergio Costas)
