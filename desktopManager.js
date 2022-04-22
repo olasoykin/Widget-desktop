@@ -44,6 +44,7 @@ var DesktopManager = class {
     constructor(mainApp, desktopList, codePath, asDesktop, primaryIndex) {
 
         this.mainApp = mainApp;
+        this._selectedFiles = null;
 
         this._premultiplied = false;
         try {
@@ -1198,9 +1199,34 @@ var DesktopManager = class {
     }
 
     _drawDesktop(fileList) {
+        this._selectedFiles = this.getCurrentSelection(true);
+        if (this._renameWindow) {
+            // disconnect the popup from the fileItem to avoid it being
+            // destroyed when the fileItem is removed from the desktop
+            this._renameWindow.updateFileItem(null);
+        }
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
+        // Select the files that were selected before the repaint
+        if (this._selectedFiles) {
+            for(let fileItem of fileList) {
+                if (this._selectedFiles.includes(fileItem.uri)) {
+                    fileItem.setSelected();
+                }
+            }
+        }
+        if (this._renameWindow) {
+            // assign the popover to the new fileItem
+            let file = fileList.filter(f => f.fileName == this._renamingFile)[0];
+            if (file) {
+                file.setRenamePopup(this._renameWindow);
+            } else {
+                this._renameWindow.closeWindow();
+            }
+        }
         this._placeAllFilesOnGrids();
+        this.fileItemMenu.refreshedIcons();
+        this._selectedFiles = null;
     }
 
     _placeAllFilesOnGrids(redisplay=false) {
@@ -1219,6 +1245,7 @@ var DesktopManager = class {
     _addFilesToDesktop(fileList, storeMode) {
         let outOfDesktops = [];
         let notAssignedYet = [];
+
         // First, add those icons that fit in the current desktops
         for(let fileItem of fileList) {
             if (fileItem.savedCoordinates == null) {
@@ -1457,15 +1484,26 @@ var DesktopManager = class {
         return count;
     }
 
+    getFileItemFromURI(uri) {
+        for (let item of this._fileList) {
+            if (uri == item.uri) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     doRename(fileItem, allowReturnOnSameName) {
-        if (!fileItem.canRename) {
+        if (!fileItem || !fileItem.canRename) {
             return;
         }
         this.unselectAll();
         if (!this._renameWindow) {
+            this._renamingFile = fileItem.fileName;
             this._renameWindow = new AskRenamePopup.AskRenamePopup(fileItem, allowReturnOnSameName, () => {
                 this._renameWindow = null;
                 this.newFolderDoRename = null;
+                this._renamingFile = null;
             });
         }
     }

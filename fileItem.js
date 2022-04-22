@@ -49,6 +49,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         this._file = file;
         this.isStackTop = false;
         this.stackUnique = false;
+        this._realizeId = 0;
 
         this._savedCoordinates = this._readCoordinatesFromAttribute(fileInfo, 'metadata::nautilus-icon-position');
         this._dropCoordinates = this._readCoordinatesFromAttribute(fileInfo, 'metadata::nautilus-drop-position');
@@ -113,6 +114,17 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         }
     }
 
+    setRenamePopup(renameWindow) {
+        if (this._realizeId) {
+            this.container.disconnect(this._realizeId);
+        }
+        this._realizeId = this.container.connect_after('realize', () => {
+            renameWindow.updateFileItem(this);
+            this.container.disconnect(this._realizeId);
+            this._realizeId = 0;
+        });
+    }
+
     /***********************
      * Destroyers *
      ***********************/
@@ -135,6 +147,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         /* Metadata */
         if (this._setMetadataTrustedCancellable) {
             this._setMetadataTrustedCancellable.cancel();
+        }
+        if (this._realizeId) {
+            this.container.disconnect(this._realizeId);
         }
     }
 
