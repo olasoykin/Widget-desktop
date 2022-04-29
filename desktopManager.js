@@ -1090,7 +1090,7 @@ var DesktopManager = class {
         if (this._readingDesktopFiles) {
             // just notify that the files changed while being read from the disk.
             this._desktopFilesChanged = true;
-            if (this._desktopEnumerateCancellable) {
+            if (this._desktopEnumerateCancellable && ! this._forceDraw) {
                 this._desktopEnumerateCancellable.cancel();
                 this._desktopEnumerateCancellable = null;
             }
@@ -1098,6 +1098,8 @@ var DesktopManager = class {
         }
 
         this._readingDesktopFiles = true;
+        this._forceDraw = false;
+        this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
         let fileList;
         while(true) {
             this._desktopFilesChanged = false;
@@ -1109,12 +1111,24 @@ var DesktopManager = class {
             if (this._forcedExit) {
                 return;
             }
-            if (!this._desktopFilesChanged && (fileList !== null)) {
-                break;
+            if (fileList !== null) {
+                 if (!this._desktopFilesChanged) {
+                     break;
+                }
+                if (this._forceDraw) {
+                    this._drawDesktop(fileList);
+                    this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
+                }
             }
             await DesktopIconsUtil.waitDelayMs(500);
+            if ((GLib.get_monotonic_time() - this._lastDesktopUpdateRequest) > 1000000) {
+                this._forceDraw = true;
+            } else {
+                this._forceDraw = false;
+            }
         }
         this._readingDesktopFiles = false;
+        this._forceDraw = false;
         this._drawDesktop(fileList);
     }
 
@@ -1133,7 +1147,7 @@ var DesktopManager = class {
                     this._desktopEnumerateCancellable = null;
                     try {
                         let fileEnum = source.enumerate_children_finish(result);
-                        if (this._desktopFilesChanged) {
+                        if (this._desktopFilesChanged && ! this._forceDraw) {
                             resolve(null);
                             return;
                         }
