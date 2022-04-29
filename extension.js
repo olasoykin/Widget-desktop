@@ -273,7 +273,7 @@ function disable() {
 }
 
 function updateDesktopGeometry() {
-    if (data.actionGroup) {
+    if (data.actionGroup && (Main.layoutManager.monitors.length != 0)) {
         data.actionGroup.change_action_state('desktopGeometry', getDesktopGeometry());
     }
 }
