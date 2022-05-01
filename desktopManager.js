@@ -44,8 +44,10 @@ var DesktopManager = class {
     constructor(mainApp, desktopList, codePath, asDesktop, primaryIndex) {
 
         this.mainApp = mainApp;
-        this.mainApp.hold(); // Don't close the application if there are no desktops
-        this._hold_active = true;
+        if (asDesktop) {
+            this.mainApp.hold(); // Don't close the application if there are no desktops
+            this._hold_active = true;
+        }
         this._selectedFiles = null;
 
         this._premultiplied = false;
