@@ -398,33 +398,9 @@ function launchDesktop() {
     argv.push('-P');
     argv.push(ExtensionUtils.getCurrentExtension().path);
 
-    let first = true;
-
     argv.push('-M');
     argv.push(`${Main.layoutManager.primaryIndex}`);
 
-    let ws = global.workspace_manager.get_workspace_by_index(0);
-    for(let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
-        let area = data.visibleArea.getMonitorGeometry(ws, monitorIndex);
-        // send the working area of each monitor in the desktop
-        argv.push('-D');
-        argv.push(`${area.x}:${area.y}:${area.width}:${area.height}:${area.scale}:${area.marginTop}:${area.marginBottom}:${area.marginLeft}:${area.marginRight}:${monitorIndex}`);
-        if (first || (area.x < data.minx)) {
-            data.minx = area.x;
-        }
-        if (first || (area.y < data.miny)) {
-            data.miny = area.y;
-        }
-        if (first || ((area.x + area.width) > data.maxx)) {
-            data.maxx = area.x + area.width;
-        }
-        if (first || ((area.y + area.height) > data.maxy)) {
-            data.maxy = area.y + area.height;
-        }
-        first = false;
-    }
-
-    data.reloadTime = 1000;
     data.currentProcess = new LaunchSubprocess(0, "DING", "-U");
     data.currentProcess.set_cwd(GLib.get_home_dir());
     if (null === data.currentProcess.spawnv(argv)) {
