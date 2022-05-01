@@ -1,5 +1,10 @@
 # History of versions #
 
+* Version 45
+  * Fix 'GDK_IS_MONITOR (monitor)' failed message (Sergio Costas)
+  * Ensure that the desktop is refreshed periodically when a file is constantly being modified (Sundeep Mediratta)
+  * Keep selected files when the desktop is repainted (Sergio Costas)
+
 * Version 44
   * Fixed some sentences not being translated
   * Fully removed the 'size-changed' signal to avoid 100% CPU usage in some situations
