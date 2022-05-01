@@ -66,8 +66,12 @@ var DesktopManager = class {
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.HIDE_EXTENSIONS,
             this._newDocument.bind(this));
 
-        this._primaryIndex = primaryIndex;
-        this._primaryScreen = desktopList[primaryIndex];
+        this.primaryIndex = primaryIndex;
+        if (primaryIndex < desktopList.length) {
+            this._primaryScreen = desktopList[primaryIndex];
+        } else {
+            this._primaryScreen = null;
+        }
         this._clickX = 0;
         this._clickY = 0;
         this._dragList = null;
