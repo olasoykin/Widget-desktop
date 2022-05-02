@@ -1,13 +1,13 @@
 # Turkish translation for desktop-icons.
-# Copyright (C) 2000-2019 desktop-icons's COPYRIGHT HOLDER
+# Copyright (C) 2000-2022 desktop-icons's COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2019.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019
 # Emin Tufan Çetin <etcetin@gmail.com>, 2019.
 # Mahmut Elmas <mahmutelmas06@gmail.com>, 2020.
 # Cihan Alkan <cihanalk@gmail.com>, 2021.
 # Fatih Altun <fatih.altun@pardus.org.tr>, 2021.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2022.
 #
 msgid ""
 msgstr ""
@@ -132,7 +132,7 @@ msgstr "Düzenli Tut..."
 
 #: desktopManager.js:1558
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Türe Göre Yığılı Tut..."
 
 #: desktopManager.js:1563
 msgid "Sort Home/Drives/Trash..."
@@ -140,11 +140,11 @@ msgstr "Evi/Sürücüleri/Çöp Kutusunu Sırala..."
 
 #: desktopManager.js:1569
 msgid "Sort by Name"
-msgstr "İsme Göre Sırala"
+msgstr "Ada Göre Sırala"
 
 #: desktopManager.js:1571
 msgid "Sort by Name Descending"
-msgstr "Azalan Şekilde İsme Göre Sırala"
+msgstr "Azalan Şekilde Ada Göre Sırala"
 
 #: desktopManager.js:1574
 msgid "Sort by Modified Time"
@@ -165,16 +165,15 @@ msgstr "Ev"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "Kırık Link"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "Bozuk bir Sembolik Bağlantı olduğu için bu Dosya açılamıyor"
 
 #: fileItem.js:326
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Masaüstünü Dosyalarʼda Göster"
+msgstr "Kırık Masaüstünü Dosyası"
 
 #: fileItem.js:327
 msgid ""
@@ -186,7 +185,7 @@ msgstr ""
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Masaüstü Dosyası İzinleri Hatalı"
 
 #: fileItem.js:334
 msgid ""
@@ -232,7 +231,7 @@ msgstr ""
 
 #: fileItemMenu.js:141
 msgid "Scripts"
-msgstr "Komutlar"
+msgstr "Betikler"
 
 #: fileItemMenu.js:147
 msgid "Open All With Other Application..."
@@ -248,7 +247,7 @@ msgstr "Özel Grafik Kartı kullanarak başlatın"
 
 #: fileItemMenu.js:162
 msgid "Run as a program"
-msgstr ""
+msgstr "Program olarak çalıştır"
 
 #: fileItemMenu.js:170
 msgid "Cut"
@@ -288,7 +287,7 @@ msgstr "Çıkar"
 
 #: fileItemMenu.js:231
 msgid "Unmount"
-msgstr "Bağlı Değil"
+msgstr "Bağı Kaldır"
 
 #: fileItemMenu.js:241
 msgid "Extract Here"
@@ -305,12 +304,12 @@ msgstr "Gönder..."
 #: fileItemMenu.js:258
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
-msgstr[0] "{0} dosyasını sıkıştır"
+msgstr[0] "{0} dosyayı sıkıştır"
 
 #: fileItemMenu.js:264
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "{0} öğesi ile yeni klasör"
+msgstr[0] "{0} öge ile yeni klasör"
 
 #: fileItemMenu.js:273
 msgid "Common Properties"
@@ -330,7 +329,7 @@ msgstr "Dosyalarʼda Göster"
 
 #: fileItemMenu.js:365
 msgid "Select Extract Destination"
-msgstr "Çıkarma Hedefini Seçin"
+msgstr "Çıkarma Hedefini Seç"
 
 #: fileItemMenu.js:370
 msgid "Select"
@@ -338,11 +337,11 @@ msgstr "Seç"
 
 #: fileItemMenu.js:396
 msgid "Can not email a Directory"
-msgstr "Bir dizine e-posta gönderemiyorum"
+msgstr "Bir dizine e-posta gönderilemez"
 
 #: fileItemMenu.js:397
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Seçim bir dizin içerir, önce dizini bir dosyaya sıkıştırın."
+msgstr "Seçim bir Dizin içeriyor, önce dizini bir dosyaya sıkıştırın."
 
 #: preferences.js:67
 msgid "Settings"
@@ -406,23 +405,23 @@ msgstr "Sağ alt köşe"
 
 #: prefswindow.js:59 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
-msgstr "Ekranın karşı tarafına yeni sürücüler ekleyin"
+msgstr "Ekranın karşı tarafına yeni sürücüler ekle"
 
 #: prefswindow.js:60
 msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Sürükle ve Bırak sırasında bırakma yerini vurgulayın"
+msgstr "Sürükle ve Bırak sırasında bırakma yerini vurgula"
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Klasörleri açmak için Nemo kullan"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Yumuşak linklere amblem ekle"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Simge etiketlerinde koyu metin kullan"
 
 #. Nautilus options
 #: prefswindow.js:71
@@ -515,15 +514,15 @@ msgstr "Yeni simgelerin başlangıç köşesi"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "Simgelerin nereden itibaren hizalanacağını seçin"
+msgstr "Simgelerin nereden itibaren hizalanacağını ayarla"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
-msgstr "Bilgisayara bağlı disk sürücülerini gösterir."
+msgstr "Bilgisayara bağlı disk sürücülerini göster."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
-msgstr "Masaüstünde bağlı ağ birimlerini gösterin."
+msgstr "Masaüstünde bağlı ağ birimlerini göster."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
@@ -531,7 +530,7 @@ msgid ""
 "of the screen."
 msgstr ""
 "Masaüstüne sürücüler ve birimler eklerken, bunları ekranın karşı tarafına "
-"ekleyin."
+"ekle."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
@@ -585,7 +584,7 @@ msgstr "Simgeleri son sıralama düzenine göre daima düzenli tut"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Yığılı tutulmayacak dosyaların türü"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
@@ -593,11 +592,11 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Klasörleri açmak için Nautilus yerine Nemo kullan."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Bağlantılara amblem ekle"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
@@ -605,7 +604,7 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Etiket metni için siyah kullan"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
@@ -613,81 +612,3 @@ msgid ""
 "backgrounds."
 msgstr ""
 
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Desktop Icons NG'yi yapılandırmak için masaüstünde sağ tıklayın ve son "
-#~ "öğeyi seçin: 'Masaüstü Simgeleri Ayarları'"
-
-#~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "“{0}” dosyasını çalıştırmak mı, içeriğini görmek mi istiyorsunuz ?"
-
-#~ msgid "“{0}” is an executable text file."
-#~ msgstr "“{0}” dosyası çalıştırılabilir bir metin dosyasıdır."
-
-#~ msgid "Execute in a terminal"
-#~ msgstr "Uçbirimde çalıştır"
-
-#~ msgid "Show"
-#~ msgstr "Göster"
-
-#~ msgid "Execute"
-#~ msgstr "Çalıştır"
-
-#, fuzzy
-#~ msgid "New folder"
-#~ msgstr "Yeni Klasör"
-
-#~ msgid "Delete"
-#~ msgstr "Sil"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "Dosyalar silinirken bir hata oluştu"
-
-#~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr ""
-#~ "Dosyaları geri dönüşümsüz olarak silmek istediğinizden emin misiniz?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Bir dosya silerseniz, geri dönüşümü yoktur."
-
-#~ msgid ""
-#~ "There was an error while trying to permanently delete the folder {:}."
-#~ msgstr "{:} Klasörü tamamen silinirken hata oluştu"
-
-#~ msgid "There was an error while trying to permanently delete the file {:}."
-#~ msgstr "{:} Dosyası tamamen silinirken hata oluştu"
-
-#, fuzzy
-#~ msgid "Show external disk drives in the desktop"
-#~ msgstr "Kişisel klasörü masaüstünde göster"
-
-#, fuzzy
-#~ msgid "Show the external drives"
-#~ msgstr "Kişisel klasörü masaüstünde göster"
-
-#, fuzzy
-#~ msgid "Show network volumes"
-#~ msgstr "Dosyalarʼda Göster"
-
-#~ msgid "Enter file name…"
-#~ msgstr "Dosya adını gir…"
-
-#~ msgid "Create"
-#~ msgstr "Oluştur"
-
-#~ msgid "Folder names cannot contain “/”."
-#~ msgstr "Klasör adları “/” içeremez."
-
-#~ msgid "A folder cannot be called “.”."
-#~ msgstr "Bir klasör “.” olarak adlandırılamaz."
-
-#~ msgid "A folder cannot be called “..”."
-#~ msgstr "Bir klasör “..” olarak adlandırılamaz."
-
-#~ msgid "Folders with “.” at the beginning of their name are hidden."
-#~ msgstr "Adlarının başında “.” bulunan klasörler gizlenir."
-
-#~ msgid "There is already a file or folder with that name."
-#~ msgstr "Zaten bu adda bir dosya veya klasör var."
