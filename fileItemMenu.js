@@ -100,7 +100,7 @@ var FileItemMenu = class {
         }
     }
 
-    showMenu(fileItem, event) {
+    showMenu(fileItem, event, atWidget=false) {
 
         this._currentFileItem = fileItem;
         let addElementToMenu = function(label, action = null) {
@@ -305,7 +305,11 @@ var FileItemMenu = class {
         }
 
         this._menu.show_all();
-        this._menu.popup_at_pointer(event);
+        if (atWidget) {
+            this._menu.popup_at_widget(fileItem.container, Gdk.Gravity.CENTER, Gdk.Gravity.NORTH_WEST, event);
+        } else {
+            this._menu.popup_at_pointer(event);
+        }
     }
 
     _onPropertiesClicked() {
