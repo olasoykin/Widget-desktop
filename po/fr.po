@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-04 20:42+0200\n"
-"PO-Revision-Date: 2022-03-24 13:16+0100\n"
+"PO-Revision-Date: 2022-05-06 17:29+0200\n"
 "Last-Translator: Davy Defaud <davy.defaud@free.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -37,7 +37,7 @@ msgstr "Renommer"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr "L’extension Desktop Icons requiert le l’application « ${programName} »"
+msgstr "L’extension Desktop Icons requiert l’application « ${programName} »"
 
 #: dbusUtils.js:67
 msgid ""
@@ -437,13 +437,12 @@ msgid "Use Nemo to open folders"
 msgstr "Utiliser Nemo pour ouvrir les dossiers"
 
 #: prefswindow.js:63
-#, fuzzy
 msgid "Add an emblem to soft links"
 msgstr "Ajouter un emblème aux liens symboliques"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Utiliser un texte sombre pour les libellés des icônes"
 
 #. Nautilus options
 #: prefswindow.js:71
