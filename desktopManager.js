@@ -44,6 +44,10 @@ var DesktopManager = class {
     constructor(mainApp, desktopList, codePath, asDesktop, primaryIndex) {
 
         this.mainApp = mainApp;
+        if (asDesktop) {
+            this.mainApp.hold(); // Don't close the application if there are no desktops
+            this._hold_active = true;
+        }
         this._selectedFiles = null;
 
         this._premultiplied = false;
@@ -228,6 +232,10 @@ var DesktopManager = class {
                 this._forcedExit = true;
                 if (this._desktopEnumerateCancellable) {
                     this._desktopEnumerateCancellable.cancel();
+                }
+                if (this._hold_active) {
+                    this.mainApp.release();
+                    this._hold_active = false;
                 }
                 return false;
             });
