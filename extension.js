@@ -322,6 +322,8 @@ function killCurrentProcess() {
         data.currentProcess.cancellable.cancel();
         data.currentProcess.subprocess.send_signal(15);
     }
+    data.currentProcess = null;
+    data.x11Manager.set_wayland_client(null);
 }
 
 /**
