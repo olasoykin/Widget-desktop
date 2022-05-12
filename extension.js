@@ -44,7 +44,7 @@ function init() {
     data.isEnabled = false;
     data.launchDesktopId = 0;
     data.currentProcess = null;
-    data.reloadTime = 100;
+    data.reloadTime = 1000;
     data.dbusTimeoutId = 0;
 
     data.GnomeShellOverride = null;
@@ -225,6 +225,24 @@ function manageCutCopy(action, parameters) {
 }
 
 /**
+ * Kills the current desktop program
+ */
+ function killCurrentProcess() {
+    if (data.launchDesktopId) {
+        GLib.source_remove(data.launchDesktopId);
+        data.launchDesktopId = 0;
+    }
+
+    // kill the desktop program. It will be reloaded automatically.
+    if (data.currentProcess && data.currentProcess.subprocess) {
+        data.currentProcess.cancellable.cancel();
+        data.currentProcess.subprocess.send_signal(15);
+    }
+    data.currentProcess = null;
+    data.x11Manager.set_wayland_client(null);
+}
+
+/**
  * Disables the extension
  */
 function disable() {
@@ -300,31 +318,6 @@ function getDesktopGeometry() {
     return new GLib.Variant('av', desktopList);
 }
 
-/**
- * Kills the current desktop program
- */
-function killCurrentProcess() {
-    // If a reload was pending, kill it and program a new reload
-    if (data.launchDesktopId) {
-        GLib.source_remove(data.launchDesktopId);
-        data.launchDesktopId = 0;
-        if (data.isEnabled) {
-            data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
-                data.launchDesktopId = 0;
-                launchDesktop();
-                return false;
-            });
-        }
-    }
-
-    // kill the desktop program. It will be reloaded automatically.
-    if (data.currentProcess && data.currentProcess.subprocess) {
-        data.currentProcess.cancellable.cancel();
-        data.currentProcess.subprocess.send_signal(15);
-    }
-    data.currentProcess = null;
-    data.x11Manager.set_wayland_client(null);
-}
 
 /**
  * This function checks all the processes in the system and kills those
@@ -372,6 +365,21 @@ function doKillAllOldDesktopProcesses() {
     }
 }
 
+function doRelaunch() {
+    data.currentProcess = null;
+    data.x11Manager.set_wayland_client(null);
+    if (data.isEnabled) {
+        if (data.launchDesktopId) {
+            GLib.source_remove(data.launchDesktopId);
+        }
+        data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
+            data.launchDesktopId = 0;
+            launchDesktop();
+            return false;
+        });
+    }
+}
+
 /**
  * Launches the desktop program, passing to it the current desktop geometry for each monitor
  * and the path where it is stored. It also monitors it, to relaunch it in case it dies or is
@@ -380,7 +388,7 @@ function doKillAllOldDesktopProcesses() {
  */
 function launchDesktop() {
 
-    data.reloadTime = 100;
+    global.log("Launching DING process");
     let argv = [];
     argv.push(GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'ding.js']));
     // Specify that it must work as true desktop
@@ -415,10 +423,15 @@ function launchDesktop() {
         first = false;
     }
 
+    data.reloadTime = 1000;
     data.currentProcess = new LaunchSubprocess(0, "DING", "-U");
     data.currentProcess.set_cwd(GLib.get_home_dir());
-    data.currentProcess.spawnv(argv);
+    if (null === data.currentProcess.spawnv(argv)) {
+        doRelaunch();
+        return;
+    }
     data.x11Manager.set_wayland_client(data.currentProcess);
+    data.launchTime = GLib.get_monotonic_time();
 
     /*
      * If the desktop process dies, wait 100ms and relaunch it, unless the exit status is different than
@@ -426,30 +439,22 @@ function launchDesktop() {
      * too fast if it has a bug that makes it fail continuously, avoiding filling the journal too fast.
      */
     data.currentProcess.subprocess.wait_async(null, (obj, res) => {
+        let delta = GLib.get_monotonic_time() - data.launchTime;
+        if (delta < 1000000) {
+            // If the process is dying over and over again, ensure that it isn't respawn faster than once per second
+            data.reloadTime = 1000;
+        } else {
+            // but if the process just died after having run for at least one second, reload it ASAP
+            data.reloadTime = 1;
+        }
         let b = obj.wait_finish(res);
         if (!data.currentProcess || obj !== data.currentProcess.subprocess) {
             return;
         }
         if (obj.get_if_exited()) {
-            let retval = obj.get_exit_status();
-            if (retval != 0) {
-                data.reloadTime = 1000;
-            }
-        } else {
-            data.reloadTime = 1000;
+            obj.get_exit_status();
         }
-        data.currentProcess = null;
-        data.x11Manager.set_wayland_client(null);
-        if (data.isEnabled) {
-            if (data.launchDesktopId) {
-                GLib.source_remove(data.launchDesktopId);
-            }
-            data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
-                data.launchDesktopId = 0;
-                launchDesktop();
-                return false;
-            });
-        }
+        doRelaunch();
     });
 }
 
@@ -485,10 +490,15 @@ var LaunchSubprocess = class {
     }
 
     spawnv(argv) {
-        if (Meta.is_wayland_compositor()) {
-            this.subprocess = this._waylandClient.spawnv(global.display, argv);
-        } else {
-            this.subprocess = this._launcher.spawnv(argv);
+        try {
+            if (Meta.is_wayland_compositor()) {
+                this.subprocess = this._waylandClient.spawnv(global.display, argv);
+            } else {
+                this.subprocess = this._launcher.spawnv(argv);
+            }
+        } catch (e) {
+            this.subprocess = null;
+            global.log(`Error while trying to launch DING process: ${e.message}\n${e.stack}`);
         }
         // This is for GLib 2.68 or greater
         if (this._launcher.close) {
