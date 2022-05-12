@@ -44,7 +44,6 @@ function init() {
     data.isEnabled = false;
     data.launchDesktopId = 0;
     data.currentProcess = null;
-    data.reloadTime = 1000;
     data.dbusTimeoutId = 0;
 
     data.GnomeShellOverride = null;
@@ -366,14 +365,14 @@ function doKillAllOldDesktopProcesses() {
     }
 }
 
-function doRelaunch() {
+function doRelaunch(reloadTime) {
     data.currentProcess = null;
     data.x11Manager.set_wayland_client(null);
     if (data.isEnabled) {
         if (data.launchDesktopId) {
             GLib.source_remove(data.launchDesktopId);
         }
-        data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, data.reloadTime, () => {
+        data.launchDesktopId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, reloadTime, () => {
             data.launchDesktopId = 0;
             launchDesktop();
             return false;
@@ -404,7 +403,7 @@ function launchDesktop() {
     data.currentProcess = new LaunchSubprocess(0, "DING", "-U");
     data.currentProcess.set_cwd(GLib.get_home_dir());
     if (null === data.currentProcess.spawnv(argv)) {
-        doRelaunch();
+        doRelaunch(1000);
         return;
     }
     data.x11Manager.set_wayland_client(data.currentProcess);
@@ -419,19 +418,19 @@ function launchDesktop() {
         let delta = GLib.get_monotonic_time() - data.launchTime;
         if (delta < 1000000) {
             // If the process is dying over and over again, ensure that it isn't respawn faster than once per second
-            data.reloadTime = 1000;
+            var reloadTime = 1000;
         } else {
             // but if the process just died after having run for at least one second, reload it ASAP
-            data.reloadTime = 1;
+            var reloadTime = 1;
         }
-        let b = obj.wait_finish(res);
+        obj.wait_finish(res);
         if (!data.currentProcess || obj !== data.currentProcess.subprocess) {
             return;
         }
         if (obj.get_if_exited()) {
             obj.get_exit_status();
         }
-        doRelaunch();
+        doRelaunch(reloadTime);
     });
 }
 
