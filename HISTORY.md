@@ -1,5 +1,10 @@
 # History of versions #
 
+* noVersion 46
+  * Fix the relaunching of the desktop process to avoid high CPU usage if it fails
+  * Don't launch twice the desktop process if the extension is disabled and enabled too fast
+  * Don't fail if there are zero monitors
+
 * Version 45
   * Fix 'GDK_IS_MONITOR (monitor)' failed message (Sergio Costas)
   * Ensure that the desktop is refreshed periodically when a file is constantly being modified (Sundeep Mediratta)
