@@ -1,9 +1,10 @@
 # History of versions #
 
-* noVersion 46
-  * Fix the relaunching of the desktop process to avoid high CPU usage if it fails
-  * Don't launch twice the desktop process if the extension is disabled and enabled too fast
-  * Don't fail if there are zero monitors
+* Version 46
+  * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
+  * Don't launch twice the desktop process if the extension is disabled and enabled too fast (Sergio Costas)
+  * Don't fail if there are zero monitors (Sergion Costas)
+  * Fix icons appearing over other windows when a dialog was shown (Sergio Costas)
 
 * Version 45
   * Fix 'GDK_IS_MONITOR (monitor)' failed message (Sergio Costas)
