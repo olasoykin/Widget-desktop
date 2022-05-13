@@ -323,7 +323,6 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         new ShowErrorPopup.ShowErrorPopup(
             title,
             error,
-            this._grid._window,
             true
         );
     }
