@@ -218,7 +218,6 @@ var DesktopManager = class {
         } catch(e) {
             this._errorWindow = new ShowErrorPopup.ShowErrorPopup(_("Nautilus File Manager not found"),
                                                                   _("The Nautilus File Manager is mandatory to work with Desktop Icons NG."),
-                                                                  null,
                                                                   true);
         }
         this._pendingDropFiles = {};
@@ -761,7 +760,6 @@ var DesktopManager = class {
                     if ((this.getNumberOfSelectedItems() >= 1) && (! this.keypressTimeoutID)) {
                         let windowError = new ShowErrorPopup.ShowErrorPopup(
                             _("Clear Current Selection before New Search"),
-                            null,
                             null,
                             true);
                         windowError.timeoutClose(2000);

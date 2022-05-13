@@ -25,10 +25,10 @@ const _ = Gettext.gettext;
 
 var ShowErrorPopup = class {
 
-    constructor(text, secondaryText, parentWindow, modal) {
+    constructor(text, secondaryText, modal) {
 
         this._window = new Gtk.MessageDialog({window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
-                                              transient_for: parentWindow,
+                                              transient_for: null,
                                               message_type: Gtk.MessageType.ERROR,
                                               buttons: Gtk.ButtonsType.NONE});
         let labels = this._window.get_message_area().get_children();
