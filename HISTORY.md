@@ -1,9 +1,12 @@
 # History of versions #
 
+* noVersion 47
+  * Pass the primary monitor index through DBus
+
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
   * Don't launch twice the desktop process if the extension is disabled and enabled too fast (Sergio Costas)
-  * Don't fail if there are zero monitors (Sergion Costas)
+  * Don't fail if there are zero monitors (Sergio Costas)
   * Fix icons appearing over other windows when a dialog was shown (Sergio Costas)
 
 * Version 45
