@@ -272,9 +272,17 @@ var DesktopManager = class {
     }
 
     updateGridWindows(newdesktoplist) {
+        if ((newdesktoplist.length > 0) && ('primaryMonitor' in newdesktoplist[0])) {
+            this._primaryIndex = newdesktoplist[0].primaryMonitor;
+        }
         if (newdesktoplist.length != this._desktopList.length) {
             this._fileList.forEach(x => x.removeFromGrid());
             this._desktopList = newdesktoplist;
+            if (this._primaryIndex < this._desktopList.length) {
+                this._primaryScreen = this._desktopList[this._primaryIndex];
+            } else {
+                this._primaryScreen = null;
+            }
             this._createGridWindows();
             this._placeAllFilesOnGrids(true);
             return;
@@ -315,6 +323,11 @@ var DesktopManager = class {
             }
             this._desktopList = newdesktoplist;
             this._placeAllFilesOnGrids(true);
+        }
+        if (this._primaryIndex < this._desktopList.length) {
+            this._primaryScreen = this._desktopList[this._primaryIndex];
+        } else {
+            this._primaryScreen = null;
         }
     }
 
@@ -1315,8 +1328,13 @@ var DesktopManager = class {
         for (let fileItem of notAssignedYet) {
             let x, y;
             if (fileItem.dropCoordinates == null) {
-                x = this._primaryScreen.x;
-                y = this._primaryScreen.y;
+                if (this._primaryScreen !== null) {
+                    x = this._primaryScreen.x;
+                    y = this._primaryScreen.y;
+                } else {
+                    x = 0;
+                    y = 0;
+                }
                 storeMode = Enums.StoredCoordinates.ASSIGN;
             } else {
                 [x, y] = fileItem.dropCoordinates;

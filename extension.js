@@ -311,7 +311,8 @@ function getDesktopGeometry() {
             'marginBottom' : area.marginBottom,
             'marginLeft' : area.marginLeft,
             'marginRight' : area.marginRight,
-            'monitorIndex' : monitorIndex
+            'monitorIndex' : monitorIndex,
+            'primaryMonitor' : Main.layoutManager.primaryIndex
         });
         desktopList.push(desktopListElement);
     }
