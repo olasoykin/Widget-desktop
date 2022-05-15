@@ -39,9 +39,9 @@ function parseCommandLine(argv) {
                 // run it as a true desktop (transparent window and so on)
                 asDesktop = true;
                 break;
-            case '-P':
-            case '-D':
-            case '-M':
+            case '-P': // Code path
+            case '-D': // Desktop definition: X:Y:WIDTH:HEIGHT:ZOOM:MARGINTOP:MARGINBOTTOM:MARGINLEFT:MARGINRIGHT:MONITORINDEX
+            case '-M': // Primary monitor
                 lastCommand = arg;
                 break;
             default:

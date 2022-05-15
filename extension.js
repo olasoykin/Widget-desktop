@@ -397,7 +397,7 @@ function launchDesktop() {
     argv.push('-P');
     argv.push(ExtensionUtils.getCurrentExtension().path);
 
-    data.currentProcess = new LaunchSubprocess(0, "DING", "-U");
+    data.currentProcess = new LaunchSubprocess(0, "DING");
     data.currentProcess.set_cwd(GLib.get_home_dir());
     if (null === data.currentProcess.spawnv(argv)) {
         doRelaunch(1000);
@@ -439,18 +439,13 @@ function launchDesktop() {
  *
  * @param {int} flags Flags for the SubprocessLauncher class
  * @param {string} process_id An string id for the debug output
- * @param {string} cmd_parameter A command line parameter to pass when running. It will be passed only under Wayland,
- *                               so, if this parameter isn't passed, the app can assume that it is running under X11.
  */
 var LaunchSubprocess = class {
 
-    constructor(flags, process_id, cmd_parameter) {
+    constructor(flags, process_id) {
         this._process_id = process_id;
-        this._cmd_parameter = cmd_parameter;
-        this._UUID = null;
-        this._flags = flags | Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_MERGE;
         this.cancellable = new Gio.Cancellable();
-        this._launcher = new Gio.SubprocessLauncher({flags: this._flags});
+        this._launcher = new Gio.SubprocessLauncher({flags: flags | Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_MERGE});
         if (Meta.is_wayland_compositor()) {
             this._waylandClient = Meta.WaylandClient.new(this._launcher);
             if (Config.PACKAGE_VERSION == '3.38.0') {

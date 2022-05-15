@@ -64,7 +64,8 @@ var DesktopManager = class {
         this.templatesMonitor = new TemplatesScriptsManager.TemplatesScriptsManager(
             DesktopIconsUtil.getTemplatesDir(),
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.HIDE_EXTENSIONS,
-            this._newDocument.bind(this));
+            this._newDocument.bind(this)
+        );
 
         this.primaryIndex = primaryIndex;
         if (primaryIndex < desktopList.length) {
