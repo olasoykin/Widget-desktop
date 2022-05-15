@@ -397,9 +397,6 @@ function launchDesktop() {
     argv.push('-P');
     argv.push(ExtensionUtils.getCurrentExtension().path);
 
-    argv.push('-M');
-    argv.push(`${Main.layoutManager.primaryIndex}`);
-
     data.currentProcess = new LaunchSubprocess(0, "DING", "-U");
     data.currentProcess.set_cwd(GLib.get_home_dir());
     if (null === data.currentProcess.spawnv(argv)) {

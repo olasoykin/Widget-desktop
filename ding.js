@@ -79,7 +79,7 @@ function parseCommandLine(argv) {
         }
         lastCommand = null;
     }
-    if (desktops.length == 0) {
+    if ((desktops.length == 0) && !asDesktop) {
         /* if no desktop list is provided, like when launching the program in stand-alone mode,
          * configure a 1280x720 desktop
          */

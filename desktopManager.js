@@ -1353,6 +1353,10 @@ var DesktopManager = class {
     }
 
     _addFilesToDesktop(fileList, storeMode) {
+
+        if (this._desktops.length == 0) {
+            return;
+        }
         let outOfDesktops = [];
         let notAssignedYet = [];
 
