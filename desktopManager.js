@@ -67,7 +67,7 @@ var DesktopManager = class {
             this._newDocument.bind(this)
         );
 
-        this.primaryIndex = primaryIndex;
+        this._primaryIndex = primaryIndex;
         if (primaryIndex < desktopList.length) {
             this._primaryScreen = desktopList[primaryIndex];
         } else {
@@ -244,7 +244,9 @@ var DesktopManager = class {
                 return false;
             });
         }
-        this._dbusAdvertiseUpdate();
+        if (this._asDesktop) {
+            this._dbusAdvertiseUpdate();
+        }
     }
 
     _metadataChanged(proxy, nameOwner, args) {
