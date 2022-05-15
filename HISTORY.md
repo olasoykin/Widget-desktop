@@ -3,6 +3,7 @@
 * noVersion 47
   * Pass the primary monitor index through DBus (Sergio Costas)
   * Added keyboard navigation support (Sergio Costas)
+  * Code cleanups (Sergio Costas)
 
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
