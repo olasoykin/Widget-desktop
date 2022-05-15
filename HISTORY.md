@@ -1,7 +1,8 @@
 # History of versions #
 
 * noVersion 47
-  * Pass the primary monitor index through DBus
+  * Pass the primary monitor index through DBus (Sergio Costas)
+  * Added keyboard navigation support (Sergio Costas)
 
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
