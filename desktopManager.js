@@ -64,10 +64,15 @@ var DesktopManager = class {
         this.templatesMonitor = new TemplatesScriptsManager.TemplatesScriptsManager(
             DesktopIconsUtil.getTemplatesDir(),
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.HIDE_EXTENSIONS,
-            this._newDocument.bind(this));
+            this._newDocument.bind(this)
+        );
 
         this._primaryIndex = primaryIndex;
-        this._primaryScreen = desktopList[primaryIndex];
+        if (primaryIndex < desktopList.length) {
+            this._primaryScreen = desktopList[primaryIndex];
+        } else {
+            this._primaryScreen = null;
+        }
         this._clickX = 0;
         this._clickY = 0;
         this._dragList = null;
@@ -239,7 +244,9 @@ var DesktopManager = class {
                 return false;
             });
         }
-        this._dbusAdvertiseUpdate();
+        if (this._asDesktop) {
+            this._dbusAdvertiseUpdate();
+        }
     }
 
     _metadataChanged(proxy, nameOwner, args) {
@@ -1349,6 +1356,10 @@ var DesktopManager = class {
     }
 
     _addFilesToDesktop(fileList, storeMode) {
+
+        if (this._desktops.length == 0) {
+            return;
+        }
         let outOfDesktops = [];
         let notAssignedYet = [];
 
