@@ -35,13 +35,14 @@ const ShowErrorPopup = imports.showErrorPopup;
 const TemplatesScriptsManager = imports.templatesScriptsManager;
 const Thumbnails = imports.thumbnails;
 const FileItemMenu = imports.fileItemMenu;
+const AutoAr = imports.autoAr;
 
 const Gettext = imports.gettext.domain('ding');
 
 const _ = Gettext.gettext;
 
 var DesktopManager = class {
-    constructor(mainApp, desktopList, codePath, asDesktop, primaryIndex) {
+    constructor(mainApp, dbusManager, desktopList, codePath, asDesktop, primaryIndex) {
 
         this.mainApp = mainApp;
         if (asDesktop) {
@@ -60,6 +61,9 @@ var DesktopManager = class {
             }
         } catch(e) {
         }
+
+        this.dbusManager = dbusManager;
+        this.autoAr = new AutoAr.AutoAr(this);
 
         this.templatesMonitor = new TemplatesScriptsManager.TemplatesScriptsManager(
             DesktopIconsUtil.getTemplatesDir(),

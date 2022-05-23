@@ -981,4 +981,6 @@ function init() {
         'com.rastersoft.dingextension',
         '/com/rastersoft/dingextension/control'
     );
+
+    return dbusManagerObject;
 }

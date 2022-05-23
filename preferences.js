@@ -32,6 +32,7 @@ const Gettext = imports.gettext;
 var _ = Gettext.domain('ding').gettext;
 
 var nautilusSettings;
+var nautilusCompression;
 var gtkSettings;
 var desktopSettings;
 var mutterSettings = null;
@@ -49,6 +50,12 @@ function init(path) {
         nautilusSettings = new Gio.Settings({ settings_schema: schemaObj });;
         nautilusSettings.connect('changed', _onNautilusSettingsChanged);
         _onNautilusSettingsChanged();
+    }
+    const compressionSchema = schemaSource.lookup(Enums.SCHEMA_NAUTILUS_COMPRESSION, true);
+    if (!compressionSchema) {
+        nautilusCompression = null;
+    } else {
+        nautilusCompression = new Gio.Settings({ settings_schema: compressionSchema });
     }
     desktopSettings = PrefsWindow.get_schema(path, Enums.SCHEMA);
     let schemaMutter = schemaSource.lookup(Enums.SCHEMA_MUTTER, true);

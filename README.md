@@ -15,7 +15,7 @@ with these advantages:
 
 * GNOME Shell >= 3.38
 * Nautilus >= 3.38
-* File-roller >= 3.38
+* File-roller >= 3.38 or Gnome AutoAr
 * Desktop folder already created
 
 ## Manual installation

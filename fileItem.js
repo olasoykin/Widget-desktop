@@ -307,6 +307,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             }
         }
 
+        if (!DBusUtils.GnomeArchiveManager.isAvailable && this._desktopManager.autoAr.fileIsCompressed(this.fileName)) {
+            this._desktopManager.autoAr.extractFile(this.fileName);
+            return;
+        }
         Gio.AppInfo.launch_default_for_uri_async(this.file.get_uri(),
             null, null,
             (source, result) => {

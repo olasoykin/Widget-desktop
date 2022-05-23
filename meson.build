@@ -13,6 +13,7 @@ schema_dir = join_paths(datadir, 'glib-2.0', 'schemas')
 extensions_dir = join_paths(prefix, 'share', 'gnome-shell', 'extensions', 'ding@rastersoft.com')
 
 install_data([
+    'autoAr.js',
     'askRenamePopup.js',
     'createThumbnail.js',
     'dbusInterfaces.js',
