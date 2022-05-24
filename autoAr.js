@@ -25,6 +25,7 @@ try {
 }
 
 const Enums = imports.enums;
+const FileUtils = imports.fileUtils;
 const Prefs = imports.preferences;
 const DBusUtils = imports.dbusUtils;
 const Signals = imports.signals;
@@ -317,7 +318,7 @@ const progressDialog = class {
         });
 
         try {
-            await file.delete_async(GLib.PRIORITY_DEFAULT, cancellable);
+            await FileUtils.deleteFile(file, null, cancellable);
         } catch (e) {
             logError(e, `Failed to remove ${file.get_path()}: ${e.message}`);
         } finally {
@@ -380,11 +381,14 @@ const progressDialog = class {
                     "${fullPathFile}", fullPathFile.get_basename()));
         } catch (e) {
             if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                this._cancellable = new Gio.Cancellable();
+                await this._cleanupFile(folder, this._cancellable);
                 this._autoAr.notify(_("Extraction cancelled"),
                     _("Extracting '${fullPathFile}' has been cancelled by the user.").replace(
                         "${fullPathFile}", fullPathFile.get_basename()));
             } else {
                 this._autoAr.notify(_("Error during extraction"), e.message);
+                await this._cleanupFile(folder, this._cancellable);
             }
         } finally {
             extractor.disconnect(progressID);
