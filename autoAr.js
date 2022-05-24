@@ -181,6 +181,31 @@ var AutoAr = class {
         return (this._getFormatAndFilterForFilename(fileName) !== null);
     }
 
+    runToolAsync(autoArTool, cancellable) {
+        return new Promise((resolve, reject) => {
+            const connections = [];
+
+            connections.push(autoArTool.connect('cancelled', () => {
+                connections.forEach(c => autoArTool.disconnect(c));
+                reject(new GLib.Error(Gio.IOErrorEnum,
+                    Gio.IOErrorEnum.CANCELLED,
+                    'Operation was cancelled'))
+            }));
+
+            connections.push(autoArTool.connect('error', (_, error) => {
+                connections.forEach(c => autoArTool.disconnect(c));
+                reject(error);
+            }));
+
+            connections.push(autoArTool.connect('completed', () => {
+                connections.forEach(c => autoArTool.disconnect(c));
+                resolve();
+            }));
+
+            autoArTool.start_async(cancellable);
+        });
+    }
+
     extractFile(fileName) {
         if (!this.checkAutoAr()) {
             return;
@@ -192,7 +217,8 @@ var AutoAr = class {
         const folderName = fullPath.substring(0, total-extSize);
         const folder = Gio.File.new_for_path(folderName);
         const doExtract = new progressDialog(this, _("Extracting files"));
-        doExtract.doExtractFile(fullPath, folder, folderName, 1);
+        doExtract.doExtractFile(fullPath, folder, folderName).catch(
+            e => logError(e));
     }
 
     compressFileItems(fileList, destinationFolder) {
@@ -206,8 +232,9 @@ var AutoAr = class {
         if (!this.checkAutoAr()) {
             return;
         }
-        let doCompress = new progressDialog(this, _("Compressing files"));
-        doCompress.doCompressFiles(fileList, outputFile, format, filter);
+        const doCompress = new progressDialog(this, _("Compressing files"));
+        doCompress.doCompressFiles(fileList, outputFile, format, filter).catch(
+            e => logError(e));
     }
 
     notify(title, text) {
@@ -257,12 +284,7 @@ const progressDialog = class {
             orientation: Gtk.Orientation.VERTICAL,
         });
         this._cancelButton = new Gtk.Button({ label: _("Cancel") });
-        this._cancelButtonId = this._cancelButton.connect("clicked", () => {
-            if (this._cancellable) {
-                this._cancellable.cancel();
-            }
-        });
-        this._signalIds = [];
+        this._cancelButton.connect("clicked", () => this._cancellable.cancel());
         container3.pack_start(this._processLabel, false, true, 0);
         container3.pack_start(this._processBar, false, true, 0);
         container2.pack_start(container3, false, true, 0);
@@ -284,105 +306,108 @@ const progressDialog = class {
         this._autoAr.addProgress(this._container, message);
     }
 
-    doExtractFile(fullPath, folder, folderName, counter) {
+    async doExtractFile(fullPath, folder, folderName, counter=1) {
         this._processLabel.set_label(_("Creating destination folder"));
-        if (this._cancellable.is_cancelled()) {
-            return;
-        }
         this._processBar.pulse();
-        folder.make_directory_async(0, this._cancellable, (obj, res) => {
-            let folderDone = false;
-            try {
-                folderDone = obj.make_directory_finish(res);
-            } catch(e) {
-            }
-            if (this._cancellable.is_cancelled()) {
+
+        try {
+            await folder.make_directory_async(GLib.PRIORITY_DEFAULT, this._cancellable);
+        } catch (e) {
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                 this._destroy();
                 return;
             }
-            if (!folderDone) {
-                let newFolder = Gio.File.new_for_path(`${folderName} (${counter})`);
-                this.doExtractFile(fullPath, newFolder, folderName, counter + 1);
+
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+                const newFolder = Gio.File.new_for_path(`${folderName} (${counter})`);
+                await this.doExtractFile(fullPath, newFolder, folderName, counter + 1);
                 return;
             }
-            this._processLabel.set_label(_("Extracting files into '${outputPath}'").replace("${outputPath}", folder.get_basename()));
-            let fullPathFile = Gio.File.new_for_path(fullPath);
-            this._compressor = GnomeAutoar.Extractor.new(fullPathFile, folder);
-            this._compressor.set_output_is_dest(true);
-            this._signalIds.push(this._compressor.connect("cancelled", () => {
-                this._autoAr.notify(_("Extraction cancelled"),
-                                    _("Extracting '${fullPathFile}' has been cancelled by the user.").replace("${fullPathFile}", fullPathFile.get_basename()));
-                this._destroy();
-            }));
-            this._signalIds.push(this._compressor.connect("error", (obj, err) => {
-                this._autoAr.notify(_("Error during extraction"), err.message);
-                this._destroy();
-            }));
-            this._signalIds.push(this._compressor.connect("completed", () => {
-                this._autoAr.notify(_("Extraction completed"),
-                                    _("Extracting '${fullPathFile}' has been completed.").replace("${fullPathFile}", fullPathFile.get_basename()));
-                this._destroy();
-            }));
-            this._progresTotal = -1;
-            this._signalIds.push(this._compressor.connect("progress", (obj, completed_size, completed_files) => {
-                if (this._timer) {
-                    GLib.source_remove(this._timer);
-                    this._timer = 0;
-                }
-                if (this._progresTotal < 0) {
-                    this._progresTotal = this._compressor.get_total_size();
-                }
-                this._processBar.set_fraction(completed_size / this._progresTotal);
-            }));
-            this._timer = GLib.timeout_add(
-                GLib.PRIORITY_DEFAULT,
-                250,
-                ()=> {
-                    this._processBar.pulse();
-                    return true;
-                }
-            );
-            this._compressor.start_async(this._cancellable);
+
+            throw e;
+        }
+
+        this._processLabel.set_label(_("Extracting files into '${outputPath}'").replace(
+            "${outputPath}", folder.get_basename()));
+
+        const fullPathFile = Gio.File.new_for_path(fullPath);
+        const extractor = GnomeAutoar.Extractor.new(fullPathFile, folder);
+        extractor.set_output_is_dest(true);
+
+        let timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+            this._processBar.pulse();
+            return true;
         });
+
+        let progressTotal = -1;
+        const progressID = extractor.connect('progress', (_, completedSize) => {
+            if (timer) {
+                GLib.source_remove(timer);
+                timer = 0;
+            }
+
+            if (progressTotal <= 0)
+                progressTotal = extractor.get_total_size();
+
+            if (progressTotal > 0)
+                this._processBar.set_fraction(completedSize / progressTotal);
+        });
+
+        try {
+            await this._autoAr.runToolAsync(extractor, this._cancellable);
+
+            this._autoAr.notify(_("Extraction completed"),
+                _("Extracting '${fullPathFile}' has been completed.").replace(
+                    "${fullPathFile}", fullPathFile.get_basename()));
+        } catch (e) {
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                this._autoAr.notify(_("Extraction cancelled"),
+                    _("Extracting '${fullPathFile}' has been cancelled by the user.").replace(
+                        "${fullPathFile}", fullPathFile.get_basename()));
+            } else {
+                this._autoAr.notify(_("Error during extraction"), e.message);
+            }
+        } finally {
+            extractor.disconnect(progressID);
+            if (timer) {
+                GLib.source_remove(timer);
+            }
+            this._destroy();
+        }
     }
 
-    doCompressFiles(fileList, outputFile, format, filter) {
-        let output = Gio.File.new_for_path(outputFile);
-        this._processLabel.set_label(_("Compressing files into '${outputFile}'").replace("${outputFile}", output.get_basename()));
-        this._compressor = GnomeAutoar.Compressor.new(fileList, output, format, filter, true);
-        this._compressor.set_output_is_dest(true);
-        this._signalIds.push(this._compressor.connect("cancelled", () => {
-            this._autoAr.notify(_("Cancelled compression"),
-                                _("Compressing files into '${outputFile}' has been cancelled by the user.").replace("${outputFile}", output.get_basename()));
-            this._destroy();
-        }));
-        this._signalIds.push(this._compressor.connect("error", (obj, err) => {
-            this._autoAr.notify(_("Error during compression"), err.message);
-            this._destroy();
-        }));
-        this._signalIds.push(this._compressor.connect("completed", () => {
+    async doCompressFiles(fileList, outputFile, format, filter) {
+        const output = Gio.File.new_for_path(outputFile);
+        this._processLabel.set_label(_("Compressing files into '${outputFile}'").replace(
+            "${outputFile}", output.get_basename()));
+        const compressor = GnomeAutoar.Compressor.new(fileList, output, format, filter, true);
+        compressor.set_output_is_dest(true);
+
+        const progressID = compressor.connect("progress", () => this._processBar.pulse());
+
+        try {
+            await this._autoAr.runToolAsync(compressor, this._cancellable);
+
             this._autoAr.notify(_("Compression completed"),
-                                _("Compressing files into '${outputFile}' has been completed.").replace("${outputFile}", output.get_basename()));
+                _("Compressing files into '${outputFile}' has been completed.").replace(
+                    "${outputFile}", output.get_basename()));
+        } catch (e) {
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                this._autoAr.notify(_("Cancelled compression"),
+                    _("Compressing files into '${outputFile}' has been cancelled by the user.").replace(
+                        "${outputFile}", output.get_basename()));
+            } else {
+                this._autoAr.notify(_("Error during compression"), e.message);
+            }
+        } finally {
+            compressor.disconnect(progressID);
             this._destroy();
-        }));
-        this._signalIds.push(this._compressor.connect("progress", (obj, completed_size, completed_files) => {
-            this._processBar.pulse();
-        }));
-        this._compressor.start_async(this._cancellable);
+        }
     }
 
     _destroy() {
-        if (this._timer) {
-            GLib.source_remove(this._timer);
-            this._timer = 0;
-        }
-        if (this._cancellable) {
-            this._cancellable.cancel();
-        }
-        for (let id of this._signalIds) {
-            this._compressor.disconnect(id);
-        }
         this._autoAr.disconnect(this._elementsChangedId);
+        this._cancellable.cancel();
         this._container.destroy();
     }
 }

@@ -23,6 +23,8 @@ const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 
+Gio._promisify(Gio._LocalFilePrototype, 'make_directory_async', 'make_directory_finish');
+
 let desktops = [];
 let lastCommand = null;
 let codePath = '.';
