@@ -24,6 +24,7 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 
 Gio._promisify(Gio._LocalFilePrototype, 'make_directory_async', 'make_directory_finish');
+Gio._promisify(Gio._LocalFilePrototype, 'delete_async', 'delete_finish');
 
 let desktops = [];
 let lastCommand = null;

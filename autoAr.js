@@ -306,6 +306,25 @@ const progressDialog = class {
         this._autoAr.addProgress(this._container, message);
     }
 
+    async _cleanupFile(file, cancellable) {
+        this._processBar.set_fraction(0);
+        this._processLabel.set_label(_("Removing partial file '${outputFile}'").replace(
+            "${outputFile}", file.get_basename()));
+
+        const timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+            this._processBar.pulse();
+            return true;
+        });
+
+        try {
+            await file.delete_async(GLib.PRIORITY_DEFAULT, cancellable);
+        } catch (e) {
+            logError(e, `Failed to remove ${file.get_path()}: ${e.message}`);
+        } finally {
+            GLib.source_remove(timer);
+        }
+    }
+
     async doExtractFile(fullPath, folder, folderName, counter=1) {
         this._processLabel.set_label(_("Creating destination folder"));
         this._processBar.pulse();
@@ -393,11 +412,14 @@ const progressDialog = class {
                     "${outputFile}", output.get_basename()));
         } catch (e) {
             if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                this._cancellable = new Gio.Cancellable();
+                await this._cleanupFile(output, this._cancellable);
                 this._autoAr.notify(_("Cancelled compression"),
                     _("Compressing files into '${outputFile}' has been cancelled by the user.").replace(
                         "${outputFile}", output.get_basename()));
             } else {
                 this._autoAr.notify(_("Error during compression"), e.message);
+                await this._cleanupFile(output, this._cancellable);
             }
         } finally {
             compressor.disconnect(progressID);
