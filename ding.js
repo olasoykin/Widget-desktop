@@ -138,8 +138,12 @@ const Prefs = imports.preferences;
 const Gettext = imports.gettext;
 const PromiseUtils = imports.promiseUtils;
 
-PromiseUtils._promisify({}, Gio._LocalFilePrototype, 'make_directory_async');
+PromiseUtils._promisify({}, Gio.FileEnumerator.prototype, 'close_async');
+PromiseUtils._promisify({}, Gio.FileEnumerator.prototype, 'next_files_async');
 PromiseUtils._promisify({}, Gio._LocalFilePrototype, 'delete_async');
+PromiseUtils._promisify({ keepOriginal: true }, Gio._LocalFilePrototype, 'enumerate_children_async');
+PromiseUtils._promisify({}, Gio._LocalFilePrototype, 'make_directory_async');
+PromiseUtils._promisify({ keepOriginal: true }, Gio._LocalFilePrototype, 'query_info_async');
 
 let localePath = GLib.build_filenamev([codePath, "locale"]);
 if (Gio.File.new_for_path(localePath).query_exists(null)) {
