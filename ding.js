@@ -23,9 +23,6 @@ const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 
-Gio._promisify(Gio._LocalFilePrototype, 'make_directory_async', 'make_directory_finish');
-Gio._promisify(Gio._LocalFilePrototype, 'delete_async', 'delete_finish');
-
 let desktops = [];
 let lastCommand = null;
 let codePath = '.';
@@ -139,6 +136,10 @@ imports.searchPath.unshift(codePath);
 const DBusUtils = imports.dbusUtils;
 const Prefs = imports.preferences;
 const Gettext = imports.gettext;
+const PromiseUtils = imports.promiseUtils;
+
+PromiseUtils._promisify({}, Gio._LocalFilePrototype, 'make_directory_async');
+PromiseUtils._promisify({}, Gio._LocalFilePrototype, 'delete_async');
 
 let localePath = GLib.build_filenamev([codePath, "locale"]);
 if (Gio.File.new_for_path(localePath).query_exists(null)) {

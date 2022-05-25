@@ -33,6 +33,7 @@ install_data([
     'prefs.js',
     'preferences.js',
     'prefswindow.js',
+    'promiseUtils.js',
     'stackItem.js',
     'showErrorPopup.js',
     'stylesheet.css',
