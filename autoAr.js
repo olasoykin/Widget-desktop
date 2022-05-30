@@ -27,6 +27,7 @@ try {
 const Enums = imports.enums;
 const Prefs = imports.preferences;
 const DBusUtils = imports.dbusUtils;
+const Signals = imports.signals;
 
 const Gettext = imports.gettext.domain('ding');
 
@@ -60,6 +61,8 @@ var AutoAr = class {
                     this._inhibitCookie = null;
                 }
             }
+
+            this.emit('progress-elements-changed', this._progressElements);
         });
         this._progressElements = 0;
         const scroll = new Gtk.ScrolledWindow({
@@ -211,6 +214,10 @@ var AutoAr = class {
         this._desktopManager.dbusManager.doNotify(title, text);
     }
 
+    getProgressElements() {
+        return this._progressContainer.get_children();
+    }
+
     addProgress(progressElement, message) {
         this._progressContainer.pack_start(progressElement, false, true, 0);
         if (this._progressElements == 0) {
@@ -221,8 +228,11 @@ var AutoAr = class {
         this._progressElements++;
         this._progressWindow.show_all();
         this._progressWindow.present();
+        this.emit('progress-elements-changed', this._progressElements);
     }
 }
+
+Signals.addSignalMethods(AutoAr.prototype);
 
 const progressDialog = class {
     constructor(autoArClass, message) {
@@ -258,7 +268,17 @@ const progressDialog = class {
         container2.pack_start(container3, false, true, 0);
         container2.pack_start(this._cancelButton, false, true, 0);
         this._container.pack_start(container2, false, false, 0);
-        this._container.pack_start(new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL }), false, true, 4);
+
+        const separator = new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL });
+        this._container.pack_start(separator, false, true, 4);
+        const updateSeparatorVisibility = () => {
+            const progressElements = this._autoAr.getProgressElements();
+            separator.visible = progressElements.length &&
+                this._container != progressElements[progressElements.length - 1];
+        };
+        updateSeparatorVisibility();
+        this._elementsChangedId = this._autoAr.connect('progress-elements-changed',
+            updateSeparatorVisibility);
 
         this._cancellable = new Gio.Cancellable();
         this._autoAr.addProgress(this._container, message);
@@ -362,6 +382,7 @@ const progressDialog = class {
         for (let id of this._signalIds) {
             this._compressor.disconnect(id);
         }
+        this._autoAr.disconnect(this._elementsChangedId);
         this._container.destroy();
     }
 }
