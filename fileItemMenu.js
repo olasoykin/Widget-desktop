@@ -279,10 +279,21 @@ var FileItemMenu = class {
                 );
             }
 
-            addElementToMenu(
-                Gettext.ngettext('Compress {0} file', 'Compress {0} files', selectedItemsNum).replace('{0}', selectedItemsNum),
-                this._doCompressFilesFromSelection.bind(this)
-            );
+            if (this._desktopManager.getCurrentSelection().every(f => f.isDirectory)) {
+                addElementToMenu(
+                    Gettext.ngettext(
+                        'Compress {0} folder', 'Compress {0} folders', selectedItemsNum).replace(
+                            '{0}', selectedItemsNum),
+                    () => this._doCompressFilesFromSelection()
+                );
+            } else {
+                addElementToMenu(
+                    Gettext.ngettext(
+                        'Compress {0} file', 'Compress {0} files', selectedItemsNum).replace(
+                            '{0}', selectedItemsNum),
+                    () => this._doCompressFilesFromSelection()
+                );
+            }
 
 
             addElementToMenu(
