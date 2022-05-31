@@ -332,6 +332,18 @@ const progressDialog = class {
 
         try {
             await folder.make_directory_async(GLib.PRIORITY_DEFAULT, this._cancellable);
+
+            const info = new Gio.FileInfo();
+            info.set_attribute_uint32(Gio.FILE_ATTRIBUTE_UNIX_MODE, 0o700);
+
+            try {
+                await folder.set_attributes_async_promise(info,
+                    Gio.FileQueryInfoFlags.NONE,
+                    GLib.PRIORITY_DEFAULT,
+                    this._cancellable);
+            } catch (e) {
+                logError(e, `Failed to set attributes to ${folder.get_path()}`)
+            }
         } catch (e) {
             if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                 this._destroy();
