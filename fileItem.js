@@ -411,7 +411,8 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
      ***********************/
 
     _setDropDestination(dropDestination) {
-        dropDestination.drag_dest_set(Gtk.DestDefaults.MOTION | Gtk.DestDefaults.DROP, null, Gdk.DragAction.MOVE);
+        dropDestination.drag_dest_set(Gtk.DestDefaults.MOTION | Gtk.DestDefaults.DROP, null,
+            Gdk.DragAction.MOVE | Gdk.DragAction.COPY | Gdk.DragAction.DEFAULT);
         if ((this._fileExtra == Enums.FileType.USER_DIRECTORY_TRASH) ||
             (this._fileExtra == Enums.FileType.USER_DIRECTORY_HOME) ||
             (this._fileExtra != Enums.FileType.EXTERNAL_DRIVE) ||
@@ -421,21 +422,24 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
                 dropDestination.drag_dest_set_target_list(targets);
                 dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
-                    let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK);
-                    if ((info == 1) || (info == 2)) {
+                    const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
+                    if (info === Enums.DndTargetInfo.GNOME_ICON_LIST ||
+                        info === Enums.DndTargetInfo.URI_LIST) {
                         let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
                         if (fileList.length != 0) {
                             if (this._hasToRouteDragToGrid()) {
-                                this._grid.receiveDrop(this._x1 + x, this._y1 + y, selection, info, true, forceCopy);
+                                this._grid.receiveDrop(context, this._x1 + x, this._y1 + y, selection, info, true, forceCopy);
                                 return;
                             }
                             if (this._desktopManager.dragItem && ((this._desktopManager.dragItem.uri == this._file.get_uri()) || !(this._isValidDesktopFile || this.isDirectory))) {
                                 // Dragging a file/folder over itself or over another file will do nothing, allow drag to directory or validdesktop file
+                                Gtk.drag_finish(context, false, false, time);
                                 return;
                             }
                             if ( this._isValidDesktopFile ) {
                                 // open the desktopfile with these dropped files as the arguments
                                 this.doOpen(fileList);
+                                Gtk.drag_finish(context, true, false, time);
                                 return;
                             }
                             if (this._fileExtra != Enums.FileType.USER_DIRECTORY_TRASH) {
@@ -443,13 +447,18 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                                 let id_fs = data.get_attribute_string('id::filesystem');
                                 if ((this._desktopManager.desktopFsId == id_fs) && (!forceCopy)) {
                                     DBusUtils.RemoteFileOperations.MoveURIsRemote(fileList, this._file.get_uri());
+                                    Gtk.drag_finish(context, true, true, time);
                                 } else {
                                     DBusUtils.RemoteFileOperations.CopyURIsRemote(fileList, this._file.get_uri());
+                                    Gtk.drag_finish(context, true, false, time);
                                 }
                             } else {
                                 DBusUtils.RemoteFileOperations.TrashURIsRemote(fileList);
+                                Gtk.drag_finish(context, true, true, time);
                             }
                         }
+                    } else {
+                        Gtk.drag_finish(context, false, false, time);
                     }
                 });
         }

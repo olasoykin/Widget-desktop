@@ -85,6 +85,13 @@ var CompressionType = {
     ENCRYPTED_ZIP: 3
 };
 
+var DndTargetInfo = {
+    DING_ICON_LIST: 0,
+    GNOME_ICON_LIST: 1,
+    URI_LIST: 2,
+    TEXT_PLAIN: 3,
+};
+
 var DEFAULT_ATTRIBUTES = 'metadata::*,standard::*,access::*,time::modified,unix::mode';
 var TERMINAL_SCHEMA = 'org.gnome.desktop.default-applications.terminal';
 var SCHEMA_NAUTILUS = 'org.gnome.nautilus.preferences';

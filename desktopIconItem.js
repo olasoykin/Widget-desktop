@@ -155,6 +155,7 @@ var desktopIconItem = class desktopIconItem {
         this._eventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
         this._eventBox.connect('drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
+            this._updateDragStatus(context, time);
         });
         this._eventBox.connect('drag-leave', () => {
             this.unHighLightDropTarget();
@@ -166,6 +167,7 @@ var desktopIconItem = class desktopIconItem {
         this._labelEventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
         this._labelEventBox.connect('drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
+            this._updateDragStatus(context, time);
         });
         this._labelEventBox.connect('drag-leave', () => {
             this.unHighLightDropTarget();
@@ -175,6 +177,7 @@ var desktopIconItem = class desktopIconItem {
         });
         this.container.connect('drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
+            this._updateDragStatus(context, time);
         });
         this.container.connect('drag-leave', () => {
             this.unHighLightDropTarget();
@@ -381,6 +384,13 @@ var desktopIconItem = class desktopIconItem {
         }
     }
 
+    _updateDragStatus(context, time) {
+        if (DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK))
+            Gdk.drag_status(context, Gdk.DragAction.COPY, time);
+        else
+            Gdk.drag_status(context, Gdk.DragAction.MOVE, time);
+    }
+
     highLightDropTarget(x, y) {
         if (this._hasToRouteDragToGrid()) {
             this._grid.receiveMotion(this._x1, this._y1, true);
@@ -434,12 +444,15 @@ var desktopIconItem = class desktopIconItem {
     _setDragSource(widget) {
         widget.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, null, Gdk.DragAction.MOVE | Gdk.DragAction.COPY);
         let targets = new Gtk.TargetList(null);
-        targets.add(Gdk.atom_intern('x-special/ding-icon-list', false), Gtk.TargetFlags.SAME_APP, 0);
+        targets.add(Gdk.atom_intern('x-special/ding-icon-list', false),
+            Gtk.TargetFlags.SAME_APP, Enums.DndTargetInfo.DING_ICON_LIST);
         if ((this._fileExtra != Enums.FileType.USER_DIRECTORY_TRASH) &&
             (this._fileExtra != Enums.FileType.USER_DIRECTORY_HOME) &&
             (this._fileExtra != Enums.FileType.EXTERNAL_DRIVE)) {
-                targets.add(Gdk.atom_intern('x-special/gnome-icon-list', false), 0, 1);
-                targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
+                targets.add(Gdk.atom_intern('x-special/gnome-icon-list', false), 0,
+                    Enums.DndTargetInfo.GNOME_ICON_LIST);
+                targets.add(Gdk.atom_intern('text/uri-list', false), 0,
+                    Enums.DndTargetInfo.URI_LIST);
         }
         widget.drag_source_set_target_list(targets);
         widget.connect('drag-begin', (widget, context) => {
