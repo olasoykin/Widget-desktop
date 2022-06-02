@@ -307,7 +307,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             }
         }
 
-        if (!DBusUtils.GnomeArchiveManager.isAvailable && this._desktopManager.autoAr.fileIsCompressed(this.fileName)) {
+        if (!DBusUtils.GnomeArchiveManager.isAvailable &&
+            this._fileType === Gio.FileType.REGULAR &&
+            this._desktopManager.autoAr.fileIsCompressed(this.fileName)) {
             this._desktopManager.autoAr.extractFile(this.fileName);
             return;
         }
