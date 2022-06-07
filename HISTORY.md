@@ -4,6 +4,8 @@
   * Pass the primary monitor index through DBus (Sergio Costas)
   * Added keyboard navigation support (Sergio Costas)
   * Code cleanups (Sergio Costas)
+  * Removed File-Roller dependency (Sergio Costas and Marco Trevisan)
+  * Added an Ubuntu installer (Sergio Costas)
 
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
