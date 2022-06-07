@@ -251,11 +251,21 @@ var FileItemMenu = class {
 
         if (fileItem.isAllSelectable && (!this._desktopManager.checkIfSpecialFilesAreSelected()) && (selectedItemsNum >= 1 )) {
             addSeparator();
-            if (selectedItemsNum == 1 && this._getExtractable()) {
+            let addedExtractHere = false;
+            if (this._getExtractableAutoAr()) {
+                addedExtractHere = true;
                 addElementToMenu(
                     _("Extract Here"),
-                    () => {this._extractFileFromSelection(true);}
-                );
+                    () => this._desktopManager.getCurrentSelection(false).forEach(f =>
+                        this._desktopManager.autoAr.extractFile(f.fileName)));
+            }
+            if (selectedItemsNum == 1 && this._getExtractable()) {
+                if (!addedExtractHere) {
+                    addElementToMenu(
+                        _("Extract Here"),
+                        () => {this._extractFileFromSelection(true);}
+                    );
+                }
                 addElementToMenu(
                     _("Extract To..."),
                     () => {this._extractFileFromSelection(false);}
@@ -269,10 +279,21 @@ var FileItemMenu = class {
                 );
             }
 
-            addElementToMenu(
-                Gettext.ngettext('Compress {0} file', 'Compress {0} files', selectedItemsNum).replace('{0}', selectedItemsNum),
-                this._doCompressFilesFromSelection.bind(this)
-            );
+            if (this._desktopManager.getCurrentSelection().every(f => f.isDirectory)) {
+                addElementToMenu(
+                    Gettext.ngettext(
+                        'Compress {0} folder', 'Compress {0} folders', selectedItemsNum).replace(
+                            '{0}', selectedItemsNum),
+                    () => this._doCompressFilesFromSelection()
+                );
+            } else {
+                addElementToMenu(
+                    Gettext.ngettext(
+                        'Compress {0} file', 'Compress {0} files', selectedItemsNum).replace(
+                            '{0}', selectedItemsNum),
+                    () => this._doCompressFilesFromSelection()
+                );
+            }
 
 
             addElementToMenu(
@@ -404,9 +425,22 @@ var FileItemMenu = class {
         }
     }
 
+    _getExtractableAutoAr() {
+        let fileList = this._desktopManager.getCurrentSelection(false);
+        if (DBusUtils.GnomeArchiveManager.isAvailable && (fileList.length == 1)) {
+            return false;
+        }
+        for (let item of fileList) {
+            if (!this._desktopManager.autoAr.fileIsCompressed(item.fileName)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     _getExtractable() {
         for (let item of this._desktopManager.getCurrentSelection(false)) {
-            return this._decompressibleTypes.includes(item._attributeContentType);
+            return this._decompressibleTypes.includes(item.attributeContentType);
         }
     }
 
@@ -429,12 +463,17 @@ var FileItemMenu = class {
     }
 
     _doCompressFilesFromSelection() {
-        let compressFileItems = this._desktopManager.getCurrentSelection(true);
-        this._desktopManager.unselectAll();
-        let desktopFolder = DesktopIconsUtil.getDesktopDir().get_uri();
+        let desktopFolder = DesktopIconsUtil.getDesktopDir();
         if (desktopFolder) {
-            DBusUtils.RemoteFileOperations.CompressRemote(compressFileItems, desktopFolder, true);
+            if (DBusUtils.GnomeArchiveManager.isAvailable) {
+                const toCompress = this._desktopManager.getCurrentSelection(true);
+                DBusUtils.RemoteFileOperations.CompressRemote(toCompress, desktopFolder.get_uri(), true);
+            } else {
+                const toCompress = this._desktopManager.getCurrentSelection(false);
+                this._desktopManager.autoAr.compressFileItems(toCompress, desktopFolder.get_path());
+            }
         }
+        this._desktopManager.unselectAll();
     }
 
     _doNewFolderFromSelection(clickedItem) {

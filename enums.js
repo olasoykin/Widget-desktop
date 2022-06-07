@@ -78,9 +78,17 @@ var SortOrder = {
     SIZE: 'size'
 };
 
+var CompressionType = {
+    ZIP: 0,
+    TAR_XZ: 1,
+    SEVEN_ZIP: 2,
+    ENCRYPTED_ZIP: 3
+};
+
 var DEFAULT_ATTRIBUTES = 'metadata::*,standard::*,access::*,time::modified,unix::mode';
 var TERMINAL_SCHEMA = 'org.gnome.desktop.default-applications.terminal';
 var SCHEMA_NAUTILUS = 'org.gnome.nautilus.preferences';
+var SCHEMA_NAUTILUS_COMPRESSION = 'org.gnome.nautilus.compression';
 var SCHEMA_GTK = 'org.gtk.Settings.FileChooser';
 var SCHEMA = 'org.gnome.shell.extensions.ding';
 var SCHEMA_MUTTER = 'org.gnome.mutter';
