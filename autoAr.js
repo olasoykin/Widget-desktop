@@ -229,12 +229,12 @@ var AutoAr = class {
         new CompressDialog(this._desktopManager, fileList, destinationFolder);
     }
 
-    compressFiles(fileList, outputFile, format, filter) {
+    compressFiles(fileList, outputFile, format, filter, password=null) {
         if (!this.checkAutoAr()) {
             return;
         }
         const doCompress = new progressDialog(this, _("Compressing files"));
-        doCompress.doCompressFiles(fileList, outputFile, format, filter).catch(
+        doCompress.doCompressFiles(fileList, outputFile, format, filter, password).catch(
             e => logError(e));
     }
 
@@ -411,12 +411,15 @@ const progressDialog = class {
         }
     }
 
-    async doCompressFiles(fileList, outputFile, format, filter) {
+    async doCompressFiles(fileList, outputFile, format, filter, password=null) {
         const output = Gio.File.new_for_path(outputFile);
         this._processLabel.set_label(_("Compressing files into '${outputFile}'").replace(
             "${outputFile}", output.get_basename()));
         const compressor = GnomeAutoar.Compressor.new(fileList, output, format, filter, true);
         compressor.set_output_is_dest(true);
+        if (password) {
+            compressor.set_passphrase(password);
+        }
 
         const progressID = compressor.connect("progress", () => this._processBar.pulse());
 
@@ -558,7 +561,8 @@ const CompressDialog = class {
             if (id === Gtk.ResponseType.ACCEPT) {
                 const data = this._desktopManager.autoAr.getFormatAndFilterForExtension(this._compressOptions[this._selectedType].extension);
                 const outputFile = GLib.build_filenamev([this._destinationFolder, this._nameEntry.get_text() + data.extension]);
-                this._desktopManager.autoAr.compressFiles(this._fileList, outputFile, data.format, data.filter);
+                const password = this._passEntry.get_text();
+                this._desktopManager.autoAr.compressFiles(this._fileList, outputFile, data.format, data.filter, password);
             }
             this._dialog.close();
         });
