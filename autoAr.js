@@ -415,7 +415,7 @@ const progressDialog = class {
         const output = Gio.File.new_for_path(outputFile);
         this._processLabel.set_label(_("Compressing files into '${outputFile}'").replace(
             "${outputFile}", output.get_basename()));
-        const compressor = GnomeAutoar.Compressor.new(fileList, output, format, filter, true);
+        const compressor = GnomeAutoar.Compressor.new(fileList, output, format, filter, false);
         compressor.set_output_is_dest(true);
         if (password) {
             compressor.set_passphrase(password);
