@@ -45,6 +45,9 @@ var AutoAr = class {
             default_height: 100,
             window_position: Gtk.WindowPosition.CENTER_ALWAYS,
         });
+        this._progressWindow.connect('delete-event', () => {
+            return true;
+        });
         this._progressContainer = new Gtk.Box({ spacing: 12,
             margin_top: 15,
             margin_bottom: 15,
