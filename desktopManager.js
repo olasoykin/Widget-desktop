@@ -488,37 +488,49 @@ var DesktopManager = class {
         this.dragItem = null;
     }
 
-    onDragDataReceived(xDestination, yDestination, selection, info, forceLocal, forceCopy) {
+    onDragDataReceived(context, xDestination, yDestination, selection, info, forceLocal, forceCopy) {
         this.onDragLeave();
         let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
         if (forceLocal) {
-            info = 0;
+            info = Enums.DndTargetInfo.DING_ICON_LIST;
         }
         switch(info) {
-        case 0:
+        case Enums.DndTargetInfo.DING_ICON_LIST:
             if (fileList.length != 0) {
                 let [xOrigin, yOrigin, a, b, c] = this.dragItem.getCoordinates();
                 this.doMoveWithDragAndDrop(xOrigin, yOrigin, xDestination, yDestination);
+                Gtk.drag_finish(context, true, true, Gtk.get_current_event_time());
             }
             break;
-        case 1:
-        case 2:
+        case Enums.DndTargetInfo.GNOME_ICON_LIST:
+        case Enums.DndTargetInfo.URI_LIST:
             if (fileList.length != 0) {
                 this.clearFileCoordinates(fileList, [xDestination, yDestination]);
                 let data = Gio.File.new_for_uri(fileList[0]).query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null);
                 let id_fs = data.get_attribute_string('id::filesystem');
                 if ((this.desktopFsId == id_fs) && (!forceCopy)) {
                     DBusUtils.RemoteFileOperations.MoveURIsRemote(fileList, "file://" + GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP));
+                    Gtk.drag_finish(context, true, true, Gtk.get_current_event_time());
                 } else {
                     DBusUtils.RemoteFileOperations.CopyURIsRemote(fileList, "file://" + GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP));
+                    Gtk.drag_finish(context, true, false, Gtk.get_current_event_time());
                 }
+            } else {
+                Gtk.drag_finish(context, false, false, Gtk.get_current_event_time());
             }
             break;
-        case 3:
+        case Enums.DndTargetInfo.TEXT_PLAIN:
             if (fileList.length != 0 ) {
                 let dropCoordinates = [ xDestination, yDestination ];
                 this.detectURLorText(fileList, dropCoordinates);
+                Gtk.drag_finish(context, true, false, Gtk.get_current_event_time());
+            } else {
+                Gtk.drag_finish(context, false, false, Gtk.get_current_event_time());
             }
+            break;
+
+        default:
+            Gtk.drag_finish(context, false, false, Gtk.get_current_event_time());
             break;
         }
     }
@@ -568,13 +580,13 @@ var DesktopManager = class {
         }
         let atom;
         switch(info) {
-            case 0:
+            case Enums.DndTargetInfo.DING_ICON_LIST:
                 atom = Gdk.atom_intern('x-special/ding-icon-list', false);
                 break;
-            case 1:
+            case Enums.DndTargetInfo.GNOME_ICON_LIST:
                 atom = Gdk.atom_intern('x-special/gnome-icon-list', false);
                 break;
-            case 2:
+            case Enums.DndTargetInfo.URI_LIST:
                 atom = Gdk.atom_intern('text/uri-list', false);
                 break;
             default:
@@ -583,7 +595,7 @@ var DesktopManager = class {
         let data = "";
         for (let fileItem of fileList) {
             data += fileItem.uri;
-            if (info == 1) {
+            if (info === Enums.DndTargetInfo.GNOME_ICON_LIST) {
                 let coordinates = fileItem.getCoordinates();
                 if (coordinates != null) {
                     data += `\r${coordinates[0]}:${coordinates[1]}:${coordinates[2] - coordinates[0] + 1}:${coordinates[3] - coordinates[1] + 1}`

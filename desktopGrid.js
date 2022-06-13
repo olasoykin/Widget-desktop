@@ -237,20 +237,29 @@ var DesktopGrid = class {
     setDropDestination(dropDestination) {
         dropDestination.drag_dest_set(Gtk.DestDefaults.MOTION | Gtk.DestDefaults.DROP, null, Gdk.DragAction.MOVE|Gdk.DragAction.COPY|Gdk.DragAction.DEFAULT);
         let targets = new Gtk.TargetList(null);
-        targets.add(Gdk.atom_intern('x-special/ding-icon-list', false), Gtk.TargetFlags.SAME_APP, 0);
-        targets.add(Gdk.atom_intern('x-special/gnome-icon-list', false), 0, 1);
-        targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
-        targets.add(Gdk.atom_intern('text/plain', false), 0, 3);
+        targets.add(Gdk.atom_intern('x-special/ding-icon-list', false), Gtk.TargetFlags.SAME_APP,
+            Enums.DndTargetInfo.DING_ICON_LIST);
+        targets.add(Gdk.atom_intern('x-special/gnome-icon-list', false), 0,
+            Enums.DndTargetInfo.GNOME_ICON_LIST);
+        targets.add(Gdk.atom_intern('text/uri-list', false), 0,
+            Enums.DndTargetInfo.URI_LIST);
+        targets.add(Gdk.atom_intern('text/plain', false), 0,
+            Enums.DndTargetInfo.TEXT_PLAIN);
         dropDestination.drag_dest_set_target_list(targets);
         dropDestination.connect('drag-motion', (widget, context, x, y, time) => {
             this.receiveMotion(x, y);
+
+            if (DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK))
+                Gdk.drag_status(context, Gdk.DragAction.COPY, time);
+            else
+                Gdk.drag_status(context, Gdk.DragAction.MOVE, time);
         });
         this._eventBox.connect('drag-leave', (widget, context, time) => {
             this.receiveLeave();
         });
         dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
-            let forceCopy = DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK);
-            this.receiveDrop(x, y, selection, info, false, forceCopy);
+            const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
+            this.receiveDrop(context, x, y, selection, info, false, forceCopy);
         });
     }
 
@@ -267,13 +276,13 @@ var DesktopGrid = class {
         this._desktopManager.onDragMotion(x, y);
     }
 
-    receiveDrop(x, y, selection, info, forceLocal, forceCopy) {
+    receiveDrop(context, x, y, selection, info, forceLocal, forceCopy) {
         if (! forceLocal) {
             x = this._elementWidth * Math.floor(x / this._elementWidth);
             y = this._elementHeight * Math.floor(y / this._elementHeight);
             [x, y] = this._coordinatesLocalToGlobal(x, y);
         }
-        this._desktopManager.onDragDataReceived(x, y, selection, info, forceLocal, forceCopy);
+        this._desktopManager.onDragDataReceived(context, x, y, selection, info, forceLocal, forceCopy);
         this._window.queue_draw();
     }
 
