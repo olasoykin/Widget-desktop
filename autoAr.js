@@ -433,15 +433,20 @@ const progressDialog = class {
                 _("Compressing files into '${outputFile}' has been completed.").replace(
                     "${outputFile}", output.get_basename()));
         } catch (e) {
-            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+            if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS)) {
+                this._autoAr.notify(_("Cancelled compression"),
+                    _("The output file '${outputFile}' already exists.").replace(
+                        "${outputFile}", output.get_basename()));
+            } else {
                 this._cancellable = new Gio.Cancellable();
                 await this._cleanupFile(output, this._cancellable);
+                if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                 this._autoAr.notify(_("Cancelled compression"),
                     _("Compressing files into '${outputFile}' has been cancelled by the user.").replace(
                         "${outputFile}", output.get_basename()));
-            } else {
-                this._autoAr.notify(_("Error during compression"), e.message);
-                await this._cleanupFile(output, this._cancellable);
+                } else {
+                    this._autoAr.notify(_("Error during compression"), e.message);
+                }
             }
         } finally {
             compressor.disconnect(progressID);
@@ -582,12 +587,25 @@ const CompressDialog = class {
         if (Prefs.nautilusCompression) {
             Prefs.nautilusCompression.set_enum("default-compression-format", this._selectedType);
         }
-        this._extensionLabel.label = this._compressOptions[this._selectedType].extension;
+        const label = this._compressOptions[this._selectedType].extension;
+        this._extensionLabel.label = label;
         this._extensionLock.visible = this._compressOptions[this._selectedType].password;
         const password = this._compressOptions[this._selectedType].password;
+        const outputfile = this._nameEntry.get_text() + label;
         this._passLabel.visible = password;
         this._passEntry.visible = password;
+        let context = this._nameEntry.get_style_context();
         this._okButton.sensitive = true;
+        if (this._desktopManager._fileList.map(f => f.fileName).includes(outputfile)) {
+            this._okButton.sensitive = false;
+                if (!context.has_class('not-found')) {
+                    context.add_class('not-found');
+                }
+            } else {
+                if (context.has_class('not-found')) {
+                    context.remove_class('not-found');
+                }
+            }
         if (password && (this._passEntry.get_text_length() == 0)) {
             this._okButton.sensitive = false;
         }
