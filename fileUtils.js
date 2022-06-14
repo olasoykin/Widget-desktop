@@ -31,8 +31,6 @@ async function enumerateDir(dir, cancellable = null, priority = GLib.PRIORITY_DE
     try {
         const children = [];
         while (true) {
-            while (childrenEnumerator.has_pending())
-                GLib.main_context_default().iteration(true);
 
             // The enumerator doesn't support multiple async calls, nor
             // we can predict how many they will be, so using Promise.all
@@ -55,10 +53,9 @@ async function enumerateDir(dir, cancellable = null, priority = GLib.PRIORITY_DE
 async function recursivelyDeleteDir(dir, deleteParent, cancellable = null,
     priority = GLib.PRIORITY_DEFAULT) {
     const children = await enumerateDir(dir, cancellable, priority);
-    const toDelete = children.map(info =>
-        deleteFile(dir.get_child(info.get_name()), info, cancellable, priority));
-
-    await Promise.all(toDelete);
+    for (let info of children) {
+        await deleteFile(dir.get_child(info.get_name()), info, cancellable, priority);
+    }
 
     if (deleteParent)
         await dir.delete_async_promise(priority, cancellable);
