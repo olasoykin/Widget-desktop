@@ -635,6 +635,10 @@ var DesktopManager = class {
             this._newDocumentItem.set_submenu(templates);
             this._newDocumentItem.show_all();
         }
+        this._updateClipBoard();
+    }
+
+     _updateClipBoard() {
         this._syncUndoRedo();
         let atom = Gdk.Atom.intern('CLIPBOARD', false);
         let atom2 = Gdk.Atom.intern('x-special/gnome-copied-files', false);
@@ -660,17 +664,15 @@ var DesktopManager = class {
             * there is text data in the old format.
             */
         if (clipboard.wait_is_target_available(atom2)) {
-            clipboard.request_contents(atom2, (clip2, data) => {
-                let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
-                this._setClipboardContent(text);
-            });
+            let data = clipboard.wait_for_contents(atom2);
+            let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
+            this._setClipboardContent(text);
         } else {
-            clipboard.request_text((clipboard, text) => {
-                if (text && !text.endsWith('\n')) {
-                    text += '\n';
-                }
-                this._setClipboardContent(text);
-            });
+            let text = clipboard.wait_for_text();
+            if (text && !text.endsWith('\n')) {
+                text += '\n';
+            }
+            this._setClipboardContent(text);
         }
     }
 
@@ -733,6 +735,7 @@ var DesktopManager = class {
             this.doCut();
             return true;
         } else if (isCtrl && ((symbol == Gdk.KEY_V) || (symbol == Gdk.KEY_v))) {
+            this._updateClipBoard();
             this._doPaste();
             return true;
         } else if (isAlt && (symbol == Gdk.KEY_Return)) {
@@ -1070,7 +1073,7 @@ var DesktopManager = class {
     }
 
     _doPaste() {
-        if (this._clipboardFiles == null) {
+        if (this._clipboardFiles === null) {
             return;
         }
 
