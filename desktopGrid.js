@@ -67,6 +67,8 @@ var DesktopGrid = class {
                 this._window.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
                 this._window.stick();
                 this._window.move(this._x / this._size_divisor, this._y / this._size_divisor);
+            } else { // Wayland
+                this._window.maximize();
             }
         } else {
             // Opaque black test window
