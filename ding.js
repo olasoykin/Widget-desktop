@@ -158,7 +158,7 @@ var dbusManager = null;
 
 // Use different AppIDs to allow to test it from a command line while the main desktop is also running from the extension
 const dingApp = new Gtk.Application({application_id: asDesktop ? 'com.rastersoft.ding' : 'com.rastersoft.dingtest',
-                                     flags: Gio.ApplicationFlags.HANDLES_COMMAND_LINE});
+                                     flags: Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.REPLACE});
 
 dingApp.connect('startup', () => {
     Prefs.init(codePath);
