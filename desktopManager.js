@@ -208,6 +208,7 @@ var DesktopManager = class {
         this._createGridWindows();
 
         DBusUtils.NautilusFileOperations2.connectToProxy('g-properties-changed', this._undoStatusChanged.bind(this));
+        this._syncUndoRedo();
         DBusUtils.GtkVfsMetadata.connectSignalToProxy('AttributeChanged', this._metadataChanged.bind(this));
         this._allFileList = null;
         this._fileList = [];
@@ -635,11 +636,11 @@ var DesktopManager = class {
             this._newDocumentItem.set_submenu(templates);
             this._newDocumentItem.show_all();
         }
+        this._pasteMenuItem.set_sensitive(false);
         this._updateClipBoard();
     }
 
      _updateClipBoard() {
-        this._syncUndoRedo();
         let atom = Gdk.Atom.intern('CLIPBOARD', false);
         let atom2 = Gdk.Atom.intern('x-special/gnome-copied-files', false);
         let clipboard = Gtk.Clipboard.get(atom);
@@ -665,17 +666,13 @@ var DesktopManager = class {
             * there is text data in the old format.
             */
         if (clipboard.wait_is_target_available(atom2)) {
-            try {
                 let data = clipboard.wait_for_contents(atom2);
                 text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
-            } catch(e) {}
         } else {
-            try {
                 text = clipboard.wait_for_text();
                 if (text && !text.endsWith('\n')) {
                     text += '\n';
                 }
-            } catch(e) {}
         }
         this._setClipboardContent(text);
     }
