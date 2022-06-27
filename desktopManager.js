@@ -645,6 +645,7 @@ var DesktopManager = class {
         let clipboard = Gtk.Clipboard.get(atom);
         this._isCut = false;
         this._clipboardFiles = null;
+        let text = null;
         /*
             * Before Gnome Shell 40, St API couldn't access binary data in the clipboard, only text data. Also, the
             * original Desktop Icons was a pure extension, so it was limited to what Clutter and St offered. That was
@@ -664,16 +665,19 @@ var DesktopManager = class {
             * there is text data in the old format.
             */
         if (clipboard.wait_is_target_available(atom2)) {
-            let data = clipboard.wait_for_contents(atom2);
-            let text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
-            this._setClipboardContent(text);
+            try {
+                let data = clipboard.wait_for_contents(atom2);
+                text = 'x-special/nautilus-clipboard\n' + ByteArray.toString(data.get_data()) + '\n';
+            } catch(e) {}
         } else {
-            let text = clipboard.wait_for_text();
-            if (text && !text.endsWith('\n')) {
-                text += '\n';
-            }
-            this._setClipboardContent(text);
+            try {
+                text = clipboard.wait_for_text();
+                if (text && !text.endsWith('\n')) {
+                    text += '\n';
+                }
+            } catch(e) {}
         }
+        this._setClipboardContent(text);
     }
 
     _setClipboardContent(text) {
