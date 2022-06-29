@@ -543,7 +543,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
 
     _createPlatformData() {
         this.platformData = this.fileOperationsManager.platformData = () => {
-            let parentWindow = Gtk.get_current_event().get_window();
+            let parentWindow = Gtk.get_current_event()?.get_window();
 
             let parentHandle = '';
             if (parentWindow) {
