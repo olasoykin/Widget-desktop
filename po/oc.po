@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-04 20:42+0200\n"
-"PO-Revision-Date: 2022-04-16 18:03+0200\n"
+"PO-Revision-Date: 2022-07-03 21:02+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -66,7 +66,7 @@ msgstr "Escafar la seleccion actuala abans una recèrca novèla"
 
 #: desktopManager.js:793 fileItemMenu.js:369
 msgid "Cancel"
-msgstr "Anullada"
+msgstr "Anullar"
 
 #: desktopManager.js:795
 msgid "Find Files on Desktop"
@@ -86,7 +86,7 @@ msgstr "Pegar"
 
 #: desktopManager.js:873
 msgid "Undo"
-msgstr "Anullar"
+msgstr "Desfar"
 
 #: desktopManager.js:877
 msgid "Redo"
@@ -159,7 +159,7 @@ msgstr "Triar per talha"
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: fileItem.js:156
 msgid "Home"
-msgstr "Domicili"
+msgstr "Dossièr personal"
 
 #: fileItem.js:275
 msgid "Broken Link"
