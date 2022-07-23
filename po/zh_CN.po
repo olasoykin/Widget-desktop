@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-04 20:42+0200\n"
-"PO-Revision-Date: 2021-08-05 01:21+0800\n"
-"Last-Translator: Okeyja <phpluo@gmail.com>\n"
+"PO-Revision-Date: 2022-07-23 09:59+0800\n"
+"Last-Translator: huaweidu <huaweidu@foxmail.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -36,13 +36,15 @@ msgstr "重命名"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "Desktop Icons 需要 \"${programName}\""
 
 #: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"为了使此功能能在 Desktop Icons 里运行，您必须在您的系统里安装 "
+"\"${programName}\" 。"
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -50,15 +52,15 @@ msgstr "命令无法找到"
 
 #: desktopManager.js:214
 msgid "Nautilus File Manager not found"
-msgstr "Nautilus 文件管理器找不到"
+msgstr "Nautilus 文件管理器 找不到"
 
 #: desktopManager.js:215
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr "Nautilus 文件管理器强制与 Desktop Icons NG 运行。"
+msgstr "Nautilus 文件管理器 强制与 Desktop Icons NG 运行。"
 
 #: desktopManager.js:754
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr "在进行新的搜索之前清除当前选择"
 
 #: desktopManager.js:793 fileItemMenu.js:369
 msgid "Cancel"
@@ -66,7 +68,7 @@ msgstr "取消"
 
 #: desktopManager.js:795
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "在桌面上发现文件"
 
 #: desktopManager.js:860 desktopManager.js:1483
 msgid "New Folder"
@@ -89,7 +91,6 @@ msgid "Redo"
 msgstr "重做"
 
 #: desktopManager.js:883
-#, fuzzy
 msgid "Select All"
 msgstr "全选"
 
@@ -103,12 +104,11 @@ msgstr "在终端中打开"
 
 #: desktopManager.js:901
 msgid "Change Background…"
-msgstr "更改背景..."
+msgstr "更改背景…"
 
 #: desktopManager.js:912
-#, fuzzy
 msgid "Desktop Icons Settings"
-msgstr "设置"
+msgstr "桌面图标设置"
 
 #: desktopManager.js:916
 msgid "Display Settings"
@@ -128,7 +128,7 @@ msgstr "保持安排..."
 
 #: desktopManager.js:1558
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "依据文件类型保持堆叠..."
 
 #: desktopManager.js:1563
 msgid "Sort Home/Drives/Trash..."
@@ -161,16 +161,15 @@ msgstr "主目录"
 
 #: fileItem.js:275
 msgid "Broken Link"
-msgstr ""
+msgstr "断开的符号链接"
 
 #: fileItem.js:276
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "无法打开此文件，因为它是一个断开的符号链接"
 
 #: fileItem.js:326
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "在文件管理器中打开桌面"
+msgstr "已损坏的桌面文件"
 
 #: fileItem.js:327
 msgid ""
@@ -179,28 +178,35 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"此 .desktop 文件有错误或者是指向了一个不够权限运行的程序。它不能被运行。\n"
+"\n"
+"\t<b>编辑文件以设置正确的可执行程序。.</b>"
 
 #: fileItem.js:333
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "此桌面文件权限非法"
 
 #: fileItem.js:334
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
-msgstr ""
+msgstr "此 .desktop 文件有不正确的权限设置。右键点击属性，然后：\n"
 
 #: fileItem.js:336
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>设置权限，在其他中，设置只读或者无</b>"
 
 #: fileItem.js:339
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"勾选<b>允许执行文件</b>"
 
 #: fileItem.js:347
 msgid ""
@@ -209,6 +215,10 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"此 .desktop 文件是没有被信任的，它不能被执行。为使它能够被执行，右键点击属"
+"性，然后：\n"
+"\n"
+"<b>勾选允许执行文件</b>"
 
 #: fileItemMenu.js:118
 msgid "Open All..."
@@ -220,11 +230,11 @@ msgstr "打开"
 
 #: fileItemMenu.js:129
 msgid "Stack This Type"
-msgstr ""
+msgstr "堆叠此类型"
 
 #: fileItemMenu.js:129
 msgid "Unstack This Type"
-msgstr ""
+msgstr "取消堆叠此类型"
 
 #: fileItemMenu.js:141
 msgid "Scripts"
@@ -244,7 +254,7 @@ msgstr "使用独立显卡启动"
 
 #: fileItemMenu.js:162
 msgid "Run as a program"
-msgstr ""
+msgstr "作为程序运行"
 
 #: fileItemMenu.js:170
 msgid "Cut"
@@ -410,20 +420,20 @@ msgstr "拖拽图标时高亮显示放置区域"
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "用 Nemo 文件管理器打开文件夹"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "为软链接添加一个标记点"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "在标签文本中使用黑色字体"
 
 #. Nautilus options
 #: prefswindow.js:71
 msgid "Settings shared with Nautilus"
-msgstr "共享Nautilus的设置"
+msgstr "共享 Nautilus 文件管理器 的设置"
 
 #: prefswindow.js:90
 msgid "Click type for open files"
@@ -566,44 +576,42 @@ msgid "Icons Arranged by this property"
 msgstr "按此属性排列图标"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "保持图标排列"
+msgstr "保持图标堆叠"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "始终保留由最后安排的订单安排的图标"
+msgstr "始终保持图标堆叠，将相似类型分组"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "不堆叠的文件类型"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "字符串类型数组，不要堆叠这些类型的文件"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "使用 Nemo 文件管理器 代替 Nautilus 文件管理器 打开文件夹。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "添加一个标记点以连接"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "添加一个标记点以定位软链接。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "对标签文本使用黑色字体"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
-msgstr ""
+msgstr "将标签文本绘制为黑色字体，而不是白色字体。使用浅色背景的时侯很有用。"
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
