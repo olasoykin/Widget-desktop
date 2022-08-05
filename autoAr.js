@@ -221,6 +221,7 @@ var AutoAr = class {
         const folderName = fullPath.substring(0, total-extSize);
         const folder = Gio.File.new_for_path(folderName);
         const doExtract = new progressDialog(this, _("Extracting files"));
+        this._password = null;
         doExtract.doExtractFile(fullPath, folder, folderName).catch(
             e => logError(e));
     }
@@ -268,6 +269,9 @@ Signals.addSignalMethods(AutoAr.prototype);
 const progressDialog = class {
     constructor(autoArClass, message) {
         this._autoAr = autoArClass;
+        this._waitingForPassword = false;
+        this._currentPassword = null;
+        this._buttonPromiseAccept = null;
         this._container = new Gtk.Box({ spacing: 0,
                                         halign: Gtk.Align.END,
                                         orientation: Gtk.Orientation.VERTICAL });
@@ -288,12 +292,43 @@ const progressDialog = class {
             orientation: Gtk.Orientation.VERTICAL,
         });
         this._cancelButton = new Gtk.Button({ label: _("Cancel") });
-        this._cancelButton.connect("clicked", () => this._cancellable.cancel());
+        this._cancelButton.connect("clicked", () => {
+            if (this._buttonPromiseAccept) {
+                this._buttonPromiseAccept(false);
+                return;
+            }
+            this._cancellable.cancel();
+        });
+        this._passOkButton = new Gtk.Button({ label: _("OK") });
+        this._passOkButton.get_style_context().add_class('suggested-action');
+        const passOKfunc = function() {
+            this._processBar.show();
+            this._passEntry.hide();
+            this._passOkButton.hide();
+            this._currentPassword = this._passEntry.get_text();
+            if (this._buttonPromiseAccept) {
+                this._buttonPromiseAccept(true);
+                return;
+            }
+        }.bind(this);
+        this._passOkButton.connect("clicked", passOKfunc);
+        this._passEntry = new Gtk.Entry({ placeholder_text: _('Enter a password here'),
+                                          input_purpose: Gtk.InputPurpose.PASSWORD,
+                                          visibility: false,
+                                          secondary_icon_name: 'view-conceal',
+                                          secondary_icon_activatable: true,
+                                          secondary_icon_sensitive: true });
         container3.pack_start(this._processLabel, false, true, 0);
         container3.pack_start(this._processBar, false, true, 0);
+        container3.pack_start(this._passEntry, false, true, 0);
         container2.pack_start(container3, false, true, 0);
-        container2.pack_start(this._cancelButton, false, true, 0);
+        container2.pack_start(this._passOkButton, false, false, 0);
+        container2.pack_start(this._cancelButton, false, false, 0);
         this._container.pack_start(container2, false, false, 0);
+        this._passEntry.connect('icon-release', () => {
+            this._passEntry.visibility = !this._passEntry.visibility;
+        });
+        this._passEntry.connect('activate', passOKfunc);
 
         const separator = new Gtk.Separator({ orientation: Gtk.Orientation.HORIZONTAL });
         this._container.pack_start(separator, false, true, 4);
@@ -308,14 +343,20 @@ const progressDialog = class {
 
         this._cancellable = new Gio.Cancellable();
         this._autoAr.addProgress(this._container, message);
+        this._passEntry.hide();
+        this._passOkButton.hide();
     }
 
     async _cleanupFile(file, cancellable) {
+        if (!file.query_exists(null)) {
+            return;
+        }
         this._processBar.set_fraction(0);
         this._processLabel.set_label(_("Removing partial file '${outputFile}'").replace(
             "${outputFile}", file.get_basename()));
 
-        const timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+        this._removeTimer();
+        this._timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
             this._processBar.pulse();
             return true;
         });
@@ -325,7 +366,7 @@ const progressDialog = class {
         } catch (e) {
             logError(e, `Failed to remove ${file.get_path()}: ${e.message}`);
         } finally {
-            GLib.source_remove(timer);
+            this._removeTimer();
         }
     }
 
@@ -334,7 +375,7 @@ const progressDialog = class {
         this._processBar.pulse();
 
         try {
-            await folder.make_directory_async(GLib.PRIORITY_DEFAULT, this._cancellable);
+            await folder.make_directory_async_promise(GLib.PRIORITY_DEFAULT, this._cancellable);
 
             const info = new Gio.FileInfo();
             info.set_attribute_uint32(Gio.FILE_ATTRIBUTE_UNIX_MODE, 0o700);
@@ -368,18 +409,19 @@ const progressDialog = class {
         const fullPathFile = Gio.File.new_for_path(fullPath);
         const extractor = GnomeAutoar.Extractor.new(fullPathFile, folder);
         extractor.set_output_is_dest(true);
+        if ((extractor.set_passphrase) && (this._currentPassword !== null)) {
+            extractor.set_passphrase(this._currentPassword);
+        }
 
-        let timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+        this._removeTimer();
+        this._timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
             this._processBar.pulse();
             return true;
         });
 
         let progressTotal = -1;
         const progressID = extractor.connect('progress', (_, completedSize) => {
-            if (timer) {
-                GLib.source_remove(timer);
-                timer = 0;
-            }
+            this._removeTimer();
 
             if (progressTotal <= 0)
                 progressTotal = extractor.get_total_size();
@@ -402,18 +444,42 @@ const progressDialog = class {
                     _("Extracting '${fullPathFile}' has been cancelled by the user.").replace(
                         "${fullPathFile}", fullPathFile.get_basename()));
             } else {
-                this._autoAr.notify(_("Error during extraction"), e.message);
+                if ((e.code == GnomeAutoar.PASSPHRASE_REQUIRED_ERRNO) && (e.domain == GnomeAutoar.Extractor.quark())) {
+                    this._waitingForPassword = true;
+                    this._processBar.hide();
+                    this._passEntry.show();
+                    this._passOkButton.show();
+                    this._passOkButton.set_receives_default(true);
+                    const tmpfile = Gio.File.new_for_path(fullPath);
+                    this._processLabel.set_label(_("Passphrase required for ${filename}").replace("${filename}", tmpfile.get_basename()));
+                } else {
+                    this._waitingForPassword = false;
+                    this._autoAr.notify(_("Error during extraction"), e.message);
+                }
                 await this._cleanupFile(folder, this._cancellable);
             }
         } finally {
+            this._removeTimer();
             extractor.disconnect(progressID);
-            if (timer) {
-                GLib.source_remove(timer);
+            if (!this._waitingForPassword) {
+                this._destroy();
             }
-            this._destroy();
+        }
+        if (this._waitingForPassword) {
+            const retval = await this._waitButtons();
+            this._buttonPromiseAccept = null;
+            this._waitingForPassword = false;
+            if (retval == true) {
+                await this.doExtractFile(fullPath, folder, folderName);
+            }
         }
     }
 
+    async _waitButtons() {
+        return new Promise((accept, reject) => {
+            this._buttonPromiseAccept = accept;
+        });
+    }
     async doCompressFiles(fileList, outputFile, format, filter, password=null) {
         const output = Gio.File.new_for_path(outputFile);
         this._processLabel.set_label(_("Compressing files into '${outputFile}'").replace(
@@ -454,12 +520,19 @@ const progressDialog = class {
         }
     }
 
+    _removeTimer() {
+        if (this._timer) {
+            GLib.source_remove(this._timer);
+            this._timer = 0;
+        }
+    }
     _destroy() {
         this._autoAr.disconnect(this._elementsChangedId);
         this._cancellable.cancel();
         this._container.destroy();
     }
 }
+
 
 const CompressDialog = class {
     constructor(desktopManager, fileList, destinationFolder) {
