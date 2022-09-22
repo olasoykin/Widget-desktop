@@ -455,6 +455,8 @@ var LaunchSubprocess = class {
         }
         this.subprocess = null;
         this.process_running = false;
+        this._launch_timer = 0;
+        this._waiting_for_windows = 0;
     }
 
     spawnv(argv) {
@@ -485,8 +487,23 @@ var LaunchSubprocess = class {
                 this.process_running = false;
                 this._dataInputStream = null;
                 this.cancellable = null;
+                if (this._launch_timer != 0) {
+                    GLib.source_remove(this._launch_timer);
+                    this._launch_timer = 0;
+                    this._waiting_for_windows = 0;
+                }
             });
             this.process_running = true;
+            if (Meta.is_wayland_compositor() && (Main.layoutManager.monitors.length != 0)) {
+                // This ensures that, if the DING window isn't detected in three seconds
+                // after launch, the desktop will be killed and, thus, relaunched again.
+                this._waiting_for_windows = Main.layoutManager.monitors.length;
+                this._launch_timer = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 3000, () => {
+                    this._launch_timer = 0;
+                    this.subprocess.force_exit();
+                    return false;
+                });
+            }
         }
         return this.subprocess;
     }
@@ -527,7 +544,16 @@ var LaunchSubprocess = class {
             return false;
         }
         try {
-            return (this._waylandClient.owns_window(window));
+            let owns_window = this._waylandClient.owns_window(window);
+            if (owns_window && (this._launch_timer != 0) && (this._waiting_for_windows != 0)) {
+                global.log(`Received notification for window. ${this._waiting_for_windows-1} notifications remaining.`);
+                this._waiting_for_windows--;
+                if (this._waiting_for_windows == 0) {
+                    GLib.source_remove(this._launch_timer);
+                    this._launch_timer = 0;
+                }
+            }
+            return owns_window;
         } catch(e) {
             return false;
         }
