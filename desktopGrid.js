@@ -92,8 +92,8 @@ var DesktopGrid = class {
         this.gridGlobalRectangle = new Gdk.Rectangle({
             'x':this._x + this._marginLeft,
             'y':this._y + this._marginTop,
-            'width':(this._width*this.scale) - this._marginLeft - this._marginRight,
-            'height':(this._height*this.scale) - this._marginTop - this._marginBottom
+            'width': Math.floor(this._width*this.scale),
+            'height': Math.floor(this._height*this.scale),
         });
 
         this._eventBox = new Gtk.EventBox({ visible: true });
@@ -202,8 +202,8 @@ var DesktopGrid = class {
         this.scale = this._window.get_scale_factor();
         this.gridGlobalRectangle.x = this._x + this._marginLeft;
         this.gridGlobalRectangle.y = this._y + this._marginTop;
-        this.gridGlobalRectangle.width = (this._width*this.scale) - this._marginLeft - this._marginRight;
-        this.gridGlobalRectangle.height = (this._height*this.scale) - this._marginTop - this._marginBottom;
+        this.gridGlobalRectangle.width = Math.floor(this._width*this.scale);
+        this.gridGlobalRectangle.height = Math.floor(this._height*this.scale);
     }
 
     sizeEventBox() {
@@ -425,20 +425,20 @@ var DesktopGrid = class {
          if (!isFree) {
              return -1;
          }
-         if (this._coordinatesBelongToThisGrid(x, y)) {
+         if (this._coordinatesBelongToThisScreen(x, y)) {
              return 0;
          }
-         return Math.pow(x - (this._x + this._width * this._zoom / 2), 2) + Math.pow(x - (this._y + this._height * this._zoom / 2), 2);
+         return Math.pow(x - (this._x + this._windowWidth * this._zoom / 2), 2) + Math.pow(x - (this._y + this._windowHeight * this._zoom / 2), 2);
     }
 
     _coordinatesGlobalToLocal(x, y) {
-        x = DesktopIconsUtil.clamp(Math.floor((x - this._x) / this._zoom), 0, this._width - 1);
-        y = DesktopIconsUtil.clamp(Math.floor((y - this._y) / this._zoom), 0, this._height - 1);
+        x = DesktopIconsUtil.clamp(Math.floor((x - this._x - this._marginLeft) / this._zoom), 0, this._width - 1);
+        y = DesktopIconsUtil.clamp(Math.floor((y - this._y - this._marginTop) / this._zoom), 0, this._height - 1);
         return [x, y];
     }
 
     _coordinatesLocalToGlobal(x, y) {
-        return [x * this._zoom + this._x, y * this._zoom + this._y];
+        return [Math.floor(x * this._zoom + this._x + this._marginLeft), Math.floor(y * this._zoom + this._y + this._marginTop)];
     }
 
     _addFileItemTo(fileItem, column, row, coordinatesAction) {
@@ -513,7 +513,17 @@ var DesktopGrid = class {
     }
 
     _coordinatesBelongToThisGrid(x, y) {
-        return ((x >= this._x) && (x < (this._x + this._width * this._zoom)) && (y >= this._y) && (y < (this._y + this._height * this._zoom)));
+        return ((x >= (this._x + this._marginLeft)) &&
+                (x < (this._x + (this._marginLeft + this._width) * this._zoom)) &&
+                (y >= (this._y + this._marginTop * this._zoom)) &&
+                (y < (this._y + (this._marginTop + this._height) * this._zoom)));
+    }
+
+    _coordinatesBelongToThisScreen(x, y) {
+        return ((x >= this._x) &&
+                (x < (this._x + this._windowWidth * this._zoom)) &&
+                (y >= this._y) &&
+                (y < (this._y + this._windowHeight * this._zoom)));
     }
 
     _getEmptyPlaceClosestTo(x, y, coordinatesAction, reverseHorizontal) {

@@ -6,6 +6,7 @@
   * Code cleanups (Sergio Costas)
   * Removed File-Roller dependency (Sergio Costas and Marco Trevisan)
   * Added an Ubuntu installer (Sergio Costas)
+  * Fixed rubberband bug in the borders when there is a dock or bar (Sergio Costas and Sundeep Mediratta)
 
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
