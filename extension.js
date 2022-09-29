@@ -234,6 +234,7 @@ function manageCutCopy(action, parameters) {
 
     // kill the desktop program. It will be reloaded automatically.
     if (data.currentProcess && data.currentProcess.subprocess) {
+        data.currentProcess.cancel_timer();
         data.currentProcess.cancellable.cancel();
         data.currentProcess.subprocess.send_signal(15);
     }
@@ -506,6 +507,14 @@ var LaunchSubprocess = class {
             }
         }
         return this.subprocess;
+    }
+
+    cancel_timer() {
+        if (this._launch_timer != 0) {
+            GLib.source_remove(this._launch_timer);
+            this._launch_timer = 0;
+            this._waiting_for_windows = 0;
+        }
     }
 
     set_cwd(cwd) {
