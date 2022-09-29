@@ -1,12 +1,13 @@
 # History of versions #
 
-* noVersion 47
+* Version 47
   * Pass the primary monitor index through DBus (Sergio Costas)
   * Added keyboard navigation support (Sergio Costas)
   * Code cleanups (Sergio Costas)
   * Removed File-Roller dependency (Sergio Costas and Marco Trevisan)
   * Added an Ubuntu installer (Sergio Costas)
   * Fixed rubberband bug in the borders when there is a dock or bar (Sergio Costas and Sundeep Mediratta)
+  * Now doesn't fail the desktop detection when returning from lock screen (Sergio Costas)
 
 * Version 46
   * Fix the relaunching of the desktop process to avoid high CPU usage if it fails (Sergio Costas)
