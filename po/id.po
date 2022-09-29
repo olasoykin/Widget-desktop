@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 20:42+0200\n"
+"POT-Creation-Date: 2022-09-29 20:34+0200\n"
 "PO-Revision-Date: 2019-07-11 13:57+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -16,6 +16,137 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
+
+#: autoAr.js:87
+msgid "AutoAr is not installed"
+msgstr ""
+
+#: autoAr.js:88
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+
+#: autoAr.js:223
+#, fuzzy
+msgid "Extracting files"
+msgstr "Ekstrak Di Sini"
+
+#: autoAr.js:240
+msgid "Compressing files"
+msgstr ""
+
+#: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
+msgid "Cancel"
+msgstr "Batal"
+
+#: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
+msgid "OK"
+msgstr "OK"
+
+#: autoAr.js:315 autoAr.js:605
+msgid "Enter a password here"
+msgstr ""
+
+#: autoAr.js:355
+msgid "Removing partial file '${outputFile}'"
+msgstr ""
+
+#: autoAr.js:374
+msgid "Creating destination folder"
+msgstr ""
+
+#: autoAr.js:406
+msgid "Extracting files into '${outputPath}'"
+msgstr ""
+
+#: autoAr.js:436
+#, fuzzy
+msgid "Extraction completed"
+msgstr "Ekstrak Di Sini"
+
+#: autoAr.js:437
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr ""
+
+#: autoAr.js:443
+#, fuzzy
+msgid "Extraction cancelled"
+msgstr "Ekstrak Di Sini"
+
+#: autoAr.js:444
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr ""
+
+#: autoAr.js:454
+msgid "Passphrase required for ${filename}"
+msgstr ""
+
+#: autoAr.js:457
+msgid "Error during extraction"
+msgstr ""
+
+#: autoAr.js:485
+msgid "Compressing files into '${outputFile}'"
+msgstr ""
+
+#: autoAr.js:498
+msgid "Compression completed"
+msgstr ""
+
+#: autoAr.js:499
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr ""
+
+#: autoAr.js:503 autoAr.js:510
+msgid "Cancelled compression"
+msgstr ""
+
+#: autoAr.js:504
+msgid "The output file '${outputFile}' already exists."
+msgstr ""
+
+#: autoAr.js:511
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr ""
+
+#: autoAr.js:514
+msgid "Error during compression"
+msgstr ""
+
+#: autoAr.js:546
+#, fuzzy
+msgid "Create archive"
+msgstr "Buat"
+
+#: autoAr.js:571
+#, fuzzy
+msgid "Archive name"
+msgstr "Ganti Nama…"
+
+#: autoAr.js:602
+msgid "Password"
+msgstr ""
+
+#: autoAr.js:618
+msgid "Create"
+msgstr "Buat"
+
+#: autoAr.js:695
+msgid "Compatible with all operating systems."
+msgstr ""
+
+#: autoAr.js:701
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr ""
+
+#: autoAr.js:707
+msgid "Smaller archives but Linux and Mac only."
+msgstr ""
+
+#: autoAr.js:713
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr ""
 
 #: askRenamePopup.js:42
 #, fuzzy
@@ -26,10 +157,6 @@ msgstr "Nama folder baru"
 #, fuzzy
 msgid "File name"
 msgstr "Ganti Nama…"
-
-#: askRenamePopup.js:49 desktopManager.js:791
-msgid "OK"
-msgstr "OK"
 
 #: askRenamePopup.js:49
 #, fuzzy
@@ -50,131 +177,127 @@ msgstr ""
 msgid "Command not found"
 msgstr "Perintah tidak ditemukan"
 
-#: desktopManager.js:214
+#: desktopManager.js:229
 msgid "Nautilus File Manager not found"
 msgstr ""
 
-#: desktopManager.js:215
+#: desktopManager.js:230
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 
-#: desktopManager.js:754
+#: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:793 fileItemMenu.js:369
-msgid "Cancel"
-msgstr "Batal"
-
-#: desktopManager.js:795
+#: desktopManager.js:921
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:860 desktopManager.js:1483
+#: desktopManager.js:986 desktopManager.js:1669
 msgid "New Folder"
 msgstr "Folder Baru"
 
-#: desktopManager.js:864
+#: desktopManager.js:990
 msgid "New Document"
 msgstr "Dokumen Baru"
 
-#: desktopManager.js:869
+#: desktopManager.js:995
 msgid "Paste"
 msgstr "Tempel"
 
-#: desktopManager.js:873
+#: desktopManager.js:999
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: desktopManager.js:877
+#: desktopManager.js:1003
 msgid "Redo"
 msgstr "Jadi Lagi"
 
-#: desktopManager.js:883
+#: desktopManager.js:1009
 #, fuzzy
 msgid "Select All"
 msgstr "Pilih semua"
 
-#: desktopManager.js:891
+#: desktopManager.js:1017
 msgid "Show Desktop in Files"
 msgstr "Tampilkan Destop pada Berkas"
 
-#: desktopManager.js:895 fileItemMenu.js:287
+#: desktopManager.js:1021 fileItemMenu.js:323
 msgid "Open in Terminal"
 msgstr "Buka dalam Terminal"
 
-#: desktopManager.js:901
+#: desktopManager.js:1027
 msgid "Change Background…"
 msgstr "Ubah Latar Belakang…"
 
-#: desktopManager.js:912
+#: desktopManager.js:1038
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Pengaturan Tampilan"
 
-#: desktopManager.js:916
+#: desktopManager.js:1042
 msgid "Display Settings"
 msgstr "Pengaturan Tampilan"
 
-#: desktopManager.js:1541
+#: desktopManager.js:1727
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1545
+#: desktopManager.js:1731
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1554
+#: desktopManager.js:1740
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1558
+#: desktopManager.js:1744
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1563
+#: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1569
+#: desktopManager.js:1755
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1571
+#: desktopManager.js:1757
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1574
+#: desktopManager.js:1760
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1577
+#: desktopManager.js:1763
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1580
+#: desktopManager.js:1766
 msgid "Sort by Size"
 msgstr ""
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:156
+#: fileItem.js:171
 msgid "Home"
 msgstr "Rumah"
 
-#: fileItem.js:275
+#: fileItem.js:290
 msgid "Broken Link"
 msgstr ""
 
-#: fileItem.js:276
+#: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
 
-#: fileItem.js:326
+#: fileItem.js:346
 #, fuzzy
 msgid "Broken Desktop File"
 msgstr "Tampilkan Destop pada Berkas"
 
-#: fileItem.js:327
+#: fileItem.js:347
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -182,29 +305,29 @@ msgid ""
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
 
-#: fileItem.js:333
+#: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
 msgstr ""
 
-#: fileItem.js:334
+#: fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
 
-#: fileItem.js:336
+#: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
 
-#: fileItem.js:339
+#: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
 
-#: fileItem.js:347
+#: fileItem.js:367
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -212,143 +335,149 @@ msgid ""
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open All..."
 msgstr ""
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open"
 msgstr "Buka"
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Stack This Type"
 msgstr ""
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Unstack This Type"
 msgstr ""
 
-#: fileItemMenu.js:141
+#: fileItemMenu.js:155
 msgid "Scripts"
 msgstr ""
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 #, fuzzy
 msgid "Open All With Other Application..."
 msgstr "Buka Dengan Aplikasi Lain"
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 msgid "Open With Other Application"
 msgstr "Buka Dengan Aplikasi Lain"
 
-#: fileItemMenu.js:153
+#: fileItemMenu.js:167
 msgid "Launch using Dedicated Graphics Card"
 msgstr ""
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:177
 msgid "Run as a program"
 msgstr ""
 
-#: fileItemMenu.js:170
+#: fileItemMenu.js:185
 msgid "Cut"
 msgstr "Potong"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:190
 msgid "Copy"
 msgstr "Salin"
 
-#: fileItemMenu.js:181
+#: fileItemMenu.js:196
 msgid "Rename…"
 msgstr "Ganti Nama…"
 
-#: fileItemMenu.js:189
+#: fileItemMenu.js:204
 msgid "Move to Trash"
 msgstr "Pindahkan ke Tong Sampah"
 
-#: fileItemMenu.js:195
+#: fileItemMenu.js:210
 msgid "Delete permanently"
 msgstr "Hapus permanen"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 #, fuzzy
 msgid "Don't Allow Launching"
 msgstr "Jangan Izinkan Peluncuran"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 msgid "Allow Launching"
 msgstr "Izinkan Peluncuran"
 
-#: fileItemMenu.js:214
+#: fileItemMenu.js:229
 msgid "Empty Trash"
 msgstr "Kosongkan Tong Sampah"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:240
 msgid "Eject"
 msgstr "Keluarkan Media"
 
-#: fileItemMenu.js:231
+#: fileItemMenu.js:246
 msgid "Unmount"
 msgstr "Lepas Kaitan"
 
-#: fileItemMenu.js:241
+#: fileItemMenu.js:258 fileItemMenu.js:265
 msgid "Extract Here"
 msgstr "Ekstrak Di Sini"
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:270
 msgid "Extract To..."
 msgstr "Ekstrak ke…"
 
-#: fileItemMenu.js:252
+#: fileItemMenu.js:277
 msgid "Send to..."
 msgstr "Kirim ke…"
 
-#: fileItemMenu.js:258
+#: fileItemMenu.js:285
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: fileItemMenu.js:292
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileItemMenu.js:264
+#: fileItemMenu.js:300
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 #, fuzzy
 msgid "Common Properties"
 msgstr "Properti"
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 msgid "Properties"
 msgstr "Properti"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 #, fuzzy
 msgid "Show All in Files"
 msgstr "Tampilkan pada Berkas"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 msgid "Show in Files"
 msgstr "Tampilkan pada Berkas"
 
-#: fileItemMenu.js:365
+#: fileItemMenu.js:405
 msgid "Select Extract Destination"
 msgstr ""
 
-#: fileItemMenu.js:370
+#: fileItemMenu.js:410
 msgid "Select"
 msgstr "Pilih"
 
-#: fileItemMenu.js:396
+#: fileItemMenu.js:449
 msgid "Can not email a Directory"
 msgstr ""
 
-#: fileItemMenu.js:397
+#: fileItemMenu.js:450
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 
-#: preferences.js:67
+#: preferences.js:74
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -649,9 +778,6 @@ msgstr ""
 
 #~ msgid "Enter file name…"
 #~ msgstr "Masukkan nama berkas…"
-
-#~ msgid "Create"
-#~ msgstr "Buat"
 
 #~ msgid "Folder names cannot contain “/”."
 #~ msgstr "Nama folder tak boleh memuat \"/\"."

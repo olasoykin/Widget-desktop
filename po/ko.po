@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 20:42+0200\n"
+"POT-Creation-Date: 2022-09-29 20:34+0200\n"
 "PO-Revision-Date: 2022-04-23 10:08+0900\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <jingimem@gmail.com>\n"
@@ -19,6 +19,137 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.0.1\n"
 
+#: autoAr.js:87
+msgid "AutoAr is not installed"
+msgstr ""
+
+#: autoAr.js:88
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+
+#: autoAr.js:223
+#, fuzzy
+msgid "Extracting files"
+msgstr "여기 풀기"
+
+#: autoAr.js:240
+#, fuzzy
+msgid "Compressing files"
+msgstr "{0}개 파일 압축하기"
+
+#: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
+msgid "Cancel"
+msgstr "취소"
+
+#: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
+msgid "OK"
+msgstr "확인"
+
+#: autoAr.js:315 autoAr.js:605
+msgid "Enter a password here"
+msgstr ""
+
+#: autoAr.js:355
+msgid "Removing partial file '${outputFile}'"
+msgstr ""
+
+#: autoAr.js:374
+msgid "Creating destination folder"
+msgstr ""
+
+#: autoAr.js:406
+msgid "Extracting files into '${outputPath}'"
+msgstr ""
+
+#: autoAr.js:436
+#, fuzzy
+msgid "Extraction completed"
+msgstr "여기 풀기"
+
+#: autoAr.js:437
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr ""
+
+#: autoAr.js:443
+#, fuzzy
+msgid "Extraction cancelled"
+msgstr "여기 풀기"
+
+#: autoAr.js:444
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr ""
+
+#: autoAr.js:454
+msgid "Passphrase required for ${filename}"
+msgstr ""
+
+#: autoAr.js:457
+msgid "Error during extraction"
+msgstr ""
+
+#: autoAr.js:485
+msgid "Compressing files into '${outputFile}'"
+msgstr ""
+
+#: autoAr.js:498
+msgid "Compression completed"
+msgstr ""
+
+#: autoAr.js:499
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr ""
+
+#: autoAr.js:503 autoAr.js:510
+msgid "Cancelled compression"
+msgstr ""
+
+#: autoAr.js:504
+msgid "The output file '${outputFile}' already exists."
+msgstr ""
+
+#: autoAr.js:511
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr ""
+
+#: autoAr.js:514
+msgid "Error during compression"
+msgstr ""
+
+#: autoAr.js:546
+msgid "Create archive"
+msgstr ""
+
+#: autoAr.js:571
+#, fuzzy
+msgid "Archive name"
+msgstr "파일 이름"
+
+#: autoAr.js:602
+msgid "Password"
+msgstr ""
+
+#: autoAr.js:618
+msgid "Create"
+msgstr ""
+
+#: autoAr.js:695
+msgid "Compatible with all operating systems."
+msgstr ""
+
+#: autoAr.js:701
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr ""
+
+#: autoAr.js:707
+msgid "Smaller archives but Linux and Mac only."
+msgstr ""
+
+#: autoAr.js:713
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr ""
+
 #: askRenamePopup.js:42
 msgid "Folder name"
 msgstr "폴더 이름"
@@ -26,10 +157,6 @@ msgstr "폴더 이름"
 #: askRenamePopup.js:42
 msgid "File name"
 msgstr "파일 이름"
-
-#: askRenamePopup.js:49 desktopManager.js:791
-msgid "OK"
-msgstr "확인"
 
 #: askRenamePopup.js:49
 msgid "Rename"
@@ -51,128 +178,124 @@ msgstr ""
 msgid "Command not found"
 msgstr "명령을 찾을 수 없습니다"
 
-#: desktopManager.js:214
+#: desktopManager.js:229
 msgid "Nautilus File Manager not found"
 msgstr "노틸러스 파일 관리자를 찾을 수 없습니다"
 
-#: desktopManager.js:215
+#: desktopManager.js:230
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "노틸러스 파일 관리자는 Desktop Icons NG로 작업하는 데 필수입니다."
 
-#: desktopManager.js:754
+#: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
 msgstr "새 검색 전에 현재 선택 지우기"
 
-#: desktopManager.js:793 fileItemMenu.js:369
-msgid "Cancel"
-msgstr "취소"
-
-#: desktopManager.js:795
+#: desktopManager.js:921
 msgid "Find Files on Desktop"
 msgstr "데스크탑에서 파일 찾기"
 
-#: desktopManager.js:860 desktopManager.js:1483
+#: desktopManager.js:986 desktopManager.js:1669
 msgid "New Folder"
 msgstr "새 폴더"
 
-#: desktopManager.js:864
+#: desktopManager.js:990
 msgid "New Document"
 msgstr "새 문서"
 
-#: desktopManager.js:869
+#: desktopManager.js:995
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: desktopManager.js:873
+#: desktopManager.js:999
 msgid "Undo"
 msgstr "실행 취소"
 
-#: desktopManager.js:877
+#: desktopManager.js:1003
 msgid "Redo"
 msgstr "다시 실행"
 
-#: desktopManager.js:883
+#: desktopManager.js:1009
 msgid "Select All"
 msgstr "모두 선택"
 
-#: desktopManager.js:891
+#: desktopManager.js:1017
 msgid "Show Desktop in Files"
 msgstr "파일에 바탕화면 표시"
 
-#: desktopManager.js:895 fileItemMenu.js:287
+#: desktopManager.js:1021 fileItemMenu.js:323
 msgid "Open in Terminal"
 msgstr "터미널로 열기"
 
-#: desktopManager.js:901
+#: desktopManager.js:1027
 msgid "Change Background…"
 msgstr "배경화면 변경…"
 
-#: desktopManager.js:912
+#: desktopManager.js:1038
 msgid "Desktop Icons Settings"
 msgstr "바탕화면 아이콘 설정"
 
-#: desktopManager.js:916
+#: desktopManager.js:1042
 msgid "Display Settings"
 msgstr "화면 설정"
 
-#: desktopManager.js:1541
+#: desktopManager.js:1727
 msgid "Arrange Icons"
 msgstr "아이콘 정렬"
 
-#: desktopManager.js:1545
+#: desktopManager.js:1731
 msgid "Arrange By..."
 msgstr "정렬 기준..."
 
-#: desktopManager.js:1554
+#: desktopManager.js:1740
 msgid "Keep Arranged..."
 msgstr "정렬 유지..."
 
-#: desktopManager.js:1558
+#: desktopManager.js:1744
 msgid "Keep Stacked by type..."
 msgstr "유형별로 스택됨 유지..."
 
-#: desktopManager.js:1563
+#: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
 msgstr "집/드라이브/휴지통 정렬..."
 
-#: desktopManager.js:1569
+#: desktopManager.js:1755
 msgid "Sort by Name"
 msgstr "이름순으로 정렬"
 
-#: desktopManager.js:1571
+#: desktopManager.js:1757
 msgid "Sort by Name Descending"
 msgstr "이름 내림차순으로 정렬"
 
-#: desktopManager.js:1574
+#: desktopManager.js:1760
 msgid "Sort by Modified Time"
 msgstr "수정된 시간순으로 정렬"
 
-#: desktopManager.js:1577
+#: desktopManager.js:1763
 msgid "Sort by Type"
 msgstr "유형순으로 정렬"
 
-#: desktopManager.js:1580
+#: desktopManager.js:1766
 msgid "Sort by Size"
 msgstr "크기순으로 정렬"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:156
+#: fileItem.js:171
 msgid "Home"
 msgstr "홈"
 
-#: fileItem.js:275
+#: fileItem.js:290
 msgid "Broken Link"
 msgstr "깨진 링크"
 
-#: fileItem.js:276
+#: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr "이 파일은 손상된 심볼릭링크이므로 열 수 없습니다"
 
-#: fileItem.js:326
+#: fileItem.js:346
 msgid "Broken Desktop File"
 msgstr "깨진 바탕화면 파일"
 
-#: fileItem.js:327
+#: fileItem.js:347
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -184,11 +307,11 @@ msgstr ""
 "\n"
 "<b>파일을 편집하여 올바른 실행 프로그램을 설정합니다.</b>"
 
-#: fileItem.js:333
+#: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
 msgstr "바탕화면 파일에 대한 잘못된 권한"
 
-#: fileItem.js:334
+#: fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -196,7 +319,7 @@ msgstr ""
 "이 .desktop 파일에 잘못된 권한이 있습니다. 마우스 오른쪽 버튼을 클릭하여 속성"
 "을 편집 한 다음:\n"
 
-#: fileItem.js:336
+#: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -204,7 +327,7 @@ msgstr ""
 "\n"
 "<b>\"다른 접근\", \"읽기 전용\" 또는 \"없음\"에서 권한 설정</b>"
 
-#: fileItem.js:339
+#: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -212,7 +335,7 @@ msgstr ""
 "\n"
 "<b>활성화 옵션, \"파일을 프로그램으로 실행하기 허용\"</b>"
 
-#: fileItem.js:347
+#: fileItem.js:367
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -224,137 +347,143 @@ msgstr ""
 "\n"
 "<b>\"시작하기 허용\" 활성화</b>"
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open All..."
 msgstr "모두 열기…"
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open"
 msgstr "열기"
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Stack This Type"
 msgstr "이 유형 스택"
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Unstack This Type"
 msgstr "이 유형 스택 해제"
 
-#: fileItemMenu.js:141
+#: fileItemMenu.js:155
 msgid "Scripts"
 msgstr "스크립트"
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 msgid "Open All With Other Application..."
 msgstr "다른 프로그램으로 모두 열기…"
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 msgid "Open With Other Application"
 msgstr "다른 프로그램으로 열기"
 
-#: fileItemMenu.js:153
+#: fileItemMenu.js:167
 msgid "Launch using Dedicated Graphics Card"
 msgstr "전용 그래픽 카드를 사용하여 실행"
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:177
 msgid "Run as a program"
 msgstr "프로그램으로 실행"
 
-#: fileItemMenu.js:170
+#: fileItemMenu.js:185
 msgid "Cut"
 msgstr "잘라내기"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:190
 msgid "Copy"
 msgstr "복사하기"
 
-#: fileItemMenu.js:181
+#: fileItemMenu.js:196
 msgid "Rename…"
 msgstr "이름 바꾸기…"
 
-#: fileItemMenu.js:189
+#: fileItemMenu.js:204
 msgid "Move to Trash"
 msgstr "휴지통으로 옮기기"
 
-#: fileItemMenu.js:195
+#: fileItemMenu.js:210
 msgid "Delete permanently"
 msgstr "영구 삭제"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 msgid "Don't Allow Launching"
 msgstr "실행을 허용하지 않음"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 msgid "Allow Launching"
 msgstr "실행 허용"
 
-#: fileItemMenu.js:214
+#: fileItemMenu.js:229
 msgid "Empty Trash"
 msgstr "휴지통 비우기"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:240
 msgid "Eject"
 msgstr "꺼내기"
 
-#: fileItemMenu.js:231
+#: fileItemMenu.js:246
 msgid "Unmount"
 msgstr "마운트 해제"
 
-#: fileItemMenu.js:241
+#: fileItemMenu.js:258 fileItemMenu.js:265
 msgid "Extract Here"
 msgstr "여기 풀기"
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:270
 msgid "Extract To..."
 msgstr "다른 위치에 풀기…"
 
-#: fileItemMenu.js:252
+#: fileItemMenu.js:277
 msgid "Send to..."
 msgstr "다음으로 보내기…"
 
-#: fileItemMenu.js:258
+#: fileItemMenu.js:285
+#, fuzzy
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "{0}개 파일 압축하기"
+
+#: fileItemMenu.js:292
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "{0}개 파일 압축하기"
 
-#: fileItemMenu.js:264
+#: fileItemMenu.js:300
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "{0}개 파일 새 폴더로 이동"
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 msgid "Common Properties"
 msgstr "공통 속성"
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 msgid "Properties"
 msgstr "속성"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 msgid "Show All in Files"
 msgstr "파일에 모두 표시"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 msgid "Show in Files"
 msgstr "파일로 표시"
 
-#: fileItemMenu.js:365
+#: fileItemMenu.js:405
 msgid "Select Extract Destination"
 msgstr "대상 압축풀기 선택"
 
-#: fileItemMenu.js:370
+#: fileItemMenu.js:410
 msgid "Select"
 msgstr "선택"
 
-#: fileItemMenu.js:396
+#: fileItemMenu.js:449
 msgid "Can not email a Directory"
 msgstr "디렉터리는 이메일로 보낼 수 없습니다"
 
-#: fileItemMenu.js:397
+#: fileItemMenu.js:450
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "선택 파일 중 디렉터리가 포함되어 있어, 먼저 파일로 압축이 필요합니다."
 
-#: preferences.js:67
+#: preferences.js:74
 msgid "Settings"
 msgstr "설정"
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 20:42+0200\n"
-"PO-Revision-Date: 2022-03-17 16:16+0100\n"
+"POT-Creation-Date: 2022-09-29 20:34+0200\n"
+"PO-Revision-Date: 2022-09-29 20:56+0200\n"
 "Last-Translator: Sergio Costas <rastersoft@gmail.com>\n"
 "Language-Team: Español; Castellano <rastersoft@gmail.com>\n"
 "Language: es\n"
@@ -18,7 +18,136 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 41.0\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#: autoAr.js:87
+msgid "AutoAr is not installed"
+msgstr "AutoAr no está instalado"
+
+#: autoAr.js:88
+msgid ""
+"To be able to work with compressed files, install file-roller and/or gir-1.2-"
+"gnomeAutoAr"
+msgstr ""
+"Para poder trabajar con ficheros comprimidos, instale file-roller y/o "
+"gir-1.2-gnomeAutoAr"
+
+#: autoAr.js:223
+msgid "Extracting files"
+msgstr "Extrayendo ficheros"
+
+#: autoAr.js:240
+msgid "Compressing files"
+msgstr "Comprimiendo ficheros"
+
+#: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
+msgid "OK"
+msgstr "Aceptar"
+
+#: autoAr.js:315 autoAr.js:605
+msgid "Enter a password here"
+msgstr "Escriba una clave aquí"
+
+#: autoAr.js:355
+msgid "Removing partial file '${outputFile}'"
+msgstr "Borrando fichero parcial '${outputFile}'"
+
+#: autoAr.js:374
+msgid "Creating destination folder"
+msgstr "Creando carpeta de destino"
+
+#: autoAr.js:406
+msgid "Extracting files into '${outputPath}'"
+msgstr "Extrayendo ficheros en '${outputPath}'"
+
+#: autoAr.js:436
+msgid "Extraction completed"
+msgstr "Extracción completada"
+
+#: autoAr.js:437
+msgid "Extracting '${fullPathFile}' has been completed."
+msgstr "Terminada la extracción de '${fullPathFile}'."
+
+#: autoAr.js:443
+msgid "Extraction cancelled"
+msgstr "Extracción cancelada"
+
+#: autoAr.js:444
+msgid "Extracting '${fullPathFile}' has been cancelled by the user."
+msgstr "La extracción de '${fullPathFile}' ha sido cancelada por el usuario."
+
+#: autoAr.js:454
+msgid "Passphrase required for ${filename}"
+msgstr "Se necesita una clave para ${filename}"
+
+#: autoAr.js:457
+msgid "Error during extraction"
+msgstr "Se ha producido un error durante la extracción"
+
+#: autoAr.js:485
+msgid "Compressing files into '${outputFile}'"
+msgstr "Comprimiendo ficheros en '${outputFile}'"
+
+#: autoAr.js:498
+msgid "Compression completed"
+msgstr "Compresión completada"
+
+#: autoAr.js:499
+msgid "Compressing files into '${outputFile}' has been completed."
+msgstr "La compresión en '${outputFile}' se ha completado."
+
+#: autoAr.js:503 autoAr.js:510
+msgid "Cancelled compression"
+msgstr "Compresión cancelada"
+
+#: autoAr.js:504
+msgid "The output file '${outputFile}' already exists."
+msgstr "El fichero '${outputFile}' ya existe."
+
+#: autoAr.js:511
+msgid "Compressing files into '${outputFile}' has been cancelled by the user."
+msgstr ""
+"La compresión de ficheros en'${outputFile}' ha sido cancelada por el usuario."
+
+#: autoAr.js:514
+msgid "Error during compression"
+msgstr "Error durante la compresión"
+
+#: autoAr.js:546
+msgid "Create archive"
+msgstr "Crear archivo"
+
+#: autoAr.js:571
+msgid "Archive name"
+msgstr "Nombre de archivo"
+
+#: autoAr.js:602
+msgid "Password"
+msgstr "Clave"
+
+#: autoAr.js:618
+msgid "Create"
+msgstr "Crear"
+
+#: autoAr.js:695
+msgid "Compatible with all operating systems."
+msgstr "Compatible con todos los sistemas operativos."
+
+#: autoAr.js:701
+msgid "Password protected .zip, must be installed on Windows and Mac."
+msgstr "Zip protegido con clave, compatible con Windows y Mac."
+
+#: autoAr.js:707
+msgid "Smaller archives but Linux and Mac only."
+msgstr "Archivos más pequeños, pero válidos sólo para Linux y Mac."
+
+#: autoAr.js:713
+msgid "Smaller archives but must be installed on Windows and Mac."
+msgstr "Ficheros más pequeños, pero sólo se pueden instalar en Windows y Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -27,10 +156,6 @@ msgstr "Nombre de la carpeta"
 #: askRenamePopup.js:42
 msgid "File name"
 msgstr "Nombre de archivo"
-
-#: askRenamePopup.js:49 desktopManager.js:791
-msgid "OK"
-msgstr "Aceptar"
 
 #: askRenamePopup.js:49
 msgid "Rename"
@@ -52,130 +177,126 @@ msgstr ""
 msgid "Command not found"
 msgstr "Comando no encontrado"
 
-#: desktopManager.js:214
+#: desktopManager.js:229
 msgid "Nautilus File Manager not found"
 msgstr "No se encontró el Gestor de ficheros Nautilus"
 
-#: desktopManager.js:215
+#: desktopManager.js:230
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "El gestor de ficheros Nautilus es necesario para que Desktop Icons NG "
 "funcione."
 
-#: desktopManager.js:754
+#: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
 msgstr "Limpiar la selección actual para nueva búsqueda"
 
-#: desktopManager.js:793 fileItemMenu.js:369
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: desktopManager.js:795
+#: desktopManager.js:921
 msgid "Find Files on Desktop"
 msgstr "Buscar ficheros en el Escritorio"
 
-#: desktopManager.js:860 desktopManager.js:1483
+#: desktopManager.js:986 desktopManager.js:1669
 msgid "New Folder"
 msgstr "Nueva carpeta"
 
-#: desktopManager.js:864
+#: desktopManager.js:990
 msgid "New Document"
 msgstr "Documento nuevo"
 
-#: desktopManager.js:869
+#: desktopManager.js:995
 msgid "Paste"
 msgstr "Pegar"
 
-#: desktopManager.js:873
+#: desktopManager.js:999
 msgid "Undo"
 msgstr "Deshacer"
 
-#: desktopManager.js:877
+#: desktopManager.js:1003
 msgid "Redo"
 msgstr "Rehacer"
 
-#: desktopManager.js:883
+#: desktopManager.js:1009
 msgid "Select All"
 msgstr "Seleccionar Todo"
 
-#: desktopManager.js:891
+#: desktopManager.js:1017
 msgid "Show Desktop in Files"
 msgstr "Mostrar el escritorio en Archivos"
 
-#: desktopManager.js:895 fileItemMenu.js:287
+#: desktopManager.js:1021 fileItemMenu.js:323
 msgid "Open in Terminal"
 msgstr "Abrir en una terminal"
 
-#: desktopManager.js:901
+#: desktopManager.js:1027
 msgid "Change Background…"
 msgstr "Cambiar el fondo..."
 
-#: desktopManager.js:912
+#: desktopManager.js:1038
 msgid "Desktop Icons Settings"
 msgstr "Preferencias de Iconos en el Escritorio"
 
-#: desktopManager.js:916
+#: desktopManager.js:1042
 msgid "Display Settings"
 msgstr "Preferencias de pantalla"
 
-#: desktopManager.js:1541
+#: desktopManager.js:1727
 msgid "Arrange Icons"
 msgstr "Ordenar Iconos"
 
-#: desktopManager.js:1545
+#: desktopManager.js:1731
 msgid "Arrange By..."
 msgstr "Ordenar por..."
 
-#: desktopManager.js:1554
+#: desktopManager.js:1740
 msgid "Keep Arranged..."
 msgstr "Mantener ordenados"
 
-#: desktopManager.js:1558
+#: desktopManager.js:1744
 msgid "Keep Stacked by type..."
 msgstr "Mantener agrupados por tipo..."
 
-#: desktopManager.js:1563
+#: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
 msgstr "Ordenar Home/Unidades/Papelera..."
 
-#: desktopManager.js:1569
+#: desktopManager.js:1755
 msgid "Sort by Name"
 msgstr "Ordenar por nombre"
 
-#: desktopManager.js:1571
+#: desktopManager.js:1757
 msgid "Sort by Name Descending"
 msgstr "Ordenar por nombre inverso"
 
-#: desktopManager.js:1574
+#: desktopManager.js:1760
 msgid "Sort by Modified Time"
 msgstr "Ordenar por fecha de modificación"
 
-#: desktopManager.js:1577
+#: desktopManager.js:1763
 msgid "Sort by Type"
 msgstr "Ordenar por tipo"
 
-#: desktopManager.js:1580
+#: desktopManager.js:1766
 msgid "Sort by Size"
 msgstr "Ordenar por tamaño"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:156
+#: fileItem.js:171
 msgid "Home"
 msgstr "Carpeta personal"
 
-#: fileItem.js:275
+#: fileItem.js:290
 msgid "Broken Link"
 msgstr "Enlace roto"
 
-#: fileItem.js:276
+#: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr "No se puede abrir este fichero porque es un enlace roto"
 
-#: fileItem.js:326
+#: fileItem.js:346
 msgid "Broken Desktop File"
 msgstr "Fichero .desktop dañado"
 
-#: fileItem.js:327
+#: fileItem.js:347
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -187,11 +308,11 @@ msgstr ""
 "\n"
 "\t<b>Edita el fichero para que apunte al ejecutable correcto.</b>"
 
-#: fileItem.js:333
+#: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
 msgstr "Permisos no válidos en el fichero .desktop"
 
-#: fileItem.js:334
+#: fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -199,7 +320,7 @@ msgstr ""
 "Este fichero .desktop tiene permisos incorrectos. Haz click con el botón "
 "derecho para editar la Propiedades, y luego:\n"
 
-#: fileItem.js:336
+#: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -208,7 +329,7 @@ msgstr ""
 "<b>Cambiar los permisos, en \"Otros accesos\", a \"Sólo lectura\" o "
 "\"Ninguno\"</b>"
 
-#: fileItem.js:339
+#: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -216,7 +337,7 @@ msgstr ""
 "\n"
 "<b>Activa la opción \"Permitir ejecutar el archivo como un programa\"</b>"
 
-#: fileItem.js:347
+#: fileItem.js:367
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -228,140 +349,146 @@ msgstr ""
 "\n"
 "<b>Escoge \"Permitir lanzar\"</b>"
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open All..."
 msgstr "Abrir todo..."
 
-#: fileItemMenu.js:118
+#: fileItemMenu.js:132
 msgid "Open"
 msgstr "Abrir"
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Stack This Type"
 msgstr "Agrupar este tipo"
 
-#: fileItemMenu.js:129
+#: fileItemMenu.js:143
 msgid "Unstack This Type"
 msgstr "Desagrupar este tipo"
 
-#: fileItemMenu.js:141
+#: fileItemMenu.js:155
 msgid "Scripts"
 msgstr "Scripts"
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 msgid "Open All With Other Application..."
 msgstr "Abrir todo con otra aplicación"
 
-#: fileItemMenu.js:147
+#: fileItemMenu.js:161
 msgid "Open With Other Application"
 msgstr "Abrir con otra aplicación"
 
-#: fileItemMenu.js:153
+#: fileItemMenu.js:167
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Lanzar con la Tarjeta Gráfica Dedicada"
 
-#: fileItemMenu.js:162
+#: fileItemMenu.js:177
 msgid "Run as a program"
 msgstr "Ejecutar como un programa"
 
-#: fileItemMenu.js:170
+#: fileItemMenu.js:185
 msgid "Cut"
 msgstr "Cortar"
 
-#: fileItemMenu.js:175
+#: fileItemMenu.js:190
 msgid "Copy"
 msgstr "Copiar"
 
-#: fileItemMenu.js:181
+#: fileItemMenu.js:196
 msgid "Rename…"
 msgstr "Renombrar…"
 
-#: fileItemMenu.js:189
+#: fileItemMenu.js:204
 msgid "Move to Trash"
 msgstr "Mover a la papelera"
 
-#: fileItemMenu.js:195
+#: fileItemMenu.js:210
 msgid "Delete permanently"
 msgstr "Borrar permanentemente"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 msgid "Don't Allow Launching"
 msgstr "No permitir lanzar"
 
-#: fileItemMenu.js:203
+#: fileItemMenu.js:218
 msgid "Allow Launching"
 msgstr "Permitir lanzar"
 
-#: fileItemMenu.js:214
+#: fileItemMenu.js:229
 msgid "Empty Trash"
 msgstr "Vaciar la papelera"
 
-#: fileItemMenu.js:225
+#: fileItemMenu.js:240
 msgid "Eject"
 msgstr "Expulsar"
 
-#: fileItemMenu.js:231
+#: fileItemMenu.js:246
 msgid "Unmount"
 msgstr "Desmontar"
 
-#: fileItemMenu.js:241
+#: fileItemMenu.js:258 fileItemMenu.js:265
 msgid "Extract Here"
 msgstr "Extraer aquí"
 
-#: fileItemMenu.js:245
+#: fileItemMenu.js:270
 msgid "Extract To..."
 msgstr "Extraer a..."
 
-#: fileItemMenu.js:252
+#: fileItemMenu.js:277
 msgid "Send to..."
 msgstr "Enviar a..."
 
-#: fileItemMenu.js:258
+#: fileItemMenu.js:285
+msgid "Compress {0} folder"
+msgid_plural "Compress {0} folders"
+msgstr[0] "Comprimir {0} carpetas"
+msgstr[1] "Comprimir {0} archivos"
+
+#: fileItemMenu.js:292
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Comprimir {0} archivo"
 msgstr[1] "Comprimir {0} archivos"
 
-#: fileItemMenu.js:264
+#: fileItemMenu.js:300
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Nueva carpeta con {0} elemento"
 msgstr[1] "Nueva carpeta con {0} elementos"
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 msgid "Common Properties"
 msgstr "Propiedades Comunes"
 
-#: fileItemMenu.js:273
+#: fileItemMenu.js:309
 msgid "Properties"
 msgstr "Propiedades"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 msgid "Show All in Files"
 msgstr "Mostrar todo en Files"
 
-#: fileItemMenu.js:280
+#: fileItemMenu.js:316
 msgid "Show in Files"
 msgstr "Mostrar en Files"
 
-#: fileItemMenu.js:365
+#: fileItemMenu.js:405
 msgid "Select Extract Destination"
 msgstr "Seleccionar el destino para extraer"
 
-#: fileItemMenu.js:370
+#: fileItemMenu.js:410
 msgid "Select"
 msgstr "Seleccionar"
 
-#: fileItemMenu.js:396
+#: fileItemMenu.js:449
 msgid "Can not email a Directory"
 msgstr "No se puede enviar un directorio"
 
-#: fileItemMenu.js:397
+#: fileItemMenu.js:450
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La selección incluye un directorio. Debe comprimirse a un fichero primero."
 
-#: preferences.js:67
+#: preferences.js:74
 msgid "Settings"
 msgstr "Preferencias"
 
@@ -708,9 +835,6 @@ msgstr ""
 
 #~ msgid "New folder name"
 #~ msgstr "Nombre de la nueva carpeta"
-
-#~ msgid "Create"
-#~ msgstr "Crear"
 
 #~ msgid "Folder names cannot contain “/”."
 #~ msgstr "Los nombres de carpetas no pueden contener «/»."
