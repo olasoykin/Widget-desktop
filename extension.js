@@ -564,6 +564,7 @@ var LaunchSubprocess = class {
             }
             return owns_window;
         } catch(e) {
+            global.log(`Exception error: ${error.message}\n${error.stack}`);
             return false;
         }
     }
