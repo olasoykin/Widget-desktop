@@ -29,6 +29,7 @@ const DesktopGrid = imports.desktopGrid;
 const DesktopIconsUtil = imports.desktopIconsUtil;
 const Prefs = imports.preferences;
 const Enums = imports.enums;
+const NotifyX11UnderWayland = imports.notifyX11UnderWayland;
 const DBusUtils = imports.dbusUtils;
 const AskRenamePopup = imports.askRenamePopup;
 const ShowErrorPopup = imports.showErrorPopup;
@@ -45,9 +46,28 @@ var DesktopManager = class {
     constructor(mainApp, dbusManager, desktopList, codePath, asDesktop, primaryIndex) {
 
         this.mainApp = mainApp;
+        this.using_X11 = Gdk.Display.get_default().constructor.$gtype.name === 'GdkX11Display';
         if (asDesktop) {
             this.mainApp.hold(); // Don't close the application if there are no desktops
             this._hold_active = true;
+            if (this.using_X11) {
+                let using_wayland = GLib.getenv("XDG_SESSION_TYPE") == "wayland";
+                if (using_wayland) {
+                    // the system is using Wayland, but GTK is using X11!!!!!!
+                    DBusUtils.extensionControl.activate_action('disableTimer', null);
+                    if (Prefs.desktopSettings.get_boolean('check-x11wayland')) {
+                        this._notifyX11UnderWayland = new NotifyX11UnderWayland.NotifyX11UnderWayland((doNotShowAnymore) => {
+                            this._notifyX11UnderWayland = null;
+                            if (doNotShowAnymore) {
+                                Prefs.desktopSettings.set_boolean('check-x11wayland', false);
+                            }
+                        });
+                    }
+                }
+            } else {
+                // if the problem is fixed and appears again, DING should show the message
+                Prefs.desktopSettings.set_boolean('check-x11wayland', true);
+            }
         }
         this._selectedFiles = null;
 

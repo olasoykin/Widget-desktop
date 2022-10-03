@@ -31,6 +31,7 @@ install_data([
     'fileUtils.js',
     'gnomeShellOverride.js',
     'metadata.json',
+    'notifyX11UnderWayland.js',
     'prefs.js',
     'preferences.js',
     'prefswindow.js',
