@@ -160,13 +160,22 @@ function innerEnable(removeId) {
             name: 'doCut',
             parameter_type: new GLib.VariantType('as')
         });
+        let disableTimer = new Gio.SimpleAction({
+            name: 'disableTimer'
+        })
         let desktopGeometry = Gio.SimpleAction.new_stateful('desktopGeometry', new GLib.VariantType('av'), getDesktopGeometry());
         desktopGeometry.set_enabled(true);
         doCopy.connect('activate', manageCutCopy);
         doCut.connect('activate', manageCutCopy);
+        disableTimer.connect('activate', () => {
+            if (data.currentProcess && data.currentProcess.subprocess) {
+                data.currentProcess.cancel_timer();
+            }
+        });
         data.actionGroup = new Gio.SimpleActionGroup();
         data.actionGroup.add_action(doCopy);
         data.actionGroup.add_action(doCut);
+        data.actionGroup.add_action(disableTimer);
         data.actionGroup.add_action(desktopGeometry);
 
         this._dbusConnectionGroupId = data.dbusConnection.export_action_group(

@@ -43,7 +43,6 @@ var DesktopGrid = class {
         this._premultiplied = premultiplied;
         this._asDesktop = asDesktop;
         this._desktopDescription = desktopDescription;
-        this._using_X11 = Gdk.Display.get_default().constructor.$gtype.name === 'GdkX11Display';
         this.updateWindowGeometry();
         this.updateUnscaledHeightWidthMargins();
         this.createGrids();
@@ -56,13 +55,13 @@ var DesktopGrid = class {
             // For Wayland Transparent background, but only if this instance is working as desktop
             this._windowContext.add_class("desktopwindow");
             // If we are under X11, Transparent background and everything else from here as well
-            if (this._using_X11) {
+            if (this._desktopManager.using_X11) {
                 let screen = this._window.get_screen();
                 let visual = screen.get_rgba_visual();
                 if (visual && screen.is_composited()) {
                     this._window.set_visual(visual);
                 } else {
-                    print('Unable to set Transperancy under X11!');
+                    print('Unable to set Transparency under X11!');
                 }
                 this._window.set_type_hint(Gdk.WindowTypeHint.DESKTOP);
                 this._window.stick();
@@ -152,7 +151,7 @@ var DesktopGrid = class {
         this._monitor = this._desktopDescription.monitorIndex;
         this._size_divisor = this._zoom;
         if (this._asDesktop) {
-            if (this._using_X11) {
+            if (this._desktopManager.using_X11) {
                 this._size_divisor = Math.ceil(this._zoom);
             } else {
                 if (this._premultiplied) {
@@ -167,7 +166,7 @@ var DesktopGrid = class {
     resizeWindow() {
         this.updateWindowGeometry();
         this._desktopName = `@!${this._x},${this._y};BDHF`;
-        if (this._using_X11){
+        if (this._desktopManager.using_X11){
             this._window.move(this._x / this._size_divisor, this._y / this._size_divisor);
         }
         this._window.set_title(this._desktopName);
