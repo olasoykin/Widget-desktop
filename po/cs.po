@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2021-09-24 12:49+0200\n"
+"PO-Revision-Date: 2022-10-27 12:53+0200\n"
 "Last-Translator: panmourovaty <dominikhejl@yahoo.com>\n"
 "Language-Team: Czech <zeten30@gmail.com>\n"
 "Language: cs\n"
@@ -18,27 +18,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr není nainstalováno"
 
 #: autoAr.js:88
-msgid ""
-"To be able to work with compressed files, install file-roller and/or gir-1.2-"
-"gnomeAutoAr"
-msgstr ""
+msgid "To be able to work with compressed files, install file-roller and/or gir-1.2-gnomeAutoAr"
+msgstr "Aby jste mohli pracovat s archivy, nainstalujte file-roller a/nebo gir-1.2-gnomeAutoAr"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Rozbalit sem"
+msgstr "Rozbaluji soubory"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "Zkomprimovat {0} soubor"
+msgstr "Zabaluji soubory"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -50,87 +46,83 @@ msgstr "Budiž"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Sem vložte heslo"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "Odstraňuji dílčí soubor '${outputFile}'"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "Vytvářím cílovou složku"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "Rozbaluji soubory do '${outputPath}'"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Rozbalit sem"
+msgstr "Rozbalování bylo dokončeno"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "Rozbalování '${fullPathFile}' bylo dokončeno."
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "Rozbalit sem"
+msgstr "Rozbalování zrušeno"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Rozbalování '${fullPathFile}' bylo zrušeno uživatelem."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "Heslo je vyžadováno pro ${filename}"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Během rozbalování se vyskytla chyba"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "Zabaluji soubory do '${outputFile}'"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Zabalení dokončeno"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "Zabalení souboru do '${outputFile}' bylo dokončeno."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Zabalení přerušeno"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "Soubor '${outputFile}' již existuje."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Zabalení souborů do '${outputFile}' bylo zrušeno uživatelem."
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Při zabalování se vyskytla chyba"
 
 #: autoAr.js:546
-#, fuzzy
 msgid "Create archive"
-msgstr "Vytvořit"
+msgstr "Vytvořit archiv"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Přejmenovat soubor"
+msgstr "Jméno archivu"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: autoAr.js:618
 msgid "Create"
@@ -138,19 +130,19 @@ msgstr "Vytvořit"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Kompatibilní se všemi operačními systémy."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr "Heslem chráněný .zip, musí být nainstalován na Windows a Mac."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Menší archivy ale pouze pro Linux a Mac."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Menší archivy ale musí být nainstalovány na Windows a Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -166,13 +158,11 @@ msgstr "Přejmenovat"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" je potřeba pro ikony na ploše"
 
 #: dbusUtils.js:67
-msgid ""
-"For this functionality to work in Desktop Icons, you must install "
-"\"${programName}\" in your system."
-msgstr ""
+msgid "For this functionality to work in Desktop Icons, you must install \"${programName}\" in your system."
+msgstr "Aby tato funkce fungovala musíte nainstalovat \"${programName}\"."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -252,7 +242,7 @@ msgstr "Nechat uspořádané..."
 
 #: desktopManager.js:1744
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Nechat seskupené podle typu..."
 
 #: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
@@ -285,54 +275,51 @@ msgstr "Domovská Složka"
 
 #: fileItem.js:290
 msgid "Broken Link"
-msgstr ""
+msgstr "Neplatný odkaz"
 
 #: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "Není možné otevřít tento soubor jelikož se jedná o neplatný Symlink"
 
 #: fileItem.js:346
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Zobrazit plochu v Souborech"
+msgstr "Rozbitý Desktop soubor"
 
 #: fileItem.js:347
-msgid ""
-"This .desktop file has errors or points to a program without permissions. It "
-"can not be executed.\n"
+msgid "This .desktop file has errors or points to a program without permissions. It can not be executed.\n"
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
-msgstr ""
+msgstr "Tento .desktop soubor obsahuje chyby nebo odkazuje na nespustitelný program. Nemůže být spuštěn.\n"
+"\n"
+"\t<b>Upravte soubor nebo nastavte správné oprávnění programu</b>"
 
 #: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Neplatné oprávnění k Souboru Desktop"
 
 #: fileItem.js:354
-msgid ""
-"This .desktop File has incorrect Permissions. Right Click to edit "
-"Properties, then:\n"
-msgstr ""
+msgid "This .desktop File has incorrect Permissions. Right Click to edit Properties, then:\n"
+msgstr "Tento .desktop soubor má neplatné oprávnění. Klikněte pravým tlačítkem a vyberte položku Vlastnosti, potom:\n"
 
 #: fileItem.js:356
-msgid ""
-"\n"
+msgid "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
-msgstr ""
+msgstr "\n"
+"<b>Nastavte oprávnění v \"Ostatní\" na \"Pouze čtení\" nebo \"Nic\"</b>"
 
 #: fileItem.js:359
-msgid ""
-"\n"
+msgid "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
-msgstr ""
+msgstr "\n"
+"<b>Povolte možnost \"Spustitelný jako program\"</b>"
 
 #: fileItem.js:367
-msgid ""
-"This .desktop file is not trusted, it can not be launched. To enable "
-"launching, right-click, then:\n"
+msgid "This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n"
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
-msgstr ""
+msgstr "Tento .desktop soubor je nedůvěryhodný, nemůže být spuštěn. K povolení spouštění klikněte pravým tlačítkem, potom:\n"
+"\n"
+"<b>Klikněte na \"Povolit spouštění\"</b>"
 
 #: fileItemMenu.js:132
 msgid "Open All..."
@@ -344,11 +331,11 @@ msgstr "Otevřít"
 
 #: fileItemMenu.js:143
 msgid "Stack This Type"
-msgstr ""
+msgstr "Seskupovat tento typ"
 
 #: fileItemMenu.js:143
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Neseskupovat tento typ"
 
 #: fileItemMenu.js:155
 msgid "Scripts"
@@ -368,7 +355,7 @@ msgstr "Spustit pomocí dedikované grafické karty"
 
 #: fileItemMenu.js:177
 msgid "Run as a program"
-msgstr ""
+msgstr "Spustit jako program"
 
 #: fileItemMenu.js:185
 msgid "Cut"
@@ -423,19 +410,19 @@ msgid "Send to..."
 msgstr "Poslat..."
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "Zkomprimovat {0} soubor"
-msgstr[1] "Zkomprimovat {0} soubory"
-msgstr[2] "Zkomprimovat {0} souborů"
+msgstr[0] "Zabalit {0} soubor"
+msgstr[1] "Z\n"
+"Zabalit {0} soubory"
+msgstr[2] "Zabalit {0} souborů"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
-msgstr[0] "Zkomprimovat {0} soubor"
-msgstr[1] "Zkomprimovat {0} soubory"
-msgstr[2] "Zkomprimovat {0} souborů"
+msgstr[0] "Zabalit {0} soubor"
+msgstr[1] "Zabalit {0} soubory"
+msgstr[2] "Zabalit {0} souborů"
 
 #: fileItemMenu.js:300
 msgid "New Folder with {0} item"
@@ -474,7 +461,7 @@ msgstr "Nemůžete poslat složku emailem"
 
 #: fileItemMenu.js:450
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Výběr obsahuje Složku, nejdříve musíte zkomprimovat složku do souboru."
+msgstr "Výběr obsahuje Složku, nejdříve musíte zabalit složku do archivu."
 
 #: preferences.js:74
 msgid "Settings"
@@ -546,15 +533,15 @@ msgstr "Zvýraznit místo k položení při přetahování souborů"
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Použít Nemo k otevírání složek"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Přidat emblém k soft linkům"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Použít tmavý text pro popisky ikon"
 
 #. Nautilus options
 #: prefswindow.js:71
@@ -658,36 +645,24 @@ msgid "Show mounted network volumes in the desktop."
 msgstr "Zobrazovat připojené síťové disky připojené k počítači."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
-msgid ""
-"When adding drives and volumes to the desktop, add them to the opposite side "
-"of the screen."
-msgstr ""
-"Při připojení nových disků se jejich ikony budou zobrazovat na opačné straně "
-"obrazovky."
+msgid "When adding drives and volumes to the desktop, add them to the opposite side of the screen."
+msgstr "Při připojení nových disků se jejich ikony budou zobrazovat na opačné straně obrazovky."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
 msgstr "Zobrazit čtverec při přetahování ikon"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
-msgid ""
-"When doing a Drag'n'Drop operation, marks the place in the grid where the "
-"icon will be put with a semitransparent rectangle."
-msgstr ""
-"Při přetahování ikon se místo kam bude ikona dána obarví poloprůhledným "
-"čtvercem."
+msgid "When doing a Drag'n'Drop operation, marks the place in the grid where the icon will be put with a semitransparent rectangle."
+msgstr "Při přetahování ikon se místo kam bude ikona dána obarví poloprůhledným čtvercem."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
 msgstr "Seřadit speciální složky - Domovská složka/Jednotky/Koš."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
-msgid ""
-"When arranging Icons on desktop, to sort and change the position of the "
-"Home, Trash and mounted Network or External Drives"
-msgstr ""
-"Při uspořádání ikon na ploše můžete třídit a měnit polohu Domácí složky, "
-"koše a připojených síťových nebo externích jednotek"
+msgid "When arranging Icons on desktop, to sort and change the position of the Home, Trash and mounted Network or External Drives"
+msgstr "Při uspořádání ikon na ploše můžete třídit a měnit polohu Domácí složky, koše a připojených síťových nebo externích jednotek"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
@@ -706,44 +681,40 @@ msgid "Icons Arranged by this property"
 msgstr "Ikony seřazené podle této vlastnosti"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "Nechat Ikony uspořádané"
+msgstr "Nechat Ikony seskupené"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Vždy nechat Ikony seřazené podle posledního řazení"
+msgstr "Vždy nechat Ikony seskupené, podobné typy jsou seskupeny"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Typ souboru co neseskupovat"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Pole typu stringů, Neseskupovat tyto typy souborů"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Použít Nemo místo Nautilu k otevírání složek."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Přidat emblémy k odkazům"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Přidat emblém k umožnění identifikace soft linků."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Použít černý text pro popisky"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
-msgid ""
-"Paint the label text in black instead of white. Useful when using light "
-"backgrounds."
-msgstr ""
+msgid "Paint the label text in black instead of white. Useful when using light backgrounds."
+msgstr "Zobrazovat text popisků v černé místo bílé. Vhodné pro světlé pozadí."
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
