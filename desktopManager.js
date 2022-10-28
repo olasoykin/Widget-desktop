@@ -277,19 +277,23 @@ var DesktopManager = class {
     _metadataChanged(proxy, nameOwner, args) {
         let filepath = GLib.build_filenamev([GLib.get_home_dir(), args[1]]);
         if (this._desktopDir.get_path() === GLib.path_get_dirname(filepath)) {
-            let updateFileList;
-            if (this._allFileList && (this._allFileList.length > 0)) {
-                updateFileList = this._allFileList;
-            } else {
-                updateFileList = this._fileList;
-            }
-            for (let fileItem of updateFileList) {
+            for (let fileItem of this.updateFileList()) {
                 if (fileItem.path == filepath) {
                     fileItem.updatedMetadata();
                     break;
                 }
             }
         }
+    }
+
+    updateFileList() {
+        let updateFileList;
+        if (this._allFileList && (this._allFileList.length > 0)) {
+            updateFileList = this._allFileList;
+        } else {
+            updateFileList = this._fileList;
+        }
+        return updateFileList;
     }
 
     _dbusAdvertiseUpdate() {
@@ -1676,68 +1680,86 @@ var DesktopManager = class {
         }
     }
 
-    doNewFolder(position) {
-        let X;
-        let Y;
-        if (position) {
-            [X, Y] = position;
+    fileExistsOnDesktop(searchName) {
+        const listOfFileNamesOnDesktop = this.updateFileList().map(f => f.fileName);
+        if (listOfFileNamesOnDesktop.includes(searchName)) {
+            return true;
         } else {
-            [X, Y] = [this._clickX, this._clickY];
+            return false;
         }
-        this.unselectAll();
+    }
+
+    getDesktopUniqueFileName(fileName) {
+        let fileParts = DesktopIconsUtil.getFileExtensionOffset(fileName);
         let i = 0;
-        let baseName = _("New Folder");
-        let newName = baseName;
-        while ( 0 != this._fileList.filter(file => file.fileName == newName).length) {
+        let newName = fileName;
+
+        while(this.fileExistsOnDesktop(newName)) {
             i += 1;
-            newName = baseName + " " + i;
+            newName = `${fileParts.basename} ${i}${fileParts.extension}`;
         }
+        return newName;
+    }
+
+    doNewFolder(position=null, suggestedName=null, opts={rename: true}) {
+        this.unselectAll();
+
+        if (! position) {
+            position = [this._clickX, this._clickY];
+        }
+
+        const baseName = suggestedName ? suggestedName :  _("New Folder");
+        let newName = this.getDesktopUniqueFileName(baseName);
+
         if (newName) {
             let dir = DesktopIconsUtil.getDesktopDir().get_child(newName);
             try {
                 dir.make_directory(null);
-                let info = new Gio.FileInfo();
-                info.set_attribute_string('metadata::nautilus-drop-position', `${X},${Y}`);
+                const info = new Gio.FileInfo();
+                info.set_attribute_string('metadata::nautilus-drop-position', `${position.join(',')}`);
                 info.set_attribute_string('metadata::nautilus-icon-position', '');
                 dir.set_attributes_from_info(info, Gio.FileQueryInfoFlags.NONE, null);
-                this.newFolderDoRename = newName;
-                if (position) {
-                    return dir.get_uri();
-                }
             } catch(e) {
-                print(`Failed to create folder ${e.message}`);
+                logError(e, `Failed to create folder`);
+                const header = _("Folder Creation Failed");
+                const text = _("Error while trying to create a Folder");
+                this.dbusManager.doNotify(header, text);
+                if (position || suggestedName) {
+                    return null;
+                }
+                return;
+            }
+            if (opts.rename) {
+                this.newFolderDoRename = newName;
+            }
+            if (position || suggestedName) {
+                return dir.get_uri();
             }
         }
     }
 
     _newDocument(template) {
-        let file = Gio.File.new_for_path(template);
+        const file = Gio.File.new_for_path(template);
         if ((file == null) || (!file.query_exists(null))) {
             return;
         }
-        let counter = 0;
-        let fullName = file.get_basename();
-        let offset = DesktopIconsUtil.getFileExtensionOffset(fullName, false);
-        let name = fullName.substring(0, offset);
-        let extension = fullName.substring(offset);
 
-        let finalName = `${name}${extension}`;
-        let destination;
-        do {
-            if (counter != 0) {
-                finalName = `${name} ${counter}${extension}`
-            }
-            destination = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP), finalName]));
-            counter++;
-        } while(destination.query_exists(null));
+        const fullName = file.get_basename();
+        const finalName = this.getDesktopUniqueFileName(fullName);
+
+        let destination = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_DESKTOP), finalName]));
+
         try {
             file.copy(destination, Gio.FileCopyFlags.NONE, null, null);
-            let info = new Gio.FileInfo();
+            const info = new Gio.FileInfo();
             info.set_attribute_string('metadata::nautilus-drop-position', `${this._clickX},${this._clickY}`);
             info.set_attribute_string('metadata::nautilus-icon-position', '');
             destination.set_attributes_from_info(info, Gio.FileQueryInfoFlags.NONE, null);
         } catch(e) {
-            print(`Failed to create template ${e.message}`);
+            logError(e, `Failed to create template ${e.message}`);
+            const header = _("Template Creation Failed");
+            const text = _("Error while trying to create a Document");
+            this.dbusManager.doNotify(header, text);
         }
     }
 
