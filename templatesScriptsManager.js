@@ -186,8 +186,7 @@ var TemplatesScriptsManager = class {
         for (let fileItem of scriptsList) {
             let menuItemName = fileItem[0];
             if (this._flags & TemplatesScriptsManagerFlags.HIDE_EXTENSIONS) {
-                let offset = DesktopIconsUtil.getFileExtensionOffset(menuItemName, false);
-                menuItemName = menuItemName.substring(0, offset);
+                menuItemName = DesktopIconsUtil.getFileExtensionOffset(menuItemName, false).basename;
             }
             let menuItemPath = fileItem[1];
             let subDirs = fileItem[2];
