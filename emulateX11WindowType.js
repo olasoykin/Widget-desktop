@@ -67,12 +67,40 @@ class ManageWindow {
         this._signalIDs.push(window.connect("notify::minimized", () => {
             this._window.unminimize();
         }));
+        this._signalIDs.push(window.connect("notify::maximized-vertically", ()=> {
+            if (!window.maximized_vertically) {
+                window.maximize(Meta.MaximizeFlags.VERTICAL);
+            }
+            this._moveIntoPlace();
+        }));
+        this._signalIDs.push(window.connect("notify::maximized-horizontally", ()=> {
+            if (!window.maximized_horizontally) {
+                window.maximize(Meta.MaximizeFlags.HORIZONTAL);
+            }
+            this._moveIntoPlace();
+        }));
         this._parseTitle();
+    }
+
+    _moveIntoPlace() {
+        if (this._moveIntoPlaceID) {
+            GLib.source_remove(this._moveIntoPlaceID);
+        }
+        this._moveIntoPlaceID = GLib.timeout_add(GLib.PRIORITY_LOW, 250, () => {
+            if (this._fixed && (this._x !== null) && (this._y !== null)) {
+                this._window.move_frame(true, this._x, this._y);
+            }
+            this._moveIntoPlaceID = 0;
+            return GLib.SOURCE_REMOVE;
+        });
     }
 
     disconnect() {
         for(let signalID of this._signalIDs) {
             this._window.disconnect(signalID);
+        }
+        if (this._moveIntoPlaceID) {
+            GLib.source_remove(this._moveIntoPlaceID);
         }
         if (this._keepAtTop) {
             this._window.unmake_above();
