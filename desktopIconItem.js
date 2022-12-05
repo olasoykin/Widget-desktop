@@ -201,33 +201,28 @@ var desktopIconItem = class desktopIconItem {
     _calculateIconRectangle() {
         this.iconwidth = this._iconContainer.get_allocated_width();
         this.iconheight = this._iconContainer.get_allocated_height();
-        let x = this._x1 + ((this.width - this.iconwidth)/2)*this._zoom;
-        let y = this._y1 + 2;
+        let [x, y] = this._grid.coordinatesLocalToGlobal(0, 0, this._iconContainer);
         this.iconRectangle.x = x;
         this.iconRectangle.y = y;
-        this.iconRectangle.width = this.iconwidth*this._zoom;
-        this.iconRectangle.height = this.iconheight*this._zoom;
+        this.iconRectangle.width = this.iconwidth;
+        this.iconRectangle.height = this.iconheight;
     }
 
     _calculateLabelRectangle() {
         this.labelwidth = this._labelContainer.get_allocated_width();
         this.labelheight = this._labelContainer.get_allocated_height();
-        let x = this._x1 + ((this.width - this.labelwidth)/2)*this._zoom;
-        let y = this._y1 + 4 + (this.iconheight)*this._zoom;
+        let [x, y] = this._grid.coordinatesLocalToGlobal(0, 0, this._labelContainer);
         this.labelRectangle.x = x;
         this.labelRectangle.y = y;
-        this.labelRectangle.width = this.labelwidth*this._zoom;
-        this.labelRectangle.height = this.labelheight*this._zoom;
+        this.labelRectangle.width = this.labelwidth;
+        this.labelRectangle.height = this.labelheight;
     }
 
-    setCoordinates(x, y, width, height, margin, zoom, grid) {
+    setCoordinates(x, y, width, height, margin, grid) {
         this._x1 = x;
         this._y1 = y;
         this.width = width;
         this.height = height;
-        this._zoom = zoom;
-        this._x2 = x + (width * zoom) - 1;
-        this._y2 = y + (height * zoom) - 1;
         this._grid = grid;
         this.container.set_size_request(width, height);
         this._label.margin_start = margin;
@@ -239,6 +234,8 @@ var desktopIconItem = class desktopIconItem {
     }
 
     getCoordinates() {
+        this._x2 = this._x1 + this.container.get_allocated_width() - 1;
+        this._y2 = this._y1 + this.container.get_allocated_height() - 1;
         return [this._x1, this._y1, this._x2, this._y2, this._grid];
     }
 
