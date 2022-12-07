@@ -87,6 +87,17 @@ var desktopIconItem = class desktopIconItem {
             this.container.disconnect(this._containerId);
             this._containerId = 0;
         }
+        this.container.destroy();
+        this.container = null;
+        this._eventBox = null;
+        this._sheildEventBox = null;
+        this._labelEventBox = null;
+        this._sheildLabelEventBox = null;
+        this._icon = null;
+        this._iconContainer = null;
+        this._label = null;
+        this._labelContainer = null;
+        this.iconRectangle = null;
     }
 
     _onDestroy() {
@@ -483,6 +494,7 @@ var desktopIconItem = class desktopIconItem {
             let [x, y] = this._calculateOffset(widget);
             context.set_hotspot(x,y);
             this._desktopManager.onDragBegin(this);
+            cr.$dispose();
         });
         widget.connect('drag-data-get', (widget, context, data, info, time) => {
             let dragData = this._desktopManager.fillDragDataGet(info);

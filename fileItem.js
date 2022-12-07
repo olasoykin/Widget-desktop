@@ -148,7 +148,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (this._setMetadataTrustedCancellable) {
             this._setMetadataTrustedCancellable.cancel();
         }
-        if (this._realizeId) {
+        if (this._realizeId && this.container) {
             this.container.disconnect(this._realizeId);
         }
     }
