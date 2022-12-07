@@ -559,16 +559,15 @@ var desktopIconItem = class desktopIconItem {
             return;
         }
         let icon_set = false;
-        if ((Prefs.nautilusSettings.get_string('show-image-thumbnails') != 'never') &&
-            (this._desktopManager.thumbnailLoader.canThumbnail(this))) {
-                let thumbnail = this._desktopManager.thumbnailLoader.getThumbnail(this, this._updateIcon.bind(this));
-                if (thumbnail != null) {
-                    let thumbnailFile = Gio.File.new_for_path(thumbnail);
-                    icon_set = await this._loadImageAsIcon(thumbnailFile);
-                    if (this._destroyed) {
-                        return;
-                    }
+        if (Prefs.nautilusSettings.get_string('show-image-thumbnails') != 'never') {
+            let thumbnail = this._desktopManager.thumbnailLoader.getThumbnail(this, this._updateIcon.bind(this));
+            if (thumbnail != null) {
+                let thumbnailFile = Gio.File.new_for_path(thumbnail);
+                icon_set = await this._loadImageAsIcon(thumbnailFile);
+                if (this._destroyed) {
+                    return;
                 }
+            }
         }
 
         if (!icon_set) {

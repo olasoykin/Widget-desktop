@@ -159,32 +159,15 @@ var ThumbnailLoader = class {
         }
     }
 
-    canThumbnail(file) {
-        let can_thumb = this._thumbnailFactoryLarge.can_thumbnail(file.uri,
-                                                                  file.attributeContentType,
-                                                                  file.modifiedTime);
-        if (can_thumb) {
-            return true;
-        }
-        let thumbnail = this._thumbnailFactoryLarge.lookup(file.uri, file.modifiedTime);
-        if (thumbnail == null) {
-            thumbnail = this._thumbnailFactoryNormal.lookup(file.uri, file.modifiedTime);
-            if (thumbnail == null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     getThumbnail(file, callback) {
         try {
             let thumbnail = this._thumbnailFactoryLarge.lookup(file.uri, file.modifiedTime);
             if (thumbnail == null) {
                 thumbnail = this._thumbnailFactoryNormal.lookup(file.uri, file.modifiedTime);
-                if (thumbnail == null) {
-                    if (!this._thumbnailFactoryLarge.has_valid_failed_thumbnail(file.uri, file.modifiedTime)) {
+                if ((thumbnail == null) &&
+                    !this._thumbnailFactoryLarge.has_valid_failed_thumbnail(file.uri, file.modifiedTime) &&
+                     this._thumbnailFactoryLarge.can_thumbnail(file.uri, file.attributeContentType, file.modifiedTime)) {
                         this._generateThumbnail(file, callback);
-                    }
                 }
             }
             return thumbnail;
