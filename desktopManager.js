@@ -142,7 +142,7 @@ var DesktopManager = class {
                 return;
             }
             if (key == 'icon-size') {
-                this._fileList.forEach(x => x.removeFromGrid());
+                this._fileList.forEach(x => x.removeFromGrid(false));
                 for (let desktop of this._desktops) {
                     desktop.resizeGrid();
                 }
@@ -222,7 +222,7 @@ var DesktopManager = class {
         let cssProvider = new Gtk.CssProvider();
         cssProvider.load_from_file(Gio.File.new_for_path(GLib.build_filenamev([codePath, "stylesheet.css"])));
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
+        cssProvider = undefined;
         this._configureSelectionColor();
         this._createDesktopBackgroundMenu();
         this._createGridWindows();
@@ -318,7 +318,7 @@ var DesktopManager = class {
             this._primaryIndex = newdesktoplist[0].primaryMonitor;
         }
         if (newdesktoplist.length != this._desktopList.length) {
-            this._fileList.forEach(x => x.removeFromGrid());
+            this._fileList.forEach(x => x.removeFromGrid(false));
             this._desktopList = newdesktoplist;
             if (this._primaryIndex < this._desktopList.length) {
                 this._primaryScreen = this._desktopList[this._primaryIndex];
@@ -354,7 +354,7 @@ var DesktopManager = class {
             }
         }
         if (gridschanged.length > 0) {
-            this._fileList.forEach(x => x.removeFromGrid());
+            this._fileList.forEach(x => x.removeFromGrid(false));
             for (let gridindex of gridschanged) {
                 let desktop = this._desktops[gridindex];
                 desktop.updateGridDescription(newdesktoplist[gridindex]);
@@ -471,6 +471,7 @@ var DesktopManager = class {
         }
         // force to store the new coordinates
         this._addFilesToDesktop(fileItems, Enums.StoredCoordinates.OVERWRITE);
+        fileItems = undefined;
         if (this.keepArranged) {
             this._updateDesktop().catch((e) => {
                 print(`Exception while doing move with drag and drop and keeping arranged: ${e.message}\n${e.stack}`);
@@ -947,6 +948,7 @@ var DesktopManager = class {
         let contentArea = this._findFileWindow.get_content_area();
         this._findFileTextArea = new Gtk.Entry();
         contentArea.pack_start(this._findFileTextArea, true, true, 5);
+        contentArea = undefined;
         this._findFileTextArea.connect('activate', () => {
             if (this._findFileButton.sensitive) {
                 this._findFileWindow.response(Gtk.ResponseType.OK);
@@ -1835,7 +1837,7 @@ var DesktopManager = class {
     doStacks(restack) {
         if (restack) {
             for (let fileItem of this._fileList) {
-                fileItem.removeFromGrid();
+                fileItem.removeFromGrid(false);
             }
         }
         if (! this.stackInitialCoordinates && ! this._allFileList) {
@@ -1851,7 +1853,7 @@ var DesktopManager = class {
 
     _unstack() {
         if (this.stackInitialCoordinates && this._allFileList) {
-            this._fileList.forEach(f => f.removeFromGrid());
+            this._fileList.forEach(f => f.removeFromGrid(false));
             this._restoreStackInitialCoordinates();
             this._fileList = this._allFileList;
             this._allFileList = null;
@@ -2220,7 +2222,7 @@ var DesktopManager = class {
 
     doSorts(cleargrids) {
         if (cleargrids) {
-            this._fileList.map(f => f.removeFromGrid());
+            this._fileList.map(f => f.removeFromGrid(false));
         }
         switch (Prefs.getSortOrder()) {
             case Enums.SortOrder.NAME:

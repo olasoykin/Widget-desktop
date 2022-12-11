@@ -237,6 +237,7 @@ var DesktopGrid = class {
         targets.add(Gdk.atom_intern('text/plain', false), 0,
             Enums.DndTargetInfo.TEXT_PLAIN);
         dropDestination.drag_dest_set_target_list(targets);
+        targets = undefined; // to avoid memory leaks
         dropDestination.connect('drag-motion', (widget, context, x, y, time) => {
             this.receiveMotion(x, y);
 

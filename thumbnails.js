@@ -177,7 +177,6 @@ var ThumbnailLoader = class {
     }
 
     getThumbnail(file, callback) {
-        print(file.path);
         try {
             let thumbnail = this._thumbnailFactoryLarge.lookup(file.uri, file.modifiedTime);
             if (thumbnail == null) {

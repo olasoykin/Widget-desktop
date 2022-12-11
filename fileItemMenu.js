@@ -100,6 +100,10 @@ var FileItemMenu = class {
         }
     }
 
+    _addSeparator() {
+        this._menu.add(new Gtk.SeparatorMenuItem());
+    }
+
     showMenu(fileItem, event, atWidget=false) {
 
         this._currentFileItem = fileItem;
@@ -112,20 +116,12 @@ var FileItemMenu = class {
             return element;
         }.bind(this);
 
-        let addSeparator = function() {
-            this._menu.add(new Gtk.SeparatorMenuItem());
-        }.bind(this);
-
         let selectedItemsNum = this._desktopManager.getNumberOfSelectedItems();
 
         this._menu = new Gtk.Menu();
         const menuStyleContext = this._menu.get_style_context();
         menuStyleContext.add_class("desktopmenu");
         menuStyleContext.add_class("fileitemmenu");
-        this._menu.connect_after('selection-done', () => {
-            this._menu.destroy();
-            this._menu = null;
-        });
 
         if (! fileItem.isStackMarker) {
             addElementToMenu(
@@ -133,6 +129,11 @@ var FileItemMenu = class {
                 this._doMultiOpen.bind(this)
             );
         }
+        selectedItemsNum = undefined;
+        this._menu.connect_after('selection-done', () => {
+            this._menu.destroy();
+            this._menu = null;
+        });
 
         let keepStacked = Prefs.desktopSettings.get_boolean('keep-stacked');
         if (keepStacked && ! fileItem.stackUnique) {
@@ -153,7 +154,7 @@ var FileItemMenu = class {
             let submenu = this._scriptsMonitor.createMenu();
             if (submenu !== null) {
                 addElementToMenu(_("Scripts")).set_submenu(submenu);
-                addSeparator();
+                this._addSeparator();
             }
 
             if (!fileItem.isDirectory) {
@@ -170,14 +171,14 @@ var FileItemMenu = class {
                 }
             }
 
-            addSeparator();
+            this._addSeparator();
 
             if (fileItem.attributeCanExecute && !fileItem.isDirectory && !fileItem.isValidDesktopFile && fileItem.execLine && Gio.content_type_can_be_executable(fileItem.attributeContentType)) {
                 let execLine = fileItem.execLine;
                 addElementToMenu(_("Run as a program"), () => {
                     DesktopIconsUtil.spawnCommandLine(`"${execLine}"`);
                 });
-                addSeparator();
+                this._addSeparator();
             }
 
             let allowCutCopyTrash = this._desktopManager.checkIfSpecialFilesAreSelected();
@@ -198,7 +199,7 @@ var FileItemMenu = class {
                 );
             }
 
-            addSeparator();
+            this._addSeparator();
 
             addElementToMenu(
                 _('Move to Trash'),
@@ -213,7 +214,7 @@ var FileItemMenu = class {
             }
 
             if (fileItem.isValidDesktopFile && !this._desktopManager.writableByOthers && !fileItem.writableByOthers && (selectedItemsNum == 1 )) {
-                addSeparator();
+                this._addSeparator();
                 addElementToMenu(
                     fileItem.trustedDesktopFile ? _("Don't Allow Launching") : _("Allow Launching"),
                     () => {this._currentFileItem.onAllowDisallowLaunchingClicked();}
@@ -224,7 +225,7 @@ var FileItemMenu = class {
         // fileExtra == TRASH
 
         if (fileItem.isTrash) {
-            addSeparator();
+            this._addSeparator();
             addElementToMenu(
                 _('Empty Trash'),
                 () => {this._desktopManager.doEmptyTrash();}
@@ -234,7 +235,7 @@ var FileItemMenu = class {
         // fileExtra == EXTERNAL_DRIVE
 
         if (fileItem.isDrive) {
-            addSeparator();
+            this._addSeparator();
             if (fileItem.canEject) {
                 addElementToMenu(
                     _('Eject'),
@@ -250,7 +251,7 @@ var FileItemMenu = class {
         }
 
         if (fileItem.isAllSelectable && (!this._desktopManager.checkIfSpecialFilesAreSelected()) && (selectedItemsNum >= 1 )) {
-            addSeparator();
+            this._addSeparator();
             let addedExtractHere = false;
             if (this._getExtractableAutoAr()) {
                 addedExtractHere = true;
@@ -301,7 +302,7 @@ var FileItemMenu = class {
                 () => {this._doNewFolderFromSelection(this._currentFileItem);}
             );
 
-            addSeparator();
+            this._addSeparator();
         }
 
         if (! fileItem.isStackMarker) {
@@ -310,7 +311,7 @@ var FileItemMenu = class {
                 this._onPropertiesClicked.bind(this)
             );
 
-            addSeparator();
+            this._addSeparator();
 
             addElementToMenu(
                 selectedItemsNum > 1 ? _('Show All in Files') : _('Show in Files'),

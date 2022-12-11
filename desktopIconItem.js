@@ -132,6 +132,7 @@ var desktopIconItem = class desktopIconItem {
         } else {
             labelStyleContext.add_class('file-label');
         }
+        labelStyleContext = undefined; // prevent memory leaks
         this._label.set_ellipsize(Pango.EllipsizeMode.END);
         this._label.set_line_wrap(true);
         this._label.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);
@@ -463,6 +464,7 @@ var desktopIconItem = class desktopIconItem {
                     Enums.DndTargetInfo.URI_LIST);
         }
         widget.drag_source_set_target_list(targets);
+        targets = undefined; // prevent memory leaks
         widget.connect('drag-begin', (widget, context) => {
             const scale = this._icon.get_scale_factor();
             let surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, this.container.get_allocated_width() * scale, this.container.get_allocated_height() * scale);
