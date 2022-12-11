@@ -54,7 +54,7 @@
  * The margins values are relative to the monitor border.
  *
  *******************************************************************************/
-
+'use strict';
 const GLib = imports.gi.GLib;
 const Main = imports.ui.main;
 
