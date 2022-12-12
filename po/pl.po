@@ -10,9 +10,8 @@ msgstr ""
 "Project-Id-Version: desktop-icons\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2020-07-14 13:32+0200\n"
+"PO-Revision-Date: 2022-12-12 13:30+0100\n"
 "Last-Translator: Paweł Piasek <pp@euro-linux.com>\n"
-"Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,23 +22,22 @@ msgstr ""
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr jest nie zainstalowany"
 
 #: autoAr.js:88
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"Aby móc pracować z plikami skompresowanymi, zainstaluj file-roller lub gnome-autoar"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Rozpakuj tutaj"
+msgstr "Rozpakuj pliki"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "Kompresuj {0} plik"
+msgstr "Skompresuj pliki"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -51,7 +49,7 @@ msgstr "OK"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Wprowadź hasło"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
@@ -59,79 +57,76 @@ msgstr ""
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "Tworzenie katalogu docelowego"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "Rozpakowanie plików do '${outputPath}'"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Rozpakuj tutaj"
+msgstr "Rozpakowywanie zakończone"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "Rozpakowywanie '${fullPathFile}' zostało zakończone"
 
-#: autoAr.js:443
+# autoAr.js:443
 #, fuzzy
 msgid "Extraction cancelled"
-msgstr "Rozpakuj tutaj"
+msgstr "Rozpakowywanie anulowano"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Rozpakowanie '${fullPathFile}' zostało anulowane przez użytkownika"
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "Wymagane hasło dla ${filename}"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Błąd podczas rozpakowywania"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "Kompresowanie plików do '${outputFile}'"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Kompresja zakończona"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "Kompresja plików do '${outputFile}' została zakończona"
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Anulowano kompresje"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "Plik wyjściowy '${outputFile}' już istnieje"
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Kompresja plików do '${outputFile}' została anulowana przez użytkownika"
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Błąd podczas kompresji"
 
 #: autoAr.js:546
-#, fuzzy
 msgid "Create archive"
-msgstr "Utwórz"
+msgstr "Utwórz archiwum"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Nazwa pliku"
+msgstr "Nazwa archiwum"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Hasło"
 
 #: autoAr.js:618
 msgid "Create"
@@ -139,19 +134,19 @@ msgstr "Utwórz"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Kompatybilne ze wszystkimi systemami operacyjnymi"
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr ".zip zabezpieczony hasłem musi być zainstalowany na Windows i Mac."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Bardziej skompresowane archiwa, tylko dla Linux'a i Mac'a."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Bardziej skompresowane archiwa, muszą być zainstalowane na Windows lub Mac"
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -430,12 +425,11 @@ msgid "Send to..."
 msgstr "Wyślij do…"
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "Kompresuj {0} plik"
-msgstr[1] "Kompresuj {0} pliki"
-msgstr[2] "Kompresuj {0} plików"
+msgstr[0] "Kompresuj {0} katalog"
+msgstr[1] "Kompresuj {0} katalogi"
+msgstr[2] "Kompresuj {0} katalogów"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
@@ -472,9 +466,8 @@ msgid "Select Extract Destination"
 msgstr "Wybierz miejsce rozpakowania archiwum"
 
 #: fileItemMenu.js:410
-#, fuzzy
 msgid "Select"
-msgstr "Zaznacz wszystko"
+msgstr "Wybierz"
 
 #: fileItemMenu.js:449
 msgid "Can not email a Directory"
@@ -750,70 +743,3 @@ msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
-
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Aby skonfigurować ikony pulpitu, kliknij pulpit prawym przyciskiem myszy "
-#~ "i wybierz ostatni element: 'Ustawienia ikon na pulpicie'"
-
-#~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "Wykonać plik „{0}”, czy wyświetlić jego zawartość?"
-
-#~ msgid "“{0}” is an executable text file."
-#~ msgstr "„{0}” jest wykonywalnym plikiem tekstowym."
-
-#~ msgid "Execute in a terminal"
-#~ msgstr "Otwórz w terminalu"
-
-#~ msgid "Show"
-#~ msgstr "Pokaż"
-
-#~ msgid "Execute"
-#~ msgstr "Wykonaj"
-
-#~ msgid "New folder"
-#~ msgstr "Nowy katalog"
-
-#~ msgid "Delete"
-#~ msgstr "Usuń"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "Wystąpił błąd podczas usuwania plików"
-
-#~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "Czy na pewno usunąć trwale wybrane elementy?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Jeśli usuniesz element, zostanie on trwale utracony."
-
-#, fuzzy
-#~ msgid "Show external disk drives in the desktop"
-#~ msgstr "Katalog domowy na pulpicie"
-
-#, fuzzy
-#~ msgid "Show the external drives"
-#~ msgstr "Katalog domowy na pulpicie"
-
-#, fuzzy
-#~ msgid "Show network volumes"
-#~ msgstr "Wyświetl w menedżerze plików"
-
-#~ msgid "Enter file name…"
-#~ msgstr "Nazwa pliku…"
-
-#~ msgid "Folder names cannot contain “/”."
-#~ msgstr "Nazwy katalogów nie mogą zawierać znaku „/”."
-
-#~ msgid "A folder cannot be called “.”."
-#~ msgstr "Katalog nie może mieć nazwy „.”."
-
-#~ msgid "A folder cannot be called “..”."
-#~ msgstr "Katalog nie może mieć nazwy „..”."
-
-#~ msgid "Folders with “.” at the beginning of their name are hidden."
-#~ msgstr "Katalogi z „.” na początku nazwy są ukryte."
-
-#~ msgid "There is already a file or folder with that name."
-#~ msgstr "Plik lub katalog o tej nazwie już istnieje."
