@@ -42,7 +42,7 @@ var FileItemMenu = class {
                 return false;
             });
         });
-        this._getExtractionSupportedTypes();
+        this._askedSupportedTypes = false;
         this._scriptsMonitor = new TemplatesScriptsManager.TemplatesScriptsManager(
             DesktopIconsUtil.getScriptsDir(),
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.ONLY_EXECUTABLE,
@@ -52,20 +52,25 @@ var FileItemMenu = class {
 
     _getExtractionSupportedTypes() {
         this._decompressibleTypes = [];
-        if (DBusUtils.GnomeArchiveManager.isAvailable) {
-            DBusUtils.GnomeArchiveManager.proxy.GetSupportedTypesRemote('extract',
-                (result, error) => {
-                    if (error) {
-                        print(`Can't get the extractable types: ${error.message}. Ensure that File-Roller is installed.\n${error}.`);
-                        return;
-                    }
-                    for (let key of result.values()) {
-                        for (let type of key.values()) {
-                            this._decompressibleTypes.push(Object.values(type)[0]);
+        try {
+            if (DBusUtils.GnomeArchiveManager.isAvailable) {
+                DBusUtils.GnomeArchiveManager.proxy.GetSupportedTypesRemote('extract',
+                    (result, error) => {
+                        if (error) {
+                            logError(error, "Can't get the extractable types; ensure that File-Roller is installed.\n");
+                            return;
+                        }
+                        for (let key of result.values()) {
+                            for (let type of key.values()) {
+                                this._decompressibleTypes.push(Object.values(type)[0]);
+                            }
                         }
                     }
-                }
-            );
+                );
+            }
+            this._askedSupportedTypes = true;
+        } catch (e) {
+            logError(e, `Error while getting supported types.`);
         }
     }
 
@@ -106,6 +111,9 @@ var FileItemMenu = class {
 
     showMenu(fileItem, event, atWidget=false) {
 
+        if (!this._askedSupportedTypes) {
+            this._getExtractionSupportedTypes();
+        }
         this._currentFileItem = fileItem;
         let addElementToMenu = function(label, action = null) {
             let element = new Gtk.MenuItem({label: label});
@@ -349,7 +357,7 @@ var FileItemMenu = class {
                 }
                 return;
             } catch(err) {
-                log(`Error trying to launch Nemo: ${err.message}\n${err}`);
+                logError(err, `Error trying to launch Nemo.`);
             }
         }
         const timestamp = Gtk.get_current_event_time();
