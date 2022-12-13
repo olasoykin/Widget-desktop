@@ -228,7 +228,6 @@ var DesktopManager = class {
         this._createGridWindows();
 
         DBusUtils.NautilusFileOperations2.connectToProxy('g-properties-changed', this._undoStatusChanged.bind(this));
-        this._syncUndoRedo();
         DBusUtils.GtkVfsMetadata.connectSignalToProxy('AttributeChanged', this._metadataChanged.bind(this));
         this._allFileList = null;
         this._fileList = [];
@@ -668,6 +667,7 @@ var DesktopManager = class {
             this._newDocumentItem.show_all();
         }
         this._pasteMenuItem.set_sensitive(false);
+        this._syncUndoRedo();
         this._updateClipBoard();
     }
 
@@ -718,6 +718,11 @@ var DesktopManager = class {
     }
 
     _syncUndoRedo() {
+        if (!DBusUtils.RemoteFileOperations.isAvailable) {
+            this._undoMenuItem.hide();
+            this._redoMenuItem.hide();
+            return;
+        }
         switch (DBusUtils.RemoteFileOperations.UndoStatus()) {
             case Enums.UndoStatus.UNDO:
                 this._undoMenuItem.show();
