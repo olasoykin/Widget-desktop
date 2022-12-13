@@ -137,7 +137,7 @@ var FileItemMenu = class {
                 this._doMultiOpen.bind(this)
             );
         }
-        selectedItemsNum = undefined;
+
         this._menu.connect_after('selection-done', () => {
             this._menu.destroy();
             this._menu = null;
