@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2022-03-18 18:54+0900\n"
-"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
+"PO-Revision-Date: 2022-12-14 20:15+0900\n"
+"Last-Translator: Yamada Hayao <hayao@fascode.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -21,23 +21,23 @@ msgstr ""
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoArがインストールされていません"
 
 #: autoAr.js:88
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"圧縮ファイル上で動作させるには file rollerとgir-1.2-gnomeAutoArをインストール"
+"してください"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "ここで展開"
+msgstr "ファイルを展開しています"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "{0} 個のファイルを圧縮"
+msgstr "ファイルを圧縮しています"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -49,78 +49,76 @@ msgstr "OK"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "パスワードを入力してください"
 
 #: autoAr.js:355
+#, fuzzy
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "'${outputFile}' の一部を削除しています"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "行き先のフォルダを作成しています"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "'${outputPath}' にファイルを展開しています"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "ここで展開"
+msgstr "展開が完了しました"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "'${fullPathFile}' の展開が完了しました"
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "ここで展開"
+msgstr "展開がキャンセルされました"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "'${fullPathFile}' の展開はユーザーによってキャンセルされました"
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "${filename} はパスワードが必要です"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "展開中にエラーが発生しました"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "ファイルを'${outputFile}'に圧縮しています"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "圧縮が完了しました"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "'${outputFile}' への圧縮がキャンセルされました"
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "圧縮がキャンセルされました"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "'${outputFile}' はすでに存在しています"
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "'${outputFile}' への圧縮はユーザーによってキャンセルされました"
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "圧縮中にエラーが発生しました"
 
 #: autoAr.js:546
-#, fuzzy
 msgid "Create archive"
-msgstr "作成"
+msgstr "アーカイブを作成"
 
 #: autoAr.js:571
 #, fuzzy
@@ -129,7 +127,7 @@ msgstr "ファイル名"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "パスワード"
 
 #: autoAr.js:618
 msgid "Create"
@@ -137,7 +135,7 @@ msgstr "作成"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "すべてのオペレーティングシステムとの互換性。"
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
@@ -145,11 +143,11 @@ msgstr ""
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "LinuxやMac専用のより小さいアーカイブ"
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "WindowsやMac専用のより小さいアーカイブ"
 
 #: askRenamePopup.js:42
 msgid "Folder name"
