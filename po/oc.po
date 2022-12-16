@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2022-07-03 21:02+0200\n"
+"PO-Revision-Date: 2022-12-16 22:03+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
@@ -16,27 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr es pas installat"
 
 #: autoAr.js:88
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"Per poder trabalhar amb de fichièrs compressats, installatz  file-roller e/o "
+"gir-1.2-gnomeAutoAr"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Traire aicí"
+msgstr "Extraccion dels fichièrs"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "Compressar {0} fichièr"
+msgstr "Compression dels fichièrs"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -48,106 +48,104 @@ msgstr "D’acordi"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Picatz un senhal aicí"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "Supression de fichièr parcial « ${outputFile} »"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "Creacion d’un dossièr de destinacion"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "Extraccion dels fichièrs dins « ${outputPath} »"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Traire aicí"
+msgstr "Extraccion acabada"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "L’extraccion de « ${fullPathFile} » es acabada."
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "Traire aicí"
+msgstr "Extraccion anullada"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "L’utilizaire a anullat l’extraccion de « ${fullPathFile} »."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "Frasa secreta requesida per ${filename}"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Error pendent l’extraccion"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "Compression dels fichièrs dins « ${outputFile} »"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Compression acabada"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "La compression des fichièrs dins « ${outputFile} » es acabada."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Compression anullada"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "Lo fichièr en sortida « ${outputFile} » existís ja."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
 msgstr ""
+"L’utilizaire a anullat la compression des fichièrs dins « ${outputFile} »."
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Error pendent la compression"
 
 #: autoAr.js:546
 msgid "Create archive"
-msgstr ""
+msgstr "Crear un archiu"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Nom de fichièr"
+msgstr "Nom de l’archiu"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Senhal"
 
 #: autoAr.js:618
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Compatible amb totes los sistèmas operatius."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr ".zip protegit per senhal, deu èsser installat sus Windows e Mac."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Archius mai pichons mas Linux e Mac sonque."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Archius mai pichons mas devon èsser installats sus Windows e Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -439,11 +437,10 @@ msgid "Send to..."
 msgstr "Mandar a..."
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "Compressar {0} fichièr"
-msgstr[1] "Compressar {0} fichièrs"
+msgstr[0] "Compressar {0} dossièr"
+msgstr[1] "Compressar {0} dossièrs"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
