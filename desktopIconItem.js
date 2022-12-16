@@ -90,9 +90,9 @@ var desktopIconItem = class desktopIconItem {
         this.container.destroy();
         this.container = null;
         this._eventBox = null;
-        this._sheildEventBox = null;
+        this._shieldEventBox = null;
         this._labelEventBox = null;
-        this._sheildLabelEventBox = null;
+        this._shieldLabelEventBox = null;
         this._icon = null;
         this._iconContainer = null;
         this._label = null;
@@ -113,16 +113,16 @@ var desktopIconItem = class desktopIconItem {
         this.container = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL, halign: Gtk.Align.CENTER});
         this._containerId = this.container.connect('destroy', () => this._onDestroy());
         this._eventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
-        this._sheildEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
+        this._shieldEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
         this._labelEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
-        this._sheildLabelEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
+        this._shieldLabelEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
 
         this._icon = new Gtk.Image();
         this._iconContainer = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
         this._iconContainer.pack_start(this._icon, true, true, 0);
         this._iconContainer.set_baseline_position(Gtk.BaselinePosition.CENTER);
         this._eventBox.add(this._iconContainer);
-        this._sheildEventBox.add(this._eventBox);
+        this._shieldEventBox.add(this._eventBox);
 
         this._label = new Gtk.Label();
         this._labelContainer = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL, halign: Gtk.Align.CENTER});
@@ -141,10 +141,10 @@ var desktopIconItem = class desktopIconItem {
         this._label.set_lines(2);
         this._labelContainer.pack_start(this._label, false, true, 0);
         this._labelEventBox.add(this._labelContainer);
-        this._sheildLabelEventBox.add(this._labelEventBox);
+        this._shieldLabelEventBox.add(this._labelEventBox);
 
-        this.container.pack_start(this._sheildEventBox, false, false, 0);
-        this.container.pack_start(this._sheildLabelEventBox, false, false, 0);
+        this.container.pack_start(this._shieldEventBox, false, false, 0);
+        this.container.pack_start(this._shieldLabelEventBox, false, false, 0);
 
         this._styleContext = this._iconContainer.get_style_context();
         this._labelStyleContext = this._labelContainer.get_style_context();
@@ -159,8 +159,8 @@ var desktopIconItem = class desktopIconItem {
          * The solution is to allow them to pass in a EventBox, used both for detecting the events and the DnD, and block them
          * in a second EventBox, located outside.
          */
-        this._sheildEventBox.connect('button-press-event', (actor, event) => {return true;});
-        this._sheildLabelEventBox.connect('button-press-event', (actor, event) => {return true;});
+        this._shieldEventBox.connect('button-press-event', (actor, event) => {return true;});
+        this._shieldLabelEventBox.connect('button-press-event', (actor, event) => {return true;});
         this._eventBox.connect('button-press-event', (actor, event) => this._onPressButton(actor, event));
         this._eventBox.connect('enter-notify-event', (actor, event) => this._onEnter(this._eventBox));
         this._eventBox.connect('leave-notify-event', (actor, event) => this._onLeave(this._eventBox));
