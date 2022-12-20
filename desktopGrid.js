@@ -35,7 +35,12 @@ var elementSpacing = 2;
 
 var DesktopGrid = class {
 
+    _connectSignal(object, signal, callback) {
+        this._signalIds.push([object, object.connect(signal, callback)]);
+    }
+
     constructor(desktopManager, desktopName, desktopDescription, asDesktop, premultiplied) {
+        this._signalIds = [];
         this._destroying = false;
         this._desktopManager = desktopManager;
         this._desktopName = desktopName;
@@ -74,7 +79,7 @@ var DesktopGrid = class {
             this._windowContext.add_class("testwindow");
         }
         this._window.set_resizable(false);
-        this._window.connect('delete-event', () => {
+        this._connectSignal(this._window, 'delete-event', () => {
             if (this._destroying) {
                 return false;
             }
@@ -96,7 +101,7 @@ var DesktopGrid = class {
         this.setDropDestination(this._eventBox);
 
         this._selectedList = null;
-        this._container.connect('draw', (widget, cr) => {
+        this._connectSignal(this._container, 'draw', (widget, cr) => {
             this._doDrawRubberBand(cr);
             cr.$dispose();
         });
@@ -111,22 +116,22 @@ var DesktopGrid = class {
                                   Gdk.EventMask.BUTTON_PRESS_MASK |
                                   Gdk.EventMask.BUTTON_RELEASE_MASK |
                                   Gdk.EventMask.KEY_RELEASE_MASK);
-        this._eventBox.connect('button-press-event', (actor, event) => {
+        this._connectSignal(this._eventBox, 'button-press-event', (actor, event) => {
             let [a, x, y] = event.get_coords();
             [x, y] = this.coordinatesLocalToGlobal(x, y);
             this._desktopManager.onPressButton(x, y, event, this);
             return false;
         });
-        this._eventBox.connect('motion-notify-event', (actor, event) => {
+        this._connectSignal(this._eventBox, 'motion-notify-event', (actor, event) => {
             let [a, x, y] = event.get_coords();
             [x, y] = this.coordinatesLocalToGlobal(x, y);
             this._desktopManager.onMotion(x, y);
         });
-        this._eventBox.connect('button-release-event', (actor, event) => {
+        this._connectSignal(this._eventBox, 'button-release-event', (actor, event) => {
             this._desktopManager.onReleaseButton(this);
         });
 
-        this._window.connect('key-press-event', (actor, event) => {
+        this._connectSignal(this._window, 'key-press-event', (actor, event) => {
             this._desktopManager.onKeyPress(event, this);
         });
         this.updateGridRectangle();
@@ -222,6 +227,11 @@ var DesktopGrid = class {
 
     destroy() {
         this._destroying = true;
+        /* Disconnect signals */
+        for(let [object, signalId] of this._signalIds) {
+            object.disconnect(signalId);
+        }
+        this._signalIds = [];
         this._window.destroy();
     }
 
@@ -238,7 +248,7 @@ var DesktopGrid = class {
             Enums.DndTargetInfo.TEXT_PLAIN);
         dropDestination.drag_dest_set_target_list(targets);
         targets = undefined; // to avoid memory leaks
-        dropDestination.connect('drag-motion', (widget, context, x, y, time) => {
+        this._connectSignal(dropDestination, 'drag-motion', (widget, context, x, y, time) => {
             this.receiveMotion(x, y);
 
             if (DesktopIconsUtil.getModifiersInDnD(context, Gdk.ModifierType.CONTROL_MASK))
@@ -246,10 +256,10 @@ var DesktopGrid = class {
             else
                 Gdk.drag_status(context, Gdk.DragAction.MOVE, time);
         });
-        this._eventBox.connect('drag-leave', (widget, context, time) => {
+        this._connectSignal(this._eventBox, 'drag-leave', (widget, context, time) => {
             this.receiveLeave();
         });
-        dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
+        this._connectSignal(dropDestination, 'drag-data-received', (widget, context, x, y, selection, info, time) => {
             const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
             this.receiveDrop(context, x, y, selection, info, false, forceCopy);
         });

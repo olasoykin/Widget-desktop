@@ -42,6 +42,7 @@ const _ = Gettext.gettext;
 var desktopIconItem = class desktopIconItem {
 
     constructor(desktopManager, fileExtra) {
+        this._signalIds = [];
         this._desktopManager = desktopManager;
         this._fileExtra = fileExtra;
         this._loadThumbnailDataCancellable = null;
@@ -82,11 +83,11 @@ var desktopIconItem = class desktopIconItem {
         if (this._loadThumbnailDataCancellable) {
             this._loadThumbnailDataCancellable.cancel();
         }
-        /* Container */
-        if (this._containerId) {
-            this.container.disconnect(this._containerId);
-            this._containerId = 0;
+        /* Disconnect signals */
+        for(let [object, signalId] of this._signalIds) {
+            object.disconnect(signalId);
         }
+        this._signalIds = [];
         this.container.destroy();
         this.container = null;
         this._eventBox = null;
@@ -105,13 +106,17 @@ var desktopIconItem = class desktopIconItem {
         this._destroyed = true;
     }
 
+    _connectSignal(object, signal, callback) {
+        this._signalIds.push([object, object.connect(signal, callback)]);
+    }
+
     /***********************
      * Creators *
      ***********************/
 
     _createIconActor() {
         this.container = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL, halign: Gtk.Align.CENTER});
-        this._containerId = this.container.connect('destroy', () => this._onDestroy());
+        this._connectSignal(this.container, 'destroy', () => this._onDestroy());
         this._eventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
         this._shieldEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
         this._labelEventBox = new Gtk.EventBox({visible: true, halign: Gtk.Align.CENTER});
@@ -159,39 +164,39 @@ var desktopIconItem = class desktopIconItem {
          * The solution is to allow them to pass in a EventBox, used both for detecting the events and the DnD, and block them
          * in a second EventBox, located outside.
          */
-        this._shieldEventBox.connect('button-press-event', (actor, event) => {return true;});
-        this._shieldLabelEventBox.connect('button-press-event', (actor, event) => {return true;});
-        this._eventBox.connect('button-press-event', (actor, event) => this._onPressButton(actor, event));
-        this._eventBox.connect('enter-notify-event', (actor, event) => this._onEnter(this._eventBox));
-        this._eventBox.connect('leave-notify-event', (actor, event) => this._onLeave(this._eventBox));
-        this._eventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
-        this._eventBox.connect('drag-motion', (widget, context, x, y, time) => {
+        this._connectSignal(this._shieldEventBox, 'button-press-event', (actor, event) => {return true;});
+        this._connectSignal(this._shieldLabelEventBox, 'button-press-event', (actor, event) => {return true;});
+        this._connectSignal(this._eventBox, 'button-press-event', (actor, event) => this._onPressButton(actor, event));
+        this._connectSignal(this._eventBox, 'enter-notify-event', (actor, event) => this._onEnter(this._eventBox));
+        this._connectSignal(this._eventBox, 'leave-notify-event', (actor, event) => this._onLeave(this._eventBox));
+        this._connectSignal(this._eventBox, 'button-release-event', (actor, event) => this._onReleaseButton(actor, event));
+        this._connectSignal(this._eventBox, 'drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
             this._updateDragStatus(context, time);
         });
-        this._eventBox.connect('drag-leave', () => {
+        this._connectSignal(this._eventBox, 'drag-leave', () => {
             this.unHighLightDropTarget();
         });
-        this._eventBox.connect('size-allocate', () => this._calculateIconRectangle());
-        this._labelEventBox.connect('button-press-event', (actor, event) => this._onPressButton(actor, event));
-        this._labelEventBox.connect('enter-notify-event', (actor, event) => this._onEnter(this._labelEventBox));
-        this._labelEventBox.connect('leave-notify-event', (actor, event) => this._onLeave(this._labelEventBox));
-        this._labelEventBox.connect('button-release-event', (actor, event) => this._onReleaseButton(actor, event));
-        this._labelEventBox.connect('drag-motion', (widget, context, x, y, time) => {
+        this._connectSignal(this._eventBox, 'size-allocate', () => this._calculateIconRectangle());
+        this._connectSignal(this._labelEventBox, 'button-press-event', (actor, event) => this._onPressButton(actor, event));
+        this._connectSignal(this._labelEventBox, 'enter-notify-event', (actor, event) => this._onEnter(this._labelEventBox));
+        this._connectSignal(this._labelEventBox, 'leave-notify-event', (actor, event) => this._onLeave(this._labelEventBox));
+        this._connectSignal(this._labelEventBox, 'button-release-event', (actor, event) => this._onReleaseButton(actor, event));
+        this._connectSignal(this._labelEventBox, 'drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
             this._updateDragStatus(context, time);
         });
-        this._labelEventBox.connect('drag-leave', () => {
+        this._connectSignal(this._labelEventBox, 'drag-leave', () => {
             this.unHighLightDropTarget();
         });
-        this._labelEventBox.connect('size-allocate', () => {
+        this._connectSignal(this._labelEventBox, 'size-allocate', () => {
             this._doLabelSizeAllocated();
         });
-        this.container.connect('drag-motion', (widget, context, x, y, time) => {
+        this._connectSignal(this.container, 'drag-motion', (widget, context, x, y, time) => {
             this.highLightDropTarget(x, y);
             this._updateDragStatus(context, time);
         });
-        this.container.connect('drag-leave', () => {
+        this._connectSignal(this.container, 'drag-leave', () => {
             this.unHighLightDropTarget();
         });
 
@@ -465,7 +470,7 @@ var desktopIconItem = class desktopIconItem {
         }
         widget.drag_source_set_target_list(targets);
         targets = undefined; // prevent memory leaks
-        widget.connect('drag-begin', (widget, context) => {
+        this._connectSignal(widget, 'drag-begin', (widget, context) => {
             const scale = this._icon.get_scale_factor();
             let surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, this.container.get_allocated_width() * scale, this.container.get_allocated_height() * scale);
             // setDeviceScale was introduced to GJS in version 1.69.2
@@ -498,14 +503,14 @@ var desktopIconItem = class desktopIconItem {
             this._desktopManager.onDragBegin(this);
             cr.$dispose();
         });
-        widget.connect('drag-data-get', (widget, context, data, info, time) => {
+        this._connectSignal(widget, 'drag-data-get', (widget, context, data, info, time) => {
             let dragData = this._desktopManager.fillDragDataGet(info);
             if (dragData != null) {
                 let list = ByteArray.fromString(dragData[1]);
                 data.set(dragData[0], 8, list);
             }
         });
-        widget.connect('drag-end', (widget, context) => {
+        this._connectSignal(widget, 'drag-end', (widget, context) => {
             this._desktopManager.onDragEnd();
         })
     }

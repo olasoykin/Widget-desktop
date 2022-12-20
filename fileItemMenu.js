@@ -47,7 +47,6 @@ var FileItemMenu = class {
             DesktopIconsUtil.getScriptsDir(),
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.ONLY_EXECUTABLE,
             this._onScriptClicked.bind(this));
-
     }
 
     _getExtractionSupportedTypes() {
@@ -109,20 +108,21 @@ var FileItemMenu = class {
         this._menu.add(new Gtk.SeparatorMenuItem());
     }
 
+    _addElementToMenu(label, action = null) {
+        let element = new Gtk.MenuItem({label: label});
+        this._menu.add(element);
+        if (action) {
+            element.connect('activate', action);
+        }
+        return element;
+    }
+
     showMenu(fileItem, event, atWidget=false) {
 
         if (!this._askedSupportedTypes) {
             this._getExtractionSupportedTypes();
         }
         this._currentFileItem = fileItem;
-        let addElementToMenu = function(label, action = null) {
-            let element = new Gtk.MenuItem({label: label});
-            this._menu.add(element);
-            if (action) {
-                element.connect('activate', action);
-            }
-            return element;
-        }.bind(this);
 
         let selectedItemsNum = this._desktopManager.getNumberOfSelectedItems();
 
@@ -132,7 +132,7 @@ var FileItemMenu = class {
         menuStyleContext.add_class("fileitemmenu");
 
         if (! fileItem.isStackMarker) {
-            addElementToMenu(
+            this._addElementToMenu(
                 selectedItemsNum > 1 ? _("Open All...") : _("Open"),
                 this._doMultiOpen.bind(this)
             );
@@ -148,7 +148,7 @@ var FileItemMenu = class {
             if (! fileItem.isSpecial && ! fileItem.isDirectory && ! fileItem.isValidDesktopFile) {
                 let unstackList = Prefs.getUnstackList();
                 let typeInList = unstackList.includes(fileItem.attributeContentType);
-                addElementToMenu(
+                this._addElementToMenu(
                     (typeInList) ? _("Stack This Type") : _("Unstack This Type"),
                     () => {this._desktopManager.onToggleStackUnstackThisTypeClicked(this._currentFileItem.attributeContentType, typeInList, unstackList);}
                 );
@@ -161,18 +161,18 @@ var FileItemMenu = class {
 
             let submenu = this._scriptsMonitor.createMenu();
             if (submenu !== null) {
-                addElementToMenu(_("Scripts")).set_submenu(submenu);
+                this._addElementToMenu(_("Scripts")).set_submenu(submenu);
                 this._addSeparator();
             }
 
             if (!fileItem.isDirectory) {
-                addElementToMenu(
+                this._addElementToMenu(
                     selectedItemsNum > 1 ? _("Open All With Other Application...") : _("Open With Other Application"),
                     this._doOpenWith.bind(this)
                 ).set_sensitive(selectedItemsNum > 0);
 
                 if (DBusUtils.discreteGpuAvailable && fileItem.trustedDesktopFile && (selectedItemsNum == 1)) {
-                    addElementToMenu(
+                    this._addElementToMenu(
                         _('Launch using Dedicated Graphics Card'),
                         () => {this._currentFileItem.doDiscreteGpu();}
                     );
@@ -183,25 +183,25 @@ var FileItemMenu = class {
 
             if (fileItem.attributeCanExecute && !fileItem.isDirectory && !fileItem.isValidDesktopFile && fileItem.execLine && Gio.content_type_can_be_executable(fileItem.attributeContentType)) {
                 let execLine = fileItem.execLine;
-                addElementToMenu(_("Run as a program"), () => {
+                this._addElementToMenu(_("Run as a program"), () => {
                     DesktopIconsUtil.spawnCommandLine(`"${execLine}"`);
                 });
                 this._addSeparator();
             }
 
             let allowCutCopyTrash = this._desktopManager.checkIfSpecialFilesAreSelected();
-            addElementToMenu(
+            this._addElementToMenu(
                 _('Cut'),
                 () => {this._desktopManager.doCut();}
             ).set_sensitive(!allowCutCopyTrash);
 
-            addElementToMenu(
+            this._addElementToMenu(
                 _('Copy'),
                 () => {this._desktopManager.doCopy();}
             ).set_sensitive(!allowCutCopyTrash);
 
             if (fileItem.canRename && (selectedItemsNum == 1)) {
-                addElementToMenu(
+                this._addElementToMenu(
                     _('Rename…'),
                     () => {this._desktopManager.doRename(this._currentFileItem, false);}
                 );
@@ -209,13 +209,13 @@ var FileItemMenu = class {
 
             this._addSeparator();
 
-            addElementToMenu(
+            this._addElementToMenu(
                 _('Move to Trash'),
                 () => {this._desktopManager.doTrash();}
             ).set_sensitive(!allowCutCopyTrash);
 
             if (Prefs.nautilusSettings.get_boolean('show-delete-permanently')) {
-                addElementToMenu(
+                this._addElementToMenu(
                     _('Delete permanently'),
                     () => {this._desktopManager.doDeletePermanently();}
                 ).set_sensitive(!allowCutCopyTrash);
@@ -223,7 +223,7 @@ var FileItemMenu = class {
 
             if (fileItem.isValidDesktopFile && !this._desktopManager.writableByOthers && !fileItem.writableByOthers && (selectedItemsNum == 1 )) {
                 this._addSeparator();
-                addElementToMenu(
+                this._addElementToMenu(
                     fileItem.trustedDesktopFile ? _("Don't Allow Launching") : _("Allow Launching"),
                     () => {this._currentFileItem.onAllowDisallowLaunchingClicked();}
                 );
@@ -234,7 +234,7 @@ var FileItemMenu = class {
 
         if (fileItem.isTrash) {
             this._addSeparator();
-            addElementToMenu(
+            this._addElementToMenu(
                 _('Empty Trash'),
                 () => {this._desktopManager.doEmptyTrash();}
             );
@@ -245,13 +245,13 @@ var FileItemMenu = class {
         if (fileItem.isDrive) {
             this._addSeparator();
             if (fileItem.canEject) {
-                addElementToMenu(
+                this._addElementToMenu(
                     _('Eject'),
                     () => {this._currentFileItem.eject();}
                 );
             }
             if (fileItem.canUnmount) {
-                addElementToMenu(
+                this._addElementToMenu(
                     _('Unmount'),
                     () => {this._currentFileItem.unmount();}
                 );
@@ -263,40 +263,40 @@ var FileItemMenu = class {
             let addedExtractHere = false;
             if (this._getExtractableAutoAr()) {
                 addedExtractHere = true;
-                addElementToMenu(
+                this._addElementToMenu(
                     _("Extract Here"),
                     () => this._desktopManager.getCurrentSelection(false).forEach(f =>
                         this._desktopManager.autoAr.extractFile(f.fileName)));
             }
             if (selectedItemsNum == 1 && this._getExtractable()) {
                 if (!addedExtractHere) {
-                    addElementToMenu(
+                    this._addElementToMenu(
                         _("Extract Here"),
                         () => {this._extractFileFromSelection(true);}
                     );
                 }
-                addElementToMenu(
+                this._addElementToMenu(
                     _("Extract To..."),
                     () => {this._extractFileFromSelection(false);}
                 );
             }
 
             if (!fileItem.isDirectory) {
-                addElementToMenu(
+                this._addElementToMenu(
                     _('Send to...'),
                     this._mailFilesFromSelection.bind(this)
                 );
             }
 
             if (this._desktopManager.getCurrentSelection().every(f => f.isDirectory)) {
-                addElementToMenu(
+                this._addElementToMenu(
                     Gettext.ngettext(
                         'Compress {0} folder', 'Compress {0} folders', selectedItemsNum).replace(
                             '{0}', selectedItemsNum),
                     () => this._doCompressFilesFromSelection()
                 );
             } else {
-                addElementToMenu(
+                this._addElementToMenu(
                     Gettext.ngettext(
                         'Compress {0} file', 'Compress {0} files', selectedItemsNum).replace(
                             '{0}', selectedItemsNum),
@@ -305,7 +305,7 @@ var FileItemMenu = class {
             }
 
 
-            addElementToMenu(
+            this._addElementToMenu(
                 Gettext.ngettext('New Folder with {0} item', 'New Folder with {0} items' , selectedItemsNum).replace('{0}', selectedItemsNum),
                 () => {this._doNewFolderFromSelection(this._currentFileItem);}
             );
@@ -314,21 +314,21 @@ var FileItemMenu = class {
         }
 
         if (! fileItem.isStackMarker) {
-            addElementToMenu(
+            this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Common Properties') : _('Properties'),
                 this._onPropertiesClicked.bind(this)
             );
 
             this._addSeparator();
 
-            addElementToMenu(
+            this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Show All in Files') : _('Show in Files'),
                 this._onShowInFilesClicked.bind(this)
             );
         }
 
         if (fileItem.isDirectory && (fileItem.path != null) && (selectedItemsNum == 1)) {
-            addElementToMenu(
+            this._addElementToMenu(
                 _('Open in Terminal'),
                 () => {DesktopIconsUtil.launchTerminal(this._currentFileItem.path, null);}
             );
