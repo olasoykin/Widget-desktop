@@ -480,7 +480,7 @@ var FileItemMenu = class {
         let xdgEmailCommand = [];
         xdgEmailCommand.push('xdg-email')
         for (let fileItem of this._desktopManager.getCurrentSelection(false)) {
-            fileItem.unsetSelected;
+            fileItem.unsetSelected();
             xdgEmailCommand.push('--attach');
             xdgEmailCommand.push(fileItem.file.get_path());
         }
