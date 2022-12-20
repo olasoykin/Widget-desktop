@@ -38,6 +38,7 @@ var desktopSettings;
 var mutterSettings = null;
 // This is already in Nautilus settings, so it should not be made tweakable here
 var CLICK_POLICY_SINGLE = false;
+var prefsWindow;
 
 function init(path) {
     let schemaSource = GioSSS.get_default();
@@ -65,17 +66,17 @@ function init(path) {
 }
 
 function showPreferences() {
-    if (this.window) {
+    if (prefsWindow) {
         return;
     }
-    this.window = new Gtk.Window({ resizable: false,
+    prefsWindow = new Gtk.Window({ resizable: false,
                                   window_position: Gtk.WindowPosition.CENTER });
-    this.window.connect('destroy', () => {this.window = null});
-    this.window.set_title(_("Settings"));
-    DesktopIconsUtil.windowHidePagerTaskbarModal(this.window, true);
+    prefsWindow.connect('destroy', () => {prefsWindow = null});
+    prefsWindow.set_title(_("Settings"));
+    DesktopIconsUtil.windowHidePagerTaskbarModal(prefsWindow, true);
     let frame = PrefsWindow.preferencesFrame(Gtk, desktopSettings, nautilusSettings, gtkSettings);
-    this.window.add(frame);
-    this.window.show_all();
+    prefsWindow.add(frame);
+    prefsWindow.show_all();
 }
 
 function _onNautilusSettingsChanged() {
