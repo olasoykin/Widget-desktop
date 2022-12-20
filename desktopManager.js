@@ -1256,7 +1256,7 @@ var DesktopManager = class {
         this._readingDesktopFiles = true;
         this._forceDraw = false;
         this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
-        let fileList;
+        let fileList = [];
         while(true) {
             this._desktopFilesChanged = false;
             if (! this._desktopDir.query_exists(null)) {

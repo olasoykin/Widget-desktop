@@ -130,7 +130,6 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
      ***********************/
 
     _destroy() {
-        super._destroy();
         /* Trash */
         if (this._monitorTrashId) {
             this._monitorTrashDir.disconnect(this._monitorTrashId);
@@ -150,7 +149,11 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         }
         if (this._realizeId && this.container) {
             this.container.disconnect(this._realizeId);
+            this._realizeId = 0;
         }
+        // call super() after disconnecting everything, because it destroys
+        // the top widget, and that will destroy also all the other widgets.
+        super._destroy();
     }
 
     /***********************
@@ -423,7 +426,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
                 dropDestination.drag_dest_set_target_list(targets);
                 targets = undefined;
-                dropDestination.connect('drag-data-received', (widget, context, x, y, selection, info, time) => {
+                this._connectSignal(dropDestination, 'drag-data-received', (widget, context, x, y, selection, info, time) => {
                     const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
                     if (info === Enums.DndTargetInfo.GNOME_ICON_LIST ||
                         info === Enums.DndTargetInfo.URI_LIST) {

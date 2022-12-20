@@ -23,8 +23,8 @@ const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gio = imports.gi.Gio;
 
 function CreateThumbnail() {
-    let thumbnailFactorNormal = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.NORMAL);
-    let thumbnailFactorLarge = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.LARGE);
+    let thumbnailFactoryNormal = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.NORMAL);
+    let thumbnailFactoryLarge = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.LARGE);
 
     let file = Gio.File.new_for_path(ARGV[0]);
     if (!file.query_exists(null)) {
