@@ -1981,7 +1981,9 @@ var DesktopManager = class {
             if (item.stackUnique) {
                 stackTopMarkerFolderList.push(item);
             }
-            item._updateIcon;
+            item.updateIcon().catch((e) => {
+                print(`Exception while updating an icon: ${e.message}\n${e.stack}`);
+            });
         }
         otherFiles = [];
         this._sortByName(specialFiles);
