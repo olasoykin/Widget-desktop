@@ -44,7 +44,7 @@ function CreateThumbnail() {
     if (thumbnailNormal != null) {
         return 3;
     }
-    if (thumbnailFactory.has_valid_failed_thumbnail(fileUri, modifiedTime)) {
+    if (thumbnailFactoryNormal.has_valid_failed_thumbnail(fileUri, modifiedTime)) {
         return 4;
     }
 
