@@ -1,5 +1,16 @@
 # History of versions #
 
+* Version 47.0.1
+  * New version scheme
+  * Cleaned the code (Sergio Costas and Sundeep Mediratta)
+  * Now DING is kept running in the lock screen (Sergio Costas)
+  * DBus proxy creation is now asynchronous, speeding up the start (Sergio Costas, based on code from Sundeep Mediratta)
+  * Now it can show the thumbnails for XCF (Gimp) files (Sergio Costas)
+  * Fixed rubber band initiation (Sundeep Mediratta)
+  * Fixed window displacement when dragging from the top bar (Sergio Costas)
+  * Make the extract folder for "Extract here" (Sundeep Mediratta)
+  * Checks if it runs under XWayland
+
 * Version 47
   * Pass the primary monitor index through DBus (Sergio Costas)
   * Added keyboard navigation support (Sergio Costas)
