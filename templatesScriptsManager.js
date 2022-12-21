@@ -70,7 +70,7 @@ var TemplatesScriptsManager = class {
         let entriesList = null;
 
         do {
-            this._entriesDirMonitors.map(f => {
+            this._entriesDirMonitors.forEach(f => {
                 f[0].disconnect(f[1]);
                 f[0].cancel();
             });
@@ -157,7 +157,9 @@ var TemplatesScriptsManager = class {
                         if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
                             resolve(null);
                         } else {
-                            reject('file-read-error');
+                            reject(new GLib.Error(Gio.IOErrorEnum,
+                                Gio.IOErrorEnum.FAILED,
+                                'file-read-error'));
                         }
                         return;
                     }
