@@ -1734,7 +1734,7 @@ var DesktopManager = class {
                 if (position || suggestedName) {
                     return null;
                 }
-                return;
+                return null;
             }
             if (opts.rename) {
                 this.newFolderDoRename = newName;
@@ -1743,6 +1743,7 @@ var DesktopManager = class {
                 return dir.get_uri();
             }
         }
+        return null;
     }
 
     _newDocument(template) {

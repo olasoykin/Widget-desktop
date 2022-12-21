@@ -396,6 +396,7 @@ var desktopIconItem = class desktopIconItem {
         if (this._grid) {
             return true;
         }
+        return false;
     }
 
     _updateDragStatus(context, time) {
