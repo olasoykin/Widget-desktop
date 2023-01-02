@@ -1,5 +1,11 @@
 # History of versions #
 
+* Version 47.0.2
+  * Added support for dark themes (Sundeep Mediratta)
+  * Reformatted all the code using Eslint (Sergio Costas)
+  * Fixed thumbnails generation when using the external program (Sergio Costas)
+  * Fixed some extra little bugs (Sergio Costas)
+
 * Version 47.0.1
   * New version scheme
   * Cleaned the code (Sergio Costas and Sundeep Mediratta)
