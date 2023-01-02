@@ -115,7 +115,14 @@ var DesktopManager = class {
         this._monitorDesktopDir.connect('changed', (obj, file, otherFile, eventType) => this._updateDesktopIfChanged(file, otherFile, eventType));
 
         this.fileItemMenu = new FileItemMenu.FileItemMenu(this);
-
+        if (Prefs.schemaGnomeDarkSettings) {
+            this._checkApplyDarkModeSetting();
+            Prefs.schemaGnomeDarkSettings.connect('changed', (obj, key) => {
+                if (key === 'color-scheme') {
+                    this._checkApplyDarkModeSetting();
+                }
+            });
+        }
         this._showHidden = Prefs.gtkSettings.get_boolean('show-hidden');
         this.showDropPlace = Prefs.desktopSettings.get_boolean('show-drop-place');
         this.useNemo = Prefs.desktopSettings.get_boolean('use-nemo');
@@ -412,6 +419,11 @@ var DesktopManager = class {
         }`;
         this._cssProviderSelection.load_from_data(style);
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), this._cssProviderSelection, 600);
+    }
+
+    _checkApplyDarkModeSetting() {
+        let displayGtkSettings = Gtk.Settings.get_for_screen(Gdk.Screen.get_default());
+        displayGtkSettings.gtk_application_prefer_dark_theme = Prefs.schemaGnomeDarkSettings.get_string('color-scheme') === 'prefer-dark';
     }
 
     clearFileCoordinates(fileList, dropCoordinates) {

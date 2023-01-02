@@ -62,6 +62,11 @@ function init(path) {
     } else {
         nautilusCompression = new Gio.Settings({settings_schema: compressionSchema});
     }
+    let schemaDarkSettings = schemaSource.lookup(Enums.SCHEMA_DARK_SETTINGS, true);
+    if (schemaDarkSettings) {
+        this.schemaGnomeDarkSettings = new Gio.Settings({ settings_schema: schemaDarkSettings });
+    }
+
     desktopSettings = PrefsWindow.get_schema(path, Enums.SCHEMA);
     let schemaMutter = schemaSource.lookup(Enums.SCHEMA_MUTTER, true);
     if (schemaMutter) {
