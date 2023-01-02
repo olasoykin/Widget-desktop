@@ -153,7 +153,7 @@ var DesktopIconsUsableAreaClass = class {
             return;
 
         const usableArea = extension?.stateObj?.DesktopIconsUsableArea;
-         if (usableArea?.uuid === IDENTIFIER_UUID)
+        if (usableArea?.uuid === IDENTIFIER_UUID)
             usableArea.setMarginsForExtension(Me.uuid, this._margins);
     }
 }
