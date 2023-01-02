@@ -103,6 +103,7 @@ var SCHEMA = 'org.gnome.shell.extensions.ding';
 var SCHEMA_MUTTER = 'org.gnome.mutter';
 var EXEC_KEY = 'exec';
 var NAUTILUS_SCRIPTS_DIR = '.local/share/nautilus/scripts';
+var SCHEMA_DARK_SETTINGS = 'org.gnome.desktop.interface';
 
 var S_IXUSR = 0o00100;
 var S_IWOTH = 0o00002;
