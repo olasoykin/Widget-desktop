@@ -22,6 +22,9 @@ imports.gi.versions.GnomeDesktop = '3.0';
 const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gio = imports.gi.Gio;
 
+/**
+ *
+ */
 function CreateThumbnail() {
     let thumbnailFactoryNormal = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.NORMAL);
     let thumbnailFactoryLarge = GnomeDesktop.DesktopThumbnailFactory.new(GnomeDesktop.DesktopThumbnailSize.LARGE);
