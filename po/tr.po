@@ -1,5 +1,5 @@
 # Turkish translation for desktop-icons.
-# Copyright (C) 2000-2022 desktop-icons's COPYRIGHT HOLDER
+# Copyright (C) 2000-2023 desktop-icons's COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons package.
 #
 # Serdar Sağlam <teknomobil@yandex.com>, 2019
@@ -7,46 +7,46 @@
 # Mahmut Elmas <mahmutelmas06@gmail.com>, 2020.
 # Cihan Alkan <cihanalk@gmail.com>, 2021.
 # Fatih Altun <fatih.altun@pardus.org.tr>, 2021.
-# Sabri Ünal <libreajans@gmail.com>, 2019, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2019, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2021-10-12 00:28+0300\n"
-"Last-Translator: Fatih Altun <fatih.altun@pardus.org.tr>\n"
+"PO-Revision-Date: 2023-02-09 01:04+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <developer@pardus.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.38.0\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr kurulu değil"
 
 #: autoAr.js:88
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"Sıkıştırılmış dosyalarla çalışabilmek için, file-roller ve/veya gir-1.2-"
+"gnomeAutoArʼı kurun"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Buraya Çıkar"
+msgstr "Dosyalar çıkarılıyor"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "{0} dosyayı sıkıştır"
+msgstr "Dosyalar sıkıştırılıyor"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
-msgstr "İptal"
+msgstr "İptal Et"
 
 #: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
 msgid "OK"
@@ -54,106 +54,105 @@ msgstr "Tamam"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Buraya bir parola girin"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "Kısmi dosya '${outputFile}' siliniyor"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "Hedef klasör oluşturuluyor"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "Dosyalar, '${outputPath}' konumuna çıkarılıyor"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Buraya Çıkar"
+msgstr "Çıkarma tamamlandı"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "'${fullPathFile}' çıkarması tamamlandı."
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "Buraya Çıkar"
+msgstr "Çıkarma iptal edildi"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "'${fullPathFile}' çıkarması kullanıcı tarafından iptal edildi."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "${filename} için parola gerekli"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Çıkarma sırasında hata"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "Dosyalar '${outputFile}' içine sıkıştırılıyor."
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Sıkıştırma tamamlandı"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "Dosyaların '${outputFile}' içine sıkıştırılması tamamlandı."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Sıkıştırma iptal edildi"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "Çıktı dosyası '${outputFile}' zaten var."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
 msgstr ""
+"Dosyaların '${outputFile}' içine sıkıştırılması kullanıcı tarafından iptal "
+"edildi."
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Sıkıştırma sırasında hata"
 
 #: autoAr.js:546
 msgid "Create archive"
-msgstr ""
+msgstr "Arşiv oluştur"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Dosya adı"
+msgstr "Arşiv adı"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
 #: autoAr.js:618
 msgid "Create"
-msgstr ""
+msgstr "Oluştur"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Tüm işletim sistemleriyle uyumlu."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr "Parola korumalı .zip, Windows ve Mac üzerinde kurulmalıdır."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Daha küçük arşivler ama yalnızca Linux ve Mac."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Daha küçük arşivler ama Windows ve Mac üzerinde kurulmalıdır."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -169,13 +168,15 @@ msgstr "Yeniden Adlandır"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" Masaüstü Simgeleri için gereklidir"
 
 #: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Bu işlevin Masaüstü Simgelerinde çalışması için sisteminize "
+"\"${programName}\" kurmalısınız."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -305,6 +306,10 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"Bu .desktop dosyasında hatalar var ya da izinleri olmayan bir programa "
+"işaret ediyor. Yürütülemez.\n"
+"\n"
+"\t<b>Doğru yürütülebilir Programı ayarlamak için dosyayı düzenleyin.</b>"
 
 #: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
@@ -315,18 +320,26 @@ msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"Bu .desktop Dosyasının İzinleri yanlış. Özellikleri düzenlemek için Sağ "
+"Tıklayın, ardından:\n"
 
 #: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>İzinleri, \"Diğer Erişim\", \"Salt Okunur\" ya da \"Hiçbiri\" olarak "
+"ayarla</b>"
 
 #: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>\"Dosyanın Program Olarak Yürütülmesine İzin Ver\" seçeneğini "
+"etkinleştirin</b>"
 
 #: fileItem.js:367
 msgid ""
@@ -335,6 +348,10 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"Bu .desktop dosyası güvenilir değil, başlatılamıyor. Başlatmayı "
+"etkinleştirmek için sağ tıklayın, ardından:\n"
+"\n"
+"<b>\"Başlatmaya İzin Ver\"i etkinleştirin</b>"
 
 #: fileItemMenu.js:132
 msgid "Open All..."
@@ -346,11 +363,11 @@ msgstr "Aç"
 
 #: fileItemMenu.js:143
 msgid "Stack This Type"
-msgstr ""
+msgstr "Bu Türü Yığınla"
 
 #: fileItemMenu.js:143
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Bu Yığın Türünü Kaldır"
 
 #: fileItemMenu.js:155
 msgid "Scripts"
@@ -425,10 +442,9 @@ msgid "Send to..."
 msgstr "Gönder..."
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "{0} dosyayı sıkıştır"
+msgstr[0] "{0} klasörü sıkıştır"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
@@ -702,14 +718,12 @@ msgid "Icons Arranged by this property"
 msgstr "Simgeler bu düzene göre sıralandı"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "Simgeleri Düzenli Tut"
+msgstr "Simgeleri Yığılı Tut"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Simgeleri son sıralama düzenine göre daima düzenli tut"
+msgstr "Simgeleri her zaman yığılı, benzer türler gruplanmış tut"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
@@ -717,7 +731,7 @@ msgstr "Yığılı tutulmayacak dosyaların türü"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Dizge türleri dizisi. Bu tür dosyaları Yığınlama"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
@@ -729,7 +743,7 @@ msgstr "Bağlantılara amblem ekle"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Yumuşak bağlantıları tanımlamaya olanak sağlamak için amblem ekle."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
@@ -740,3 +754,5 @@ msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+"Etiket metnini beyaz yerine siyaha boya. Açık renkli arka plan kullanırken "
+"kullanışlıdır."
