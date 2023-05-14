@@ -1,13 +1,13 @@
 # This file is distributed under the same license as the PACKAGE package.
-# Jordi Mas i Hernandez <jmas@softcatala.org>, 2019-2021
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2019-2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2019-07-22 10:24+0200\n"
-"Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
+"PO-Revision-Date: 2023-05-14 10:24+0200\n"
+"Last-Translator: Jordi Mas i Hernànde <jmas@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +18,23 @@ msgstr ""
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "L'AutoAr no està instal·lat"
 
 #: autoAr.js:88
 msgid ""
-"To be able to work with compressed files, install file-roller and/or gir-1.2-"
-"gnomeAutoAr"
+"To be able to work with compressed files, install file-roller and/or "
+"gir-1.2-gnomeAutoAr"
 msgstr ""
+"Per a poder treballar amb fitxers comprimits, instal·leu file-roller i/o "
+"gir-1.2-gnomeAutoAr"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Extreu aquí"
+msgstr "S'estan extraient els fitxers"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "Comprimeix {0} fitxer"
+msgstr "S'estan comprimint els fitxers"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -46,106 +46,104 @@ msgstr "D'acord"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Introduïu aquí una contrasenya aquí"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "S'està suprimint el fitxer parcial «${outputFile}»"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "S'està creant la carpeta de destinació"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "S'estan extraient els fitxers a «${outputPath}»"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Extreu aquí"
+msgstr "Extracció completada"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "S'ha completat l'extracció de «${fullPathFile}»."
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "Extreu aquí"
+msgstr "S'ha cancel·lat l'extracció"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "L'usuari ha cancel·lat l'extracció de «${fullPathFile}»."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "Cal una contrasenya per a ${filename}"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Error durant l'extracció"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "S'estan comprimint els fitxers a «${outputFile}»"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Compressió completada"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "S'ha completat la compressió dels fitxers a «${outputFile}»."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Compressió cancel·lada"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "El fitxer de sortida «${outputFile}» ja existeix."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "L'usuari ha cancel·lat la compressió de fitxers a «${outputFile}»."
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Error durant la compressió"
 
 #: autoAr.js:546
 msgid "Create archive"
-msgstr ""
+msgstr "Crea un arxiu"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Nom del fitxer"
+msgstr "Nom de l'arxiu"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Contrasenya"
 
 #: autoAr.js:618
 msgid "Create"
-msgstr ""
+msgstr "Crea"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Compatible amb tots els sistemes operatius."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
 msgstr ""
+"S'ha d'instal·lar el .zip protegit amb contrasenya al Windows i al Mac."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Arxius més petits però només a Linux i Mac."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Arxius més petits però s'han d'instal·lar al Windows i al Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -161,13 +159,15 @@ msgstr "Canvia el nom"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" és necessari per a les icones d'escriptori"
 
 #: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Perquè aquesta funcionalitat funcioni en icones d'escriptori, heu "
+"d'instal·lar \"${programName}\" al vostre sistema."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -185,11 +185,11 @@ msgstr ""
 
 #: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr "Neteja la selecció actual abans de la cerca nova"
 
 #: desktopManager.js:921
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "Cerca fitxers a l'escriptori"
 
 #: desktopManager.js:986 desktopManager.js:1669
 msgid "New Folder"
@@ -212,7 +212,6 @@ msgid "Redo"
 msgstr "Refés"
 
 #: desktopManager.js:1009
-#, fuzzy
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
@@ -229,7 +228,6 @@ msgid "Change Background…"
 msgstr "Canvia el fons de l'escriptori…"
 
 #: desktopManager.js:1038
-#, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "Paràmetres de les icones de l'escriptori"
 
@@ -239,99 +237,73 @@ msgstr "Paràmetres de la pantalla"
 
 #: desktopManager.js:1727
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Organitza les icones"
 
 #: desktopManager.js:1731
 msgid "Arrange By..."
-msgstr ""
+msgstr "Organitza per..."
 
 #: desktopManager.js:1740
 msgid "Keep Arranged..."
-msgstr ""
+msgstr "Mantén-les organitzades..."
 
 #: desktopManager.js:1744
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Mantén apilat pel tipus..."
 
 #: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
-msgstr ""
+msgstr "Ordena Inici/Discs/Paperera..."
 
 #: desktopManager.js:1755
 msgid "Sort by Name"
-msgstr ""
+msgstr "Ordena per nom"
 
 #: desktopManager.js:1757
 msgid "Sort by Name Descending"
-msgstr ""
+msgstr "Ordena per nom descendentment"
 
 #: desktopManager.js:1760
 msgid "Sort by Modified Time"
-msgstr ""
+msgstr "Ordena per temps modificat"
 
 #: desktopManager.js:1763
 msgid "Sort by Type"
-msgstr ""
+msgstr "Ordena per tipus"
 
 #: desktopManager.js:1766
 msgid "Sort by Size"
-msgstr ""
+msgstr "Ordena per mida"
 
-#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal
+#. folder
 #: fileItem.js:171
 msgid "Home"
 msgstr "Inici"
 
 #: fileItem.js:290
 msgid "Broken Link"
-msgstr ""
+msgstr "Enllaç trencat"
 
 #: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "No es pot obrir aquest fitxer perquè és un enllaç simbòlic trencat"
 
 #: fileItem.js:346
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Mostra l'escriptori al Fitxers"
-
-#: fileItem.js:347
-msgid ""
-"This .desktop file has errors or points to a program without permissions. It "
-"can not be executed.\n"
-"\n"
-"\t<b>Edit the file to set the correct executable Program.</b>"
-msgstr ""
+msgstr "Fitxer d'escriptori trencat"
 
 #: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Permisos no vàlids per al fitxer d'escriptori"
 
 #: fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
-
-#: fileItem.js:356
-msgid ""
-"\n"
-"<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
-msgstr ""
-
-#: fileItem.js:359
-msgid ""
-"\n"
-"<b>Enable option, \"Allow Executing File as a Program\"</b>"
-msgstr ""
-
-#: fileItem.js:367
-msgid ""
-"This .desktop file is not trusted, it can not be launched. To enable "
-"launching, right-click, then:\n"
-"\n"
-"<b>Enable \"Allow Launching\"</b>"
-msgstr ""
+"Aquest fitxer .desktop té permisos incorrectes. Feu clic dret per a editar les "
+"propietats, després:\n"
 
 #: fileItemMenu.js:132
 msgid "Open All..."
@@ -343,11 +315,11 @@ msgstr "Obre"
 
 #: fileItemMenu.js:143
 msgid "Stack This Type"
-msgstr ""
+msgstr "Apila aquest tipus"
 
 #: fileItemMenu.js:143
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Desapila aquest tipus"
 
 #: fileItemMenu.js:155
 msgid "Scripts"
@@ -367,7 +339,7 @@ msgstr "Llança usant targeta gràfica dedicada"
 
 #: fileItemMenu.js:177
 msgid "Run as a program"
-msgstr ""
+msgstr "Executa com a programa"
 
 #: fileItemMenu.js:185
 msgid "Cut"
@@ -422,11 +394,10 @@ msgid "Send to..."
 msgstr "Envia a..."
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "Comprimeix {0} fitxer"
-msgstr[1] "Comprimeix {0} fitxers"
+msgstr[0] "Comprimeix {0} carpeta"
+msgstr[1] "Comprimeix {0} carpetes"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
@@ -458,19 +429,19 @@ msgstr "Mostra al Fitxers"
 
 #: fileItemMenu.js:405
 msgid "Select Extract Destination"
-msgstr ""
+msgstr "Selecciona la destinació de l'extracció"
 
 #: fileItemMenu.js:410
-#, fuzzy
 msgid "Select"
-msgstr "Selecciona-ho tot"
+msgstr "Selecciona"
 
 #: fileItemMenu.js:449
 msgid "Can not email a Directory"
 msgstr "No es pot enviar un directori per correu electrònic"
 
 #: fileItemMenu.js:450
-msgid "Selection includes a Directory, compress the directory to a file first."
+msgid ""
+"Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La selecció inclou un directori, comprimeix-hi el directori en un fitxer."
 
@@ -544,15 +515,15 @@ msgstr "Ressalta el lloc desplegable durant l'arrossegat"
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Utilitza Nemo per a obrir carpetes"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Afegeix un emblema als enllaços tous"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Usa el text fosc a les etiquetes de les icones"
 
 #. Nautilus options
 #: prefswindow.js:71
@@ -613,7 +584,7 @@ msgstr "Sempre"
 
 #: showErrorPopup.js:40
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -657,8 +628,8 @@ msgstr "Mostra els volums de xarxa muntats a l'escriptori."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
-"When adding drives and volumes to the desktop, add them to the opposite side "
-"of the screen."
+"When adding drives and volumes to the desktop, add them to the opposite side"
+" of the screen."
 msgstr ""
 "Quan s'afegeixin unitats i volums a l'escriptori, afegiu-los a la part "
 "oposada de la pantalla."
@@ -677,102 +648,60 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr ""
-
-#: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
-msgid ""
-"When arranging Icons on desktop, to sort and change the position of the "
-"Home, Trash and mounted Network or External Drives"
-msgstr ""
+msgstr "Ordena les carpetes especials - Inici/Paperera/Discs."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
-msgstr ""
+msgstr "Mantén les icones organitzades"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr ""
+msgstr "Mantén sempre les icones organitzades per l'últim ordre organitzat"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
-msgstr ""
+msgstr "Organitza l'ordre"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
-msgstr ""
+msgstr "Icones organitzades per aquesta propietat"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
 msgid "Keep Icons Stacked"
-msgstr ""
+msgstr "Mantén les icones apilades"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr ""
+msgstr "Mantén sempre les icones apilades, els tipus similars s'agrupen"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Tipus de fitxers per a no apilar"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Una matriu de tipus de cadenes, no s'apilen aquests tipus de fitxers"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Utilitzeu Nemo en lloc de Nautilus per a obrir carpetes."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Afegeix un emblema als enllaços"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Afegeix un emblema per a permetre identificar els enllaços tous."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Utilitza el negre per al text de l'etiqueta"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
-
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Per a configurar les icones de l'escriptori NG, feu clic dret a "
-#~ "l'escriptori i trieu l'últim element: «Paràmetres de les icones de "
-#~ "l'escriptori»"
-
-#~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "Voleu executar «{0}» o mostrar el seu contingut?"
-
-#~ msgid "“{0}” is an executable text file."
-#~ msgstr "«{0}» és un fitxer de text executable."
-
-#~ msgid "Execute in a terminal"
-#~ msgstr "Obre al Terminal"
-
-#~ msgid "Show"
-#~ msgstr "Mostra"
-
-#~ msgid "Execute"
-#~ msgstr "Executa"
-
-#~ msgid "New folder"
-#~ msgstr "Carpeta nova"
-
-#~ msgid "Delete"
-#~ msgstr "Suprimeix"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "S'ha produït un error en suprimir els fitxers"
-
-#~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "Esteu segur que voleu suprimir permanentment aquests elements?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Si suprimiu un element, es perdrà permanentment."
+"Pinta el text de l'etiqueta en negre en lloc de blanc. Útil quan s'utilitzen"
+" fons clars."
