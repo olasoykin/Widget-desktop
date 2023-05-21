@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2023-02-09 01:04+0300\n"
+"PO-Revision-Date: 2023-05-22 02:16+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <developer@pardus.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
@@ -188,7 +188,7 @@ msgstr "Nautilus dosya yöneticisi bulunamadı"
 
 #: desktopManager.js:230
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr "Nautilus dosya yöneticisi olmadan bu eklenti bir işe yaramaz"
+msgstr "Nautilus dosya yöneticisi olmadan bu eklenti bir işe yaramaz."
 
 #: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
@@ -571,7 +571,7 @@ msgstr "Simge etiketlerinde koyu metin kullan"
 #. Nautilus options
 #: prefswindow.js:71
 msgid "Settings shared with Nautilus"
-msgstr "Ayarlar Nautilus ile paylaşıldı"
+msgstr "Nautilus ile paylaşılılan ayarlar"
 
 #: prefswindow.js:90
 msgid "Click type for open files"
@@ -659,7 +659,7 @@ msgstr "Yeni simgelerin başlangıç köşesi"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "Simgelerin nereden itibaren hizalanacağını ayarla"
+msgstr "Simgelerin nereden itibaren hizalanacağını ayarla."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
