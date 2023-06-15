@@ -1,6 +1,7 @@
 # Polish translation for desktop-icons.
 # Copyright © 2018-2019 the desktop-icons authors.
 # This file is distributed under the same license as the desktop-icons package.
+# Maciej Karpiński <kontakt@karpinski.tech>, 2023"
 # Paweł Piasek <pp@euro-linux.com>, 2022
 # Piotr Drąg <piotrdrag@gmail.com>, 2018-2019.
 # Aviary.pl <community-poland@mozilla.org>, 2018-2019.
@@ -10,15 +11,16 @@ msgstr ""
 "Project-Id-Version: desktop-icons\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2022-12-12 13:30+0100\n"
-"Last-Translator: Paweł Piasek <pp@euro-linux.com>\n"
+"PO-Revision-Date: 2023-06-15 21:45+0200\n"
+"Last-Translator: Maciej Karpiński <kontakt@karpinski.tech>\n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
@@ -29,7 +31,8 @@ msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
-"Aby móc pracować z plikami skompresowanymi, zainstaluj file-roller lub gnome-autoar"
+"Aby móc pracować z plikami skompresowanymi, zainstaluj file-roller lub gnome-"
+"autoar"
 
 #: autoAr.js:223
 msgid "Extracting files"
@@ -53,7 +56,7 @@ msgstr "Wprowadź hasło"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "Usuwanie częściowego pliku „${outputFile}”"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
@@ -69,16 +72,16 @@ msgstr "Rozpakowywanie zakończone"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr "Rozpakowywanie '${fullPathFile}' zostało zakończone"
+msgstr "Rozpakowywanie '${fullPathFile}' zostało zakończone."
 
 # autoAr.js:443
-#, fuzzy
+#: autoAr.js:443
 msgid "Extraction cancelled"
-msgstr "Rozpakowywanie anulowano"
+msgstr "Rozpakowywanie anulowane"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr "Rozpakowanie '${fullPathFile}' zostało anulowane przez użytkownika"
+msgstr "Rozpakowanie '${fullPathFile}' zostało anulowane przez użytkownika."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
@@ -98,7 +101,7 @@ msgstr "Kompresja zakończona"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr "Kompresja plików do '${outputFile}' została zakończona"
+msgstr "Kompresja plików do '${outputFile}' została zakończona."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
@@ -106,11 +109,12 @@ msgstr "Anulowano kompresje"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr "Plik wyjściowy '${outputFile}' już istnieje"
+msgstr "Plik wyjściowy '${outputFile}' już istnieje."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr "Kompresja plików do '${outputFile}' została anulowana przez użytkownika"
+msgstr ""
+"Kompresja plików do '${outputFile}' została anulowana przez użytkownika."
 
 #: autoAr.js:514
 msgid "Error during compression"
@@ -134,7 +138,7 @@ msgstr "Utwórz"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr "Kompatybilne ze wszystkimi systemami operacyjnymi"
+msgstr "Kompatybilne ze wszystkimi systemami operacyjnymi."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
@@ -146,7 +150,9 @@ msgstr "Bardziej skompresowane archiwa, tylko dla Linux'a i Mac'a."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr "Bardziej skompresowane archiwa, muszą być zainstalowane na Windows lub Mac"
+msgstr ""
+"Bardziej skompresowane archiwa, ale muszą być zainstalowane na Windows lub "
+"Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -170,7 +176,7 @@ msgid ""
 "\"${programName}\" in your system."
 msgstr ""
 "Dla tej funkcjonalności musisz zainstalować\"${programName}\" w swoim "
-"systemie"
+"systemie."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
@@ -247,15 +253,15 @@ msgstr "Sortuj według..."
 
 #: desktopManager.js:1740
 msgid "Keep Arranged..."
-msgstr "Autorozmieszczanie"
+msgstr "Auto rozmieszczanie..."
 
 #: desktopManager.js:1744
 msgid "Keep Stacked by type..."
-msgstr "Grupuj wg. typu"
+msgstr "Grupuj wg. typu..."
 
 #: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
-msgstr "Sortuj katalog domowy/Napędy/Kosz"
+msgstr "Sortuj katalog domowy/Napędy/Kosz..."
 
 #: desktopManager.js:1755
 msgid "Sort by Name"
@@ -284,7 +290,7 @@ msgstr "Katalog domowy"
 
 #: fileItem.js:290
 msgid "Broken Link"
-msgstr "Wadliwy link (strót)"
+msgstr "Wadliwy link (skrót)"
 
 #: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
@@ -292,7 +298,7 @@ msgstr "Nie można otworzyć pliku ponieważ jest to uszkodzony link symboliczny
 
 #: fileItem.js:346
 msgid "Broken Desktop File"
-msgstr ""
+msgstr "Uszkodzony plik pulpitu"
 
 #: fileItem.js:347
 msgid ""
@@ -308,25 +314,31 @@ msgstr ""
 
 #: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Nieprawidłowe uprawnienia pliku pulpitu"
 
 #: fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"Ten plik .desktop ma nieprawidłowe uprawnienia. Kliknij prawym przyciskiem "
+"myszy, aby edytować Właściwości, a następnie:\n"
 
 #: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>Ustaw Uprawnienia, „Inni Dostęp”, „Tylko do odczytu” lub „Brak”</b>"
 
 #: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>Włącz opcję „Plik wykonywalny jako program”</b>"
 
 #: fileItem.js:367
 msgid ""
@@ -335,6 +347,10 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"Ten plik .desktop nie jest zaufany, nie można go uruchomić. Aby włączyć "
+"uruchamianie, kliknij prawym przyciskiem myszy, a następnie:\n"
+"\n"
+"<b>Włącz opcję „Zezwalaj na uruchamianie”</b>"
 
 #: fileItemMenu.js:132
 msgid "Open All..."
@@ -551,11 +567,11 @@ msgstr "Użyj Nemo do otwierania katalogów"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Dodaj emblemat do miękkich linków"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Używaj ciemnego tekstu w etykietach ikon"
 
 #. Nautilus options
 #: prefswindow.js:71
@@ -676,11 +692,11 @@ msgid ""
 "icon will be put with a semitransparent rectangle."
 msgstr ""
 "Kiedy Przeciągasz i Upuszczasz, oznacz miejsce w siatce ikon,gdzie ikona "
-"zostanie upuszczana za pomocą półprzeźroczystego prostokąta"
+"zostanie upuszczana za pomocą półprzeźroczystego prostokąta."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "Sortuj Katalogi Specjalne - Katalog domowy/Kosz/Dyski"
+msgstr "Sortuj Katalogi Specjalne - Katalog domowy/Kosz/Dyski."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
@@ -724,22 +740,24 @@ msgstr "Tablica napisów-typów, nie grupuj tych typów"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr "Użyj Nemo zamiast Nautilus'a do otwierania katalogów"
+msgstr "Użyj Nemo zamiast Nautilus'a do otwierania katalogów."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Dodaj emblemat do linków"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Dodaj emblemat, aby umożliwić identyfikację miękkich linków."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Użyj czarnego tekstu etykiety"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+"Ustaw tekst etykiety na czarno zamiast na biało. Przydatne przy korzystaniu "
+"z jasnego tła."
