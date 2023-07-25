@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2022-10-27 12:53+0200\n"
-"Last-Translator: panmourovaty <dominikhejl@yahoo.com>\n"
+"PO-Revision-Date: 2023-07-25 17:56+0200\n"
+"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <zeten30@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
@@ -230,7 +230,7 @@ msgstr "Zobrazit nastavení"
 
 #: desktopManager.js:1727
 msgid "Arrange Icons"
-msgstr "Uspořádat Ikony"
+msgstr "Uspořádat ikony"
 
 #: desktopManager.js:1731
 msgid "Arrange By..."
@@ -271,7 +271,7 @@ msgstr "Seřadit podle Velikosti"
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: fileItem.js:171
 msgid "Home"
-msgstr "Domovská Složka"
+msgstr "Domovská složka"
 
 #: fileItem.js:290
 msgid "Broken Link"
@@ -286,10 +286,12 @@ msgid "Broken Desktop File"
 msgstr "Rozbitý Desktop soubor"
 
 #: fileItem.js:347
-msgid "This .desktop file has errors or points to a program without permissions. It can not be executed.\n"
+msgid ""
+"This .desktop file has errors or points to a program without permissions. It can not be executed.\n"
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
-msgstr "Tento .desktop soubor obsahuje chyby nebo odkazuje na nespustitelný program. Nemůže být spuštěn.\n"
+msgstr ""
+"Tento .desktop soubor obsahuje chyby nebo odkazuje na nespustitelný program. Nemůže být spuštěn.\n"
 "\n"
 "\t<b>Upravte soubor nebo nastavte správné oprávnění programu</b>"
 
@@ -302,22 +304,28 @@ msgid "This .desktop File has incorrect Permissions. Right Click to edit Propert
 msgstr "Tento .desktop soubor má neplatné oprávnění. Klikněte pravým tlačítkem a vyberte položku Vlastnosti, potom:\n"
 
 #: fileItem.js:356
-msgid "\n"
+msgid ""
+"\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
-msgstr "\n"
+msgstr ""
+"\n"
 "<b>Nastavte oprávnění v \"Ostatní\" na \"Pouze čtení\" nebo \"Nic\"</b>"
 
 #: fileItem.js:359
-msgid "\n"
+msgid ""
+"\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
-msgstr "\n"
+msgstr ""
+"\n"
 "<b>Povolte možnost \"Spustitelný jako program\"</b>"
 
 #: fileItem.js:367
-msgid "This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n"
+msgid ""
+"This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n"
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
-msgstr "Tento .desktop soubor je nedůvěryhodný, nemůže být spuštěn. K povolení spouštění klikněte pravým tlačítkem, potom:\n"
+msgstr ""
+"Tento .desktop soubor je nedůvěryhodný, nemůže být spuštěn. K povolení spouštění klikněte pravým tlačítkem, potom:\n"
 "\n"
 "<b>Klikněte na \"Povolit spouštění\"</b>"
 
@@ -413,7 +421,8 @@ msgstr "Poslat..."
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
 msgstr[0] "Zabalit {0} soubor"
-msgstr[1] "Z\n"
+msgstr[1] ""
+"Z\n"
 "Zabalit {0} soubory"
 msgstr[2] "Zabalit {0} souborů"
 
@@ -716,12 +725,8 @@ msgstr "Použít černý text pro popisky"
 msgid "Paint the label text in black instead of white. Useful when using light backgrounds."
 msgstr "Zobrazovat text popisků v černé místo bílé. Vhodné pro světlé pozadí."
 
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Chcete-li nakonfigurovat Desktop Icons NG, klikněte pravým tlačítkem na "
-#~ "plochu a vyberte poslední položku: 'Nastavení ikon na ploše'"
+#~ msgid "To configure Desktop Icons NG, do right-click in the desktop and choose the last item: 'Desktop Icons settings'"
+#~ msgstr "Chcete-li nakonfigurovat Desktop Icons NG, klikněte pravým tlačítkem na plochu a vyberte poslední položku: 'Nastavení ikon na ploše'"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "Chcete spustit “{0}” nebo chcete zobrazit obsah?"
