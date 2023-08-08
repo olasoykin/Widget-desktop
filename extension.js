@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 'use strict';
+const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Meta = imports.gi.Meta;
@@ -49,6 +50,7 @@ function init() {
     data.launchDesktopId = 0;
     data.currentProcess = null;
     data.dbusTimeoutId = 0;
+    data.switchWorkspaceId = 0;
 
     data.GnomeShellOverride = null;
     data.GnomeShellVersion = parseInt(Config.PACKAGE_VERSION.split('.')[0]);
@@ -111,6 +113,15 @@ function innerEnable() {
     // under X11 we don't need to cheat, so only do all this under wayland
     if (Meta.is_wayland_compositor()) {
         data.x11Manager.enable();
+    } else {
+        data.switchWorkspaceId = global.window_manager.connect('switch-workspace', () => {
+            let windows = global.display.get_tab_list(Meta.TabList.NORMAL_ALL, global.workspace_manager.get_active_workspace());
+            windows = global.display.sort_windows_by_stacking(windows);
+            if (windows.length) {
+                let topWindow = windows[windows.length - 1];
+                topWindow.focus(Clutter.CURRENT_TIME);
+            }
+        });
     }
 
     /*
@@ -270,6 +281,10 @@ function disable() {
         data.doCopy = undefined;
     }
 
+    if (data.switchWorkspaceId) {
+        global.window_manager.disconnect(data.switchWorkspaceId);
+        data.switchWorkspaceId = 0;
+    }
     if (data.doCutId) {
         data.doCut.disconnect(data.doCutId);
         data.doCutId = 0;
