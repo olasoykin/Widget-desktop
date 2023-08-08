@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 47.0.3
+  * Fixed focus on X11 when switching between workspaces (Sergio Costas)
+
 * Version 47.0.2
   * Added support for dark themes (Sundeep Mediratta)
   * Reformatted all the code using Eslint (Sergio Costas)
