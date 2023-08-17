@@ -1,7 +1,10 @@
 # History of versions #
 
-* Version 47.0.3
+* Version 47.0.4
   * Fixed focus on X11 when switching between workspaces (Sergio Costas)
+
+* Version 47.0.3
+  * Fixed not returning if Nemo fails to launch
 
 * Version 47.0.2
   * Added support for dark themes (Sundeep Mediratta)
