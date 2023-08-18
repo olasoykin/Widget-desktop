@@ -26,7 +26,6 @@ install_data([
 subdir(
   'app'
 )
-
 subdir(
   'po'
 )

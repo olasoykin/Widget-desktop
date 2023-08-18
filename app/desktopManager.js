@@ -283,7 +283,6 @@ var DesktopManager = class {
         let changeDesktopIconSettings = Gio.SimpleAction.new('changeDesktopIconSettings', null);
         changeDesktopIconSettings.connect('activate', () => Prefs.showPreferences());
         this.mainApp.add_action(changeDesktopIconSettings);
-
     }
 
     _metadataChanged(proxy, nameOwner, args) {
