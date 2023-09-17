@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 47.0.5
+  * Fixed creating a folder with several files (Sergio Costas)
+
 * Version 47.0.4
   * Fixed focus on X11 when switching between workspaces (Sergio Costas)
 
