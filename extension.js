@@ -412,7 +412,7 @@ function doKillAllOldDesktopProcesses() {
                 contents += String.fromCharCode(readData[i]);
             }
         }
-        let path = `gjs ${GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'ding.js'])}`;
+        let path = `gjs ${GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'app', 'ding.js'])}`;
         if (contents.startsWith(path)) {
             let proc = new Gio.Subprocess({argv: ['/bin/kill', filename]});
             proc.init(null);
@@ -449,12 +449,12 @@ function doRelaunch(reloadTime) {
 function launchDesktop() {
     global.log('Launching DING process');
     let argv = [];
-    argv.push(GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'ding.js']));
+    argv.push(GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'app', 'ding.js']));
     // Specify that it must work as true desktop
     argv.push('-E');
     // The path. Allows the program to find translations, settings and modules.
     argv.push('-P');
-    argv.push(ExtensionUtils.getCurrentExtension().path);
+    argv.push(GLib.build_filenamev([ExtensionUtils.getCurrentExtension().path, 'app']));
 
     data.currentProcess = new LaunchSubprocess(0, 'DING');
     data.currentProcess.set_cwd(GLib.get_home_dir());
