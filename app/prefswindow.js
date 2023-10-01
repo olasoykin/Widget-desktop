@@ -21,13 +21,17 @@ function get_schema(path, schema) {
     // same prefix as gnome-shell (and therefore schemas are available
     // in the standard folders)
     let schemaSource;
-    let schemaFile = Gio.File.new_for_path(GLib.build_filenamev([path, '..', 'schemas', 'gschemas.compiled']));
+    let schemaFile = Gio.File.new_for_path(GLib.build_filenamev([path, 'schemas', 'gschemas.compiled']));
     if (schemaFile.query_exists(null)) {
-        schemaSource = GioSSS.new_from_directory(GLib.build_filenamev([path, '..', 'schemas']), GioSSS.get_default(), false);
+        schemaSource = GioSSS.new_from_directory(GLib.build_filenamev([path, 'schemas']), GioSSS.get_default(), false);
     } else {
-        schemaSource = GioSSS.get_default();
+        schemaFile = Gio.File.new_for_path(GLib.build_filenamev([path, '..', 'schemas', 'gschemas.compiled']));
+        if (schemaFile.query_exists(null)) {
+            schemaSource = GioSSS.new_from_directory(GLib.build_filenamev([path, '..', 'schemas']), GioSSS.get_default(), false);
+        } else {
+            schemaSource = GioSSS.get_default();
+        }
     }
-
     let schemaObj = schemaSource.lookup(schema, true);
     if (!schemaObj) {
         throw new Error(`Schema ${schema} could not be found for extension ` + '. Please check your installation.');
