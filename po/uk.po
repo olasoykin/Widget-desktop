@@ -2,42 +2,43 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Stanisław Zadorozhnyi <zadorozhniy123@icloud.com>, 2021.
+# Yevhen Popok <xalt7x.service@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 20:34+0200\n"
-"PO-Revision-Date: 2021-11-06 13:11+0100\n"
-"Last-Translator: Stanisław Zadorozhnyi <zadorozhniy123@icloud.com>\n"
+"PO-Revision-Date: 2023-10-08 21:40+0300\n"
+"Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 "
+"&& n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.4\n"
 
 #: autoAr.js:87
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr не встановлено"
 
 #: autoAr.js:88
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"Для роботи зі стиснутими файлами, встановіть file-roller та/чи gir-1.2-"
+"gnomeAutoAr"
 
 #: autoAr.js:223
-#, fuzzy
 msgid "Extracting files"
-msgstr "Розпакувати сюди"
+msgstr "Розпакування файлів"
 
 #: autoAr.js:240
-#, fuzzy
 msgid "Compressing files"
-msgstr "Стиснути {0} файл"
+msgstr "Стиснення файлів"
 
 #: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
 msgid "Cancel"
@@ -45,110 +46,107 @@ msgstr "Скасувати"
 
 #: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
 msgid "OK"
-msgstr "Ок"
+msgstr "OK"
 
 #: autoAr.js:315 autoAr.js:605
 msgid "Enter a password here"
-msgstr ""
+msgstr "Введіть пароль тут"
 
 #: autoAr.js:355
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "Видалення часткового файлу '${outputFile}'"
 
 #: autoAr.js:374
 msgid "Creating destination folder"
-msgstr ""
+msgstr "Створення теки призначення"
 
 #: autoAr.js:406
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "Розпакування файлів до '${outputPath}'"
 
 #: autoAr.js:436
-#, fuzzy
 msgid "Extraction completed"
-msgstr "Розпакувати сюди"
+msgstr "Розпакування завершено"
 
 #: autoAr.js:437
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "Розпакування '${fullPathFile}' завершено."
 
 #: autoAr.js:443
-#, fuzzy
 msgid "Extraction cancelled"
-msgstr "Розпакувати сюди"
+msgstr "Розпакування скасовано"
 
 #: autoAr.js:444
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Розпакування '${fullPathFile}' скасовано користувачем."
 
 #: autoAr.js:454
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "Потрібен пароль для ${filename}"
 
 #: autoAr.js:457
 msgid "Error during extraction"
-msgstr ""
+msgstr "Помилка під час розпакування"
 
 #: autoAr.js:485
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "Стискаємо файли до '${outputFile}'"
 
 #: autoAr.js:498
 msgid "Compression completed"
-msgstr ""
+msgstr "Стиснення завершено"
 
 #: autoAr.js:499
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "Стиснення файлів до '${outputFile}' завершено."
 
 #: autoAr.js:503 autoAr.js:510
 msgid "Cancelled compression"
-msgstr ""
+msgstr "Стиснення скасовано"
 
 #: autoAr.js:504
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "Вихідний файл '${outputFile}' вже існує."
 
 #: autoAr.js:511
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "Стиснення файлів до '${outputFile}' скасовано користувачем."
 
 #: autoAr.js:514
 msgid "Error during compression"
-msgstr ""
+msgstr "Помилка під час стискання"
 
 #: autoAr.js:546
 msgid "Create archive"
-msgstr ""
+msgstr "Створити архів"
 
 #: autoAr.js:571
-#, fuzzy
 msgid "Archive name"
-msgstr "Назва файлу"
+msgstr "Назва архіву"
 
 #: autoAr.js:602
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: autoAr.js:618
 msgid "Create"
-msgstr ""
+msgstr "Створити"
 
 #: autoAr.js:695
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "Сумісно з усіма операційними системами."
 
 #: autoAr.js:701
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr "Захищений паролем .zip, але треба встановити на Windows та Mac."
 
 #: autoAr.js:707
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "Менші архіви, але тільки для Linux та Mac."
 
 #: autoAr.js:713
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "Менші архіви, але треба встановити на Windows та Mac."
 
 #: askRenamePopup.js:42
 msgid "Folder name"
@@ -164,29 +162,31 @@ msgstr "Перейменувати"
 
 #: dbusUtils.js:66
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "\"${programName}\" потрібна для Desktop Icons"
 
 #: dbusUtils.js:67
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
+"Для цього функціоналу Desktop Icons, необхідно встановити \"${programName}\" у "
+"вашу систему."
 
 #: desktopIconsUtil.js:96
 msgid "Command not found"
-msgstr "Команда не знайдена"
+msgstr "Команду не знайдено"
 
 #: desktopManager.js:229
 msgid "Nautilus File Manager not found"
-msgstr "Файловий Менеджер Nautilus не знайдено"
+msgstr "Файловий менеджер Nautilus не знайдено"
 
 #: desktopManager.js:230
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr "Файловий Менеджер Nautilus є необхідним для роботи з Desktop Icons NG."
+msgstr "Файловий менеджер Nautilus є необхідним для роботи з Desktop Icons NG."
 
 #: desktopManager.js:881
 msgid "Clear Current Selection before New Search"
-msgstr "Очистити поточний вибір перед Новим Пошуком"
+msgstr "Очистити поточний вибір перед новим пошуком"
 
 #: desktopManager.js:921
 msgid "Find Files on Desktop"
@@ -206,20 +206,19 @@ msgstr "Вставити"
 
 #: desktopManager.js:999
 msgid "Undo"
-msgstr "Відмінити"
+msgstr "Скасувати"
 
 #: desktopManager.js:1003
 msgid "Redo"
 msgstr "Повторити"
 
 #: desktopManager.js:1009
-#, fuzzy
 msgid "Select All"
 msgstr "Виділити все"
 
 #: desktopManager.js:1017
 msgid "Show Desktop in Files"
-msgstr "Показати стільницю в Файлах"
+msgstr "Показати Стільницю в Файлах"
 
 #: desktopManager.js:1021 fileItemMenu.js:323
 msgid "Open in Terminal"
@@ -231,31 +230,31 @@ msgstr "Змінити тло…"
 
 #: desktopManager.js:1038
 msgid "Desktop Icons Settings"
-msgstr "Параметри Desktop Icons"
+msgstr "Налаштування піктограм стільниці"
 
 #: desktopManager.js:1042
 msgid "Display Settings"
-msgstr "Параметри екрану"
+msgstr "Параметри екрана"
 
 #: desktopManager.js:1727
 msgid "Arrange Icons"
-msgstr "Впорядкувати"
+msgstr "Вирівняти піктограми"
 
 #: desktopManager.js:1731
 msgid "Arrange By..."
-msgstr "Впорядкувати за..."
+msgstr "Вирівняти за..."
 
 #: desktopManager.js:1740
 msgid "Keep Arranged..."
-msgstr "Зберегти порядок..."
+msgstr "Зберігати вирівнювання..."
 
 #: desktopManager.js:1744
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "Тримати в Стосі за типом..."
 
 #: desktopManager.js:1749
 msgid "Sort Home/Drives/Trash..."
-msgstr "Сортувати Домівка/Диски/Смітник..."
+msgstr "Сортувати Домівку/Диски/Смітник..."
 
 #: desktopManager.js:1755
 msgid "Sort by Name"
@@ -263,7 +262,7 @@ msgstr "Сортувати за назвою"
 
 #: desktopManager.js:1757
 msgid "Sort by Name Descending"
-msgstr "Сортувати за назвою в порядку зменшення"
+msgstr "Сортувати за назвою в порядку спадання"
 
 #: desktopManager.js:1760
 msgid "Sort by Modified Time"
@@ -284,54 +283,67 @@ msgstr "Домівка"
 
 #: fileItem.js:290
 msgid "Broken Link"
-msgstr ""
+msgstr "Пошкоджене посилання"
 
 #: fileItem.js:291
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "Неможливо відкрити файл, оскільки це пошкоджене символічне посилання"
 
 #: fileItem.js:346
-#, fuzzy
 msgid "Broken Desktop File"
-msgstr "Показати стільницю в Файлах"
+msgstr "Пошкоджений файл запуску"
 
 #: fileItem.js:347
 msgid ""
-"This .desktop file has errors or points to a program without permissions. It "
-"can not be executed.\n"
+"This .desktop file has errors or points to a program without permissions. It can "
+"not be executed.\n"
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"В цьому файлі .desktop є помилки чи посилання на програму без прав доступу. Його "
+"не можна запустити.\n"
+"\n"
+"\t<b>Вкажіть в файлі коректну програму.</b>"
 
 #: fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "Некоректні права доступу на файл запуску"
 
 #: fileItem.js:354
 msgid ""
-"This .desktop File has incorrect Permissions. Right Click to edit "
-"Properties, then:\n"
+"This .desktop File has incorrect Permissions. Right Click to edit Properties, "
+"then:\n"
 msgstr ""
+"Цей файл .desktop має некоректні права доступу. Клацніть правою клавішею, щоб "
+"відредагувати Властивості, а потім:\n"
 
 #: fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>Змініть Права доступу в \"Інші, Доступ\" на \"Лише читання\" або \"Немає\"</b>"
 
 #: fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>Увімкніть опцію \"Виконання файлу як програми\"</b>"
 
 #: fileItem.js:367
 msgid ""
-"This .desktop file is not trusted, it can not be launched. To enable "
-"launching, right-click, then:\n"
+"This .desktop file is not trusted, it can not be launched. To enable launching, "
+"right-click, then:\n"
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"Цей файл .desktop не є довіреним, його не можна запустити. Для виправлення "
+"клацніть правою клавішею, а потім\n"
+"\n"
+"<b>Увімкніть \"Дозволяти запуск\"</b>"
 
 #: fileItemMenu.js:132
 msgid "Open All..."
@@ -343,11 +355,11 @@ msgstr "Відкрити"
 
 #: fileItemMenu.js:143
 msgid "Stack This Type"
-msgstr ""
+msgstr "Додати цей тип до Стосу"
 
 #: fileItemMenu.js:143
 msgid "Unstack This Type"
-msgstr ""
+msgstr "Вилучити цей тип зі Стосу"
 
 #: fileItemMenu.js:155
 msgid "Scripts"
@@ -355,7 +367,7 @@ msgstr "Скрипти"
 
 #: fileItemMenu.js:161
 msgid "Open All With Other Application..."
-msgstr "Відкрити все в іншій програмі..."
+msgstr "Відкрити всі в іншій програмі..."
 
 #: fileItemMenu.js:161
 msgid "Open With Other Application"
@@ -363,11 +375,11 @@ msgstr "Відкрити в іншій програмі"
 
 #: fileItemMenu.js:167
 msgid "Launch using Dedicated Graphics Card"
-msgstr "Запустити через відповідну графічну плату"
+msgstr "Запустити через дискретну графічну плату"
 
 #: fileItemMenu.js:177
 msgid "Run as a program"
-msgstr ""
+msgstr "Запустити як програму"
 
 #: fileItemMenu.js:185
 msgid "Cut"
@@ -383,7 +395,7 @@ msgstr "Перейменувати…"
 
 #: fileItemMenu.js:204
 msgid "Move to Trash"
-msgstr "Перемістити у смітник"
+msgstr "Перемістити в смітник"
 
 #: fileItemMenu.js:210
 msgid "Delete permanently"
@@ -419,15 +431,15 @@ msgstr "Розпакувати до..."
 
 #: fileItemMenu.js:277
 msgid "Send to..."
-msgstr "Відправити до..."
+msgstr "Надіслати до..."
 
 #: fileItemMenu.js:285
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "Стиснути {0} файл"
-msgstr[1] "Стиснути {0} файли"
-msgstr[2] "Стиснути {0} файлів"
+msgstr[0] "Стиснути {0} теку"
+msgstr[1] "Стиснути {0} теки"
+msgstr[2] "Стиснути {0} тек"
+msgstr[3] "Стиснути {0} теку"
 
 #: fileItemMenu.js:292
 msgid "Compress {0} file"
@@ -435,13 +447,15 @@ msgid_plural "Compress {0} files"
 msgstr[0] "Стиснути {0} файл"
 msgstr[1] "Стиснути {0} файли"
 msgstr[2] "Стиснути {0} файлів"
+msgstr[3] "Стиснути {0} файл"
 
 #: fileItemMenu.js:300
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "Нова тека з {0} елементом"
-msgstr[1] "Нова тека з {0} елементами"
-msgstr[2] "Нова тека з {0} елементами"
+msgstr[0] "Створити теку з {0} об'єктом"
+msgstr[1] "Створити теку з {0} об'єктами"
+msgstr[2] "Створити теку з {0} об'єктами"
+msgstr[3] "Створити теку з {0} об'єктом"
 
 #: fileItemMenu.js:309
 msgid "Common Properties"
@@ -461,7 +475,7 @@ msgstr "Показати у Файлах"
 
 #: fileItemMenu.js:405
 msgid "Select Extract Destination"
-msgstr "Вибрати шлях для розпакування"
+msgstr "Виберіть ціль для розпакування"
 
 #: fileItemMenu.js:410
 msgid "Select"
@@ -469,11 +483,11 @@ msgstr "Виділити"
 
 #: fileItemMenu.js:449
 msgid "Can not email a Directory"
-msgstr "Неможливо відправити теку електронною поштою"
+msgstr "Неможливо надіслати теку електронною поштою"
 
 #: fileItemMenu.js:450
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Вибір включає теку, для початку стисніть теку в файл."
+msgstr "Виділене включає теку, для початку стисніть теку до файлу."
 
 #: preferences.js:74
 msgid "Settings"
@@ -481,7 +495,7 @@ msgstr "Параметри"
 
 #: prefswindow.js:46
 msgid "Size for the desktop icons"
-msgstr "Розмір піктограм на стільниці"
+msgstr "Розмір піктограм стільниці"
 
 #: prefswindow.js:46
 msgid "Tiny"
@@ -501,7 +515,7 @@ msgstr "Великий"
 
 #: prefswindow.js:47
 msgid "Show the personal folder in the desktop"
-msgstr "Показувати особисту теку на стільниці"
+msgstr "Показувати теку користувача на стільниці"
 
 #: prefswindow.js:48
 msgid "Show the trash icon in the desktop"
@@ -513,7 +527,7 @@ msgstr "Показувати змінні носії на стільниці"
 
 #: prefswindow.js:50 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
-msgstr "Показувати мережеві носії на стільниці"
+msgstr "Показувати мережеві диски на стільниці"
 
 #: prefswindow.js:53
 msgid "New icons alignment"
@@ -537,7 +551,7 @@ msgstr "Нижній правий кут"
 
 #: prefswindow.js:59 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
-msgstr "Додавати нові змінні носії до протилежного боку екрану"
+msgstr "Додавати нові диски з протилежної сторони екрана"
 
 #: prefswindow.js:60
 msgid "Highlight the drop place during Drag'n'Drop"
@@ -545,32 +559,32 @@ msgstr "Підсвічувати місце падіння під час пер�
 
 #: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "Відкривати тек за допомогою Nemo"
 
 #: prefswindow.js:63
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "Додати емблему до мʼяких посилань"
 
 #: prefswindow.js:65
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "Використати темний текст на підписах до піктограм"
 
 #. Nautilus options
 #: prefswindow.js:71
 msgid "Settings shared with Nautilus"
-msgstr "Спільні параметри з Nautilus"
+msgstr "Спільні з Nautilus налаштування"
 
 #: prefswindow.js:90
 msgid "Click type for open files"
-msgstr "Тип натиску для відкриття файлів"
+msgstr "Вид клацання, щоб відкривати файли"
 
 #: prefswindow.js:90
 msgid "Single click"
-msgstr "Одинарний клік"
+msgstr "Одинарне клацання"
 
 #: prefswindow.js:90
 msgid "Double click"
-msgstr "Подвійний клік"
+msgstr "Подвійне клацання"
 
 #: prefswindow.js:91
 msgid "Show hidden files"
@@ -582,7 +596,7 @@ msgstr "Додати пункт \"Вилучити остаточно\" у ко�
 
 #: prefswindow.js:97
 msgid "Action to do when launching a program from the desktop"
-msgstr "Дія при запуску програми з стільниці"
+msgstr "Дія при запуску програми зі стільниці"
 
 #: prefswindow.js:98
 msgid "Display the content of the file"
@@ -594,7 +608,7 @@ msgstr "Запустити файл"
 
 #: prefswindow.js:100
 msgid "Ask what to do"
-msgstr "Питати що робити"
+msgstr "Запитати, що робити"
 
 #: prefswindow.js:106
 msgid "Show image thumbnails"
@@ -606,7 +620,7 @@ msgstr "Ніколи"
 
 #: prefswindow.js:108
 msgid "Local files only"
-msgstr "Тільки локальні файли"
+msgstr "Лише локальні файли"
 
 #: prefswindow.js:109
 msgid "Always"
@@ -618,19 +632,19 @@ msgstr "Закрити"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
-msgstr "Розмір піктограми"
+msgstr "Розмір піктограм"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
 msgid "Set the size for the desktop icons."
-msgstr "Встановити розмір піктограм на стільниці."
+msgstr "Встановити розмір піктограм стільниці."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
 msgid "Show personal folder"
-msgstr "Показати домашню теку"
+msgstr "Показати теку користувача"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
 msgid "Show the personal folder in the desktop."
-msgstr "Показувати особисту теку на стільниці."
+msgstr "Показувати теку користувача на стільниці."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
 msgid "Show trash icon"
@@ -642,11 +656,11 @@ msgstr "Показувати піктограму смітника на стіл
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
 msgid "New icons start corner"
-msgstr "Нові піктограми розташовуються у куті"
+msgstr "Початковий кут для нових піктограм"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "Встановіть кут, з якого піктограми почнуть розташовуватись."
+msgstr "Оберіть, в якому куті почнуть розміщуватись піктограми."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
@@ -658,34 +672,34 @@ msgstr "Показувати змонтовані мережеві розділ�
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
-"When adding drives and volumes to the desktop, add them to the opposite side "
-"of the screen."
+"When adding drives and volumes to the desktop, add them to the opposite side of "
+"the screen."
 msgstr ""
-"Коли додаються нові диски та розділи на стільницю, розташовувати їх на "
-"протилежній стороні екрану."
+"При додаванні дисків та розділів на стільницю, розміщувати їх з протилежної "
+"сторони екрана."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
-msgstr "Показувати прямокутник в місці призначення під час перетягування"
+msgstr "Показувати прямокутник у місці призначення під час перетягування"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
 msgid ""
-"When doing a Drag'n'Drop operation, marks the place in the grid where the "
-"icon will be put with a semitransparent rectangle."
+"When doing a Drag'n'Drop operation, marks the place in the grid where the icon "
+"will be put with a semitransparent rectangle."
 msgstr ""
-"При виконанні переміщення, місце куди буде розміщено піктограму, буде "
-"позначатися напівпрозорим прямокутником."
+"Під час перетягування, місце куди буде переміщено піктограму, буде позначатися "
+"напівпрозорим прямокутником."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "Сортувати спеціальні теки - Домівка/Смітник/Диски."
+msgstr "Сортувати спеціальні теки - Домівку/Смітник/Диски."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
-"When arranging Icons on desktop, to sort and change the position of the "
-"Home, Trash and mounted Network or External Drives"
+"When arranging Icons on desktop, to sort and change the position of the Home, "
+"Trash and mounted Network or External Drives"
 msgstr ""
-"При розміщенні піктограм на стільниці, для сортування і зміни розташування "
+"При вирівнюванні піктограм на стільниці, сортувати та змінювати положення "
 "Домівки, Смітника та підключених локальних і мережевих дисків"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
@@ -694,7 +708,8 @@ msgstr "Зберігати вирівнювання піктограм"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr "Завжди зберігати вирівнювання піктограм за їх останнім порядком"
+msgstr ""
+"Завжди зберігати вирівнювання піктограм за їх останнім порядком вирівнювання"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
@@ -702,92 +717,44 @@ msgstr "Порядок вирівнювання"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
-msgstr "Вирівнювання піктограм за цією властивістю"
+msgstr "Піктограми вирівнюються за цією властивістю"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
-#, fuzzy
 msgid "Keep Icons Stacked"
-msgstr "Зберігати вирівнювання піктограм"
+msgstr "Тримати піктограми в Стосі"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
-#, fuzzy
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Завжди зберігати вирівнювання піктограм за їх останнім порядком"
+msgstr "Завжди тримати піктограми в Стосі, Подібні за типом - групувати"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "Типи файлів, що не додаються до Стосу"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "Масив рядкових значень, Не додавати до Стосу такі типи файлів"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "Відкривати теки за допомогою Nemo, а не Nautilus."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "Додавати емблеми до посилань"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "Додавати емблеми для визначення мʼяких посилань."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "Чорний колір для написів"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
-
-#, fuzzy
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Для конфігурації Desktop Icons NG, натисніть правою клавішею миші на "
-#~ "стільницю та виберіть останній пункт: \"Параметри\""
-
-#~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "Ви хочете виконати “{0}”, чи показати вміст?"
-
-#~ msgid "“{0}” is an executable text file."
-#~ msgstr "“{0}” є виконуваним текстовим файлом."
-
-#~ msgid "Execute in a terminal"
-#~ msgstr "Виконати в терміналі"
-
-#~ msgid "Show"
-#~ msgstr "Показати"
-
-#~ msgid "Execute"
-#~ msgstr "Виконати"
-
-#~ msgid "New folder"
-#~ msgstr "Нову теку"
-
-#~ msgid "Delete"
-#~ msgstr "Вилучити"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "Помилка вилучення файлів"
-
-#~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "Ви впевнені, що хочете остаточно вилучити ці файли?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Якщо Ви вилучите файл, його буде втрачено назавжди."
-
-#~ msgid ""
-#~ "There was an error while trying to permanently delete the folder {:}."
-#~ msgstr "Сталася помилка при спробі остаточно вилучити теку {:}."
-
-#~ msgid "There was an error while trying to permanently delete the file {:}."
-#~ msgstr "Сталася помилка при спробі остаточно вилучити файл {:}."
-
-#~ msgid "Enter file name…"
-#~ msgstr " Введіть назву файлу…"
+"Використовувати для написів чорний колір замість білого. Корисно для світлих "
+"шпалер."
