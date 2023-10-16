@@ -33,11 +33,10 @@ import * as GnomeShellOverride from './gnomeShellOverride.js';
 const Clipboard = St.Clipboard.get_default();
 const CLIPBOARD_TYPE = St.ClipboardType.CLIPBOARD;
 
-var DesktopIconsUsableArea = null;
-
 export default class DING extends Extension {
     constructor(metadata) {
         super(metadata);
+        this.DesktopIconsUsableArea = null;
         this.data = {};
         this.data.isEnabled = false;
         this.data.launchDesktopId = 0;
@@ -73,9 +72,9 @@ export default class DING extends Extension {
         if (!this.data.x11Manager) {
             this.data.x11Manager = new EmulateX11.EmulateX11WindowType();
         }
-        if (!DesktopIconsUsableArea) {
-            DesktopIconsUsableArea = new VisibleArea.VisibleArea();
-            this.data.visibleArea = DesktopIconsUsableArea;
+        if (!this.DesktopIconsUsableArea) {
+            this.DesktopIconsUsableArea = new VisibleArea.VisibleArea();
+            this.data.visibleArea = this.DesktopIconsUsableArea;
         }
         // If the desktop is still starting up, we wait until it is ready
         if (Main.layoutManager._startingUp) {
@@ -87,7 +86,7 @@ export default class DING extends Extension {
     }
 
     disable() {
-        DesktopIconsUsableArea = null;
+        this.DesktopIconsUsableArea = null;
         this.data.isEnabled = false;
         this.killCurrentProcess();
         this.data.GnomeShellOverride.disable();
