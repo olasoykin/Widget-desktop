@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 22:38+0200\n"
-"PO-Revision-Date: 2023-05-22 02:16+0300\n"
+"PO-Revision-Date: 2023-10-23 23:47+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <developer@pardus.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: app/askRenamePopup.js:46
 msgid "Folder name"
@@ -63,7 +63,7 @@ msgstr "Dosyalar sıkıştırılıyor"
 #: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:979
 #: app/fileItemMenu.js:460
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal"
 
 #: app/autoAr.js:318 app/autoAr.js:619
 msgid "Enter a password here"
@@ -244,21 +244,20 @@ msgid "Display Settings"
 msgstr "Görüntü Ayarları"
 
 #: app/desktopManager.js:1763
-#, fuzzy
 msgid "Folder Creation Failed"
-msgstr "Klasör adı"
+msgstr "Klasör Oluşturma Başarısız"
 
 #: app/desktopManager.js:1764
 msgid "Error while trying to create a Folder"
-msgstr ""
+msgstr "Klasör oluşturmaya çalışırken hata oluştu"
 
 #: app/desktopManager.js:1800
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "Şablon Oluşturma Başarısız"
 
 #: app/desktopManager.js:1801
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "Belge oluşturmaya çalışırken hata oluştu"
 
 #: app/desktopManager.js:1809
 msgid "Arrange Icons"
@@ -491,13 +490,12 @@ msgid "Show in Files"
 msgstr "Dosyalarʼda Göster"
 
 #: app/fileItemMenu.js:435
-#, fuzzy
 msgid "No Extraction Folder"
-msgstr "Çıkarma tamamlandı"
+msgstr "Çıkarma Klasörü Yok"
 
 #: app/fileItemMenu.js:436
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "Dosya çıkarılamıyor, çıkarma Klasörü yok"
 
 #: app/fileItemMenu.js:456
 msgid "Select Extract Destination"
@@ -517,7 +515,7 @@ msgstr "Seçim bir Dizin içeriyor, önce dizini bir dosyaya sıkıştırın."
 
 #: app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "Masaüstü Simgeleri NG X11Wayland altında çalışıyor"
 
 #: app/notifyX11UnderWayland.js:38
 msgid ""
@@ -525,6 +523,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Görünüşe göre sisteminizi GTK'yı X11 kullanmaya zorlayacak şekilde "
+"yapılandırmışsınız. Bu işe yarar, ancak optimal değildir. Bunu düzeltmek "
+"için sistem yapılandırmanızı kontrol etmelisiniz."
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
@@ -532,7 +533,7 @@ msgstr "Kapat"
 
 #: app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Bu iletiyi yeniden gösterme"
 
 #: app/preferences.js:91
 msgid "Settings"
@@ -800,10 +801,12 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "X11Wayland üzerinde çalışıyorsa açılır pencere göster"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
+"X11Wayland üzerinde çalışıyorsa DING'in açılır pencere gösterip "
+"göstermeyeceği, ya da kullanıcının artık göstermemeye karar verip vermediği."
