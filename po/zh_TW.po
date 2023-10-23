@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 20:34+0200\n"
+"POT-Creation-Date: 2023-10-23 22:38+0200\n"
 "PO-Revision-Date: 2021-07-11 21:08+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
@@ -18,285 +18,304 @@ msgstr ""
 "X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: autoAr.js:87
+#: app/askRenamePopup.js:46
+msgid "Folder name"
+msgstr "資料夾名稱"
+
+#: app/askRenamePopup.js:46
+msgid "File name"
+msgstr "檔案名稱"
+
+#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:977
+msgid "OK"
+msgstr "確定"
+
+#: app/askRenamePopup.js:54
+msgid "Rename"
+msgstr "重新命名"
+
+#: app/autoAr.js:88
 msgid "AutoAr is not installed"
 msgstr ""
 
-#: autoAr.js:88
+#: app/autoAr.js:89
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
 
-#: autoAr.js:223
+#: app/autoAr.js:224
 #, fuzzy
 msgid "Extracting files"
 msgstr "在這裡解開"
 
-#: autoAr.js:240
+#: app/autoAr.js:241
 #, fuzzy
 msgid "Compressing files"
 msgstr "壓縮 {0} 檔案"
 
-#: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:979
+#: app/fileItemMenu.js:460
 msgid "Cancel"
 msgstr "取消"
 
-#: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
-msgid "OK"
-msgstr "確定"
-
-#: autoAr.js:315 autoAr.js:605
+#: app/autoAr.js:318 app/autoAr.js:619
 msgid "Enter a password here"
 msgstr ""
 
-#: autoAr.js:355
+#: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
 msgstr ""
 
-#: autoAr.js:374
+#: app/autoAr.js:378
 msgid "Creating destination folder"
 msgstr ""
 
-#: autoAr.js:406
+#: app/autoAr.js:410
 msgid "Extracting files into '${outputPath}'"
 msgstr ""
 
-#: autoAr.js:436
+#: app/autoAr.js:442
 #, fuzzy
 msgid "Extraction completed"
 msgstr "在這裡解開"
 
-#: autoAr.js:437
+#: app/autoAr.js:443
 msgid "Extracting '${fullPathFile}' has been completed."
 msgstr ""
 
-#: autoAr.js:443
+#: app/autoAr.js:449
 #, fuzzy
 msgid "Extraction cancelled"
 msgstr "在這裡解開"
 
-#: autoAr.js:444
+#: app/autoAr.js:450
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
 msgstr ""
 
-#: autoAr.js:454
+#: app/autoAr.js:460
 msgid "Passphrase required for ${filename}"
 msgstr ""
 
-#: autoAr.js:457
+#: app/autoAr.js:463
 msgid "Error during extraction"
 msgstr ""
 
-#: autoAr.js:485
+#: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
 msgstr ""
 
-#: autoAr.js:498
+#: app/autoAr.js:505
 msgid "Compression completed"
 msgstr ""
 
-#: autoAr.js:499
+#: app/autoAr.js:506
 msgid "Compressing files into '${outputFile}' has been completed."
 msgstr ""
 
-#: autoAr.js:503 autoAr.js:510
+#: app/autoAr.js:510 app/autoAr.js:517
 msgid "Cancelled compression"
 msgstr ""
 
-#: autoAr.js:504
+#: app/autoAr.js:511
 msgid "The output file '${outputFile}' already exists."
 msgstr ""
 
-#: autoAr.js:511
+#: app/autoAr.js:518
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
 msgstr ""
 
-#: autoAr.js:514
+#: app/autoAr.js:521
 msgid "Error during compression"
 msgstr ""
 
-#: autoAr.js:546
+#: app/autoAr.js:554
 msgid "Create archive"
 msgstr ""
 
-#: autoAr.js:571
+#: app/autoAr.js:579
 #, fuzzy
 msgid "Archive name"
 msgstr "檔案名稱"
 
-#: autoAr.js:602
+#: app/autoAr.js:614
 msgid "Password"
 msgstr ""
 
-#: autoAr.js:618
+#: app/autoAr.js:633
 msgid "Create"
 msgstr ""
 
-#: autoAr.js:695
+#: app/autoAr.js:708
 msgid "Compatible with all operating systems."
 msgstr ""
 
-#: autoAr.js:701
+#: app/autoAr.js:714
 msgid "Password protected .zip, must be installed on Windows and Mac."
 msgstr ""
 
-#: autoAr.js:707
+#: app/autoAr.js:720
 msgid "Smaller archives but Linux and Mac only."
 msgstr ""
 
-#: autoAr.js:713
+#: app/autoAr.js:726
 msgid "Smaller archives but must be installed on Windows and Mac."
 msgstr ""
 
-#: askRenamePopup.js:42
-msgid "Folder name"
-msgstr "資料夾名稱"
-
-#: askRenamePopup.js:42
-msgid "File name"
-msgstr "檔案名稱"
-
-#: askRenamePopup.js:49
-msgid "Rename"
-msgstr "重新命名"
-
-#: dbusUtils.js:66
+#: app/dbusUtils.js:68
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr ""
 
-#: dbusUtils.js:67
+#: app/dbusUtils.js:69
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
 
-#: desktopIconsUtil.js:96
+#: app/desktopIconsUtil.js:136
 msgid "Command not found"
 msgstr "無法找到指令"
 
-#: desktopManager.js:229
+#: app/desktopManager.js:257
 msgid "Nautilus File Manager not found"
 msgstr "無法找到《檔案 (Nautilus 瀏覽器)》"
 
-#: desktopManager.js:230
+#: app/desktopManager.js:258
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "《檔案》強制與Desktop Icons NG 運行"
 
-#: desktopManager.js:881
+#: app/desktopManager.js:939
 msgid "Clear Current Selection before New Search"
 msgstr ""
 
-#: desktopManager.js:921
+#: app/desktopManager.js:981
 msgid "Find Files on Desktop"
 msgstr ""
 
-#: desktopManager.js:986 desktopManager.js:1669
+#: app/desktopManager.js:1047 app/desktopManager.js:1750
 msgid "New Folder"
 msgstr "新增資料夾"
 
-#: desktopManager.js:990
+#: app/desktopManager.js:1051
 msgid "New Document"
 msgstr "新增文件"
 
-#: desktopManager.js:995
+#: app/desktopManager.js:1056
 msgid "Paste"
 msgstr "貼上"
 
-#: desktopManager.js:999
+#: app/desktopManager.js:1060
 msgid "Undo"
 msgstr "復原"
 
-#: desktopManager.js:1003
+#: app/desktopManager.js:1064
 msgid "Redo"
 msgstr "重做"
 
-#: desktopManager.js:1009
+#: app/desktopManager.js:1070
 #, fuzzy
 msgid "Select All"
 msgstr "全部選取"
 
-#: desktopManager.js:1017
+#: app/desktopManager.js:1078
 #, fuzzy
 msgid "Show Desktop in Files"
 msgstr "在《檔案》中開啟桌面"
 
-#: desktopManager.js:1021 fileItemMenu.js:323
+#: app/desktopManager.js:1082 app/fileItemMenu.js:358
 msgid "Open in Terminal"
 msgstr "開啟終端器"
 
-#: desktopManager.js:1027
+#: app/desktopManager.js:1088
 msgid "Change Background…"
 msgstr "變更背景圖片…"
 
-#: desktopManager.js:1038
+#: app/desktopManager.js:1099
 #, fuzzy
 msgid "Desktop Icons Settings"
 msgstr "桌面圖示設定"
 
-#: desktopManager.js:1042
+#: app/desktopManager.js:1103
 msgid "Display Settings"
 msgstr "顯示設定"
 
-#: desktopManager.js:1727
+#: app/desktopManager.js:1763
+#, fuzzy
+msgid "Folder Creation Failed"
+msgstr "資料夾名稱"
+
+#: app/desktopManager.js:1764
+#, fuzzy
+msgid "Error while trying to create a Folder"
+msgstr "刪除檔案時發生錯誤"
+
+#: app/desktopManager.js:1800
+msgid "Template Creation Failed"
+msgstr ""
+
+#: app/desktopManager.js:1801
+msgid "Error while trying to create a Document"
+msgstr ""
+
+#: app/desktopManager.js:1809
 msgid "Arrange Icons"
 msgstr ""
 
-#: desktopManager.js:1731
+#: app/desktopManager.js:1813
 msgid "Arrange By..."
 msgstr ""
 
-#: desktopManager.js:1740
+#: app/desktopManager.js:1822
 msgid "Keep Arranged..."
 msgstr ""
 
-#: desktopManager.js:1744
+#: app/desktopManager.js:1826
 msgid "Keep Stacked by type..."
 msgstr ""
 
-#: desktopManager.js:1749
+#: app/desktopManager.js:1831
 msgid "Sort Home/Drives/Trash..."
 msgstr ""
 
-#: desktopManager.js:1755
+#: app/desktopManager.js:1837
 msgid "Sort by Name"
 msgstr ""
 
-#: desktopManager.js:1757
+#: app/desktopManager.js:1839
 msgid "Sort by Name Descending"
 msgstr ""
 
-#: desktopManager.js:1760
+#: app/desktopManager.js:1842
 msgid "Sort by Modified Time"
 msgstr ""
 
-#: desktopManager.js:1763
+#: app/desktopManager.js:1845
 msgid "Sort by Type"
 msgstr ""
 
-#: desktopManager.js:1766
+#: app/desktopManager.js:1848
 msgid "Sort by Size"
 msgstr ""
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:171
+#: app/fileItem.js:168
 msgid "Home"
 msgstr "家目錄"
 
-#: fileItem.js:290
+#: app/fileItem.js:291
 msgid "Broken Link"
 msgstr ""
 
-#: fileItem.js:291
+#: app/fileItem.js:292
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
 
-#: fileItem.js:346
+#: app/fileItem.js:346
 #, fuzzy
 msgid "Broken Desktop File"
 msgstr "在《檔案》中開啟桌面"
 
-#: fileItem.js:347
+#: app/fileItem.js:347
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -304,29 +323,29 @@ msgid ""
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
 
-#: fileItem.js:353
+#: app/fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
 msgstr ""
 
-#: fileItem.js:354
+#: app/fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
 
-#: fileItem.js:356
+#: app/fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
 
-#: fileItem.js:359
+#: app/fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
 
-#: fileItem.js:367
+#: app/fileItem.js:367
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -334,283 +353,306 @@ msgid ""
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
 
-#: fileItemMenu.js:132
+#: app/fileItemMenu.js:135
 msgid "Open All..."
 msgstr "開啟所有項目……"
 
-#: fileItemMenu.js:132
+#: app/fileItemMenu.js:135
 msgid "Open"
 msgstr "開啟"
 
-#: fileItemMenu.js:143
+#: app/fileItemMenu.js:151
 msgid "Stack This Type"
 msgstr ""
 
-#: fileItemMenu.js:143
+#: app/fileItemMenu.js:151
 msgid "Unstack This Type"
 msgstr ""
 
-#: fileItemMenu.js:155
+#: app/fileItemMenu.js:164
 msgid "Scripts"
 msgstr "命令稿"
 
-#: fileItemMenu.js:161
+#: app/fileItemMenu.js:170
 msgid "Open All With Other Application..."
 msgstr "用其他應用程式開啟所有……"
 
-#: fileItemMenu.js:161
+#: app/fileItemMenu.js:170
 msgid "Open With Other Application"
 msgstr "用其他應用程式開啟"
 
-#: fileItemMenu.js:167
+#: app/fileItemMenu.js:176
 msgid "Launch using Dedicated Graphics Card"
 msgstr ""
 
-#: fileItemMenu.js:177
+#: app/fileItemMenu.js:188
 msgid "Run as a program"
 msgstr ""
 
-#: fileItemMenu.js:185
+#: app/fileItemMenu.js:196
 msgid "Cut"
 msgstr "剪下"
 
-#: fileItemMenu.js:190
+#: app/fileItemMenu.js:203
 msgid "Copy"
 msgstr "複製"
 
-#: fileItemMenu.js:196
+#: app/fileItemMenu.js:211
 msgid "Rename…"
 msgstr "重新命名…"
 
-#: fileItemMenu.js:204
+#: app/fileItemMenu.js:221
 msgid "Move to Trash"
 msgstr "移動到垃圾桶"
 
-#: fileItemMenu.js:210
+#: app/fileItemMenu.js:229
 msgid "Delete permanently"
 msgstr "永久刪除"
 
-#: fileItemMenu.js:218
+#: app/fileItemMenu.js:239
 msgid "Don't Allow Launching"
 msgstr "不允許執行"
 
-#: fileItemMenu.js:218
+#: app/fileItemMenu.js:239
 msgid "Allow Launching"
 msgstr "允許執行"
 
-#: fileItemMenu.js:229
+#: app/fileItemMenu.js:252
 msgid "Empty Trash"
 msgstr "清空垃圾桶"
 
-#: fileItemMenu.js:240
+#: app/fileItemMenu.js:265
 msgid "Eject"
 msgstr "退出"
 
-#: fileItemMenu.js:246
+#: app/fileItemMenu.js:273
 msgid "Unmount"
 msgstr "卸載"
 
-#: fileItemMenu.js:258 fileItemMenu.js:265
+#: app/fileItemMenu.js:287 app/fileItemMenu.js:294
 msgid "Extract Here"
 msgstr "在這裡解開"
 
-#: fileItemMenu.js:270
+#: app/fileItemMenu.js:301
 msgid "Extract To..."
 msgstr "解開到…"
 
-#: fileItemMenu.js:277
+#: app/fileItemMenu.js:310
 msgid "Send to..."
 msgstr "傳送到…"
 
-#: fileItemMenu.js:285
+#: app/fileItemMenu.js:318
 #, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
 msgstr[0] "壓縮 {0} 檔案"
 
-#: fileItemMenu.js:292
+#: app/fileItemMenu.js:325
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "壓縮 {0} 檔案"
 
-#: fileItemMenu.js:300
+#: app/fileItemMenu.js:333
 #, fuzzy
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "新增空白的（有 {0} 項目）資料夾"
 
-#: fileItemMenu.js:309
+#: app/fileItemMenu.js:344
 msgid "Common Properties"
 msgstr "共同屬性"
 
-#: fileItemMenu.js:309
+#: app/fileItemMenu.js:344
 msgid "Properties"
 msgstr "屬性"
 
-#: fileItemMenu.js:316
+#: app/fileItemMenu.js:351
 msgid "Show All in Files"
 msgstr "在《檔案》中顯示"
 
-#: fileItemMenu.js:316
+#: app/fileItemMenu.js:351
 msgid "Show in Files"
 msgstr "在《檔案》中顯示"
 
-#: fileItemMenu.js:405
+#: app/fileItemMenu.js:435
+#, fuzzy
+msgid "No Extraction Folder"
+msgstr "在這裡解開"
+
+#: app/fileItemMenu.js:436
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr ""
+
+#: app/fileItemMenu.js:456
 msgid "Select Extract Destination"
 msgstr "選擇解壓縮的位置"
 
-#: fileItemMenu.js:410
+#: app/fileItemMenu.js:461
 msgid "Select"
 msgstr "選擇"
 
-#: fileItemMenu.js:449
+#: app/fileItemMenu.js:502
 msgid "Can not email a Directory"
 msgstr "無法寄送資料夾"
 
-#: fileItemMenu.js:450
+#: app/fileItemMenu.js:503
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr "已選項目含資料夾，先把資料夾壓縮成一個檔案。"
 
-#: preferences.js:74
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr ""
+
+#: app/preferences.js:91
 msgid "Settings"
 msgstr "設定"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Size for the desktop icons"
 msgstr "桌面圖示的大小"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Tiny"
 msgstr "更小圖示"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Small"
 msgstr "小圖示"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Standard"
 msgstr "適中圖示"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Large"
 msgstr "大圖示"
 
-#: prefswindow.js:47
+#: app/prefswindow.js:65
 msgid "Show the personal folder in the desktop"
 msgstr "在桌面顯示個人資料夾"
 
-#: prefswindow.js:48
+#: app/prefswindow.js:66
 msgid "Show the trash icon in the desktop"
 msgstr "在桌面顯示垃圾桶圖示"
 
-#: prefswindow.js:49 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
 msgstr "在桌面顯示外接硬碟"
 
-#: prefswindow.js:50 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
 msgstr "在桌面顯示網路資料夾"
 
-#: prefswindow.js:53
+#: app/prefswindow.js:71
 msgid "New icons alignment"
 msgstr "新圖示排序位置"
 
-#: prefswindow.js:54
+#: app/prefswindow.js:73
 msgid "Top-left corner"
 msgstr "左上角"
 
-#: prefswindow.js:55
+#: app/prefswindow.js:74
 msgid "Top-right corner"
 msgstr "右上角"
 
-#: prefswindow.js:56
+#: app/prefswindow.js:75
 msgid "Bottom-left corner"
 msgstr "左下角"
 
-#: prefswindow.js:57
+#: app/prefswindow.js:76
 msgid "Bottom-right corner"
 msgstr "右下角"
 
-#: prefswindow.js:59 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
 msgstr "將新掛載硬碟置於螢幕的另一邊"
 
-#: prefswindow.js:60
+#: app/prefswindow.js:79
 msgid "Highlight the drop place during Drag'n'Drop"
 msgstr "拖曳時強調顯示拖曳後位置"
 
-#: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
 msgstr ""
 
-#: prefswindow.js:63
+#: app/prefswindow.js:82
 msgid "Add an emblem to soft links"
 msgstr ""
 
-#: prefswindow.js:65
+#: app/prefswindow.js:84
 msgid "Use dark text in icon labels"
 msgstr ""
 
-#. Nautilus options
-#: prefswindow.js:71
+#: app/prefswindow.js:91
 msgid "Settings shared with Nautilus"
 msgstr "與《檔案》共用設定"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Click type for open files"
 msgstr "開啟檔案時的點擊方式"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Single click"
 msgstr "單擊"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Double click"
 msgstr "雙擊"
 
-#: prefswindow.js:91
+#: app/prefswindow.js:114
 msgid "Show hidden files"
 msgstr "顯示隱藏檔"
 
-#: prefswindow.js:92
+#: app/prefswindow.js:115
 msgid "Show a context menu item to delete permanently"
 msgstr "在快速選單顯示永久刪除"
 
-#: prefswindow.js:97
+#: app/prefswindow.js:120
 msgid "Action to do when launching a program from the desktop"
 msgstr "在桌面執行應用程式時的動作"
 
-#: prefswindow.js:98
+#: app/prefswindow.js:121
 msgid "Display the content of the file"
 msgstr "顯示檔案內容"
 
-#: prefswindow.js:99
+#: app/prefswindow.js:122
 msgid "Launch the file"
 msgstr "執行檔案"
 
-#: prefswindow.js:100
+#: app/prefswindow.js:123
 msgid "Ask what to do"
 msgstr "詢問要做什麼"
 
-#: prefswindow.js:106
+#: app/prefswindow.js:129
 msgid "Show image thumbnails"
 msgstr "顯示影像縮圖"
 
-#: prefswindow.js:107
+#: app/prefswindow.js:130
 msgid "Never"
 msgstr "從不"
 
-#: prefswindow.js:108
+#: app/prefswindow.js:131
 msgid "Local files only"
 msgstr "顯示本機檔案"
 
-#: prefswindow.js:109
+#: app/prefswindow.js:132
 msgid "Always"
 msgstr "總是"
-
-#: showErrorPopup.js:40
-msgid "Close"
-msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -733,6 +775,16 @@ msgid ""
 "backgrounds."
 msgstr ""
 
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
+
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
 #~ "the last item: 'Desktop Icons settings'"
@@ -759,9 +811,6 @@ msgstr ""
 
 #~ msgid "Delete"
 #~ msgstr "刪除"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "刪除檔案時發生錯誤"
 
 #~ msgid "Are you sure you want to permanently delete these items?"
 #~ msgstr "你確定要永久刪除這些項目嗎？"

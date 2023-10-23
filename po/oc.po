@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 20:34+0200\n"
+"POT-Creation-Date: 2023-10-23 22:38+0200\n"
 "PO-Revision-Date: 2022-12-16 22:03+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
@@ -18,11 +18,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: autoAr.js:87
+#: app/askRenamePopup.js:46
+msgid "Folder name"
+msgstr "Nom del dorsièr"
+
+#: app/askRenamePopup.js:46
+msgid "File name"
+msgstr "Nom de fichièr"
+
+#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:977
+msgid "OK"
+msgstr "D’acordi"
+
+#: app/askRenamePopup.js:54
+msgid "Rename"
+msgstr "Renomenar"
+
+#: app/autoAr.js:88
 msgid "AutoAr is not installed"
 msgstr "AutoAr es pas installat"
 
-#: autoAr.js:88
+#: app/autoAr.js:89
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
@@ -30,140 +46,125 @@ msgstr ""
 "Per poder trabalhar amb de fichièrs compressats, installatz  file-roller e/o "
 "gir-1.2-gnomeAutoAr"
 
-#: autoAr.js:223
+#: app/autoAr.js:224
 msgid "Extracting files"
 msgstr "Extraccion dels fichièrs"
 
-#: autoAr.js:240
+#: app/autoAr.js:241
 msgid "Compressing files"
 msgstr "Compression dels fichièrs"
 
-#: autoAr.js:294 autoAr.js:621 desktopManager.js:919 fileItemMenu.js:409
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:979
+#: app/fileItemMenu.js:460
 msgid "Cancel"
 msgstr "Anullar"
 
-#: autoAr.js:302 askRenamePopup.js:49 desktopManager.js:917
-msgid "OK"
-msgstr "D’acordi"
-
-#: autoAr.js:315 autoAr.js:605
+#: app/autoAr.js:318 app/autoAr.js:619
 msgid "Enter a password here"
 msgstr "Picatz un senhal aicí"
 
-#: autoAr.js:355
+#: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
 msgstr "Supression de fichièr parcial « ${outputFile} »"
 
-#: autoAr.js:374
+#: app/autoAr.js:378
 msgid "Creating destination folder"
 msgstr "Creacion d’un dossièr de destinacion"
 
-#: autoAr.js:406
+#: app/autoAr.js:410
 msgid "Extracting files into '${outputPath}'"
 msgstr "Extraccion dels fichièrs dins « ${outputPath} »"
 
-#: autoAr.js:436
+#: app/autoAr.js:442
 msgid "Extraction completed"
 msgstr "Extraccion acabada"
 
-#: autoAr.js:437
+#: app/autoAr.js:443
 msgid "Extracting '${fullPathFile}' has been completed."
 msgstr "L’extraccion de « ${fullPathFile} » es acabada."
 
-#: autoAr.js:443
+#: app/autoAr.js:449
 msgid "Extraction cancelled"
 msgstr "Extraccion anullada"
 
-#: autoAr.js:444
+#: app/autoAr.js:450
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
 msgstr "L’utilizaire a anullat l’extraccion de « ${fullPathFile} »."
 
-#: autoAr.js:454
+#: app/autoAr.js:460
 msgid "Passphrase required for ${filename}"
 msgstr "Frasa secreta requesida per ${filename}"
 
-#: autoAr.js:457
+#: app/autoAr.js:463
 msgid "Error during extraction"
 msgstr "Error pendent l’extraccion"
 
-#: autoAr.js:485
+#: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
 msgstr "Compression dels fichièrs dins « ${outputFile} »"
 
-#: autoAr.js:498
+#: app/autoAr.js:505
 msgid "Compression completed"
 msgstr "Compression acabada"
 
-#: autoAr.js:499
+#: app/autoAr.js:506
 msgid "Compressing files into '${outputFile}' has been completed."
 msgstr "La compression des fichièrs dins « ${outputFile} » es acabada."
 
-#: autoAr.js:503 autoAr.js:510
+#: app/autoAr.js:510 app/autoAr.js:517
 msgid "Cancelled compression"
 msgstr "Compression anullada"
 
-#: autoAr.js:504
+#: app/autoAr.js:511
 msgid "The output file '${outputFile}' already exists."
 msgstr "Lo fichièr en sortida « ${outputFile} » existís ja."
 
-#: autoAr.js:511
+#: app/autoAr.js:518
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
 msgstr ""
 "L’utilizaire a anullat la compression des fichièrs dins « ${outputFile} »."
 
-#: autoAr.js:514
+#: app/autoAr.js:521
 msgid "Error during compression"
 msgstr "Error pendent la compression"
 
-#: autoAr.js:546
+#: app/autoAr.js:554
 msgid "Create archive"
 msgstr "Crear un archiu"
 
-#: autoAr.js:571
+#: app/autoAr.js:579
 msgid "Archive name"
 msgstr "Nom de l’archiu"
 
-#: autoAr.js:602
+#: app/autoAr.js:614
 msgid "Password"
 msgstr "Senhal"
 
-#: autoAr.js:618
+#: app/autoAr.js:633
 msgid "Create"
 msgstr "Crear"
 
-#: autoAr.js:695
+#: app/autoAr.js:708
 msgid "Compatible with all operating systems."
 msgstr "Compatible amb totes los sistèmas operatius."
 
-#: autoAr.js:701
+#: app/autoAr.js:714
 msgid "Password protected .zip, must be installed on Windows and Mac."
 msgstr ".zip protegit per senhal, deu èsser installat sus Windows e Mac."
 
-#: autoAr.js:707
+#: app/autoAr.js:720
 msgid "Smaller archives but Linux and Mac only."
 msgstr "Archius mai pichons mas Linux e Mac sonque."
 
-#: autoAr.js:713
+#: app/autoAr.js:726
 msgid "Smaller archives but must be installed on Windows and Mac."
 msgstr "Archius mai pichons mas devon èsser installats sus Windows e Mac."
 
-#: askRenamePopup.js:42
-msgid "Folder name"
-msgstr "Nom del dorsièr"
-
-#: askRenamePopup.js:42
-msgid "File name"
-msgstr "Nom de fichièr"
-
-#: askRenamePopup.js:49
-msgid "Rename"
-msgstr "Renomenar"
-
-#: dbusUtils.js:66
+#: app/dbusUtils.js:68
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr "« ${programName} » es requerit per Desktop Icons"
 
-#: dbusUtils.js:67
+#: app/dbusUtils.js:69
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -171,131 +172,148 @@ msgstr ""
 "Per que foncione aquesta foncionalitat dins Desktop Icons, devètz installar "
 "« ${programName} » dins vòstre sistèma."
 
-#: desktopIconsUtil.js:96
+#: app/desktopIconsUtil.js:136
 msgid "Command not found"
 msgstr "Comanda pas trobada"
 
-#: desktopManager.js:229
+#: app/desktopManager.js:257
 msgid "Nautilus File Manager not found"
 msgstr "Gestionari de fichièrs Nautilus pas trobat"
 
-#: desktopManager.js:230
+#: app/desktopManager.js:258
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr ""
 "Gestionari de fichièrs Nautilus es obligatòri per foncionar amb Desktop "
 "Icons NG."
 
-#: desktopManager.js:881
+#: app/desktopManager.js:939
 msgid "Clear Current Selection before New Search"
 msgstr "Escafar la seleccion actuala abans una recèrca novèla"
 
-#: desktopManager.js:921
+#: app/desktopManager.js:981
 msgid "Find Files on Desktop"
 msgstr "Recercar de fichièrs al burèu"
 
-#: desktopManager.js:986 desktopManager.js:1669
+#: app/desktopManager.js:1047 app/desktopManager.js:1750
 msgid "New Folder"
 msgstr "Dorsièr novèl"
 
-#: desktopManager.js:990
+#: app/desktopManager.js:1051
 msgid "New Document"
 msgstr "Document novèl"
 
-#: desktopManager.js:995
+#: app/desktopManager.js:1056
 msgid "Paste"
 msgstr "Pegar"
 
-#: desktopManager.js:999
+#: app/desktopManager.js:1060
 msgid "Undo"
 msgstr "Desfar"
 
-#: desktopManager.js:1003
+#: app/desktopManager.js:1064
 msgid "Redo"
 msgstr "Refar"
 
-#: desktopManager.js:1009
+#: app/desktopManager.js:1070
 msgid "Select All"
 msgstr "Tot seleccionar"
 
-#: desktopManager.js:1017
+#: app/desktopManager.js:1078
 msgid "Show Desktop in Files"
 msgstr "Mostrar lo burèu dins Fichièrs"
 
-#: desktopManager.js:1021 fileItemMenu.js:323
+#: app/desktopManager.js:1082 app/fileItemMenu.js:358
 msgid "Open in Terminal"
 msgstr "Dobrir dins un terminal"
 
-#: desktopManager.js:1027
+#: app/desktopManager.js:1088
 msgid "Change Background…"
 msgstr "Modificar lo rèireplan…"
 
-#: desktopManager.js:1038
+#: app/desktopManager.js:1099
 msgid "Desktop Icons Settings"
 msgstr "Paramètres icònas de burèu"
 
-#: desktopManager.js:1042
+#: app/desktopManager.js:1103
 msgid "Display Settings"
 msgstr "Paramètres d'afichatge"
 
-#: desktopManager.js:1727
+#: app/desktopManager.js:1763
+#, fuzzy
+msgid "Folder Creation Failed"
+msgstr "Nom del dorsièr"
+
+#: app/desktopManager.js:1764
+msgid "Error while trying to create a Folder"
+msgstr ""
+
+#: app/desktopManager.js:1800
+msgid "Template Creation Failed"
+msgstr ""
+
+#: app/desktopManager.js:1801
+msgid "Error while trying to create a Document"
+msgstr ""
+
+#: app/desktopManager.js:1809
 msgid "Arrange Icons"
 msgstr "Arrengar las icònas"
 
-#: desktopManager.js:1731
+#: app/desktopManager.js:1813
 msgid "Arrange By..."
 msgstr "Arrengar per..."
 
-#: desktopManager.js:1740
+#: app/desktopManager.js:1822
 msgid "Keep Arranged..."
 msgstr "Gardar arrengat..."
 
-#: desktopManager.js:1744
+#: app/desktopManager.js:1826
 msgid "Keep Stacked by type..."
 msgstr "Gardar l’empilament per tipe..."
 
-#: desktopManager.js:1749
+#: app/desktopManager.js:1831
 msgid "Sort Home/Drives/Trash..."
 msgstr "Triar Repertòri personal/disques/escobilhièr..."
 
-#: desktopManager.js:1755
+#: app/desktopManager.js:1837
 msgid "Sort by Name"
 msgstr "Triar per nom"
 
-#: desktopManager.js:1757
+#: app/desktopManager.js:1839
 msgid "Sort by Name Descending"
 msgstr "Triar per nom descendent"
 
-#: desktopManager.js:1760
+#: app/desktopManager.js:1842
 msgid "Sort by Modified Time"
 msgstr "Triar per data de modificacion"
 
-#: desktopManager.js:1763
+#: app/desktopManager.js:1845
 msgid "Sort by Type"
 msgstr "Triar per tipe"
 
-#: desktopManager.js:1766
+#: app/desktopManager.js:1848
 msgid "Sort by Size"
 msgstr "Triar per talha"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: fileItem.js:171
+#: app/fileItem.js:168
 msgid "Home"
 msgstr "Dossièr personal"
 
-#: fileItem.js:290
+#: app/fileItem.js:291
 msgid "Broken Link"
 msgstr "Ligam copat"
 
-#: fileItem.js:291
+#: app/fileItem.js:292
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
 "Dubertura d'aqueste fichièr impossibla pr’amor qu’es un ligam simbolic copat"
 
-#: fileItem.js:346
+#: app/fileItem.js:346
 msgid "Broken Desktop File"
 msgstr "Mostrar lo burèu dins Fichièrs"
 
-#: fileItem.js:347
+#: app/fileItem.js:347
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -307,11 +325,11 @@ msgstr ""
 "\n"
 "\t<b>Modificatz lo fichièr per definir un programa executable corrèct.</b>"
 
-#: fileItem.js:353
+#: app/fileItem.js:353
 msgid "Invalid Permissions on Desktop File"
 msgstr "Autorizacion invalida sul fichièr de burèu"
 
-#: fileItem.js:354
+#: app/fileItem.js:354
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -319,7 +337,7 @@ msgstr ""
 "Aqueste fichièr .desktop a d’autorizacions incorrèctas. Fasètz clicatz drech "
 "per modificar las proprietats, puèi :\n"
 
-#: fileItem.js:356
+#: app/fileItem.js:356
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -328,7 +346,7 @@ msgstr ""
 "<b>Definir las autorizacions, dins « Autres accèsses », « Lectura sola » o "
 "« Cap »</b>"
 
-#: fileItem.js:359
+#: app/fileItem.js:359
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -336,7 +354,7 @@ msgstr ""
 "\n"
 "<b>Activar l’opcion, « Permetre d’executar lo fichièr coma programa »</b>"
 
-#: fileItem.js:367
+#: app/fileItem.js:367
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -348,285 +366,308 @@ msgstr ""
 "\n"
 "<b>Activar « Autorizar lo lançament »</b>"
 
-#: fileItemMenu.js:132
+#: app/fileItemMenu.js:135
 msgid "Open All..."
 msgstr "Dobrir tot..."
 
-#: fileItemMenu.js:132
+#: app/fileItemMenu.js:135
 msgid "Open"
 msgstr "Dobrir"
 
-#: fileItemMenu.js:143
+#: app/fileItemMenu.js:151
 msgid "Stack This Type"
 msgstr "Apilar aqueste tipe"
 
-#: fileItemMenu.js:143
+#: app/fileItemMenu.js:151
 msgid "Unstack This Type"
 msgstr "Desplegar aqueste tipe"
 
-#: fileItemMenu.js:155
+#: app/fileItemMenu.js:164
 msgid "Scripts"
 msgstr "Scripts"
 
-#: fileItemMenu.js:161
+#: app/fileItemMenu.js:170
 msgid "Open All With Other Application..."
 msgstr "Dobrir tot amb una autra aplicacion..."
 
-#: fileItemMenu.js:161
+#: app/fileItemMenu.js:170
 msgid "Open With Other Application"
 msgstr "Dobrir amb una autra aplicacion"
 
-#: fileItemMenu.js:167
+#: app/fileItemMenu.js:176
 msgid "Launch using Dedicated Graphics Card"
 msgstr "Aviar en utilizant la carta grafica dedicada"
 
-#: fileItemMenu.js:177
+#: app/fileItemMenu.js:188
 msgid "Run as a program"
 msgstr "Executar coma un programa"
 
-#: fileItemMenu.js:185
+#: app/fileItemMenu.js:196
 msgid "Cut"
 msgstr "Copar"
 
-#: fileItemMenu.js:190
+#: app/fileItemMenu.js:203
 msgid "Copy"
 msgstr "Copiar"
 
-#: fileItemMenu.js:196
+#: app/fileItemMenu.js:211
 msgid "Rename…"
 msgstr "Renomenar…"
 
-#: fileItemMenu.js:204
+#: app/fileItemMenu.js:221
 msgid "Move to Trash"
 msgstr "Desplaçar dins l'escobilhièr"
 
-#: fileItemMenu.js:210
+#: app/fileItemMenu.js:229
 msgid "Delete permanently"
 msgstr "Suprimir definitivament"
 
-#: fileItemMenu.js:218
+#: app/fileItemMenu.js:239
 msgid "Don't Allow Launching"
 msgstr "Permetre pas l’aviada"
 
-#: fileItemMenu.js:218
+#: app/fileItemMenu.js:239
 msgid "Allow Launching"
 msgstr "Permetre l'aviada"
 
-#: fileItemMenu.js:229
+#: app/fileItemMenu.js:252
 msgid "Empty Trash"
 msgstr "Voidar l'escobilièr"
 
-#: fileItemMenu.js:240
+#: app/fileItemMenu.js:265
 msgid "Eject"
 msgstr "Ejectar"
 
-#: fileItemMenu.js:246
+#: app/fileItemMenu.js:273
 msgid "Unmount"
 msgstr "Desmontar"
 
-#: fileItemMenu.js:258 fileItemMenu.js:265
+#: app/fileItemMenu.js:287 app/fileItemMenu.js:294
 msgid "Extract Here"
 msgstr "Traire aicí"
 
-#: fileItemMenu.js:270
+#: app/fileItemMenu.js:301
 msgid "Extract To..."
 msgstr "Extraire dins..."
 
-#: fileItemMenu.js:277
+#: app/fileItemMenu.js:310
 msgid "Send to..."
 msgstr "Mandar a..."
 
-#: fileItemMenu.js:285
+#: app/fileItemMenu.js:318
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
 msgstr[0] "Compressar {0} dossièr"
 msgstr[1] "Compressar {0} dossièrs"
 
-#: fileItemMenu.js:292
+#: app/fileItemMenu.js:325
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
 msgstr[0] "Compressar {0} fichièr"
 msgstr[1] "Compressar {0} fichièrs"
 
-#: fileItemMenu.js:300
+#: app/fileItemMenu.js:333
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
 msgstr[0] "Dorsièr novèl amb {0} element"
 msgstr[1] "Dorsièr novèl amb {0} elements"
 
-#: fileItemMenu.js:309
+#: app/fileItemMenu.js:344
 msgid "Common Properties"
 msgstr "Proprietats comunas"
 
-#: fileItemMenu.js:309
+#: app/fileItemMenu.js:344
 msgid "Properties"
 msgstr "Proprietats"
 
-#: fileItemMenu.js:316
+#: app/fileItemMenu.js:351
 msgid "Show All in Files"
 msgstr "Tot mostrar dins Fichièrs"
 
-#: fileItemMenu.js:316
+#: app/fileItemMenu.js:351
 msgid "Show in Files"
 msgstr "Mostrar dins Fichièrs"
 
-#: fileItemMenu.js:405
+#: app/fileItemMenu.js:435
+#, fuzzy
+msgid "No Extraction Folder"
+msgstr "Extraccion acabada"
+
+#: app/fileItemMenu.js:436
+msgid "Unable to extract File, extraction Folder Does not Exist"
+msgstr ""
+
+#: app/fileItemMenu.js:456
 msgid "Select Extract Destination"
 msgstr "Seleccionar una destinacion per l'extraccion"
 
-#: fileItemMenu.js:410
+#: app/fileItemMenu.js:461
 msgid "Select"
 msgstr "Causir"
 
-#: fileItemMenu.js:449
+#: app/fileItemMenu.js:502
 msgid "Can not email a Directory"
 msgstr "Impossible d’enviar un email a un Repertòri"
 
-#: fileItemMenu.js:450
+#: app/fileItemMenu.js:503
 msgid "Selection includes a Directory, compress the directory to a file first."
 msgstr ""
 "La seleccion inclutz un repertòri, compressatz lo repertòri d'en primièr."
 
-#: preferences.js:74
+#: app/notifyX11UnderWayland.js:37
+msgid "Desktop Icons NG is running under X11Wayland"
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:38
+msgid ""
+"It seems that you have your system configured to force GTK to use X11. This "
+"works, but it's suboptimal. You should check your system configuration to "
+"fix this."
+msgstr ""
+
+#: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
+msgid "Close"
+msgstr "Tancar"
+
+#: app/notifyX11UnderWayland.js:47
+msgid "Don't show this message anymore."
+msgstr ""
+
+#: app/preferences.js:91
 msgid "Settings"
 msgstr "Paramètres"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Size for the desktop icons"
 msgstr "Talha de las icònas burèu"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Tiny"
 msgstr "Minuscula"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Small"
 msgstr "Pichona"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Standard"
 msgstr "Estandarda"
 
-#: prefswindow.js:46
+#: app/prefswindow.js:64
 msgid "Large"
 msgstr "Granda"
 
-#: prefswindow.js:47
+#: app/prefswindow.js:65
 msgid "Show the personal folder in the desktop"
 msgstr "Mostrar lo dorsièr personal pel burèu"
 
-#: prefswindow.js:48
+#: app/prefswindow.js:66
 msgid "Show the trash icon in the desktop"
 msgstr "Mostrar l'icòna de l'escobilhièr pel burèu"
 
-#: prefswindow.js:49 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
+#: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
 msgstr "Mostrar los lector extèrns montats pel burèu"
 
-#: prefswindow.js:50 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
+#: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
 msgstr "Mostrar los lectors ret montats pel burèu"
 
-#: prefswindow.js:53
+#: app/prefswindow.js:71
 msgid "New icons alignment"
 msgstr "Alinhament de las icònas novèlas"
 
-#: prefswindow.js:54
+#: app/prefswindow.js:73
 msgid "Top-left corner"
 msgstr "Caire en naut a esquèrra"
 
-#: prefswindow.js:55
+#: app/prefswindow.js:74
 msgid "Top-right corner"
 msgstr "Caire en naut a drecha"
 
-#: prefswindow.js:56
+#: app/prefswindow.js:75
 msgid "Bottom-left corner"
 msgstr "Caire en bas a esquèrra"
 
-#: prefswindow.js:57
+#: app/prefswindow.js:76
 msgid "Bottom-right corner"
 msgstr "Caire en bas a drecha"
 
-#: prefswindow.js:59 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
+#: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
 msgstr "Apondre los lectors novèls al costat opausat de l’ecran"
 
-#: prefswindow.js:60
+#: app/prefswindow.js:79
 msgid "Highlight the drop place during Drag'n'Drop"
 msgstr "Enlusir la zòna de depaus pendent un lisar-depausar"
 
-#: prefswindow.js:61 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
+#: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
 msgstr "Utilizar Nemo per dobrir los dossièrs"
 
-#: prefswindow.js:63
+#: app/prefswindow.js:82
 msgid "Add an emblem to soft links"
 msgstr "Apondre una emblèma als ligams leugièrs"
 
-#: prefswindow.js:65
+#: app/prefswindow.js:84
 msgid "Use dark text in icon labels"
 msgstr "Utilizar un tèxte escur pels labèls d’icòna"
 
-#. Nautilus options
-#: prefswindow.js:71
+#: app/prefswindow.js:91
 msgid "Settings shared with Nautilus"
 msgstr "Paramètres partejats amb Nautilus"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Click type for open files"
 msgstr "Tipe de clic utilizat per dobrir de fichièrs"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Single click"
 msgstr "Clic simple"
 
-#: prefswindow.js:90
+#: app/prefswindow.js:113
 msgid "Double click"
 msgstr "Clic doble"
 
-#: prefswindow.js:91
+#: app/prefswindow.js:114
 msgid "Show hidden files"
 msgstr "Visualizar los fichièrs amagats"
 
-#: prefswindow.js:92
+#: app/prefswindow.js:115
 msgid "Show a context menu item to delete permanently"
 msgstr "Mostrar un element de menú contextual per suprimir definitivament"
 
-#: prefswindow.js:97
+#: app/prefswindow.js:120
 msgid "Action to do when launching a program from the desktop"
 msgstr "Accion de realizar pendent l’aviada d’un programa a partir del burèu"
 
-#: prefswindow.js:98
+#: app/prefswindow.js:121
 msgid "Display the content of the file"
 msgstr "Afichar lo contengut del fichièr"
 
-#: prefswindow.js:99
+#: app/prefswindow.js:122
 msgid "Launch the file"
 msgstr "Executar lo fichièr"
 
-#: prefswindow.js:100
+#: app/prefswindow.js:123
 msgid "Ask what to do"
 msgstr "Demandar de qué far"
 
-#: prefswindow.js:106
+#: app/prefswindow.js:129
 msgid "Show image thumbnails"
 msgstr "Mostrar las miniaturas d'imatge"
 
-#: prefswindow.js:107
+#: app/prefswindow.js:130
 msgid "Never"
 msgstr "Jamai"
 
-#: prefswindow.js:108
+#: app/prefswindow.js:131
 msgid "Local files only"
 msgstr "Unicament los fichièrs locals"
 
-#: prefswindow.js:109
+#: app/prefswindow.js:132
 msgid "Always"
 msgstr "Totjorn"
-
-#: showErrorPopup.js:40
-msgid "Close"
-msgstr "Tancar"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -758,6 +799,16 @@ msgid ""
 msgstr ""
 "Emplega lo negre pels tèxtes de labèl a la plaça del blanc. Util pendent "
 "l’utilizacion de fonzes clars."
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
+msgid "Show a popup if running on X11Wayland"
+msgstr ""
+
+#: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
+msgid ""
+"Whether DING should show a popup if it is running on X11Wayland, or the user "
+"decided to not show it anymore."
+msgstr ""
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
