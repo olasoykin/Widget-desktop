@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 22:38+0200\n"
-"PO-Revision-Date: 2023-01-17 20:32+1000\n"
+"PO-Revision-Date: 2023-11-03 17:45+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -240,22 +240,20 @@ msgid "Display Settings"
 msgstr "Настройки экрана"
 
 #: app/desktopManager.js:1763
-#, fuzzy
 msgid "Folder Creation Failed"
-msgstr "Название папки"
+msgstr "Не удалось создать папку"
 
 #: app/desktopManager.js:1764
-#, fuzzy
 msgid "Error while trying to create a Folder"
-msgstr "Произошла ошибка при попытке окончательно удалить папку {:}."
+msgstr "Произошла ошибка при попытке создать папку"
 
 #: app/desktopManager.js:1800
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "Не удалось создать шаблон"
 
 #: app/desktopManager.js:1801
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "Произошла ошибка при попытке создать документ"
 
 #: app/desktopManager.js:1809
 msgid "Arrange Icons"
@@ -496,13 +494,12 @@ msgid "Show in Files"
 msgstr "Показать в файловом менеджере"
 
 #: app/fileItemMenu.js:435
-#, fuzzy
 msgid "No Extraction Folder"
-msgstr "Извлечение завершено"
+msgstr "Нет папки для извлечения"
 
 #: app/fileItemMenu.js:436
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "Не удается извлечь файл, так как нет папки для извлечения"
 
 #: app/fileItemMenu.js:456
 msgid "Select Extract Destination"
@@ -522,7 +519,7 @@ msgstr "Выбран каталог, сначала сожмите его в ф�
 
 #: app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "Desktop Icons NG работает под управлением X11Wayland"
 
 #: app/notifyX11UnderWayland.js:38
 msgid ""
@@ -530,6 +527,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Похоже, что ваша система настроена таким образом, чтобы заставить GTK "
+"использовать X11. Это работает, но неоптимально. Вам следует проверить "
+"конфигурацию вашей системы, чтобы исправить это."
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
@@ -537,7 +537,7 @@ msgstr "Закрыть"
 
 #: app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Больше не показывайте это сообщение."
 
 #: app/preferences.js:91
 msgid "Settings"
@@ -805,13 +805,15 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "Показывать всплывающее окно при работе под управлением X11Wayland"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
+"Будет ли DING появляться всплывающее окно при работе под управлением "
+"X11Wayland, или пользователь решит больше не показывать его."
 
 #~ msgid "Add an emblem to .desktop files"
 #~ msgstr "Добавить эмблему к .desktop файлу"
