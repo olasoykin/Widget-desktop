@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-23 22:38+0200\n"
-"PO-Revision-Date: 2023-10-08 21:40+0300\n"
+"PO-Revision-Date: 2023-11-12 23:21+0200\n"
 "Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -103,7 +103,7 @@ msgstr "Помилка під час розпакування"
 
 #: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
-msgstr "Стискаємо файли до '${outputFile}'"
+msgstr "Стиснення файлів до '${outputFile}'"
 
 #: app/autoAr.js:505
 msgid "Compression completed"
@@ -219,7 +219,7 @@ msgstr "Виділити все"
 
 #: app/desktopManager.js:1078
 msgid "Show Desktop in Files"
-msgstr "Показати Стільницю в Файлах"
+msgstr "Показати Стільницю у Файлах"
 
 #: app/desktopManager.js:1082 app/fileItemMenu.js:358
 msgid "Open in Terminal"
@@ -238,21 +238,20 @@ msgid "Display Settings"
 msgstr "Параметри екрана"
 
 #: app/desktopManager.js:1763
-#, fuzzy
 msgid "Folder Creation Failed"
-msgstr "Назва теки"
+msgstr "Створення теки зазнало невдачі"
 
 #: app/desktopManager.js:1764
 msgid "Error while trying to create a Folder"
-msgstr ""
+msgstr "Помилка при спробі створення теки"
 
 #: app/desktopManager.js:1800
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "Створення шаблона зазнало невдачі"
 
 #: app/desktopManager.js:1801
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "Помилка при спробі створення документа"
 
 #: app/desktopManager.js:1809
 msgid "Arrange Icons"
@@ -268,7 +267,7 @@ msgstr "Зберігати вирівнювання..."
 
 #: app/desktopManager.js:1826
 msgid "Keep Stacked by type..."
-msgstr "Тримати в Стосі за типом..."
+msgstr "Групувати в Стосі за типом..."
 
 #: app/desktopManager.js:1831
 msgid "Sort Home/Drives/Trash..."
@@ -386,7 +385,7 @@ msgstr "Скрипти"
 
 #: app/fileItemMenu.js:170
 msgid "Open All With Other Application..."
-msgstr "Відкрити всі в іншій програмі..."
+msgstr "Відкрити все в іншій програмі..."
 
 #: app/fileItemMenu.js:170
 msgid "Open With Other Application"
@@ -471,10 +470,10 @@ msgstr[3] "Стиснути {0} файл"
 #: app/fileItemMenu.js:333
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "Створити теку з {0} об'єктом"
-msgstr[1] "Створити теку з {0} об'єктами"
-msgstr[2] "Створити теку з {0} об'єктами"
-msgstr[3] "Створити теку з {0} об'єктом"
+msgstr[0] "Створити теку з {0} обʼєктом"
+msgstr[1] "Створити теку з {0} обʼєктами"
+msgstr[2] "Створити теку з {0} обʼєктами"
+msgstr[3] "Створити теку з {0} обʼєктом"
 
 #: app/fileItemMenu.js:344
 msgid "Common Properties"
@@ -493,13 +492,12 @@ msgid "Show in Files"
 msgstr "Показати у Файлах"
 
 #: app/fileItemMenu.js:435
-#, fuzzy
 msgid "No Extraction Folder"
-msgstr "Розпакування завершено"
+msgstr "Відсутня теки призначення"
 
 #: app/fileItemMenu.js:436
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "Не вдалося видобути файл, оскільки теки призначення не існує"
 
 #: app/fileItemMenu.js:456
 msgid "Select Extract Destination"
@@ -515,11 +513,11 @@ msgstr "Неможливо надіслати теку електронною п
 
 #: app/fileItemMenu.js:503
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Виділене включає теку, для початку стисніть теку до файлу."
+msgstr "Вибране включає теку, для початку стисніть її до файлу."
 
 #: app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "Desktop Icons NG працює під X11Wayland"
 
 #: app/notifyX11UnderWayland.js:38
 msgid ""
@@ -527,6 +525,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Схоже, що ваша система налаштована таким чином, що GTK примусово "
+"використовує X11. Це можливий, але неоптимальний режим роботи. Вам необхідно "
+"перевірити конфігурацію системи, щоб виправити це."
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
@@ -534,7 +535,7 @@ msgstr "Закрити"
 
 #: app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Більше не показувати це повідомлення."
 
 #: app/preferences.js:91
 msgid "Settings"
@@ -586,7 +587,7 @@ msgstr "Верхній лівий кут"
 
 #: app/prefswindow.js:74
 msgid "Top-right corner"
-msgstr "Верхній лівий кут"
+msgstr "Верхній правий кут"
 
 #: app/prefswindow.js:75
 msgid "Bottom-left corner"
@@ -606,7 +607,7 @@ msgstr "Підсвічувати місце падіння під час пер�
 
 #: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr "Відкривати тек за допомогою Nemo"
+msgstr "Відкривати теки за допомогою Nemo"
 
 #: app/prefswindow.js:82
 msgid "Add an emblem to soft links"
@@ -658,7 +659,7 @@ msgstr "Запитати, що робити"
 
 #: app/prefswindow.js:129
 msgid "Show image thumbnails"
-msgstr "Показати мініатюру зображення"
+msgstr "Показувати мініатюри зображень"
 
 #: app/prefswindow.js:130
 msgid "Never"
@@ -682,7 +683,7 @@ msgstr "Встановити розмір піктограм стільниці.
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
 msgid "Show personal folder"
-msgstr "Показати теку користувача"
+msgstr "Показувати теку користувача"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
 msgid "Show the personal folder in the desktop."
@@ -702,11 +703,11 @@ msgstr "Початковий кут для нових піктограм"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "Оберіть, в якому куті почнуть розміщуватись піктограми."
+msgstr "Оберіть, від якого кута починати розміщення піктограм."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
-msgstr "Показувати диски, підключені до комп'ютера."
+msgstr "Показувати диски, підключені до компʼютера."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
@@ -767,7 +768,7 @@ msgstr "Тримати піктограми в Стосі"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr "Завжди тримати піктограми в Стосі, Подібні за типом - групувати"
+msgstr "Завжди тримати піктограми в Стосі, подібні за типом - групувати"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
@@ -775,7 +776,7 @@ msgstr "Типи файлів, що не додаються до Стосу"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr "Масив рядкових значень, Не додавати до Стосу такі типи файлів"
+msgstr "Масив рядкових значень, не додавати до Стосу такі типи файлів"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
@@ -803,10 +804,12 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "Показувати спливаюче вікно, якщо запущено під X11Wayland"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
+"Чи потрібно DING показувати спливаюче вікно при роботі під X11Wayland, або ж "
+"користувач вже визначився, що надалі показувати його не потрібно."
