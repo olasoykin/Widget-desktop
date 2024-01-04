@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 47.0.6
+  * Added accessibility support (Sergio Costas)
+
 * Version 47.0.5
   * Fixed creating a folder with several files (Sergio Costas)
 

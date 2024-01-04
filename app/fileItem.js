@@ -54,6 +54,39 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         /* Set the metadata and update relevant UI */
         this._updateMetadataFromFileInfo(fileInfo);
 
+        let accessible = this._containerAccessibility.get_accessible();
+        switch (this._fileExtra) {
+            default:
+                if (this._isDirectory) {
+                    /** TRANSLATORS: when using a screen reader, this is the text read when a folder is
+                        selected. Example: if a folder named "things" is selected, it will say "Folder things" */
+                    accessible.set_name(_("Folder ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                } else {
+                    /** TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+                        selected. Example: if a file named "my_picture.jpg" is selected, it will say "File my_picture.jpg" */
+                    accessible.set_name(_("File ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                }
+                break;
+            case  Enums.FileType.USER_DIRECTORY_HOME:
+                accessible.set_name(_("Home"));
+                break;
+            case Enums.FileType.USER_DIRECTORY_TRASH:
+                /** TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+                    selected. */
+                accessible.set_name(_("Trash"));
+                break;
+            case Enums.FileType.EXTERNAL_DRIVE:
+                /** TRANSLATORS: when using a screen reader, this is the text read when an external drive is
+                    selected. Example: if a USB stick named "my_portable" is selected, it will say "Drive my_portable" */
+                accessible.set_name(_("Drive ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                break;
+            case Enums.FileType.STACK_TOP:
+                /** TRANSLATORS: when using a screen reader, this is the text read when a stack is
+                    selected. Example: if a stack named "pictures" is selected, it will say "Stack pictures" */
+                accessible.set_name(_("Stack ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                break;
+        }
+
         this._updateIcon().catch(e => {
             print(`Exception while updating an icon: ${e.message}\n${e.stack}`);
         });
