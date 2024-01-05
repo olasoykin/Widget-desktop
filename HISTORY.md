@@ -1,7 +1,14 @@
 # History of versions #
 
+* Version 47.0.8
+  * Added accessibility support
+  * Updated turkish, russian and ukranian translations
+
+* Version 47.0.7
+  * Fix integration with other extensions
+
 * Version 47.0.6
-  * Added accessibility support (Sergio Costas)
+  * Migration to Gnome45
 
 * Version 47.0.5
   * Fixed creating a folder with several files (Sergio Costas)
