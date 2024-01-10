@@ -157,13 +157,13 @@ class ProxyManager {
                             print(`DBus interface for ${this._programNeeded[2]} (${this._interfaceName}) is now available.`);
                             this.emit('changed-status', true);
                         } else {
-                            logError(error, `Error creating proxy, ${this._programNeeded[2]} (${this._interfaceName}); relaunching.\n`);
+                            console.error(error, `Error creating proxy, ${this._programNeeded[2]} (${this._interfaceName}); relaunching.\n`);
                             this.makeNewProxy(1000);
                         }
                     }
                 );
             } catch (e) {
-                logError(e, `Error creating proxy, ${this._programNeeded[0]}`);
+                console.error(e, `Error creating proxy, ${this._programNeeded[0]}`);
                 this._beingLaunched = false;
                 this.makeNewProxy(1000);
             }
@@ -417,7 +417,7 @@ class DBusManager {
         try {
             data = wraper.IntrospectSync()[0];
         } catch (e) {
-            logError(e, 'Error getting introspection data over Dbus.');
+            console.error(e, 'Error getting introspection data over Dbus.');
         }
         if (data == null) {
             return null;
@@ -467,7 +467,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error showing properties: ${error.message}`);
+                    console.log(`Error showing properties: ${error.message}`);
                 }
             }
         );
@@ -485,7 +485,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error showing file on desktop: ${error.message}`);
+                    console.log(`Error showing file on desktop: ${error.message}`);
                 }
             }
         );
@@ -502,7 +502,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error previewing file: ${error.message}`);
+                    console.log(`Error previewing file: ${error.message}`);
                 }
             });
     }
@@ -518,7 +518,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error extracting files: ${error.message}`);
+                    console.log(`Error extracting files: ${error.message}`);
                 }
             });
     }
@@ -534,7 +534,7 @@ class DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error compressing files: ${error.message}`);
+                    console.log(`Error compressing files: ${error.message}`);
                 }
             }
         );
@@ -585,7 +585,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                         parentHandle = `wayland:${handle}`;
                     } */
                 } catch (e) {
-                    logError(e, 'Impossible to determine the parent window');
+                    console.error(e, 'Impossible to determine the parent window');
                 }
             }
 
@@ -611,7 +611,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error moving files: ${error.message}`);
+                    console.log(`Error moving files: ${error.message}`);
                 }
             }
         );
@@ -631,7 +631,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error copying files: ${error.message}`);
+                    console.log(`Error copying files: ${error.message}`);
                 }
             }
         );
@@ -651,7 +651,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error copying files: ${error.message}`);
+                    console.log(`Error copying files: ${error.message}`);
                 }
             }
         );
@@ -670,7 +670,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error moving files: ${error.message}`);
+                    console.log(`Error moving files: ${error.message}`);
                 }
             }
         );
@@ -689,7 +689,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    log(`Error deleting files on the desktop: ${error.message}`);
+                    console.log(`Error deleting files on the desktop: ${error.message}`);
                 }
             }
         );
@@ -708,7 +708,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    log(`Error trashing files on the desktop: ${error.message}`);
+                    console.log(`Error trashing files on the desktop: ${error.message}`);
                 }
             }
         );
@@ -726,7 +726,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error performing undo: ${error.message}`);
+                    console.log(`Error performing undo: ${error.message}`);
                 }
             }
         );
@@ -744,7 +744,7 @@ class RemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error performing redo: ${error.message}`);
+                    console.log(`Error performing redo: ${error.message}`);
                 }
             }
         );
@@ -775,7 +775,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error moving files: ${error.message}`);
+                    console.log(`Error moving files: ${error.message}`);
                 }
             }
         );
@@ -794,7 +794,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error copying files: ${error.message}`);
+                    console.log(`Error copying files: ${error.message}`);
                 }
             }
         );
@@ -813,7 +813,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error renaming files: ${error.message}`);
+                    console.log(`Error renaming files: ${error.message}`);
                 }
             }
         );
@@ -831,7 +831,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error moving files: ${error.message}`);
+                    console.log(`Error moving files: ${error.message}`);
                 }
             }
         );
@@ -850,7 +850,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    log(`Error deleting files on the desktop: ${error.message}`);
+                    console.log(`Error deleting files on the desktop: ${error.message}`);
                 }
             }
         );
@@ -867,7 +867,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(source, error);
                 }
                 if (error) {
-                    log(`Error trashing files on the desktop: ${error.message}`);
+                    console.log(`Error trashing files on the desktop: ${error.message}`);
                 }
             }
         );
@@ -884,7 +884,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error performing undo: ${error.message}`);
+                    console.log(`Error performing undo: ${error.message}`);
                 }
             }
         );
@@ -901,7 +901,7 @@ class LegacyRemoteFileOperationsManager extends DbusOperationsManager {
                     callback(result, error);
                 }
                 if (error) {
-                    log(`Error performing redo: ${error.message}`);
+                    console.log(`Error performing redo: ${error.message}`);
                 }
             }
         );

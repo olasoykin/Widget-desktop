@@ -1135,7 +1135,7 @@ var DesktopManager = class {
                 try {
                     Gio.AppInfo.launch_default_for_uri_finish(result);
                 } catch (e) {
-                    log(`Error opening Desktop in Files: ${e.message}`);
+                    console.log(`Error opening Desktop in Files: ${e.message}`);
                 }
             }
         );
@@ -1765,7 +1765,7 @@ var DesktopManager = class {
                 info.set_attribute_string('metadata::nautilus-icon-position', '');
                 dir.set_attributes_from_info(info, Gio.FileQueryInfoFlags.NONE, null);
             } catch (e) {
-                logError(e, 'Failed to create folder');
+                console.error(e, 'Failed to create folder');
                 const header = _('Folder Creation Failed');
                 const text = _('Error while trying to create a Folder');
                 this.dbusManager.doNotify(header, text);
@@ -1802,7 +1802,7 @@ var DesktopManager = class {
             info.set_attribute_string('metadata::nautilus-icon-position', '');
             destination.set_attributes_from_info(info, Gio.FileQueryInfoFlags.NONE, null);
         } catch (e) {
-            logError(e, `Failed to create template ${e.message}`);
+            console.error(e, `Failed to create template ${e.message}`);
             const header = _('Template Creation Failed');
             const text = _('Error while trying to create a Document');
             this.dbusManager.doNotify(header, text);

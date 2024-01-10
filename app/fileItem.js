@@ -277,14 +277,14 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         this._isDesktopFile = this._attributeContentType == 'application/x-desktop';
 
         if (this._isDesktopFile && this._writableByOthers) {
-            log(`desktop-icons: File ${this._displayName} is writable by others - will not allow launching`);
+            console.log(`desktop-icons: File ${this._displayName} is writable by others - will not allow launching`);
         }
 
         if (this._isDesktopFile) {
             try {
                 this._desktopFile = Gio.DesktopAppInfo.new_from_filename(this._file.get_path());
                 if (!this._desktopFile) {
-                    log(`Couldn’t parse ${this._displayName} as a desktop file, will treat it as a regular file.`);
+                    console.log(`Couldn’t parse ${this._displayName} as a desktop file, will treat it as a regular file.`);
                     this._isValidDesktopFile = false;
                 } else {
                     this._isValidDesktopFile = true;
@@ -320,7 +320,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             fileList = [];
         }
         if (this._isBrokenSymlink) {
-            log(`Error: Can’t open ${this.file.get_uri()} because it is a broken symlink.`);
+            console.log(`Error: Can’t open ${this.file.get_uri()} because it is a broken symlink.`);
             let title = _('Broken Link');
             let error = _('Can not open this File because it is a Broken Symlink');
             this._showerrorpopup(title, error);
@@ -336,7 +336,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             try {
                 DesktopIconsUtil.trySpawn(GLib.get_home_dir(), ['nemo', this.file.get_uri()], DesktopIconsUtil.getFilteredEnviron());
             } catch (err) {
-                log(`Error trying to launch Nemo: ${err.message}\n${err}`);
+                console.log(`Error trying to launch Nemo: ${err.message}\n${err}`);
             }
             return;
         }
@@ -353,7 +353,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 try {
                     Gio.AppInfo.launch_default_for_uri_finish(result);
                 } catch (e) {
-                    log(`Error opening file ${this.file.get_uri()}: ${e.message}`);
+                    console.log(`Error opening file ${this.file.get_uri()}: ${e.message}`);
                 }
             }
         );
@@ -600,7 +600,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     try {
                         source.set_attributes_finish(result);
                     } catch (error) {
-                        log(`Failed to set execution flag: ${error.message}`);
+                        console.log(`Failed to set execution flag: ${error.message}`);
                     }
                 });
         }
@@ -609,12 +609,12 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
     doDiscreteGpu() {
         if (!DBusUtils.discreteGpuAvailable) {
-            log('Could not apply discrete GPU environment, switcheroo-control not available');
+            console.log('Could not apply discrete GPU environment, switcheroo-control not available');
             return;
         }
         let gpus = DBusUtils.SwitcherooControl.proxy.GPUs;
         if (!gpus) {
-            log('Could not apply discrete GPU environment. No GPUs in list.');
+            console.log('Could not apply discrete GPU environment. No GPUs in list.');
             return;
         }
 
@@ -641,7 +641,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._doOpenContext(context, null);
             return;
         }
-        log('Could not find discrete GPU data in switcheroo-control');
+        console.log('Could not find discrete GPU data in switcheroo-control');
     }
 
     _onOpenTerminalClicked() {
@@ -764,7 +764,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     this._refreshMetadataAsync(true);
                 } catch (error) {
                     if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
-                        log(`Failed to set metadata::trusted: ${error.message}`);
+                        console.log(`Failed to set metadata::trusted: ${error.message}`);
                     }
                 }
             });
