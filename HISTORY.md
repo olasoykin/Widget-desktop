@@ -1,5 +1,9 @@
 # History of versions #
 
+* Version 47.0.9
+  * Now uses xdg-terminal-exec to launch a terminal (Torben)
+  * Now shows an error message if a terminal can't be shown (Torben)
+
 * Version 47.0.8
   * Added accessibility support
   * Updated turkish, russian and ukranian translations
