@@ -21,6 +21,7 @@ const {Gio, GLib, Gdk, Gtk} = imports.gi;
 const Signals = imports.signals;
 const DBusInterfaces = imports.dbusInterfaces;
 const DesktopIconsUtil = imports.desktopIconsUtil;
+const Enums = imports.enums;
 
 var NautilusFileOperations2 = null;
 var FreeDesktopFileManager = null;
@@ -223,7 +224,7 @@ class DBusManager {
             'org.freedesktop.DBus',
             '/org/freedesktop/DBus',
             'org.freedesktop.DBus',
-            true, // system bus
+            Enums.DBusBus.SYSTEM, // system bus
             true); // use DBus Introspection
         this._dbusSystemProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
             Gio.DBus.system,
@@ -238,7 +239,7 @@ class DBusManager {
             'org.freedesktop.DBus',
             '/org/freedesktop/DBus',
             'org.freedesktop.DBus',
-            false, // local bus
+            Enums.DBusBus.SESSION,
             true); // use DBus Introspection
         this._dbusLocalProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
             Gio.DBus.session,
@@ -270,7 +271,7 @@ class DBusManager {
             'org.freedesktop.Notifications',
             '/org/freedesktop/Notifications',
             'org.freedesktop.Notifications',
-            false, // local bus
+            Enums.DBusBus.SESSION,
             false); // get interface from local code
         this._notifyProxy = new Gio.DBusProxy.makeProxyWrapper(interfaceXML)(
             Gio.DBus.session,
@@ -922,7 +923,7 @@ function init() {
     let data = dbusManagerObject.getIntrospectionData(
         'org.gnome.Nautilus',
         '/org/gnome/Nautilus/FileOperations2',
-        false);
+        Enums.DBusBus.SESSION);
 
     if (data) {
         // NautilusFileOperations2
@@ -931,7 +932,7 @@ function init() {
             'org.gnome.Nautilus',
             '/org/gnome/Nautilus/FileOperations2',
             'org.gnome.Nautilus.FileOperations2',
-            false,
+            Enums.DBusBus.SESSION,
             'Nautilus'
         );
     } else {
@@ -942,7 +943,7 @@ function init() {
             'org.gnome.Nautilus',
             '/org/gnome/Nautilus',
             'org.gnome.Nautilus.FileOperations',
-            false,
+            Enums.DBusBus.SESSION,
             'Nautilus'
         );
     }
@@ -952,7 +953,7 @@ function init() {
         'org.freedesktop.FileManager1',
         '/org/freedesktop/FileManager1',
         'org.freedesktop.FileManager1',
-        false,
+        Enums.DBusBus.SESSION,
         'Nautilus'
     );
 
@@ -961,7 +962,7 @@ function init() {
         'org.gnome.NautilusPreviewer',
         '/org/gnome/NautilusPreviewer',
         'org.gnome.NautilusPreviewer',
-        false,
+        Enums.DBusBus.SESSION,
         'Nautilus-Sushi'
     );
 
@@ -970,7 +971,7 @@ function init() {
         'org.gnome.ArchiveManager1',
         '/org/gnome/ArchiveManager1',
         'org.gnome.ArchiveManager1',
-        false,
+        Enums.DBusBus.SESSION,
         'File-roller'
     );
 
@@ -979,7 +980,7 @@ function init() {
         'org.gtk.vfs.Metadata',
         '/org/gtk/vfs/metadata',
         'org.gtk.vfs.Metadata',
-        false,
+        Enums.DBusBus.SESSION,
         'Gvfs daemon'
     );
 
@@ -988,7 +989,7 @@ function init() {
         'net.hadess.SwitcherooControl',
         '/net/hadess/SwitcherooControl',
         'net.hadess.SwitcherooControl',
-        true,
+        Enums.DBusBus.SYSTEM,
         'Switcheroo control'
     );
     discreteGpuAvailable = SwitcherooControl.isAvailable;
