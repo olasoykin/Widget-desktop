@@ -342,13 +342,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (this._isDirectory && this._desktopManager.useNemo) {
             try {
                 DesktopIconsUtil.trySpawn(GLib.get_home_dir(), ['nemo', this.file.get_uri()], DesktopIconsUtil.getFilteredEnviron());
+                return;
             } catch (err) {
-                let title = _("Can't open this file with Nemo File Manager");
-                let error = _('Make sure you have installed Nemo File Manager properly or uncheck the "Use Nemo File Manager" option in the Desktop Icons preferences.');
-                let logError = `Couldn't launch Nemo: ${err.message}\n${err}`;
-                this._logAndPopupError(title, error, logError);
+                console.log(`Couldn't launch Nemo: ${err.message}\n${err}`);
             }
-            return;
         }
 
         if (!DBusUtils.GnomeArchiveManager.isAvailable &&
