@@ -104,32 +104,32 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._monitorTrashDir = this._file.monitor_directory(Gio.FileMonitorFlags.WATCH_MOVES, null);
             this._monitorTrashId = this._monitorTrashDir.connect('changed', (obj, file, otherFile, eventType) => {
                 switch (eventType) {
-                case Gio.FileMonitorEvent.DELETED:
-                case Gio.FileMonitorEvent.MOVED_OUT:
-                case Gio.FileMonitorEvent.CREATED:
-                case Gio.FileMonitorEvent.MOVED_IN:
-                    if (this._queryTrashInfoCancellable || this._scheduleTrashRefreshId) {
-                        if (this._scheduleTrashRefreshId) {
-                            GLib.source_remove(this._scheduleTrashRefreshId);
-                        }
-                        if (this._queryTrashInfoCancellable) {
-                            this._queryTrashInfoCancellable.cancel();
-                            this._queryTrashInfoCancellable = null;
-                        }
-                        this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                    case Gio.FileMonitorEvent.DELETED:
+                    case Gio.FileMonitorEvent.MOVED_OUT:
+                    case Gio.FileMonitorEvent.CREATED:
+                    case Gio.FileMonitorEvent.MOVED_IN:
+                        if (this._queryTrashInfoCancellable || this._scheduleTrashRefreshId) {
+                            if (this._scheduleTrashRefreshId) {
+                                GLib.source_remove(this._scheduleTrashRefreshId);
+                            }
+                            if (this._queryTrashInfoCancellable) {
+                                this._queryTrashInfoCancellable.cancel();
+                                this._queryTrashInfoCancellable = null;
+                            }
+                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                                this._refreshTrashIcon();
+                                this._scheduleTrashRefreshId = 0;
+                                return GLib.SOURCE_REMOVE;
+                            });
+                        } else {
                             this._refreshTrashIcon();
-                            this._scheduleTrashRefreshId = 0;
-                            return GLib.SOURCE_REMOVE;
-                        });
-                    } else {
-                        this._refreshTrashIcon();
-                        // after a refresh, don't allow more refreshes until 200ms after, to coalesce extra events
-                        this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
-                            this._scheduleTrashRefreshId = 0;
-                            return GLib.SOURCE_REMOVE;
-                        });
-                    }
-                    break;
+                            // after a refresh, don't allow more refreshes until 200ms after, to coalesce extra events
+                            this._scheduleTrashRefreshId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+                                this._scheduleTrashRefreshId = 0;
+                                return GLib.SOURCE_REMOVE;
+                            });
+                        }
+                        break;
                 }
             });
         } else {
@@ -290,7 +290,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     this._isValidDesktopFile = true;
                 }
             } catch (e) {
-                print(`Error reading Desktop file ${this.uri}: ${e}`);
+                let title = _("Error while reading Desktop file");
+                let error = `${this.uri}: ${e}`;
+                this._logAndPopupError(title, error, `${title}: ${error}`);
             }
         } else {
             this._isValidDesktopFile = false;
@@ -315,15 +317,20 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         this._isBrokenSymlink = this._isSymlink && this._fileType == Gio.FileType.SYMBOLIC_LINK;
     }
 
+    _logAndPopupError(title, error, logError) {
+        log(`Error: ${logError}`);
+        this._showerrorpopup(title, error);
+    }
+
     _doOpenContext(context, fileList) {
         if (!fileList) {
             fileList = [];
         }
         if (this._isBrokenSymlink) {
-            console.log(`Error: Can’t open ${this.file.get_uri()} because it is a broken symlink.`);
             let title = _('Broken Link');
             let error = _('Can not open this File because it is a Broken Symlink');
-            this._showerrorpopup(title, error);
+            let logError = `Error: Can’t open ${this.file.get_uri()} because it is a broken symlink.`;
+            this._logAndPopupError(title, error, logError);
             return;
         }
 
@@ -336,7 +343,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             try {
                 DesktopIconsUtil.trySpawn(GLib.get_home_dir(), ['nemo', this.file.get_uri()], DesktopIconsUtil.getFilteredEnviron());
             } catch (err) {
-                console.log(`Error trying to launch Nemo: ${err.message}\n${err}`);
+                let title = _("Can't open this file with Nemo File Manager");
+                let error = _('Make sure you have installed Nemo File Manager properly or uncheck the "Use Nemo File Manager" option in the Desktop Icons preferences.');
+                let logError = `Couldn't launch Nemo: ${err.message}\n${err}`;
+                this._logAndPopupError(title, error, logError);
             }
             return;
         }
@@ -353,7 +363,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 try {
                     Gio.AppInfo.launch_default_for_uri_finish(result);
                 } catch (e) {
-                    console.log(`Error opening file ${this.file.get_uri()}: ${e.message}`);
+                    let title = _("Can't open the file");
+                    let error = `${e.message}`;
+                    let logError = `while opening file ${this.file.get_uri()}: ${e.message}`;
+                    this._logAndPopupError(title, error, logError);
                 }
             }
         );
@@ -456,7 +469,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._connectSignal(dropDestination, 'drag-data-received', (widget, context, x, y, selection, info, time) => {
                 const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
                 if (info === Enums.DndTargetInfo.GNOME_ICON_LIST ||
-                        info === Enums.DndTargetInfo.URI_LIST) {
+                    info === Enums.DndTargetInfo.URI_LIST) {
                     let fileList = DesktopIconsUtil.getFilesFromNautilusDnD(selection, info);
                     if (fileList.length != 0) {
                         if (this._hasToRouteDragToGrid()) {
@@ -600,7 +613,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     try {
                         source.set_attributes_finish(result);
                     } catch (error) {
-                        console.log(`Failed to set execution flag: ${error.message}`);
+                        let title = _('Failed to set execution flag');
+                        let err = error.message;
+                        let logError = `${title}: ${err}`;
+                        this._logAndPopupError(title, err, logError);
                     }
                 });
         }
@@ -609,12 +625,16 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
     doDiscreteGpu() {
         if (!DBusUtils.discreteGpuAvailable) {
-            console.log('Could not apply discrete GPU environment, switcheroo-control not available');
+            let title = _('Could not apply discrete GPU environment');
+            let error = 'switcheroo-control not available';
+            this._logAndPopupError(title, error, `${title}: ${error}`);
             return;
         }
         let gpus = DBusUtils.SwitcherooControl.proxy.GPUs;
         if (!gpus) {
-            console.log('Could not apply discrete GPU environment. No GPUs in list.');
+            let title = _('Could not apply discrete GPU environment');
+            let error = 'No GPUs in list.';
+            this._logAndPopupError(title, error, `${title}: ${error}`);
             return;
         }
 
@@ -641,7 +661,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._doOpenContext(context, null);
             return;
         }
-        console.log('Could not find discrete GPU data in switcheroo-control');
+        let title = _('Could not find discrete GPU data');
+        let error = 'Could not find discrete GPU data in switcheroo-control';
+        this._logAndPopupError(title, error, error);
     }
 
     _onOpenTerminalClicked() {
@@ -764,7 +786,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     this._refreshMetadataAsync(true);
                 } catch (error) {
                     if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
-                        console.log(`Failed to set metadata::trusted: ${error.message}`);
+                        let title = _('Failed to set metadata::trusted flag');
+                        let err = error.message;
+                        let logError = `${title}: ${err}`;
+                        this._logAndPopupError(title, err, logError);
                     }
                 }
             });
@@ -800,10 +825,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
     get trustedDesktopFile() {
         return this._isValidDesktopFile &&
-               this._attributeCanExecute &&
-               this.metadataTrusted &&
-               !this._desktopManager.writableByOthers &&
-               !this._writableByOthers;
+            this._attributeCanExecute &&
+            this.metadataTrusted &&
+            !this._desktopManager.writableByOthers &&
+            !this._writableByOthers;
     }
 
     get uri() {
