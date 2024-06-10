@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 22:38+0200\n"
-"PO-Revision-Date: 2023-11-12 23:21+0200\n"
+"POT-Creation-Date: 2024-04-06 20:21+0300\n"
+"PO-Revision-Date: 2024-04-06 20:47+0300\n"
 "Last-Translator: Yevhen Popok <xalt7x.service@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: app/askRenamePopup.js:46
 msgid "Folder name"
@@ -28,7 +28,7 @@ msgstr "Назва теки"
 msgid "File name"
 msgstr "Назва файлу"
 
-#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:977
+#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:983
 msgid "OK"
 msgstr "OK"
 
@@ -56,7 +56,7 @@ msgstr "Розпакування файлів"
 msgid "Compressing files"
 msgstr "Стиснення файлів"
 
-#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:979
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:985
 #: app/fileItemMenu.js:460
 msgid "Cancel"
 msgstr "Скасувати"
@@ -161,19 +161,23 @@ msgstr "Менші архіви, але тільки для Linux та Mac."
 msgid "Smaller archives but must be installed on Windows and Mac."
 msgstr "Менші архіви, але треба встановити на Windows та Mac."
 
-#: app/dbusUtils.js:68
-msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr "\"${programName}\" потрібна для Desktop Icons"
-
 #: app/dbusUtils.js:69
+msgid "\"${programName}\" is needed for Desktop Icons"
+msgstr "Desktop Icons потребує \"${programName}\""
+
+#: app/dbusUtils.js:70
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
 msgstr ""
 "Для цього функціоналу Desktop Icons, необхідно встановити \"${programName}\" "
-"у вашу систему."
+"у вашій системі."
 
-#: app/desktopIconsUtil.js:136
+#: app/desktopGrid.js:53
+msgid "Desktop icons"
+msgstr "Піктограми стільниці"
+
+#: app/desktopIconsUtil.js:154
 msgid "Command not found"
 msgstr "Команду не знайдено"
 
@@ -185,132 +189,170 @@ msgstr "Файловий менеджер Nautilus не знайдено"
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
 msgstr "Файловий менеджер Nautilus є необхідним для роботи з Desktop Icons NG."
 
-#: app/desktopManager.js:939
+#: app/desktopManager.js:945
 msgid "Clear Current Selection before New Search"
 msgstr "Очистити поточний вибір перед новим пошуком"
 
-#: app/desktopManager.js:981
+#: app/desktopManager.js:987
 msgid "Find Files on Desktop"
 msgstr "Пошук файлів на стільниці"
 
-#: app/desktopManager.js:1047 app/desktopManager.js:1750
+#: app/desktopManager.js:1053 app/desktopManager.js:1756
 msgid "New Folder"
 msgstr "Створити теку"
 
-#: app/desktopManager.js:1051
+#: app/desktopManager.js:1057
 msgid "New Document"
 msgstr "Створити документ"
 
-#: app/desktopManager.js:1056
+#: app/desktopManager.js:1062
 msgid "Paste"
 msgstr "Вставити"
 
-#: app/desktopManager.js:1060
+#: app/desktopManager.js:1066
 msgid "Undo"
 msgstr "Скасувати"
 
-#: app/desktopManager.js:1064
+#: app/desktopManager.js:1070
 msgid "Redo"
 msgstr "Повторити"
 
-#: app/desktopManager.js:1070
+#: app/desktopManager.js:1076
 msgid "Select All"
 msgstr "Виділити все"
 
-#: app/desktopManager.js:1078
+#: app/desktopManager.js:1084
 msgid "Show Desktop in Files"
 msgstr "Показати Стільницю у Файлах"
 
-#: app/desktopManager.js:1082 app/fileItemMenu.js:358
+#: app/desktopManager.js:1088 app/fileItemMenu.js:358
 msgid "Open in Terminal"
 msgstr "Відкрити в терміналі"
 
-#: app/desktopManager.js:1088
+#: app/desktopManager.js:1094
 msgid "Change Background…"
 msgstr "Змінити тло…"
 
-#: app/desktopManager.js:1099
+#: app/desktopManager.js:1105
 msgid "Desktop Icons Settings"
 msgstr "Налаштування піктограм стільниці"
 
-#: app/desktopManager.js:1103
+#: app/desktopManager.js:1109
 msgid "Display Settings"
 msgstr "Параметри екрана"
 
-#: app/desktopManager.js:1763
+#: app/desktopManager.js:1769
 msgid "Folder Creation Failed"
 msgstr "Створення теки зазнало невдачі"
 
-#: app/desktopManager.js:1764
+#: app/desktopManager.js:1770
 msgid "Error while trying to create a Folder"
 msgstr "Помилка при спробі створення теки"
 
-#: app/desktopManager.js:1800
+#: app/desktopManager.js:1806
 msgid "Template Creation Failed"
 msgstr "Створення шаблона зазнало невдачі"
 
-#: app/desktopManager.js:1801
+#: app/desktopManager.js:1807
 msgid "Error while trying to create a Document"
 msgstr "Помилка при спробі створення документа"
 
-#: app/desktopManager.js:1809
+#: app/desktopManager.js:1815
 msgid "Arrange Icons"
 msgstr "Вирівняти піктограми"
 
-#: app/desktopManager.js:1813
+#: app/desktopManager.js:1819
 msgid "Arrange By..."
 msgstr "Вирівняти за..."
 
-#: app/desktopManager.js:1822
+#: app/desktopManager.js:1828
 msgid "Keep Arranged..."
 msgstr "Зберігати вирівнювання..."
 
-#: app/desktopManager.js:1826
+#: app/desktopManager.js:1832
 msgid "Keep Stacked by type..."
 msgstr "Групувати в Стосі за типом..."
 
-#: app/desktopManager.js:1831
+#: app/desktopManager.js:1837
 msgid "Sort Home/Drives/Trash..."
 msgstr "Сортувати Домівку/Диски/Смітник..."
 
-#: app/desktopManager.js:1837
+#: app/desktopManager.js:1843
 msgid "Sort by Name"
 msgstr "Сортувати за назвою"
 
-#: app/desktopManager.js:1839
+#: app/desktopManager.js:1845
 msgid "Sort by Name Descending"
 msgstr "Сортувати за назвою в порядку спадання"
 
-#: app/desktopManager.js:1842
+#: app/desktopManager.js:1848
 msgid "Sort by Modified Time"
 msgstr "Сортувати за часом останньої зміни"
 
-#: app/desktopManager.js:1845
+#: app/desktopManager.js:1851
 msgid "Sort by Type"
 msgstr "Сортувати за типом"
 
-#: app/desktopManager.js:1848
+#: app/desktopManager.js:1854
 msgid "Sort by Size"
 msgstr "Сортувати за розміром"
 
+#. * TRANSLATORS: when using a screen reader, this is the text read when a folder is
+#. selected. Example: if a folder named "things" is selected, it will say "Folder things"
+#: app/fileItem.js:63
+msgid "Folder ${VisibleName}"
+msgstr "Тека ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. selected. Example: if a file named "my_picture.jpg" is selected, it will say "File my_picture.jpg"
+#: app/fileItem.js:67
+msgid "File ${VisibleName}"
+msgstr "Файл ${VisibleName}"
+
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: app/fileItem.js:168
+#: app/fileItem.js:71 app/fileItem.js:201
 msgid "Home"
 msgstr "Домівка"
 
-#: app/fileItem.js:291
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. selected.
+#: app/fileItem.js:76
+msgid "Trash"
+msgstr "Смітник"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when an external drive is
+#. selected. Example: if a USB stick named "my_portable" is selected, it will say "Drive my_portable"
+#: app/fileItem.js:81
+msgid "Drive ${VisibleName}"
+msgstr "Диск ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a stack is
+#. selected. Example: if a stack named "pictures" is selected, it will say "Stack pictures"
+#: app/fileItem.js:86
+msgid "Stack ${VisibleName}"
+msgstr "Стос ${VisibleName}"
+
+#: app/fileItem.js:293
+msgid "Error while reading Desktop file"
+msgstr "Помилка читання файлу запуску"
+
+#: app/fileItem.js:330
 msgid "Broken Link"
 msgstr "Пошкоджене посилання"
 
-#: app/fileItem.js:292
+#: app/fileItem.js:331
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr "Неможливо відкрити файл, оскільки це пошкоджене символічне посилання"
 
-#: app/fileItem.js:346
+#: app/fileItem.js:363
+msgid "Can't open the file"
+msgstr "Не вдалося відкрити файл"
+
+#: app/fileItem.js:389
 msgid "Broken Desktop File"
 msgstr "Пошкоджений файл запуску"
 
-#: app/fileItem.js:347
+#: app/fileItem.js:390
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -322,11 +364,11 @@ msgstr ""
 "\n"
 "\t<b>Вкажіть в файлі коректну програму.</b>"
 
-#: app/fileItem.js:353
+#: app/fileItem.js:396
 msgid "Invalid Permissions on Desktop File"
-msgstr "Некоректні права доступу на файл запуску"
+msgstr "Некоректні права доступу на файлу запуску"
 
-#: app/fileItem.js:354
+#: app/fileItem.js:397
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -334,7 +376,7 @@ msgstr ""
 "Цей файл .desktop має некоректні права доступу. Клацніть правою клавішею, "
 "щоб відредагувати Властивості, а потім:\n"
 
-#: app/fileItem.js:356
+#: app/fileItem.js:399
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -343,7 +385,7 @@ msgstr ""
 "<b>Змініть Права доступу в \"Інші, Доступ\" на \"Лише читання\" або "
 "\"Немає\"</b>"
 
-#: app/fileItem.js:359
+#: app/fileItem.js:402
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -351,7 +393,7 @@ msgstr ""
 "\n"
 "<b>Увімкніть опцію \"Виконання файлу як програми\"</b>"
 
-#: app/fileItem.js:367
+#: app/fileItem.js:410
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -362,6 +404,22 @@ msgstr ""
 "клацніть правою клавішею, а потім\n"
 "\n"
 "<b>Увімкніть \"Дозволяти запуск\"</b>"
+
+#: app/fileItem.js:613
+msgid "Failed to set execution flag"
+msgstr "Не вдалося встановити прапорець виконання"
+
+#: app/fileItem.js:625 app/fileItem.js:632
+msgid "Could not apply discrete GPU environment"
+msgstr "Не вдалося застосувати середовище дискретної графічної плати"
+
+#: app/fileItem.js:661
+msgid "Could not find discrete GPU data"
+msgstr "Не вдалося знайти дані дискретної графічної плати"
+
+#: app/fileItem.js:786
+msgid "Failed to set metadata::trusted flag"
+msgstr "Не вдалося встановити прапорець metadata::trusted"
 
 #: app/fileItemMenu.js:135
 msgid "Open All..."
@@ -571,7 +629,7 @@ msgstr "Показувати піктограму смітника на стіл
 
 #: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
-msgstr "Показувати змінні носії на стільниці"
+msgstr "Показувати зовнішні диски на стільниці"
 
 #: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
