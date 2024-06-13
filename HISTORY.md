@@ -1,9 +1,14 @@
 # History of versions #
 
 * Version 47.0.11
-  * Fix error message when opening the preferences from gnome-extensions-app
+  * Fix cursor keys when renaming a file
+  * Updated several translations
+  * Fixed History file
 
 * Version 47.0.10
+  * Fix error message when opening the preferences from gnome-extensions-app
+
+* Version 47.0.9
   * Added support for Gnome 46
   * Now shows popup errors when it fails to open a file (Emin Fedar)
   * Now shows popup errors when trying to open a broken symlink (Emin Fedar)
@@ -11,8 +16,6 @@
   * Now shows popup errors when there is an error with switcheroo (Emin Fedar)
   * Now shows popup errors when fails to set metadata (Emin Fedar)
   * Now uses nautilus if nemo is selected but not installed (Sergio Costas)
-
-* Version 47.0.9
   * Now uses xdg-terminal-exec to launch a terminal (Torben)
   * Now shows an error message if a terminal can't be shown (Torben)
 
