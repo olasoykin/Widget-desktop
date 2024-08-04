@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons-ng package.
 # Eaglers <eaglersdeveloper@gmail.com>, 2018
-# Ser82-png <sw@atrus.ru>, 2021-2022
+# Ser82-png <asvmail.as@gmail.com.ru>, 2021-2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-23 22:38+0200\n"
-"PO-Revision-Date: 2023-11-03 17:45+1000\n"
+"POT-Creation-Date: 2024-04-06 20:21+0300\n"
+"PO-Revision-Date: 2024-08-04 14:53+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -28,7 +28,7 @@ msgstr "Название папки"
 msgid "File name"
 msgstr "Название файла"
 
-#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:977
+#: app/askRenamePopup.js:54 app/autoAr.js:305 app/desktopManager.js:983
 msgid "OK"
 msgstr "ОК"
 
@@ -56,7 +56,7 @@ msgstr "Извлечение файлов"
 msgid "Compressing files"
 msgstr "Сжатие файлов"
 
-#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:979
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:985
 #: app/fileItemMenu.js:460
 msgid "Cancel"
 msgstr "Отмена"
@@ -161,11 +161,11 @@ msgstr "Архивы меньшего размера, совместимые т�
 msgid "Smaller archives but must be installed on Windows and Mac."
 msgstr "Архивы меньшего размера, требующие установки на Windows и Mac."
 
-#: app/dbusUtils.js:68
+#: app/dbusUtils.js:69
 msgid "\"${programName}\" is needed for Desktop Icons"
 msgstr "Для Desktop Icons требуется \"${programName}\""
 
-#: app/dbusUtils.js:69
+#: app/dbusUtils.js:70
 msgid ""
 "For this functionality to work in Desktop Icons, you must install "
 "\"${programName}\" in your system."
@@ -173,7 +173,11 @@ msgstr ""
 "Чтобы эта функция работала в Desktop Icons, вы должный установить "
 "\"${programName}\"."
 
-#: app/desktopIconsUtil.js:136
+#: app/desktopGrid.js:53
+msgid "Desktop icons"
+msgstr "Desktop Icons"
+
+#: app/desktopIconsUtil.js:154
 msgid "Command not found"
 msgstr "Команда не найдена"
 
@@ -187,134 +191,172 @@ msgstr ""
 "Файловый менеджер Nautilus является обязательным для работы с Desktop Icons "
 "NG."
 
-#: app/desktopManager.js:939
+#: app/desktopManager.js:945
 msgid "Clear Current Selection before New Search"
 msgstr "Очистить текущую подборку перед новым поиском"
 
-#: app/desktopManager.js:981
+#: app/desktopManager.js:987
 msgid "Find Files on Desktop"
 msgstr "Поиск файлов на рабочем столе"
 
-#: app/desktopManager.js:1047 app/desktopManager.js:1750
+#: app/desktopManager.js:1053 app/desktopManager.js:1756
 msgid "New Folder"
 msgstr "Создать папку"
 
-#: app/desktopManager.js:1051
+#: app/desktopManager.js:1057
 msgid "New Document"
 msgstr "Создать документ"
 
-#: app/desktopManager.js:1056
+#: app/desktopManager.js:1062
 msgid "Paste"
 msgstr "Вставить"
 
-#: app/desktopManager.js:1060
+#: app/desktopManager.js:1066
 msgid "Undo"
 msgstr "Отменить"
 
-#: app/desktopManager.js:1064
+#: app/desktopManager.js:1070
 msgid "Redo"
 msgstr "Повторить"
 
-#: app/desktopManager.js:1070
+#: app/desktopManager.js:1076
 msgid "Select All"
 msgstr "Выделить всё"
 
-#: app/desktopManager.js:1078
+#: app/desktopManager.js:1084
 msgid "Show Desktop in Files"
 msgstr "Показать рабочий стол в файловом менеджере"
 
-#: app/desktopManager.js:1082 app/fileItemMenu.js:358
+#: app/desktopManager.js:1088 app/fileItemMenu.js:358
 msgid "Open in Terminal"
 msgstr "Открыть в терминале"
 
-#: app/desktopManager.js:1088
+#: app/desktopManager.js:1094
 msgid "Change Background…"
 msgstr "Изменить фон…"
 
-#: app/desktopManager.js:1099
+#: app/desktopManager.js:1105
 msgid "Desktop Icons Settings"
 msgstr "Параметры Desktop Icons"
 
-#: app/desktopManager.js:1103
+#: app/desktopManager.js:1109
 msgid "Display Settings"
 msgstr "Настройки экрана"
 
-#: app/desktopManager.js:1763
+#: app/desktopManager.js:1769
 msgid "Folder Creation Failed"
 msgstr "Не удалось создать папку"
 
-#: app/desktopManager.js:1764
+#: app/desktopManager.js:1770
 msgid "Error while trying to create a Folder"
 msgstr "Произошла ошибка при попытке создать папку"
 
-#: app/desktopManager.js:1800
+#: app/desktopManager.js:1806
 msgid "Template Creation Failed"
 msgstr "Не удалось создать шаблон"
 
-#: app/desktopManager.js:1801
+#: app/desktopManager.js:1807
 msgid "Error while trying to create a Document"
 msgstr "Произошла ошибка при попытке создать документ"
 
-#: app/desktopManager.js:1809
+#: app/desktopManager.js:1815
 msgid "Arrange Icons"
 msgstr "Упорядочить значки"
 
-#: app/desktopManager.js:1813
+#: app/desktopManager.js:1819
 msgid "Arrange By..."
 msgstr "Упорядочить по..."
 
-#: app/desktopManager.js:1822
+#: app/desktopManager.js:1828
 msgid "Keep Arranged..."
 msgstr "Сохранить порядок..."
 
-#: app/desktopManager.js:1826
+#: app/desktopManager.js:1832
 msgid "Keep Stacked by type..."
 msgstr "Сохранить сгруппированными по типу..."
 
-#: app/desktopManager.js:1831
+#: app/desktopManager.js:1837
 msgid "Sort Home/Drives/Trash..."
 msgstr "Сортировать Домашняя папка/Диски/Корзина..."
 
-#: app/desktopManager.js:1837
+#: app/desktopManager.js:1843
 msgid "Sort by Name"
 msgstr "Сортировать по названию"
 
-#: app/desktopManager.js:1839
+#: app/desktopManager.js:1845
 msgid "Sort by Name Descending"
 msgstr "Сортировать по названию в порядке убывания"
 
-#: app/desktopManager.js:1842
+#: app/desktopManager.js:1848
 msgid "Sort by Modified Time"
 msgstr "Сортировать по времени изменения"
 
-#: app/desktopManager.js:1845
+#: app/desktopManager.js:1851
 msgid "Sort by Type"
 msgstr "Сортировать по типу"
 
-#: app/desktopManager.js:1848
+#: app/desktopManager.js:1854
 msgid "Sort by Size"
 msgstr "Сортировать по размеру"
 
+#. * TRANSLATORS: when using a screen reader, this is the text read when a folder is
+#. selected. Example: if a folder named "things" is selected, it will say "Folder things"
+#: app/fileItem.js:63
+msgid "Folder ${VisibleName}"
+msgstr "Папка ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
+#. selected. Example: if a file named "my_picture.jpg" is selected, it will say "File my_picture.jpg"
+#: app/fileItem.js:67
+msgid "File ${VisibleName}"
+msgstr "Файл ${VisibleName}"
+
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: app/fileItem.js:168
+#: app/fileItem.js:71 app/fileItem.js:201
 msgid "Home"
 msgstr "Домашняя папка"
 
-#: app/fileItem.js:291
+#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. selected.
+#: app/fileItem.js:76
+msgid "Trash"
+msgstr "Корзина"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when an external drive is
+#. selected. Example: if a USB stick named "my_portable" is selected, it will say "Drive my_portable"
+#: app/fileItem.js:81
+msgid "Drive ${VisibleName}"
+msgstr "Диск ${VisibleName}"
+
+#. * TRANSLATORS: when using a screen reader, this is the text read when a stack is
+#. selected. Example: if a stack named "pictures" is selected, it will say "Stack pictures"
+#: app/fileItem.js:86
+msgid "Stack ${VisibleName}"
+msgstr "Группа ${VisibleName}"
+
+#: app/fileItem.js:293
+msgid "Error while reading Desktop file"
+msgstr "Ошибка при чтении .desktop файла"
+
+#: app/fileItem.js:330
 msgid "Broken Link"
 msgstr "Нерабочая ссылка"
 
-#: app/fileItem.js:292
+#: app/fileItem.js:331
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
 "Невозможно открыть этот файл, потому что это неработающая символическая "
 "ссылка"
 
-#: app/fileItem.js:346
+#: app/fileItem.js:363
+msgid "Can't open the file"
+msgstr "Не удалось открыть файл"
+
+#: app/fileItem.js:389
 msgid "Broken Desktop File"
 msgstr "Нерабочий .desktop файл"
 
-#: app/fileItem.js:347
+#: app/fileItem.js:390
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -327,11 +369,11 @@ msgstr ""
 "\t<b>Отредактируйте файл так, чтобы он указывал на необходимый исполняемый "
 "файл.</b>"
 
-#: app/fileItem.js:353
+#: app/fileItem.js:396
 msgid "Invalid Permissions on Desktop File"
 msgstr "Неверные права доступа к .desktop-файлу"
 
-#: app/fileItem.js:354
+#: app/fileItem.js:397
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -339,7 +381,7 @@ msgstr ""
 "Этот .desktop-файл имеет неправильные разрешения. Щёлкните правой кнопкой "
 "мыши, чтобы изменить свойства, а затем:\n"
 
-#: app/fileItem.js:356
+#: app/fileItem.js:399
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -348,7 +390,7 @@ msgstr ""
 "<b>Установите разрешения в разделе «Права доступа» на «Только чтение» или "
 "«Нет»</b>"
 
-#: app/fileItem.js:359
+#: app/fileItem.js:402
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -356,7 +398,7 @@ msgstr ""
 "\n"
 "<b>Включить параметр «Разрешить выполнение файла как программы»</b>"
 
-#: app/fileItem.js:367
+#: app/fileItem.js:410
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -367,6 +409,22 @@ msgstr ""
 "разрешить запуск, щёлкните правой кнопкой мыши, а затем:\n"
 "\n"
 "<b>включите «Разрешить запуск»</b>"
+
+#: app/fileItem.js:613
+msgid "Failed to set execution flag"
+msgstr "Не удалось установить флаг выполнения"
+
+#: app/fileItem.js:625 app/fileItem.js:632
+msgid "Could not apply discrete GPU environment"
+msgstr "Не удалось применить среду дискретного графического процессора"
+
+#: app/fileItem.js:661
+msgid "Could not find discrete GPU data"
+msgstr "Не удалось найти данные дискретного графического процессора"
+
+#: app/fileItem.js:786
+msgid "Failed to set metadata::trusted flag"
+msgstr "Не удалось установить флаг metadata::trusted"
 
 #: app/fileItemMenu.js:135
 msgid "Open All..."
@@ -812,8 +870,8 @@ msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
-"Будет ли DING появляться всплывающее окно при работе под управлением "
-"X11Wayland, или пользователь решит больше не показывать его."
+"Нужно ли DING показывать всплывающее окно при работе под управлением "
+"X11Wayland, или пользователь уже решил больше не показывать его."
 
 #~ msgid "Add an emblem to .desktop files"
 #~ msgstr "Добавить эмблему к .desktop файлу"
@@ -851,9 +909,6 @@ msgstr ""
 
 #~ msgid "Delete"
 #~ msgstr "Удалить"
-
-#~ msgid "Error while deleting files"
-#~ msgstr "Ошибка при удалении файлов"
 
 #~ msgid "Are you sure you want to permanently delete these items?"
 #~ msgstr "Вы уверены, что хотите удалить эти файлы навсегда?"
