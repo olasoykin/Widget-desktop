@@ -1,5 +1,9 @@
 # History of versions #
 
+* Version 47.0.12
+  * Allows to "Open with..." for folders
+  * Fixed some error messages
+
 * Version 47.0.11
   * Fix cursor keys when renaming a file
   * Updated several translations

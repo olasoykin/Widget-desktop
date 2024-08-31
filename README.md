@@ -144,6 +144,16 @@ To create a ZIP file with the extension, just run:
 
 This will create the file `ding@rastersoft.com.zip` with the extension, following the rules for publishing at extensions.gnome.org.
 
+## .desktop files limitations
+
+To guarantee security, .desktop files can only be launched when several requisites are fullfilled:
+
+* the desktop folder (the folder that contains the desktop files) is writable ONLY by the user
+* the .desktop file (the launcher) is writable ONLY by the user
+* the .desktop file has been manually enabled by right-clicking on it and selecting "Allow Launching"
+
+If any of these items is false, .desktop files won't work.
+
 ## Source code and contacting the author
 
 Sergio Costas  
