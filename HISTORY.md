@@ -3,6 +3,7 @@
 * Version 47.0.12
   * Allows to "Open with..." for folders
   * Fixed some error messages
+  * Added apparmor rules for Ubuntu
 
 * Version 47.0.11
   * Fix cursor keys when renaming a file
