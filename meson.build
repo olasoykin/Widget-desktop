@@ -32,5 +32,8 @@ subdir(
 subdir(
   'schemas'
 )
+subdir(
+  'apparmor'
+)
 
 meson.add_install_script('meson_post_install.py')
