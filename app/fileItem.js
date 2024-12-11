@@ -59,12 +59,12 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             default:
                 if (this._isDirectory) {
                     /** TRANSLATORS: when using a screen reader, this is the text read when a folder is
-                        selected. Example: if a folder named "things" is selected, it will say "Folder things" */
-                    accessible.set_name(_("Folder ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                        selected. Example: if a folder named "things" is selected, it will say "things Folder" */
+                    accessible.set_name(_("${VisibleName} Folder").replace("${VisibleName}", this._getVisibleName()));
                 } else {
                     /** TRANSLATORS: when using a screen reader, this is the text read when a normal file is
-                        selected. Example: if a file named "my_picture.jpg" is selected, it will say "File my_picture.jpg" */
-                    accessible.set_name(_("File ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                        selected. Example: if a file named "my_picture.jpg" is selected, it will say "my_picture.jpg File" */
+                    accessible.set_name(_("${VisibleName} File").replace("${VisibleName}", this._getVisibleName()));
                 }
                 break;
             case  Enums.FileType.USER_DIRECTORY_HOME:
@@ -77,13 +77,13 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 break;
             case Enums.FileType.EXTERNAL_DRIVE:
                 /** TRANSLATORS: when using a screen reader, this is the text read when an external drive is
-                    selected. Example: if a USB stick named "my_portable" is selected, it will say "Drive my_portable" */
-                accessible.set_name(_("Drive ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                    selected. Example: if a USB stick named "my_portable" is selected, it will say "my_portable Drive" */
+                accessible.set_name(_("${VisibleName} Drive").replace("${VisibleName}", this._getVisibleName()));
                 break;
             case Enums.FileType.STACK_TOP:
                 /** TRANSLATORS: when using a screen reader, this is the text read when a stack is
-                    selected. Example: if a stack named "pictures" is selected, it will say "Stack pictures" */
-                accessible.set_name(_("Stack ${VisibleName}").replace("${VisibleName}", this._getVisibleName()));
+                    selected. Example: if a stack named "pictures" is selected, it will say "pictures Stack" */
+                accessible.set_name(_("${VisibleName} Stack").replace("${VisibleName}", this._getVisibleName()));
                 break;
         }
 
