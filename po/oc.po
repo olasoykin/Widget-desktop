@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
+# Occitan translation file.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ding package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Quentin PAGÈS, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-11 23:01+0100\n"
-"PO-Revision-Date: 2022-12-16 22:03+0100\n"
+"PO-Revision-Date: 2024-12-20 20:19+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: \n"
 "Language: oc\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: ../app/askRenamePopup.js:47
 msgid "Folder name"
-msgstr "Nom del dorsièr"
+msgstr "Nom del dossièr"
 
 #: ../app/askRenamePopup.js:47
 msgid "File name"
@@ -174,9 +174,8 @@ msgstr ""
 "« ${programName} » dins vòstre sistèma."
 
 #: ../app/desktopGrid.js:53
-#, fuzzy
 msgid "Desktop icons"
-msgstr "Paramètres icònas de burèu"
+msgstr "Icònas de burèu"
 
 #: ../app/desktopIconsUtil.js:154
 msgid "Command not found"
@@ -202,7 +201,7 @@ msgstr "Recercar de fichièrs al burèu"
 
 #: ../app/desktopManager.js:1070 ../app/desktopManager.js:1773
 msgid "New Folder"
-msgstr "Dorsièr novèl"
+msgstr "Dossièr novèl"
 
 #: ../app/desktopManager.js:1074
 msgid "New Document"
@@ -245,21 +244,20 @@ msgid "Display Settings"
 msgstr "Paramètres d'afichatge"
 
 #: ../app/desktopManager.js:1786
-#, fuzzy
 msgid "Folder Creation Failed"
-msgstr "Nom del dorsièr"
+msgstr "Fracàs de la creacion del dossièr"
 
 #: ../app/desktopManager.js:1787
 msgid "Error while trying to create a Folder"
-msgstr ""
+msgstr "Error en ensajant de crear un dossièr"
 
 #: ../app/desktopManager.js:1823
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "Fracàs del modèl de creacion"
 
 #: ../app/desktopManager.js:1824
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "Fracàs en ensajant de crear un document"
 
 #: ../app/desktopManager.js:1832
 msgid "Arrange Icons"
@@ -305,13 +303,13 @@ msgstr "Triar per talha"
 #. selected. Example: if a folder named "things" is selected, it will say "things Folder"
 #: ../app/fileItem.js:63
 msgid "${VisibleName} Folder"
-msgstr ""
+msgstr "Dossièr ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
 #. selected. Example: if a file named "my_picture.jpg" is selected, it will say "my_picture.jpg File"
 #: ../app/fileItem.js:67
 msgid "${VisibleName} File"
-msgstr ""
+msgstr "Fichièr ${VisibleName}"
 
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: ../app/fileItem.js:71 ../app/fileItem.js:201
@@ -321,26 +319,24 @@ msgstr "Dossièr personal"
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. selected.
 #: ../app/fileItem.js:76
-#, fuzzy
 msgid "Trash"
-msgstr "Voidar l'escobilièr"
+msgstr "Escobilhièr"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when an external drive is
 #. selected. Example: if a USB stick named "my_portable" is selected, it will say "my_portable Drive"
 #: ../app/fileItem.js:81
 msgid "${VisibleName} Drive"
-msgstr ""
+msgstr "Lector ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a stack is
 #. selected. Example: if a stack named "pictures" is selected, it will say "pictures Stack"
 #: ../app/fileItem.js:86
 msgid "${VisibleName} Stack"
-msgstr ""
+msgstr "Lòt ${VisibleName}"
 
 #: ../app/fileItem.js:293
-#, fuzzy
 msgid "Error while reading Desktop file"
-msgstr "Mostrar lo burèu dins Fichièrs"
+msgstr "Error en legissent lo fichièr de burèu"
 
 #: ../app/fileItem.js:335
 msgid "Broken Link"
@@ -352,9 +348,8 @@ msgstr ""
 "Dubertura d'aqueste fichièr impossibla pr’amor qu’es un ligam simbolic copat"
 
 #: ../app/fileItem.js:368
-#, fuzzy
 msgid "Can't open the file"
-msgstr "Executar lo fichièr"
+msgstr "Impossible de dobrir lo fichièr"
 
 #: ../app/fileItem.js:394
 msgid "Broken Desktop File"
@@ -415,19 +410,19 @@ msgstr ""
 
 #: ../app/fileItem.js:618
 msgid "Failed to set execution flag"
-msgstr ""
+msgstr "Fracàs de la definicion del flag d’execucion"
 
 #: ../app/fileItem.js:630 ../app/fileItem.js:637
 msgid "Could not apply discrete GPU environment"
-msgstr ""
+msgstr "Aplicacion impossibla de l’environament GPU discrèt"
 
 #: ../app/fileItem.js:666
 msgid "Could not find discrete GPU data"
-msgstr ""
+msgstr "Impossible de trobar las donadas de GPU discrèt"
 
 #: ../app/fileItem.js:791
 msgid "Failed to set metadata::trusted flag"
-msgstr ""
+msgstr "Fracàs de la definicion del flag metadata::trusted"
 
 #: ../app/fileItemMenu.js:135
 msgid "Open All..."
@@ -532,8 +527,8 @@ msgstr[1] "Compressar {0} fichièrs"
 #: ../app/fileItemMenu.js:331
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "Dorsièr novèl amb {0} element"
-msgstr[1] "Dorsièr novèl amb {0} elements"
+msgstr[0] "Dossièr novèl amb {0} element"
+msgstr[1] "Dossièr novèl amb {0} elements"
 
 #: ../app/fileItemMenu.js:342
 msgid "Common Properties"
@@ -552,13 +547,12 @@ msgid "Show in Files"
 msgstr "Mostrar dins Fichièrs"
 
 #: ../app/fileItemMenu.js:436
-#, fuzzy
 msgid "No Extraction Folder"
-msgstr "Extraccion acabada"
+msgstr "Cap de dossièr d’extraccion"
 
 #: ../app/fileItemMenu.js:437
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "Extraccion del fichièr impossibla, lo dossièr d’extraccion existís pas"
 
 #: ../app/fileItemMenu.js:457
 msgid "Select Extract Destination"
@@ -579,7 +573,7 @@ msgstr ""
 
 #: ../app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "Desktop Icons NG s’executa jos X11Wayland"
 
 #: ../app/notifyX11UnderWayland.js:38
 msgid ""
@@ -587,6 +581,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Sembla que'l sistèma es configurat per forçar GTK a utilizar X11. Fonciona, "
+"mas es suboptimal. Deuriatz verificar la configuracion sistèma per reglar "
+"aquò."
 
 #: ../app/notifyX11UnderWayland.js:39 ../app/showErrorPopup.js:39
 msgid "Close"
@@ -594,7 +591,7 @@ msgstr "Tancar"
 
 #: ../app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Mostrar pas pus aqueste messatge."
 
 #: ../app/preferences.js:91
 msgid "Settings"
@@ -622,7 +619,7 @@ msgstr "Granda"
 
 #: ../app/prefswindow.js:65
 msgid "Show the personal folder in the desktop"
-msgstr "Mostrar lo dorsièr personal pel burèu"
+msgstr "Mostrar lo dossièr personal pel burèu"
 
 #: ../app/prefswindow.js:66
 msgid "Show the trash icon in the desktop"
@@ -750,7 +747,7 @@ msgstr "Mostrar lo repertòri personal"
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:4
 msgid "Show the personal folder in the desktop."
-msgstr "Mostrar lo dorsièr personal pel burèu."
+msgstr "Mostrar lo dossièr personal pel burèu."
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:5
 msgid "Show trash icon"
@@ -798,7 +795,7 @@ msgstr ""
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:17
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "Triar los dorsièr especial - Repertòri personal/Escobilhièr."
+msgstr "Triar los dossièr especial - Repertòri personal/Escobilhièr."
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:18
 msgid ""
@@ -869,13 +866,15 @@ msgstr ""
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:33
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "Afichar una fenèstra surgissenta en execucion sus X11Wayland"
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:34
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
+"Indica se DING deu afichar una fenèstra surgissenta s'es en execucion jos "
+"X11Wayland, o se l'utilizaire a decidit de l'afichar pas pus."
 
 #~ msgid ""
 #~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
