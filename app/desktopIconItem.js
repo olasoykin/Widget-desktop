@@ -551,7 +551,7 @@ var desktopIconItem = class desktopIconItem {
      ***********************/
 
     updateIcon() {
-        this._updateIcon();
+        return this._updateIcon();
     }
 
     async _updateIcon() {
