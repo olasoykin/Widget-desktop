@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_fixperms:
+	dh_fixperms -XcreateThumbnail.js -Xding.js
+
+override_dh_gnome_clean:
