@@ -1120,7 +1120,16 @@ var DesktopManager = class {
         this._menu.add(new Gtk.SeparatorMenuItem());
 
         this._settingsMenuItem = new Gtk.MenuItem({label: _('Desktop Icons Settings')});
-        this._settingsMenuItem.connect('activate', () => Prefs.showPreferences());
+        if (GLib.getenv('XDG_CURRENT_DESKTOP').split(':').includes('ubuntu')) {
+            this._settingsMenuItem.connect("activate", () => {
+                const desktopFile = Gio.DesktopAppInfo.new('gnome-ubuntu-panel.desktop');
+                const context = Gdk.Display.get_default().get_app_launch_context();
+                context.set_timestamp(Gtk.get_current_event_time());
+                desktopFile.launch([], context);
+            });
+        } else {
+            this._settingsMenuItem.connect("activate", () => Prefs.showPreferences());
+        }
         this._menu.add(this._settingsMenuItem);
 
         this._displaySettingsMenuItem = new Gtk.MenuItem({label: _('Display Settings')});
