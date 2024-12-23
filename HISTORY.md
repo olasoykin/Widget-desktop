@@ -1,5 +1,13 @@
 # History of versions #
 
+* Version 47.0.13
+  * Reworked apparmor installation
+  * Added support for Gnome 47
+  * Changed the order for screen readers: now it says the file name first
+  * Updated Occitan translation
+  * Fixed stacked mode
+  * Use gnome-ubuntu-panel for settings when in ubuntu desktop
+
 * Version 47.0.12
   * Allows to "Open with..." for folders
   * Fixed some error messages
