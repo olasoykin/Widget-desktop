@@ -102,7 +102,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             this._queryTrashInfoCancellable = null;
             this._scheduleTrashRefreshId = 0;
             this._monitorTrashDir = this._file.monitor_directory(Gio.FileMonitorFlags.WATCH_MOVES, null);
-            this._monitorTrashId = this._monitorTrashDir.connect('changed', (obj, file, otherFile, eventType) => {
+            this.connectSignal(this._monitorTrashDir, 'changed', (obj, file, otherFile, eventType) => {
                 switch (eventType) {
                     case Gio.FileMonitorEvent.DELETED:
                     case Gio.FileMonitorEvent.MOVED_OUT:
@@ -131,7 +131,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                         }
                         break;
                 }
-            });
+            }, {destroyCb: () => {
+                this._monitorTrashDir.cancel();
+            }});
         } else {
             this._monitorTrashId = 0;
         }
@@ -157,14 +159,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
      ***********************/
 
     _destroy() {
-        /* Trash */
-        if (this._monitorTrashId) {
-            this._monitorTrashDir.disconnect(this._monitorTrashId);
-            this._monitorTrashDir.cancel();
-            this._monitorTrashId = 0;
-        }
         if (this._queryTrashInfoCancellable) {
             this._queryTrashInfoCancellable.cancel();
+            this._queryFileInfoCancellable = null;
         }
         if (this._scheduleTrashRefreshId) {
             GLib.source_remove(this._scheduleTrashRefreshId);
@@ -173,6 +170,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         /* Metadata */
         if (this._setMetadataTrustedCancellable) {
             this._setMetadataTrustedCancellable.cancel();
+            this._setMetadataTrustedCancellable = null;
         }
         if (this._realizeId && this.container) {
             this.container.disconnect(this._realizeId);
@@ -468,7 +466,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             targets.add(Gdk.atom_intern('text/uri-list', false), 0, 2);
             dropDestination.drag_dest_set_target_list(targets);
             targets = undefined;
-            this._connectSignal(dropDestination, 'drag-data-received', (widget, context, x, y, selection, info, time) => {
+            this.connectSignal(dropDestination, 'drag-data-received', (widget, context, x, y, selection, info, time) => {
                 const forceCopy = context.get_selected_action() === Gdk.DragAction.COPY;
                 if (info === Enums.DndTargetInfo.GNOME_ICON_LIST ||
                     info === Enums.DndTargetInfo.URI_LIST) {

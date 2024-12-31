@@ -23,6 +23,7 @@ install_data([
     'promiseUtils.js',
     'stackItem.js',
     'showErrorPopup.js',
+    'signalManager.js',
     'stylesheet.css',
     'templatesScriptsManager.js',
     'thumbnails.js',
