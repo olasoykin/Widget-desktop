@@ -24,13 +24,18 @@ The easiest way of installing DING is to run the `local_install.sh` script. It p
 specified in the next section.
 
 In Ubuntu, unfortunately, it is not possible to use it directly because the internal desktop-icons-ng
-extension interferes. The only way to update to the newest one is to install the package "gnome-session"
-to be able to use the standard gnome shell session, and there install the following extensions from
-extensions.gnome.org:
+extension interferes. Fortunately, you can find .deb packages for Ubuntu in the oficial page:
+
+<https://www.rastersoft.com/programas/ding.html>
+
+If you still want to use the extension from source code, the only way is to install the
+package "gnome-session" to be able to use the standard gnome shell session, and there install the
+following extensions from extensions.gnome.org:
 
 * Desktop icons ng
 * Dash to dock
 * Appindicator and KstatusNotifierItem support
+* Tiling assistant
 
 That will allow to have the same experience than the original Ubuntu desktop, but with the most recent
 versions of the extensions.
