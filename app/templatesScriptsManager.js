@@ -31,6 +31,11 @@ var TemplatesScriptsManagerFlags = {
 var TemplatesScriptsManager = class extends SignalManager.SignalManager {
     constructor(baseFolder, flags, activatedCB) {
         super();
+        // Too many templates can result in resource exhaustion, crashing
+        // the desktop. To avoid this, we limit the number of templates to 100.
+        // It can happen if the Templates folder points to the wrong folder,
+        // or if there is a loop due to a symlink to an already added folder.
+        this._maxNumberOfTemplates = 100;
         this._activatedCB = activatedCB;
         this._entries = [];
         this._entriesEnumerateCancellable = null;
@@ -75,6 +80,7 @@ var TemplatesScriptsManager = class extends SignalManager.SignalManager {
         this._readingEntries = true;
         let entriesList = null;
 
+        this._processedEntries = 0;
         do {
             this._entriesDirSignals.disconnectAllSignals();
             this._entriesFolderChanged = false;
@@ -90,6 +96,10 @@ var TemplatesScriptsManager = class extends SignalManager.SignalManager {
     }
 
     async _processDirectory(directory) {
+        this._processedEntries++;
+        if (this._processedEntries >= this._maxNumberOfTemplates) {
+            return [];
+        }
         if (directory !== this._entriesDir) {
             let monitorDir = directory.monitor_directory(Gio.FileMonitorFlags.WATCH_MOVES, null);
             monitorDir.set_rate_limit(1000);
@@ -154,6 +164,10 @@ var TemplatesScriptsManager = class extends SignalManager.SignalManager {
                             }
                             let child = fileEnum.get_child(info);
                             fileList.push([info.get_name(), isDir ? child : child.get_path(), isDir ? [] : null]);
+                            this._processedEntries++;
+                            if (this._processedEntries >= this._maxNumberOfTemplates) {
+                                break;
+                            }
                         }
                     } catch (e) {
                         if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
