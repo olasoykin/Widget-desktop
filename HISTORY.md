@@ -1,5 +1,10 @@
 # History of versions #
 
+* Version 48.0.0
+  * Added support for Gnome Shell 48
+  * Limit the number of templates to avoid crashing
+  * Use a signal manager to keep track of all the signals
+
 * Version 47.0.13
   * Reworked apparmor installation
   * Added support for Gnome 47
