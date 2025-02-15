@@ -43,6 +43,7 @@ export default class DING extends Extension {
         this.data.currentProcess = null;
         this.data.dbusTimeoutId = 0;
         this.data.switchWorkspaceId = 0;
+        this.data.enableCalled = false;
 
         this.data.GnomeShellOverride = null;
 
@@ -66,6 +67,11 @@ export default class DING extends Extension {
     }
 
     enable() {
+        if (this.data.enableCalled) {
+            return;
+        }
+        this.data.enableCalled = true;
+
         if (!this.data.GnomeShellOverride) {
             this.data.GnomeShellOverride = new GnomeShellOverride.GnomeShellOverride();
         }
@@ -86,6 +92,11 @@ export default class DING extends Extension {
     }
 
     disable() {
+        if (!this.data.enableCalled) {
+            return;
+        }
+        this.data.enableCalled = false;
+
         this.DesktopIconsUsableArea = null;
         this.data.isEnabled = false;
         this.killCurrentProcess();
