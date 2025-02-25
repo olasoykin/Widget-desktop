@@ -75,8 +75,7 @@ export class GnomeShellOverride {
      */
 
     replaceMethod(className, methodName, functionToCall, classId) {
-        if (className.prototype[methodName] == functionToCall) {
-            // it is already changed!! The extension has been created twice by Gnome Shell!!
+        if (className.prototype[methodName] === functionToCall) {
             return;
         }
         if (classId) {
