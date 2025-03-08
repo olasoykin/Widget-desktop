@@ -1,11 +1,11 @@
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2019-2023
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2019-2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-11 23:00+0100\n"
-"PO-Revision-Date: 2023-09-05 10:24+0200\n"
+"PO-Revision-Date: 2025-03-08 10:24+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
 "Language: ca\n"
@@ -38,8 +38,8 @@ msgstr "L'AutoAr no està instal·lat"
 
 #: ../app/autoAr.js:89
 msgid ""
-"To be able to work with compressed files, install file-roller and/or gir-1.2-"
-"gnomeAutoAr"
+"To be able to work with compressed files, install file-roller and/or "
+"gir-1.2-gnomeAutoAr"
 msgstr ""
 "Per a poder treballar amb fitxers comprimits, instal·leu file-roller i/o "
 "gir-1.2-gnomeAutoAr"
@@ -59,7 +59,7 @@ msgstr "Cancel·la"
 
 #: ../app/autoAr.js:318 ../app/autoAr.js:619
 msgid "Enter a password here"
-msgstr "Introduïu aquí una contrasenya aquí"
+msgstr "Introduïu una contrasenya aquí"
 
 #: ../app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
@@ -171,9 +171,8 @@ msgstr ""
 "d'instal·lar \"${programName}\" al vostre sistema."
 
 #: ../app/desktopGrid.js:53
-#, fuzzy
 msgid "Desktop icons"
-msgstr "Paràmetres de les icones de l'escriptori"
+msgstr "Icones de l'escriptori"
 
 #: ../app/desktopIconsUtil.js:154
 msgid "Command not found"
@@ -297,46 +296,54 @@ msgstr "Ordena per tipus"
 msgid "Sort by Size"
 msgstr "Ordena per mida"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when a folder is
-#. selected. Example: if a folder named "things" is selected, it will say "things Folder"
+#. * TRANSLATORS: when using a screen reader, this is the text read when a
+#. folder is
+#. selected. Example: if a folder named "things" is selected, it will say
+#. "things Folder"
 #: ../app/fileItem.js:63
 msgid "${VisibleName} Folder"
-msgstr ""
+msgstr "Carpeta ${VisibleName}"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
-#. selected. Example: if a file named "my_picture.jpg" is selected, it will say "my_picture.jpg File"
+#. * TRANSLATORS: when using a screen reader, this is the text read when a
+#. normal file is
+#. selected. Example: if a file named "my_picture.jpg" is selected, it will
+#. say "my_picture.jpg File"
 #: ../app/fileItem.js:67
 msgid "${VisibleName} File"
-msgstr ""
+msgstr "Fitxer ${VisibleName}"
 
-#. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
+#. TRANSLATORS: "Home" is the text that will be shown in the user's personal
+#. folder
 #: ../app/fileItem.js:71 ../app/fileItem.js:201
 msgid "Home"
 msgstr "Inici"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+#. * TRANSLATORS: when using a screen reader, this is the text read when the
+#. trash folder is
 #. selected.
 #: ../app/fileItem.js:76
-#, fuzzy
 msgid "Trash"
-msgstr "Buida la paperera"
+msgstr "Paperera"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when an external drive is
-#. selected. Example: if a USB stick named "my_portable" is selected, it will say "my_portable Drive"
+#. * TRANSLATORS: when using a screen reader, this is the text read when an
+#. external drive is
+#. selected. Example: if a USB stick named "my_portable" is selected, it will
+#. say "my_portable Drive"
 #: ../app/fileItem.js:81
 msgid "${VisibleName} Drive"
-msgstr ""
+msgstr "Unitat {VisibleName}"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when a stack is
-#. selected. Example: if a stack named "pictures" is selected, it will say "pictures Stack"
+#. * TRANSLATORS: when using a screen reader, this is the text read when a
+#. stack is
+#. selected. Example: if a stack named "pictures" is selected, it will say
+#. "pictures Stack"
 #: ../app/fileItem.js:86
 msgid "${VisibleName} Stack"
-msgstr ""
+msgstr "Pila ${VisibleName}"
 
 #: ../app/fileItem.js:293
-#, fuzzy
 msgid "Error while reading Desktop file"
-msgstr "Error en intentar crear una carpeta"
+msgstr "S'ha produït un error en llegir el fitxer d'escriptori"
 
 #: ../app/fileItem.js:335
 msgid "Broken Link"
@@ -347,9 +354,8 @@ msgid "Can not open this File because it is a Broken Symlink"
 msgstr "No es pot obrir aquest fitxer perquè és un enllaç simbòlic trencat"
 
 #: ../app/fileItem.js:368
-#, fuzzy
 msgid "Can't open the file"
-msgstr "Executa el fitxer"
+msgstr "No es pot obrir el fitxer"
 
 #: ../app/fileItem.js:394
 msgid "Broken Desktop File"
@@ -357,15 +363,13 @@ msgstr "Fitxer d'escriptori trencat"
 
 #: ../app/fileItem.js:395
 msgid ""
-"This .desktop file has errors or points to a program without permissions. It "
-"can not be executed.\n"
+"This .desktop file has errors or points to a program without permissions. It can not be executed.\n"
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
-"Aquest fitxer .desktop té errors o apunta a un programa sense permisos. No "
-"es pot executar.\n"
+"Aquest fitxer .desktop té errors o apunta a un programa sense permisos. No es pot executar.\n"
 "\n"
-"\t<b>Edita el fitxer per establir el programa executable correcte.</b>"
+"\t<b>Edita el fitxer per a establir el programa executable correcte.</b>"
 
 #: ../app/fileItem.js:401
 msgid "Invalid Permissions on Desktop File"
@@ -397,32 +401,30 @@ msgstr ""
 
 #: ../app/fileItem.js:415
 msgid ""
-"This .desktop file is not trusted, it can not be launched. To enable "
-"launching, right-click, then:\n"
+"This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n"
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
-"Aquest fitxer .desktop no és de confiança, no es pot llançar. Per a "
-"habilitar el llançament,\n"
+"Aquest fitxer .desktop no és de confiança, no es pot llançar. Per a habilitar el llançament,\n"
 "feu clic amb el botó dret i, a continuació:\n"
 "\n"
 "<b>Activeu «Permet el llançament»</b>"
 
 #: ../app/fileItem.js:618
 msgid "Failed to set execution flag"
-msgstr ""
+msgstr "No s'ha pogut establir l'indicador d'execució"
 
 #: ../app/fileItem.js:630 ../app/fileItem.js:637
 msgid "Could not apply discrete GPU environment"
-msgstr ""
+msgstr "No s'ha pogut aplicar l'entorn GPU separat"
 
 #: ../app/fileItem.js:666
 msgid "Could not find discrete GPU data"
-msgstr ""
+msgstr "No s'han pogut trobar dades de la GPU separada"
 
 #: ../app/fileItem.js:791
 msgid "Failed to set metadata::trusted flag"
-msgstr ""
+msgstr "No s'ha pogut establir l'indicador de metadata::trusted"
 
 #: ../app/fileItemMenu.js:135
 msgid "Open All..."
@@ -540,7 +542,7 @@ msgstr "Propietats"
 
 #: ../app/fileItemMenu.js:349
 msgid "Show All in Files"
-msgstr "Mostra al Fitxers"
+msgstr "Mostra-ho tot al Fitxers"
 
 #: ../app/fileItemMenu.js:349
 msgid "Show in Files"
@@ -567,14 +569,14 @@ msgid "Can not email a Directory"
 msgstr "No es pot enviar un directori per correu electrònic"
 
 #: ../app/fileItemMenu.js:504
-msgid "Selection includes a Directory, compress the directory to a file first."
+msgid ""
+"Selection includes a Directory, compress the directory to a file first."
 msgstr ""
-"La selecció inclou un directori, comprimeix-hi el directori en un fitxer."
+"La selecció inclou un directori, comprimeix primer el directori en un fitxer."
 
 #: ../app/notifyX11UnderWayland.js:37
-#, fuzzy
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr "Mostra una finestra emergent si s'executa a X11Wayland"
+msgstr "Les icones d'escriptori NG s'estan executant sota X11Wayland"
 
 #: ../app/notifyX11UnderWayland.js:38
 msgid ""
@@ -582,6 +584,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Sembla que teniu el vostre sistema configurat per a forçar GTK a utilitzar "
+"X11. Això funciona, però és subòptim. Comproveu-ho la configuració del "
+"sistema per a corregir-ho."
 
 #: ../app/notifyX11UnderWayland.js:39 ../app/showErrorPopup.js:39
 msgid "Close"
@@ -589,7 +594,7 @@ msgstr "Tanca"
 
 #: ../app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Ja no mostris aquest missatge."
 
 #: ../app/preferences.js:91
 msgid "Settings"
@@ -660,7 +665,7 @@ msgstr "Afegeix noves unitats al costat oposat de la pantalla"
 
 #: ../app/prefswindow.js:79
 msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "Ressalta el lloc desplegable durant l'arrossegat"
+msgstr "Ressalta el lloc on es deixarà durant l'arrossegament"
 
 #: ../app/prefswindow.js:80
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:27
@@ -773,8 +778,8 @@ msgstr "Mostra els volums de xarxa muntats a l'escriptori."
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:14
 msgid ""
-"When adding drives and volumes to the desktop, add them to the opposite side "
-"of the screen."
+"When adding drives and volumes to the desktop, add them to the opposite side"
+" of the screen."
 msgstr ""
 "Quan s'afegeixin unitats i volums a l'escriptori, afegiu-los a la part "
 "oposada de la pantalla."
@@ -829,7 +834,7 @@ msgstr "Mantén sempre les icones apilades, els tipus similars s'agrupen"
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:25
 msgid "Type of Files to not Stack"
-msgstr "Tipus de fitxers per a no apilar"
+msgstr "Tipus de fitxers que no s'han d'apilar"
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:26
 msgid "An Array of strings types, Don't Stack these types of files"
@@ -856,8 +861,8 @@ msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
-"Pinta el text de l'etiqueta en negre en lloc de blanc. Útil quan s'utilitzen "
-"fons clars."
+"Pinta el text de l'etiqueta en negre en lloc de blanc. Útil quan s'utilitzen"
+" fons clars."
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:33
 msgid "Show a popup if running on X11Wayland"
@@ -865,8 +870,8 @@ msgstr "Mostra una finestra emergent si s'executa a X11Wayland"
 
 #: ../schemas/org.gnome.shell.extensions.ding.gschema.xml.h:34
 msgid ""
-"Whether DING should show a popup if it is running on X11Wayland, or the user "
-"decided to not show it anymore."
+"Whether DING should show a popup if it is running on X11Wayland, or the user"
+" decided to not show it anymore."
 msgstr ""
 "Si DING hauria de mostrar una finestra emergent si s'està executant a "
 "X11Wayland, o l'usuari ha decidit no mostrar-la més."
