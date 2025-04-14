@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 48.1.0
+  * Fixed DnD placement (thanks to M.B.)
+
 * Version 48.0.0
   * Added support for Gnome Shell 48
   * Limit the number of templates to avoid crashing
