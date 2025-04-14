@@ -510,8 +510,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         if (this._coordinatesBelongToThisGrid(x, y)) {
             [x, y] = this.coordinatesGlobalToLocal(x, y);
             if (globalCoordinates) {
-                x = this._elementWidth * Math.floor((x / this._elementWidth) + 0.5);
-                y = this._elementHeight * Math.floor((y / this._elementHeight) + 0.5);
+                x = this._elementWidth * Math.floor(x / this._elementWidth);
+                y = this._elementHeight * Math.floor(y / this._elementHeight);
                 [x, y] = this.coordinatesLocalToGlobal(x, y);
                 return [x, y];
             } else {
