@@ -939,7 +939,7 @@ var DesktopManager = class {
         } else if (isCtrl && isShift && ((symbol == Gdk.KEY_N) || (symbol == Gdk.KEY_n))) {
             this.doNewFolder();
             return true;
-        } else if (symbol == Gdk.KEY_Menu) {
+        } else if ((symbol == Gdk.KEY_Menu) || ((symbol == Gdk.KEY_F10) && (isShift))) {
             if (selection) {
                 this.fileItemMenu.showMenu(selection[0], event, true);
             } else {
