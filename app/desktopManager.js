@@ -945,6 +945,12 @@ var DesktopManager = class {
         } else if (symbol == Gdk.KEY_End) {
             this._setIconAsSelected(this._getBottomRightIcon());
             return true;
+        } else if (isCtrl && (symbol === Gdk.KEY_space)) {
+            const selected = this._getCurrentKeyboardIcon();
+            if (selected !== null) {
+                selected.unsetSelected();
+                return true;
+            }
         } else if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
             this._doRedo();
             return true;
