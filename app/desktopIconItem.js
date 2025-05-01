@@ -51,6 +51,7 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this._lastClickButton = 0;
         this._clickCount = 0;
         this._isSelected = false;
+        this._isKeyboardSelected = false;
         this._isSpecial = false;
         this._primaryButtonPressed = false;
         this._savedCoordinates = null;
@@ -156,6 +157,7 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this.container.pack_start(this._shieldEventBox, false, false, 0);
         this.container.pack_start(this._shieldLabelEventBox, false, false, 0);
 
+        this._fullStyleContext = this.container.get_style_context();
         this._styleContext = this._iconContainer.get_style_context();
         this._labelStyleContext = this._labelContainer.get_style_context();
         this._styleContext.add_class('file-item');
@@ -460,11 +462,20 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         if (this._isSelected && !this._styleContext.has_class('desktop-icons-selected')) {
             this._styleContext.add_class('desktop-icons-selected');
             this._labelStyleContext.add_class('desktop-icons-selected');
-            this._containerAccessibility.grab_focus();
+            if (!this._isKeyboardSelected) {
+                this._containerAccessibility.grab_focus();
+            }
         }
         if (!this._isSelected && this._styleContext.has_class('desktop-icons-selected')) {
             this._styleContext.remove_class('desktop-icons-selected');
             this._labelStyleContext.remove_class('desktop-icons-selected');
+        }
+        if (this._isKeyboardSelected && !this._fullStyleContext.has_class('desktop-icons-selected')) {
+            this._fullStyleContext.add_class('desktop-icons-selected');
+            this._containerAccessibility.grab_focus();
+        }
+        if (!this._isKeyboardSelected && this._fullStyleContext.has_class('desktop-icons-selected')) {
+            this._fullStyleContext.remove_class('desktop-icons-selected');
         }
     }
 
@@ -776,6 +787,15 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
 
     get isSelected() {
         return this._isSelected;
+    }
+
+    get isKeyboardSelected() {
+        return this._isKeyboardSelected;
+    }
+
+    set isKeyboardSelected(status) {
+        this._isKeyboardSelected = status;
+        this._setSelectedStatus();
     }
 
     get isSpecial() {
