@@ -811,11 +811,29 @@ var DesktopManager = class {
         return currentItem;
     }
 
+    _getBottomRightIcon() {
+        if (this._fileList.length == 0) {
+            return null;
+        }
+        let currentCoords = null;
+        let currentItem = null;
+        for (let item of this._fileList) {
+            const newCoords = item.getCoordinates();
+            if ((currentCoords === null) || (newCoords[0] > currentCoords[0]) || (newCoords[1] > currentCoords[1])) {
+                currentCoords = newCoords;
+                currentItem = item;
+            }
+        }
+        return currentItem;
+    }
+
+    _setIconAsSelected(icon) {
+        this._fileList.forEach(fileItem => fileItem.isKeyboardSelected = fileItem === icon);
+    }
+
     _getLastKeyboardIcon() {
         if ((this._lastSelected !== null) && this._fileList.includes(this._lastSelected)) {
-            for (let fileItem of this._fileList) {
-                fileItem.isKeyboardSelected = fileItem === this._lastSelected;
-            }
+            this._setIconAsSelected(this._lastSelected);
             return this._lastSelected;
         }
         return null;
@@ -921,7 +939,13 @@ var DesktopManager = class {
         const isShift = (event.get_state()[1] & Gdk.ModifierType.SHIFT_MASK) != 0;
         const isAlt = (event.get_state()[1] & Gdk.ModifierType.MOD1_MASK) != 0;
         const selection = this.getCurrentSelection(false);
-        if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
+        if (symbol == Gdk.KEY_Home) {
+            this._setIconAsSelected(this._getTopLeftIcon());
+            return true;
+        } else if (symbol == Gdk.KEY_End) {
+            this._setIconAsSelected(this._getBottomRightIcon());
+            return true;
+        } else if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
             this._doRedo();
             return true;
         } else if (isCtrl && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
