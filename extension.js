@@ -326,11 +326,12 @@ export default class DING extends Extension {
      *
      */
     getDesktopGeometry() {
+        let desktopVariantList = [];
         let desktopList = [];
         let ws = global.workspace_manager.get_workspace_by_index(0);
         for (let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
             let area = this.data.visibleArea.getMonitorGeometry(ws, monitorIndex);
-            let desktopListElement = new GLib.Variant('a{sd}', {
+            let monitorData = {
                 'x': area.x,
                 'y': area.y,
                 'width': area.width,
@@ -342,10 +343,13 @@ export default class DING extends Extension {
                 'marginRight': area.marginRight,
                 monitorIndex,
                 'primaryMonitor': Main.layoutManager.primaryIndex,
-            });
-            desktopList.push(desktopListElement);
+            };
+            let desktopListElement = new GLib.Variant('a{sd}', monitorData);
+            desktopVariantList.push(desktopListElement);
+            desktopList.push(monitorData);
         }
-        return new GLib.Variant('av', desktopList);
+        this.data.x11Manager.setMonitorData(desktopList);
+        return new GLib.Variant('av', desktopVariantList);
     }
 
     /**

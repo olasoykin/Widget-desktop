@@ -20,7 +20,7 @@ Architecture: all
 Depends: gir1.2-gnomeautoar-0.1,
          gir1.2-gnomedesktop-3.0,
          gnome-shell (>= 45~),
-         gnome-shell (<< 48~),
+         gnome-shell (<< 49~),
          gjs,
          nautilus (>= 3.38)
 Description: desktop icon support for GNOME Shell
@@ -28,4 +28,4 @@ Description: desktop icon support for GNOME Shell
  of ~/Desktop on the desktop of the Shell. Common file management
  operations such as launching, copy/paste, rename and deleting are
  supported.
-Version: 48.1.0
+Version: 48.2.0

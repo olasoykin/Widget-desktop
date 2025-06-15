@@ -395,9 +395,10 @@ var DesktopManager = class {
             let desktop = this._desktopList[desktopIndex];
             let desktopName;
             if (this._asDesktop) {
-                desktopName = `@!${desktop.x},${desktop.y};BDHF`;
+                // this name must match the one used in emulateX11WindowType
+                desktopName = `Desktop Icons ${desktop.monitorIndex + 1}`;
             } else {
-                desktopName = `DING ${desktopIndex}`;
+                desktopName = `DING ${desktop.monitorIndex + 1}`;
             }
             this._desktops.push(new DesktopGrid.DesktopGrid(this, desktopName, desktop, this._asDesktop, this._premultiplied));
         }

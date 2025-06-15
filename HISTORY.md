@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 48.2.0
+  * Don't show odd name when using Ctrl+Alt+TAB
+
 * Version 48.1.0
   * Fixed DnD placement (thanks to M.B.)
   * Fix icons position after changing zoom
