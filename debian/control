@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Sergio Costas Rodriguez <rastersoft@gmail.com>
 Build-Depends: debhelper-compat (= 13),
                dh-sequence-gnome,
+               dh-apparmor,
                libglib2.0-bin,
                meson,
                cmake,
