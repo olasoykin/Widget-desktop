@@ -25,6 +25,7 @@ const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Atk = imports.gi.Atk;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Pango = imports.gi.Pango;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Cairo = imports.gi.cairo;
@@ -39,6 +40,46 @@ const Signals = imports.signals;
 const Gettext = imports.gettext.domain('ding');
 
 const _ = Gettext.gettext;
+
+/*var AccessibleAtkIcon = GObject.registerClass (
+class AccessibleAtkIcon extends Atk.Object {
+    _init(params) {
+        super._init(params);
+        this._currentState = false;
+    }
+
+    vfunc_ref_state_set() {
+        const stateSet = new Atk.StateSet();
+        stateSet.add_state(Atk.StateType.SENSITIVE);
+        stateSet.add_state(Atk.StateType.ENABLED);
+        stateSet.add_state(Atk.StateType.FOCUSABLE);
+        stateSet.add_state(Atk.StateType.VISIBLE);
+        stateSet.add_state(Atk.StateType.SHOWING);
+        if (this._currentState) {
+            stateSet.add_state(Atk.StateType.CHECKED);
+        }
+        return stateSet;
+    }
+
+    setNewState(state) {
+        if (state != this._currentState) {
+            this._currentState = state;
+            this.notify_state_change(Atk.StateType.CHECKED, state);
+        }
+    }
+});
+
+var AccessibleIcon = GObject.registerClass(
+class AccessibleIcon extends Gtk.Box {
+    _init(params) {
+        super._init(params);
+        this._oldAccessible = new AccessibleAtkIcon();
+    }
+
+    vfunc_get_accessible() {
+        return this._oldAccessible;
+    }
+});*/
 
 var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager {
     constructor(desktopManager, fileExtra) {
@@ -481,8 +522,7 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this.setAccessibleName();
     }
 
-    setAccessibleName() {
-    }
+    setAccessibleName() {}
 
     _setDragSource(widget) {
         widget.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, null, Gdk.DragAction.MOVE | Gdk.DragAction.COPY);
