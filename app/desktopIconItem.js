@@ -23,6 +23,7 @@
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
+const Atk = imports.gi.Atk;
 const GLib = imports.gi.GLib;
 const Pango = imports.gi.Pango;
 const GdkPixbuf = imports.gi.GdkPixbuf;
@@ -477,6 +478,10 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         if (!this._isKeyboardSelected && this._fullStyleContext.has_class('desktop-icons-selected')) {
             this._fullStyleContext.remove_class('desktop-icons-selected');
         }
+        this.setAccessibleName();
+    }
+
+    setAccessibleName() {
     }
 
     _setDragSource(widget) {
