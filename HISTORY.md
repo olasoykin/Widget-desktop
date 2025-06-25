@@ -6,6 +6,11 @@
   * Fix accessibility in the rename popup
   * Fix the icon name being said twice with screen readers
   * Use dh-armor when creating a debian package (thanks to Alessandro Astone)
+  * Support selection using Shift+cursor keys
+  * Allow to select and unselect files with Ctrl+Space
+  * HOME moves to the top-left icon
+  * END moves to the bottom-right icon
+  * Better a11y
 
 * Version 48.2.0
   * Don't show odd name when using Ctrl+Alt+TAB
