@@ -948,7 +948,7 @@ var DesktopManager = class {
         } else if (isCtrl && (symbol === Gdk.KEY_space)) {
             const selected = this._getCurrentKeyboardIcon();
             if (selected !== null) {
-                selected.unsetSelected();
+                selected.toggleSelected();
                 return true;
             }
         } else if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {

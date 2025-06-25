@@ -147,8 +147,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                 break;
         }
         const accessible = this._containerAccessibility.get_accessible();
+        /** TRANSLATORS: the "selected" string is for screen readers. It is added at the end of the speaked sentence when the icon
+            is selected. */
         accessible.set_name(name.replace("${VisibleName}", this._getVisibleName()) + (this._isSelected ? _(" Selected") : ""));
-        accessible.set_role(Atk.Role.DESKTOP_ICON);
     }
 
     setRenamePopup(renameWindow) {
