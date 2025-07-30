@@ -47,6 +47,7 @@ const _ = Gettext.gettext;
 var DesktopManager = class {
     constructor(mainApp, dbusManager, desktopList, codePath, asDesktop, primaryIndex) {
         this.mainApp = mainApp;
+        this._lastSelected = null;
         this.using_X11 = Gdk.Display.get_default().constructor.$gtype.name === 'GdkX11Display';
         if (asDesktop) {
             this.mainApp.hold(); // Don't close the application if there are no desktops
@@ -794,36 +795,92 @@ var DesktopManager = class {
             console.log("Mismatched hidePopup() and showPopup() calls");
     }
 
+    _getTopLeftIcon() {
+        if (this._fileList.length == 0) {
+            return null;
+        }
+        let currentCoords = null;
+        let currentItem = null;
+        for (let item of this._fileList) {
+            const newCoords = item.getCoordinates();
+            if ((currentCoords === null) || (newCoords[0] < currentCoords[0]) || (newCoords[1] < currentCoords[1])) {
+                currentCoords = newCoords;
+                currentItem = item;
+            }
+        }
+        return currentItem;
+    }
+
+    _getBottomRightIcon() {
+        if (this._fileList.length == 0) {
+            return null;
+        }
+        let currentCoords = null;
+        let currentItem = null;
+        for (let item of this._fileList) {
+            const newCoords = item.getCoordinates();
+            if ((currentCoords === null) || (newCoords[0] > currentCoords[0]) || (newCoords[1] > currentCoords[1])) {
+                currentCoords = newCoords;
+                currentItem = item;
+            }
+        }
+        return currentItem;
+    }
+
+    _setIconAsSelected(icon) {
+        this._fileList.forEach(fileItem => fileItem.isKeyboardSelected = fileItem === icon);
+    }
+
+    _getLastKeyboardIcon() {
+        if ((this._lastSelected !== null) && this._fileList.includes(this._lastSelected)) {
+            this._setIconAsSelected(this._lastSelected);
+            return this._lastSelected;
+        }
+        return null;
+    }
+
+    _getCurrentKeyboardIcon() {
+        let currentKeyboardIcon = null;
+
+        for (let fileItem of this._fileList) {
+            if ((currentKeyboardIcon === null) && (fileItem.isKeyboardSelected)) {
+                currentKeyboardIcon = fileItem;
+            } else {
+                if (fileItem.isKeyboardSelected) {
+                    fileItem.isKeyboardSelected = false;
+                }
+            }
+        }
+        return currentKeyboardIcon;
+    }
+
     onKeyRelease(event, grid) {
         if (this._popupCounter != 0)
             return false;
-        let symbol = event.get_keyval()[1];
-        let selection = this.getCurrentSelection(false);
+        const isCtrl = (event.get_state()[1] & Gdk.ModifierType.CONTROL_MASK) != 0;
+        const isShift = (event.get_state()[1] & Gdk.ModifierType.SHIFT_MASK) != 0;
+        const symbol = event.get_keyval()[1];
         if ((symbol == Gdk.KEY_Left) || (symbol == Gdk.KEY_Right) ||
-        (symbol == Gdk.KEY_Up) || (symbol == Gdk.KEY_Down)) {
-            if (!selection) {
-                selection = this._fileList;
-            }
-            if (!selection) {
-                return false;
-            }
-            let selected = selection[0];
-            let selectedCoordinates = selected.getCoordinates();
-            this.unselectAll();
-            if (selection.length > 1) {
-                for (let item of selection) {
-                    let itemCoordinates = item.getCoordinates();
-                    if (itemCoordinates[0] > selectedCoordinates[0]) {
-                        continue;
-                    }
-                    if ((itemCoordinates[0] < selectedCoordinates[0]) ||
-                        (itemCoordinates[1] < selectedCoordinates[1])) {
-                        selected = item;
-                        selectedCoordinates = itemCoordinates;
-                        continue;
-                    }
+           (symbol == Gdk.KEY_Up) || (symbol == Gdk.KEY_Down)) {
+            let selected = this._getCurrentKeyboardIcon();
+            // if there is no selected icon, select the last selected icon
+            if (!selected) {
+                selected = this._getLastKeyboardIcon();
+                if (selected) {
+                    return false;
                 }
             }
+            // if there is no last selected, or the last selected isn't in the desktop
+            // (for example, because it was deleted), select the top-left icon.
+            if (!selected) {
+                selected = this._getTopLeftIcon();
+                if (selected) {
+                    selected.isKeyboardSelected = true;
+                }
+                this._lastSelected = selected;
+                return false;
+            }
+            let selectedCoordinates = selected.getCoordinates();
             let index;
             let multiplier;
             switch (symbol) {
@@ -859,22 +916,42 @@ var DesktopManager = class {
             }
             if (newItem === null) {
                 newItem = selected;
+            } else {
+                selected.isKeyboardSelected = false;
+                if (isCtrl || isShift) {
+                    selected.setSelected();
+                }
             }
-            newItem.setSelected();
+            newItem.isKeyboardSelected = true;
+            this._lastSelected = newItem;
             return false;
         }
         return false;
     }
 
     onKeyPress(event, grid) {
-        if (this._popupCounter != 0)
+        if (this._popupCounter != 0) {
             return false;
-        let symbol = event.get_keyval()[1];
-        let isCtrl = (event.get_state()[1] & Gdk.ModifierType.CONTROL_MASK) != 0;
-        let isShift = (event.get_state()[1] & Gdk.ModifierType.SHIFT_MASK) != 0;
-        let isAlt = (event.get_state()[1] & Gdk.ModifierType.MOD1_MASK) != 0;
-        let selection = this.getCurrentSelection(false);
-        if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
+        }
+
+        const symbol = event.get_keyval()[1];
+        const isCtrl = (event.get_state()[1] & Gdk.ModifierType.CONTROL_MASK) != 0;
+        const isShift = (event.get_state()[1] & Gdk.ModifierType.SHIFT_MASK) != 0;
+        const isAlt = (event.get_state()[1] & Gdk.ModifierType.MOD1_MASK) != 0;
+        const selection = this.getCurrentSelection(false);
+        if (symbol == Gdk.KEY_Home) {
+            this._setIconAsSelected(this._getTopLeftIcon());
+            return true;
+        } else if (symbol == Gdk.KEY_End) {
+            this._setIconAsSelected(this._getBottomRightIcon());
+            return true;
+        } else if (isCtrl && (symbol === Gdk.KEY_space)) {
+            const selected = this._getCurrentKeyboardIcon();
+            if (selected !== null) {
+                selected.toggleSelected();
+                return true;
+            }
+        } else if (isCtrl && isShift && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
             this._doRedo();
             return true;
         } else if (isCtrl && ((symbol == Gdk.KEY_Z) || (symbol == Gdk.KEY_z))) {
@@ -939,7 +1016,7 @@ var DesktopManager = class {
         } else if (isCtrl && isShift && ((symbol == Gdk.KEY_N) || (symbol == Gdk.KEY_n))) {
             this.doNewFolder();
             return true;
-        } else if (symbol == Gdk.KEY_Menu) {
+        } else if ((symbol == Gdk.KEY_Menu) || ((symbol == Gdk.KEY_F10) && (isShift))) {
             if (selection) {
                 this.fileItemMenu.showMenu(selection[0], event, true);
             } else {
@@ -991,7 +1068,10 @@ var DesktopManager = class {
     }
 
     unselectAll() {
-        this._fileList.map(f => f.unsetSelected());
+        this._fileList.map(f => {
+            f.unsetSelected();
+            f.isKeyboardSelected = false;
+        });
     }
 
     findFiles(text) {
@@ -1660,7 +1740,7 @@ var DesktopManager = class {
     }
 
     doTrash() {
-        const selection = this._fileList.filter(i => i.isSelected && !i.isSpecial).map(i =>
+        const selection = this._fileList.filter(i => (i.isSelected || i.isKeyboardSelected) && !i.isSpecial).map(i =>
             i.file.get_uri());
 
         if (selection.length) {
@@ -1669,11 +1749,11 @@ var DesktopManager = class {
     }
 
     doDeletePermanently() {
-        const toDelete = this._fileList.filter(i => i.isSelected && !i.isSpecial).map(i =>
+        const toDelete = this._fileList.filter(i => (i.isSelected || i.isKeyboardSelected) && !i.isSpecial).map(i =>
             i.file.get_uri());
 
         if (!toDelete.length) {
-            if (this._fileList.some(i => i.isSelected && i.isTrash)) {
+            if (this._fileList.some(i => (i.isSelected || i.isKeyboardSelected) && i.isTrash)) {
                 this.doEmptyTrash();
             }
             return;
@@ -1697,7 +1777,7 @@ var DesktopManager = class {
 
     checkIfDirectoryIsSelected() {
         for (let item of this._fileList) {
-            if (item.isSelected && item.isDirectory) {
+            if ((item.isSelected || item.isKeyboardSelected) && item.isDirectory) {
                 return true;
             }
         }
@@ -1707,7 +1787,7 @@ var DesktopManager = class {
     getCurrentSelection(getUri) {
         let listToTrash = [];
         for (let fileItem of this._fileList) {
-            if (fileItem.isSelected) {
+            if ((fileItem.isSelected) || (fileItem.isKeyboardSelected)) {
                 if (getUri) {
                     listToTrash.push(fileItem.file.get_uri());
                 } else {
@@ -1725,7 +1805,7 @@ var DesktopManager = class {
     getNumberOfSelectedItems() {
         let count = 0;
         for (let item of this._fileList) {
-            if (item.isSelected) {
+            if ((item.isSelected) || (item.isKeyboardSelected)) {
                 count++;
             }
         }
