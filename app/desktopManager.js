@@ -18,6 +18,7 @@
 /* exported DesktopManager */
 'use strict';
 const GLib = imports.gi.GLib;
+const GLibUnix = imports.gi.GLibUnix;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
@@ -262,7 +263,7 @@ var DesktopManager = class {
         }
         this._pendingDropFiles = {};
         if (this._asDesktop) {
-            this._sigtermID = GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, 15, () => {
+            this._sigtermID = GLibUnix.signal_add_full(GLib.PRIORITY_DEFAULT, 15, () => {
                 GLib.source_remove(this._sigtermID);
                 for (let desktop of this._desktops) {
                     desktop.destroy();

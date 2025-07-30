@@ -1,5 +1,12 @@
 # History of versions #
 
+* Version 49.0.0
+  * Add support for Gnome Shell 49
+  * Fix Glib.unix_signal_add() warning
+  * Fix accessibility in the rename popup
+  * Fix the icon name being said twice with screen readers
+  * Use dh-armor when creating a debian package (thanks to Alessandro Astone)
+
 * Version 48.2.0
   * Don't show odd name when using Ctrl+Alt+TAB
 
