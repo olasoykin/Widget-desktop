@@ -86,7 +86,7 @@ class ManageWindow {
         this._signalIDs.push(window.connect('notify::maximized-horizontally', () => {
             if (window.is_maximized) {
                 // Gnome Shell >= 49 API
-                if (!window.is_maximized) {
+                if (!window.is_maximized()) {
                     window.maximize();
                 }
             } else {
