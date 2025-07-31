@@ -1,5 +1,12 @@
 # History of versions #
 
+* Version 49.0.2
+  * Added arabic translation (thanks to Ahmed Najmawi)
+  * Fixed gnome shell version in debian control file (thanks to Daniel van Vugt)
+
+* Version 49.0.1
+  * Updated version in Meson
+
 * Version 49.0.0
   * Add support for Gnome Shell 49
   * Fix Glib.unix_signal_add() warning
