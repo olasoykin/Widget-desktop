@@ -1,5 +1,8 @@
 # History of versions #
 
+* Version 49.0.3
+  * Fixed `maximize` API changes in Gnome Shell 49
+
 * Version 49.0.2
   * Added arabic translation (thanks to Ahmed Najmawi)
   * Fixed gnome shell version in debian control file (thanks to Daniel van Vugt)
