@@ -1,6 +1,6 @@
 # History of versions #
 
-* Version 49.0.3
+* Version 49.0.3 (2025-07-31)
   * Fixed `maximize` API changes in Gnome Shell 49
 
 * Version 49.0.2
