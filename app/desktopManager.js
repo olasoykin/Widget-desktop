@@ -18,7 +18,10 @@
 /* exported DesktopManager */
 'use strict';
 const GLib = imports.gi.GLib;
-const GLibUnix = imports.gi.GLibUnix;
+var GLibUnix = null;
+try {
+    GLibUnix = imports.gi.GLibUnix;
+} catch(e) {}
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
@@ -104,7 +107,7 @@ var DesktopManager = class {
         this._clickY = 0;
         this._dragList = null;
         this.dragItem = null;
-        this.thumbnailLoader = new Thumbnails.ThumbnailLoader(codePath);
+        this.thumbnailLoader = new Thumbnails.ThumbnailLoader(this, codePath);
         this._codePath = codePath;
         this._asDesktop = asDesktop;
         this._desktopList = desktopList;
@@ -264,22 +267,27 @@ var DesktopManager = class {
         }
         this._pendingDropFiles = {};
         if (this._asDesktop) {
-            this._sigtermID = GLibUnix.signal_add_full(GLib.PRIORITY_DEFAULT, 15, () => {
-                GLib.source_remove(this._sigtermID);
-                for (let desktop of this._desktops) {
-                    desktop.destroy();
-                }
-                this._desktops = [];
-                this._forcedExit = true;
-                if (this._desktopEnumerateCancellable) {
-                    this._desktopEnumerateCancellable.cancel();
-                }
-                if (this._hold_active) {
-                    this.mainApp.release();
-                    this._hold_active = false;
-                }
-                return false;
-            });
+            if (!GLibUnix) {
+                this.dbusManager.doNotify(_('GLibUnix GIR file not found'),
+                                          _('GLibUnix-2.0.gir file is missing. Please, install the required package in your system.'));
+            } else {
+                this._sigtermID = GLibUnix.signal_add_full(GLib.PRIORITY_DEFAULT, 15, () => {
+                    GLib.source_remove(this._sigtermID);
+                    for (let desktop of this._desktops) {
+                        desktop.destroy();
+                    }
+                    this._desktops = [];
+                    this._forcedExit = true;
+                    if (this._desktopEnumerateCancellable) {
+                        this._desktopEnumerateCancellable.cancel();
+                    }
+                    if (this._hold_active) {
+                        this.mainApp.release();
+                        this._hold_active = false;
+                    }
+                    return false;
+                });
+            }
         }
         if (this._asDesktop) {
             this._dbusAdvertiseUpdate();
