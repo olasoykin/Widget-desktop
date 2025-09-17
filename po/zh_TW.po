@@ -2,13 +2,14 @@
 # Copyright (C) 2018 desktop-icons's COPYRIGHT HOLDER
 # This file is distributed under the same license as the desktop-icons package.
 # Yi-Jyun Pan <pan93412@gmail.com>, 2018.
+# Luke Na <narukeu@outlook.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-29 16:52+0200\n"
-"PO-Revision-Date: 2025-09-17 00:30+0800\n"
+"PO-Revision-Date: 2025-09-17 14:29+0800\n"
 "Last-Translator: Luke Na <narukeu@outlook.com>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
@@ -36,7 +37,7 @@ msgstr "重新命名"
 
 #: app/autoAr.js:88
 msgid "AutoAr is not installed"
-msgstr "AutoAr 尚未安裝"
+msgstr "AutoAr 未安裝"
 
 #: app/autoAr.js:89
 msgid ""
@@ -63,7 +64,7 @@ msgstr "請在此輸入密碼"
 
 #: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
-msgstr "正在移除部分檔案 '${outputFile}'"
+msgstr "正在移除未完成的檔案「${outputFile}」"
 
 #: app/autoAr.js:378
 msgid "Creating destination folder"
@@ -91,7 +92,7 @@ msgstr "使用者已取消解壓縮 '${fullPathFile}'。"
 
 #: app/autoAr.js:460
 msgid "Passphrase required for ${filename}"
-msgstr "需要 ${filename} 的密碼"
+msgstr "需要「${filename}」的通行片語"
 
 #: app/autoAr.js:463
 msgid "Error during extraction"
@@ -99,7 +100,7 @@ msgstr "解壓縮時發生錯誤"
 
 #: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
-msgstr "正在將檔案壓縮至 '${outputFile}'"
+msgstr "正在將檔案壓縮至「${outputFile}」"
 
 #: app/autoAr.js:505
 msgid "Compression completed"
@@ -107,7 +108,7 @@ msgstr "壓縮完成"
 
 #: app/autoAr.js:506
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr "將檔案壓縮至 '${outputFile}' 已完成。"
+msgstr "將檔案壓縮至「${outputFile}」已完成。"
 
 #: app/autoAr.js:510 app/autoAr.js:517
 msgid "Cancelled compression"
@@ -115,11 +116,11 @@ msgstr "壓縮已取消"
 
 #: app/autoAr.js:511
 msgid "The output file '${outputFile}' already exists."
-msgstr "輸出檔案 '${outputFile}' 已存在。"
+msgstr "輸出檔案「${outputFile}」已存在。"
 
 #: app/autoAr.js:518
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr "使用者已取消將檔案壓縮至 '${outputFile}'。"
+msgstr "使用者已取消將檔案壓縮至「${outputFile}」。"
 
 #: app/autoAr.js:521
 msgid "Error during compression"
@@ -174,11 +175,11 @@ msgstr "無法找到指令"
 
 #: app/desktopManager.js:259
 msgid "Nautilus File Manager not found"
-msgstr "無法找到《檔案 (Nautilus 瀏覽器)》"
+msgstr "找不到「檔案」(Nautilus)"
 
 #: app/desktopManager.js:260
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr "《檔案》強制與 Desktop Icons NG 執行。"
+msgstr "Desktop Icons NG 需要「檔案」才能運作。"
 
 #: app/desktopManager.js:964
 msgid "Clear Current Selection before New Search"
@@ -214,7 +215,7 @@ msgstr "全選"
 
 #: app/desktopManager.js:1105
 msgid "Show Desktop in Files"
-msgstr "在檔案總管中顯示桌面"
+msgstr "在「檔案」中顯示桌面"
 
 #: app/desktopManager.js:1109 app/fileItemMenu.js:365
 msgid "Open in Terminal"
@@ -266,7 +267,7 @@ msgstr "按類型保持堆疊…"
 
 #: app/desktopManager.js:1867
 msgid "Sort Home/Drives/Trash..."
-msgstr "排序家目錄/磁碟機/垃圾桶…"
+msgstr "排序家資料夾/磁碟機/垃圾桶…"
 
 #: app/desktopManager.js:1873
 msgid "Sort by Name"
@@ -303,7 +304,7 @@ msgstr "${VisibleName} 檔案"
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
 #: app/fileItem.js:72 app/fileItem.js:203
 msgid "Home"
-msgstr "家目錄"
+msgstr "家資料夾"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. selected.
@@ -325,7 +326,7 @@ msgstr "${VisibleName} 堆疊"
 
 #: app/fileItem.js:295
 msgid "Error while reading Desktop file"
-msgstr "讀取桌面檔案時發生錯誤"
+msgstr "讀取 .desktop 檔時發生錯誤"
 
 #: app/fileItem.js:337
 msgid "Broken Link"
@@ -341,7 +342,7 @@ msgstr "無法開啟檔案"
 
 #: app/fileItem.js:396
 msgid "Broken Desktop File"
-msgstr "損壞的桌面檔"
+msgstr "損壞的 .desktop 檔"
 
 #: app/fileItem.js:397
 msgid ""
@@ -350,19 +351,19 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
-"此 .desktop 檔案有錯誤或指向沒有權限的程式。它無法被執行。\n"
+"此 .desktop 檔有錯誤或指向沒有權限的程式，無法執行。\n"
 "\n"
-"\t<b>編輯檔案以設定正確的可執行程式。</b>"
+"\t<b>請編輯檔案以設定正確的可執行程式。</b>"
 
 #: app/fileItem.js:403
 msgid "Invalid Permissions on Desktop File"
-msgstr "桌面檔案權限無效"
+msgstr ".desktop 檔權限無效"
 
 #: app/fileItem.js:404
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
-msgstr "此 .desktop 檔案的權限不正確。按右鍵編輯內容，然後：\n"
+msgstr "此 .desktop 檔的權限不正確。請按右鍵開啟「內容」，然後：\n"
 
 #: app/fileItem.js:406
 msgid ""
@@ -387,29 +388,29 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
-"此 .desktop 檔案不受信任，無法啟動。若要啟用啟動，請按右鍵，然後：\n"
+"此 .desktop 檔不受信任，無法啟動。若要啟用啟動，請按右鍵，然後：\n"
 "\n"
 "<b>啟用「允許啟動」</b>"
 
 #: app/fileItem.js:620
 msgid "Failed to set execution flag"
-msgstr "設定執行旗標失敗"
+msgstr "設定執行權限失敗"
 
 #: app/fileItem.js:632 app/fileItem.js:639
 msgid "Could not apply discrete GPU environment"
-msgstr "無法套用獨立 GPU 環境"
+msgstr "無法套用獨立顯示卡執行環境"
 
 #: app/fileItem.js:668
 msgid "Could not find discrete GPU data"
-msgstr "找不到獨立 GPU 資料"
+msgstr "找不到獨立顯示卡資料"
 
 #: app/fileItem.js:793
 msgid "Failed to set metadata::trusted flag"
-msgstr "設定 metadata::trusted 旗標失敗"
+msgstr "設定 metadata::trusted 屬性失敗"
 
 #: app/fileItemMenu.js:143
 msgid "Open All..."
-msgstr "開啟所有項目……"
+msgstr "全部開啟…"
 
 #: app/fileItemMenu.js:143
 msgid "Open"
@@ -425,11 +426,11 @@ msgstr "取消堆疊此類型"
 
 #: app/fileItemMenu.js:173
 msgid "Scripts"
-msgstr "腳本"
+msgstr "指令稿"
 
 #: app/fileItemMenu.js:178
 msgid "Open All With Other Application..."
-msgstr "使用其他應用程式全部開啟..."
+msgstr "以其他應用程式全部開啟…"
 
 #: app/fileItemMenu.js:178
 msgid "Open With Other Application"
@@ -441,7 +442,7 @@ msgstr "使用獨立顯示卡啟動"
 
 #: app/fileItemMenu.js:195
 msgid "Run as a program"
-msgstr "作為程式執行"
+msgstr "以程式方式執行"
 
 #: app/fileItemMenu.js:203
 msgid "Cut"
@@ -465,11 +466,11 @@ msgstr "永久刪除"
 
 #: app/fileItemMenu.js:246
 msgid "Don't Allow Launching"
-msgstr "不允許執行"
+msgstr "停用啟動"
 
 #: app/fileItemMenu.js:246
 msgid "Allow Launching"
-msgstr "允許執行"
+msgstr "允許啟動"
 
 #: app/fileItemMenu.js:259
 msgid "Empty Trash"
@@ -485,11 +486,11 @@ msgstr "卸載"
 
 #: app/fileItemMenu.js:294 app/fileItemMenu.js:301
 msgid "Extract Here"
-msgstr "在這裡解開"
+msgstr "解壓縮至此"
 
 #: app/fileItemMenu.js:308
 msgid "Extract To..."
-msgstr "解開到…"
+msgstr "解壓縮到…"
 
 #: app/fileItemMenu.js:317
 msgid "Send to..."
@@ -508,23 +509,23 @@ msgstr[0] "壓縮 {0} 個檔案"
 #: app/fileItemMenu.js:340
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "包含 {0} 個項目的新資料夾"
+msgstr[0] "新增含 {0} 個項目的資料夾"
 
 #: app/fileItemMenu.js:351
 msgid "Common Properties"
-msgstr "共同屬性"
+msgstr "共同內容"
 
 #: app/fileItemMenu.js:351
 msgid "Properties"
-msgstr "屬性"
+msgstr "內容"
 
 #: app/fileItemMenu.js:358
 msgid "Show All in Files"
-msgstr "在《檔案》中顯示"
+msgstr "在「檔案」中顯示全部"
 
 #: app/fileItemMenu.js:358
 msgid "Show in Files"
-msgstr "在《檔案》中顯示"
+msgstr "在「檔案」中顯示"
 
 #: app/fileItemMenu.js:449
 msgid "No Extraction Folder"
@@ -581,15 +582,15 @@ msgstr "桌面圖示的大小"
 
 #: app/prefswindow.js:64
 msgid "Tiny"
-msgstr "更小圖示"
+msgstr "極小"
 
 #: app/prefswindow.js:64
 msgid "Small"
-msgstr "小圖示"
+msgstr "小"
 
 #: app/prefswindow.js:64
 msgid "Standard"
-msgstr "適中圖示"
+msgstr "標準"
 
 #: app/prefswindow.js:64
 msgid "Large"
@@ -605,7 +606,7 @@ msgstr "在桌面顯示垃圾桶圖示"
 
 #: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
-msgstr "在桌面顯示外接硬碟"
+msgstr "在桌面顯示外接磁碟機"
 
 #: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
@@ -613,7 +614,7 @@ msgstr "在桌面顯示網路資料夾"
 
 #: app/prefswindow.js:71
 msgid "New icons alignment"
-msgstr "新圖示排序位置"
+msgstr "新圖示對齊方式"
 
 #: app/prefswindow.js:73
 msgid "Top-left corner"
@@ -633,11 +634,11 @@ msgstr "右下角"
 
 #: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
-msgstr "將新掛載硬碟置於螢幕的另一邊"
+msgstr "將新掛載磁碟機置於螢幕的另一邊"
 
 #: app/prefswindow.js:79
 msgid "Highlight the drop place during Drag'n'Drop"
-msgstr "拖曳時強調顯示拖曳後位置"
+msgstr "拖放時突顯預計放置位置"
 
 #: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
@@ -645,7 +646,7 @@ msgstr "使用 Nemo 開啟資料夾"
 
 #: app/prefswindow.js:82
 msgid "Add an emblem to soft links"
-msgstr "為軟連結新增標誌"
+msgstr "為符號連結新增徽章"
 
 #: app/prefswindow.js:84
 msgid "Use dark text in icon labels"
@@ -653,11 +654,11 @@ msgstr "圖示標籤使用深色文字"
 
 #: app/prefswindow.js:91
 msgid "Settings shared with Nautilus"
-msgstr "與《檔案》共用設定"
+msgstr "與「檔案」共用設定"
 
 #: app/prefswindow.js:113
 msgid "Click type for open files"
-msgstr "開啟檔案時的點擊方式"
+msgstr "開啟檔案的點擊方式"
 
 #: app/prefswindow.js:113
 msgid "Single click"
@@ -701,11 +702,11 @@ msgstr "從不"
 
 #: app/prefswindow.js:131
 msgid "Local files only"
-msgstr "顯示本機檔案"
+msgstr "僅限本機檔案"
 
 #: app/prefswindow.js:132
 msgid "Always"
-msgstr "總是"
+msgstr "一律"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -733,11 +734,11 @@ msgstr "在桌面顯示垃圾桶圖示。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
 msgid "New icons start corner"
-msgstr "新圖示排序方式"
+msgstr "新圖示起始角落"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "設定新圖示置放的位置"
+msgstr "設定新圖示置放的位置。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
@@ -761,19 +762,19 @@ msgstr "拖曳同時在拖曳目的位置顯示矩形方格"
 msgid ""
 "When doing a Drag'n'Drop operation, marks the place in the grid where the "
 "icon will be put with a semitransparent rectangle."
-msgstr "當執行拖曳，在圖示即將被置放的位置用半透明矩形顯示方格"
+msgstr "當執行拖曳，在圖示即將被置放的位置用半透明矩形顯示方格。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "排序特殊資料夾 - 家目錄/垃圾桶/磁碟機。"
+msgstr "排序特殊資料夾 - 家資料夾/垃圾桶/磁碟機。"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
 "When arranging Icons on desktop, to sort and change the position of the "
 "Home, Trash and mounted Network or External Drives"
 msgstr ""
-"在桌面上排列圖示時，排序和變更家目錄、垃圾桶以及已掛載的網路或外部磁碟機的位"
-"置"
+"在桌面上排列圖示時，排序和變更家資料夾、垃圾桶以及已掛載的網路或外部磁碟機的"
+"位置"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
