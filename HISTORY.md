@@ -1,5 +1,12 @@
 # History of versions #
 
+* Version 49.0.5 (2025-09-24)
+  * Updated Simplified and Traditional chinese translation
+  * Added full support for Ptyxis
+
+* Version 49.0.4 (2025-08-28)
+  * Show a notification if a GIR file is missing
+
 * Version 49.0.3 (2025-07-31)
   * Fixed `maximize` API changes in Gnome Shell 49
 
