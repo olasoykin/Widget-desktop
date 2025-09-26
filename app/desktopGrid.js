@@ -386,23 +386,14 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         if (this._desktopManager.showDropPlace && (this._selectedList !== null)) {
             for (let [x, y] of this._selectedList) {
                 cr.rectangle(x + 0.5, y + 0.5, this._elementWidth, this._elementHeight);
-                Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
-                    red: 1.0 - this._desktopManager.selectColor.red,
-                    green: 1.0 - this._desktopManager.selectColor.green,
-                    blue: 1.0 - this._desktopManager.selectColor.blue,
-                    alpha: 0.4,
-                })
-                );
+                let color = this._desktopManager.selectColor;
+                color.alpha = 0.4;
+                Gdk.cairo_set_source_rgba(cr, color);
                 cr.fill();
                 cr.setLineWidth(0.5);
                 cr.rectangle(x + 0.5, y + 0.5, this._elementWidth, this._elementHeight);
-                Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
-                    red: 1.0 - this._desktopManager.selectColor.red,
-                    green: 1.0 - this._desktopManager.selectColor.green,
-                    blue: 1.0 - this._desktopManager.selectColor.blue,
-                    alpha: 1.0,
-                })
-                );
+                color.alpha = 1.0;
+                Gdk.cairo_set_source_rgba(cr, color);
                 cr.stroke();
             }
         }
