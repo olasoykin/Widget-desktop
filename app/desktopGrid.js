@@ -200,8 +200,15 @@ var DesktopGrid = class extends SignalManager.SignalManager{
     sizeEventBox() {
         this._eventBox.margin_top = this._marginTop;
         this._eventBox.margin_bottom = this._marginBottom;
-        this._eventBox.margin_start = this._marginLeft;
-        this._eventBox.margin_end = this._marginRight;
+        const leftToRight =
+            this._eventBox.get_direction() === Gtk.TextDirection.LTR;
+        if (leftToRight) {
+            this._eventBox.margin_start = this._marginLeft;
+            this._eventBox.margin_end = this._marginRight;
+        } else {
+            this._eventBox.margin_start = this._marginRight;
+            this._eventBox.margin_end = this._marginLeft;
+        }
     }
 
     setGridStatus() {
