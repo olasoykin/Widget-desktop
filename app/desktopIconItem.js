@@ -479,10 +479,10 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         if (!this._isKeyboardSelected && this._fullStyleContext.has_class('desktop-icons-selected')) {
             this._fullStyleContext.remove_class('desktop-icons-selected');
         }
-        this.setAccessibleName();
+        this.setAccessibleName(this._getVisibleName());
     }
 
-    setAccessibleName() {}
+    setAccessibleName(name) {}
 
     _setDragSource(widget) {
         widget.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, null, Gdk.DragAction.MOVE | Gdk.DragAction.COPY);
