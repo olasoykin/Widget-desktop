@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ding\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-20 13:05+0100\n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,8 +163,8 @@ msgstr ""
 
 #: app/dbusUtils.js:70
 msgid ""
-"For this functionality to work in Desktop Icons, you must install "
-"\"${programName}\" in your system."
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
 msgstr ""
 
 #: app/desktopIconsUtil.js:157

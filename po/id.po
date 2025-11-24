@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-20 13:05+0100\n"
+"POT-Creation-Date: 2025-11-24 20:44+0100\n"
 "PO-Revision-Date: 2019-07-11 13:57+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -170,8 +170,8 @@ msgstr ""
 
 #: app/dbusUtils.js:70
 msgid ""
-"For this functionality to work in Desktop Icons, you must install "
-"\"${programName}\" in your system."
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
 msgstr ""
 
 #: app/desktopIconsUtil.js:157
