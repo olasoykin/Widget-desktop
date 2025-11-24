@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-20 13:05+0100\n"
-"PO-Revision-Date: 2021-02-17 17:57+0200\n"
+"PO-Revision-Date: 2025-11-24 18:32+0200\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #: app/askRenamePopup.js:50
 msgid "Folder name"
@@ -47,12 +47,11 @@ msgstr ""
 
 #: app/autoAr.js:224
 msgid "Extracting files"
-msgstr ""
+msgstr "הקבצים מחולצים"
 
 #: app/autoAr.js:241
-#, fuzzy
 msgid "Compressing files"
-msgstr "דחיסת קובץ {0}"
+msgstr "הקבצים נדחסים"
 
 #: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
 #: app/fileItemMenu.js:474
@@ -61,7 +60,7 @@ msgstr "ביטול"
 
 #: app/autoAr.js:318 app/autoAr.js:619
 msgid "Enter a password here"
-msgstr ""
+msgstr "נא להקליד כאן סיסמה"
 
 #: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
@@ -69,15 +68,15 @@ msgstr ""
 
 #: app/autoAr.js:378
 msgid "Creating destination folder"
-msgstr ""
+msgstr "תיקיית היעד נוצרת"
 
 #: app/autoAr.js:410
 msgid "Extracting files into '${outputPath}'"
-msgstr ""
+msgstr "הקבצים מחולצים לתוך '${outputPath}'"
 
 #: app/autoAr.js:442
 msgid "Extraction completed"
-msgstr ""
+msgstr "החילוץ הושלם"
 
 #: app/autoAr.js:443
 msgid "Extracting '${fullPathFile}' has been completed."
@@ -85,7 +84,7 @@ msgstr ""
 
 #: app/autoAr.js:449
 msgid "Extraction cancelled"
-msgstr ""
+msgstr "החילוץ בוטל"
 
 #: app/autoAr.js:450
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
@@ -97,7 +96,7 @@ msgstr ""
 
 #: app/autoAr.js:463
 msgid "Error during extraction"
-msgstr ""
+msgstr "שגיאה במהלך החילוץ"
 
 #: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
@@ -105,7 +104,7 @@ msgstr ""
 
 #: app/autoAr.js:505
 msgid "Compression completed"
-msgstr ""
+msgstr "הדחיסה הושלמה"
 
 #: app/autoAr.js:506
 msgid "Compressing files into '${outputFile}' has been completed."
@@ -113,7 +112,7 @@ msgstr ""
 
 #: app/autoAr.js:510 app/autoAr.js:517
 msgid "Cancelled compression"
-msgstr ""
+msgstr "הדחיסה בוטלה"
 
 #: app/autoAr.js:511
 msgid "The output file '${outputFile}' already exists."
@@ -125,36 +124,35 @@ msgstr ""
 
 #: app/autoAr.js:521
 msgid "Error during compression"
-msgstr ""
+msgstr "שגיאה במהלך הדחיסה"
 
 #: app/autoAr.js:554
 msgid "Create archive"
-msgstr ""
+msgstr "יצירת ארכיון"
 
 #: app/autoAr.js:579
-#, fuzzy
 msgid "Archive name"
-msgstr "שם הקובץ"
+msgstr "שם הארכיון"
 
 #: app/autoAr.js:614
 msgid "Password"
-msgstr ""
+msgstr "סיסמה"
 
 #: app/autoAr.js:633
 msgid "Create"
-msgstr ""
+msgstr "ליצור"
 
 #: app/autoAr.js:712
 msgid "Compatible with all operating systems."
-msgstr ""
+msgstr "תואם לכל מערכות ההפעלה."
 
 #: app/autoAr.js:718
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr ""
+msgstr "קובץ .zip מוגן בסיסמה, אמור להיות נתמך ב־Windows ו־Mac."
 
 #: app/autoAr.js:724
 msgid "Smaller archives but Linux and Mac only."
-msgstr ""
+msgstr "ארכיונים קטנים יותר אך נתמכים רק בלינוקס ו־Mac."
 
 #: app/autoAr.js:730
 msgid "Smaller archives but must be installed on Windows and Mac."
@@ -166,8 +164,8 @@ msgstr ""
 
 #: app/dbusUtils.js:70
 msgid ""
-"For this functionality to work in Desktop Icons, you must install "
-"\"${programName}\" in your system."
+"For this functionality to work in Desktop Icons, you must install \"$"
+"{programName}\" in your system."
 msgstr ""
 
 #: app/desktopIconsUtil.js:157
@@ -184,13 +182,13 @@ msgstr ""
 
 #: app/desktopManager.js:271
 msgid "GLibUnix GIR file not found"
-msgstr ""
+msgstr "לא נמצא קובץ GLibUnix GI"
 
 #: app/desktopManager.js:272
 msgid ""
 "GLibUnix-2.0.gir file is missing. Please, install the required package in "
 "your system."
-msgstr ""
+msgstr "חסר הקובץ GLibUnix-2.0.gir. נא להתקין את החבילה הנחוצה במערכת."
 
 #: app/desktopManager.js:1050
 msgid "Clear Current Selection before New Search"
@@ -202,7 +200,7 @@ msgstr ""
 
 #: app/desktopManager.js:1163 app/desktopManager.js:1875
 msgid "New Folder"
-msgstr "תיקיה חדשה"
+msgstr "תיקייה חדשה"
 
 #: app/desktopManager.js:1167
 msgid "New Document"
@@ -221,13 +219,12 @@ msgid "Redo"
 msgstr "ביצוע חוזר"
 
 #: app/desktopManager.js:1186
-#, fuzzy
 msgid "Select All"
 msgstr "לבחור הכול"
 
 #: app/desktopManager.js:1194
 msgid "Show Desktop in Files"
-msgstr ""
+msgstr "הצגת שולחן העבודה בתוך „קבצים”"
 
 #: app/desktopManager.js:1198 app/fileItemMenu.js:365
 msgid "Open in Terminal"
@@ -238,23 +235,20 @@ msgid "Change Background…"
 msgstr "שינוי הרקע…"
 
 #: app/desktopManager.js:1215
-#, fuzzy
 msgid "Desktop Icons Settings"
-msgstr "הגדרות תצוגה"
+msgstr "הגדרות הסמלים בשולחן העבודה"
 
 #: app/desktopManager.js:1228
 msgid "Display Settings"
 msgstr "הגדרות תצוגה"
 
 #: app/desktopManager.js:1888
-#, fuzzy
 msgid "Folder Creation Failed"
-msgstr "שם התיקייה"
+msgstr "יצירת התיקייה נכשלה"
 
 #: app/desktopManager.js:1889
-#, fuzzy
 msgid "Error while trying to create a Folder"
-msgstr "שגיאה במחיקת הקבצים"
+msgstr "שגיאה במהלך ניסיון ליצור תיקייה"
 
 #: app/desktopManager.js:1925
 msgid "Template Creation Failed"
@@ -262,15 +256,15 @@ msgstr ""
 
 #: app/desktopManager.js:1926
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "שגיאה במהלך ניסיון ליצור מסמך"
 
 #: app/desktopManager.js:1934
 msgid "Arrange Icons"
-msgstr ""
+msgstr "סידור סמלים"
 
 #: app/desktopManager.js:1938
 msgid "Arrange By..."
-msgstr ""
+msgstr "סידור לפי..."
 
 #: app/desktopManager.js:1947
 msgid "Keep Arranged..."
@@ -282,11 +276,11 @@ msgstr ""
 
 #: app/desktopManager.js:1956
 msgid "Sort Home/Drives/Trash..."
-msgstr ""
+msgstr "מיון בית/כוננים/אשפה..."
 
 #: app/desktopManager.js:1962
 msgid "Sort by Name"
-msgstr ""
+msgstr "מיון לפי שם"
 
 #: app/desktopManager.js:1964
 msgid "Sort by Name Descending"
@@ -298,11 +292,11 @@ msgstr ""
 
 #: app/desktopManager.js:1970
 msgid "Sort by Type"
-msgstr ""
+msgstr "מיון לפי סוג"
 
 #: app/desktopManager.js:1973
 msgid "Sort by Size"
-msgstr ""
+msgstr "מיון לפי גודל"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
 #. * highlighted.
@@ -321,9 +315,8 @@ msgstr "לבחור הכול"
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. * highlighted.
 #: app/fileItem.js:128
-#, fuzzy
 msgid "Trash"
-msgstr "פינוי האשפה"
+msgstr "אַשְׁפָּה"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. * highlighted and selected.
@@ -409,20 +402,19 @@ msgstr "שגיאה במחיקת הקבצים"
 
 #: app/fileItem.js:390
 msgid "Broken Link"
-msgstr ""
+msgstr "קישור שבור"
 
 #: app/fileItem.js:391
 msgid "Can not open this File because it is a Broken Symlink"
 msgstr ""
 
 #: app/fileItem.js:423
-#, fuzzy
 msgid "Can't open the file"
-msgstr "הפעלת הקובץ"
+msgstr "לא ניתן לפתוח את הקובץ"
 
 #: app/fileItem.js:449
 msgid "Broken Desktop File"
-msgstr ""
+msgstr "קובץ פגום של רשומת שולחן העבודה"
 
 #: app/fileItem.js:450
 msgid ""
@@ -512,7 +504,7 @@ msgstr ""
 
 #: app/fileItemMenu.js:195
 msgid "Run as a program"
-msgstr ""
+msgstr "הרצה כתכנה"
 
 #: app/fileItemMenu.js:203
 msgid "Cut"
@@ -556,29 +548,28 @@ msgstr "ניתוק"
 
 #: app/fileItemMenu.js:294 app/fileItemMenu.js:301
 msgid "Extract Here"
-msgstr ""
+msgstr "חילוץ לכאן"
 
 #: app/fileItemMenu.js:308
 msgid "Extract To..."
-msgstr ""
+msgstr "חילוץ אל..."
 
 #: app/fileItemMenu.js:317
 msgid "Send to..."
 msgstr "שליחה אל..."
 
 #: app/fileItemMenu.js:325
-#, fuzzy
 msgid "Compress {0} folder"
 msgid_plural "Compress {0} folders"
-msgstr[0] "דחיסת קובץ {0}"
-msgstr[1] "דחיסת {0} קבצים"
-msgstr[2] "דחיסת {0} קבצים"
-msgstr[3] "דחיסת {0} קבצים"
+msgstr[0] "דחיסת תיקייה אחת"
+msgstr[1] "דחיסת {0} תיקיות"
+msgstr[2] "דחיסת {0} תיקיות"
+msgstr[3] "דחיסת {0} תיקיות"
 
 #: app/fileItemMenu.js:332
 msgid "Compress {0} file"
 msgid_plural "Compress {0} files"
-msgstr[0] "דחיסת קובץ {0}"
+msgstr[0] "דחיסת קובץ אחד"
 msgstr[1] "דחיסת {0} קבצים"
 msgstr[2] "דחיסת {0} קבצים"
 msgstr[3] "דחיסת {0} קבצים"
@@ -586,14 +577,14 @@ msgstr[3] "דחיסת {0} קבצים"
 #: app/fileItemMenu.js:340
 msgid "New Folder with {0} item"
 msgid_plural "New Folder with {0} items"
-msgstr[0] "תיקיה חדשה עם פריט {0}"
-msgstr[1] "תיקיה חדשה עם {0} פריטים"
-msgstr[2] "תיקיה חדשה עם {0} פריטים"
-msgstr[3] "תיקיה חדשה עם {0} פריטים"
+msgstr[0] "תיקייה חדשה עם פריט {0}"
+msgstr[1] "תיקייה חדשה עם {0} פריטים"
+msgstr[2] "תיקייה חדשה עם {0} פריטים"
+msgstr[3] "תיקייה חדשה עם {0} פריטים"
 
 #: app/fileItemMenu.js:351
 msgid "Common Properties"
-msgstr ""
+msgstr "מאפיינים נפוצים"
 
 #: app/fileItemMenu.js:351
 msgid "Properties"
@@ -601,11 +592,11 @@ msgstr "מאפיינים"
 
 #: app/fileItemMenu.js:358
 msgid "Show All in Files"
-msgstr ""
+msgstr "להציג הכול בקבצים"
 
 #: app/fileItemMenu.js:358
 msgid "Show in Files"
-msgstr ""
+msgstr "הצגה בתוך „קבצים”"
 
 #: app/fileItemMenu.js:449
 msgid "No Extraction Folder"
@@ -617,16 +608,15 @@ msgstr ""
 
 #: app/fileItemMenu.js:470
 msgid "Select Extract Destination"
-msgstr ""
+msgstr "בחירת יעד לחילוץ"
 
 #: app/fileItemMenu.js:475
-#, fuzzy
 msgid "Select"
-msgstr "לבחור הכול"
+msgstr "בחירה"
 
 #: app/fileItemMenu.js:516
 msgid "Can not email a Directory"
-msgstr ""
+msgstr "לא ניתן לשלוח תיקייה בדוא״ל"
 
 #: app/fileItemMenu.js:517
 msgid "Selection includes a Directory, compress the directory to a file first."
@@ -645,11 +635,11 @@ msgstr ""
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
-msgstr ""
+msgstr "סגירה"
 
 #: app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "לא להציג שוב הודעה זו."
 
 #: app/preferences.js:91
 msgid "Settings"
@@ -676,22 +666,20 @@ msgid "Large"
 msgstr "גדול"
 
 #: app/prefswindow.js:65
-#, fuzzy
 msgid "Show the personal folder in the desktop"
-msgstr "הצגת התיקייה האישית"
+msgstr "הצגת התיקייה האישית בשולחן העבודה"
 
 #: app/prefswindow.js:66
-#, fuzzy
 msgid "Show the trash icon in the desktop"
-msgstr "הצגת סמל האשפה"
+msgstr "הצגת סמל האשפה בשולחן העבודה"
 
 #: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
-msgstr ""
+msgstr "הצגת כוננים חיצוניים בשולחן העבודה"
 
 #: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
-msgstr ""
+msgstr "הצגת כונני רשת בשולחן העבודה"
 
 #: app/prefswindow.js:71
 msgid "New icons alignment"
@@ -699,19 +687,19 @@ msgstr ""
 
 #: app/prefswindow.js:73
 msgid "Top-left corner"
-msgstr ""
+msgstr "הפינה השמאלית העליונה"
 
 #: app/prefswindow.js:74
 msgid "Top-right corner"
-msgstr ""
+msgstr "הפינה הימנית העליונה"
 
 #: app/prefswindow.js:75
 msgid "Bottom-left corner"
-msgstr ""
+msgstr "הפינה השמאלית התחתונה"
 
 #: app/prefswindow.js:76
 msgid "Bottom-right corner"
-msgstr ""
+msgstr "הפינה הימנית התחתונה"
 
 #: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
@@ -735,7 +723,7 @@ msgstr ""
 
 #: app/prefswindow.js:91
 msgid "Settings shared with Nautilus"
-msgstr ""
+msgstr "הגדרות משותפות עם Nautilus"
 
 #: app/prefswindow.js:113
 msgid "Click type for open files"
@@ -743,7 +731,7 @@ msgstr ""
 
 #: app/prefswindow.js:113
 msgid "Single click"
-msgstr "לחיצה יחידה"
+msgstr "לחיצה בודדת"
 
 #: app/prefswindow.js:113
 msgid "Double click"
@@ -755,7 +743,7 @@ msgstr "הצגת קבצים מוסתרים"
 
 #: app/prefswindow.js:115
 msgid "Show a context menu item to delete permanently"
-msgstr ""
+msgstr "הצגת תפריט הקשר לפני מחיקה לצמיתות"
 
 #: app/prefswindow.js:120
 msgid "Action to do when launching a program from the desktop"
@@ -763,7 +751,7 @@ msgstr ""
 
 #: app/prefswindow.js:121
 msgid "Display the content of the file"
-msgstr ""
+msgstr "הצגת תוכן הקובץ"
 
 #: app/prefswindow.js:122
 msgid "Launch the file"
@@ -821,7 +809,7 @@ msgstr "הצגת סמל האשפה"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:36
 msgid "Show the trash icon in the desktop."
-msgstr ""
+msgstr "הצגת סמל האשפה בשולחן העבודה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
 msgid "New icons start corner"
@@ -857,7 +845,7 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr ""
+msgstr "מיון תיקיות מיוחדות - בית/אשפה, כוננים."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
@@ -935,7 +923,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Desktop icons"
-#~ msgstr "הגדרות תצוגה"
+#~ msgstr "סמלים בשולחן העבודה"
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "האם ברצונך להריץ את \"{0}\", או להציג את תוכנו?"
@@ -956,10 +944,10 @@ msgstr ""
 #~ msgstr "מחיקה"
 
 #~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "האם אכן ברצונך למחוק פריטים אלו לצמיתות?"
+#~ msgstr "למחוק פריטים אלו לצמיתות?"
 
 #~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "פריט שימחק יאבד לנצח."
+#~ msgstr "פריט שיימחק יאבד לנצח."
 
 #~ msgid "New folder"
-#~ msgstr "תיקיה חדשה"
+#~ msgstr "תיקייה חדשה"
