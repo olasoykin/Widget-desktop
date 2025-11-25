@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 20:44+0100\n"
-"PO-Revision-Date: 2025-11-24 18:32+0200\n"
+"POT-Creation-Date: 2025-11-20 13:05+0100\n"
+"PO-Revision-Date: 2025-11-25 13:28+0200\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -37,13 +37,15 @@ msgstr "שינוי שם"
 
 #: app/autoAr.js:88
 msgid "AutoAr is not installed"
-msgstr ""
+msgstr "AutoAr לא מותקן"
 
 #: app/autoAr.js:89
 msgid ""
 "To be able to work with compressed files, install file-roller and/or gir-1.2-"
 "gnomeAutoAr"
 msgstr ""
+"כדי לאפשר עבודה עם קבצים דחוסים, יש להתקין את file-roller ו/או gir-1.2-"
+"gnomeAutoAr"
 
 #: app/autoAr.js:224
 msgid "Extracting files"
@@ -64,7 +66,7 @@ msgstr "נא להקליד כאן סיסמה"
 
 #: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
-msgstr ""
+msgstr "מתבצעת מחיקה של הקובץ החלקי ‚${outputFile}’"
 
 #: app/autoAr.js:378
 msgid "Creating destination folder"
@@ -80,7 +82,7 @@ msgstr "החילוץ הושלם"
 
 #: app/autoAr.js:443
 msgid "Extracting '${fullPathFile}' has been completed."
-msgstr ""
+msgstr "הושלם חילוץ ‚${fullPathFile}’."
 
 #: app/autoAr.js:449
 msgid "Extraction cancelled"
@@ -88,11 +90,11 @@ msgstr "החילוץ בוטל"
 
 #: app/autoAr.js:450
 msgid "Extracting '${fullPathFile}' has been cancelled by the user."
-msgstr ""
+msgstr "חילוץ ‚${fullPathFile}’ בוטל על ידי המשתמש."
 
 #: app/autoAr.js:460
 msgid "Passphrase required for ${filename}"
-msgstr ""
+msgstr "נדרשת מילת צופן עבור ${filename}"
 
 #: app/autoAr.js:463
 msgid "Error during extraction"
@@ -100,7 +102,7 @@ msgstr "שגיאה במהלך החילוץ"
 
 #: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
-msgstr ""
+msgstr "הקבצים מכווצים אל ‚${outputFile}’"
 
 #: app/autoAr.js:505
 msgid "Compression completed"
@@ -108,7 +110,7 @@ msgstr "הדחיסה הושלמה"
 
 #: app/autoAr.js:506
 msgid "Compressing files into '${outputFile}' has been completed."
-msgstr ""
+msgstr "כיווץ קבצים לתוך ‚${outputFile}’ הושלם."
 
 #: app/autoAr.js:510 app/autoAr.js:517
 msgid "Cancelled compression"
@@ -116,11 +118,11 @@ msgstr "הדחיסה בוטלה"
 
 #: app/autoAr.js:511
 msgid "The output file '${outputFile}' already exists."
-msgstr ""
+msgstr "קובץ הפלט ‚${outputFile}’ כבר קיים."
 
 #: app/autoAr.js:518
 msgid "Compressing files into '${outputFile}' has been cancelled by the user."
-msgstr ""
+msgstr "כיווץ הקבצים לתוך ‚${outputFile}’ בוטל על ידי המשתמש."
 
 #: app/autoAr.js:521
 msgid "Error during compression"
@@ -156,17 +158,19 @@ msgstr "ארכיונים קטנים יותר אך נתמכים רק בלינוק
 
 #: app/autoAr.js:730
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr ""
+msgstr "ארכיונים קטנים יותר, אך אמורים להיות נתמכים ב־Windows וב־Mac."
 
 #: app/dbusUtils.js:69
 msgid "\"${programName}\" is needed for Desktop Icons"
-msgstr ""
+msgstr "„${programName}” נחוץ לסמלים בשולחן העבודה"
 
 #: app/dbusUtils.js:70
 msgid ""
 "For this functionality to work in Desktop Icons, you must install \"$"
 "{programName}\" in your system."
 msgstr ""
+"כדי שיכולת זו תפעל בסמלים בשולחן העבודה, יש להתקין את „${programName}” "
+"במערכת."
 
 #: app/desktopIconsUtil.js:157
 msgid "Command not found"
@@ -178,7 +182,7 @@ msgstr "מנהל הקבצים Nautilus לא נמצא"
 
 #: app/desktopManager.js:265
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr ""
+msgstr "מנהל הקבצים Nautilus נחוץ לצורך העבודה עם התוסף Desktop Icons NG."
 
 #: app/desktopManager.js:271
 msgid "GLibUnix GIR file not found"
@@ -192,11 +196,11 @@ msgstr "חסר הקובץ GLibUnix-2.0.gir. נא להתקין את החבילה 
 
 #: app/desktopManager.js:1050
 msgid "Clear Current Selection before New Search"
-msgstr ""
+msgstr "פינוי הבחירה הנוכחית בטרם חיפוש חדש"
 
 #: app/desktopManager.js:1095
 msgid "Find Files on Desktop"
-msgstr ""
+msgstr "איתור קבצים בשולחן העבודה"
 
 #: app/desktopManager.js:1163 app/desktopManager.js:1875
 msgid "New Folder"
@@ -252,7 +256,7 @@ msgstr "שגיאה במהלך ניסיון ליצור תיקייה"
 
 #: app/desktopManager.js:1925
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "יצירת תבנית נכשלה"
 
 #: app/desktopManager.js:1926
 msgid "Error while trying to create a Document"
@@ -268,11 +272,11 @@ msgstr "סידור לפי..."
 
 #: app/desktopManager.js:1947
 msgid "Keep Arranged..."
-msgstr ""
+msgstr "להשאיר מסודר…"
 
 #: app/desktopManager.js:1951
 msgid "Keep Stacked by type..."
-msgstr ""
+msgstr "לשמור על ערימה לפי סוג…"
 
 #: app/desktopManager.js:1956
 msgid "Sort Home/Drives/Trash..."
@@ -284,11 +288,11 @@ msgstr "מיון לפי שם"
 
 #: app/desktopManager.js:1964
 msgid "Sort by Name Descending"
-msgstr ""
+msgstr "סידור יורד לפי שם"
 
 #: app/desktopManager.js:1967
 msgid "Sort by Modified Time"
-msgstr ""
+msgstr "סידור לפי זמן השינוי"
 
 #: app/desktopManager.js:1970
 msgid "Sort by Type"
@@ -308,9 +312,8 @@ msgstr "בית"
 #. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
 #. * highlighted and selected.
 #: app/fileItem.js:123
-#, fuzzy
 msgid "Home Selected"
-msgstr "לבחור הכול"
+msgstr "נבחרה תיקיית הבית"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. * highlighted.
@@ -321,16 +324,15 @@ msgstr "אַשְׁפָּה"
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. * highlighted and selected.
 #: app/fileItem.js:131
-#, fuzzy
 msgid "Trash Selected"
-msgstr "לבחור הכול"
+msgstr "נבחר סל האשפה"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
 #. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:137
 msgid "${VisibleName} Drive"
-msgstr ""
+msgstr "הכונן ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
 #. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
@@ -338,67 +340,66 @@ msgstr ""
 #. * finally "Selected".
 #: app/fileItem.js:142
 msgid "${VisibleName} Drive Selected"
-msgstr ""
+msgstr "נבחר הכונן ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
 #. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:148
 msgid "${VisibleName} Stack"
-msgstr ""
+msgstr "ערימת ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
 #. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
 #. * It is mandatory to say the file name first, then the role, and finally "Selected".
 #: app/fileItem.js:152
 msgid "${VisibleName} Stack Selected"
-msgstr ""
+msgstr "נבחרה הערימה ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:158
 msgid "${VisibleName} Folder"
-msgstr ""
+msgstr "התיקייה ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
 #. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
 #: app/fileItem.js:162
 msgid "${VisibleName} Folder Selected"
-msgstr ""
+msgstr "נבחרה התיקייה ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
 #. * say "My App Application". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:168
 msgid "${VisibleName} Application"
-msgstr ""
+msgstr "היישום ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
 #. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:172
 msgid "${VisibleName} Application Selected"
-msgstr ""
+msgstr "נבחר היישום ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
 #. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
 #: app/fileItem.js:178
 msgid "${VisibleName} File"
-msgstr ""
+msgstr "הקובץ ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
 #. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
 #. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:182
 msgid "${VisibleName} File Selected"
-msgstr ""
+msgstr "נבחר הקובץ ${VisibleName}"
 
 #: app/fileItem.js:348
-#, fuzzy
 msgid "Error while reading Desktop file"
-msgstr "שגיאה במחיקת הקבצים"
+msgstr "שגיאה בקריאת קובץ Desktop"
 
 #: app/fileItem.js:390
 msgid "Broken Link"
@@ -406,7 +407,7 @@ msgstr "קישור שבור"
 
 #: app/fileItem.js:391
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr ""
+msgstr "לא ניתן לפתוח את הקובץ הזה כיוון שזה קישור סמלי פגום"
 
 #: app/fileItem.js:423
 msgid "Can't open the file"
@@ -423,28 +424,38 @@ msgid ""
 "\n"
 "\t<b>Edit the file to set the correct executable Program.</b>"
 msgstr ""
+"לקובץ ה־‎.desktop יש שגיאות או שהוא מצביע לתוכנית בלי הרשאות. לא ניתן להריץ "
+"אותו.\n"
+"\n"
+"\t<b>יש לערוך את הקובץ כדי להגדיר את תוכנית ההרצה הנכונה.</b>"
 
 #: app/fileItem.js:456
 msgid "Invalid Permissions on Desktop File"
-msgstr ""
+msgstr "הרשאות שגויות לקובץ שולחן עבודה"
 
 #: app/fileItem.js:457
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
 msgstr ""
+"לקובץ ה־‎.desktop הזה יש הרשאות שגויות. יש ללחוץ עם לחצן העכבר הימני כדי "
+"לערוך מאפיינים ואז:\n"
 
 #: app/fileItem.js:459
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
 msgstr ""
+"\n"
+"<b>הגדרת הרשאות, תחת „גישה לאחרים”, „קריאה בלבד” או„\"ללא”</b>"
 
 #: app/fileItem.js:462
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
 msgstr ""
+"\n"
+"<b>להפעיל את האפשרות, „לאפשר הרצת הקובץ כתוכנית”</b>"
 
 #: app/fileItem.js:470
 msgid ""
@@ -453,22 +464,26 @@ msgid ""
 "\n"
 "<b>Enable \"Allow Launching\"</b>"
 msgstr ""
+"קובץ ‎.desktop זה אינו מהימן, לא ניתן להריץ אותו. כדי לאפשר להריץ אותו יש "
+"ללחוץ עם לחצן העכבר הימני ואז:\n"
+"\n"
+"<b>להפעיל את „לאפשר הפעלה”</b>"
 
 #: app/fileItem.js:669
 msgid "Failed to set execution flag"
-msgstr ""
+msgstr "הגדרת דגלון הפעלה נכשלה"
 
 #: app/fileItem.js:681 app/fileItem.js:688
 msgid "Could not apply discrete GPU environment"
-msgstr ""
+msgstr "לא ניתן להחיל סביבת מעבד גרפית נפרדת"
 
 #: app/fileItem.js:717
 msgid "Could not find discrete GPU data"
-msgstr ""
+msgstr "לא ניתן למצוא נתוני מעבד גרפי נפרד"
 
 #: app/fileItem.js:842
 msgid "Failed to set metadata::trusted flag"
-msgstr ""
+msgstr "הגדרת דגלון metadata::trusted (נתוני על::מהימנים) נכשלה"
 
 #: app/fileItemMenu.js:143
 msgid "Open All..."
@@ -480,11 +495,11 @@ msgstr "פתיחה"
 
 #: app/fileItemMenu.js:160
 msgid "Stack This Type"
-msgstr ""
+msgstr "לערום את הסוג הזה"
 
 #: app/fileItemMenu.js:160
 msgid "Unstack This Type"
-msgstr ""
+msgstr "לבטל ערימת הסוג הזה"
 
 #: app/fileItemMenu.js:173
 msgid "Scripts"
@@ -500,7 +515,7 @@ msgstr "פתיחה באמצעות יישום אחר"
 
 #: app/fileItemMenu.js:184
 msgid "Launch using Dedicated Graphics Card"
-msgstr ""
+msgstr "הפעלה באמצעות כרטיס גרפי ייעודי"
 
 #: app/fileItemMenu.js:195
 msgid "Run as a program"
@@ -600,11 +615,11 @@ msgstr "הצגה בתוך „קבצים”"
 
 #: app/fileItemMenu.js:449
 msgid "No Extraction Folder"
-msgstr ""
+msgstr "אין תיקיית חילוץ"
 
 #: app/fileItemMenu.js:450
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "לא ניתן לחלץ את הקובץ, תיקיית החילוץ לא קיימת"
 
 #: app/fileItemMenu.js:470
 msgid "Select Extract Destination"
@@ -620,11 +635,11 @@ msgstr "לא ניתן לשלוח תיקייה בדוא״ל"
 
 #: app/fileItemMenu.js:517
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr ""
+msgstr "הבחירה כוללת תיקייה, יש לכווץ את התיקייה לקובץ תחילה."
 
 #: app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "הדור הבא של סמלי שולחן עבודה פועלים תחת X11Wayland"
 
 #: app/notifyX11UnderWayland.js:38
 msgid ""
@@ -632,6 +647,8 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"נראה שהמערכת שלך מוגדרת לאלץ את GTK להשתמש ב־X11. זה עובד אבל זה לא מומלץ. "
+"כדאי לבדוק היטב את הגדרות המערכת שלך ולנסות לתקן את זה."
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
@@ -683,7 +700,7 @@ msgstr "הצגת כונני רשת בשולחן העבודה"
 
 #: app/prefswindow.js:71
 msgid "New icons alignment"
-msgstr ""
+msgstr "יישור של סמלים חדשים"
 
 #: app/prefswindow.js:73
 msgid "Top-left corner"
@@ -703,23 +720,23 @@ msgstr "הפינה הימנית התחתונה"
 
 #: app/prefswindow.js:78 schemas/org.gnome.shell.extensions.ding.gschema.xml:55
 msgid "Add new drives to the opposite side of the screen"
-msgstr ""
+msgstr "להוסיף כוננים חדשים לכיוון ההפוך של המסך"
 
 #: app/prefswindow.js:79
 msgid "Highlight the drop place during Drag'n'Drop"
-msgstr ""
+msgstr "להדגיש את מיקום ההשלכה במהלך גרירה"
 
 #: app/prefswindow.js:80 schemas/org.gnome.shell.extensions.ding.gschema.xml:90
 msgid "Use Nemo to open folders"
-msgstr ""
+msgstr "להשתמש ב־Nemo כדי לפתוח תיקיות"
 
 #: app/prefswindow.js:82
 msgid "Add an emblem to soft links"
-msgstr ""
+msgstr "הוספת סימול על קישורים רכים"
 
 #: app/prefswindow.js:84
 msgid "Use dark text in icon labels"
-msgstr ""
+msgstr "להשתמש בטקסט כהה בתוויות הסמלים"
 
 #: app/prefswindow.js:91
 msgid "Settings shared with Nautilus"
@@ -727,7 +744,7 @@ msgstr "הגדרות משותפות עם Nautilus"
 
 #: app/prefswindow.js:113
 msgid "Click type for open files"
-msgstr ""
+msgstr "סוג לחיצה לפתיחת קבצים"
 
 #: app/prefswindow.js:113
 msgid "Single click"
@@ -747,7 +764,7 @@ msgstr "הצגת תפריט הקשר לפני מחיקה לצמיתות"
 
 #: app/prefswindow.js:120
 msgid "Action to do when launching a program from the desktop"
-msgstr ""
+msgstr "פעולה לביצוע בהפעלת תכנית משולחן העבודה"
 
 #: app/prefswindow.js:121
 msgid "Display the content of the file"
@@ -779,13 +796,13 @@ msgstr "תמיד"
 
 #: app/thumbnails.js:38
 msgid "GnomeDesktop-3.0 GIR file not found"
-msgstr ""
+msgstr "לא נמצא קובץ GnomeDesktop-3.0 GIR"
 
 #: app/thumbnails.js:39
 msgid ""
 "GnomeDesktop-3.0.gir file is missing. Please, install the required package "
 "in your system."
-msgstr ""
+msgstr "הקובץ GnomeDesktop-3.0.gir חסר. נא להתקין את החבילה הנחוצה במערכת שלך."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -793,7 +810,7 @@ msgstr "גודל הסמלים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
 msgid "Set the size for the desktop icons."
-msgstr ""
+msgstr "הגדרת גודל סמלי שולחן העבודה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
 msgid "Show personal folder"
@@ -801,7 +818,7 @@ msgstr "הצגת התיקייה האישית"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:31
 msgid "Show the personal folder in the desktop."
-msgstr ""
+msgstr "הצגת התיקייה האישית בשולחן העבודה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:35
 msgid "Show trash icon"
@@ -813,35 +830,36 @@ msgstr "הצגת סמל האשפה בשולחן העבודה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
 msgid "New icons start corner"
-msgstr ""
+msgstr "פינת התחלת סמלים חדשים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr ""
+msgstr "להגדיר את הפינה ממנה הסמלים יתחילו כשיתווספו."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
-msgstr ""
+msgstr "להציג את הכוננים הקשיחים המחוברים למחשב."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:51
 msgid "Show mounted network volumes in the desktop."
-msgstr ""
+msgstr "להציג כרכים שעוגנו דרך הרשת על שולחן העבודה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:56
 msgid ""
 "When adding drives and volumes to the desktop, add them to the opposite side "
 "of the screen."
-msgstr ""
+msgstr "כוננים וכרכים שמתווספים לשולחן העבודה יתווספו לצד הנגדי של המסך."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
-msgstr ""
+msgstr "מציג מרובע במיקום היעד במהלך גרירה"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
 msgid ""
 "When doing a Drag'n'Drop operation, marks the place in the grid where the "
 "icon will be put with a semitransparent rectangle."
 msgstr ""
+"בביצוע פעולת גרירה והשלכה המקום ברשת בו יתווסף הסמל יסומן במרובע שקוף למחצה."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
@@ -852,78 +870,75 @@ msgid ""
 "When arranging Icons on desktop, to sort and change the position of the "
 "Home, Trash and mounted Network or External Drives"
 msgstr ""
+"בעת סידור סמלי שולחן העבודה, כדי לשנות את מיקום תיקיית הבית, האשפה וכונני "
+"הרשת או החיצוניים המעוגנים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
-msgstr ""
+msgstr "לשמור על הסמלים מסודרים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr ""
+msgstr "תמיד לשמור על הסמלים מסודרים בהתאם לסדר האחרון שנבחר"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
-msgstr ""
+msgstr "סדר המיון"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
-msgstr ""
+msgstr "סמלים ממוינים לפי המאפיין הזה"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:80
 msgid "Keep Icons Stacked"
-msgstr ""
+msgstr "לשמור על הסמלים בערימה"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:81
 msgid "Always keep Icons Stacked, Similar types are grouped"
-msgstr ""
+msgstr "תמיד לשמור על הסמלים בערימה, סוגים זהים מקובצים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr ""
+msgstr "סוג הקבצים שלא לערום"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr ""
+msgstr "מערך של סוגי מחרוזות, לא לערום קבצים מהסוגים האלה"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
-msgstr ""
+msgstr "להשתמש ב־Nemo במקום ב־Nautilus כדי לפתוח תיקיות."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr ""
+msgstr "הוספת סימול לקישורים"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
-msgstr ""
+msgstr "הוספת סימול כדי לאפשר לזהות קישורים רכים."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:100
 msgid "Use black for label text"
-msgstr ""
+msgstr "להשתמש בשחור לכיתוב התוויות"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:101
 msgid ""
 "Paint the label text in black instead of white. Useful when using light "
 "backgrounds."
 msgstr ""
+"לצבוע את כיתוב התוויות בשחור במקום בלבן. שימושי כשמתמשים ברקעים בהירים."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "הצגת חלונית אם מופעל על גבי X11Wayland"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "תיקיה חדשה"
-
-#, fuzzy
-#~ msgid "Desktop icons"
-#~ msgstr "סמלים בשולחן העבודה"
+"האם על DING להציג חלונית קופצת אם הוא מופעל על X11Wayland או שהמשתמש החליט "
+"לא להציג אותו עוד."
 
 #~ msgid "Do you want to run “{0}”, or display its contents?"
 #~ msgstr "האם ברצונך להריץ את \"{0}\", או להציג את תוכנו?"
