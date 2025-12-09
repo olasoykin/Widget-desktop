@@ -337,7 +337,7 @@ msgstr "Выбрана корзина"
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:137
 msgid "${VisibleName} Drive"
-msgstr "${VisibleName} - диск"
+msgstr "${VisibleName} диск"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
 #. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
@@ -345,62 +345,62 @@ msgstr "${VisibleName} - диск"
 #. * finally "Selected".
 #: app/fileItem.js:142
 msgid "${VisibleName} Drive Selected"
-msgstr "${VisibleName} - выбран диск"
+msgstr "${VisibleName} выбран диск"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
 #. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:148
 msgid "${VisibleName} Stack"
-msgstr "${VisibleName} - группа"
+msgstr "${VisibleName} группа"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
 #. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
 #. * It is mandatory to say the file name first, then the role, and finally "Selected".
 #: app/fileItem.js:152
 msgid "${VisibleName} Stack Selected"
-msgstr "${VisibleName} - выбрана группа"
+msgstr "${VisibleName} выбрана группа"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
 #. * It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:158
 msgid "${VisibleName} Folder"
-msgstr "${VisibleName} - папка"
+msgstr "${VisibleName} папка"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
 #. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
 #: app/fileItem.js:162
 msgid "${VisibleName} Folder Selected"
-msgstr "${VisibleName} - выбрана папка"
+msgstr "${VisibleName} выбрана папка"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
 #. * say "My App Application". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:168
 msgid "${VisibleName} Application"
-msgstr "${VisibleName} - приложение"
+msgstr "${VisibleName} приложение"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
 #. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:172
 msgid "${VisibleName} Application Selected"
-msgstr "${VisibleName} - выбрано приложение"
+msgstr "${VisibleName} выбрано приложение"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
 #. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
 #: app/fileItem.js:178
 msgid "${VisibleName} File"
-msgstr "${VisibleName} - файл"
+msgstr "${VisibleName} файл"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
 #. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
 #. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
 #: app/fileItem.js:182
 msgid "${VisibleName} File Selected"
-msgstr "${VisibleName} - выбран файл"
+msgstr "${VisibleName} выбран файл"
 
 #: app/fileItem.js:348
 msgid "Error while reading Desktop file"
