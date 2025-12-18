@@ -264,7 +264,8 @@ export class EmulateX11WindowType {
      "addWindow" method. That's all.
      */
     constructor() {
-        this._isX11 = !Meta.is_wayland_compositor();
+        this._isX11 = Meta.is_wayland_compositor !== undefined &&
+                      !Meta.is_wayland_compositor();
         this._windowList = [];
         this._enableRefresh = true;
         this._waylandClient = null;
