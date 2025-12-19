@@ -1053,20 +1053,7 @@ var DesktopManager = class {
                         windowError.timeoutClose(2000);
                         return true;
                     }
-                    this.searchEventTime = GLib.get_monotonic_time();
-                    if (!this.keypressTimeoutID) {
-                        this.keypressTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
-                            if (GLib.get_monotonic_time() - this.searchEventTime < 1500000) {
-                                return true;
-                            }
-                            this.searchString = null;
-                            this.keypressTimeoutID = null;
-                            if (this._findFileWindow) {
-                                this._findFileWindow.response(Gtk.ResponseType.OK);
-                            }
-                            return false;
-                        });
-                    }
+                    this._refreshSearchTimeout();
                     this.findFiles(this.searchString);
                 }
             }
@@ -1082,6 +1069,19 @@ var DesktopManager = class {
         });
     }
 
+    _refreshSearchTimeout() {
+        if (this.keypressTimeoutID) {
+            GLib.source_remove(this.keypressTimeoutID);
+        }
+        this.keypressTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1500, () => {
+            this.searchString = null;
+            this.keypressTimeoutID = null;
+            if (this._findFileWindow) {
+                this._findFileWindow.response(Gtk.ResponseType.OK);
+            }
+            return false;
+        });
+    }
     findFiles(text) {
         this._findFileWindow = new Gtk.Dialog({
             use_header_bar: true,
@@ -1118,7 +1118,7 @@ var DesktopManager = class {
                     context.add_class('not-found');
                 }
             }
-            this.searchEventTime = GLib.get_monotonic_time();
+            this._refreshSearchTimeout();
         });
         this._findFileTextArea.grab_focus_without_selecting();
         if (text) {
