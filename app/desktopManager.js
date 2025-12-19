@@ -1072,6 +1072,17 @@ var DesktopManager = class {
     _refreshSearchTimeout() {
         if (this.keypressTimeoutID) {
             GLib.source_remove(this.keypressTimeoutID);
+            this.keypressTimeoutID = null;
+        }
+        if (Prefs.a11YKeyboard) {
+            // if the user has enabled any keyboard assistive technology,
+            // disable the timeout to hide the search window
+            if (Prefs.a11YKeyboard.get_boolean('stickykeys-enable') ||
+                Prefs.a11YKeyboard.get_boolean('slowkeys-enable') ||
+                Prefs.a11YKeyboard.get_boolean('bouncekeys-enable') ||
+                Prefs.a11YKeyboard.get_boolean('mousekeys-enable')) {
+                    return;
+            }
         }
         this.keypressTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1500, () => {
             this.searchString = null;
