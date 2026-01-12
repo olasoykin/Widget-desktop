@@ -1084,6 +1084,14 @@ var DesktopManager = class {
                     return;
             }
         }
+        if (Prefs.a11YApplications) {
+            // if the user has enabled the screen reader,
+            // disable the timeout to hide the search window
+            if (Prefs.a11YApplications.get_boolean('screen-reader-enabled')) {
+                return;
+            }
+        }
+
         this.keypressTimeoutID = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1500, () => {
             this.searchString = null;
             this.keypressTimeoutID = null;
