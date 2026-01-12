@@ -112,24 +112,18 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
     }
 
     setAccessibleName(filename) {
+        if (this._fileExtra === Enums.FileType.USER_DIRECTORY_HOME) {
+            /** TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
+              * highlighted. */
+            filename = _('Home');
+        }
+        if (this._fileExtra === Enums.FileType.USER_DIRECTORY_TRASH) {
+            /** TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
+              * highlighted. */
+            filename = _('Trash');
+        }
         const specialCases = [
             [
-                this._fileExtra === Enums.FileType.USER_DIRECTORY_HOME,
-                /** TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
-                 * highlighted. */
-                _('Home'),
-                /** TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
-                 * highlighted and selected. */
-                _('Home Selected')
-            ], [
-                this._fileExtra === Enums.FileType.USER_DIRECTORY_TRASH,
-                /** TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
-                 * highlighted. */
-                _('Trash'),
-                /** TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
-                 * highlighted and selected. */
-                _('Trash Selected')
-            ], [
                 this._fileExtra === Enums.FileType.EXTERNAL_DRIVE,
                 /** TRANSLATORS: when using a screen reader, this is the role used when an external drive is
                  * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
@@ -151,7 +145,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                  * It is mandatory to say the file name first, then the role, and finally "Selected". */
                 _('${VisibleName} Stack Selected')
             ], [
-                this._isDirectory,
+                this._isDirectory || (this._fileExtra === Enums.FileType.USER_DIRECTORY_HOME) || (this._fileExtra === Enums.FileType.USER_DIRECTORY_TRASH),
                 /** TRANSLATORS: when using a screen reader, this is the role used when a folder is
                  * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
                  * It is mandatory to say the file name first and the role after. */
