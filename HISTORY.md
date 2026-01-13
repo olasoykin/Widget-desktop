@@ -1,5 +1,13 @@
 # History of versions #
 
+* Version 49.99.0 (2026-01-13)
+  * Support for Gnome Shell 50.alpha
+  * Disable search autohide if keyboard or screen reader A11Y are enabled
+  * Added A11Y roles to the home and trash folders
+  * Fixed accessibility for .desktop files
+  * Adjust margins in RTL systems (thanks to Sundeep Mediratta)
+  * Use the accent color if available (thanks to Daniel Van Vugt)
+
 * Version 49.0.5 (2025-09-24)
   * Updated Simplified and Traditional chinese translation
   * Added full support for Ptyxis
