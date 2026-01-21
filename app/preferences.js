@@ -131,6 +131,34 @@ function get_desired_height() {
     return Enums.ICON_HEIGHT[desktopSettings.get_string('icon-size')];
 }
 
+function increase_icon_size() {
+    const currentSize = desktopSettings.get_enum('icon-size');
+    switch(currentSize) {
+        case 3: // tiny
+            desktopSettings.set_enum('icon-size', 0); // small
+            break;
+        case 2: // large
+            break;
+        default:
+            desktopSettings.set_enum('icon-size', currentSize+1);
+            break;
+    }
+}
+
+function decrease_icon_size() {
+    const currentSize = desktopSettings.get_enum('icon-size');
+    switch(currentSize) {
+        case 3: // tiny
+            break;
+        case 0: // small
+            desktopSettings.set_enum('icon-size', 3);
+            break;
+        default:
+            desktopSettings.set_enum('icon-size', currentSize-1);
+            break;
+    }
+}
+
 /**
  *
  */

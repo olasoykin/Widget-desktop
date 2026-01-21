@@ -1032,6 +1032,12 @@ var DesktopManager = class {
                 this._menu.popup_at_pointer(event);
             }
             return true;
+        } else if (isCtrl && (symbol == Gdk.KEY_plus)) {
+            Prefs.increase_icon_size();
+            return true;
+        } else if (isCtrl && (symbol == Gdk.KEY_minus)) {
+            Prefs.decrease_icon_size();
+            return true;
         } else {
             if (this.ignoreKeys.includes(symbol)) {
                 return false;
