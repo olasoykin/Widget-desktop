@@ -59,6 +59,7 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this._savedCoordinates = null;
         this._dropCoordinates = null;
         this._destroyed = false;
+        this._relativeX = 0.5;
     }
 
     /** *********************
@@ -248,9 +249,10 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this.labelRectangle.height = this.labelheight;
     }
 
-    setCoordinates(x, y, width, height, margin, grid) {
+    setCoordinates(x, y, width, height, margin, grid, relativeX) {
         this._x1 = x;
         this._y1 = y;
+        this._relativeX = relativeX;
         this.width = width;
         this.height = height;
         this._grid = grid;
@@ -809,6 +811,10 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
 
     get dropCoordinates() {
         return this._dropCoordinates;
+    }
+
+    get relativeX() {
+        return this._relativeX;
     }
 
     set dropCoordinates(pos) {

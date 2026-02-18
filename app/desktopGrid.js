@@ -464,7 +464,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             this._elementWidth - 2 * elementSpacing,
             this._elementHeight - 2 * elementSpacing,
             elementSpacing,
-            this);
+            this,
+            column / this._maxColumns);
         /* If this file is new in the Desktop and hasn't yet
          * fixed coordinates, store the new possition to ensure
          * that the next time it will be shown in the same possition.
