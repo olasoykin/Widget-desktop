@@ -1,11 +1,12 @@
 # History of versions #
 
+* Version 50.0.0 (2026-03-17)
+  * Fix incorrect window size on startup
+
 * Version 49.99.1 (2026-02-17)
   * Allows to increase and decrease the icon size with Ctrl+ / Ctrl-
   * Updated translations
 
-* Version 50.0.0 (2026-03-17)
-  * Fix incorrect window size on startup
 * Version 49.99.0 (2026-01-13)
   * Support for Gnome Shell 50.alpha
   * Disable search autohide if keyboard or screen reader A11Y are enabled
