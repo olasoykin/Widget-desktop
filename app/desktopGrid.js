@@ -101,7 +101,9 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         });
 
         this.setGridStatus();
-
+        this._window.set_default_size(this._windowWidth, this._windowHeight);
+        this._window.set_size_request(this._windowWidth, this._windowHeight);
+        this._window.resize(this._windowWidth, this._windowHeight);
         this._window.show_all();
         this._window.set_size_request(this._windowWidth, this._windowHeight);
         this._window.resize(this._windowWidth, this._windowHeight);
