@@ -377,7 +377,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
                 blue: this._desktopManager.selectColor.blue,
-                alpha: 0.6,
+                alpha: 0.2,
             })
             );
             cr.fill();
@@ -387,7 +387,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
                 blue: this._desktopManager.selectColor.blue,
-                alpha: 1.0,
+                alpha: 0.8,
             })
             );
             cr.stroke();
