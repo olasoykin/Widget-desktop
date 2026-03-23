@@ -364,6 +364,19 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         this._window.queue_draw();
     }
 
+    _roundedRectangle(cr, x, y, width, height, radius) {
+        radius = Math.min(radius, Math.abs(width) / 2, Math.abs(height) / 2);
+        const right = x + width;
+        const bottom = y + height;
+
+        cr.newPath();
+        cr.arc(x + radius, y + radius, radius, Math.PI, 1.5 * Math.PI);
+        cr.arc(right - radius, y + radius, radius, 1.5 * Math.PI, 2 * Math.PI);
+        cr.arc(right - radius, bottom - radius, radius, 0, 0.5 * Math.PI);
+        cr.arc(x + radius, bottom - radius, radius, 0.5 * Math.PI, Math.PI);
+        cr.closePath();
+    }
+
     _doDrawRubberBand(cr) {
         if (this._desktopManager.rubberBand && this._desktopManager.selectionRectangle) {
             if (!this.gridGlobalRectangle.intersect(this._desktopManager.selectionRectangle)[0]) {
@@ -372,35 +385,35 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             let [xInit, yInit] = this.coordinatesGlobalToLocal(this._desktopManager.x1, this._desktopManager.y1);
             let [xFin, yFin] = this.coordinatesGlobalToLocal(this._desktopManager.x2, this._desktopManager.y2);
 
-            cr.rectangle(xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit);
+            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 10);
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
                 blue: this._desktopManager.selectColor.blue,
-                alpha: 0.6,
+                alpha: 0.2,
             })
             );
             cr.fill();
             cr.setLineWidth(1);
-            cr.rectangle(xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit);
+            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 10);
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
                 blue: this._desktopManager.selectColor.blue,
-                alpha: 1.0,
+                alpha: 0.8,
             })
             );
             cr.stroke();
         }
         if (this._desktopManager.showDropPlace && (this._selectedList !== null)) {
             for (let [x, y] of this._selectedList) {
-                cr.rectangle(x + 0.5, y + 0.5, this._elementWidth, this._elementHeight);
+                this._roundedRectangle(cr, x + 0.5, y + 0.5, this._elementWidth, this._elementHeight, 10);
                 let color = this._desktopManager.selectColor;
                 color.alpha = 0.4;
                 Gdk.cairo_set_source_rgba(cr, color);
                 cr.fill();
                 cr.setLineWidth(0.5);
-                cr.rectangle(x + 0.5, y + 0.5, this._elementWidth, this._elementHeight);
+                this._roundedRectangle(cr, x + 0.5, y + 0.5, this._elementWidth, this._elementHeight, 10);
                 color.alpha = 1.0;
                 Gdk.cairo_set_source_rgba(cr, color);
                 cr.stroke();
