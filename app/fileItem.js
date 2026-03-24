@@ -376,6 +376,12 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         this._showerrorpopup(title, error);
     }
 
+    _getDefaultLaunchContext() {
+        const launchContext = Gdk.Display.get_default().get_app_launch_context();
+        launchContext.set_timestamp(Gtk.get_current_event_time());
+        return launchContext;
+    }
+
     _doOpenContext(context, fileList) {
         if (!fileList) {
             fileList = [];
@@ -409,7 +415,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             return;
         }
         Gio.AppInfo.launch_default_for_uri_async(this.file.get_uri(),
-            null, null,
+            context, null,
             (source, result) => {
                 try {
                     Gio.AppInfo.launch_default_for_uri_finish(result);
@@ -637,7 +643,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (!fileList) {
             fileList = [];
         }
-        this._doOpenContext(null, fileList);
+        this._doOpenContext(this._getDefaultLaunchContext(), fileList);
     }
 
     onAllowDisallowLaunchingClicked() {
@@ -701,7 +707,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             }
 
             let envS = env.get_strv();
-            let context = new Gio.AppLaunchContext();
+            const context = this._getDefaultLaunchContext();
             for (let i = 0; i < envS.length; i += 2) {
                 context.setenv(envS[i], envS[i + 1]);
             }
