@@ -18,13 +18,11 @@
 /* exported DesktopManager */
 'use strict';
 const GLib = imports.gi.GLib;
-var GLibUnix = null;
-try {
-    GLibUnix = imports.gi.GLibUnix;
-} catch(e) {}
+const GLibUnix = imports.gi.GLibUnix;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
+const GioUnix = imports.gi.GioUnix;
 const ByteArray = imports.byteArray;
 
 const FileItem = imports.fileItem;
@@ -267,27 +265,23 @@ var DesktopManager = class {
         }
         this._pendingDropFiles = {};
         if (this._asDesktop) {
-            if (!GLibUnix) {
-                this.dbusManager.doNotify(_('GLibUnix GIR file not found'),
-                                          _('GLibUnix-2.0.gir file is missing. Please, install the required package in your system.'));
-            } else {
-                this._sigtermID = GLibUnix.signal_add_full(GLib.PRIORITY_DEFAULT, 15, () => {
-                    GLib.source_remove(this._sigtermID);
-                    for (let desktop of this._desktops) {
-                        desktop.destroy();
-                    }
-                    this._desktops = [];
-                    this._forcedExit = true;
-                    if (this._desktopEnumerateCancellable) {
-                        this._desktopEnumerateCancellable.cancel();
-                    }
-                    if (this._hold_active) {
-                        this.mainApp.release();
-                        this._hold_active = false;
-                    }
-                    return false;
-                });
-            }
+            const signalAdd = GLibUnix.signal_add ?? GLibUnix.signal_add_full;
+            this._sigtermID = signalAdd(GLib.PRIORITY_DEFAULT, 15, () => {
+                GLib.source_remove(this._sigtermID);
+                for (let desktop of this._desktops) {
+                    desktop.destroy();
+                }
+                this._desktops = [];
+                this._forcedExit = true;
+                if (this._desktopEnumerateCancellable) {
+                    this._desktopEnumerateCancellable.cancel();
+                }
+                if (this._hold_active) {
+                    this.mainApp.release();
+                    this._hold_active = false;
+                }
+                return false;
+            });
         }
         if (this._asDesktop) {
             this._dbusAdvertiseUpdate();
@@ -1233,7 +1227,7 @@ var DesktopManager = class {
 
         this._changeBackgroundMenuItem = new Gtk.MenuItem({label: _('Change Background…')});
         this._changeBackgroundMenuItem.connect('activate', () => {
-            const desktopFile = Gio.DesktopAppInfo.new('gnome-background-panel.desktop');
+            const desktopFile = GioUnix.DesktopAppInfo.new('gnome-background-panel.desktop');
             const context = Gdk.Display.get_default().get_app_launch_context();
             context.set_timestamp(Gtk.get_current_event_time());
             desktopFile.launch([], context);
@@ -1245,7 +1239,7 @@ var DesktopManager = class {
         this._settingsMenuItem = new Gtk.MenuItem({label: _('Desktop Icons Settings')});
         if (GLib.getenv('XDG_CURRENT_DESKTOP').split(':').includes('ubuntu')) {
             this._settingsMenuItem.connect("activate", () => {
-                const desktopFile = Gio.DesktopAppInfo.new('gnome-ubuntu-panel.desktop');
+                const desktopFile = GioUnix.DesktopAppInfo.new('gnome-ubuntu-panel.desktop');
                 const context = Gdk.Display.get_default().get_app_launch_context();
                 context.set_timestamp(Gtk.get_current_event_time());
                 desktopFile.launch([], context);
@@ -1257,7 +1251,7 @@ var DesktopManager = class {
 
         this._displaySettingsMenuItem = new Gtk.MenuItem({label: _('Display Settings')});
         this._displaySettingsMenuItem.connect('activate', () => {
-            const desktopFile = Gio.DesktopAppInfo.new('gnome-display-panel.desktop');
+            const desktopFile = GioUnix.DesktopAppInfo.new('gnome-display-panel.desktop');
             const context = Gdk.Display.get_default().get_app_launch_context();
             context.set_timestamp(Gtk.get_current_event_time());
             desktopFile.launch([], context);
