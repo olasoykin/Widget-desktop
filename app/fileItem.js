@@ -21,6 +21,7 @@ const Gtk = imports.gi.Gtk;
 const Atk = imports.gi.Atk;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
+const GioUnix = imports.gi.GioUnix;
 const GLib = imports.gi.GLib;
 const DesktopIconsUtil = imports.desktopIconsUtil;
 const desktopIconItem = imports.desktopIconItem;
@@ -331,7 +332,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
         if (this._isDesktopFile) {
             try {
-                this._desktopFile = Gio.DesktopAppInfo.new_from_filename(this._file.get_path());
+                this._desktopFile = GioUnix.DesktopAppInfo.new_from_filename(this._file.get_path());
                 if (!this._desktopFile) {
                     console.log(`Couldn’t parse ${this._displayName} as a desktop file, will treat it as a regular file.`);
                     this._isValidDesktopFile = false;
