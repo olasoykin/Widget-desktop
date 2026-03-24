@@ -1,5 +1,14 @@
 # History of versions #
 
+* Version 50.2.0
+  * Use proper Gdk context to avoid the "Application is ready" notification (thanks to Marco Trevisan)
+  * Move Gio deprecated calls to GioUnix (thanks to Marco Trevisan)
+
+* Version 50.1.0 (2026-03-24)
+  * Do not fail on init when initializing DBus (thanks to Marco Trevisan)
+  * Rounded corners to look more consistent with Nautilus (thanks to Marco Trevisan)
+  * Selection now occupies the whole grid, and not the icon and the label
+
 * Version 50.0.0 (2026-03-17)
   * Fix incorrect window size on startup
 
