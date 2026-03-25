@@ -385,7 +385,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             let [xInit, yInit] = this.coordinatesGlobalToLocal(this._desktopManager.x1, this._desktopManager.y1);
             let [xFin, yFin] = this.coordinatesGlobalToLocal(this._desktopManager.x2, this._desktopManager.y2);
 
-            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 10);
+            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 5);
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
@@ -395,7 +395,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             );
             cr.fill();
             cr.setLineWidth(1);
-            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 10);
+            this._roundedRectangle(cr, xInit + 0.5, yInit + 0.5, xFin - xInit, yFin - yInit, 5);
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({
                 red: this._desktopManager.selectColor.red,
                 green: this._desktopManager.selectColor.green,
