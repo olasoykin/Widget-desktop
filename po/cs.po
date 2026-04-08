@@ -4,13 +4,14 @@
 # Marek Černocký <marek@manet.cz>, 2018.
 # Milan Zink <zeten30@gmail.com>, 2018.
 # panmourovaty <dominikhejl@yahoo.com>, 2021.
+# Daniel Rusek <mail@asciiwolf.com>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop-icons master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 20:44+0100\n"
-"PO-Revision-Date: 2023-07-25 17:56+0200\n"
+"POT-Creation-Date: 2026-04-03 20:22+0000\n"
+"PO-Revision-Date: 2026-04-08 12:44+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <zeten30@gmail.com>\n"
 "Language: cs\n"
@@ -18,21 +19,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.9\n"
 
-#: app/askRenamePopup.js:50
+#: app/askRenamePopup.js:51
 msgid "Folder name"
-msgstr "Název nové složky"
+msgstr "Název složky"
 
-#: app/askRenamePopup.js:50
+#: app/askRenamePopup.js:51
 msgid "File name"
-msgstr "Přejmenovat soubor"
+msgstr "Název souboru"
 
-#: app/askRenamePopup.js:59 app/autoAr.js:305 app/desktopManager.js:1091
+#: app/askRenamePopup.js:60 app/autoAr.js:305 app/desktopManager.js:1127
 msgid "OK"
 msgstr "Budiž"
 
-#: app/askRenamePopup.js:59
+#: app/askRenamePopup.js:60
 msgid "Rename"
 msgstr "Přejmenovat"
 
@@ -50,32 +51,32 @@ msgstr ""
 
 #: app/autoAr.js:224
 msgid "Extracting files"
-msgstr "Rozbaluji soubory"
+msgstr "Rozbalují se soubory"
 
 #: app/autoAr.js:241
 msgid "Compressing files"
-msgstr "Zabaluji soubory"
+msgstr "Balí se soubory"
 
-#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1093
+#: app/autoAr.js:297 app/autoAr.js:636 app/desktopManager.js:1129
 #: app/fileItemMenu.js:474
 msgid "Cancel"
 msgstr "Zrušit"
 
 #: app/autoAr.js:318 app/autoAr.js:619
 msgid "Enter a password here"
-msgstr "Sem vložte heslo"
+msgstr "Zde zadejte heslo"
 
 #: app/autoAr.js:359
 msgid "Removing partial file '${outputFile}'"
-msgstr "Odstraňuji dílčí soubor '${outputFile}'"
+msgstr "Odstraňuje se dílčí soubor '${outputFile}'"
 
 #: app/autoAr.js:378
 msgid "Creating destination folder"
-msgstr "Vytvářím cílovou složku"
+msgstr "Vytváří se cílová složka"
 
 #: app/autoAr.js:410
 msgid "Extracting files into '${outputPath}'"
-msgstr "Rozbaluji soubory do '${outputPath}'"
+msgstr "Rozbalují se soubory do '${outputPath}'"
 
 #: app/autoAr.js:442
 msgid "Extraction completed"
@@ -103,7 +104,7 @@ msgstr "Během rozbalování se vyskytla chyba"
 
 #: app/autoAr.js:492
 msgid "Compressing files into '${outputFile}'"
-msgstr "Zabaluji soubory do '${outputFile}'"
+msgstr "Balí se soubory do '${outputFile}'"
 
 #: app/autoAr.js:505
 msgid "Compression completed"
@@ -135,7 +136,7 @@ msgstr "Vytvořit archiv"
 
 #: app/autoAr.js:579
 msgid "Archive name"
-msgstr "Jméno archivu"
+msgstr "Název archivu"
 
 #: app/autoAr.js:614
 msgid "Password"
@@ -151,7 +152,7 @@ msgstr "Kompatibilní se všemi operačními systémy."
 
 #: app/autoAr.js:718
 msgid "Password protected .zip, must be installed on Windows and Mac."
-msgstr "Heslem chráněný .zip, musí být nainstalován na Windows a Mac."
+msgstr "Heslem chráněný .zip, do Windows a na Mac je nutné doinstalovat."
 
 #: app/autoAr.js:724
 msgid "Smaller archives but Linux and Mac only."
@@ -159,7 +160,7 @@ msgstr "Menší archivy ale pouze pro Linux a Mac."
 
 #: app/autoAr.js:730
 msgid "Smaller archives but must be installed on Windows and Mac."
-msgstr "Menší archivy ale musí být nainstalovány na Windows a Mac."
+msgstr "Menší archivy, ale do Windows a na Mac je nutné doinstalovat."
 
 #: app/dbusUtils.js:69
 msgid "\"${programName}\" is needed for Desktop Icons"
@@ -175,255 +176,226 @@ msgstr "Aby tato funkce fungovala musíte nainstalovat \"${programName}\"."
 msgid "Command not found"
 msgstr "Příkaz nebyl nalezen"
 
-#: app/desktopManager.js:264
+#: app/desktopManager.js:262
 msgid "Nautilus File Manager not found"
 msgstr "Správce souborů Nautilus nebyl nalezen"
 
-#: app/desktopManager.js:265
+#: app/desktopManager.js:263
 msgid "The Nautilus File Manager is mandatory to work with Desktop Icons NG."
-msgstr "Správce Souborů Nautilus je nezbytný pro práci s Desktop Icons NG."
+msgstr "Správce souborů Nautilus je nezbytný pro práci s Desktop Icons NG."
 
-#: app/desktopManager.js:271
-msgid "GLibUnix GIR file not found"
-msgstr ""
-
-#: app/desktopManager.js:272
-msgid ""
-"GLibUnix-2.0.gir file is missing. Please, install the required package in "
-"your system."
-msgstr ""
-
-#: app/desktopManager.js:1050
+#: app/desktopManager.js:1067
 msgid "Clear Current Selection before New Search"
-msgstr "Vymazat aktuální výběr před novým hledáním"
+msgstr "Před novým hledáním vymažte aktuální výběr"
 
-#: app/desktopManager.js:1095
+#: app/desktopManager.js:1131
 msgid "Find Files on Desktop"
-msgstr "Najít soubory na Ploše"
+msgstr "Najít soubory na ploše"
 
-#: app/desktopManager.js:1163 app/desktopManager.js:1875
+#: app/desktopManager.js:1199 app/desktopManager.js:1911
 msgid "New Folder"
 msgstr "Nová složka"
 
-#: app/desktopManager.js:1167
+#: app/desktopManager.js:1203
 msgid "New Document"
-msgstr "Nový Dokument"
+msgstr "Nový dokument"
 
-#: app/desktopManager.js:1172
+#: app/desktopManager.js:1208
 msgid "Paste"
 msgstr "Vložit"
 
-#: app/desktopManager.js:1176
+#: app/desktopManager.js:1212
 msgid "Undo"
 msgstr "Zpět"
 
-#: app/desktopManager.js:1180
+#: app/desktopManager.js:1216
 msgid "Redo"
 msgstr "Znovu"
 
-#: app/desktopManager.js:1186
+#: app/desktopManager.js:1222
 msgid "Select All"
 msgstr "Vybrat vše"
 
-#: app/desktopManager.js:1194
+#: app/desktopManager.js:1230
 msgid "Show Desktop in Files"
 msgstr "Zobrazit plochu v Souborech"
 
-#: app/desktopManager.js:1198 app/fileItemMenu.js:365
+#: app/desktopManager.js:1234 app/fileItemMenu.js:365
 msgid "Open in Terminal"
 msgstr "Otevřít v terminálu"
 
-#: app/desktopManager.js:1204
+#: app/desktopManager.js:1240
 msgid "Change Background…"
 msgstr "Změnit pozadí…"
 
-#: app/desktopManager.js:1215
+#: app/desktopManager.js:1251
 msgid "Desktop Icons Settings"
 msgstr "Nastavení ikon na ploše"
 
-#: app/desktopManager.js:1228
+#: app/desktopManager.js:1264
 msgid "Display Settings"
-msgstr "Zobrazit nastavení"
+msgstr "Nastavení obrazovky"
 
-#: app/desktopManager.js:1888
-#, fuzzy
+#: app/desktopManager.js:1924
 msgid "Folder Creation Failed"
-msgstr "Název nové složky"
-
-#: app/desktopManager.js:1889
-#, fuzzy
-msgid "Error while trying to create a Folder"
-msgstr "Při odstraňování souborů se vyskytla chyba"
+msgstr "Vytvoření složky se nezdařilo"
 
 #: app/desktopManager.js:1925
+msgid "Error while trying to create a Folder"
+msgstr "Při pokusu o vytvoření složky došlo k chybě"
+
+#: app/desktopManager.js:1961
 msgid "Template Creation Failed"
-msgstr ""
+msgstr "Vytvoření šablony se nezdařilo"
 
-#: app/desktopManager.js:1926
+#: app/desktopManager.js:1962
 msgid "Error while trying to create a Document"
-msgstr ""
+msgstr "Při pokusu o vytvoření dokumentu došlo k chybě"
 
-#: app/desktopManager.js:1934
+#: app/desktopManager.js:1970
 msgid "Arrange Icons"
 msgstr "Uspořádat ikony"
 
-#: app/desktopManager.js:1938
+#: app/desktopManager.js:1974
 msgid "Arrange By..."
-msgstr "Uspořádat podle..."
+msgstr "Uspořádat podle…"
 
-#: app/desktopManager.js:1947
+#: app/desktopManager.js:1983
 msgid "Keep Arranged..."
-msgstr "Nechat uspořádané..."
+msgstr "Nechat uspořádané…"
 
-#: app/desktopManager.js:1951
+#: app/desktopManager.js:1987
 msgid "Keep Stacked by type..."
-msgstr "Nechat seskupené podle typu..."
+msgstr "Nechat seskupené podle typu…"
 
-#: app/desktopManager.js:1956
+#: app/desktopManager.js:1992
 msgid "Sort Home/Drives/Trash..."
-msgstr "Seřadit Domovská složka/Jednotky/Koš..."
+msgstr "Seřadit Domovská složka/Disky/Koš…"
 
-#: app/desktopManager.js:1962
+#: app/desktopManager.js:1998
 msgid "Sort by Name"
 msgstr "Seřadit podle Jména"
 
-#: app/desktopManager.js:1964
+#: app/desktopManager.js:2000
 msgid "Sort by Name Descending"
 msgstr "Seřadit podle Jména sestupně"
 
-#: app/desktopManager.js:1967
+#: app/desktopManager.js:2003
 msgid "Sort by Modified Time"
 msgstr "Seřadit podle Času úpravy"
 
-#: app/desktopManager.js:1970
+#: app/desktopManager.js:2006
 msgid "Sort by Type"
 msgstr "Seřadit podle Typu"
 
-#: app/desktopManager.js:1973
+#: app/desktopManager.js:2009
 msgid "Sort by Size"
 msgstr "Seřadit podle Velikosti"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
 #. * highlighted.
 #. TRANSLATORS: "Home" is the text that will be shown in the user's personal folder
-#: app/fileItem.js:120 app/fileItem.js:255
+#: app/fileItem.js:119 app/fileItem.js:250
 msgid "Home"
 msgstr "Domovská složka"
 
-#. * TRANSLATORS: when using a screen reader, this is the text read when the user's personal folder is
-#. * highlighted and selected.
-#: app/fileItem.js:123
-#, fuzzy
-msgid "Home Selected"
-msgstr "Vybrat vše"
-
 #. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
 #. * highlighted.
-#: app/fileItem.js:128
-#, fuzzy
+#: app/fileItem.js:124
 msgid "Trash"
-msgstr "Vyprázdnit koš"
-
-#. * TRANSLATORS: when using a screen reader, this is the text read when the trash folder is
-#. * highlighted and selected.
-#: app/fileItem.js:131
-#, fuzzy
-msgid "Trash Selected"
-msgstr "Vybrat vše"
+msgstr "Koš"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
 #. * highlighted. Example: if a USB stick named "my_portable" is highlighted, it will say "my_portable Drive".
 #. * It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:137
+#: app/fileItem.js:132
 msgid "${VisibleName} Drive"
-msgstr ""
+msgstr "Disk ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when an external drive is
 #. * highlighted and selected. Example: if a USB stick named "my_portable" is highlighted and selected, it
 #. * will say "my_portable Drive Selected". It is mandatory to say the file name first, then the role, and
 #. * finally "Selected".
-#: app/fileItem.js:142
+#: app/fileItem.js:137
 msgid "${VisibleName} Drive Selected"
-msgstr ""
+msgstr "Disk ${VisibleName} vybrán"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is
 #. * highlighted. Example: if a stack named "pictures" is selected, it will say "pictures Stack".
 #. * It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:148
+#: app/fileItem.js:143
 msgid "${VisibleName} Stack"
-msgstr ""
+msgstr "Seskupení ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a stack is highlighted and
 #. * selected. Example: if a stack named "pictures" is highlighted and selected, it will say "pictures Stack Selected".
 #. * It is mandatory to say the file name first, then the role, and finally "Selected".
-#: app/fileItem.js:152
+#: app/fileItem.js:147
 msgid "${VisibleName} Stack Selected"
-msgstr ""
+msgstr "Seskupení ${VisibleName} vybráno"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted. Example: if a folder named "things" is highlighted, it will say "things Folder".
 #. * It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:158
+#: app/fileItem.js:153
 msgid "${VisibleName} Folder"
-msgstr ""
+msgstr "Složka ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a folder is
 #. * highlighted and selected. Example: if a folder named "things" is highlighted and selected, it will say
 #. * "things Folder Selected". It is mandatory to say the file name first, then the role, and finally "Selected".
-#: app/fileItem.js:162
+#: app/fileItem.js:157
 msgid "${VisibleName} Folder Selected"
-msgstr ""
+msgstr "Složka ${VisibleName} vybrána"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and it is trusted, it will
 #. * say "My App Application". It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:168
+#: app/fileItem.js:163
 msgid "${VisibleName} Application"
-msgstr ""
+msgstr "Aplikace ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the role used when a trusted desktop file is
 #. * highlighted. Example: if a desktop file named "My App" is highlighted and selected and it is trusted, it will
 #. * say "My App Application Selected". It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:172
+#: app/fileItem.js:167
 msgid "${VisibleName} Application Selected"
-msgstr ""
+msgstr "Aplikace ${VisibleName} vybrána"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is
 #. * highlighted. Example: if a file named "my_picture.jpg" is highlighted, it will say "my_picture.jpg File"
-#: app/fileItem.js:178
+#: app/fileItem.js:173
 msgid "${VisibleName} File"
-msgstr ""
+msgstr "Soubor ${VisibleName}"
 
 #. * TRANSLATORS: when using a screen reader, this is the text read when a normal file is highlighted and
 #. * selected. Example: if a file named "my_picture.jpg" is highlighted and selected, it will say
 #. * "my_picture.jpg File Selected". It is mandatory to say the file name first and the role after.
-#: app/fileItem.js:182
+#: app/fileItem.js:177
 msgid "${VisibleName} File Selected"
-msgstr ""
+msgstr "Soubor ${VisibleName} vybrán"
 
-#: app/fileItem.js:348
-#, fuzzy
+#: app/fileItem.js:343
 msgid "Error while reading Desktop file"
-msgstr "Při odstraňování souborů se vyskytla chyba"
+msgstr "Chyba při čtení souboru plochy"
 
-#: app/fileItem.js:390
+#: app/fileItem.js:391
 msgid "Broken Link"
 msgstr "Neplatný odkaz"
 
-#: app/fileItem.js:391
+#: app/fileItem.js:392
 msgid "Can not open this File because it is a Broken Symlink"
-msgstr "Není možné otevřít tento soubor jelikož se jedná o neplatný Symlink"
+msgstr "Není možné otevřít tento soubor, jelikož se jedná o neplatný symlink"
 
-#: app/fileItem.js:423
-#, fuzzy
+#: app/fileItem.js:424
 msgid "Can't open the file"
-msgstr "Spustit soubor"
-
-#: app/fileItem.js:449
-msgid "Broken Desktop File"
-msgstr "Rozbitý Desktop soubor"
+msgstr "Soubor nelze otevřít"
 
 #: app/fileItem.js:450
+msgid "Broken Desktop File"
+msgstr "Poškozený soubor plochy"
+
+#: app/fileItem.js:451
 msgid ""
 "This .desktop file has errors or points to a program without permissions. It "
 "can not be executed.\n"
@@ -435,11 +407,11 @@ msgstr ""
 "\n"
 "\t<b>Upravte soubor nebo nastavte správné oprávnění programu</b>"
 
-#: app/fileItem.js:456
-msgid "Invalid Permissions on Desktop File"
-msgstr "Neplatné oprávnění k Souboru Desktop"
-
 #: app/fileItem.js:457
+msgid "Invalid Permissions on Desktop File"
+msgstr "Neplatné oprávnění na souboru plochy"
+
+#: app/fileItem.js:458
 msgid ""
 "This .desktop File has incorrect Permissions. Right Click to edit "
 "Properties, then:\n"
@@ -447,7 +419,7 @@ msgstr ""
 "Tento .desktop soubor má neplatné oprávnění. Klikněte pravým tlačítkem a "
 "vyberte položku Vlastnosti, potom:\n"
 
-#: app/fileItem.js:459
+#: app/fileItem.js:460
 msgid ""
 "\n"
 "<b>Set Permissions, in \"Others Access\", \"Read Only\" or \"None\"</b>"
@@ -455,7 +427,7 @@ msgstr ""
 "\n"
 "<b>Nastavte oprávnění v \"Ostatní\" na \"Pouze čtení\" nebo \"Nic\"</b>"
 
-#: app/fileItem.js:462
+#: app/fileItem.js:463
 msgid ""
 "\n"
 "<b>Enable option, \"Allow Executing File as a Program\"</b>"
@@ -463,7 +435,7 @@ msgstr ""
 "\n"
 "<b>Povolte možnost \"Spustitelný jako program\"</b>"
 
-#: app/fileItem.js:470
+#: app/fileItem.js:471
 msgid ""
 "This .desktop file is not trusted, it can not be launched. To enable "
 "launching, right-click, then:\n"
@@ -475,25 +447,25 @@ msgstr ""
 "\n"
 "<b>Klikněte na \"Povolit spouštění\"</b>"
 
-#: app/fileItem.js:669
+#: app/fileItem.js:670
 msgid "Failed to set execution flag"
-msgstr ""
+msgstr "Nepodařilo se nastavit příznak spuštění"
 
-#: app/fileItem.js:681 app/fileItem.js:688
+#: app/fileItem.js:682 app/fileItem.js:689
 msgid "Could not apply discrete GPU environment"
-msgstr ""
+msgstr "Prostředí diskrétní GPU nelze použít"
 
-#: app/fileItem.js:717
+#: app/fileItem.js:718
 msgid "Could not find discrete GPU data"
-msgstr ""
+msgstr "Data diskrétní GPU nebyla nalezena"
 
-#: app/fileItem.js:842
+#: app/fileItem.js:843
 msgid "Failed to set metadata::trusted flag"
-msgstr ""
+msgstr "Nepodařilo se nastavit příznak metadata::trusted"
 
 #: app/fileItemMenu.js:143
 msgid "Open All..."
-msgstr "Otevřít vše..."
+msgstr "Otevřít vše…"
 
 #: app/fileItemMenu.js:143
 msgid "Open"
@@ -513,7 +485,7 @@ msgstr "Skripty"
 
 #: app/fileItemMenu.js:178
 msgid "Open All With Other Application..."
-msgstr "Otevřít vše v jiné aplikaci..."
+msgstr "Otevřít vše pomocí jiné aplikace…"
 
 #: app/fileItemMenu.js:178
 msgid "Open With Other Application"
@@ -545,7 +517,7 @@ msgstr "Přesunout do koše"
 
 #: app/fileItemMenu.js:236
 msgid "Delete permanently"
-msgstr "Odstranit nadobro"
+msgstr "Trvale odstranit"
 
 #: app/fileItemMenu.js:246
 msgid "Don't Allow Launching"
@@ -577,7 +549,7 @@ msgstr "Rozbalit do…"
 
 #: app/fileItemMenu.js:317
 msgid "Send to..."
-msgstr "Poslat..."
+msgstr "Odeslat…"
 
 #: app/fileItemMenu.js:325
 msgid "Compress {0} folder"
@@ -604,7 +576,7 @@ msgstr[2] "Nová složka s {0} položkami"
 
 #: app/fileItemMenu.js:351
 msgid "Common Properties"
-msgstr "Vlastnosti"
+msgstr "Společné vlastnosti"
 
 #: app/fileItemMenu.js:351
 msgid "Properties"
@@ -619,33 +591,32 @@ msgid "Show in Files"
 msgstr "Zobrazit v Souborech"
 
 #: app/fileItemMenu.js:449
-#, fuzzy
 msgid "No Extraction Folder"
-msgstr "Rozbalování bylo dokončeno"
+msgstr "Žádná složka pro rozbalení"
 
 #: app/fileItemMenu.js:450
 msgid "Unable to extract File, extraction Folder Does not Exist"
-msgstr ""
+msgstr "Nelze rozbalit soubor, složka pro rozbalení neexistuje"
 
 #: app/fileItemMenu.js:470
 msgid "Select Extract Destination"
-msgstr "Vybrat místo k extrahování"
+msgstr "Vyberte cíl pro rozbalení"
 
 #: app/fileItemMenu.js:475
 msgid "Select"
-msgstr "Vybrat vše"
+msgstr "Vybrat"
 
 #: app/fileItemMenu.js:516
 msgid "Can not email a Directory"
-msgstr "Nemůžete poslat složku emailem"
+msgstr "Složku nelze poslat e-mailem"
 
 #: app/fileItemMenu.js:517
 msgid "Selection includes a Directory, compress the directory to a file first."
-msgstr "Výběr obsahuje Složku, nejdříve musíte zabalit složku do archivu."
+msgstr "Výběr obsahuje složku, nejdříve musíte zabalit složku do archivu."
 
 #: app/notifyX11UnderWayland.js:37
 msgid "Desktop Icons NG is running under X11Wayland"
-msgstr ""
+msgstr "Desktop Icons NG běží pod X11Wayland"
 
 #: app/notifyX11UnderWayland.js:38
 msgid ""
@@ -653,6 +624,9 @@ msgid ""
 "works, but it's suboptimal. You should check your system configuration to "
 "fix this."
 msgstr ""
+"Zdá se, že máte systém nastavený tak, aby přinutil GTK používat X11. Funguje "
+"to, ale není to optimální. Chcete-li to opravit, měli byste zkontrolovat "
+"nastavení systému."
 
 #: app/notifyX11UnderWayland.js:39 app/showErrorPopup.js:39
 msgid "Close"
@@ -660,11 +634,11 @@ msgstr "Zavřít"
 
 #: app/notifyX11UnderWayland.js:47
 msgid "Don't show this message anymore."
-msgstr ""
+msgstr "Tuto zprávu již nezobrazovat."
 
-#: app/preferences.js:91
+#: app/preferences.js:104
 msgid "Settings"
-msgstr "Nastavení ikon na ploše"
+msgstr "Nastavení"
 
 #: app/prefswindow.js:64
 msgid "Size for the desktop icons"
@@ -672,7 +646,7 @@ msgstr "Velikost ikon na pracovní ploše"
 
 #: app/prefswindow.js:64
 msgid "Tiny"
-msgstr "Drobný"
+msgstr "Drobné"
 
 #: app/prefswindow.js:64
 msgid "Small"
@@ -696,11 +670,11 @@ msgstr "Zobrazovat ikonu koše na pracovní ploše"
 
 #: app/prefswindow.js:67 schemas/org.gnome.shell.extensions.ding.gschema.xml:45
 msgid "Show external drives in the desktop"
-msgstr "Zobrazovat disky připojené k počítači"
+msgstr "Zobrazovat externí disky na ploše"
 
 #: app/prefswindow.js:68 schemas/org.gnome.shell.extensions.ding.gschema.xml:50
 msgid "Show network drives in the desktop"
-msgstr "Zobrazovat síťové disky připojené k počítači"
+msgstr "Zobrazovat síťové disky na ploše"
 
 #: app/prefswindow.js:71
 msgid "New icons alignment"
@@ -764,11 +738,11 @@ msgstr "Zobrazit skryté soubory"
 
 #: app/prefswindow.js:115
 msgid "Show a context menu item to delete permanently"
-msgstr "Zobrazit položku kontextové nabídky, kterou chcete trvale smazat"
+msgstr "Zobrazit položku kontextové nabídky pro trvalé odstranění"
 
 #: app/prefswindow.js:120
 msgid "Action to do when launching a program from the desktop"
-msgstr "Co se má stát když spouštíte spustitelný soubor z plochy"
+msgstr "Akce, která se má provést při spouštění programu z plochy"
 
 #: app/prefswindow.js:121
 msgid "Display the content of the file"
@@ -780,11 +754,11 @@ msgstr "Spustit soubor"
 
 #: app/prefswindow.js:123
 msgid "Ask what to do"
-msgstr "Zeptat se co se má stát"
+msgstr "Zeptat se, co dělat"
 
 #: app/prefswindow.js:129
 msgid "Show image thumbnails"
-msgstr "Zobrazit náhledové obrázky"
+msgstr "Zobrazovat náhledy obrázků"
 
 #: app/prefswindow.js:130
 msgid "Never"
@@ -800,13 +774,15 @@ msgstr "Vždy"
 
 #: app/thumbnails.js:38
 msgid "GnomeDesktop-3.0 GIR file not found"
-msgstr ""
+msgstr "Soubor GnomeDesktop-3.0 GIR nebyl nalezen"
 
 #: app/thumbnails.js:39
 msgid ""
 "GnomeDesktop-3.0.gir file is missing. Please, install the required package "
 "in your system."
 msgstr ""
+"Chybí soubor GnomeDesktop-3.0.gir. Nainstalujte prosím požadovaný balíček do "
+"systému."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:25
 msgid "Icon size"
@@ -814,7 +790,7 @@ msgstr "Velikost ikon"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:26
 msgid "Set the size for the desktop icons."
-msgstr "Nastavit velikost pro ikony na pracovní ploše."
+msgstr "Nastavit velikost pro ikony na ploše."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:30
 msgid "Show personal folder"
@@ -834,11 +810,11 @@ msgstr "Zobrazovat ikonu koše na pracovní ploše."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:40
 msgid "New icons start corner"
-msgstr "Místo kam se přidávají nové ikony"
+msgstr "Výchozí roh, kam budou přidány nové ikony"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:41
 msgid "Set the corner from where the icons will start to be placed."
-msgstr "Vyberte roh do kterého budou ikony pokládány."
+msgstr "Nastavit roh, odkud se začnou umisťovat ikony."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:46
 msgid "Show the disk drives connected to the computer."
@@ -858,39 +834,39 @@ msgstr ""
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:60
 msgid "Shows a rectangle in the destination place during DnD"
-msgstr "Zobrazit čtverec při přetahování ikon"
+msgstr "Při přetahování ikon zobrazovat v cílovém umístění obdélník"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:61
 msgid ""
 "When doing a Drag'n'Drop operation, marks the place in the grid where the "
 "icon will be put with a semitransparent rectangle."
 msgstr ""
-"Při přetahování ikon se místo kam bude ikona dána obarví poloprůhledným "
-"čtvercem."
+"Při přetahování ikon označí místo v mřížce, kde bude ikona umístěna, "
+"poloprůhledným obdélníkem."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:65
 msgid "Sort Special Folders - Home/Trash Drives."
-msgstr "Seřadit speciální složky - Domovská složka/Jednotky/Koš."
+msgstr "Seřadit speciální složky - Domovská složka/Disky/Koš."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:66
 msgid ""
 "When arranging Icons on desktop, to sort and change the position of the "
 "Home, Trash and mounted Network or External Drives"
 msgstr ""
-"Při uspořádání ikon na ploše můžete třídit a měnit polohu Domácí složky, "
+"Při uspořádání ikon na ploše můžete třídit a měnit polohu domovské složky, "
 "koše a připojených síťových nebo externích jednotek"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:70
 msgid "Keep Icons Arranged"
-msgstr "Nechat Ikony uspořádané"
+msgstr "Udržovat ikony uspořádané"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:71
 msgid "Always keep Icons Arranged by the last arranged order"
-msgstr "Vždy nechat Ikony seřazené podle posledního řazení"
+msgstr "Vždy nechat ikony seřazené podle posledního řazení"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:75
 msgid "Arrange Order"
-msgstr "Pořadí seřazené"
+msgstr "Pořadí uspořádání"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:76
 msgid "Icons Arranged by this property"
@@ -906,11 +882,11 @@ msgstr "Vždy nechat Ikony seskupené, podobné typy jsou seskupeny"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:85
 msgid "Type of Files to not Stack"
-msgstr "Typ souboru co neseskupovat"
+msgstr "Typ souborů, které neseskupovat"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:86
 msgid "An Array of strings types, Don't Stack these types of files"
-msgstr "Pole typu stringů, Neseskupovat tyto typy souborů"
+msgstr "Pole typu řetězců, neseskupovat tyto typy souborů"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:91
 msgid "Use Nemo instead of Nautilus to open folders."
@@ -918,7 +894,7 @@ msgstr "Použít Nemo místo Nautilu k otevírání složek."
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:95
 msgid "Add an emblem to links"
-msgstr "Přidat emblémy k odkazům"
+msgstr "Přidat emblém k odkazům"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:96
 msgid "Add an emblem to allow to identify soft links."
@@ -936,88 +912,12 @@ msgstr "Zobrazovat text popisků v černé místo bílé. Vhodné pro světlé p
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:105
 msgid "Show a popup if running on X11Wayland"
-msgstr ""
+msgstr "Zobrazit vyskakovací okno, pokud běží na X11Wayland"
 
 #: schemas/org.gnome.shell.extensions.ding.gschema.xml:106
 msgid ""
 "Whether DING should show a popup if it is running on X11Wayland, or the user "
 "decided to not show it anymore."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "Nová složka"
-
-#, fuzzy
-#~ msgid "Desktop icons"
-#~ msgstr "Nastavení ikon na ploše"
-
-#~ msgid ""
-#~ "To configure Desktop Icons NG, do right-click in the desktop and choose "
-#~ "the last item: 'Desktop Icons settings'"
-#~ msgstr ""
-#~ "Chcete-li nakonfigurovat Desktop Icons NG, klikněte pravým tlačítkem na "
-#~ "plochu a vyberte poslední položku: 'Nastavení ikon na ploše'"
-
-#~ msgid "Do you want to run “{0}”, or display its contents?"
-#~ msgstr "Chcete spustit “{0}” nebo chcete zobrazit obsah?"
-
-#~ msgid "“{0}” is an executable text file."
-#~ msgstr "“{0}” je spustitelný soubor."
-
-#~ msgid "Execute in a terminal"
-#~ msgstr "Spustit v terminálu"
-
-#~ msgid "Show"
-#~ msgstr "Zobrazit"
-
-#~ msgid "Execute"
-#~ msgstr "Spustit"
-
-#~ msgid "New folder"
-#~ msgstr "Nová složka"
-
-#~ msgid "Delete"
-#~ msgstr "Odstranit"
-
-#~ msgid "Are you sure you want to permanently delete these items?"
-#~ msgstr "Jste si jisti že chcete odstranit tyto soubory?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Pokud odstraníte soubor bude navždy ztracen."
-
-#, fuzzy
-#~ msgid "Show external disk drives in the desktop"
-#~ msgstr "Zobrazovat osobní složku na pracovní ploše"
-
-#, fuzzy
-#~ msgid "Show the external drives"
-#~ msgstr "Zobrazovat osobní složku na pracovní ploše"
-
-#, fuzzy
-#~ msgid "Show network volumes"
-#~ msgstr "Zobrazit v Souborech"
-
-#~ msgid "Enter file name…"
-#~ msgstr "Zadejte název souboru…"
-
-#~ msgid "Folder names cannot contain “/”."
-#~ msgstr "Názvy složek nesmí obsahovat „/“."
-
-#~ msgid "A folder cannot be called “.”."
-#~ msgstr "Složka se nemůže jmenovat „.“."
-
-#~ msgid "A folder cannot be called “..”."
-#~ msgstr "Složka se nemůže jmenovat „..“."
-
-#~ msgid "Folders with “.” at the beginning of their name are hidden."
-#~ msgstr "Složky s „.“ na začátku jejich názvu jsou skryty."
-
-#~ msgid "There is already a file or folder with that name."
-#~ msgstr "Soubor nebo složka s tímto názvem již existuje."
-
-#~ msgid "Huge"
-#~ msgstr "Obrovské"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
+"Zda by měl DING zobrazovat vyskakovací okno, pokud běží na X11Wayland, nebo "
+"se uživatel rozhodl jej již nezobrazovat."
