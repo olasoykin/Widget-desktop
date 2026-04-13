@@ -133,10 +133,7 @@ var FileItemMenu = class {
             this._menu.destroy();
         }
 
-        this._menu = new Gtk.Menu();
-        const menuStyleContext = this._menu.get_style_context();
-        menuStyleContext.add_class('desktopmenu');
-        menuStyleContext.add_class('fileitemmenu');
+        this._menu = DesktopIconsUtil.createDesktopMenu(['fileitemmenu']);
 
         if (!fileItem.isStackMarker) {
             this._addElementToMenu(
