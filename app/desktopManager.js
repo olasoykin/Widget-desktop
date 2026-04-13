@@ -1182,8 +1182,7 @@ var DesktopManager = class {
     }
 
     _createDesktopBackgroundMenu() {
-        this._menu = new Gtk.Menu();
-        this._menu.get_style_context().add_class('desktopmenu');
+        this._menu = DesktopIconsUtil.createDesktopMenu();
         let newFolder = new Gtk.MenuItem({label: _('New Folder')});
         newFolder.connect('activate', () => this.doNewFolder());
         this._menu.add(newFolder);
@@ -1965,7 +1964,7 @@ var DesktopManager = class {
     }
 
     _addSortingSubMenu() {
-        this._arrangeSubMenu = new Gtk.Menu();
+        this._arrangeSubMenu = DesktopIconsUtil.createDesktopMenu();
         this._ArrangeByMenuItem.set_submenu(this._arrangeSubMenu);
 
         this._keepArrangedMenuItem = new Gtk.CheckMenuItem({label: _('Keep Arranged...')});
