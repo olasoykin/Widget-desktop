@@ -33,13 +33,12 @@ const _ = Gettext.gettext;
 var elementSpacing = 2;
 
 var DesktopGrid = class extends SignalManager.SignalManager{
-    constructor(desktopManager, desktopName, desktopDescription, asDesktop, premultiplied) {
+    constructor(desktopManager, desktopName, desktopDescription, asDesktop) {
         super();
         this._signalIds = [];
         this._destroying = false;
         this._desktopManager = desktopManager;
         this._desktopName = desktopName;
-        this._premultiplied = premultiplied;
         this._asDesktop = asDesktop;
         this._desktopDescription = desktopDescription;
         this.updateWindowGeometry();
@@ -143,17 +142,13 @@ var DesktopGrid = class extends SignalManager.SignalManager{
     }
 
     updateWindowGeometry() {
-        this._zoom = this._desktopDescription.zoom;
+        this._zoom = this._desktopDescription.scaleFactor;
         this._x = this._desktopDescription.x;
         this._y = this._desktopDescription.y;
         this._monitor = this._desktopDescription.monitorIndex;
         this._size_divisor = this._zoom;
-        if (this._asDesktop) {
-            if (this._desktopManager.using_X11) {
-                this._size_divisor = Math.ceil(this._zoom);
-            } else if (this._premultiplied) {
-                this._size_divisor = 1;
-            }
+        if (this._asDesktop && this._desktopManager.using_X11) {
+            this._size_divisor = this._zoom;
         }
         this._windowWidth = Math.floor(this._desktopDescription.width / this._size_divisor);
         this._windowHeight = Math.floor(this._desktopDescription.height / this._size_divisor);

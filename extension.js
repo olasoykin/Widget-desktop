@@ -135,6 +135,10 @@ export default class DING extends Extension {
         }
         this.data.actionGroup = undefined;
 
+        if (this.data.scaleFactorId) {
+            St.ThemeContext.get_for_stage(global.stage).disconnect(this.data.scaleFactorId);
+            this.data.scaleFactorId = 0;
+        }
         if (this.data.visibleAreaId) {
             this.data.visibleArea.disconnect(this.data.visibleAreaId);
             this.data.visibleAreaId = 0;
@@ -202,6 +206,12 @@ export default class DING extends Extension {
         * This callback allows to detect a change in the working area (like when changing the Scale value)
         */
         this.data.visibleAreaId = this.data.visibleArea.connect('updated-usable-area', () => this.updateDesktopGeometry());
+
+        /*
+         * This callback allows to detect a change in the scale factor, to adapt the desktop geometry to it.
+         */
+        this.data.scaleFactorId = St.ThemeContext.get_for_stage(global.stage).connect('notify::scale-factor',
+            () => this.updateDesktopGeometry());
 
         this.data.isEnabled = true;
         if (this.data.launchDesktopId) {
@@ -333,7 +343,8 @@ export default class DING extends Extension {
     getDesktopGeometry() {
         let desktopVariantList = [];
         let desktopList = [];
-        let ws = global.workspace_manager.get_workspace_by_index(0);
+        const ws = global.workspace_manager.get_active_workspace();
+        const { scaleFactor } = St.ThemeContext.get_for_stage(global.stage);
         for (let monitorIndex = 0; monitorIndex < Main.layoutManager.monitors.length; monitorIndex++) {
             let area = this.data.visibleArea.getMonitorGeometry(ws, monitorIndex);
             let monitorData = {
@@ -341,7 +352,7 @@ export default class DING extends Extension {
                 'y': area.y,
                 'width': area.width,
                 'height': area.height,
-                'zoom': area.scale,
+                'scaleFactor': scaleFactor,
                 'marginTop': area.marginTop,
                 'marginBottom': area.marginBottom,
                 'marginLeft': area.marginLeft,

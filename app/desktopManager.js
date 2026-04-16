@@ -75,17 +75,6 @@ var DesktopManager = class {
         this._selectedFiles = null;
         this._popupCounter = 0;
 
-        this._premultiplied = false;
-        try {
-            for (let f of Prefs.mutterSettings.get_strv('experimental-features')) {
-                if (f == 'scale-monitor-framebuffer') {
-                    this._premultiplied = true;
-                    break;
-                }
-            }
-        } catch (e) {
-        }
-
         this.dbusManager = dbusManager;
         this.autoAr = new AutoAr.AutoAr(this);
 
@@ -355,7 +344,7 @@ var DesktopManager = class {
                 (area.y != area2.y) ||
                 (area.width != area2.width) ||
                 (area.height != area2.height) ||
-                (area.zoom != area2.zoom) ||
+                (area.scaleFactor !== area2.scaleFactor) ||
                 (area.monitorIndex != area2.monitorIndex)) {
                 monitorschanged.push(index);
                 gridschanged.push(index);
@@ -404,7 +393,7 @@ var DesktopManager = class {
             } else {
                 desktopName = `DING ${desktop.monitorIndex + 1}`;
             }
-            this._desktops.push(new DesktopGrid.DesktopGrid(this, desktopName, desktop, this._asDesktop, this._premultiplied));
+            this._desktops.push(new DesktopGrid.DesktopGrid(this, desktopName, desktop, this._asDesktop));
         }
     }
 
