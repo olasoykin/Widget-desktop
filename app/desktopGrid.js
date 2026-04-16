@@ -126,8 +126,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             this._desktopManager.onReleaseButton(this);
         });
 
-        this.connectSignal(this._window, 'key-press-event', (actor, event) => {
-            this._desktopManager.onKeyPress(event, this);
+        this.connectSignal(this._window, 'key-press-event', (window, event) => {
+            this._desktopManager.onKeyPress(window, event, this);
         });
         // key-release-event must be used for the arrow keys to avoid conflicts
         // with assistive technologies.

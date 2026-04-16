@@ -925,7 +925,7 @@ var DesktopManager = class {
         return false;
     }
 
-    onKeyPress(event, grid) {
+    onKeyPress(window, event, grid) {
         if (this._popupCounter != 0) {
             return false;
         }
@@ -1001,7 +1001,7 @@ var DesktopManager = class {
             Prefs.gtkSettings.set_boolean('show-hidden', !this._showHidden);
             return true;
         } else if (isCtrl && ((symbol == Gdk.KEY_F) || (symbol == Gdk.KEY_f))) {
-            this.findFiles();
+            this.findFiles(window);
             return true;
         } else if (symbol == Gdk.KEY_Escape) {
             this.unselectAll();
@@ -1048,7 +1048,7 @@ var DesktopManager = class {
                         return true;
                     }
                     this._refreshSearchTimeout();
-                    this.findFiles(this.searchString);
+                    this.findFiles(window, this.searchString);
                 }
             }
             return true;
@@ -1095,8 +1095,9 @@ var DesktopManager = class {
             return false;
         });
     }
-    findFiles(text) {
+    findFiles(window, text) {
         this._findFileWindow = new Gtk.Dialog({
+            transientFor: window,
             use_header_bar: true,
             window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
             resizable: false,
