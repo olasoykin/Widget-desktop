@@ -3,6 +3,9 @@
 * Version 50.2.0
   * Use proper Gdk context to avoid the "Application is ready" notification (thanks to Marco Trevisan)
   * Move Gio deprecated calls to GioUnix (thanks to Marco Trevisan)
+  * Use desktop window as parent for transients (thanks to Marco Trevisan)
+  * Use the shell scaling factor (thanks to Marco Trevisan)
+  * Several fixes (thanks to Marco Trevisan)
 
 * Version 50.1.0 (2026-03-24)
   * Do not fail on init when initializing DBus (thanks to Marco Trevisan)
