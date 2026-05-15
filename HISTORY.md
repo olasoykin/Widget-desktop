@@ -1,6 +1,6 @@
 # History of versions #
 
-* Version 50.2.0
+* Version 50.2.0 (2026-05-05)
   * Use proper Gdk context to avoid the "Application is ready" notification (thanks to Marco Trevisan)
   * Move Gio deprecated calls to GioUnix (thanks to Marco Trevisan)
   * Use desktop window as parent for transients (thanks to Marco Trevisan)
