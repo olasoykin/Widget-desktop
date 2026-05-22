@@ -1,5 +1,9 @@
 # History of versions #
 
+* Version 50.3.0 (2026-05-22)
+  * Fix memory leaks
+  * Make stacks accessible
+
 * Version 50.2.0 (2026-05-05)
   * Use proper Gdk context to avoid the "Application is ready" notification (thanks to Marco Trevisan)
   * Move Gio deprecated calls to GioUnix (thanks to Marco Trevisan)

@@ -475,8 +475,6 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         this.setAccessibleName(this._getVisibleName());
     }
 
-    setAccessibleName(name) {}
-
     _setDragSource(widget) {
         widget.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, null, Gdk.DragAction.MOVE | Gdk.DragAction.COPY);
         let targets = new Gtk.TargetList(null);

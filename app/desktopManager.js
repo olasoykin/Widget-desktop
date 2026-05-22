@@ -2030,6 +2030,7 @@ var DesktopManager = class {
     }
 
     doStacks(restack) {
+        const selected = this._getCurrentKeyboardIcon()?.uri;
         if (restack) {
             for (let fileItem of this._fileList) {
                 fileItem.removeFromGrid(false);
@@ -2044,6 +2045,9 @@ var DesktopManager = class {
         }
         this._sortAllFilesFromGridsByKindStacked(restack);
         this._reassignFilesToDesktop();
+        if (selected) {
+            this._fileList.forEach(icon => icon.isKeyboardSelected = (icon.uri === selected));
+        }
     }
 
     _unstack() {
