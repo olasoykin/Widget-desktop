@@ -208,7 +208,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
     _destroy() {
         if (this._queryTrashInfoCancellable) {
             this._queryTrashInfoCancellable.cancel();
-            this._queryFileInfoCancellable = null;
+            this._queryTrashInfoCancellable = null;
         }
         if (this._scheduleTrashRefreshId) {
             GLib.source_remove(this._scheduleTrashRefreshId);

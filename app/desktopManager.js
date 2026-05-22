@@ -1445,6 +1445,11 @@ var DesktopManager = class {
                 if (this._forceDraw) {
                     this._drawDesktop(fileList);
                     this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
+                } else {
+                    // Destroy the unused FileItems to prevent memory leak
+                    for (let item of fileList) {
+                        item._onDestroy();
+                    }
                 }
             }
             await DesktopIconsUtil.waitDelayMs(500);
@@ -1506,6 +1511,7 @@ var DesktopManager = class {
                                     // only overwrite them if needed
                                     fileItem.savedCoordinates = null;
                                 }
+                                fileItem._onDestroy();
                                 continue;
                             }
                             fileList.push(fileItem);
@@ -1539,6 +1545,9 @@ var DesktopManager = class {
     }
 
     _drawDesktop(fileList) {
+        // Clear stacking data that references items about to be destroyed
+        this._allFileList = null;
+        this.stackInitialCoordinates = null;
         this._selectedFiles = this.getCurrentSelection(true);
         if (this._renameWindow) {
             // disconnect the popup from the fileItem to avoid it being
