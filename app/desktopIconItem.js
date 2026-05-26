@@ -492,12 +492,15 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         targets = undefined; // prevent memory leaks
         this.connectSignal(widget, 'drag-begin', (w, context) => {
             const scale = this._icon.get_scale_factor();
-            let surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, this.container.get_allocated_width() * scale, this.container.get_allocated_height() * scale);
-            // setDeviceScale was introduced to GJS in version 1.69.2
-            if (scale != 1.0 && surf.setDeviceScale !== undefined) {
-                surf.setDeviceScale(scale, scale);
-            }
+            const border = this._fullStyleContext.get_border(this.container.get_state_flags());
+            const allocatedWidth = this.container.get_allocated_width();
+            const allocatedHeight = this.container.get_allocated_height();
+            const surfWidth = (allocatedWidth + border.left + border.right) * scale;
+            const surfHeight = (allocatedHeight + border.top + border.bottom) * scale;
+            const surf = new Cairo.ImageSurface(Cairo.SurfaceType.IMAGE, surfWidth, surfHeight);
+            surf.setDeviceScale(scale, scale);
             let cr = new Cairo.Context(surf);
+            cr.translate(border.left, border.top);
             this.container.draw(cr);
             let itemnumber = this._desktopManager.getNumberOfSelectedItems();
             if (itemnumber > 1) {
@@ -528,7 +531,7 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
             }
             Gtk.drag_set_icon_surface(context, surf);
             let [x, y] = this._calculateOffset(widget);
-            context.set_hotspot(x, y);
+            context.set_hotspot(x + border.left, y + border.top);
             this._desktopManager.onDragBegin(this);
             cr.$dispose();
         });
