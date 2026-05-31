@@ -797,6 +797,10 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         return this._isDirectory;
     }
 
+    get isSpecial() {
+        return this._isSpecial;
+    }
+
     get isHidden() {
         return this._isHidden;
     }

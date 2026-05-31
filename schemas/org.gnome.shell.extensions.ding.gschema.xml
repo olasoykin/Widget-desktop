@@ -105,5 +105,25 @@
         <summary>Show a popup if running on X11Wayland</summary>
         <description>Whether DING should show a popup if it is running on X11Wayland, or the user decided to not show it anymore.</description>
     </key>
+    <key type="b" name="show-clock-widget">
+        <default>false</default>
+        <summary>Show clock widget</summary>
+        <description>Show the analog clock widget on the desktop.</description>
+    </key>
+    <key type="b" name="show-calendar-widget">
+        <default>false</default>
+        <summary>Show calendar widget</summary>
+        <description>Show the calendar widget on the desktop.</description>
+    </key>
+    <key type="s" name="clock-widget-position">
+        <default>''</default>
+        <summary>Clock widget position</summary>
+        <description>Persisted position of the clock widget.</description>
+    </key>
+    <key type="s" name="calendar-widget-position">
+        <default>''</default>
+        <summary>Calendar widget position</summary>
+        <description>Persisted position of the calendar widget.</description>
+    </key>
     </schema>
 </schemalist>

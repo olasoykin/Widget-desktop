@@ -401,14 +401,17 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             cr.stroke();
         }
         if (this._desktopManager.showDropPlace && (this._selectedList !== null)) {
+            let itemSize = this._desktopManager.dragItem?.gridSize || 1;
             for (let [x, y] of this._selectedList) {
-                this._roundedRectangle(cr, x + 0.5, y + 0.5, this._elementWidth, this._elementHeight, 10);
+                let w = this._elementWidth * itemSize;
+                let h = this._elementHeight * itemSize;
+                this._roundedRectangle(cr, x + 0.5, y + 0.5, w, h, 10);
                 let color = this._desktopManager.selectColor;
                 color.alpha = 0.4;
                 Gdk.cairo_set_source_rgba(cr, color);
                 cr.fill();
                 cr.setLineWidth(0.5);
-                this._roundedRectangle(cr, x + 0.5, y + 0.5, this._elementWidth, this._elementHeight, 10);
+                this._roundedRectangle(cr, x + 0.5, y + 0.5, w, h, 10);
                 color.alpha = 1.0;
                 Gdk.cairo_set_source_rgba(cr, color);
                 cr.stroke();
@@ -438,7 +441,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         if (this._coordinatesBelongToThisGrid(x, y)) {
             return 0;
         }
-        return Math.pow(x - (this._x + this._windowWidth * this._zoom / 2), 2) + Math.pow(x - (this._y + this._windowHeight * this._zoom / 2), 2);
+        return Math.pow(x - (this._x + this._windowWidth * this._zoom / 2), 2) + Math.pow(y - (this._y + this._windowHeight * this._zoom / 2), 2);
     }
 
     coordinatesGlobalToLocal(X, Y, widget = null) {
@@ -466,13 +469,20 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         let localX = Math.floor(this._width * column / this._maxColumns);
         let localY = Math.floor(this._height * row / this._maxRows);
         this._container.put(fileItem.container, localX + elementSpacing, localY + elementSpacing);
-        this._setGridUse(column, row, fileItem);
+        let size = fileItem.gridSize || 1;
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                this._setGridUse(column + i, row + j, fileItem);
+            }
+        }
         this._fileItems[fileItem.uri] = [column, row, fileItem];
+        let width = (this._elementWidth * size) - 2 * elementSpacing;
+        let height = (this._elementHeight * size) - 2 * elementSpacing;
         let [x, y] = this.coordinatesLocalToGlobal(localX + elementSpacing, localY + elementSpacing);
         fileItem.setCoordinates(x,
             y,
-            this._elementWidth - 2 * elementSpacing,
-            this._elementHeight - 2 * elementSpacing,
+            width,
+            height,
             elementSpacing,
             this,
             column / this._maxColumns);
@@ -490,7 +500,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
     removeItem(fileItem) {
         if (fileItem.uri in this._fileItems) {
             let [column, row, tmp] = this._fileItems[fileItem.uri];
-            this._setGridUse(column, row, false);
+            let size = fileItem.gridSize || 1;
+            for (let i = 0; i < size; i++) { for (let j = 0; j < size; j++) { this._setGridUse(column + i, row + j, false); } }
             this._container.remove(fileItem.container);
             delete this._fileItems[fileItem.uri];
         }
@@ -499,7 +510,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
     addFileItemCloseTo(fileItem, x, y, coordinatesAction) {
         let addVolumesOpposite = Prefs.desktopSettings.get_boolean('add-volumes-opposite');
         let [column, row] = this._getEmptyPlaceClosestTo(x,
-            y,
+            y, fileItem.gridSize || 1,
             coordinatesAction,
             fileItem.isDrive && addVolumesOpposite);
         this._addFileItemTo(fileItem, column, row, coordinatesAction);
@@ -534,7 +545,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         return this.gridGlobalRectangle.intersect(checkRectangle)[0];
     }
 
-    _getEmptyPlaceClosestTo(x, y, coordinatesAction, reverseHorizontal) {
+    _getEmptyPlaceClosestTo(x, y, itemSize, coordinatesAction, reverseHorizontal) {
         [x, y] = this.coordinatesGlobalToLocal(x, y);
         let placeX = Math.floor(x / this._elementWidth);
         let placeY = Math.floor(y / this._elementHeight);
@@ -546,8 +557,22 @@ var DesktopGrid = class extends SignalManager.SignalManager{
 
         placeX = DesktopIconsUtil.clamp(placeX, 0, this._maxColumns - 1);
         placeY = DesktopIconsUtil.clamp(placeY, 0, this._maxRows - 1);
-        if (this._isEmptyAt(placeX, placeY) && (coordinatesAction != Enums.StoredCoordinates.ASSIGN)) {
-            return [placeX, placeY];
+        if (coordinatesAction != Enums.StoredCoordinates.ASSIGN) {
+            let canFitHere = true;
+            for (let i = 0; i < itemSize; i++) {
+                for (let j = 0; j < itemSize; j++) {
+                    if (placeX + i >= this._maxColumns || placeY + j >= this._maxRows || !this._isEmptyAt(placeX + i, placeY + j)) {
+                        canFitHere = false;
+                        break;
+                    }
+                }
+                if (!canFitHere) {
+                    break;
+                }
+            }
+            if (canFitHere) {
+                return [placeX, placeY];
+            }
         }
         let found = false;
         let resColumn = null;
@@ -566,9 +591,17 @@ var DesktopGrid = class extends SignalManager.SignalManager{
                 } else {
                     row = tmpRow;
                 }
-                if (!this._isEmptyAt(column, row)) {
-                    continue;
+                let canFit = true;
+                for (let i = 0; i < itemSize; i++) {
+                    for (let j = 0; j < itemSize; j++) {
+                        if (column + i >= this._maxColumns || row + j >= this._maxRows || !this._isEmptyAt(column + i, row + j)) {
+                            canFit = false;
+                            break;
+                        }
+                    }
+                    if (!canFit) break;
                 }
+                if (!canFit) continue;
 
                 let proposedX = column * this._elementWidth;
                 let proposedY = row * this._elementHeight;

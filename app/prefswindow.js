@@ -79,6 +79,9 @@ function preferencesFrame(_Gtk, desktopSettings, nautilusSettings, gtkSettings) 
     frame.add(buildSwitcher(desktopSettings, 'show-drop-place', _("Highlight the drop place during Drag'n'Drop")));
     frame.add(buildSwitcher(desktopSettings, 'use-nemo', _('Use Nemo to open folders')));
 
+    frame.add(buildSwitcher(desktopSettings, 'show-clock-widget', _('Show clock widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-calendar-widget', _('Show calendar widget')));
+
     frame.add(buildSwitcher(desktopSettings, 'show-link-emblem', _('Add an emblem to soft links')));
 
     frame.add(buildSwitcher(desktopSettings, 'dark-text-in-labels', _('Use dark text in icon labels')));

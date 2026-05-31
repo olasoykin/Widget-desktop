@@ -1,7 +1,7 @@
 {
-    "description": "Adds icons to the desktop. Fork of the original Desktop Icons extension, with several enhancements .",
-    "name": "Desktop Icons NG (DING)",
+    "description": "Adds icons and widgets to the desktop. Fork of the original Desktop Icons extension, with several enhancements .",
+    "name": "widgets-desktop",
     "shell-version": ["46", "47", "48", "49", "50"],
-    "uuid": "ding@rastersoft.com",
-    "url": "https://gitlab.com/rastersoft/desktop-icons-ng"
+    "uuid": "kin@widgets-desktop.com",
+    "url": "https://hola.com"
 }

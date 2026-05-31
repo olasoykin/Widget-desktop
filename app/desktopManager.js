@@ -40,6 +40,7 @@ const Thumbnails = imports.thumbnails;
 const FileItemMenu = imports.fileItemMenu;
 const AutoAr = imports.autoAr;
 const SignalManager = imports.signalManager;
+const WidgetItem = imports.widgetItem;
 
 const Gettext = imports.gettext.domain('ding');
 
@@ -129,6 +130,15 @@ var DesktopManager = class {
                 this._updateDesktop().catch(e => {
                     print(`Exception while updating Desktop after Dark Text changed: ${e.message}\n${e.stack}`);
                 });
+                return;
+            }
+            if (key == 'show-clock-widget' || key == 'show-calendar-widget') {
+                this._updateDesktop().catch(e => {
+                    print(`Exception while updating Desktop after Widget toggle: ${e.message}\n${e.stack}`);
+                });
+                return;
+            }
+            if (key == 'clock-widget-position' || key == 'calendar-widget-position') {
                 return;
             }
             if (key == 'show-link-emblem') {
@@ -391,7 +401,7 @@ var DesktopManager = class {
                 // this name must match the one used in emulateX11WindowType
                 desktopName = `Desktop Icons ${desktop.monitorIndex + 1}`;
             } else {
-                desktopName = `DING ${desktop.monitorIndex + 1}`;
+                desktopName = `WD ${desktop.monitorIndex + 1}`;
             }
             this._desktops.push(new DesktopGrid.DesktopGrid(this, desktopName, desktop, this._asDesktop));
         }
@@ -1556,6 +1566,12 @@ var DesktopManager = class {
         }
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
+        // Inyectar widgets personalizados
+        if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
+            this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
+        if (Prefs.desktopSettings.get_boolean('show-calendar-widget'))
+            this._fileList.push(new WidgetItem.WidgetItem(this, 'calendar'));
+
         // Select the files that were selected before the repaint
         if (this._selectedFiles) {
             for (let fileItem of fileList) {
@@ -2122,12 +2138,16 @@ var DesktopManager = class {
         let stackedFiles = [];
         let newFileList = [];
         let stackTopMarkerFolderList = [];
+        let widgets = [];
         let unstackList = Prefs.getUnstackList();
         if (this._allFileList && restack) {
             this._fileList = this._allFileList;
         }
-        this._sortByName(this._fileList);
         for (let fileItem of this._fileList) {
+            if (!fileItem.attributeContentType && !fileItem.isSpecial) {
+                widgets.push(fileItem);
+                continue;
+            }
             if (fileItem.isSpecial) {
                 specialFiles.push(fileItem);
                 continue;
@@ -2242,6 +2262,7 @@ var DesktopManager = class {
                 }
             }
         }
+        newFileList.push(...widgets);
         if (this._allFileList) {
             this._allFileList = this._fileList;
         }
@@ -2276,6 +2297,9 @@ var DesktopManager = class {
          * @param b
          */
         function byKindByName(a, b) {
+            if (!a.attributeContentType || !b.attributeContentType) {
+                return 0;
+            }
             return a.attributeContentType.localeCompare(b.attributeContentType) ||
              a._label.get_text().localeCompare(b._label.get_text(), {sensitivity: 'accent', numeric: 'true', localeMatcher: 'lookup'});
         }
@@ -2398,9 +2422,14 @@ var DesktopManager = class {
         let directoryFiles = [];
         let validDesktopFiles = [];
         let otherFiles = [];
+        let widgets = [];
         let newFileList = [];
         for (let fileItem of this._fileList) {
-            if (fileItem._isSpecial) {
+            if (!fileItem.attributeContentType && !fileItem.isSpecial) {
+                widgets.push(fileItem);
+                continue;
+            }
+            if (fileItem.isSpecial) {
                 specialFiles.push(fileItem);
                 continue;
             }
@@ -2424,6 +2453,7 @@ var DesktopManager = class {
         newFileList.push(...validDesktopFiles);
         newFileList.push(...directoryFiles);
         newFileList.push(...otherFiles);
+        newFileList.push(...widgets);
         if (this._fileList.length == newFileList.length) {
             this._fileList = newFileList;
         }
