@@ -1566,7 +1566,7 @@ var DesktopManager = class {
         }
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
-        // Inyectar widgets personalizados
+        // Inject custom widgets
         if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
             this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
         if (Prefs.desktopSettings.get_boolean('show-calendar-widget'))
@@ -2255,10 +2255,10 @@ var DesktopManager = class {
         }
         for (let item of otherFiles) {
             newFileList.push(item);
-            let itemtype = item.attributeContentType;
-            for (let unstackitem of stackedFiles) {
-                if (unstackList.includes(unstackitem.attributeContentType) && (unstackitem.attributeContentType == itemtype)) {
-                    newFileList.push(unstackitem);
+            let itemType = item.attributeContentType;
+            for (let unstackItem of stackedFiles) {
+                if (unstackList.includes(unstackItem.attributeContentType) && (unstackItem.attributeContentType == itemType)) {
+                    newFileList.push(unstackItem);
                 }
             }
         }

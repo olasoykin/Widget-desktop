@@ -2,6 +2,6 @@
     "description": "Adds icons and widgets to the desktop. Fork of the original Desktop Icons extension, with several enhancements .",
     "name": "widgets-desktop",
     "shell-version": ["46", "47", "48", "49", "50"],
-    "uuid": "kin@widgets-desktop.com",
-    "url": "https://hola.com"
+    "uuid": "widgets-desktop@olasoykin",
+    "url": "https://github.com/olasoykin/Widget-desktop"
 }

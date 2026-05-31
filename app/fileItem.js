@@ -169,9 +169,9 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         ];
 
         var name = "";
-        for (let c of specialCases){
-            if (c[0]) {
-                name = this._isSelected ? c[2] : c[1];
+        for (let caseItem of specialCases){
+            if (caseItem[0]) {
+                name = this._isSelected ? caseItem[2] : caseItem[1];
                 break;
             }
         }
@@ -296,7 +296,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
                     this._updateName();
                 } catch (error) {
                     if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
-                        print(`Error getting the file info: ${error}`);
+                        console.error(`Error getting the file info: ${error}`);
                     }
                 }
             }
@@ -324,7 +324,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             try {
                 this._desktopFile = GioUnix.DesktopAppInfo.new_from_filename(this._file.get_path());
                 if (!this._desktopFile) {
-                    console.log(`Couldn’t parse ${this._displayName} as a desktop file, will treat it as a regular file.`);
+                    console.warn(`Couldn’t parse ${this._displayName} as a desktop file, will treat it as a regular file.`);
                     this._isValidDesktopFile = false;
                 } else {
                     this._isValidDesktopFile = true;
@@ -364,7 +364,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
 
     _logAndPopupError(title, error, logError) {
         log(`Error: ${logError}`);
-        this._showerrorpopup(title, error);
+        this._showErrorPopup(title, error);
     }
 
     _getDefaultLaunchContext() {
@@ -420,7 +420,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         );
     }
 
-    _showerrorpopup(title, error) {
+    _showErrorPopup(title, error) {
         new ShowErrorPopup.ShowErrorPopup(
             title,
             error,
@@ -439,7 +439,7 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
         if (!this._isValidDesktopFile) {
             let title = _('Broken Desktop File');
             let error = _('This .desktop file has errors or points to a program without permissions. It can not be executed.\n\n\t<b>Edit the file to set the correct executable Program.</b>');
-            this._showerrorpopup(title, error);
+            this._showErrorPopup(title, error);
             return;
         }
 
@@ -452,14 +452,14 @@ var FileItem = class extends desktopIconItem.desktopIconItem {
             if (!this._attributeCanExecute) {
                 error += _('\n<b>Enable option, "Allow Executing File as a Program"</b>');
             }
-            this._showerrorpopup(title, error);
+            this._showErrorPopup(title, error);
             return;
         }
 
         if (!this.trustedDesktopFile) {
             let title = 'Untrusted Desktop File';
             let error = _('This .desktop file is not trusted, it can not be launched. To enable launching, right-click, then:\n\n<b>Enable "Allow Launching"</b>');
-            this._showerrorpopup(title, error);
+            this._showErrorPopup(title, error);
         }
     }
 
