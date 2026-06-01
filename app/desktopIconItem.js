@@ -472,7 +472,22 @@ var desktopIconItem = class desktopIconItem extends SignalManager.SignalManager 
         if (!this._isKeyboardSelected && this._fullStyleContext.has_class('desktop-icons-keyboard-selected')) {
             this._fullStyleContext.remove_class('desktop-icons-keyboard-selected');
         }
-        this.setAccessibleName(this._getVisibleName());
+        if (this.setAccessibleName && this._getVisibleName) {
+            this.setAccessibleName(this._getVisibleName());
+        }
+    }
+
+    _getVisibleName() {
+        return this.fileName || '';
+    }
+
+    setAccessibleName(name) {
+        if (!this._containerAccessibility)
+            return;
+        const accessible = this._containerAccessibility.get_accessible();
+        if (accessible && name) {
+            accessible.set_name(name);
+        }
     }
 
     _setDragSource(widget) {

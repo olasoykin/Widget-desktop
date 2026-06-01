@@ -4,8 +4,10 @@ const { Gdk, GLib, Pango, PangoCairo } = imports.gi;
 const Cairo = imports.gi.cairo;
 
 /**
- * Calendar logic
+ * Logic for the Calendar widget, handles date calculation and UI rendering 
+ * for a monthly view using Cairo and Pango for text layouts.
  */
+const MONTHS = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 var CalendarWidget = class {
     constructor() {
         this.today = new Date();
@@ -17,74 +19,79 @@ var CalendarWidget = class {
         let y = cy - size / 2;
         let r = 20; // Smooth border radius
 
-        // 1. Main background
-        cr.set_source_rgb(245/255, 245/255, 247/255);
+        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 28/255, green: 28/255, blue: 30/255, alpha: 1 }));
         this._roundedRectangle(cr, x, y, size, size, r);
-        cr.fill_preserve();
-        cr.set_source_rgb(210/255, 210/255, 215/255);
-        cr.set_line_width(1);
+        cr.fillPreserve();
+        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 63/255, green: 63/255, blue: 66/255, alpha: 1 }));
+        cr.setLineWidth(1);
         cr.stroke();
 
-        // 2. Header: Month and Year
-        cr.set_source_rgb(29/255, 29/255, 31/255);
-        let monthName = this.today.toLocaleDateString(undefined, { month: 'long' }).toUpperCase();
-        let headerText = `${monthName} ${this.today.getFullYear()}`;
-        let layoutHeader = PangoCairo.create_layout(cr); // FIX: Use PangoCairo.create_layout(cr)
-        layoutHeader.set_font_description(Pango.FontDescription.from_string("Sans Bold 14"));
+        let now = new Date();
+        let month = now.getMonth();
+        let year = now.getFullYear();
+        let dayOfMonth = now.getDate();
+
+        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 255/255, green: 255/255, blue: 255/255, alpha: 1 }));
+        let headerText = `${MONTHS[month]} ${year}`;
+        let layoutHeader = PangoCairo.create_layout(cr);
+        layoutHeader.set_font_description(Pango.FontDescription.from_string("Sans Bold 12"));
         layoutHeader.set_text(headerText, -1);
-        cr.move_to(x + 25, y + 20);
+        cr.moveTo(x + 20, y + 15);
+        PangoCairo.update_layout(cr, layoutHeader);
         PangoCairo.show_layout(cr, layoutHeader);
 
-        // 3. Days of the week
-        cr.set_source_rgb(134/255, 134/255, 139/255);
+        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 174/255, green: 174/255, blue: 178/255, alpha: 1 }));
         let daysOfWeek = ["M", "T", "W", "T", "F", "S", "S"];
-        let spacingX = (size - 40) / 7;
-        let gridStartY = y + 60;
+        let spacingX = (size - 30) / 7;
+        let gridStartY = y + 42;
+
+        let dayLayout = PangoCairo.create_layout(cr);
+        dayLayout.set_font_description(Pango.FontDescription.from_string("Sans Bold 9"));
 
         daysOfWeek.forEach((day, i) => {
-            let dayLayout = PangoCairo.create_layout(cr); // FIX: Use PangoCairo.create_layout(cr)
-            dayLayout.set_font_description(Pango.FontDescription.from_string("Sans Bold 10"));
             dayLayout.set_text(day, -1);
             let [tw, th] = dayLayout.get_pixel_size();
-            cr.move_to(x + 20 + (i * spacingX) + (spacingX/2 - tw/2), gridStartY);
+            cr.moveTo(x + 15 + (i * spacingX) + (spacingX/2 - tw/2), gridStartY);
+            PangoCairo.update_layout(cr, dayLayout);
             PangoCairo.show_layout(cr, dayLayout);
         });
 
-        // 4. Days of the month
-        let firstDay = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+        let firstDay = new Date(year, month, 1);
         let startOffset = (firstDay.getDay() + 6) % 7; // Adjust for Monday starting at 0
-        let lastDayOfMonth = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0).getDate();
+        let lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+
+        let numLayout = PangoCairo.create_layout(cr);
+        numLayout.set_font_description(Pango.FontDescription.from_string("Sans 10"));
 
         for (let day = 1; day <= lastDayOfMonth; day++) {
             let column = (day - 1 + startOffset) % 7;
             let row = Math.floor((day - 1 + startOffset) / 7);
-            let dx = x + 20 + (column * spacingX) + spacingX/2;
-            let dy = gridStartY + 30 + (row * 25);
-
-            let numLayout = PangoCairo.create_layout(cr); // FIX: Use PangoCairo.create_layout(cr)
-            numLayout.set_font_description(Pango.FontDescription.from_string("Sans 11"));
+            let dx = x + 15 + (column * spacingX) + spacingX/2;
+            let dy = gridStartY + 20 + (row * 19);
+            
             numLayout.set_text(day.toString(), -1);
             let [nw, nh] = numLayout.get_pixel_size();
 
-            if (day === this.today.getDate()) {
-                cr.set_source_rgb(255/255, 59/255, 48/255);
-                cr.arc(dx, dy + nh/2 - 2, 12, 0, 2 * Math.PI);
+            if (day === dayOfMonth) {
+                Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 255/255, green: 59/255, blue: 48/255, alpha: 1 }));
+                cr.arc(dx, dy + nh/2 + 1, 9, 0, 2 * Math.PI);
                 cr.fill();
-                cr.set_source_rgb(1, 1, 1);
+                Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 1 }));
             } else {
-                cr.set_source_rgb(29/255, 29/255, 31/255);
+                Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 235/255, green: 235/255, blue: 245/255, alpha: 1 }));
             }
-            cr.move_to(dx - nw/2, dy);
+            cr.moveTo(dx - nw/2, dy);
+            PangoCairo.update_layout(cr, numLayout);
             PangoCairo.show_layout(cr, numLayout);
         }
     }
 
     _roundedRectangle(cr, x, y, w, h, r) {
-        cr.new_sub_path();
+        cr.newSubPath();
         cr.arc(x + w - r, y + r, r, -Math.PI/2, 0);
         cr.arc(x + w - r, y + h - r, r, 0, Math.PI/2);
         cr.arc(x + r, y + h - r, r, Math.PI/2, Math.PI);
         cr.arc(x + r, y + r, r, Math.PI, 3*Math.PI/2);
-        cr.close_path();
+        cr.closePath();
     }
 };

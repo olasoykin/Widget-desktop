@@ -132,13 +132,13 @@ var DesktopManager = class {
                 });
                 return;
             }
+            if (key == 'clock-widget-position' || key == 'calendar-widget-position') {
+                return;
+            }
             if (key == 'show-clock-widget' || key == 'show-calendar-widget') {
                 this._updateDesktop().catch(e => {
                     print(`Exception while updating Desktop after Widget toggle: ${e.message}\n${e.stack}`);
                 });
-                return;
-            }
-            if (key == 'clock-widget-position' || key == 'calendar-widget-position') {
                 return;
             }
             if (key == 'show-link-emblem') {
@@ -486,7 +486,7 @@ var DesktopManager = class {
         for (let item of this._fileList) {
             if (item.isSelected) {
                 if (keepArranged) {
-                    if (item.isSpecial) {
+                    if (item.isSpecial || item._isSpecial) {
                         fileItems.push(item);
                         item.removeFromGrid(false);
                         let [x, y, a, b, c] = item.getCoordinates();
@@ -1434,44 +1434,44 @@ var DesktopManager = class {
         }
 
         this._readingDesktopFiles = true;
-        this._forceDraw = false;
-        this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
-        let fileList = [];
-        /* eslint-disable no-await-in-loop */
-        while (true) {
-            this._desktopFilesChanged = false;
-            if (!this._desktopDir.query_exists(null)) {
-                fileList = [];
-                break;
-            }
-            fileList = await this._doReadAsync();
-            if (this._forcedExit) {
-                return;
-            }
-            if (fileList !== null) {
-                if (!this._desktopFilesChanged) {
+        try {
+            this._forceDraw = false;
+            this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
+            let fileList = [];
+            /* eslint-disable no-await-in-loop */
+            while (true) {
+                this._desktopFilesChanged = false;
+                if (!this._desktopDir.query_exists(null)) {
+                    fileList = [];
                     break;
                 }
-                if (this._forceDraw) {
-                    this._drawDesktop(fileList);
-                    this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
-                } else {
-                    // Destroy the unused FileItems to prevent memory leak
-                    for (let item of fileList) {
-                        item._onDestroy();
+                fileList = await this._doReadAsync();
+                if (this._forcedExit) {
+                    return;
+                }
+                if (fileList !== null) {
+                    if (!this._desktopFilesChanged) {
+                        break;
+                    }
+                    if (this._forceDraw) {
+                        this._drawDesktop(fileList);
+                        this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
                     }
                 }
+                await DesktopIconsUtil.waitDelayMs(500);
+                if ((GLib.get_monotonic_time() - this._lastDesktopUpdateRequest) > 1000000) {
+                    this._forceDraw = true;
+                } else {
+                    this._forceDraw = false;
+                }
             }
-            await DesktopIconsUtil.waitDelayMs(500);
-            if ((GLib.get_monotonic_time() - this._lastDesktopUpdateRequest) > 1000000) {
-                this._forceDraw = true;
-            } else {
-                this._forceDraw = false;
-            }
+            this._drawDesktop(fileList);
+        } catch (e) {
+            print(`Critical error in _updateDesktop: ${e.message}\n${e.stack}`);
+        } finally {
+            this._readingDesktopFiles = false;
+            this._forceDraw = false;
         }
-        this._readingDesktopFiles = false;
-        this._forceDraw = false;
-        this._drawDesktop(fileList);
     }
 
     _doReadAsync() {
@@ -1567,14 +1567,22 @@ var DesktopManager = class {
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
         // Inject custom widgets
-        if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
-            this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
-        if (Prefs.desktopSettings.get_boolean('show-calendar-widget'))
-            this._fileList.push(new WidgetItem.WidgetItem(this, 'calendar'));
+        try {
+            if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
+                this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
+        } catch (e) {
+            console.error(`[Widgets-Desktop] Error injecting clock: ${e.message}`);
+        }
+        try {
+            if (Prefs.desktopSettings.get_boolean('show-calendar-widget'))
+                this._fileList.push(new WidgetItem.WidgetItem(this, 'calendar'));
+        } catch (e) {
+            console.error(`[Widgets-Desktop] Error injecting calendar: ${e.message}`);
+        }
 
         // Select the files that were selected before the repaint
         if (this._selectedFiles) {
-            for (let fileItem of fileList) {
+            for (let fileItem of this._fileList) {
                 if (this._selectedFiles.includes(fileItem.uri)) {
                     fileItem.setSelected();
                 }
@@ -1611,11 +1619,18 @@ var DesktopManager = class {
         if (this._desktops.length == 0) {
             return;
         }
+
+        // Priorizamos los widgets en el proceso de colocación para asegurar que obtengan 
+        // sus huecos 2x2 antes de que los archivos 1x1 llenen los espacios pequeños.
+        let widgets = fileList.filter(item => item.uri && item.uri.startsWith('widget://'));
+        let nonWidgets = fileList.filter(item => !item.uri || !item.uri.startsWith('widget://'));
+        let priorityList = [...widgets, ...nonWidgets];
+
         let outOfDesktops = [];
         let notAssignedYet = [];
 
         // First, add those icons that fit in the current desktops
-        for (let fileItem of fileList) {
+        for (let fileItem of priorityList) {
             if (fileItem.savedCoordinates == null) {
                 notAssignedYet.push(fileItem);
                 continue;
@@ -1627,8 +1642,11 @@ var DesktopManager = class {
             let addedToDesktop = false;
             for (let desktop of this._desktops) {
                 if (desktop.getDistance(itemX, itemY) == 0) {
-                    addedToDesktop = true;
-                    desktop.addFileItemCloseTo(fileItem, itemX, itemY, storeMode);
+                    if (desktop.addFileItemCloseTo(fileItem, itemX, itemY, storeMode)) {
+                        addedToDesktop = true;
+                    } else {
+                        console.warn(`[Widgets-Desktop] No room for ${fileItem.fileName} at saved coordinates.`);
+                    }
                     break;
                 }
             }
@@ -1656,7 +1674,9 @@ var DesktopManager = class {
                 print('Not enough space to add icons');
                 break;
             } else {
-                newDesktop.addFileItemCloseTo(fileItem, itemX, itemY, storeMode);
+                if (!newDesktop.addFileItemCloseTo(fileItem, itemX, itemY, storeMode)) {
+                    console.warn(`[Widgets-Desktop] Could not place ${fileItem.fileName} in any desktop.`);
+                }
             }
         }
         // Finally, assign those icons that still don't have coordinates
@@ -1680,8 +1700,11 @@ var DesktopManager = class {
             let assigned = false;
             for (let desktop of this._desktops) {
                 if (desktop.getDistance(x, y) == 0) {
-                    desktop.addFileItemCloseTo(fileItem, x, y, storeMode);
-                    assigned = true;
+                    if (desktop.addFileItemCloseTo(fileItem, x, y, storeMode)) {
+                        assigned = true;
+                    } else {
+                        console.warn(`[Widgets-Desktop] Failed to assign automatic space for ${fileItem.fileName}`);
+                    }
                     break;
                 }
             }
@@ -1691,7 +1714,11 @@ var DesktopManager = class {
             // if there is no space in the designated desktop, try in another
             for (let desktop of this._desktops) {
                 if (desktop.getDistance(x, y) != -1) {
-                    desktop.addFileItemCloseTo(fileItem, x, y, storeMode);
+                    if (desktop.addFileItemCloseTo(fileItem, x, y, storeMode)) {
+                        // Success
+                    } else {
+                        console.warn(`[Widgets-Desktop] Error moving ${fileItem.fileName} to another monitor.`);
+                    }
                     break;
                 }
             }
@@ -2144,7 +2171,7 @@ var DesktopManager = class {
             this._fileList = this._allFileList;
         }
         for (let fileItem of this._fileList) {
-            if (!fileItem.attributeContentType && !fileItem.isSpecial) {
+            if (fileItem.uri && fileItem.uri.startsWith('widget://')) {
                 widgets.push(fileItem);
                 continue;
             }
@@ -2207,6 +2234,7 @@ var DesktopManager = class {
         this._sortByName(validDesktopFiles);
         this._sortByKindByName(stackedFiles);
         this._sortByKindByName(stackTopMarkerFolderList);
+        newFileList.push(...widgets);
         otherFiles.push(...specialFiles);
         otherFiles.push(...validDesktopFiles);
         otherFiles.push(...directoryFiles);
@@ -2262,7 +2290,6 @@ var DesktopManager = class {
                 }
             }
         }
-        newFileList.push(...widgets);
         if (this._allFileList) {
             this._allFileList = this._fileList;
         }
@@ -2307,10 +2334,17 @@ var DesktopManager = class {
     }
 
     _sortAllFilesFromGridsByName(order) {
-        this._sortByName(this._fileList);
-        if (order == Enums.SortOrder.DESCENDINGNAME) {
-            this._fileList.reverse();
+        let widgets = [];
+        let others = [];
+        for (let item of this._fileList) {
+            if (item.uri.startsWith('widget://')) widgets.push(item);
+            else others.push(item);
         }
+        this._sortByName(others);
+        if (order == Enums.SortOrder.DESCENDINGNAME) {
+            others.reverse();
+        }
+        this._fileList = [...widgets, ...others];
         this._reassignFilesToDesktop();
     }
 
@@ -2425,7 +2459,7 @@ var DesktopManager = class {
         let widgets = [];
         let newFileList = [];
         for (let fileItem of this._fileList) {
-            if (!fileItem.attributeContentType && !fileItem.isSpecial) {
+            if (fileItem.uri && fileItem.uri.startsWith('widget://')) {
                 widgets.push(fileItem);
                 continue;
             }
@@ -2449,11 +2483,11 @@ var DesktopManager = class {
         this._sortByName(directoryFiles);
         this._sortByName(validDesktopFiles);
         this._sortByKindByName(otherFiles);
+        newFileList.push(...widgets);
         newFileList.push(...specialFiles);
         newFileList.push(...validDesktopFiles);
         newFileList.push(...directoryFiles);
         newFileList.push(...otherFiles);
-        newFileList.push(...widgets);
         if (this._fileList.length == newFileList.length) {
             this._fileList = newFileList;
         }

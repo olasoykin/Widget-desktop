@@ -139,7 +139,12 @@ parseCommandLine(ARGV);
 
 // this allows to import files from the current folder
 
+if (!GLib.path_is_absolute(codePath)) {
+    codePath = GLib.build_filenamev([GLib.get_current_dir(), codePath]);
+}
+
 imports.searchPath.unshift(codePath);
+imports.searchPath.unshift(GLib.path_get_dirname(codePath));
 
 const DBusUtils = imports.dbusUtils;
 const Prefs = imports.preferences;

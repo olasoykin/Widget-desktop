@@ -96,7 +96,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         this._selectedList = null;
         this.connectSignal(this._container, 'draw', (widget, cr) => {
             this._doDrawRubberBand(cr);
-            cr.$dispose();
+            return false;
         });
 
         this.setGridStatus();
@@ -509,11 +509,16 @@ var DesktopGrid = class extends SignalManager.SignalManager{
 
     addFileItemCloseTo(fileItem, x, y, coordinatesAction) {
         let addVolumesOpposite = Prefs.desktopSettings.get_boolean('add-volumes-opposite');
-        let [column, row] = this._getEmptyPlaceClosestTo(x,
+        let result = this._getEmptyPlaceClosestTo(x,
             y, fileItem.gridSize || 1,
             coordinatesAction,
             fileItem.isDrive && addVolumesOpposite);
-        this._addFileItemTo(fileItem, column, row, coordinatesAction);
+        if (result) {
+            let [column, row] = result;
+            this._addFileItemTo(fileItem, column, row, coordinatesAction);
+            return true;
+        }
+        return false;
     }
 
     _isEmptyAt(x, y) {
@@ -619,7 +624,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         }
 
         if (!found) {
-            throw new Error('Not enough place at monitor');
+            return null;
         }
 
         return [resColumn, resRow];

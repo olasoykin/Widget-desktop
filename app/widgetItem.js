@@ -1,64 +1,97 @@
 // Class to manage the representation and drawing of desktop widgets (Clock and Calendar).
 'use strict';
-const { Gtk, Gdk, GLib, Gio, Pango, PangoCairo } = imports.gi;
+const Gtk = imports.gi.Gtk;
+const Gdk = imports.gi.Gdk;
+const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
+const Pango = imports.gi.Pango;
+const PangoCairo = imports.gi.PangoCairo;
 const Cairo = imports.gi.cairo;
+const desktopIconItem = imports.desktopIconItem;
 const SignalManager = imports.signalManager;
 const Prefs = imports.preferences;
 const Enums = imports.enums;
 const ByteArray = imports.byteArray;
-const Gettext = imports.gettext.domain('ding');
 const Calendar = imports.widgets.calendar;
 const Clock = imports.widgets.clock;
-const _ = Gettext.gettext;
 
-var WidgetItem = class extends SignalManager.SignalManager {
+var WidgetItem = class extends desktopIconItem.desktopIconItem {
     constructor(desktopManager, type) {
-        super();
-        this._desktopManager = desktopManager;
+        super(desktopManager, Enums.FileType.NONE);
         this.type = type;
-        this.displayName = (type === 'clock') ? _('Clock widget') : _('Calendar widget');
-        this.fileName = this.displayName;
+        this.fileName = (type === 'clock') ? 'Clock widget' : 'Calendar widget';
         this.attributeContentType = `widget/${type}`;
         this.gridSize = 2;
         this.uri = `widget://${type}`;
+
+        // Properties needed for desktop sorting logic
+        this._modifiedTime = 0;
+        this.fileSize = 0;
+        this._isDirectory = false;
+        this._isSpecial = true;
+        
+        // Mock de propiedades necesarias para la lógica nativa
         this.file = {
             get_uri: () => this.uri,
         };
-        this._label = {
-            get_text: () => this.fileName,
-        };
-        this._isSelected = false;
-        this._isKeyboardSelected = false;
-        this.isAllSelectable = false;
-        this.isSpecial = true;
-        this.isDirectory = false;
-        this.isDrive = false;
-        this.isTrash = false;
-        this.iconRectangle = new Gdk.Rectangle();
-        this.labelRectangle = new Gdk.Rectangle();
-        this.touchedByRubberband = false;
 
-        this.canRename = false;
-        this._grid = null;
-        this._createWidget();
-
-        // Initialize external drawing logic if applicable
+        // Initialize external drawing logic before creating the widget
         if (this.type === 'clock') {
             this._clockLogic = new Clock.ClockWidget();
         } else if (this.type === 'calendar') {
             this._calendarLogic = new Calendar.CalendarWidget();
-
         }
+
+        this._createWidget();
+
+        // Forzar que el contenedor se expanda para llenar el espacio 2x2 del grid
+        this.container.set_halign(Gtk.Align.FILL);
+        this.container.set_valign(Gtk.Align.FILL);
     }
 
     _createWidget() {
-        this.container = new Gtk.EventBox({ visible: true, can_focus: true });
-        this.container.set_events(Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+        // Usamos la estructura nativa pero inyectamos nuestro DrawingArea
+        this._createIconActor();
+
+        // En lugar de destruir, ocultamos el icono y label originales
+        this._icon.set_no_show_all(true);
+        this._icon.hide();
+        this._label.set_no_show_all(true);
+        this._label.hide();
+        this._shieldLabelEventBox.set_no_show_all(true);
+        this._shieldLabelEventBox.hide();
         
+        // Asegurar que el label tenga texto para evitar errores en funciones de ordenación (sort)
+        this._setLabelName(this.fileName);
+
+        this.container.set_halign(Gtk.Align.FILL);
+        this.container.set_valign(Gtk.Align.FILL);
+
+        this._shieldEventBox.set_halign(Gtk.Align.FILL);
+        this._shieldEventBox.set_valign(Gtk.Align.FILL);
+        this._shieldEventBox.set_hexpand(true);
+        this._shieldEventBox.set_vexpand(true);
+
+        this._eventBox.set_hexpand(true);
+        this._eventBox.set_vexpand(true);
+        this._eventBox.set_halign(Gtk.Align.FILL);
+        this._eventBox.set_valign(Gtk.Align.FILL);
+
+        // Aseguramos que el contenedor interno ocupe todo el espacio 2x2
+        this._iconContainer.set_hexpand(true);
+        this._iconContainer.set_vexpand(true);
+        this._iconContainer.set_halign(Gtk.Align.FILL);
+        this._iconContainer.set_valign(Gtk.Align.FILL);
+        this._iconContainer.set_baseline_position(Gtk.BaselinePosition.CENTER);
+
+        // Cambiar el empaquetado en el contenedor principal para que se expanda y llene el espacio del grid
+        this.container.set_child_packing(this._shieldEventBox, true, true, 0, Gtk.PackType.START);
+
         this._drawingArea = new Gtk.DrawingArea({ visible: true });
         this._drawingArea.set_hexpand(true);
         this._drawingArea.set_vexpand(true);
-        this.container.add(this._drawingArea);
+        // Lo añadimos al contenedor de iconos nativo para mantener los eventos
+        this._iconContainer.pack_start(this._drawingArea, true, true, 0);
 
         this.connectSignal(this._drawingArea, 'draw', (widget, cr) => this._onDraw(widget, cr));
 
@@ -74,39 +107,6 @@ var WidgetItem = class extends SignalManager.SignalManager {
             });
         }
 
-        this.connectSignal(this.container, 'button-press-event', (actor, event) => {
-            let button = event.get_button()[1];
-            let [a, x, y] = event.get_coords();
-            this._buttonPressInitialX = x;
-            this._buttonPressInitialY = y;
-
-            if (button == 1) {
-                this._desktopManager.selected(this, Enums.Selection.ALONE);
-            }
-            return false;
-        });
-
-        this.container.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, null, Gdk.DragAction.MOVE);
-        let targets = new Gtk.TargetList(null);
-        targets.add(Gdk.atom_intern('x-special/ding-icon-list', false), Gtk.TargetFlags.SAME_APP, Enums.DndTargetInfo.DING_ICON_LIST);
-        this.container.drag_source_set_target_list(targets);
-
-        this.connectSignal(this.container, 'drag-begin', (w, context) => {
-            this._desktopManager.onDragBegin(this);
-            let [x, y] = [this._buttonPressInitialX, this._buttonPressInitialY];
-            context.set_hotspot(x, y);
-        });
-
-        this.connectSignal(this.container, 'drag-data-get', (w, context, data, info, time) => {
-            let dragData = this._desktopManager.fillDragDataGet(info);
-            if (dragData != null) {
-                data.set(dragData[0], 8, ByteArray.fromString(dragData[1]));
-            }
-        });
-
-        this.connectSignal(this.container, 'drag-end', () => {
-            this._desktopManager.onDragEnd();
-        });
         this.container.show_all();
     }
 
@@ -117,75 +117,77 @@ var WidgetItem = class extends SignalManager.SignalManager {
         let cy = height / 2;
         let size = Math.min(width, height) - 40;
 
-        if (this.type === 'clock') {
-            this._drawClock(cr, cx, cy, size);
-        } else {
-            this._drawCalendar(cr, cx, cy, size);
+        // DEBUG: Si ves esto en el log, es que el widget sí está intentando dibujarse
+        // console.log(`[Widgets-Desktop] Dibujando ${this.type}: ${width}x${height} (size: ${size})`);
+
+        if (width <= 20 || height <= 20 || size <= 0) {
+            return false;
         }
+
+        try {
+            if (this.type === 'clock') {
+                this._drawClock(cr, cx, cy, size);
+            } else if (this.type === 'calendar') {
+                this._drawCalendar(cr, cx, cy, size);
+            }
+        } catch (e) {
+            if (!this._hasDrawingError) {
+                console.error(`[Widgets-Desktop] Error drawing widget (${this.type}): ${e.message}\n${e.stack}`);
+                this._hasDrawingError = true;
+            }
+        }
+
         return false;
     }
 
     _drawClock(cr, cx, cy, size) {
-        this._clockLogic.draw(cr, cx, cy, size);
+        if (this._clockLogic)
+            this._clockLogic.draw(cr, cx, cy, size);
     }
 
     _drawCalendar(cr, cx, cy, size) {
-        // Delegate drawing to the CalendarWidget object
-        this._calendarLogic.draw(cr, cx, cy, size);
+        if (this._calendarLogic)
+            this._calendarLogic.draw(cr, cx, cy, size);
     }
 
     setCoordinates(x, y, width, height, margin, grid, relativeX) {
+        // Usar la lógica de la clase base para mantener consistencia en la ordenación
+        super.setCoordinates(x, y, width, height, margin, grid, relativeX);
+        
+        // Forzar coordenadas manuales adicionales para asegurar compatibilidad
         this._x1 = x;
         this._y1 = y;
         this._x2 = x + width;
         this._y2 = y + height;
-        this._relativeX = relativeX;
-        this._grid = grid;
+        
+        // Aseguramos que el widget solicite el tamaño exacto del grid 2x2
         this.container.set_size_request(width, height);
 
-        this.iconRectangle.x = x;
-        this.iconRectangle.y = y;
-        this.iconRectangle.width = width;
-        this.iconRectangle.height = height;
-        this.labelRectangle.x = x;
-        this.labelRectangle.y = y;
-        this.labelRectangle.width = width;
-        this.labelRectangle.height = height;
+        // Solo calcular rectángulos si el widget ya está en el grid para evitar errores de GTK
+        if (this.container.get_parent()) {
+            this._calculateIconRectangle();
+            this._calculateLabelRectangle();
+        }
     }
-
-    getCoordinates() {
-        return [this._x1, this._y1, this._x2, this._y2, this._grid];
-    }
-
-    setSelected() {
-        this._isSelected = true;
-        this.container.get_style_context().add_class('desktop-icons-selected');
-    }
-
-    unsetSelected() {
-        this._isSelected = false;
-        this.container.get_style_context().remove_class('desktop-icons-selected');
-    }
-
-    toggleSelected() {
-        if (this._isSelected) this.unsetSelected();
-        else this.setSelected();
-    }
-
-    get isSelected() { return this._isSelected; }
-    get isKeyboardSelected() { return this._isKeyboardSelected; }
-    set isKeyboardSelected(v) { this._isKeyboardSelected = v; }
 
     get savedCoordinates() {
-        let pos = Prefs.desktopSettings.get_string(`${this.type}-widget-position`);
-        if (!pos || pos === '') return null;
-        return pos.split(',').map(Number);
+        try {
+            let pos = Prefs.desktopSettings.get_string(`${this.type}-widget-position`);
+            if (!pos || pos === '') return null;
+            return pos.split(',').map(Number);
+        } catch (e) {
+            return null;
+        }
     }
     set savedCoordinates(pos) {
-        if (pos) {
-            Prefs.desktopSettings.set_string(`${this.type}-widget-position`, `${pos[0]},${pos[1]}`);
-        } else {
-            Prefs.desktopSettings.set_string(`${this.type}-widget-position`, '');
+        try {
+            if (pos) {
+                Prefs.desktopSettings.set_string(`${this.type}-widget-position`, `${pos[0]},${pos[1]}`);
+            } else {
+                Prefs.desktopSettings.set_string(`${this.type}-widget-position`, '');
+            }
+        } catch (e) {
+            // Fallback silencioso si la clave no existe
         }
     }
 
@@ -204,20 +206,12 @@ var WidgetItem = class extends SignalManager.SignalManager {
             GLib.source_remove(this._timeoutId);
             this._timeoutId = null;
         }
-        if (this.container) {
-            this.container.destroy();
-            this.container = null;
-        }
         this._drawingArea = null;
+        // Llamar a la limpieza de la clase base para desconectar señales y destruir el contenedor correctamente
+        super._onDestroy();
     }
 
-    removeFromGrid(callOnDestroy = true) {
-        if (this._grid) {
-            this._grid.removeItem(this);
-            this._grid = null;
-        }
-        if (callOnDestroy) {
-            this._onDestroy();
-        }
+    get isAllSelectable() {
+        return false;
     }
 };
