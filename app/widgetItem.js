@@ -31,13 +31,14 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             this.fileName = 'Image widget';
         }
         this.attributeContentType = `widget/${type}`;
-        this.gridSize = 2;
         this.uri = `widget://${type}`;
 
         this._modifiedTime = 0;
         this.fileSize = 0;
         this._isDirectory = false;
         this._isSpecial = true;
+        this._gridWidth = null;
+        this._gridHeight = null;
         
         this.file = {
             get_uri: () => this.uri,
@@ -56,6 +57,55 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
 
         this.container.set_halign(Gtk.Align.FILL);
         this.container.set_valign(Gtk.Align.FILL);
+    }
+
+    get gridWidth() {
+        if (this._gridWidth !== null) {
+            return this._gridWidth;
+        }
+        try {
+            let s = Prefs.desktopSettings.get_string(`${this.type}-widget-size`);
+            return s ? parseInt(s.split('x')[0]) : 2;
+        } catch (e) {
+            return 2;
+        }
+    }
+
+    set gridWidth(val) {
+        this._gridWidth = val;
+    }
+
+    get gridHeight() {
+        if (this._gridHeight !== null) {
+            return this._gridHeight;
+        }
+        try {
+            let s = Prefs.desktopSettings.get_string(`${this.type}-widget-size`);
+            return s ? parseInt(s.split('x')[1]) : 2;
+        } catch (e) {
+            return 2;
+        }
+    }
+
+    set gridHeight(val) {
+        this._gridHeight = val;
+    }
+
+    setSize(w, h) {
+        this._hasDrawingError = false;
+        this._gridWidth = w;
+        this._gridHeight = h;
+        Prefs.desktopSettings.set_string(`${this.type}-widget-size`, `${w}x${h}`);
+        // Forzamos la actualización del escritorio para que la rejilla se recalcule
+        if (this._desktopManager) {
+            this._desktopManager._updateDesktop();
+        }
+    }
+
+    saveSize() {
+        if (this._gridWidth !== null && this._gridHeight !== null) {
+            this.setSize(this._gridWidth, this._gridHeight);
+        }
     }
 
     _createWidget() {
@@ -125,21 +175,19 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     _onDraw(widget, cr) {
         let width = widget.get_allocated_width();
         let height = widget.get_allocated_height();
-        let cx = width / 2;
-        let cy = height / 2;
-        let size = Math.min(width, height) - 10;
 
-        if (width <= 20 || height <= 20 || size <= 0) {
+        if (width <= 20 || height <= 20) {
             return false;
         }
 
+        let accentColor = this._desktopManager.selectColor;
         try {
             if (this.type === 'clock') {
-                this._drawClock(cr, cx, cy, size);
+                this._drawClock(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
             } else if (this.type === 'calendar') {
-                this._drawCalendar(cr, cx, cy, size);
+                this._drawCalendar(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
             } else if (this.type === 'image') {
-                this._drawImage(cr, cx, cy, size);
+                this._drawImage(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
             }
         } catch (e) {
             if (!this._hasDrawingError) {
@@ -151,19 +199,19 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         return false;
     }
 
-    _drawClock(cr, cx, cy, size) {
+    _drawClock(cr, width, height, accentColor, gridWidth, gridHeight) {
         if (this._clockLogic)
-            this._clockLogic.draw(cr, cx, cy, size);
+            this._clockLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
     }
 
-    _drawCalendar(cr, cx, cy, size) {
+    _drawCalendar(cr, width, height, accentColor, gridWidth, gridHeight) {
         if (this._calendarLogic)
-            this._calendarLogic.draw(cr, cx, cy, size);
+            this._calendarLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
     }
 
-    _drawImage(cr, cx, cy, size) {
+    _drawImage(cr, width, height, accentColor, gridWidth, gridHeight) {
         if (this._imageLogic)
-            this._imageLogic.draw(cr, cx, cy, size);
+            this._imageLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
     }
 
     setCoordinates(x, y, width, height, margin, grid, relativeX) {

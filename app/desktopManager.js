@@ -105,6 +105,8 @@ var DesktopManager = class {
         this._desktops = [];
         this._desktopFilesChanged = false;
         this._readingDesktopFiles = false;
+        this._resizingItem = null;
+        this._resizeDirection = null;
         this._desktopDir = DesktopIconsUtil.getDesktopDir();
         this.desktopFsId = this._desktopDir.query_info('id::filesystem', Gio.FileQueryInfoFlags.NONE, null).get_attribute_string('id::filesystem');
         this._updateWritableByOthers();
@@ -420,6 +422,10 @@ var DesktopManager = class {
         this._styleContext.connect('changed', () => {
             Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), this._cssProviderSelection);
             this._setSelectionColor();
+            // Forzar el redibujado de los widgets para aplicar el nuevo color de acento
+            this._fileList.forEach(item => {
+                if (item instanceof WidgetItem.WidgetItem) item.updateIcon();
+            });
         });
         this._setSelectionColor();
     }
@@ -683,6 +689,11 @@ var DesktopManager = class {
         let button = event.get_button()[1];
         let state = event.get_state()[1];
         if (button == 1) {
+            // Si ya estamos redimensionando (iniciado por un widget), no hacer nada más
+            if (this._resizingItem) {
+                return;
+            }
+
             let shiftPressed = !!(state & Gdk.ModifierType.SHIFT_MASK);
             let controlPressed = !!(state & Gdk.ModifierType.CONTROL_MASK);
             if (!shiftPressed && !controlPressed) {
@@ -694,6 +705,22 @@ var DesktopManager = class {
         if (button == 3) {
             this._prepareMenu();
             this._menu.popup_at_pointer(event);
+        }
+    }
+
+    startResizing(item, direction) {
+        this._resizingItem = item;
+        this._resizeDirection = direction;
+    }
+
+    stopResizing() {
+        if (this._resizingItem) {
+            // Intentar guardar las nuevas dimensiones si el item lo soporta
+            if (typeof this._resizingItem.saveSize === 'function') {
+                this._resizingItem.saveSize();
+            }
+            this._resizingItem = null;
+            this._resizeDirection = null;
         }
     }
 
@@ -1327,6 +1354,11 @@ var DesktopManager = class {
     }
 
     onMotion(x, y) {
+        if (this._resizingItem && this._resizeDirection) {
+            this._doResize(x, y);
+            return false;
+        }
+
         if (this.rubberBand) {
             this.x1 = Math.min(x, this.rubberBandInitX);
             this.x2 = Math.max(x, this.rubberBandInitX);
@@ -1353,7 +1385,43 @@ var DesktopManager = class {
         return false;
     }
 
+    _doResize(x, y) {
+        const item = this._resizingItem;
+        const grid = item._grid;
+        if (!grid) return;
+
+        const [gx, gy] = grid.coordinatesGlobalToLocal(x, y);
+        const col = Math.floor(gx / grid._elementWidth);
+        const row = Math.floor(gy / grid._elementHeight);
+
+        const [origCol, origRow] = grid._fileItems[item.uri];
+        
+        let newWidth = item.gridWidth || item.gridSize;
+        let newHeight = item.gridHeight || item.gridSize;
+
+        // Por ahora, permitimos redimensionar desde el Este (derecha) y Sur (abajo)
+        if (this._resizeDirection.includes('e')) {
+            newWidth = Math.max(1, col - origCol + 1);
+        }
+        if (this._resizeDirection.includes('s')) {
+            newHeight = Math.max(1, row - origRow + 1);
+        }
+
+        if (newWidth !== item.gridWidth || newHeight !== item.gridHeight) {
+            item.gridWidth = newWidth;
+            item.gridHeight = newHeight;
+            
+            // Actualizamos la posición lógica en la rejilla
+            grid.removeItem(item);
+            grid._addFileItemTo(item, origCol, origRow, Enums.StoredCoordinates.OVERWRITE);
+        }
+    }
+
     onReleaseButton() {
+        if (this._resizingItem) {
+            this.stopResizing();
+        }
+
         if (this.rubberBand) {
             this.rubberBand = false;
             this.selectionRectangle = null;

@@ -135,11 +135,39 @@ var FileItemMenu = class {
 
         this._menu = DesktopIconsUtil.createDesktopMenu(['fileitemmenu']);
 
-        if (!fileItem.isStackMarker) {
+        // Solo mostrar "Abrir" si no es un widget y no es un marcador de stack
+        if (!fileItem.isStackMarker && !fileItem.type) {
             this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Open All...') : _('Open'),
                 this._doMultiOpen.bind(this)
             );
+        }
+
+        // Opciones de redimensionamiento para widgets
+        if (fileItem.type && (['clock', 'calendar', 'image'].includes(fileItem.type))) {
+            this._addSeparator();
+            let resizeItem = new Gtk.MenuItem({ label: _('Resize') });
+            this._menu.add(resizeItem);
+            
+            let sub = DesktopIconsUtil.createDesktopMenu();
+            resizeItem.set_submenu(sub);
+            
+            let sizes = ['2x2', '4x2', '4x4'];
+            sizes.forEach(s => {
+                let [w, h] = s.split('x').map(Number);
+                let mi = new Gtk.MenuItem({ label: s });
+                sub.add(mi);
+                this._menuSignals.connectSignal(mi, 'activate', () => fileItem.setSize(w, h));
+            });
+
+            // Para los widgets, terminamos el menú aquí o añadimos solo lo relevante
+            this._menu.show_all();
+            if (atWidget) {
+                this._menu.popup_at_widget(fileItem.container, Gdk.Gravity.CENTER, Gdk.Gravity.NORTH_WEST, event);
+            } else {
+                this._menu.popup_at_pointer(event);
+            }
+            return;
         }
 
         this._menuSignals.connectSignal(this._menu, 'selection-done', () => {
@@ -343,7 +371,7 @@ var FileItemMenu = class {
             this._addSeparator();
         }
 
-        if (!fileItem.isStackMarker) {
+        if (!fileItem.isStackMarker && !fileItem.type) {
             this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Common Properties') : _('Properties'),
                 this._onPropertiesClicked.bind(this)

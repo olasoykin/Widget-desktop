@@ -39,12 +39,13 @@ var ImageWidget = class {
         this.path = this.images[this.currentIndex];
     }
 
-    draw(cr, cx, cy, size) {
-        let x = cx - size / 2;
-        let y = cy - size / 2;
+    draw(cr, width, height, accentColor) {
         let r = 20;
+        let targetW = width - 10;
+        let targetH = height - 10;
+
         Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 28/255, green: 28/255, blue: 30/255, alpha: 1 }));
-        this._roundedRectangle(cr, x, y, size, size, r);
+        this._roundedRectangle(cr, 5, 5, targetW, targetH, r);
         cr.fillPreserve();
         Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 63/255, green: 63/255, blue: 66/255, alpha: 1 }));
         cr.setLineWidth(1);
@@ -52,27 +53,35 @@ var ImageWidget = class {
 
         try {
             const image_radius = r;
+            let originalPixbuf = GdkPixbuf.Pixbuf.new_from_file(this.path);
+            let origW = originalPixbuf.get_width();
+            let origH = originalPixbuf.get_height();
 
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(this.path, size, size, true);
+            let scale = Math.max(targetW / origW, targetH / origH);
+            let scaledW = Math.round(origW * scale);
+            let scaledH = Math.round(origH * scale);
 
-            const image_draw_x = x + (size - pixbuf.get_width()) / 2;
-            const image_draw_y = y + (size - pixbuf.get_height()) / 2;
+            let pixbuf = originalPixbuf.scale_simple(scaledW, scaledH, GdkPixbuf.InterpType.BILINEAR);
 
-            this._roundedRectangle(cr, x, y, size, size, image_radius);
+            const image_draw_x = 5 + (targetW - scaledW) / 2;
+            const image_draw_y = 5 + (targetH - scaledH) / 2;
+
+            this._roundedRectangle(cr, 5, 5, targetW, targetH, image_radius);
             cr.clip();
             Gdk.cairo_set_source_pixbuf(cr, pixbuf, image_draw_x, image_draw_y);
             cr.paint();
             cr.resetClip(); 
 
+            // Redraw border after clipping and painting image
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 63/255, green: 63/255, blue: 66/255, alpha: 1 }));
-            this._roundedRectangle(cr, x, y, size, size, r);
+            this._roundedRectangle(cr, 5, 5, targetW, targetH, r);
             cr.setLineWidth(1);
             cr.stroke();
         } catch (e) {
             cr.setSourceRGB(0.5, 0.5, 0.5);
             cr.setLineWidth(2);
-            cr.move_to(x + 10, y + 10);
-            cr.line_to(x + size - 10, y + size - 10);
+            cr.moveTo(15, 15);
+            cr.lineTo(width - 15, height - 15);
             cr.stroke();
         }
     }

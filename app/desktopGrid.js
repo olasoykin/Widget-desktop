@@ -52,7 +52,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             this._window.set_deletable(false);
             // For Wayland Transparent background, but only if this instance is working as desktop
             this._windowContext.add_class('desktopwindow');
-            // If we are under X11, Transparent background and everything else from here as well
+            // If we are under X11, Transparent background and everything else from here as woyeell
             if (this._desktopManager.using_X11) {
                 let screen = this._window.get_screen();
                 let visual = screen.get_rgba_visual();
@@ -401,10 +401,11 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             cr.stroke();
         }
         if (this._desktopManager.showDropPlace && (this._selectedList !== null)) {
-            let itemSize = this._desktopManager.dragItem?.gridSize || 1;
+            let itemWidth = this._desktopManager.dragItem?.gridWidth || this._desktopManager.dragItem?.gridSize || 1;
+            let itemHeight = this._desktopManager.dragItem?.gridHeight || this._desktopManager.dragItem?.gridSize || 1;
             for (let [x, y] of this._selectedList) {
-                let w = this._elementWidth * itemSize;
-                let h = this._elementHeight * itemSize;
+                let w = this._elementWidth * itemWidth;
+                let h = this._elementHeight * itemHeight;
                 this._roundedRectangle(cr, x + 0.5, y + 0.5, w, h, 10);
                 let color = this._desktopManager.selectColor;
                 color.alpha = 0.4;
@@ -469,15 +470,16 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         let localX = Math.floor(this._width * column / this._maxColumns);
         let localY = Math.floor(this._height * row / this._maxRows);
         this._container.put(fileItem.container, localX + elementSpacing, localY + elementSpacing);
-        let size = fileItem.gridSize || 1;
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
+        let gridWidth = fileItem.gridWidth || fileItem.gridSize || 1;
+        let gridHeight = fileItem.gridHeight || fileItem.gridSize || 1;
+        for (let i = 0; i < gridWidth; i++) {
+            for (let j = 0; j < gridHeight; j++) {
                 this._setGridUse(column + i, row + j, fileItem);
             }
         }
-        this._fileItems[fileItem.uri] = [column, row, fileItem];
-        let width = (this._elementWidth * size) - 2 * elementSpacing;
-        let height = (this._elementHeight * size) - 2 * elementSpacing;
+        this._fileItems[fileItem.uri] = [column, row, fileItem, gridWidth, gridHeight];
+        let width = (this._elementWidth * gridWidth) - 2 * elementSpacing;
+        let height = (this._elementHeight * gridHeight) - 2 * elementSpacing;
         let [x, y] = this.coordinatesLocalToGlobal(localX + elementSpacing, localY + elementSpacing);
         fileItem.setCoordinates(x,
             y,
@@ -486,6 +488,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             elementSpacing,
             this,
             column / this._maxColumns);
+        this._container.queue_resize(); // Forzar el rediseño del contenedor fijo
         /* If this file is new in the Desktop and hasn't yet
          * fixed coordinates, store the new possition to ensure
          * that the next time it will be shown in the same possition.
@@ -499,9 +502,14 @@ var DesktopGrid = class extends SignalManager.SignalManager{
 
     removeItem(fileItem) {
         if (fileItem.uri in this._fileItems) {
-            let [column, row, tmp] = this._fileItems[fileItem.uri];
-            let size = fileItem.gridSize || 1;
-            for (let i = 0; i < size; i++) { for (let j = 0; j < size; j++) { this._setGridUse(column + i, row + j, false); } }
+            let [column, row, tmp, placedWidth, placedHeight] = this._fileItems[fileItem.uri];
+            let gridWidth = placedWidth || fileItem.gridWidth || fileItem.gridSize || 1;
+            let gridHeight = placedHeight || fileItem.gridHeight || fileItem.gridSize || 1;
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridHeight; j++) {
+                    this._setGridUse(column + i, row + j, false);
+                }
+            }
             this._container.remove(fileItem.container);
             delete this._fileItems[fileItem.uri];
         }
@@ -509,8 +517,10 @@ var DesktopGrid = class extends SignalManager.SignalManager{
 
     addFileItemCloseTo(fileItem, x, y, coordinatesAction) {
         let addVolumesOpposite = Prefs.desktopSettings.get_boolean('add-volumes-opposite');
+        let gridWidth = fileItem.gridWidth || fileItem.gridSize || 1;
+        let gridHeight = fileItem.gridHeight || fileItem.gridSize || 1;
         let result = this._getEmptyPlaceClosestTo(x,
-            y, fileItem.gridSize || 1,
+            y, gridWidth, gridHeight,
             coordinatesAction,
             fileItem.isDrive && addVolumesOpposite);
         if (result) {
@@ -550,7 +560,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         return this.gridGlobalRectangle.intersect(checkRectangle)[0];
     }
 
-    _getEmptyPlaceClosestTo(x, y, itemSize, coordinatesAction, reverseHorizontal) {
+    _getEmptyPlaceClosestTo(x, y, itemWidth, itemHeight, coordinatesAction, reverseHorizontal) {
         [x, y] = this.coordinatesGlobalToLocal(x, y);
         let placeX = Math.floor(x / this._elementWidth);
         let placeY = Math.floor(y / this._elementHeight);
@@ -564,8 +574,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
         placeY = DesktopIconsUtil.clamp(placeY, 0, this._maxRows - 1);
         if (coordinatesAction != Enums.StoredCoordinates.ASSIGN) {
             let canFitHere = true;
-            for (let i = 0; i < itemSize; i++) {
-                for (let j = 0; j < itemSize; j++) {
+            for (let i = 0; i < itemWidth; i++) {
+                for (let j = 0; j < itemHeight; j++) {
                     if (placeX + i >= this._maxColumns || placeY + j >= this._maxRows || !this._isEmptyAt(placeX + i, placeY + j)) {
                         canFitHere = false;
                         break;
@@ -597,8 +607,8 @@ var DesktopGrid = class extends SignalManager.SignalManager{
                     row = tmpRow;
                 }
                 let canFit = true;
-                for (let i = 0; i < itemSize; i++) {
-                    for (let j = 0; j < itemSize; j++) {
+                for (let i = 0; i < itemWidth; i++) {
+                    for (let j = 0; j < itemHeight; j++) {
                         if (column + i >= this._maxColumns || row + j >= this._maxRows || !this._isEmptyAt(column + i, row + j)) {
                             canFit = false;
                             break;

@@ -145,5 +145,20 @@
         <summary>Image widget position</summary>
         <description>Persisted position of the image widget.</description>
     </key>
+    <key type="s" name="clock-widget-size">
+        <default>'2x2'</default>
+        <summary>Clock widget size</summary>
+        <description>Width and height of the clock widget in grid units.</description>
+    </key>
+    <key type="s" name="calendar-widget-size">
+        <default>'2x2'</default>
+        <summary>Calendar widget size</summary>
+        <description>Width and height of the calendar widget in grid units.</description>
+    </key>
+    <key type="s" name="image-widget-size">
+        <default>'2x2'</default>
+        <summary>Image widget size</summary>
+        <description>Width and height of the image widget in grid units.</description>
+    </key>
     </schema>
 </schemalist>
