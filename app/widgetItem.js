@@ -1,4 +1,7 @@
-// Class to manage the representation and drawing of desktop widgets (Clock and Calendar).
+/**
+ * WidgetItem handles the integration of custom desktop widgets (Clock and Calendar)
+ * into the desktop grid system, managing their lifecycle, placement, and drawing.
+ */
 'use strict';
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
@@ -24,18 +27,15 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this.gridSize = 2;
         this.uri = `widget://${type}`;
 
-        // Properties needed for desktop sorting logic
         this._modifiedTime = 0;
         this.fileSize = 0;
         this._isDirectory = false;
         this._isSpecial = true;
         
-        // Mock de propiedades necesarias para la lógica nativa
         this.file = {
             get_uri: () => this.uri,
         };
 
-        // Initialize external drawing logic before creating the widget
         if (this.type === 'clock') {
             this._clockLogic = new Clock.ClockWidget();
         } else if (this.type === 'calendar') {
@@ -44,16 +44,13 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
 
         this._createWidget();
 
-        // Forzar que el contenedor se expanda para llenar el espacio 2x2 del grid
         this.container.set_halign(Gtk.Align.FILL);
         this.container.set_valign(Gtk.Align.FILL);
     }
 
     _createWidget() {
-        // Usamos la estructura nativa pero inyectamos nuestro DrawingArea
         this._createIconActor();
 
-        // En lugar de destruir, ocultamos el icono y label originales
         this._icon.set_no_show_all(true);
         this._icon.hide();
         this._label.set_no_show_all(true);
@@ -61,7 +58,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._shieldLabelEventBox.set_no_show_all(true);
         this._shieldLabelEventBox.hide();
         
-        // Asegurar que el label tenga texto para evitar errores en funciones de ordenación (sort)
         this._setLabelName(this.fileName);
 
         this.container.set_halign(Gtk.Align.FILL);
@@ -77,20 +73,17 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._eventBox.set_halign(Gtk.Align.FILL);
         this._eventBox.set_valign(Gtk.Align.FILL);
 
-        // Aseguramos que el contenedor interno ocupe todo el espacio 2x2
         this._iconContainer.set_hexpand(true);
         this._iconContainer.set_vexpand(true);
         this._iconContainer.set_halign(Gtk.Align.FILL);
         this._iconContainer.set_valign(Gtk.Align.FILL);
         this._iconContainer.set_baseline_position(Gtk.BaselinePosition.CENTER);
 
-        // Cambiar el empaquetado en el contenedor principal para que se expanda y llene el espacio del grid
         this.container.set_child_packing(this._shieldEventBox, true, true, 0, Gtk.PackType.START);
 
         this._drawingArea = new Gtk.DrawingArea({ visible: true });
         this._drawingArea.set_hexpand(true);
         this._drawingArea.set_vexpand(true);
-        // Lo añadimos al contenedor de iconos nativo para mantener los eventos
         this._iconContainer.pack_start(this._drawingArea, true, true, 0);
 
         this.connectSignal(this._drawingArea, 'draw', (widget, cr) => this._onDraw(widget, cr));
@@ -116,9 +109,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         let cx = width / 2;
         let cy = height / 2;
         let size = Math.min(width, height) - 40;
-
-        // DEBUG: Si ves esto en el log, es que el widget sí está intentando dibujarse
-        // console.log(`[Widgets-Desktop] Dibujando ${this.type}: ${width}x${height} (size: ${size})`);
 
         if (width <= 20 || height <= 20 || size <= 0) {
             return false;
@@ -151,19 +141,15 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     }
 
     setCoordinates(x, y, width, height, margin, grid, relativeX) {
-        // Usar la lógica de la clase base para mantener consistencia en la ordenación
         super.setCoordinates(x, y, width, height, margin, grid, relativeX);
         
-        // Forzar coordenadas manuales adicionales para asegurar compatibilidad
         this._x1 = x;
         this._y1 = y;
         this._x2 = x + width;
         this._y2 = y + height;
         
-        // Aseguramos que el widget solicite el tamaño exacto del grid 2x2
         this.container.set_size_request(width, height);
 
-        // Solo calcular rectángulos si el widget ya está en el grid para evitar errores de GTK
         if (this.container.get_parent()) {
             this._calculateIconRectangle();
             this._calculateLabelRectangle();
@@ -187,7 +173,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
                 Prefs.desktopSettings.set_string(`${this.type}-widget-position`, '');
             }
         } catch (e) {
-            // Fallback silencioso si la clave no existe
         }
     }
 
@@ -207,7 +192,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             this._timeoutId = null;
         }
         this._drawingArea = null;
-        // Llamar a la limpieza de la clase base para desconectar señales y destruir el contenedor correctamente
         super._onDestroy();
     }
 

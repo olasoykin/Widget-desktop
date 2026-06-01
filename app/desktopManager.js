@@ -15,7 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/* exported DesktopManager */
+
+/**
+ * DesktopManager is the core controller of the extension. It orchestrates the 
+ * desktop lifecycle, manages the grid windows across monitors, monitors 
+ * directory changes, and handles global user interactions for icons and widgets.
+ */
 'use strict';
 const GLib = imports.gi.GLib;
 const GLibUnix = imports.gi.GLibUnix;
@@ -52,12 +57,11 @@ var DesktopManager = class {
         this._lastSelected = null;
         this.using_X11 = Gdk.Display.get_default().constructor.$gtype.name === 'GdkX11Display';
         if (asDesktop) {
-            this.mainApp.hold(); // Don't close the application if there are no desktops
+            this.mainApp.hold();
             this._hold_active = true;
             if (this.using_X11) {
                 let usingWayland = GLib.getenv('XDG_SESSION_TYPE') == 'wayland';
                 if (usingWayland) {
-                    // the system is using Wayland, but GTK is using X11!!!!!!
                     DBusUtils.extensionControl.activate_action('disableTimer', null);
                     if (Prefs.desktopSettings.get_boolean('check-x11wayland')) {
                         this._notifyX11UnderWayland = new NotifyX11UnderWayland.NotifyX11UnderWayland(doNotShowAnymore => {
@@ -69,7 +73,6 @@ var DesktopManager = class {
                     }
                 }
             } else {
-                // if the problem is fixed and appears again, DING should show the message
                 Prefs.desktopSettings.set_boolean('check-x11wayland', true);
             }
         }
@@ -398,7 +401,6 @@ var DesktopManager = class {
             let desktop = this._desktopList[desktopIndex];
             let desktopName;
             if (this._asDesktop) {
-                // this name must match the one used in emulateX11WindowType
                 desktopName = `Desktop Icons ${desktop.monitorIndex + 1}`;
             } else {
                 desktopName = `WD ${desktop.monitorIndex + 1}`;
@@ -869,15 +871,12 @@ var DesktopManager = class {
         if ((symbol == Gdk.KEY_Left) || (symbol == Gdk.KEY_Right) ||
            (symbol == Gdk.KEY_Up) || (symbol == Gdk.KEY_Down)) {
             let selected = this._getCurrentKeyboardIcon();
-            // if there is no selected icon, select the last selected icon
             if (!selected) {
                 selected = this._getLastKeyboardIcon();
                 if (selected) {
                     return false;
                 }
             }
-            // if there is no last selected, or the last selected isn't in the desktop
-            // (for example, because it was deleted), select the top-left icon.
             if (!selected) {
                 selected = this._getTopLeftIcon();
                 if (selected) {
@@ -1438,7 +1437,6 @@ var DesktopManager = class {
             this._forceDraw = false;
             this._lastDesktopUpdateRequest = GLib.get_monotonic_time();
             let fileList = [];
-            /* eslint-disable no-await-in-loop */
             while (true) {
                 this._desktopFilesChanged = false;
                 if (!this._desktopDir.query_exists(null)) {
@@ -1560,13 +1558,10 @@ var DesktopManager = class {
         this.stackInitialCoordinates = null;
         this._selectedFiles = this.getCurrentSelection(true);
         if (this._renameWindow) {
-            // disconnect the popup from the fileItem to avoid it being
-            // destroyed when the fileItem is removed from the desktop
             this._renameWindow.updateFileItem(null);
         }
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
-        // Inject custom widgets
         try {
             if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
                 this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
@@ -1589,7 +1584,6 @@ var DesktopManager = class {
             }
         }
         if (this._renameWindow) {
-            // assign the popover to the new fileItem
             let file = fileList.filter(f => f.fileName == this._renamingFile)[0];
             if (file) {
                 file.setRenamePopup(this._renameWindow);
@@ -1620,8 +1614,6 @@ var DesktopManager = class {
             return;
         }
 
-        // Priorizamos los widgets en el proceso de colocación para asegurar que obtengan 
-        // sus huecos 2x2 antes de que los archivos 1x1 llenen los espacios pequeños.
         let widgets = fileList.filter(item => item.uri && item.uri.startsWith('widget://'));
         let nonWidgets = fileList.filter(item => !item.uri || !item.uri.startsWith('widget://'));
         let priorityList = [...widgets, ...nonWidgets];
@@ -1629,7 +1621,6 @@ var DesktopManager = class {
         let outOfDesktops = [];
         let notAssignedYet = [];
 
-        // First, add those icons that fit in the current desktops
         for (let fileItem of priorityList) {
             if (fileItem.savedCoordinates == null) {
                 notAssignedYet.push(fileItem);
@@ -1654,8 +1645,6 @@ var DesktopManager = class {
                 outOfDesktops.push(fileItem);
             }
         }
-        // Now, assign those icons that are outside the current desktops,
-        // but have assigned coordinates
         for (let fileItem of outOfDesktops) {
             let minDistance = -1;
             let [itemX, itemY] = fileItem.savedCoordinates;
@@ -1679,7 +1668,6 @@ var DesktopManager = class {
                 }
             }
         }
-        // Finally, assign those icons that still don't have coordinates
         for (let fileItem of notAssignedYet) {
             let x, y;
             if (fileItem.dropCoordinates == null) {
@@ -1696,7 +1684,6 @@ var DesktopManager = class {
                 fileItem.dropCoordinates = null;
                 storeMode = Enums.StoredCoordinates.OVERWRITE;
             }
-            // try first in the designated desktop
             let assigned = false;
             for (let desktop of this._desktops) {
                 if (desktop.getDistance(x, y) == 0) {
@@ -1711,7 +1698,6 @@ var DesktopManager = class {
             if (assigned) {
                 continue;
             }
-            // if there is no space in the designated desktop, try in another
             for (let desktop of this._desktops) {
                 if (desktop.getDistance(x, y) != -1) {
                     if (desktop.addFileItemCloseTo(fileItem, x, y, storeMode)) {

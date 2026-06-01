@@ -17,6 +17,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Main entry point for the desktop icons and widgets application. 
+ * Handles command-line arguments, environment setup, and the Gtk.Application lifecycle.
+ */
 'use strict';
 imports.gi.versions.Gtk = '3.0';
 const Gtk = imports.gi.Gtk;
@@ -125,9 +130,6 @@ function parseCommandLine(argv) {
         lastCommand = null;
     }
     if ((desktops.length == 0) && !asDesktop) {
-        /* if no desktop list is provided, like when launching the program in stand-alone mode,
-         * configure a 1280x720 desktop
-         */
         desktops.push({x: 0, y: 0, width: 1280, height: 720, zoom: 1, marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0, monitorIndex: 0});
     }
     for (let desktop of desktops) {
@@ -136,8 +138,6 @@ function parseCommandLine(argv) {
 }
 
 parseCommandLine(ARGV);
-
-// this allows to import files from the current folder
 
 if (!GLib.path_is_absolute(codePath)) {
     codePath = GLib.build_filenamev([GLib.get_current_dir(), codePath]);
@@ -169,7 +169,6 @@ const DesktopManager = imports.desktopManager;
 var desktopManager = null;
 var dbusManager = null;
 
-// Use different AppIDs to allow to test it from a command line while the main desktop is also running from the extension
 const dingApp = new Gtk.Application({
     application_id: asDesktop ? 'org.rastersoft.ding' : 'org.rastersoft.ding.test',
     flags: Gio.ApplicationFlags.HANDLES_COMMAND_LINE | Gio.ApplicationFlags.REPLACE,
