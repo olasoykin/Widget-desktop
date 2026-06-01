@@ -115,6 +115,21 @@
         <summary>Show calendar widget</summary>
         <description>Show the calendar widget on the desktop.</description>
     </key>
+    <key type="b" name="show-image-widget">
+        <default>false</default>
+        <summary>Show image widget</summary>
+        <description>Show the custom image widget on the desktop.</description>
+    </key>
+    <key type="s" name="image-widget-folder">
+        <default>''</default>
+        <summary>Image widget folder</summary>
+        <description>Folder containing images to display in the widget.</description>
+    </key>
+    <key type="i" name="image-widget-interval">
+        <default>60</default>
+        <summary>Image widget rotation interval</summary>
+        <description>Interval in seconds to change the image.</description>
+    </key>
     <key type="s" name="clock-widget-position">
         <default>''</default>
         <summary>Clock widget position</summary>
@@ -124,6 +139,11 @@
         <default>''</default>
         <summary>Calendar widget position</summary>
         <description>Persisted position of the calendar widget.</description>
+    </key>
+    <key type="s" name="image-widget-position">
+        <default>''</default>
+        <summary>Image widget position</summary>
+        <description>Persisted position of the image widget.</description>
     </key>
     </schema>
 </schemalist>

@@ -135,12 +135,12 @@ var DesktopManager = class {
                 });
                 return;
             }
-            if (key == 'clock-widget-position' || key == 'calendar-widget-position') {
+            if (key.endsWith('-widget-position')) {
                 return;
             }
-            if (key == 'show-clock-widget' || key == 'show-calendar-widget') {
+            if (key.startsWith('show-') && key.endsWith('-widget') || key.startsWith('image-widget-')) {
                 this._updateDesktop().catch(e => {
-                    print(`Exception while updating Desktop after Widget toggle: ${e.message}\n${e.stack}`);
+                    print(`Exception while updating Desktop after Widget change: ${e.message}\n${e.stack}`);
                 });
                 return;
             }
@@ -1343,7 +1343,10 @@ var DesktopManager = class {
                     item.setSelected();
                     item.touchedByRubberband = true;
                 } else if (item.touchedByRubberband) {
-                    item.unsetSelected();
+                    if (!item.wasSelectedBeforeRubberband) {
+                        item.unsetSelected();
+                    }
+                    item.touchedByRubberband = false;
                 }
             }
         }
@@ -1367,6 +1370,7 @@ var DesktopManager = class {
         this.rubberBand = true;
         for (let item of this._fileList) {
             item.touchedByRubberband = false;
+            item.wasSelectedBeforeRubberband = item.isSelected;
         }
     }
 
@@ -1573,6 +1577,12 @@ var DesktopManager = class {
                 this._fileList.push(new WidgetItem.WidgetItem(this, 'calendar'));
         } catch (e) {
             console.error(`[Widgets-Desktop] Error injecting calendar: ${e.message}`);
+        }
+        try {
+            if (Prefs.desktopSettings.get_boolean('show-image-widget'))
+                this._fileList.push(new WidgetItem.WidgetItem(this, 'image'));
+        } catch (e) {
+            console.error(`[Widgets-Desktop] Error injecting image widget: ${e.message}`);
         }
 
         // Select the files that were selected before the repaint

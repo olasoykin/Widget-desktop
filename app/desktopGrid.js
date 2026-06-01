@@ -614,6 +614,7 @@ var DesktopGrid = class extends SignalManager.SignalManager{
                     return [column, row];
                 }
                 let distance = DesktopIconsUtil.distanceBetweenPoints(proposedX, proposedY, x, y);
+
                 if (distance < minDistance) {
                     found = true;
                     minDistance = distance;

@@ -17,12 +17,19 @@ const Enums = imports.enums;
 const ByteArray = imports.byteArray;
 const Calendar = imports.widgets.calendar;
 const Clock = imports.widgets.clock;
+const Image = imports.widgets.image;
 
 var WidgetItem = class extends desktopIconItem.desktopIconItem {
     constructor(desktopManager, type) {
         super(desktopManager, Enums.FileType.NONE);
         this.type = type;
-        this.fileName = (type === 'clock') ? 'Clock widget' : 'Calendar widget';
+        if (type === 'clock') {
+            this.fileName = 'Clock widget';
+        } else if (type === 'calendar') {
+            this.fileName = 'Calendar widget';
+        } else {
+            this.fileName = 'Image widget';
+        }
         this.attributeContentType = `widget/${type}`;
         this.gridSize = 2;
         this.uri = `widget://${type}`;
@@ -40,6 +47,9 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             this._clockLogic = new Clock.ClockWidget();
         } else if (this.type === 'calendar') {
             this._calendarLogic = new Calendar.CalendarWidget();
+        } else if (this.type === 'image') {
+            let folder = Prefs.desktopSettings.get_string('image-widget-folder');
+            this._imageLogic = new Image.ImageWidget(folder);
         }
 
         this._createWidget();
@@ -98,6 +108,15 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
                 this._drawingArea.queue_draw();
                 return true;
             });
+        } else if (this.type === 'image') {
+            let interval = Prefs.desktopSettings.get_int('image-widget-interval');
+            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, interval, () => {
+                if (this._imageLogic) {
+                    this._imageLogic.nextImage();
+                    this._drawingArea.queue_draw();
+                }
+                return true;
+            });
         }
 
         this.container.show_all();
@@ -108,7 +127,7 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         let height = widget.get_allocated_height();
         let cx = width / 2;
         let cy = height / 2;
-        let size = Math.min(width, height) - 40;
+        let size = Math.min(width, height) - 10;
 
         if (width <= 20 || height <= 20 || size <= 0) {
             return false;
@@ -119,6 +138,8 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
                 this._drawClock(cr, cx, cy, size);
             } else if (this.type === 'calendar') {
                 this._drawCalendar(cr, cx, cy, size);
+            } else if (this.type === 'image') {
+                this._drawImage(cr, cx, cy, size);
             }
         } catch (e) {
             if (!this._hasDrawingError) {
@@ -138,6 +159,11 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     _drawCalendar(cr, cx, cy, size) {
         if (this._calendarLogic)
             this._calendarLogic.draw(cr, cx, cy, size);
+    }
+
+    _drawImage(cr, cx, cy, size) {
+        if (this._imageLogic)
+            this._imageLogic.draw(cr, cx, cy, size);
     }
 
     setCoordinates(x, y, width, height, margin, grid, relativeX) {

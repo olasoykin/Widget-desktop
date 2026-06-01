@@ -81,6 +81,9 @@ function preferencesFrame(_Gtk, desktopSettings, nautilusSettings, gtkSettings) 
 
     frame.add(buildSwitcher(desktopSettings, 'show-clock-widget', _('Show clock widget')));
     frame.add(buildSwitcher(desktopSettings, 'show-calendar-widget', _('Show calendar widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-image-widget', _('Show image widget')));
+    frame.add(buildFolderSelector(desktopSettings, 'image-widget-folder', _('Select Images Folder')));
+    frame.add(buildSpinButton(desktopSettings, 'image-widget-interval', _('Rotation interval (seconds)'), 5, 3600));
 
     frame.add(buildSwitcher(desktopSettings, 'show-link-emblem', _('Add an emblem to soft links')));
 
@@ -167,6 +170,40 @@ function buildSwitcher(settings, key, labelText) {
         hbox.append(label);
         hbox.append(switcher);
     }
+    return hbox;
+}
+
+function buildFolderSelector(settings, key, labelText) {
+    let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL, spacing: 10});
+    let label = new Gtk.Label({label: labelText, xalign: 0});
+    let button = new Gtk.FileChooserButton({ title: labelText, action: Gtk.FileChooserAction.SELECT_FOLDER });
+    label.set_hexpand(true);
+    button.set_hexpand(false);
+    button.set_halign(Gtk.Align.END);
+    
+    let currentPath = settings.get_string(key);
+    if (currentPath) button.set_filename(currentPath);
+
+    button.connect('file-set', () => {
+        settings.set_string(key, button.get_filename());
+    });
+
+    hbox.add(label);
+    hbox.add(button);
+    return hbox;
+}
+
+function buildSpinButton(settings, key, labelText, min, max) {
+    let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL, spacing: 10});
+    let label = new Gtk.Label({label: labelText, xalign: 0});
+    let spin = Gtk.SpinButton.new_with_range(min, max, 1);
+    label.set_hexpand(true);
+    spin.set_halign(Gtk.Align.END);
+
+    settings.bind(key, spin, 'value', 3);
+
+    hbox.add(label);
+    hbox.add(spin);
     return hbox;
 }
 
