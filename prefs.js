@@ -26,8 +26,8 @@ export default class DingPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         let mainAppControl = Gio.DBusActionGroup.get(
             Gio.DBus.session,
-            'com.rastersoft.ding',
-            '/com/rastersoft/ding'
+            'org.rastersoft.ding',
+            '/org/rastersoft/ding'
         );
         mainAppControl.activate_action('changeDesktopIconSettings', null);
 

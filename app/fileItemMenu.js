@@ -37,9 +37,9 @@ var FileItemMenu = class {
         this._menu = null;
         this._menuSignals = new SignalManager.SignalManager();
         this._desktopManager = desktopManager;
-        DBusUtils.GnomeArchiveManager.connect('changed-status', () => {
-            // wait a second to ensure that everything has settled
-            GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+        this._archiveStatusId = DBusUtils.GnomeArchiveManager.connect('changed-status', () => {
+            this._archiveTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+                this._archiveTimeoutId = null;
                 this._getExtractionSupportedTypes();
                 return false;
             });
@@ -49,6 +49,23 @@ var FileItemMenu = class {
             DesktopIconsUtil.getScriptsDir(),
             TemplatesScriptsManager.TemplatesScriptsManagerFlags.ONLY_EXECUTABLE,
             this._onScriptClicked.bind(this));
+    }
+
+    destroy() {
+        this._menuSignals.disconnectAllSignals();
+        if (this._archiveStatusId) {
+            DBusUtils.GnomeArchiveManager.disconnect(this._archiveStatusId);
+            this._archiveStatusId = null;
+        }
+        if (this._archiveTimeoutId) {
+            GLib.source_remove(this._archiveTimeoutId);
+            this._archiveTimeoutId = null;
+        }
+        if (this._menu) {
+            this._menu.destroy();
+            this._menu = null;
+        }
+        this._scriptsMonitor = null;
     }
 
     _getExtractionSupportedTypes() {
@@ -135,7 +152,6 @@ var FileItemMenu = class {
 
         this._menu = DesktopIconsUtil.createDesktopMenu(['fileitemmenu']);
 
-        // Solo mostrar "Abrir" si no es un widget y no es un marcador de stack
         if (!fileItem.isStackMarker && !fileItem.type) {
             this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Open All...') : _('Open'),
@@ -143,7 +159,6 @@ var FileItemMenu = class {
             );
         }
 
-        // Opciones de redimensionamiento para widgets
         if (fileItem.type && (['clock', 'calendar', 'image'].includes(fileItem.type))) {
             this._addSeparator();
             let resizeItem = new Gtk.MenuItem({ label: _('Resize') });
@@ -160,7 +175,6 @@ var FileItemMenu = class {
                 this._menuSignals.connectSignal(mi, 'activate', () => fileItem.setSize(w, h));
             });
 
-            // Para los widgets, terminamos el menú aquí o añadimos solo lo relevante
             this._menu.show_all();
             if (atWidget) {
                 this._menu.popup_at_widget(fileItem.container, Gdk.Gravity.CENTER, Gdk.Gravity.NORTH_WEST, event);
@@ -189,8 +203,6 @@ var FileItemMenu = class {
                 );
             }
         }
-
-        // fileExtra == NONE
 
         if (fileItem.isAllSelectable &&  !fileItem.isStackMarker) {
             let submenu = this._scriptsMonitor.createMenu();
@@ -276,8 +288,6 @@ var FileItemMenu = class {
             }
         }
 
-        // fileExtra == TRASH
-
         if (fileItem.isTrash) {
             this._addSeparator();
             this._addElementToMenu(
@@ -287,8 +297,6 @@ var FileItemMenu = class {
                 }
             );
         }
-
-        // fileExtra == EXTERNAL_DRIVE
 
         if (fileItem.isDrive) {
             this._addSeparator();

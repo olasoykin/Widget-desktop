@@ -1,7 +1,3 @@
-/**
- * WidgetItem handles the integration of custom desktop widgets (Clock and Calendar)
- * into the desktop grid system, managing their lifecycle, placement, and drawing.
- */
 'use strict';
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
@@ -96,7 +92,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._gridWidth = w;
         this._gridHeight = h;
         Prefs.desktopSettings.set_string(`${this.type}-widget-size`, `${w}x${h}`);
-        // Forzamos la actualización del escritorio para que la rejilla se recalcule
         if (this._desktopManager) {
             this._desktopManager._updateDesktop();
         }
