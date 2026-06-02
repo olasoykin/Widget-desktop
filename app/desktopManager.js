@@ -112,12 +112,12 @@ var DesktopManager = class {
         this._updateWritableByOthers();
         this._monitorDesktopDir = this._desktopDir.monitor_directory(Gio.FileMonitorFlags.WATCH_MOVES, null);
         this._monitorDesktopDir.set_rate_limit(1000);
-        this._monitorDesktopDirId = this._monitorDesktopDir.connect('changed', (obj, file, otherFile, eventType) => this._updateDesktopIfChanged(file, otherFile, eventType));
+        this._monitorDesktopDir.connect('changed', (obj, file, otherFile, eventType) => this._updateDesktopIfChanged(file, otherFile, eventType));
 
         this.fileItemMenu = new FileItemMenu.FileItemMenu(this);
         if (Prefs.schemaGnomeDarkSettings) {
             if (this._checkApplyDarkModeSetting()) {
-                this._darkSettingsId = Prefs.schemaGnomeDarkSettings.connect('changed', (obj, key) => {
+                Prefs.schemaGnomeDarkSettings.connect('changed', (obj, key) => {
                     if (key === 'color-scheme') {
                         this._checkApplyDarkModeSetting();
                     }
@@ -202,7 +202,7 @@ var DesktopManager = class {
                 print(`Exception while updating Desktop after Settings Changed: ${e.message}\n${e.stack}`);
             });
         });
-        this._gtkSettingsId = Prefs.gtkSettings.connect('changed', (obj, key) => {
+        Prefs.gtkSettings.connect('changed', (obj, key) => {
             if (key == 'show-hidden') {
                 this._showHidden = Prefs.gtkSettings.get_boolean('show-hidden');
                 this._updateDesktop().catch(e => {
@@ -210,7 +210,7 @@ var DesktopManager = class {
                 });
             }
         });
-        this._nautilusSettingsId = Prefs.nautilusSettings.connect('changed', (obj, key) => {
+        Prefs.nautilusSettings.connect('changed', (obj, key) => {
             if (key == 'show-image-thumbnails') {
                 this._updateDesktop().catch(e => {
                     print(`Exception while updating Desktop after Nautilus Settings Changed: ${e.message}\n${e.stack}`);
@@ -218,18 +218,18 @@ var DesktopManager = class {
             }
         });
         this._gtkIconTheme = Gtk.IconTheme.get_default();
-        this._iconThemeId = this._gtkIconTheme.connect('changed', () => {
+        this._gtkIconTheme.connect('changed', () => {
             this._updateDesktop().catch(e => {
                 print(`Exception while updating Desktop after Gtk Icon Theme Change: ${e.message}\n${e.stack}`);
             });
         });
         this._volumeMonitor = Gio.VolumeMonitor.get();
-        this._mountAddedId = this._volumeMonitor.connect('mount-added', () => {
+        this._volumeMonitor.connect('mount-added', () => {
             this._updateDesktop().catch(e => {
                 print(`Exception while updating Desktop after mount added: ${e.message}\n${e.stack}`);
             });
         });
-        this._mountRemovedId = this._volumeMonitor.connect('mount-removed', () => {
+        this._volumeMonitor.connect('mount-removed', () => {
             this._updateDesktop().catch(e => {
                 print(`Exception while updating Desktop after mount removed: ${e.message}\n${e.stack}`);
             });
@@ -245,8 +245,8 @@ var DesktopManager = class {
         this._createDesktopBackgroundMenu();
         this._createGridWindows();
 
-        this._undoStatusId = DBusUtils.NautilusFileOperations2.connectToProxy('g-properties-changed', this._undoStatusChanged.bind(this));
-        this._metadataId = DBusUtils.GtkVfsMetadata.connectSignalToProxy('AttributeChanged', this._metadataChanged.bind(this));
+        DBusUtils.NautilusFileOperations2.connectToProxy('g-properties-changed', this._undoStatusChanged.bind(this));
+        DBusUtils.GtkVfsMetadata.connectSignalToProxy('AttributeChanged', this._metadataChanged.bind(this));
         this._allFileList = null;
         this._fileList = [];
         this._forcedExit = false;
@@ -271,7 +271,19 @@ var DesktopManager = class {
         if (this._asDesktop) {
             const signalAdd = GLibUnix.signal_add ?? GLibUnix.signal_add_full;
             this._sigtermID = signalAdd(GLib.PRIORITY_DEFAULT, 15, () => {
-                this.destroy();
+                GLib.source_remove(this._sigtermID);
+                for (let desktop of this._desktops) {
+                    desktop.destroy();
+                }
+                this._desktops = [];
+                this._forcedExit = true;
+                if (this._desktopEnumerateCancellable) {
+                    this._desktopEnumerateCancellable.cancel();
+                }
+                if (this._hold_active) {
+                    this.mainApp.release();
+                    this._hold_active = false;
+                }
                 return false;
             });
         }
@@ -281,66 +293,6 @@ var DesktopManager = class {
         let changeDesktopIconSettings = Gio.SimpleAction.new('changeDesktopIconSettings', null);
         changeDesktopIconSettings.connect('activate', () => Prefs.showPreferences());
         this.mainApp.add_action(changeDesktopIconSettings);
-    }
-
-    destroy() {
-        this._forcedExit = true;
-        if (this._sigtermID) {
-            GLib.source_remove(this._sigtermID);
-            this._sigtermID = null;
-        }
-        if (this.keypressTimeoutID) {
-            GLib.source_remove(this.keypressTimeoutID);
-            this.keypressTimeoutID = null;
-        }
-        if (this._desktopEnumerateCancellable) {
-            this._desktopEnumerateCancellable.cancel();
-            this._desktopEnumerateCancellable = null;
-        }
-        if (this._monitorDesktopDir) {
-            if (this._monitorDesktopDirId) this._monitorDesktopDir.disconnect(this._monitorDesktopDirId);
-            this._monitorDesktopDir.cancel();
-            this._monitorDesktopDir = null;
-        }
-
-        if (this._settingsId) Prefs.desktopSettings.disconnect(this._settingsId);
-        if (this._gtkSettingsId) Prefs.gtkSettings.disconnect(this._gtkSettingsId);
-        if (this._nautilusSettingsId) Prefs.nautilusSettings.disconnect(this._nautilusSettingsId);
-        if (this._iconThemeId) this._gtkIconTheme.disconnect(this._iconThemeId);
-        if (this._mountAddedId) this._volumeMonitor.disconnect(this._mountAddedId);
-        if (this._mountRemovedId) this._volumeMonitor.disconnect(this._mountRemovedId);
-        if (this._darkSettingsId) Prefs.schemaGnomeDarkSettings.disconnect(this._darkSettingsId);
-        if (this._styleContextId) this._styleContext.disconnect(this._styleContextId);
-        
-        if (this._dbusActionStateId) DBusUtils.extensionControl.disconnect(this._dbusActionStateId);
-        if (this._dbusActionAddedId) DBusUtils.extensionControl.disconnect(this._dbusActionAddedId);
-        
-        if (this._undoStatusId) DBusUtils.NautilusFileOperations2.disconnect(this._undoStatusId);
-        if (this._metadataId) DBusUtils.GtkVfsMetadata.disconnect(this._metadataId);
-
-        if (this.fileItemMenu) {
-            this.fileItemMenu.destroy();
-            this.fileItemMenu = null;
-        }
-        if (this.templatesMonitor && typeof this.templatesMonitor.destroy === 'function') {
-            this.templatesMonitor.destroy();
-        }
-
-        for (let desktop of this._desktops) {
-            desktop.destroy();
-        }
-        this._desktops = [];
-
-        this._fileList.forEach(item => {
-            if (item._onDestroy) item._onDestroy();
-        });
-        this._fileList = [];
-        this._allFileList = null;
-
-        if (this._hold_active) {
-            this.mainApp.release();
-            this._hold_active = false;
-        }
     }
 
     _metadataChanged(proxy, nameOwner, args) {
@@ -366,12 +318,12 @@ var DesktopManager = class {
     }
 
     _dbusAdvertiseUpdate() {
-        this._dbusActionStateId = DBusUtils.extensionControl.connect('action-state-changed', (actionGroup, actionName, data) => {
+        DBusUtils.extensionControl.connect('action-state-changed', (actionGroup, actionName, data) => {
             if (actionName == 'desktopGeometry') {
                 this.updateGridWindows(data.recursiveUnpack());
             }
         });
-        this._dbusActionAddedId = DBusUtils.extensionControl.connect('action-added', (actionGroup, actionName) => {
+        DBusUtils.extensionControl.connect('action-added', (actionGroup, actionName) => {
             // this signal allows us to know when the action is available and we can read the initial value
             if (actionName == 'desktopGeometry') {
                 let data = DBusUtils.extensionControl.get_action_state('desktopGeometry');
@@ -467,7 +419,7 @@ var DesktopManager = class {
         this._styleContext.set_path(this._contextWidget);
         this._styleContext.add_class('view');
         this._cssProviderSelection = new Gtk.CssProvider();
-        this._styleContextId = this._styleContext.connect('changed', () => {
+        this._styleContext.connect('changed', () => {
             Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(), this._cssProviderSelection);
             this._setSelectionColor();
             // Forzar el redibujado de los widgets para aplicar el nuevo color de acento
@@ -2356,7 +2308,6 @@ var DesktopManager = class {
          * @param a
          * @param b
          */
-
         function bySize(a, b) {
             return  a.fileSize - b.fileSize;
         }
@@ -2365,7 +2316,6 @@ var DesktopManager = class {
          * @param a
          * @param b
          */
-
         function byTime(a, b) {
             return  a._modifiedTime - b._modifiedTime;
         }
