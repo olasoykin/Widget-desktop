@@ -1,6 +1,7 @@
 'use strict';
 
 const { Gdk, GLib, Pango, PangoCairo, EDataServer, ECal } = imports.gi;
+const BaseWidget = imports.widgets.baseWidget;
 const Cairo = imports.gi.cairo;
 
 /**
@@ -13,8 +14,9 @@ const Cairo = imports.gi.cairo;
 const MONTHS = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
 const DAYS = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
 
-var CalendarWidget = class {
+var CalendarWidget = class extends BaseWidget.BaseWidget {
     constructor() {
+        super();
         this.today = new Date();
     }
 

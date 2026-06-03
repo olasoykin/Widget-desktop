@@ -40,14 +40,20 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             get_uri: () => this.uri,
         };
 
-        if (this.type === 'clock') {
-            this._clockLogic = new Clock.ClockWidget();
-        } else if (this.type === 'calendar') {
-            this._calendarLogic = new Calendar.CalendarWidget();
-        } else if (this.type === 'image') {
-            let folder = Prefs.desktopSettings.get_string('image-widget-folder');
-            this._imageLogic = new Image.ImageWidget(folder);
-        }
+        // Registry of available widgets
+        const widgetClasses = {
+            'clock': Clock.ClockWidget,
+            'calendar': Calendar.CalendarWidget,
+            'image': () => {
+                let folder = Prefs.desktopSettings.get_string('image-widget-folder');
+                return new Image.ImageWidget(folder);
+            }
+        };
+
+        const factory = widgetClasses[this.type];
+        this._logic = (typeof factory === 'function' && factory.prototype)
+            ? new factory()
+            : (typeof factory === 'function' ? factory() : null);
 
         this._createWidget();
 
@@ -177,13 +183,8 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
 
         let accentColor = this._desktopManager.selectColor;
         try {
-            if (this.type === 'clock') {
-                this._drawClock(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
-            } else if (this.type === 'calendar') {
-                this._drawCalendar(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
-            } else if (this.type === 'image') {
-                this._drawImage(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
-            }
+            if (this._logic)
+                this._logic.draw(cr, width, height, accentColor, this.gridWidth, this.gridHeight);
         } catch (e) {
             if (!this._hasDrawingError) {
                 console.error(`[Widgets-Desktop] Error drawing widget (${this.type}): ${e.message}\n${e.stack}`);
@@ -192,21 +193,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         }
 
         return false;
-    }
-
-    _drawClock(cr, width, height, accentColor, gridWidth, gridHeight) {
-        if (this._clockLogic)
-            this._clockLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
-    }
-
-    _drawCalendar(cr, width, height, accentColor, gridWidth, gridHeight) {
-        if (this._calendarLogic)
-            this._calendarLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
-    }
-
-    _drawImage(cr, width, height, accentColor, gridWidth, gridHeight) {
-        if (this._imageLogic)
-            this._imageLogic.draw(cr, width, height, accentColor, gridWidth, gridHeight);
     }
 
     setCoordinates(x, y, width, height, margin, grid, relativeX) {
@@ -246,6 +232,9 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     }
 
     updateIcon() {
+        if (this._logic && typeof this._logic.update === 'function')
+            this._logic.update();
+            
         if (this._drawingArea) {
             this._drawingArea.queue_draw();
         }
@@ -259,6 +248,9 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         if (this._timeoutId) {
             GLib.source_remove(this._timeoutId);
             this._timeoutId = null;
+        }
+        if (this._logic && typeof this._logic.destroy === 'function') {
+            this._logic.destroy();
         }
         this._drawingArea = null;
         super._onDestroy();

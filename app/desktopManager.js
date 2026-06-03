@@ -1634,24 +1634,15 @@ var DesktopManager = class {
         }
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
-        try {
-            if (Prefs.desktopSettings.get_boolean('show-clock-widget'))
-                this._fileList.push(new WidgetItem.WidgetItem(this, 'clock'));
-        } catch (e) {
-            console.error(`[Widgets-Desktop] Error injecting clock: ${e.message}`);
-        }
-        try {
-            if (Prefs.desktopSettings.get_boolean('show-calendar-widget'))
-                this._fileList.push(new WidgetItem.WidgetItem(this, 'calendar'));
-        } catch (e) {
-            console.error(`[Widgets-Desktop] Error injecting calendar: ${e.message}`);
-        }
-        try {
-            if (Prefs.desktopSettings.get_boolean('show-image-widget'))
-                this._fileList.push(new WidgetItem.WidgetItem(this, 'image'));
-        } catch (e) {
-            console.error(`[Widgets-Desktop] Error injecting image widget: ${e.message}`);
-        }
+
+        ['clock', 'calendar', 'image'].forEach(type => {
+            try {
+                if (Prefs.desktopSettings.get_boolean(`show-${type}-widget`))
+                    this._fileList.push(new WidgetItem.WidgetItem(this, type));
+            } catch (e) {
+                console.error(`[Widgets-Desktop] Error injecting ${type}: ${e.message}`);
+            }
+        });
 
         // Select the files that were selected before the repaint
         if (this._selectedFiles) {
