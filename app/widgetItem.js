@@ -166,8 +166,8 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         } else if (this.type === 'image') {
             let interval = Prefs.desktopSettings.get_int('image-widget-interval');
             this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, interval, () => {
-                if (this._imageLogic) {
-                    this._imageLogic.nextImage();
+                if (this._logic) {
+                    this._logic.nextImage();
                     this._drawingArea.queue_draw();
                 }
                 return true;
@@ -206,14 +206,14 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._y1 = y;
         this._x2 = x + width;
         this._y2 = y + height;
-        ón
+
         let lastSize = _lastPixelSizes[this.type];
         if (lastSize && (lastSize.w !== width || lastSize.h !== height)) {
             this._animateGrowth(lastSize.w, lastSize.h, width, height);
         } else {
             this.container.set_size_request(width, height);
         }
-     z
+
         _lastPixelSizes[this.type] = { w: width, h: height };
 
         if (this.container.get_parent()) {

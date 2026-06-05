@@ -1395,12 +1395,11 @@ var DesktopManager = class {
         const row = Math.floor(gy / grid._elementHeight);
 
         const [origCol, origRow] = grid._fileItems[item.uri];
-        
+
         let newWidth = item.gridWidth || item.gridSize;
         let newHeight = item.gridHeight || item.gridSize;
 
-    
-        if (this._resizeDirection.includes('e')) {e
+        if (this._resizeDirection.includes('e')) {
             newWidth = Math.max(1, col - origCol + 1);
         }
         if (this._resizeDirection.includes('s')) {
