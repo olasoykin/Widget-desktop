@@ -15,6 +15,9 @@ const Calendar = imports.widgets.calendar;
 const Clock = imports.widgets.clock;
 const Image = imports.widgets.image;
 
+// Almacenamos el último tamaño conocido de cada widget para animar la transición
+var _lastPixelSizes = {};
+
 var WidgetItem = class extends desktopIconItem.desktopIconItem {
     constructor(desktopManager, type) {
         super(desktopManager, Enums.FileType.NONE);
@@ -145,6 +148,7 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._drawingArea = new Gtk.DrawingArea({ visible: true });
         this._drawingArea.set_hexpand(true);
         this._drawingArea.set_vexpand(true);
+        
         this._iconContainer.pack_start(this._drawingArea, true, true, 0);
 
         this.connectSignal(this._drawingArea, 'draw', (widget, cr) => this._onDraw(widget, cr));
@@ -202,13 +206,52 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         this._y1 = y;
         this._x2 = x + width;
         this._y2 = y + height;
-        
-        this.container.set_size_request(width, height);
+        ón
+        let lastSize = _lastPixelSizes[this.type];
+        if (lastSize && (lastSize.w !== width || lastSize.h !== height)) {
+            this._animateGrowth(lastSize.w, lastSize.h, width, height);
+        } else {
+            this.container.set_size_request(width, height);
+        }
+     z
+        _lastPixelSizes[this.type] = { w: width, h: height };
 
         if (this.container.get_parent()) {
             this._calculateIconRectangle();
             this._calculateLabelRectangle();
         }
+    }
+
+    _animateGrowth(startW, startH, endW, endH) {
+        if (this._growthId) {
+            GLib.source_remove(this._growthId);
+        }
+
+        let startTime = GLib.get_monotonic_time();
+        const duration = 400 * 1000; 
+
+        this._growthId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 16, () => {
+            let elapsed = GLib.get_monotonic_time() - startTime;
+            let progress = Math.min(elapsed / duration, 1);
+            
+        
+            let ease = 1 - Math.pow(1 - progress, 4);
+
+            let w = startW + (endW - startW) * ease;
+            let h = startH + (endH - startH) * ease;
+
+            this.container.set_size_request(Math.round(w), Math.round(h));
+
+            if (this._drawingArea) {
+                this._drawingArea.queue_draw();
+            }
+
+            if (progress >= 1) {
+                this._growthId = null;
+                return GLib.SOURCE_REMOVE;
+            }
+            return GLib.SOURCE_CONTINUE;
+        });
     }
 
     get savedCoordinates() {
@@ -245,6 +288,10 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     }
 
     _onDestroy() {
+        if (this._growthId) {
+            GLib.source_remove(this._growthId);
+            this._growthId = null;
+        }
         if (this._timeoutId) {
             GLib.source_remove(this._timeoutId);
             this._timeoutId = null;

@@ -1399,8 +1399,8 @@ var DesktopManager = class {
         let newWidth = item.gridWidth || item.gridSize;
         let newHeight = item.gridHeight || item.gridSize;
 
-        // Por ahora, permitimos redimensionar desde el Este (derecha) y Sur (abajo)
-        if (this._resizeDirection.includes('e')) {
+    
+        if (this._resizeDirection.includes('e')) {e
             newWidth = Math.max(1, col - origCol + 1);
         }
         if (this._resizeDirection.includes('s')) {
@@ -1411,7 +1411,7 @@ var DesktopManager = class {
             item.gridWidth = newWidth;
             item.gridHeight = newHeight;
             
-            // Actualizamos la posición lógica en la rejilla
+         
             grid.removeItem(item);
             grid._addFileItemTo(item, origCol, origRow, Enums.StoredCoordinates.OVERWRITE);
         }
