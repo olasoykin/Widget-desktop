@@ -37,12 +37,11 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
         let dayOfMonth = now.getDate();
 
         if (gridWidth === 4 && gridHeight === 2) {
-            // Draw premium Split Calendar view (Today Card + dynamic Events list)
             let scale = height / 120;
             let leftW = width * 0.4;
             let leftCX = 15 + (leftW - 20) / 2;
 
-            // Draw a slightly darker card for the Today display
+            
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 32/255, green: 34/255, blue: 37/255, alpha: 1 }));
             this._roundedRectangle(cr, 15, 15, leftW - 20, height - 30, 15);
             cr.fillPreserve();
@@ -72,25 +71,21 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
             let totalLeftHeight = dnh + dnumh + mynh;
             let startY = (height - totalLeftHeight) / 2;
 
-            // Draw Weekday (white, slight transparency)
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 235/255, green: 235/255, blue: 245/255, alpha: 0.6 }));
             cr.moveTo(leftCX - dnw / 2, startY);
             PangoCairo.update_layout(cr, layoutDayName);
             PangoCairo.show_layout(cr, layoutDayName);
 
-            // Draw Huge Day Number (accentColor)
             Gdk.cairo_set_source_rgba(cr, accentColor);
             cr.moveTo(leftCX - dnumw / 2, startY + dnh - 2 * scale);
             PangoCairo.update_layout(cr, layoutDayNum);
             PangoCairo.show_layout(cr, layoutDayNum);
 
-            // Draw Month & Year (white)
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 1 }));
             cr.moveTo(leftCX - mynw / 2, startY + dnh + dnumh - 4 * scale);
             PangoCairo.update_layout(cr, layoutMonthYear);
             PangoCairo.show_layout(cr, layoutMonthYear);
 
-            // Draw Events list on the right side
             let rightX = leftW + 10;
             let events = [];
 
@@ -144,14 +139,12 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
             PangoCairo.update_layout(cr, layoutHeader);
             PangoCairo.show_layout(cr, layoutHeader);
 
-            // Draw event blocks
             let eventStartY = 20 + hh + 10 * scale;
             let spacing = (height - eventStartY - 10) / events.length;
 
             events.forEach((ev, i) => {
                 let yPos = eventStartY + i * spacing;
 
-                // Draw accent color indicator line on the left side of the event
                 Gdk.cairo_set_source_rgba(cr, accentColor);
                 cr.setLineWidth(3);
                 cr.setLineCap(Cairo.LineCap.ROUND);
@@ -159,7 +152,6 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
                 cr.lineTo(rightX + 10, yPos + 22 * scale);
                 cr.stroke();
 
-                // Draw Time
                 let layoutTime = PangoCairo.create_layout(cr);
                 layoutTime.set_font_description(Pango.FontDescription.from_string(`Sans ${Math.floor(7.5 * scale)}`));
                 layoutTime.set_text(ev.time, -1);
@@ -168,7 +160,6 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
                 PangoCairo.update_layout(cr, layoutTime);
                 PangoCairo.show_layout(cr, layoutTime);
 
-                // Draw Title
                 let layoutTitle = PangoCairo.create_layout(cr);
                 layoutTitle.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(9 * scale)}`));
                 layoutTitle.set_text(ev.title, -1);
@@ -178,7 +169,6 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
                 PangoCairo.show_layout(cr, layoutTitle);
             });
         } else {
-            // Draw standard Monthly Grid (2x2 layout)
             let size = Math.min(width, height) - 10;
             let x = (width - size) / 2;
             let y = (height - size) / 2;
@@ -190,14 +180,14 @@ var CalendarWidget = class extends BaseWidget.BaseWidget {
             let layoutHeader = PangoCairo.create_layout(cr);
             layoutHeader.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(11 * scale)}`));
             layoutHeader.set_text(headerText, -1);
-            cr.moveTo(x + (20 * scale), y + (25 * scale)); // Moved down
+            cr.moveTo(x + (20 * scale), y + (25 * scale));
             PangoCairo.update_layout(cr, layoutHeader);
             PangoCairo.show_layout(cr, layoutHeader);
 
             Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 174/255, green: 174/255, blue: 178/255, alpha: 1 }));
             let daysOfWeek = ["M", "T", "W", "T", "F", "S", "S"];
             let spacingX = (size - (30 * scale)) / 7;
-            let gridStartY = y + (52 * scale); // Moved down
+            let gridStartY = y + (52 * scale);
 
             let dayLayout = PangoCairo.create_layout(cr);
             dayLayout.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(9 * scale)}`));
