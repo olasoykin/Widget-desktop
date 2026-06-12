@@ -14,8 +14,8 @@ const ByteArray = imports.byteArray;
 const Calendar = imports.widgets.calendar;
 const Clock = imports.widgets.clock;
 const Image = imports.widgets.image;
+const Cpu = imports.widgets.cpu;
 
-// Almacenamos el último tamaño conocido de cada widget para animar la transición
 var _lastPixelSizes = {};
 
 var WidgetItem = class extends desktopIconItem.desktopIconItem {
@@ -26,8 +26,10 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             this.fileName = 'Clock widget';
         } else if (type === 'calendar') {
             this.fileName = 'Calendar widget';
-        } else {
+        } else if (type === 'image') {
             this.fileName = 'Image widget';
+        } else {
+            this.fileName = 'CPU widget';
         }
         this.attributeContentType = `widget/${type}`;
         this.uri = `widget://${type}`;
@@ -43,10 +45,10 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             get_uri: () => this.uri,
         };
 
-        // Registry of available widgets
         const widgetClasses = {
             'clock': Clock.ClockWidget,
             'calendar': Calendar.CalendarWidget,
+            'cpu': Cpu.CpuWidget,
             'image': () => {
                 let folder = Prefs.desktopSettings.get_string('image-widget-folder');
                 return new Image.ImageWidget(folder);
@@ -160,6 +162,12 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             });
         } else if (this.type === 'calendar') {
             this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 60, () => {
+                this._drawingArea.queue_draw();
+                return true;
+            });
+        } else if (this.type === 'cpu') {
+            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 2, () => {
+                if (this._logic) this._logic.update();
                 this._drawingArea.queue_draw();
                 return true;
             });

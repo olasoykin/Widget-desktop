@@ -82,6 +82,7 @@ function preferencesFrame(_Gtk, desktopSettings, nautilusSettings, gtkSettings) 
     frame.add(buildSwitcher(desktopSettings, 'show-clock-widget', _('Show clock widget')));
     frame.add(buildSwitcher(desktopSettings, 'show-calendar-widget', _('Show calendar widget')));
     frame.add(buildSwitcher(desktopSettings, 'show-image-widget', _('Show image widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-cpu-widget', _('Show CPU widget')));
     frame.add(buildFolderSelector(desktopSettings, 'image-widget-folder', _('Select Images Folder')));
     frame.add(buildSpinButton(desktopSettings, 'image-widget-interval', _('Rotation interval (seconds)'), 5, 3600));
 

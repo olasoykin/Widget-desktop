@@ -135,7 +135,6 @@ var FileItemMenu = class {
 
         this._menu = DesktopIconsUtil.createDesktopMenu(['fileitemmenu']);
 
-        // Solo mostrar "Abrir" si no es un widget y no es un marcador de stack
         if (!fileItem.isStackMarker && !fileItem.type) {
             this._addElementToMenu(
                 selectedItemsNum > 1 ? _('Open All...') : _('Open'),
@@ -143,8 +142,7 @@ var FileItemMenu = class {
             );
         }
 
-        // Opciones de redimensionamiento para widgets
-        if (fileItem.type && (['clock', 'calendar', 'image'].includes(fileItem.type))) {
+        if (fileItem.type && (['clock', 'calendar', 'image', 'cpu'].includes(fileItem.type))) {
             this._addSeparator();
             let resizeItem = new Gtk.MenuItem({ label: _('Resize') });
             this._menu.add(resizeItem);
@@ -160,7 +158,6 @@ var FileItemMenu = class {
                 this._menuSignals.connectSignal(mi, 'activate', () => fileItem.setSize(w, h));
             });
 
-            // Para los widgets, terminamos el menú aquí o añadimos solo lo relevante
             this._menu.show_all();
             if (atWidget) {
                 this._menu.popup_at_widget(fileItem.container, Gdk.Gravity.CENTER, Gdk.Gravity.NORTH_WEST, event);
@@ -190,7 +187,6 @@ var FileItemMenu = class {
             }
         }
 
-        // fileExtra == NONE
 
         if (fileItem.isAllSelectable &&  !fileItem.isStackMarker) {
             let submenu = this._scriptsMonitor.createMenu();

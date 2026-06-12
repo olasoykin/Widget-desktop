@@ -1634,7 +1634,7 @@ var DesktopManager = class {
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
 
-        ['clock', 'calendar', 'image'].forEach(type => {
+        ['clock', 'calendar', 'image', 'cpu'].forEach(type => {
             try {
                 if (Prefs.desktopSettings.get_boolean(`show-${type}-widget`))
                     this._fileList.push(new WidgetItem.WidgetItem(this, type));
