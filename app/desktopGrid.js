@@ -329,14 +329,17 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             return;
         }
         let newSelectedList = [];
-        for (let [x, y] of selectedList) {
+        for (let entry of selectedList) {
+            let [x, y, gW, gH] = (entry.length >= 4)
+                ? entry
+                : [entry[0], entry[1], 1, 1];
             x += this._elementWidth / 2;
             y += this._elementHeight / 2;
             x += ox;
             y += oy;
             let r = this.getGridAt(x, y);
             if (r && !isNaN(r[0]) && !isNaN(r[1]) && (!this.gridInUse(r[0], r[1]) || this._fileAt(r[0], r[1]).isSelected)) {
-                newSelectedList.push(r);
+                newSelectedList.push([r[0], r[1], gW, gH]);
             }
         }
         if (newSelectedList.length == 0) {
@@ -401,11 +404,12 @@ var DesktopGrid = class extends SignalManager.SignalManager{
             cr.stroke();
         }
         if (this._desktopManager.showDropPlace && (this._selectedList !== null)) {
-            let itemWidth = this._desktopManager.dragItem?.gridWidth || this._desktopManager.dragItem?.gridSize || 1;
-            let itemHeight = this._desktopManager.dragItem?.gridHeight || this._desktopManager.dragItem?.gridSize || 1;
-            for (let [x, y] of this._selectedList) {
-                let w = this._elementWidth * itemWidth;
-                let h = this._elementHeight * itemHeight;
+            for (let entry of this._selectedList) {
+                let [x, y, gW, gH] = (entry.length >= 4)
+                    ? entry
+                    : [entry[0], entry[1], 1, 1];
+                let w = this._elementWidth * gW;
+                let h = this._elementHeight * gH;
                 this._roundedRectangle(cr, x + 0.5, y + 0.5, w, h, 10);
                 let color = this._desktopManager.selectColor;
                 color.alpha = 0.4;

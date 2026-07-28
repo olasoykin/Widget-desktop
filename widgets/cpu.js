@@ -1,11 +1,12 @@
 'use strict';
 
 const { Gdk, GLib, Pango, PangoCairo } = imports.gi;
+const Cairo = imports.gi.cairo;
 const BaseWidget = imports.widgets.baseWidget;
 
 /**
- * Lógica para el widget de CPU. Calcula el uso del procesador y la temperatura.
- * Muestra el porcentaje de uso y, al expandirse, la temperatura del procesador.
+ * CPU widget. Material You design.
+ * Shows CPU usage history bars + usage percentage & temperature.
  */
 var CpuWidget = class extends BaseWidget.BaseWidget {
     constructor() {
@@ -14,11 +15,14 @@ var CpuWidget = class extends BaseWidget.BaseWidget {
         this._lastIdle = 0;
         this._usage = 0;
         this._temp = null;
+        this._history = new Array(20).fill(0);
     }
 
     update() {
         this._usage = this._getCPUUsage();
         this._temp = this._getCPUTemp();
+        this._history.shift();
+        this._history.push(this._usage);
     }
 
     _getCPUUsage() {
@@ -66,53 +70,88 @@ var CpuWidget = class extends BaseWidget.BaseWidget {
     }
 
     draw(cr, width, height, accentColor, gridWidth, gridHeight) {
-        let r = 20;
-        
-        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 26/255, green: 28/255, blue: 30/255, alpha: 1 }));
-        this._roundedRectangle(cr, 5, 5, width - 10, height - 10, r);
-        cr.fillPreserve();
-        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 63/255, green: 63/255, blue: 66/255, alpha: 1 }));
-        cr.setLineWidth(1);
-        cr.stroke();
+        let { dx, dy, size, s, padding, sw, sh } = this._drawMaterialBackground(cr, width, height, accentColor, gridWidth, gridHeight);
 
-        let scale = Math.min(width, height) / 120;
+        let scale = s / 120;
+        let pad = 12 * scale;
 
-        
-        this._drawCpuIcon(cr, 20, 20, 16 * scale, accentColor);
+        let labelLayout = PangoCairo.create_layout(cr);
+        labelLayout.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(8 * scale)}`));
+        labelLayout.set_text('CPU', -1);
+        let [lw, lh] = labelLayout.get_pixel_size();
+        let labelColor = accentColor.copy();
+        labelColor.alpha = 0.7;
+        Gdk.cairo_set_source_rgba(cr, labelColor);
+        cr.moveTo(dx + padding / 2 + pad, dy + padding / 2 + 10 * scale);
+        PangoCairo.show_layout(cr, labelLayout);
 
-        
-        let layoutUsage = PangoCairo.create_layout(cr);
-        layoutUsage.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(24 * scale)}`));
-        layoutUsage.set_text(`${this._usage}%`, -1);
-        let [uw, uh] = layoutUsage.get_pixel_size();
-        Gdk.cairo_set_source_rgba(cr, new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 1 }));
-        cr.moveTo(width/2 - uw/2, height/2 - uh/2);
-        PangoCairo.show_layout(cr, layoutUsage);
+        let pctLayout = PangoCairo.create_layout(cr);
+        pctLayout.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(10 * scale)}`));
+        pctLayout.set_text(`${this._usage}%`, -1);
+        let [pw, ph] = pctLayout.get_pixel_size();
+        Gdk.cairo_set_source_rgba(cr, accentColor);
+        cr.moveTo(dx + padding / 2 + sw - pad - pw, dy + padding / 2 + 8 * scale);
+        PangoCairo.show_layout(cr, pctLayout);
 
-        
-        if ((gridWidth > 2 || gridHeight > 2) && this._temp !== null) {
-            let layoutTemp = PangoCairo.create_layout(cr);
-            layoutTemp.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(10 * scale)}`));
-            layoutTemp.set_text(`${this._temp}°C`, -1);
-            let [tw, th] = layoutTemp.get_pixel_size();
+        let headerHeight = Math.max(lh, ph);
+        let graphTop = dy + padding / 2 + 10 * scale + headerHeight + 10 * scale;
+        let graphBottom = dy + padding / 2 + sh - (this._temp !== null ? 22 * scale : 12 * scale);
+        let graphH = Math.max(10, graphBottom - graphTop);
+        let graphW = sw - pad * 2;
+        let barW = graphW / 20;
+        let barGap = barW * 0.25;
+        let barRealW = Math.max(1, barW - barGap);
+
+        cr.setLineCap(Cairo.LineCap.ROUND);
+        cr.setLineWidth(barRealW);
+
+        for (let i = 0; i < 20; i++) {
+            let val = this._history[i];
+            let barH = Math.max(barRealW, (val / 100) * graphH);
+            let x = dx + padding / 2 + pad + i * barW + barRealW / 2 + barGap / 2;
+            let y = graphBottom - barH;
+
+            let bgColor = accentColor.copy();
+            bgColor.alpha = 0.16;
+            Gdk.cairo_set_source_rgba(cr, bgColor);
+            cr.moveTo(x, graphBottom);
+            cr.lineTo(x, graphTop);
+            cr.stroke();
+
+            let fillColor;
+            if (val > 85) {
+                fillColor = new Gdk.RGBA({ red: 0.92, green: 0.22, blue: 0.20, alpha: 1 });
+            } else if (val > 60) {
+                fillColor = new Gdk.RGBA({ red: 0.98, green: 0.76, blue: 0.0, alpha: 1 });
+            } else {
+                fillColor = accentColor;
+            }
+            Gdk.cairo_set_source_rgba(cr, fillColor);
+            cr.moveTo(x, graphBottom);
+            cr.lineTo(x, y);
+            cr.stroke();
+        }
+
+        if (this._temp !== null) {
+            let tempStr = `${this._temp}°C`;
+            let tempLayout = PangoCairo.create_layout(cr);
+            tempLayout.set_font_description(Pango.FontDescription.from_string(`Sans Bold ${Math.floor(7.5 * scale)}`));
+            tempLayout.set_text(tempStr, -1);
+            let [tw, th] = tempLayout.get_pixel_size();
+            let px = 5 * scale, py = 1.5 * scale;
+            let pillW = tw + px * 2, pillH = th + py * 2;
+            let pillX = dx + padding / 2 + sw - pad - pillW;
+            let pillY = graphBottom + 4 * scale;
+
+            let pillBg = accentColor.copy();
+            pillBg.alpha = 0.18;
+            Gdk.cairo_set_source_rgba(cr, pillBg);
+            this._roundedRectangle(cr, pillX, pillY, pillW, pillH, pillH / 2);
+            cr.fill();
+
             Gdk.cairo_set_source_rgba(cr, accentColor);
-            cr.moveTo(width/2 - tw/2, height/2 + uh/2 + 5);
-            PangoCairo.show_layout(cr, layoutTemp);
+            cr.moveTo(pillX + px, pillY + py);
+            PangoCairo.show_layout(cr, tempLayout);
         }
-    }
-
-    _drawCpuIcon(cr, x, y, size, color) {
-        Gdk.cairo_set_source_rgba(cr, color);
-        cr.setLineWidth(1.5 * (size/16));
-        cr.rectangle(x + size*0.2, y + size*0.2, size*0.6, size*0.6);
-        cr.stroke();
-        for (let i = 0; i < 3; i++) {
-            let offset = size * 0.3 + i * size * 0.2;
-            cr.moveTo(x + offset, y); cr.lineTo(x + offset, y + size*0.15);
-            cr.moveTo(x + offset, y + size*0.85); cr.lineTo(x + offset, y + size);
-            cr.moveTo(x, y + offset); cr.lineTo(x + size*0.15, y + offset);
-            cr.moveTo(x + size*0.85, y + offset); cr.lineTo(x + size, y + offset);
-        }
-        cr.stroke();
     }
 };

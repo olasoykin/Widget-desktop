@@ -15,6 +15,12 @@ const Calendar = imports.widgets.calendar;
 const Clock = imports.widgets.clock;
 const Image = imports.widgets.image;
 const Cpu = imports.widgets.cpu;
+const Ram = imports.widgets.ram;
+const Disk = imports.widgets.disk;
+const Network = imports.widgets.network;
+const Battery = imports.widgets.battery;
+const Media = imports.widgets.media;
+const Weather = imports.widgets.weather;
 
 var _lastPixelSizes = {};
 
@@ -22,15 +28,19 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
     constructor(desktopManager, type) {
         super(desktopManager, Enums.FileType.NONE);
         this.type = type;
-        if (type === 'clock') {
-            this.fileName = 'Clock widget';
-        } else if (type === 'calendar') {
-            this.fileName = 'Calendar widget';
-        } else if (type === 'image') {
-            this.fileName = 'Image widget';
-        } else {
-            this.fileName = 'CPU widget';
-        }
+        const fileNames = {
+            'clock': 'Clock widget',
+            'calendar': 'Calendar widget',
+            'image': 'Image widget',
+            'cpu': 'CPU widget',
+            'ram': 'RAM widget',
+            'disk': 'Disk widget',
+            'network': 'Network widget',
+            'battery': 'Battery widget',
+            'media': 'Media widget',
+            'weather': 'Weather widget',
+        };
+        this.fileName = fileNames[type] || `${type} widget`;
         this.attributeContentType = `widget/${type}`;
         this.uri = `widget://${type}`;
 
@@ -49,6 +59,12 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             'clock': Clock.ClockWidget,
             'calendar': Calendar.CalendarWidget,
             'cpu': Cpu.CpuWidget,
+            'ram': Ram.RamWidget,
+            'disk': Disk.DiskWidget,
+            'network': Network.NetworkWidget,
+            'battery': Battery.BatteryWidget,
+            'media': Media.MediaWidget,
+            'weather': Weather.WeatherWidget,
             'image': () => {
                 let folder = Prefs.desktopSettings.get_string('image-widget-folder');
                 return new Image.ImageWidget(folder);
@@ -153,31 +169,42 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         
         this._iconContainer.pack_start(this._drawingArea, true, true, 0);
 
+        this.connectSignal(this.container, 'size-allocate', () => this._calculateIconRectangle());
         this.connectSignal(this._drawingArea, 'draw', (widget, cr) => this._onDraw(widget, cr));
+        this.connectSignal(this._eventBox, 'button-press-event', (widget, event) => this._onButtonPress(widget, event));
 
-        if (this.type === 'clock') {
-            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {
-                this._drawingArea.queue_draw();
-                return true;
+        if (this._logic && typeof this._logic.setRedrawCallback === 'function') {
+            this._logic.setRedrawCallback(() => {
+                if (this._drawingArea)
+                    this._drawingArea.queue_draw();
             });
-        } else if (this.type === 'calendar') {
-            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 60, () => {
-                this._drawingArea.queue_draw();
-                return true;
-            });
-        } else if (this.type === 'cpu') {
-            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 2, () => {
-                if (this._logic) this._logic.update();
-                this._drawingArea.queue_draw();
-                return true;
-            });
-        } else if (this.type === 'image') {
+        }
+
+        const updateIntervals = {
+            'clock': 1,
+            'calendar': 60,
+            'cpu': 2,
+            'ram': 2,
+            'disk': 5,
+            'network': 2,
+            'battery': 10,
+            'media': 3,
+            'weather': 60,
+        };
+
+        if (this.type === 'image') {
             let interval = Prefs.desktopSettings.get_int('image-widget-interval');
             this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, interval, () => {
                 if (this._logic) {
                     this._logic.nextImage();
                     this._drawingArea.queue_draw();
                 }
+                return true;
+            });
+        } else if (updateIntervals[this.type]) {
+            this._timeoutId = GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, updateIntervals[this.type], () => {
+                if (this._logic && typeof this._logic.update === 'function') this._logic.update();
+                this._drawingArea.queue_draw();
                 return true;
             });
         }
@@ -207,6 +234,27 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         return false;
     }
 
+    _onButtonPress(widget, event) {
+        if (!this._logic || typeof this._logic.hitTest !== 'function') return false;
+        try {
+            let [ok, x, y] = event.get_coords();
+            if (!ok) return false;
+            let action = this._logic.hitTest(x, y);
+            if (action && typeof this._logic.handleAction === 'function') {
+                this._logic.handleAction(action);
+                GLib.timeout_add(GLib.PRIORITY_DEFAULT, 400, () => {
+                    if (this._logic && typeof this._logic.update === 'function')
+                        this._logic.update();
+                    if (this._drawingArea)
+                        this._drawingArea.queue_draw();
+                    return GLib.SOURCE_REMOVE;
+                });
+                return true; // Stop event processing (handled click on control)
+            }
+        } catch (e) {}
+        return false; // Return false to allow widget dragging & DING selection!
+    }
+
     setCoordinates(x, y, width, height, margin, grid, relativeX) {
         super.setCoordinates(x, y, width, height, margin, grid, relativeX);
         
@@ -230,6 +278,31 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
         }
     }
 
+    _calculateIconRectangle() {
+        if (!this.container || !this._grid || !this.container.get_parent()) {
+            return;
+        }
+        let allocW = this.container.get_allocated_width();
+        let allocH = this.container.get_allocated_height();
+        let gridElemW = (this._grid && this._grid._elementWidth) ? this._grid._elementWidth : 100;
+        let gridElemH = (this._grid && this._grid._elementHeight) ? this._grid._elementHeight : 100;
+        let w = Math.max(allocW, (this.gridWidth || 1) * gridElemW);
+        let h = Math.max(allocH, (this.gridHeight || 1) * gridElemH);
+
+        let [x, y] = this._grid.coordinatesLocalToGlobal(0, 0, this.container);
+        this.iconRectangle.x = x;
+        this.iconRectangle.y = y;
+        this.iconRectangle.width = w;
+        this.iconRectangle.height = h;
+    }
+
+    _calculateLabelRectangle() {
+        this.labelRectangle.x = 0;
+        this.labelRectangle.y = 0;
+        this.labelRectangle.width = 0;
+        this.labelRectangle.height = 0;
+    }
+
     _animateGrowth(startW, startH, endW, endH) {
         if (this._growthId) {
             GLib.source_remove(this._growthId);
@@ -242,7 +315,6 @@ var WidgetItem = class extends desktopIconItem.desktopIconItem {
             let elapsed = GLib.get_monotonic_time() - startTime;
             let progress = Math.min(elapsed / duration, 1);
             
-        
             let ease = 1 - Math.pow(1 - progress, 4);
 
             let w = startW + (endW - startW) * ease;

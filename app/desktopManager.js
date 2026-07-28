@@ -238,8 +238,14 @@ var DesktopManager = class {
         this.rubberBand = false;
 
         let cssProvider = new Gtk.CssProvider();
-        cssProvider.load_from_file(Gio.File.new_for_path(GLib.build_filenamev([codePath, 'stylesheet.css'])));
-        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        let cssFile = Gio.File.new_for_path(GLib.build_filenamev([codePath, 'stylesheet.css']));
+        if (!cssFile.query_exists(null)) {
+            cssFile = Gio.File.new_for_path(GLib.build_filenamev([codePath, 'app', 'stylesheet.css']));
+        }
+        if (cssFile.query_exists(null)) {
+            cssProvider.load_from_file(cssFile);
+            Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), cssProvider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
         cssProvider = undefined;
         this._configureSelectionColor();
         this._createDesktopBackgroundMenu();
@@ -431,7 +437,12 @@ var DesktopManager = class {
     }
 
     _setSelectionColor() {
-        this.selectColor = this._styleContext.get_background_color(Gtk.StateFlags.SELECTED);
+        let col = this._styleContext.get_background_color(Gtk.StateFlags.SELECTED);
+        if (col && (col.red > 0 || col.green > 0 || col.blue > 0)) {
+            this.selectColor = new Gdk.RGBA({ red: col.red, green: col.green, blue: col.blue, alpha: 1.0 });
+        } else {
+            this.selectColor = new Gdk.RGBA({ red: 0.21, green: 0.52, blue: 0.89, alpha: 1.0 });
+        }
         let style = `.desktop-icons-selected {
             background-color: rgba(${this.selectColor.red * 255},${this.selectColor.green * 255}, ${this.selectColor.blue * 255}, 0.5);
             border-color: rgba(${this.selectColor.red * 255},${this.selectColor.green * 255}, ${this.selectColor.blue * 255}, 0);
@@ -542,7 +553,9 @@ var DesktopManager = class {
             this._dragList = [];
             for (let item of itemList) {
                 [x1, y1, x2, y2, c] = item.getCoordinates();
-                this._dragList.push([x1 - oX, y1 - oY]);
+                let gW = item.gridWidth || 1;
+                let gH = item.gridHeight || 1;
+                this._dragList.push([x1 - oX, y1 - oY, gW, gH]);
             }
         }
         for (let desktop of this._desktops) {
@@ -1634,7 +1647,7 @@ var DesktopManager = class {
         this._removeAllFilesFromGrids();
         this._fileList = fileList;
 
-        ['clock', 'calendar', 'image', 'cpu'].forEach(type => {
+        ['clock', 'calendar', 'image', 'cpu', 'ram', 'disk', 'network', 'battery', 'media', 'weather'].forEach(type => {
             try {
                 if (Prefs.desktopSettings.get_boolean(`show-${type}-widget`))
                     this._fileList.push(new WidgetItem.WidgetItem(this, type));

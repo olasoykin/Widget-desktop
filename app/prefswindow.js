@@ -83,6 +83,13 @@ function preferencesFrame(_Gtk, desktopSettings, nautilusSettings, gtkSettings) 
     frame.add(buildSwitcher(desktopSettings, 'show-calendar-widget', _('Show calendar widget')));
     frame.add(buildSwitcher(desktopSettings, 'show-image-widget', _('Show image widget')));
     frame.add(buildSwitcher(desktopSettings, 'show-cpu-widget', _('Show CPU widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-ram-widget', _('Show RAM widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-disk-widget', _('Show disk widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-network-widget', _('Show network widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-battery-widget', _('Show battery widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-media-widget', _('Show media widget')));
+    frame.add(buildSwitcher(desktopSettings, 'show-weather-widget', _('Show weather widget')));
+    frame.add(buildEntry(desktopSettings, 'weather-widget-city', _('Weather City Name (e.g. Buenos Aires, Madrid)')));
     frame.add(buildFolderSelector(desktopSettings, 'image-widget-folder', _('Select Images Folder')));
     frame.add(buildSpinButton(desktopSettings, 'image-widget-interval', _('Rotation interval (seconds)'), 5, 3600));
 
@@ -251,6 +258,31 @@ function buildSelector(settings, key, labelText, elements) {
     } else {
         hbox.append(label);
         hbox.append(combo);
+    }
+    return hbox;
+}
+
+function buildEntry(settings, key, labelText) {
+    let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL, spacing: 10});
+    let label = new Gtk.Label({label: labelText, xalign: 0});
+    let entry = new Gtk.Entry();
+    label.set_hexpand(true);
+    entry.set_hexpand(false);
+    entry.set_width_chars(20);
+    entry.set_halign(Gtk.Align.END);
+
+    if (settings) {
+        settings.bind(key, entry, 'text', 3);
+    } else {
+        entry.sensitive = false;
+    }
+
+    if (hbox.pack_start) {
+        hbox.pack_start(label, true, true, 0);
+        hbox.add(entry);
+    } else {
+        hbox.append(label);
+        hbox.append(entry);
     }
     return hbox;
 }

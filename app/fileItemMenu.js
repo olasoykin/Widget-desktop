@@ -20,6 +20,7 @@ const GLib = imports.gi.GLib;
 const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
+const Cairo = imports.gi.cairo;
 
 const TemplatesScriptsManager = imports.templatesScriptsManager;
 const DesktopIconsUtil = imports.desktopIconsUtil;
@@ -142,7 +143,8 @@ var FileItemMenu = class {
             );
         }
 
-        if (fileItem.type && (['clock', 'calendar', 'image', 'cpu'].includes(fileItem.type))) {
+        let isWidget = (fileItem.uri && fileItem.uri.startsWith('widget://')) || fileItem.type;
+        if (isWidget) {
             this._addSeparator();
             let resizeItem = new Gtk.MenuItem({ label: _('Resize') });
             this._menu.add(resizeItem);
@@ -150,7 +152,7 @@ var FileItemMenu = class {
             let sub = DesktopIconsUtil.createDesktopMenu();
             resizeItem.set_submenu(sub);
             
-            let sizes = ['2x2', '4x2', '4x4'];
+            let sizes = ['1x1', '2x2', '4x2', '4x4'];
             sizes.forEach(s => {
                 let [w, h] = s.split('x').map(Number);
                 let mi = new Gtk.MenuItem({ label: s });
@@ -583,5 +585,67 @@ var FileItemMenu = class {
         if (newFolder) {
             DBusUtils.RemoteFileOperations.MoveURIsRemote(newFolderFileItems, newFolder);
         }
+    }
+
+    _showClockStyleDialog(fileItem) {
+        let dialog = new Gtk.Dialog({
+            title: _('Clock Style'),
+            transientFor: fileItem.container.get_toplevel(),
+            modal: true,
+            useHeaderBar: 1
+        });
+        
+        let contentArea = dialog.get_content_area();
+        let flowBox = new Gtk.FlowBox();
+        flowBox.set_valign(Gtk.Align.START);
+        flowBox.set_max_children_per_line(3);
+        flowBox.set_selection_mode(Gtk.SelectionMode.NONE);
+        
+        const styles = [
+            { id: 0, draw: (cr, w, h) => {
+                cr.setSourceRGB(0.5, 0.5, 0.5);
+                cr.selectFontFace("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
+                cr.setFontSize(24);
+                cr.moveTo(10, 24); cr.showText("12");
+                cr.moveTo(10, 48); cr.showText("34");
+            }},
+            { id: 1, draw: (cr, w, h) => {
+                cr.setSourceRGB(0.5, 0.5, 0.5);
+                cr.setLineCap(Cairo.LineCap.ROUND);
+                cr.setLineWidth(4);
+                cr.moveTo(32, 32); cr.lineTo(32, 16); cr.stroke();
+                cr.moveTo(32, 32); cr.lineTo(44, 32); cr.stroke();
+                cr.arc(32, 32, 3, 0, Math.PI * 2); cr.fill();
+            }},
+            { id: 2, draw: (cr, w, h) => {
+                cr.setSourceRGB(0.5, 0.5, 0.5);
+                cr.selectFontFace("Sans", Cairo.FontSlant.NORMAL, Cairo.FontWeight.BOLD);
+                cr.setFontSize(16);
+                cr.moveTo(10, 36); cr.showText("12:34");
+            }}
+        ];
+
+        styles.forEach(s => {
+            let btn = new Gtk.Button();
+            btn.set_size_request(64, 64);
+            let da = new Gtk.DrawingArea();
+            da.set_size_request(64, 64);
+            da.connect('draw', (widget, cr) => {
+                s.draw(cr, 64, 64);
+                return false;
+            });
+            btn.add(da);
+            btn.connect('clicked', () => {
+                Prefs.desktopSettings.set_int('clock-style', s.id);
+                if (fileItem) {
+                    fileItem.updateIcon();
+                }
+                dialog.destroy();
+            });
+            flowBox.add(btn);
+        });
+
+        contentArea.pack_start(flowBox, true, true, 10);
+        dialog.show_all();
     }
 };

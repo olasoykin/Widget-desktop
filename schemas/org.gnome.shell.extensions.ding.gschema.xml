@@ -105,6 +105,21 @@
         <summary>Show a popup if running on X11Wayland</summary>
         <description>Whether DING should show a popup if it is running on X11Wayland, or the user decided to not show it anymore.</description>
     </key>
+    <key type="b" name="show-cpu-widget">
+        <default>false</default>
+        <summary>Show CPU widget</summary>
+        <description>Show the CPU usage widget on the desktop.</description>
+    </key>
+    <key type="s" name="cpu-widget-position">
+        <default>''</default>
+        <summary>CPU widget position</summary>
+        <description>Persisted position of the CPU widget.</description>
+    </key>
+    <key type="s" name="cpu-widget-size">
+        <default>'2x2'</default>
+        <summary>CPU widget size</summary>
+        <description>Width and height of the CPU widget in grid units.</description>
+    </key>
     <key type="b" name="show-clock-widget">
         <default>false</default>
         <summary>Show clock widget</summary>
@@ -159,6 +174,116 @@
         <default>'2x2'</default>
         <summary>Image widget size</summary>
         <description>Width and height of the image widget in grid units.</description>
+    </key>
+    <key type="b" name="show-ram-widget">
+        <default>false</default>
+        <summary>Show RAM widget</summary>
+        <description>Show the RAM usage widget on the desktop.</description>
+    </key>
+    <key type="s" name="ram-widget-position">
+        <default>''</default>
+        <summary>RAM widget position</summary>
+        <description>Persisted position of the RAM widget.</description>
+    </key>
+    <key type="s" name="ram-widget-size">
+        <default>'2x2'</default>
+        <summary>RAM widget size</summary>
+        <description>Width and height of the RAM widget in grid units.</description>
+    </key>
+    <key type="b" name="show-disk-widget">
+        <default>false</default>
+        <summary>Show disk widget</summary>
+        <description>Show the disk usage widget on the desktop.</description>
+    </key>
+    <key type="s" name="disk-widget-position">
+        <default>''</default>
+        <summary>Disk widget position</summary>
+        <description>Persisted position of the disk widget.</description>
+    </key>
+    <key type="s" name="disk-widget-size">
+        <default>'2x2'</default>
+        <summary>Disk widget size</summary>
+        <description>Width and height of the disk widget in grid units.</description>
+    </key>
+    <key type="b" name="show-network-widget">
+        <default>false</default>
+        <summary>Show network widget</summary>
+        <description>Show the network speed widget on the desktop.</description>
+    </key>
+    <key type="s" name="network-widget-position">
+        <default>''</default>
+        <summary>Network widget position</summary>
+        <description>Persisted position of the network widget.</description>
+    </key>
+    <key type="s" name="network-widget-size">
+        <default>'2x2'</default>
+        <summary>Network widget size</summary>
+        <description>Width and height of the network widget in grid units.</description>
+    </key>
+    <key type="b" name="show-battery-widget">
+        <default>false</default>
+        <summary>Show battery widget</summary>
+        <description>Show the battery level widget on the desktop.</description>
+    </key>
+    <key type="s" name="battery-widget-position">
+        <default>''</default>
+        <summary>Battery widget position</summary>
+        <description>Persisted position of the battery widget.</description>
+    </key>
+    <key type="s" name="battery-widget-size">
+        <default>'2x2'</default>
+        <summary>Battery widget size</summary>
+        <description>Width and height of the battery widget in grid units.</description>
+    </key>
+    <key type="b" name="show-media-widget">
+        <default>false</default>
+        <summary>Show media widget</summary>
+        <description>Show the MPRIS media player widget on the desktop.</description>
+    </key>
+    <key type="s" name="media-widget-position">
+        <default>''</default>
+        <summary>Media widget position</summary>
+        <description>Persisted position of the media widget.</description>
+    </key>
+    <key type="s" name="media-widget-size">
+        <default>'2x2'</default>
+        <summary>Media widget size</summary>
+        <description>Width and height of the media widget in grid units.</description>
+    </key>
+    <key type="i" name="clock-style">
+        <default>0</default>
+        <summary>Clock widget style</summary>
+        <description>Style of the clock widget (0 = stacked digital, 1 = analog, etc).</description>
+    </key>
+    <key type="b" name="show-weather-widget">
+        <default>false</default>
+        <summary>Show weather widget</summary>
+        <description>Show the weather forecast widget on the desktop.</description>
+    </key>
+    <key type="s" name="weather-widget-position">
+        <default>''</default>
+        <summary>Weather widget position</summary>
+        <description>Persisted position of the weather widget.</description>
+    </key>
+    <key type="s" name="weather-widget-size">
+        <default>'2x2'</default>
+        <summary>Weather widget size</summary>
+        <description>Width and height of the weather widget in grid units.</description>
+    </key>
+    <key type="s" name="weather-widget-city">
+        <default>''</default>
+        <summary>Weather widget city name</summary>
+        <description>City name for weather lookup via Open-Meteo geocoding.</description>
+    </key>
+    <key type="s" name="weather-widget-lat">
+        <default>''</default>
+        <summary>Weather widget latitude</summary>
+        <description>Latitude coordinate for weather location.</description>
+    </key>
+    <key type="s" name="weather-widget-lon">
+        <default>''</default>
+        <summary>Weather widget longitude</summary>
+        <description>Longitude coordinate for weather location.</description>
     </key>
     </schema>
 </schemalist>
